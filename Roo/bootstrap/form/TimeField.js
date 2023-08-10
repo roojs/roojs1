@@ -53,7 +53,8 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
      */
     format : "H:i",
     minuteStep : 1,
-
+    language : 'en',
+    hiddenField : false,
     getAutoCreate : function()
     {
         this.after = '<i class="fa far fa-clock"></i>';
@@ -65,6 +66,8 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     {
         
         Roo.bootstrap.form.TimeField.superclass.onRender.call(this, ct, position);
+
+        this.language = this.language in Roo.bootstrap.form.TimeField.periodText ? this.language : "en";
                 
         this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.TimeField.template);
         
@@ -87,6 +90,14 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.pop.select('.minutes-down', true).first().on('click', this.onDecrementMinutes, this);
         this.pop.select('button.period', true).first().on('click', this.onTogglePeriod, this);
         this.pop.select('button.ok', true).first().on('click', this.setTime, this);
+        this.pop.select('button.ok', true).first().dom.innerHTML = Roo.bootstrap.form.TimeField.okText;
+
+        this.hiddenField = this.inputEl().insertSibling(
+            {tag : 'input', type : 'hidden', name : this.name},
+            'before',
+            true
+        );
+        this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
 
     },
     
@@ -294,10 +305,10 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     {
         var hours = this.time.getHours();
         var minutes = this.time.getMinutes();
-        var period = 'AM';
+        var period = Roo.bootstrap.form.TimeField.periodText[this.language]['am'];
         
         if(hours > 11){
-            period = 'PM';
+            period = Roo.bootstrap.form.TimeField.periodText[this.language]['pm'];
         }
         
         if(hours == 0){
@@ -393,7 +404,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.update();
         this.place();
         
-        this.fireEvent('show', this, this.date);
+        this.fireEvent('show', this, this.time);
     },
     
     hide : function()
@@ -401,17 +412,106 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.picker().hide();
         this.pop.hide();
         
-        this.fireEvent('hide', this, this.date);
+        this.fireEvent('hide', this, this.time);
     },
     
     setTime : function()
     {
         this.hide();
-        this.setValue(this.time.format(this.format));
+        this.setValue(this.time);
         
-        this.fireEvent('select', this, this.date);
+        this.fireEvent('select', this, this.time);
         
         
+    },
+
+    // return false when it fails
+    parseTime : function(value)
+    {
+        if(!value) {
+            return false;
+        }
+        if(value instanceof Date){
+            return value;
+        }
+        var v = Date.parseDate(value, 'H:i:s');
+
+        return (typeof(v) == 'undefined') ? false : v;
+    },
+
+    translateTime : function(time)
+    {
+        switch(this.language) {
+            case 'zh_CN':
+                return new Intl.DateTimeFormat('zh-CN', {
+                    hour : 'numeric',
+                    minute : 'numeric',
+                    hour12 : true
+                }).format(time);
+            default :
+                return time.format(this.format);
+        }
+    },
+
+    setValue: function(v)
+    {
+        var t = this.parseTime(v);
+
+        if(!t) {
+            this.time = this.value = this.hiddenField.value =  '';
+            if(this.rendered){
+                this.inputEl().dom.value = '';
+                this.validate();
+            }
+            return;
+        }
+
+        this.value = this.hiddenField.value = t.dateFormat('H:i:s');
+
+        v = this.translateTime(t);
+
+        if(this.rendered){
+            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+            this.validate();
+        }
+
+        this.time = t;
+
+        this.update();
+    },
+
+    setRawValue: function(v)
+    {
+        var t = this.parseTime(v);
+
+        if(!t) {
+            this.time = this.value = this.hiddenField.value =  '';
+            if(this.rendered){
+                this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+            }
+            return;
+        }
+
+        this.value = this.hiddenField.value = t.dateFormat('H:i:s');
+
+        v = this.translateTime(t);
+
+        if(this.rendered){
+            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+        }
+
+        this.time = t;
+
+        this.update();
+    },
+
+    getValue: function()
+    {
+        return this.value;
+    },
+
+    getRawValue : function(){
+        return this.getValue();
     },
     
     onMousedown: function(e){
@@ -459,10 +559,21 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     
    
 });
- 
+Roo.apply(Roo.bootstrap.form.TimeField,  {
+    okText : 'OK',
+    periodText : {
+        en : {
+            am : 'AM',
+            pm : 'PM'
+        },
+        zh_CN : {
+            am : '上午',
+            pm : '下午'
+        }
+    }
+});
 
 Roo.apply(Roo.bootstrap.form.TimeField,  {
-  
     template : {
         tag: 'div',
         cls: 'datepicker dropdown-menu',
@@ -503,7 +614,7 @@ Roo.apply(Roo.bootstrap.form.TimeField,  {
                                             {
                                                 tag: 'button',
                                                 cls: 'btn btn-info ok',
-                                                html: 'OK'
+                                                html: "OK" // this is overridden on construciton
                                             }
                                         ]
                                     }
