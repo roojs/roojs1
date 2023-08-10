@@ -23103,15 +23103,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         }
         
         Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
-            // Roo.log('ELEMENT');
-            // Roo.log(v);
-            // Roo.log(this);
-            // if(!this.calendarWeeks){
-            //     v.remove();
-            //     return;
-            // }
-            
-            // Roo.log('EDIT');
             v.dom.innerHTML = Roo.bootstrap.form.DateField.todayText;
             v.attr('colspan', function(i, val){
                 return parseInt(val) + 1;
@@ -23160,14 +23151,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 
             ]
         };
-        
-        if(this.calendarWeeks){
-            dow.cn.push({
-                tag: 'th',
-                cls: 'cw',
-                html: '&nbsp;'
-            })
-        }
         
         while (dowCnt < this.weekStart + 7) {
             dow.cn.push({
@@ -23227,12 +23210,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 today = this.UTCToday();
         
         this.picker().select('>.datepicker-days thead th.switch', true).first().dom.innerHTML = Roo.bootstrap.form.DateField.dates[this.language].months[month]+' '+year;
-        
-//        this.picker().select('>tfoot th.today', true).first().dom.innerHTML = Roo.bootstrap.form.DateField.dates[this.language].today;
-        
-//        this.picker.select('>tfoot th.today').
-//						.text(dates[this.language].today)
-//						.toggle(this.todayBtn !== false);
     
         this.updateNavArrows();
         this.fillMonths();
@@ -23267,26 +23244,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                     tag: 'tr',
                     cn: []
                 };
-                
-                if(this.calendarWeeks){
-                    // ISO 8601: First week contains first thursday.
-                    // ISO also states week starts on Monday, but we can be more abstract here.
-                    var
-                    // Start of current week: based on weekstart/current date
-                    ws = new Date(+prevMonth + (this.weekStart - prevMonth.getUTCDay() - 7) % 7 * 864e5),
-                    // Thursday of this week
-                    th = new Date(+ws + (7 + 4 - ws.getUTCDay()) % 7 * 864e5),
-                    // First Thursday of year, year from thursday
-                    yth = new Date(+(yth = this.UTCDate(th.getUTCFullYear(), 0, 1)) + (7 + 4 - yth.getUTCDay())%7*864e5),
-                    // Calendar week: ms between thursdays, div ms per day, div 7 days
-                    calWeek =  (th - yth) / 864e5 / 7 + 1;
-                    
-                    fillMonths.cn.push({
-                        tag: 'td',
-                        cls: 'cw',
-                        html: calWeek
-                    });
-                }
             }
             
             if (prevMonth.getUTCFullYear() < year || (prevMonth.getUTCFullYear() == year && prevMonth.getUTCMonth() < month)) {
