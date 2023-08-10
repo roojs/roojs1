@@ -173,6 +173,19 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         for(var i = 0; i < 12; i++) {
             var date = new Date(2020, i);
 
+            var month = new Intl.DateTimeFormat(locale, {
+                month : 'long'
+            }).format(date);
+
+            var monthShort = new Intl.DateTimeFormat(locale, {
+                month : 'short'
+            }).format(date);
+
+            if(latinRegex.test(day)) {
+                dayShort = day.substring(0, 3);
+                dayMin = day.substring(0, 2);
+            }
+
             translation['months'].push(new Intl.DateTimeFormat(locale, {
                 month : 'long'
             }).format(date));
