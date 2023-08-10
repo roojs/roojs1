@@ -181,18 +181,12 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 month : 'short'
             }).format(date);
 
-            if(latinRegex.test(day)) {
-                dayShort = day.substring(0, 3);
-                dayMin = day.substring(0, 2);
+            if(latinRegex.test(month)) {
+                monthShort = month.substring(0, 3);
             }
 
-            translation['months'].push(new Intl.DateTimeFormat(locale, {
-                month : 'long'
-            }).format(date));
-
-            translation['monthsShort'].push(new Intl.DateTimeFormat(locale, {
-                month : 'short'
-            }).format(date));
+            translation['months'] = month;
+            translation['monthsShort'] = monthShort;
         }
     },
         
