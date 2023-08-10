@@ -262,7 +262,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 return;
             }
             
-            v.dom.innerHTML = Roo.bootstrap.form.DateField.dates[this.language].today;
+            v.dom.innerHTML = Roo.bootstrap.form.DateField.todayText;
             v.attr('colspan', function(i, val){
                 return parseInt(val) + 1;
             });
