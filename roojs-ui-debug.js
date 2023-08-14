@@ -25884,6 +25884,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 }
             }
             html = this.cleanHtml(html);
+
+            Roo.log('HTML3');
+            Roo.log(html);
             // fix up the special chars.. normaly like back quotes in word...
             // however we do not want to do this with chinese..
             html = html.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\u0080-\uFFFF]/g, function(match) {
@@ -25909,6 +25912,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 
                 
             });
+
+            Roo.log('HTML4');
+            Roo.log(html);
             
             
              
