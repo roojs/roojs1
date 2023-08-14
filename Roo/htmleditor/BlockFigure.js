@@ -17,8 +17,6 @@
 
 Roo.htmleditor.BlockFigure = function(cfg)
 {
-    Roo.log('BlockFigure');
-    Roo.log(cfg);
     if (cfg.node) {
         this.readElement(cfg.node);
         this.updateElement(cfg.node);
@@ -317,12 +315,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 ]
             };
         }
-
         // we remove caption totally if its hidden... - will delete data.. but otherwise we end up with fake caption
         var captionhtml = this.caption_display == 'none' ? '' : (this.caption.length ? this.caption : "Caption");
-        Roo.log(this.caption);
-        Roo.log('CAPTIONHTML');
-        Roo.log(captionhtml);
         
   
         var ret =   {
@@ -412,7 +406,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
 
         this.caption_display = this.getVal(node, 'figcaption', 'data-display');
         var dc = this.getVal(node, true, 'data-caption');
-        if (figcaption !== '' && caption_dispaly && dc && dc.length) {
+        if (dc && dc.length) {
             this.caption = dc;
         }
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
