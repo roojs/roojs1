@@ -23649,6 +23649,8 @@ Roo.htmleditor.Block  = function(cfg)
  */
 Roo.htmleditor.Block.factory = function(node)
 {
+    Roo.log('FACTORY');
+    Roo.log(node);
     var cc = Roo.htmleditor.Block.cache;
     var id = Roo.get(node).id;
     if (typeof(cc[id]) != 'undefined' && (!cc[id].node || cc[id].node.closest('body'))) {
@@ -25929,20 +25931,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 this.el.dom.value = d.innerHTML;
                 this.owner.fireEvent('push', this, v);
             }
-
-            Roo.log(this.doc.body.innerHTML);
             if (this.autoClean) {
                 new Roo.htmleditor.FilterParagraph({node : this.doc.body}); // paragraphs
-                Roo.log('a');
-                Roo.log(this.doc.body.innerHTML);
                 new Roo.htmleditor.FilterSpan({node : this.doc.body}); // empty spans
-                Roo.log('b');
-                Roo.log(this.doc.body.innerHTML);
             }
             if (this.enableBlocks) {
                 Roo.htmleditor.Block.initAll(this.doc.body);
-                Roo.log('c');
-                Roo.log(this.doc.body.innerHTML);
             }
             
             this.updateLanguage();
