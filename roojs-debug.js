@@ -50430,12 +50430,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 var d = (this.doc.body || this.doc.documentElement);
                 Roo.log('D');
                 Roo.log(d);
-                d = v;
+                d.innerHTML = v;
 
                 Roo.log('D2');
                 Roo.log(d);
                  
-                this.el.dom.value = d;
+                this.el.dom.value = d.innerHTML;
                 this.owner.fireEvent('push', this, v);
             }
             if (this.autoClean) {
