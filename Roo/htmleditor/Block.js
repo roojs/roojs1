@@ -26,7 +26,9 @@ Roo.htmleditor.Block.factory = function(node)
     Roo.log(node);
     var cc = Roo.htmleditor.Block.cache;
     var id = Roo.get(node).id;
+    Roo.log(id);
     if (typeof(cc[id]) != 'undefined' && (!cc[id].node || cc[id].node.closest('body'))) {
+        Roo.log('CACHE');
         Roo.htmleditor.Block.cache[id].readElement(node);
         return Roo.htmleditor.Block.cache[id];
     }
