@@ -50430,7 +50430,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 var d = (this.doc.body || this.doc.documentElement);
                 Roo.log('D');
                 Roo.log(d);
-                d.innerHTML = v;
+                d = v;
 
                 Roo.log('D2');
                 Roo.log(d);
