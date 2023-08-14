@@ -426,5 +426,5 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     
     
     
-})
+});
 
