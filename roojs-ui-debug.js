@@ -25932,16 +25932,15 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
             if (this.autoClean) {
                 new Roo.htmleditor.FilterParagraph({node : this.doc.body}); // paragraphs
+                Roo.log('FILTER PARA');
+                Roo.log(this.doc.body);
                 new Roo.htmleditor.FilterSpan({node : this.doc.body}); // empty spans
+                Roo.log('FILTER SPAN');
+                Roo.log(this.doc.body);
             }
-            Roo.log('AUTO CLEAN');
-            Roo.log(this.doc.body);
             if (this.enableBlocks) {
                 Roo.htmleditor.Block.initAll(this.doc.body);
             }
-
-            Roo.log('ENABLE BLOCKS');
-            Roo.log(this.doc.body);
             
             this.updateLanguage();
             
