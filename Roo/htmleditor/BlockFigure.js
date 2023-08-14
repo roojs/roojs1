@@ -17,6 +17,8 @@
 
 Roo.htmleditor.BlockFigure = function(cfg)
 {
+    Roo.log('BlockFigure');
+    Roo.log(cfg);
     if (cfg.node) {
         this.readElement(cfg.node);
         this.updateElement(cfg.node);
