@@ -476,6 +476,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if(this.owner.fireEvent('beforepush', this, v) !== false){
                 var d = (this.doc.body || this.doc.documentElement);
                 d.innerHTML = v;
+                Roo.log(d);
                  
                 this.el.dom.value = d.innerHTML;
                 this.owner.fireEvent('push', this, v);
