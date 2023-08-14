@@ -50428,7 +50428,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 var d = (this.doc.body || this.doc.documentElement);
                 Roo.log('d');
                 Roo.log(d);
-                Roo.log(typeofYourVariable);
+                Roo.log(typeof d);
                 d.innerHTML = v;
 
                 if(this.doc.body) {
