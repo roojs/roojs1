@@ -6,7 +6,7 @@
  * LGPL
  *
  */
- 
+
 /**
  * @class Roo.HtmlEditorCore
  * @extends Roo.Component
