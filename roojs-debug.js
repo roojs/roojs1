@@ -50425,19 +50425,14 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
             
             if(this.owner.fireEvent('beforepush', this, v) !== false){
-                Roo.log('V');
-                Roo.log(v);
                 var d = (this.doc.body || this.doc.documentElement);
-                Roo.log('D');
-                Roo.log(d.innerHTML);
                 d.innerHTML = v;
-
-                Roo.log('D2');
-                Roo.log(d.innerHTML);
                  
                 this.el.dom.value = d.innerHTML;
                 this.owner.fireEvent('push', this, v);
             }
+
+            Roo.log(this.doc.body.innerHTML);
             if (this.autoClean) {
                 new Roo.htmleditor.FilterParagraph({node : this.doc.body}); // paragraphs
                 new Roo.htmleditor.FilterSpan({node : this.doc.body}); // empty spans

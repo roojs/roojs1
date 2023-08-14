@@ -480,7 +480,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 this.owner.fireEvent('push', this, v);
             }
 
-            Roo.log(this.doc.body.html);
+            Roo.log(this.doc.body.innerHTML);
             if (this.autoClean) {
                 new Roo.htmleditor.FilterParagraph({node : this.doc.body}); // paragraphs
                 new Roo.htmleditor.FilterSpan({node : this.doc.body}); // empty spans
