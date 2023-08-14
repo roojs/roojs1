@@ -48306,6 +48306,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     align: 'center',
     caption : '',
     caption_display : 'block',
+    caption_edit : true,
     width : '100%',
     cls : '',
     href: '',
@@ -48568,7 +48569,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             img = {
                 tag : 'a',
                 href: this.href,
-                contenteditable : 'true',
+                contenteditable : caption_edit,
                 cn : [
                     img
                 ]
