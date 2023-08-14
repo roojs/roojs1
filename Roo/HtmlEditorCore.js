@@ -6,7 +6,7 @@
  * LGPL
  *
  */
-
+ 
 /**
  * @class Roo.HtmlEditorCore
  * @extends Roo.Component
@@ -353,7 +353,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     syncValue : function()
     {
-        Roo.log("HtmlEditorCore:syncValue (EDITOR->TEXT)");
+        //Roo.log("HtmlEditorCore:syncValue (EDITOR->TEXT)");
         if(this.initialized){
             
             if (this.undoManager) {
@@ -368,9 +368,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
             var div = document.createElement('div');
             div.innerHTML = bd.innerHTML;
-
-            Roo.log('DIV');
-            Roo.log(div);
             var gtx = div.getElementsByClassName('gtx-trans-icon'); // google translate - really annoying and difficult to get rid of.
             if (gtx.length > 0) {
                 var rm = gtx.item(0).parentNode;
@@ -383,9 +380,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
             
             var html = div.innerHTML;
-
-            Roo.log('HTML');
-            Roo.log(html);
             
             //?? tidy?
             if (this.autoClean) {
@@ -421,9 +415,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 html  = tidy.serialize(div);
                 
             }
-
-            Roo.log('HTML2');
-            Roo.log(html);
             
             
             if(Roo.isSafari){
@@ -434,9 +425,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 }
             }
             html = this.cleanHtml(html);
-
-            Roo.log('HTML3');
-            Roo.log(html);
             // fix up the special chars.. normaly like back quotes in word...
             // however we do not want to do this with chinese..
             html = html.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\u0080-\uFFFF]/g, function(match) {
@@ -462,9 +450,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 
                 
             });
-
-            Roo.log('HTML4');
-            Roo.log(html);
             
             
              
