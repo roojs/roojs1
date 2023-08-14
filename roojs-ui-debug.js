@@ -25871,6 +25871,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 html  = tidy.serialize(div);
                 
             }
+
+            Roo.log('HTML2');
+            Roo.log(html);
             
             
             if(Roo.isSafari){
