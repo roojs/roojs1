@@ -31065,7 +31065,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
  * LGPL
  *
  */
- 
+
 /**
  * @class Roo.HtmlEditorCore
  * @extends Roo.Component
@@ -31412,6 +31412,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     syncValue : function()
     {
+        Roo.log('SYNC VALUE');
         //Roo.log("HtmlEditorCore:syncValue (EDITOR->TEXT)");
         if(this.initialized){
             
