@@ -25925,8 +25925,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if(this.owner.fireEvent('beforepush', this, v) !== false){
                 var d = (this.doc.body || this.doc.documentElement);
                 Roo.log('d');
-                Roo.log(d);
-                Roo.log(typeof d);
+                Roo.log(this.doc);
+                Roo.log(this.doc.body);
+                Roo.log(typeof this.doc.body);
+                Roo.log(this.doc.documentElement);
+                Roo.log(typeof this.doc.documentElement);
                 d.innerHTML = v;
 
                 if(this.doc.body) {
