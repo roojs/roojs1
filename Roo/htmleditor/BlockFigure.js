@@ -294,7 +294,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             img = {
                 tag : 'a',
                 href: this.href,
-                contenteditable : 'true',
+                contenteditable : caption_edit,
                 cn : [
                     img
                 ]
