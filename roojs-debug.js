@@ -50435,10 +50435,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             Roo.log(this.doc.body.innerHTML);
             if (this.autoClean) {
                 new Roo.htmleditor.FilterParagraph({node : this.doc.body}); // paragraphs
+                Roo.log('a');
+                Roo.log(this.doc.body.innerHTML);
                 new Roo.htmleditor.FilterSpan({node : this.doc.body}); // empty spans
+                Roo.log('b');
+                Roo.log(this.doc.body.innerHTML);
             }
             if (this.enableBlocks) {
                 Roo.htmleditor.Block.initAll(this.doc.body);
+                Roo.log('c');
+                Roo.log(this.doc.body.innerHTML);
             }
             
             this.updateLanguage();
