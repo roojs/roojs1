@@ -353,8 +353,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     syncValue : function()
     {
-        Roo.log('SYNC VALUE');
-        //Roo.log("HtmlEditorCore:syncValue (EDITOR->TEXT)");
+        Roo.log('SSYNC VALUE');
+        Roo.log("HtmlEditorCore:syncValue (EDITOR->TEXT)");
         if(this.initialized){
             
             if (this.undoManager) {
