@@ -426,5 +426,9 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     
     
     
-})
+});
+
+Roo.apply(Roo.htmleditor.BlockFigure, {
+    caption_edit : true
+});
 
