@@ -477,11 +477,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 Roo.log(v);
                 var d = (this.doc.body || this.doc.documentElement);
                 Roo.log('D');
-                Roo.log(d);
+                Roo.log(d.innerHTML);
                 d.innerHTML = v;
 
                 Roo.log('D2');
-                Roo.log(d);
+                Roo.log(d.innerHTML);
                  
                 this.el.dom.value = d.innerHTML;
                 this.owner.fireEvent('push', this, v);
