@@ -25803,7 +25803,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     syncValue : function()
     {
-        Roo.log('SSYNC VALUE');
         Roo.log("HtmlEditorCore:syncValue (EDITOR->TEXT)");
         if(this.initialized){
             
@@ -25819,6 +25818,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
             var div = document.createElement('div');
             div.innerHTML = bd.innerHTML;
+
+            Roo.log('DIV');
+            Roo.log(div);
             var gtx = div.getElementsByClassName('gtx-trans-icon'); // google translate - really annoying and difficult to get rid of.
             if (gtx.length > 0) {
                 var rm = gtx.item(0).parentNode;
@@ -25831,6 +25833,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
             
             var html = div.innerHTML;
+
+            Roo.log('HTML');
+            Roo.log(html);
             
             //?? tidy?
             if (this.autoClean) {
