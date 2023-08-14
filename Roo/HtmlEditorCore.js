@@ -479,6 +479,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 Roo.log('D');
                 Roo.log(d);
                 d.innerHTML = v;
+
+                Roo.log('D2');
+                Roo.log(d);
                  
                 this.el.dom.value = d.innerHTML;
                 this.owner.fireEvent('push', this, v);
