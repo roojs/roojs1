@@ -25933,7 +25933,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 Roo.log('D2');
                 Roo.log(d);
                  
-                this.el.dom.value = d.innerHTML;
+                this.el.dom.value = d;
                 this.owner.fireEvent('push', this, v);
             }
             if (this.autoClean) {
