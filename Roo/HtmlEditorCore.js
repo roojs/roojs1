@@ -467,29 +467,20 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     pushValue : function()
     {
-        Roo.log("HtmlEditorCore:pushValue (TEXT->EDITOR)");
+        //Roo.log("HtmlEditorCore:pushValue (TEXT->EDITOR)");
         if(this.initialized){
             var v = this.el.dom.value.trim();
-            Roo.log(v);
             
             
             if(this.owner.fireEvent('beforepush', this, v) !== false){
                 var d = (this.doc.body || this.doc.documentElement);
-                Roo.log('BEFORE SET DOC BODY');
-                Roo.log(d.innerHTML);
                 d.innerHTML = v;
-                Roo.log('SET DOC BODY');
-                Roo.log(d.innerHTML);
                  
                 this.el.dom.value = d.innerHTML;
                 this.owner.fireEvent('push', this, v);
             }
             if (this.autoClean) {
-                Roo.log('BEFORE F');
-                Roo.log(this.doc.body);
                 new Roo.htmleditor.FilterParagraph({node : this.doc.body}); // paragraphs
-                Roo.log('AFTER F');
-                Roo.log(this.doc.body);
                 new Roo.htmleditor.FilterSpan({node : this.doc.body}); // empty spans
             }
             if (this.enableBlocks) {
