@@ -24142,7 +24142,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                                 {
                                     // we can not rely on yahoo syndication to use CSS elements - so have to use  '<i>' to encase stuff.
                                     tag : 'i',
-                                    contenteditable : true,
+                                    contenteditable : Roo.htmleditor.BlockFigure.caption_edit,
                                     html : captionhtml
                                 }
                                 
@@ -24199,7 +24199,11 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     
     
     
-})
+});
+
+Roo.apply(Roo.htmleditor.BlockFigure, {
+    caption_edit : true
+});
 
  
 
