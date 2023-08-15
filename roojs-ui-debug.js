@@ -24179,7 +24179,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
 
         this.caption_display = this.getVal(node, 'figcaption', 'data-display');
         var dc = this.getVal(node, true, 'data-caption');
-        if (dc && dc.length) {
+        if (this.caption_display == 'none' && figcaption != '' && dc && dc.length) {
             this.caption = dc;
         }
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
