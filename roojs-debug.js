@@ -48682,8 +48682,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
 
         this.caption_idsplay = this.getVal(node, 'figure', 'data-display');
         Roo.log('CAPTION DISPLAY');
-        Roo.log(caption_display);
-        if(caption_display == '') {
+        Roo.log(this.caption_display);
+        if(this.caption_display == '') {
             this.caption_display = this.getVal(node, 'figcaption', 'data-display');
         }
 
