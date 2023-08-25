@@ -405,7 +405,13 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         }
         
 
-        this.caption_display = this.getVal(node, 'figcaption', 'data-display');
+        this.caption_idsplay = this.getVal(node, 'figure', 'data-display');
+        Roo.log('CAPTION DISPLAY');
+        Roo.log(caption_display);
+        if(caption_display == '') {
+            this.caption_display = this.getVal(node, 'figcaption', 'data-display');
+        }
+
         var dc = this.getVal(node, true, 'data-caption');
         if (this.caption_display == 'none' && figcaption != '' && dc && dc.length) {
             this.caption = dc;
