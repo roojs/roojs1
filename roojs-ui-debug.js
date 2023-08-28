@@ -24171,8 +24171,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
          
         this.align = this.getVal(node, 'figure', 'align');
 
-        // data-display is stored in figure
-        this.caption_display = this.getVal(node, true, 'data-display');
+        // caption display is stored in figure
+        this.caption_display = this.getVal(node, true, 'data-caption-display');
         Roo.log('CAPTION DISPLAY');
         Roo.log(this.caption_display);
 
@@ -24180,8 +24180,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         // it was stored in figcaption
         if(this.caption_display == '') {
             this.caption_display = this.getVal(node, 'figcaption', 'data-display');
-            Roo.log(this.caption_display);
         }
+        Roo.log(this.caption_display);
 
         // read caption from figcaption
         var figcaption = this.getVal(node, 'figcaption', false);
@@ -24189,16 +24189,20 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
 
         if (figcaption !== '') {
             this.caption = this.getVal(figcaption, 'i', 'html');
-            Roo.log(this.caption);
+            Roo.log('FIGCAPTION');
         }
+        Roo.log(this.caption);
                 
 
-        // read caption from data-caption in figure if empty figcaption
+        // read caption from data-caption in figure if no caption from figcaption
         var dc = this.getVal(node, true, 'data-caption');
-        if (this.caption_display == 'none' && figcaption != '' && dc && dc.length) {
+        // if (this.caption_display == 'none' && figcaption != '' && dc && dc.length) {
+        if(this.caption == '' && dc && dc.length){
             this.caption = dc;
-            Roo.log(this.caption);
+            Roo.log('DATA CAPTION');
         }
+        Roo.log(this.caption);
+
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, true, 'data-width');
         //this.margin = this.getVal(node, 'figure', 'style', 'margin');
