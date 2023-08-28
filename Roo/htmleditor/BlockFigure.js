@@ -398,8 +398,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
          
         this.align = this.getVal(node, 'figure', 'align');
 
-        // data-display is stored in figure
-        this.caption_display = this.getVal(node, true, 'data-display');
+        // caption display is stored in figure
+        this.caption_display = this.getVal(node, true, 'data-caption-display');
         Roo.log('CAPTION DISPLAY');
         Roo.log(this.caption_display);
 
