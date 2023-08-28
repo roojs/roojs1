@@ -382,6 +382,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 }
             ]
         };
+
+        if(this.caption_display != 'block') {
+
+        }
         return ret;
          
     },
