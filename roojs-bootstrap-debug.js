@@ -29697,16 +29697,13 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 ]
             };
         }
-        // we remove caption totally if its hidden... - will delete data.. but otherwise we end up with fake caption
-        var captionhtml = this.caption_display == 'none' ? '' : (this.caption.length ? this.caption : "Caption");
-        
-        
   
         var ret =   {
             tag: 'figure',
             'data-block' : 'Figure',
             'data-width' : this.width,
             'data-caption' : this.caption, 
+            'data-caption-display' : this.caption_display,
             contenteditable : 'false',
             
             style : {
@@ -29719,51 +29716,52 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 textAlign : this.align   // seems to work for email..
                 
             },
-           
             
             align : this.align,
             cn : [
-                img,
-              
-                {
-                    tag: 'figcaption',
-                    'data-display' : this.caption_display,
-                    style : {
-                        textAlign : 'left',
-                        fontSize : '16px',
-                        lineHeight : '24px',
-                        display : this.caption_display,
-                        maxWidth : (this.align == 'center' ?  this.width : '100%' ) + ' !important',
-                        margin: m,
-                        width: this.align == 'center' ?  this.width : '100%' 
-                    
-                         
-                    },
-                    cls : this.cls.length > 0 ? (this.cls  + '-thumbnail' ) : '',
-                    cn : [
-                        {
-                            tag: 'div',
-                            style  : {
-                                marginTop : '16px',
-                                textAlign : 'left'
-                            },
-                            align: 'left',
-                            cn : [
-                                {
-                                    // we can not rely on yahoo syndication to use CSS elements - so have to use  '<i>' to encase stuff.
-                                    tag : 'i',
-                                    contenteditable : Roo.htmleditor.BlockFigure.caption_edit,
-                                    html : captionhtml
-                                }
-                                
-                            ]
-                        }
-                        
-                    ]
-                    
-                }
+                img
             ]
         };
+
+        // show figcaption only if caption_display is 'block'
+        if(this.caption_display == 'block') {
+            ret['cn'].push({
+                tag: 'figcaption',
+                style : {
+                    textAlign : 'left',
+                    fontSize : '16px',
+                    lineHeight : '24px',
+                    display : this.caption_display,
+                    maxWidth : (this.align == 'center' ?  this.width : '100%' ) + ' !important',
+                    margin: m,
+                    width: this.align == 'center' ?  this.width : '100%' 
+                
+                     
+                },
+                cls : this.cls.length > 0 ? (this.cls  + '-thumbnail' ) : '',
+                cn : [
+                    {
+                        tag: 'div',
+                        style  : {
+                            marginTop : '16px',
+                            textAlign : 'left'
+                        },
+                        align: 'left',
+                        cn : [
+                            {
+                                // we can not rely on yahoo syndication to use CSS elements - so have to use  '<i>' to encase stuff.
+                                tag : 'i',
+                                contenteditable : Roo.htmleditor.BlockFigure.caption_edit,
+                                html : this.caption.length ? this.caption : "Caption"
+                            }
+                            
+                        ]
+                    }
+                    
+                ]
+                
+            });
+        }
         return ret;
          
     },
@@ -29805,8 +29803,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
 
         // read caption from data-caption in figure if no caption from figcaption
         var dc = this.getVal(node, true, 'data-caption');
-        // if (this.caption_display == 'none' && figcaption != '' && dc && dc.length) {
-        if(this.caption == '' && dc && dc.length){
+
+        if(this.caption_display == 'none' && this.caption == '' && dc && dc.length){
             this.caption = dc;
             Roo.log('DATA CAPTION');
         }
