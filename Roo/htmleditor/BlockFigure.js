@@ -345,6 +345,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             ]
         };
 
+        // show figcaption only if caption_display is 'block'
         if(this.caption_display == 'block') {
             ret['cn'].push({
                 tag: 'figcaption',
