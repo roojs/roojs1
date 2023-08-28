@@ -325,6 +325,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             'data-block' : 'Figure',
             'data-width' : this.width,
             'data-caption' : this.caption, 
+            'data-caption-display' : this.caption_display,
             contenteditable : 'false',
             
             style : {
@@ -349,7 +350,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         if(this.caption_display == 'block') {
             ret['cn'].push({
                 tag: 'figcaption',
-                'data-display' : this.caption_display,
                 style : {
                     textAlign : 'left',
                     fontSize : '16px',
