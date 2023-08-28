@@ -349,7 +349,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     textAlign : 'left',
                     fontSize : '16px',
                     lineHeight : '24px',
-                    display : 'this.caption_display',
+                    display : this.caption_display,
                     maxWidth : (this.align == 'center' ?  this.width : '100%' ) + ' !important',
                     margin: m,
                     width: this.align == 'center' ?  this.width : '100%' 
