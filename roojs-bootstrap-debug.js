@@ -31478,7 +31478,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'align',
                             'colspan',
                             'rowspan',
-                            'data-display',
+                            'data-caption-display',
                             'data-width',
                             'data-caption',
                             'start' ,
