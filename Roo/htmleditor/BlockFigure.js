@@ -407,8 +407,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             this.caption_display = this.getVal(node, 'figcaption', 'data-display');
         }
 
-        /// not really used - as hidden captions do not store the content here..
         var figcaption = this.getVal(node, 'figcaption', false);
+        Roo.log('FIGCAPTION');
+        Roo.log(figcaption);
+
         if (figcaption !== '') {
             this.caption = this.getVal(figcaption, 'i', 'html');
         }
