@@ -24170,21 +24170,24 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         this.image_src = this.getVal(node, 'img', 'src');
          
         this.align = this.getVal(node, 'figure', 'align');
-        
-        /// not really used - as hidden captions do not store the content here..
+
+        // data-display is stored in figure
+        this.caption_display = this.getVal(node, 'figure', 'data-display');
+
+        // backward compatible
+        // it was stored in figcaption
+        if(this.caption_display == '') {
+            this.caption_display = this.getVal(node, 'figcaption', 'data-display');
+        }
+
         var figcaption = this.getVal(node, 'figcaption', false);
+        Roo.log('FIGCAPTION');
+        Roo.log(figcaption);
+
         if (figcaption !== '') {
             this.caption = this.getVal(figcaption, 'i', 'html');
         }
-        
-
-        this.caption_display = this.getVal(node, 'figure', 'data-display');
-        Roo.log('CAPTION DISPLAY');
-        Roo.log(this.caption_display);
-        if(this.caption_display == '') {
-            this.caption_display = this.getVal(node, 'figcaption', 'data-display');
-            Roo.log(this.caption_display);
-        }
+                
 
         var dc = this.getVal(node, true, 'data-caption');
         if (this.caption_display == 'none' && figcaption != '' && dc && dc.length) {
