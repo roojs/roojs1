@@ -29781,26 +29781,32 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         this.align = this.getVal(node, 'figure', 'align');
 
         // data-display is stored in figure
-        this.caption_display = this.getVal(node, 'figure', 'data-display');
+        this.caption_display = this.getVal(node, true, 'data-display');
+        Roo.log('CAPTION DISPLAY');
+        Roo.log(this.caption_display);
 
         // backward compatible
         // it was stored in figcaption
         if(this.caption_display == '') {
             this.caption_display = this.getVal(node, 'figcaption', 'data-display');
+            Roo.log(this.caption_display);
         }
 
+        // read caption from figcaption
         var figcaption = this.getVal(node, 'figcaption', false);
-        Roo.log('FIGCAPTION');
-        Roo.log(figcaption);
+        Roo.log('CAPTION');
 
         if (figcaption !== '') {
             this.caption = this.getVal(figcaption, 'i', 'html');
+            Roo.log(this.caption);
         }
                 
 
+        // read caption from data-caption in figure if empty figcaption
         var dc = this.getVal(node, true, 'data-caption');
         if (this.caption_display == 'none' && figcaption != '' && dc && dc.length) {
             this.caption = dc;
+            Roo.log(this.caption);
         }
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, true, 'data-width');
