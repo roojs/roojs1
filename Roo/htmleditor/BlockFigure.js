@@ -420,7 +420,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         }
                 
 
-        // read caption from data-caption in figure if empty figcaption
+        // read caption from data-caption in figure if no caption from figcaption
         var dc = this.getVal(node, true, 'data-caption');
         // if (this.caption_display == 'none' && figcaption != '' && dc && dc.length) {
         if(this.caption == '' && dc && dc.length){
