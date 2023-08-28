@@ -416,6 +416,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
 
         if (figcaption !== '') {
             this.caption = this.getVal(figcaption, 'i', 'html');
+            Roo.log('FIGCAPTION');
         }
         Roo.log(this.caption);
                 
@@ -425,9 +426,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         // if (this.caption_display == 'none' && figcaption != '' && dc && dc.length) {
         if(this.caption == '' && dc && dc.length){
             this.caption = dc;
+            Roo.log('DATA CAPTION');
         }
         Roo.log(this.caption);
-        
+
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, true, 'data-width');
         //this.margin = this.getVal(node, 'figure', 'style', 'margin');
