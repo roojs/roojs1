@@ -48590,6 +48590,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 ]
             };
         }
+
+
   
         var ret =   {
             tag: 'figure',
@@ -48645,7 +48647,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                                 // we can not rely on yahoo syndication to use CSS elements - so have to use  '<i>' to encase stuff.
                                 tag : 'i',
                                 contenteditable : Roo.htmleditor.BlockFigure.caption_edit,
-                                html : this.caption.length ? this.caption : "Caption"
+                                html : this.caption.length ? this.caption : "Caption" // fake caption
                             }
                             
                         ]
