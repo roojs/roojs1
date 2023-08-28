@@ -338,7 +338,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 textAlign : this.align   // seems to work for email..
                 
             },
-           
             
             align : this.align,
             cn : [
@@ -426,7 +425,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
 
         // read caption from data-caption in figure if no caption from figcaption
         var dc = this.getVal(node, true, 'data-caption');
-        
+
         if(this.caption_display == 'none' && this.caption == '' && dc && dc.length){
             this.caption = dc;
             Roo.log('DATA CAPTION');
