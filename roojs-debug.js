@@ -48675,26 +48675,19 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
 
         // caption display is stored in figure
         this.caption_display = this.getVal(node, true, 'data-caption-display');
-        Roo.log('CAPTION DISPLAY');
-        Roo.log(node);
-        Roo.log(this.caption_display);
 
         // backward compatible
         // it was stored in figcaption
         if(this.caption_display == '') {
             this.caption_display = this.getVal(node, 'figcaption', 'data-display');
         }
-        Roo.log(this.caption_display);
 
         // read caption from figcaption
         var figcaption = this.getVal(node, 'figcaption', false);
-        Roo.log('CAPTION');
 
         if (figcaption !== '') {
             this.caption = this.getVal(figcaption, 'i', 'html');
-            Roo.log('FIGCAPTION');
         }
-        Roo.log(this.caption);
                 
 
         // read caption from data-caption in figure if no caption from figcaption
@@ -48702,9 +48695,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
 
         if(this.caption_display == 'none' && this.caption == '' && dc && dc.length){
             this.caption = dc;
-            Roo.log('DATA CAPTION');
         }
-        Roo.log(this.caption);
 
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, true, 'data-width');
