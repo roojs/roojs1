@@ -420,9 +420,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
 
         if(this.caption_display == 'none' && this.caption == '' && dc && dc.length){
             this.caption = dc;
-            Roo.log('DATA CAPTION');
         }
-        Roo.log(this.caption);
 
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, true, 'data-width');
