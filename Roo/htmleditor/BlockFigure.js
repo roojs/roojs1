@@ -341,50 +341,48 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             
             align : this.align,
             cn : [
-                img,
-              
-                {
-                    tag: 'figcaption',
-                    'data-display' : this.caption_display,
-                    style : {
-                        textAlign : 'left',
-                        fontSize : '16px',
-                        lineHeight : '24px',
-                        display : this.caption_display,
-                        maxWidth : (this.align == 'center' ?  this.width : '100%' ) + ' !important',
-                        margin: m,
-                        width: this.align == 'center' ?  this.width : '100%' 
-                    
-                         
-                    },
-                    cls : this.cls.length > 0 ? (this.cls  + '-thumbnail' ) : '',
-                    cn : [
-                        {
-                            tag: 'div',
-                            style  : {
-                                marginTop : '16px',
-                                textAlign : 'left'
-                            },
-                            align: 'left',
-                            cn : [
-                                {
-                                    // we can not rely on yahoo syndication to use CSS elements - so have to use  '<i>' to encase stuff.
-                                    tag : 'i',
-                                    contenteditable : Roo.htmleditor.BlockFigure.caption_edit,
-                                    html : captionhtml
-                                }
-                                
-                            ]
-                        }
-                        
-                    ]
-                    
-                }
+                img
             ]
         };
 
-        if(this.caption_display != 'block') {
-
+        if(this.caption_display == 'block') {
+            ret['cn'].push({
+                tag: 'figcaption',
+                'data-display' : this.caption_display,
+                style : {
+                    textAlign : 'left',
+                    fontSize : '16px',
+                    lineHeight : '24px',
+                    display : this.caption_display,
+                    maxWidth : (this.align == 'center' ?  this.width : '100%' ) + ' !important',
+                    margin: m,
+                    width: this.align == 'center' ?  this.width : '100%' 
+                
+                     
+                },
+                cls : this.cls.length > 0 ? (this.cls  + '-thumbnail' ) : '',
+                cn : [
+                    {
+                        tag: 'div',
+                        style  : {
+                            marginTop : '16px',
+                            textAlign : 'left'
+                        },
+                        align: 'left',
+                        cn : [
+                            {
+                                // we can not rely on yahoo syndication to use CSS elements - so have to use  '<i>' to encase stuff.
+                                tag : 'i',
+                                contenteditable : Roo.htmleditor.BlockFigure.caption_edit,
+                                html : captionhtml
+                            }
+                            
+                        ]
+                    }
+                    
+                ]
+                
+            });
         }
         return ret;
          
