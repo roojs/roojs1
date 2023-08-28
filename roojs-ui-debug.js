@@ -24174,6 +24174,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         // caption display is stored in figure
         this.caption_display = this.getVal(node, true, 'data-caption-display');
         Roo.log('CAPTION DISPLAY');
+        Roo.log(node);
         Roo.log(this.caption_display);
 
         // backward compatible
