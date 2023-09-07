@@ -394,6 +394,7 @@
                             </span><span class="jsdoc-string">'colspan'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-string">'rowspan'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-string">'data-display'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'data-caption-display'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-string">'data-width'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-string">'data-caption'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-string">'start' </span><span class="jsdoc-syntax">,
@@ -692,7 +693,27 @@
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterStyleToTag</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterAttributes</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">attrib_white </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'align'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'colspan'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'rowspan'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'data-display'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'data-width'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'start'</span><span class="jsdoc-syntax">],
+                </span><span class="jsdoc-var">attrib_white </span><span class="jsdoc-syntax">: [
+                    </span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'align'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'colspan'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'rowspan'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'data-display'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'data-caption-display'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'data-width'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'data-caption'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'start' </span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-comment">// youtube embed.
+                    </span><span class="jsdoc-string">'class'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'allowfullscreen'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'frameborder'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'height'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'alt'
+                    </span><span class="jsdoc-syntax">],
                 </span><span class="jsdoc-var">attrib_clean </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'src' </span><span class="jsdoc-syntax">]
             });
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterBlack</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.black</span><span class="jsdoc-syntax">});

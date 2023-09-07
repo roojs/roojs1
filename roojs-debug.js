@@ -48693,7 +48693,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         // read caption from data-caption in figure if no caption from figcaption
         var dc = this.getVal(node, true, 'data-caption');
 
-        if(this.caption_display == 'none' && this.caption == '' && dc && dc.length){
+        if(this.caption_display == 'none' && dc && dc.length){
             this.caption = dc;
         }
 
@@ -50362,6 +50362,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'align',
                             'colspan',
                             'rowspan',
+                            'data-display',
                             'data-caption-display',
                             'data-width',
                             'data-caption',
@@ -50661,7 +50662,27 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
                 node : d,
-                attrib_white : ['href', 'src', 'name', 'align', 'colspan', 'rowspan', 'data-display', 'data-width', 'start'],
+                attrib_white : [
+                    'href',
+                    'src',
+                    'name',
+                    'align',
+                    'colspan',
+                    'rowspan',
+                    'data-display',
+                    'data-caption-display',
+                    'data-width',
+                    'data-caption',
+                    'start' ,
+                    'style',
+                    // youtube embed.
+                    'class',
+                    'allowfullscreen',
+                    'frameborder',
+                    'width',
+                    'height',
+                    'alt'
+                    ],
                 attrib_clean : ['href', 'src' ] 
             });
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
