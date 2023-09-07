@@ -394,6 +394,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'colspan',
                             'rowspan',
                             'data-display',
+                            'data-caption-display',
                             'data-width',
                             'data-caption',
                             'start' ,
@@ -692,7 +693,27 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
                 node : d,
-                attrib_white : ['href', 'src', 'name', 'align', 'colspan', 'rowspan', 'data-display', 'data-width', 'start'],
+                attrib_white : [
+                    'href',
+                    'src',
+                    'name',
+                    'align',
+                    'colspan',
+                    'rowspan',
+                    'data-display',
+                    'data-caption-display',
+                    'data-width',
+                    'data-caption',
+                    'start' ,
+                    'style',
+                    // youtube embed.
+                    'class',
+                    'allowfullscreen',
+                    'frameborder',
+                    'width',
+                    'height',
+                    'alt'
+                    ],
                 attrib_clean : ['href', 'src' ] 
             });
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
