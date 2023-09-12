@@ -19402,7 +19402,11 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         this.view.select(match);
         var sn = Roo.get(this.view.getSelectedNodes()[0]);
         sn.scrollIntoView(sn.dom.parentNode, false);
-    } 
+    },
+	cleanLeadingSpace : function()
+	{
+		// override textfield strip white space (trigers set on blur)
+	}
 
     /** 
     * @cfg {Boolean} grow 
