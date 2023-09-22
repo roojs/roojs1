@@ -23804,6 +23804,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     align: 'center',
     caption : '',
     caption_display : 'block',
+    caption_align: 'left',
     width : '100%',
     cls : '',
     href: '',
@@ -24026,6 +24027,41 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     }
                 },
                 xns : rooui.Toolbar
+            },
+
+            {
+                xtype : 'ComboBox',
+                allowBlank : false,
+                displayField : 'val',
+                editable : true,
+                listWidth : 100,
+                triggerAction : 'all',
+                typeAhead : true,
+                valueField : 'val',
+                width : 70,
+                name : 'caption_align',
+                listeners : {
+                    select : function (combo, r, index)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        var b = block();
+                        b.caption_align = r.get('val');
+                        b.updateElement();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.form,
+                store : {
+                    xtype : 'SimpleStore',
+                    data : [
+                        ['left'],
+                        ['right'],
+                        ['center']
+                    ],
+                    fields : [ 'val'],
+                    xns : Roo.data
+                }
             }
         ];
         
@@ -24137,7 +24173,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         tag: 'div',
                         style  : {
                             marginTop : '16px',
-                            textAlign : 'left'
+                            textAlign : caption_align
                         },
                         align: 'left',
                         cn : [
