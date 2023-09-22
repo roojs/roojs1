@@ -283,8 +283,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     xtype : 'SimpleStore',
                     data : [
                         ['left'],
-                        ['right'],
-                        ['center']
+                        ['right']
                     ],
                     fields : [ 'val'],
                     xns : Roo.data
