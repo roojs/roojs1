@@ -399,7 +399,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         tag: 'div',
                         style  : {
                             marginTop : '16px',
-                            textAlign : this.caption_align
+                            textAlign : this.width == '100%' ? this.caption_align : 'left'
                         },
                         align: 'left',
                         cn : [
