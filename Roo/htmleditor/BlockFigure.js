@@ -31,6 +31,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     align: 'center',
     caption : '',
     caption_display : 'block',
+    caption_align: 'left',
     width : '100%',
     cls : '',
     href: '',
