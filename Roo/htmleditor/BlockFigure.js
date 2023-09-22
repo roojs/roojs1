@@ -364,9 +364,9 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         tag: 'div',
                         style  : {
                             marginTop : '16px',
-                            textAlign : 'right'
+                            textAlign : 'left'
                         },
-                        align: 'right',
+                        align: 'left',
                         cn : [
                             {
                                 // we can not rely on yahoo syndication to use CSS elements - so have to use  '<i>' to encase stuff.
