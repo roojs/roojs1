@@ -254,6 +254,41 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     }
                 },
                 xns : rooui.Toolbar
+            },
+
+            {
+                xtype : 'ComboBox',
+                allowBlank : false,
+                displayField : 'val',
+                editable : true,
+                listWidth : 100,
+                triggerAction : 'all',
+                typeAhead : true,
+                valueField : 'val',
+                width : 70,
+                name : 'caption_align',
+                listeners : {
+                    select : function (combo, r, index)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        var b = block();
+                        b.align = r.get('val');
+                        b.updateElement();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.form,
+                store : {
+                    xtype : 'SimpleStore',
+                    data : [
+                        ['left'],
+                        ['right'],
+                        ['center']
+                    ],
+                    fields : [ 'val'],
+                    xns : Roo.data
+                }
             }
         ];
         
