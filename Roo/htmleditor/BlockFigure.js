@@ -272,7 +272,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     {
                         toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
                         var b = block();
-                        b.captino_align = r.get('val');
+                        b.caption_align = r.get('val');
                         b.updateElement();
                         syncValue();
                         toolbar.editorcore.onEditorEvent();
