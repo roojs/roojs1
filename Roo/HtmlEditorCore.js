@@ -699,8 +699,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'name',
                     'align',
                     'colspan',
-                    'rowspan',
-                    'data-display',
+                    'rowspan' 
+                /*  THESE ARE NOT ALLWOED FOR PASTE
+                 *    'data-display',
                     'data-caption-display',
                     'data-width',
                     'data-caption',
@@ -713,6 +714,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'width',
                     'height',
                     'alt'
+                    */
                     ],
                 attrib_clean : ['href', 'src' ] 
             });

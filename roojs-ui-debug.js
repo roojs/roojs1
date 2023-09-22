@@ -19402,7 +19402,11 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         this.view.select(match);
         var sn = Roo.get(this.view.getSelectedNodes()[0]);
         sn.scrollIntoView(sn.dom.parentNode, false);
-    } 
+    },
+	cleanLeadingSpace : function()
+	{
+		// override textfield strip white space (trigers set on blur)
+	}
 
     /** 
     * @cfg {Boolean} grow 
@@ -26201,8 +26205,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'name',
                     'align',
                     'colspan',
-                    'rowspan',
-                    'data-display',
+                    'rowspan' 
+                /*  THESE ARE NOT ALLWOED FOR PASTE
+                 *    'data-display',
                     'data-caption-display',
                     'data-width',
                     'data-caption',
@@ -26215,6 +26220,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'width',
                     'height',
                     'alt'
+                    */
                     ],
                 attrib_clean : ['href', 'src' ] 
             });
