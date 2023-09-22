@@ -24044,6 +24044,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     select : function (combo, r, index)
                     {
                         toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        Roo.log('TOOLBAR');
+                        Roo.log(toolbar);
                         var b = block();
                         b.caption_align = r.get('val');
                         b.updateElement();
@@ -24056,8 +24058,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     xtype : 'SimpleStore',
                     data : [
                         ['left'],
-                        ['right'],
-                        ['center']
+                        ['right']
                     ],
                     fields : [ 'val'],
                     xns : Roo.data
