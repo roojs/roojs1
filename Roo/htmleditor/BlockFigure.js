@@ -369,7 +369,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             'data-width' : this.width,
             'data-caption' : this.caption, 
             'data-caption-display' : this.caption_display,
-            'data-caption-align' : this.caption_align,
             contenteditable : 'false',
             
             style : {
@@ -449,8 +448,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         if(this.caption_display == '') {
             this.caption_display = this.getVal(node, 'figcaption', 'data-display');
         }
-
-        this.caption_align = this.getVal(node, true, 'data-caption-align');
 
         // read caption from figcaption
         var figcaption = this.getVal(node, 'figcaption', false);
