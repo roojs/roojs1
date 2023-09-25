@@ -48735,6 +48735,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
 
         if (figcaption !== '') {
             this.caption = this.getVal(figcaption, 'i', 'html');
+            this.caption_align = this.getVal(figcaption, 'div', 'caption_align');
         }
                 
 
