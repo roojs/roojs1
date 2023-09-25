@@ -395,6 +395,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'rowspan',
                             'data-display',
                             'data-caption-display',
+                            'data-caption-align',
                             'data-width',
                             'data-caption',
                             'start' ,
