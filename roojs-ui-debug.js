@@ -24145,6 +24145,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             'data-width' : this.width,
             'data-caption' : this.caption, 
             'data-caption-display' : this.caption_display,
+            'data-caption-align' : this.caption_align,
             contenteditable : 'false',
             
             style : {
@@ -24228,14 +24229,13 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             this.caption_display = this.getVal(node, 'figcaption', 'data-display');
         }
 
+        this.caption_align = this.getValue(node, true, 'data-caption-align');
+
         // read caption from figcaption
         var figcaption = this.getVal(node, 'figcaption', false);
 
         if (figcaption !== '') {
             this.caption = this.getVal(figcaption, 'i', 'html');
-            this.caption_align = this.getVal(figcaption, 'div', 'text-align', 'style');
-            Roo.log('CAPTION ALIGN');
-            Roo.log(this.caption_align);
         }
                 
 
