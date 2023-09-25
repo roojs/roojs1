@@ -455,9 +455,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
 
         this.caption_align = this.getVal(node, true, 'data-caption-align');
 
-        Roo.log('READ CAPTION ALIGN');
-        Roo.log(this.caption_align);
-
         // read caption from figcaption
         var figcaption = this.getVal(node, 'figcaption', false);
 
