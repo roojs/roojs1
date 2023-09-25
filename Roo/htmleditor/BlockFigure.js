@@ -268,7 +268,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 width : 70,
                 name : 'caption_align',
                 listeners : {
-                    render : {
+                    render : function(this)
+                    {
                         toolbar.captionAlign = this;
                     },
                     select : function (combo, r, index)
