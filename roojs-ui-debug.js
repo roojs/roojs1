@@ -24233,7 +24233,9 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
 
         if (figcaption !== '') {
             this.caption = this.getVal(figcaption, 'i', 'html');
-            this.caption_align = this.getVal(figcaption, 'div', 'textAlign');
+            this.caption_align = this.getVal(figcaption, 'div', 'text-align', 'style');
+            Roo.log('CAPTION ALIGN');
+            Roo.log(this.caption_align);
         }
                 
 
