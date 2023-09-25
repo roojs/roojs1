@@ -24229,7 +24229,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             this.caption_display = this.getVal(node, 'figcaption', 'data-display');
         }
 
-        this.caption_align = this.getValue(node, true, 'data-caption-align');
+        this.caption_align = this.getVal(node, true, 'data-caption-align');
 
         // read caption from figcaption
         var figcaption = this.getVal(node, 'figcaption', false);
