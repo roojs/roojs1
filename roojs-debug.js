@@ -48643,7 +48643,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         tag: 'div',
                         style  : {
                             marginTop : '16px',
-                            textAlign : 'left'
+                            textAlign : 'start'
                         },
                         align: 'left',
                         cn : [
