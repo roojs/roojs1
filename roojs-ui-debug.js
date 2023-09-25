@@ -23943,6 +23943,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 listeners : {
                     select : function (combo, r, index)
                     {
+                        Roo.log('TOOLBAR CAPTION ALIGN');
+                        Roo.log(toolbar.caption_align);
                         toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
                         var b = block();
                         b.width = r.get('val');
@@ -24045,6 +24047,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 width : 70,
                 name : 'caption_align',
                 listeners : {
+                    render : function(_self)
+                    {
+                        toolbar.captionAlign = this;
+                    },
                     select : function (combo, r, index)
                     {
                         toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
