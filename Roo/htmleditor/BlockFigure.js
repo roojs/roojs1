@@ -268,6 +268,9 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 width : 70,
                 name : 'caption_align',
                 listeners : {
+                    render : {
+                        toolbar.captionAlign = this;
+                    },
                     select : function (combo, r, index)
                     {
                         toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
