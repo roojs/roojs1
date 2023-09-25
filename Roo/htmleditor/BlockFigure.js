@@ -7,6 +7,7 @@
  * @cfg {String} align (left|right) alignment for the block default left
  * @cfg {String} caption the text to appear below  (and in the alt tag)
  * @cfg {String} caption_display (block|none) display or not the caption
+ * @cfg {String} caption_align {left|right} alignment for the figcaption default left
  * @cfg {String|number} image_width the width of the image number or %?
  * @cfg {String|number} image_height the height of the image number or %?
  * 
