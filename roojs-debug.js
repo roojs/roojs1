@@ -48445,14 +48445,18 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 listeners : {
                     select : function (combo, r, index)
                     {
-                        Roo.log('TOOLBAR CAPTION ALIGN');
-                        Roo.log(toolbar);
                         toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
                         var b = block();
                         b.width = r.get('val');
                         b.updateElement();
                         syncValue();
                         toolbar.editorcore.onEditorEvent();
+
+                        toolbar.captionAlign.show();
+                        if(b.width != '100%') {
+                            // toolbar.captionAlign.setFromData('left');
+                            toolbar.captionAlign.hide();
+                        }
                     }
                 },
                 xns : rooui.form,
