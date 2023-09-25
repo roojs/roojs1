@@ -171,11 +171,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         b.updateElement();
                         syncValue();
                         toolbar.editorcore.onEditorEvent();
-
-                        toolbar.captionAlign.show();
-                        if(b.width != '100%') {
-                            toolbar.captionAlign.hide();
-                        }
                     }
                 },
                 xns : rooui.form,
