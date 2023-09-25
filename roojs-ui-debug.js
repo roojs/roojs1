@@ -23784,7 +23784,6 @@ Roo.htmleditor.Block.prototype = {
  * @cfg {String} align (left|right) alignment for the block default left
  * @cfg {String} caption the text to appear below  (and in the alt tag)
  * @cfg {String} caption_display (block|none) display or not the caption
- * @cfg {String} caption_align {left|right} alignment for the figcaption default left
  * @cfg {String|number} image_width the width of the image number or %?
  * @cfg {String|number} image_height the height of the image number or %?
  * 
@@ -23809,7 +23808,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     align: 'center',
     caption : '',
     caption_display : 'block',
-    caption_align: 'left',
     width : '100%',
     cls : '',
     href: '',
@@ -23950,11 +23948,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         b.updateElement();
                         syncValue();
                         toolbar.editorcore.onEditorEvent();
-
-                        toolbar.captionAlign.show();
-                        if(b.width != '100%') {
-                            toolbar.captionAlign.hide();
-                        }
                     }
                 },
                 xns : rooui.form,
@@ -24037,44 +24030,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     }
                 },
                 xns : rooui.Toolbar
-            },
-
-            {
-                xtype : 'ComboBox',
-                allowBlank : false,
-                displayField : 'val',
-                editable : true,
-                listWidth : 100,
-                triggerAction : 'all',
-                typeAhead : true,
-                valueField : 'val',
-                width : 70,
-                name : 'caption_align',
-                listeners : {
-                    render : function(_self)
-                    {
-                        toolbar.captionAlign = this;
-                    },
-                    select : function (combo, r, index)
-                    {
-                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
-                        var b = block();
-                        b.caption_align = r.get('val');
-                        b.updateElement();
-                        syncValue();
-                        toolbar.editorcore.onEditorEvent();
-                    }
-                },
-                xns : rooui.form,
-                store : {
-                    xtype : 'SimpleStore',
-                    data : [
-                        ['left'],
-                        ['right']
-                    ],
-                    fields : [ 'val'],
-                    xns : Roo.data
-                }
             }
         ];
         
@@ -24146,7 +24101,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             'data-width' : this.width,
             'data-caption' : this.caption, 
             'data-caption-display' : this.caption_display,
-            'data-caption-align' : this.caption_align,
             contenteditable : 'false',
             
             style : {
@@ -24187,7 +24141,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         tag: 'div',
                         style  : {
                             marginTop : '16px',
-                            textAlign : this.width == '100%' ? this.caption_align : 'left'
+                            textAlign : 'left'
                         },
                         align: 'left',
                         cn : [
@@ -24221,16 +24175,11 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
          
         this.align = this.getVal(node, 'figure', 'align');
 
-        // caption display is stored in figure
-        this.caption_display = this.getVal(node, true, 'data-caption-display');
-
         // backward compatible
         // it was stored in figcaption
         if(this.caption_display == '') {
             this.caption_display = this.getVal(node, 'figcaption', 'data-display');
         }
-
-        this.caption_align = this.getVal(node, true, 'data-caption-align');
 
         // read caption from figcaption
         var figcaption = this.getVal(node, 'figcaption', false);
@@ -25914,7 +25863,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'rowspan',
                             'data-display',
                             'data-caption-display',
-                            'data-caption-align',
                             'data-width',
                             'data-caption',
                             'start' ,
