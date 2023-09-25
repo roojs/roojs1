@@ -48286,6 +48286,7 @@ Roo.htmleditor.Block.prototype = {
  * @cfg {String} align (left|right) alignment for the block default left
  * @cfg {String} caption the text to appear below  (and in the alt tag)
  * @cfg {String} caption_display (block|none) display or not the caption
+ * @cfg {String} caption_align {left|right} alignment for the figcaption default left
  * @cfg {String|number} image_width the width of the image number or %?
  * @cfg {String|number} image_height the height of the image number or %?
  * 
@@ -48731,7 +48732,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             this.caption_display = this.getVal(node, 'figcaption', 'data-display');
         }
 
-        this.caption_align = this.getVal(node, true, 'data-caption-align');
+        this.caption_align = this.getVal(node, 'figcaption', 'data-caption-align');
+
+        Roo.log('READ CAPTION ALIGN');
+        Roo.log(this.caption_align);
 
         // read caption from figcaption
         var figcaption = this.getVal(node, 'figcaption', false);
