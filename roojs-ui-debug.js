@@ -23952,7 +23952,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
 
                         toolbar.captionAlign.show();
                         if(b.width != '100%') {
-                            // toolbar.captionAlign.setFromData('left');
                             toolbar.captionAlign.hide();
                         }
                     }
