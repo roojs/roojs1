@@ -73,14 +73,6 @@
       ]
     },
     {
-      "name" : "(left|center|right)",
-      "type" : "String",
-      "desc" : "buttonAlign Valid values are \"left,\" \"center\" and \"right\" (defaults to \"center\")",
-      "memberOf" : "",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -135,6 +127,18 @@
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []
+    },
+    {
+      "name" : "buttonAlign",
+      "type" : "String",
+      "desc" : "t)  Valid values are \"left,\" \"center\" and \"right\" (defaults to \"center",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : [
+        "left",
+        "center",
+        "right"
+      ]
     },
     {
       "name" : "method",

@@ -54963,7 +54963,7 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
      * @cfg {String} itemCls A css class to apply to the x-form-item of fields. This property cascades to child containers.
      */
     /**
-     * @cfg {String} (left|center|right) buttonAlign Valid values are "left," "center" and "right" (defaults to "center")
+     * @cfg {String} buttonAlign (left|center|right)  Valid values are "left," "center" and "right" (defaults to "center")
      */
     buttonAlign:'center',
 
