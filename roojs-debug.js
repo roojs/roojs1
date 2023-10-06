@@ -54119,12 +54119,12 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
     disableMask : false,
     
     /**
-     * @cfg {Boolean} errorMask (true|false) default false
+     * @cfg {Boolean} errorMask Should the form be masked (and the active element highlighted on error - default false
      */
     errorMask : false,
     
     /**
-     * @cfg {Number} maskOffset Default 100
+     * @cfg {Number} maskOffset space around form element to mask if there is an error Default 100
      */
     maskOffset : 100,
 

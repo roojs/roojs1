@@ -151,13 +151,10 @@
     {
       "name" : "errorMask",
       "type" : "Boolean",
-      "desc" : "e) default fal",
+      "desc" : "Should the form be masked (and the active element highlighted on error - default false",
       "memberOf" : "Roo.form.BasicForm",
       "isOptional" : false,
-      "optvals" : [
-        "true",
-        "false"
-      ]
+      "optvals" : []
     },
     {
       "name" : "itemCls",
@@ -234,7 +231,7 @@
     {
       "name" : "maskOffset",
       "type" : "Number",
-      "desc" : "Default 100",
+      "desc" : "space around form element to mask if there is an error Default 100",
       "memberOf" : "Roo.form.BasicForm",
       "isOptional" : false,
       "optvals" : []
