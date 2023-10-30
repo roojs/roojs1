@@ -90,7 +90,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             ]
         };
 
-        for (var i = 0; i < 2; i++) {
+        for (var i = 0; i < 1; i++) {
             var r = this.addxtype(row);
             this.items.push(r);
         }
