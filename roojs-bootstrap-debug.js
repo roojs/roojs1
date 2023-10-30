@@ -14779,7 +14779,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     {
         Roo.log('MultiLineTag initEvents');
         var input = this.addxtype({
-            xns : Roo.boostrap.form,
+            xns : Roo.bootstrap.form,
             xtype : 'Input'
         });
 
