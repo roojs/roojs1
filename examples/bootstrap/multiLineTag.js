@@ -29,7 +29,7 @@ Roo.example.calendar = new Roo.XComponent({
                                     items : [
                                         {
                                             xtype: 'MultiLineTag',
-                                            xns: Roo.bootstrap
+                                            xns: Roo.bootstrap.form
                                         }
                                     ]
                                 }
