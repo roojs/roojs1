@@ -13,11 +13,17 @@ Roo.bootstrap.form.MultiLineTag = function(config){
 Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     getAutoCreate : function()
     {
+        Roo.log('MultiLineTag getAutoCreate');
         var input = {
             tag: 'input',
             type : 'text'
         };
 
         return input;
+    },
+
+    initEvents : function()
+    {
+        Roo.log('MultiLineTag initEvents');
     }
 });
