@@ -26,7 +26,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         Roo.log('MultiLineTag initEvents');
         this.items = [];
 
-        var cbConfig = {
+        var comboBox = {
             xns: Roo.bootstrap.form,
             xtype : 'ComboBox',
             editable : true,
@@ -81,16 +81,14 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             html : '-'
         };
 
-        var cb = this.addxtype(cbConfig);
+        for (var i = 0; i < 2; i++) {
+            var cb = this.addxtype(comboBox);
 
-        this.items.push(cb);
-
-        var db = this.addxtype(deleteButton);
-
-        this.items.push(cb);
-
-        var cb = this.addxtype(cbConfig);
-
-        this.items.push(cb);
+            this.items.push(cb);
+    
+            var db = this.addxtype(deleteButton);
+    
+            this.items.push(db);
+        }
     }
 });
