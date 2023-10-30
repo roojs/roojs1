@@ -31,6 +31,11 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             ]
         };
 
+        var input = this.addxtype({
+            xns : Roo.boostrap.form,
+            xtype : 'Input'
+        });
+
         return config;
     },
 
