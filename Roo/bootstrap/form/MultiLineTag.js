@@ -20,10 +20,9 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         };
 
         var deleteButton = {
-            
+            tag : 'button',
+            html: '-'
         };
-        
-        var 
 
         return input;
     },
