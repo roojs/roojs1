@@ -37,8 +37,17 @@ Roo.example.calendar = new Roo.XComponent({
                                     style :  'margin-top:50px',
                                     items : [
                                         {
-                                            xtype: 'MultiLineTag',
-                                            xns: Roo.bootstrap
+                                            xtype: 'HtmlEditor',
+                                            xns: Roo.bootstrap,
+                                            fieldLabel : "Editor",
+                                            labelAlign: 'top',
+                                            name : "editor",
+                                          
+                                            listeners : {
+                                                render : function() {
+                                                    htmleditor = this;
+                                                }
+                                            }
                                         }
                                     ]
                                 }
