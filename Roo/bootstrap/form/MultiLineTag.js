@@ -6,6 +6,7 @@
  */
 
 Roo.bootstrap.form.MultiLineTag = function(config){
+    Roo.log('CONSTRUCT MUTLI LINE TAG');
     Roo.bootstrap.form.MultiLineTag.superclass.constructor.call(this, config);
 };
 
