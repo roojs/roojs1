@@ -26,18 +26,18 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         Roo.log('MultiLineTag initEvents');
         this.items = [];
 
-        var input = this.addxtype({
-            xns : Roo.bootstrap.form,
-            xtype : 'Input',
-            cls : 'test 1'
-        });
-
-        this.items.push(input);
-
-        var input = this.addxtype({
-            xns : Roo.bootstrap.form,
-            xtype : 'Input',
-            cls : 'test 2'
+        var cb = this.addxtype({
+            xns: Roo.bootstrap.form,
+            xtype : 'ComboBox',
+            editable : true,
+            displayField: 'name',
+            valueField : 'id',
+            labelWidth: 0,
+            listWidth: 500,
+            minChars: 2,
+            placeholder : 'Corporate, CSR, ESG Product',
+            queryParam : 'query[name]',
+            triggerAction: 'all'
         });
 
         this.items.push(input);
