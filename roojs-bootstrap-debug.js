@@ -14780,21 +14780,56 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         Roo.log('MultiLineTag initEvents');
         this.items = [];
 
-        var input = this.addxtype({
-            xns : Roo.bootstrap.form,
-            xtype : 'Input',
-            cls : 'test 1'
+        var cb = this.addxtype({
+            xns: Roo.bootstrap.form,
+            xtype : 'ComboBox',
+            editable : true,
+            displayField: 'name',
+            valueField : 'id',
+            labelWidth: 0,
+            listWidth: 500,
+            minChars: 2,
+            placeholder : 'Corporate, CSR, ESG Product',
+            queryParam : 'query[name]',
+            triggerAction: 'all',
+            store : {
+                xns : Roo.data,
+                xtype : 'Store',
+                listeners : {
+                    beforeload : function(_self, options)
+                    {
+                        options.params = options.params || {};
+                        options.params._clients = 1;
+                    }
+                },
+                proxy : {
+                    xns : Roo.data,
+                    xtype : 'HttpProxy',
+                    method : 'GET',
+                    url : 'http://localhost/web.MediaOutreach.publisher/index.local.php/Roo/Core_company'
+                },
+                reader : {
+                    xns : Roo.data,
+                    xtype : 'JsonReader',
+                    fields : [
+                        {
+                            'name' : 'id',
+                            'type' : 'int'
+                        },
+                        {
+                            'name' : 'name',
+                            'type' : 'string'
+                        },
+                        {
+                            'name' : 'logo_url',
+                            'type' : 'string'
+                        }
+                    ]
+                }
+            }
         });
 
-        this.items.push(input);
-
-        var input = this.addxtype({
-            xns : Roo.bootstrap.form,
-            xtype : 'Input',
-            cls : 'test 2'
-        });
-
-        this.items.push(input);
+        this.items.push(cb);
     }
 });
 /*
