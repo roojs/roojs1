@@ -28,7 +28,7 @@ Roo.example.calendar = new Roo.XComponent({
                                     xns: Roo.bootstrap,
                                     items : [
                                         {
-                                            xtype: 'HtmlEditor',
+                                            xtype: 'MultiLineTag',
                                             xns: Roo.bootstrap
                                         }
                                     ]
