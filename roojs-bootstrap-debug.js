@@ -14780,7 +14780,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         Roo.log('MultiLineTag initEvents');
         this.items = [];
 
-        var cbConfig = {
+        var comboBox = {
             xns: Roo.bootstrap.form,
             xtype : 'ComboBox',
             editable : true,
@@ -14829,13 +14829,21 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             }
         };
 
-        var cb = this.addxtype(cbConfig);
+        var deleteButton = {
+            xns : Roo.bootstrap,
+            xtype : 'Button',
+            html : '-'
+        };
 
-        this.items.push(cb);
+        for (var i = 0; i < 2; i++) {
+            var cb = this.addxtype(comboBox);
 
-        var cb = this.addxtype(cbConfig);
-
-        this.items.push(cb);
+            this.items.push(cb);
+    
+            var db = this.addxtype(deleteButton);
+    
+            this.items.push(db);
+        }
     }
 });
 /*
