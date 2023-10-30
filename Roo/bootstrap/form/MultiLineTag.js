@@ -17,8 +17,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
         var input = {
             tag: 'input',
-            type : 'text',
-        }
+            type : 'text'
+        };
 
         return cfg;
     }
