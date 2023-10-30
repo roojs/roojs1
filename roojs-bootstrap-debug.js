@@ -14835,17 +14835,15 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             html : '-'
         };
 
-        var row = {
-            xtype: 'Row',
-            xns: Roo.bootstrap,
-            items : [
-                comboBox,
-                deleteButton
-            ]
-        };
-
         for (var i = 0; i < 1; i++) {
-            var r = this.addxtype(row);
+            var r = this.addxtype({
+                xtype: 'Row',
+                xns: Roo.bootstrap,
+                items : [
+                    comboBox,
+                    deleteButton
+                ]
+            });
             this.items.push(r);
         }
     }
