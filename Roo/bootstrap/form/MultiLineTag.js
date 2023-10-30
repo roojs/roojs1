@@ -76,5 +76,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         });
 
         this.items.push(cb);
+
+        this.items.push(cb);
     }
 });
