@@ -14773,7 +14773,19 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             type : 'text'
         };
 
-        return input;
+        var deleteButton = {
+            tag : 'button',
+            html: '-'
+        };
+
+        var config = {
+            cn : [
+                input,
+                deleteButton
+            ]
+        };
+
+        return config;
     },
 
     initEvents : function()
