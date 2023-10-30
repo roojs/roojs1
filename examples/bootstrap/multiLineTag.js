@@ -15,7 +15,10 @@ Roo.example.calendar = new Roo.XComponent({
         }
         this.parent.el.layout = false;
         this.parent.el.render(document.body);
-        
+
+        var _this = this;
+        var MODULE = this;
+
         return {
             xtype: 'Body',
             xns: Roo.bootstrap,
