@@ -37,7 +37,42 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             minChars: 2,
             placeholder : 'Corporate, CSR, ESG Product',
             queryParam : 'query[name]',
-            triggerAction: 'all'
+            triggerAction: 'all',
+            store : {
+                xns : Roo.data,
+                xtype : 'Store',
+                listeners : {
+                    beforeload : function(_self, options)
+                    {
+                        options.params = options.params || {};
+                        options.params._clients = 1;
+                    }
+                },
+                proxy : {
+                    xns : Roo.data,
+                    xtype : 'HttpProxy',
+                    method : 'GET',
+                    url : 'http://localhost/web.MediaOutreach/press.local.php/Roo/Core_company',
+                },
+                reader : {
+                    xns : Roo.data,
+                    xtype : 'JsonReader',
+                    fields : [
+                        {
+                            'name' : 'id',
+                            'type' : 'int'
+                        },
+                        {
+                            'name' : 'name',
+                            'type' : 'string'
+                        },
+                        {
+                            'name' : 'logo_url',
+                            'type' : 'string'
+                        }
+                    ]
+                }
+            }
         });
 
         this.items.push(input);
