@@ -14752,7 +14752,21 @@ Roo.extend(Roo.bootstrap.form.CardUploader, Roo.bootstrap.form.Input,  {
 });
 
 
-Roo.bootstrap.form.CardUploader.ID = -1;/*
+Roo.bootstrap.form.CardUploader.ID = -1;/**
+ * 
+ * @class Roo.bootstrap.form.MultiLineTag
+ * @param {Object} config The config object
+ * 
+ */
+
+Roo.bootstrap.form.MultiLineTag = function(config){
+    Roo.log('CONSTRUCT MUTLI LINE TAG');
+    Roo.bootstrap.form.MultiLineTag.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
+}
+/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
