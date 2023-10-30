@@ -14,27 +14,11 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     getAutoCreate : function()
     {
         Roo.log('MultiLineTag getAutoCreate');
-        var input = {
-            tag: 'input',
-            type : 'text'
-        };
-
-        var deleteButton = {
-            tag : 'button',
-            html: '-'
-        };
-
         var config = {
-            cn : [
-                input,
-                deleteButton
-            ]
-        };
+            cls : 'form-control'
+        }
 
-        var input = this.addxtype({
-            xns : Roo.boostrap.form,
-            xtype : 'Input'
-        });
+        this.items.push(input);
 
         return config;
     },
