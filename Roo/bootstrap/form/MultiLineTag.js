@@ -24,7 +24,14 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             html: '-'
         };
 
-        return input;
+        var config = {
+            cn : [
+                input,
+                deleteButton
+            ]
+        }
+
+        return config;
     },
 
     initEvents : function()
