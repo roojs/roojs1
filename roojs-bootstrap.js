@@ -627,7 +627,7 @@ return;}var _t=this;var C=new FileReader();C.addEventListener("load",function(){
 this.updateInput();},reset:function(){this.fileCollection.each(function(A){if(A.el.dom&&A.el.dom.parentNode){A.el.dom.parentNode.removeChild(A.el.dom);}});this.fileCollection.clear();this.updateInput();},updateInput:function(){var A=[];this.fileCollection.each(function(e){A.push(e.data);
 });this.inputEl().dom.value=JSON.stringify(A);}});Roo.bootstrap.form.CardUploader.ID=-1;
 // Roo/bootstrap/form/MultiLineTag.js
-Roo.bootstrap.form.MultiLineTag=function(A){Roo.log('CONSTRUCT MUTLI LINE TAG');Roo.bootstrap.form.MultiLineTag.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.form.DateField,Roo.bootstrap.form.Input,{}
+Roo.bootstrap.form.MultiLineTag=function(A){Roo.log('CONSTRUCT MUTLI LINE TAG');Roo.bootstrap.form.MultiLineTag.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.form.MultiLineTag,Roo.bootstrap.form.Input,{}
 // Roo/data/SortTypes.js
 Roo.data.SortTypes={none:function(s){return s;},stripTagsRE:/<\/?[^>]+>/gi,asText:function(s){return String(s).replace(this.stripTagsRE,"");},asUCText:function(s){return String(s).toUpperCase().replace(this.stripTagsRE,"");},asUCString:function(s){return String(s).toUpperCase();
 },asDate:function(s){if(!s){return 0;}if(s instanceof Date){return s.getTime();}return Date.parse(String(s));},asFloat:function(s){var A=parseFloat(String(s).replace(/,/g,""));if(isNaN(A)){A=0;}return A;},asInt:function(s){var A=parseInt(String(s).replace(/,/g,""));
