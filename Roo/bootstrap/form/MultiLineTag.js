@@ -24,12 +24,13 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     initEvents : function()
     {
         Roo.log('MultiLineTag initEvents');
+        this.items = [];
+        
         var input = this.addxtype({
             xns : Roo.bootstrap.form,
             xtype : 'Input'
         });
 
-        this.items = [];
         this.items.push(input);
     }
 });
