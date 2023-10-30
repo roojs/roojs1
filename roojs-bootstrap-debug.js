@@ -14785,6 +14785,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             ]
         };
 
+        Roo.log(this.items);
+
         return config;
     },
 
