@@ -28,14 +28,16 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
         var input = this.addxtype({
             xns : Roo.bootstrap.form,
-            xtype : 'Input'
+            xtype : 'Input',
+            cls : 'test 1'
         });
 
         this.items.push(input);
 
         var input = this.addxtype({
             xns : Roo.bootstrap.form,
-            xtype : 'Input'
+            xtype : 'Input',
+            cls : 'test 2'
         });
 
         this.items.push(input);
