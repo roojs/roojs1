@@ -16,9 +16,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         Roo.log('MultiLineTag getAutoCreate');
         var config = {
             cls : 'test'
-        }
-
-        this.items.push(input);
+        };
 
         return config;
     },
@@ -26,6 +24,11 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     initEvents : function()
     {
         Roo.log('MultiLineTag initEvents');
-        Roo.log(this.items);
+        var input = this.addxtype({
+            xns : Roo.boostrap.form,
+            xtype : 'Input'
+        });
+
+        this.items.push(input);
     },
 });
