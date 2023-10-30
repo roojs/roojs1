@@ -19,6 +19,12 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             type : 'text'
         };
 
+        var deleteButton = {
+            
+        };
+        
+        var 
+
         return input;
     },
 
