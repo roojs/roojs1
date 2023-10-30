@@ -29,9 +29,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             xtype : 'Input'
         });
 
-        this.items = [
-            input,
-            input
-        ];
+        this.items = [];
+        this.items.push(input);
     }
 });
