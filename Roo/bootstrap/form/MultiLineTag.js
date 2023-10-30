@@ -24,11 +24,11 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     initEvents : function()
     {
         Roo.log('MultiLineTag initEvents');
-        // var input = this.addxtype({
-        //     xns : Roo.boostrap.form,
-        //     xtype : 'Input'
-        // });
+        var input = this.addxtype({
+            xns : Roo.boostrap.form,
+            xtype : 'Input'
+        });
 
-        // this.items.push(input);
-    },
+        this.items.push(input);
+    }
 });
