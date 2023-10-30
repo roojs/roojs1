@@ -628,7 +628,7 @@ this.updateInput();},reset:function(){this.fileCollection.each(function(A){if(A.
 });this.inputEl().dom.value=JSON.stringify(A);}});Roo.bootstrap.form.CardUploader.ID=-1;
 // Roo/bootstrap/form/MultiLineTag.js
 Roo.bootstrap.form.MultiLineTag=function(A){Roo.log('CONSTRUCT MUTLI LINE TAG');Roo.bootstrap.form.MultiLineTag.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.form.MultiLineTag,Roo.bootstrap.form.Input,{getAutoCreate:function(){Roo.log('MultiLineTag getAutoCreate');
-var A={cls:'test'};return A;},initEvents:function(){Roo.log('MultiLineTag initEvents');var A=this.addxtype({xns:Roo.bootstrap.form,xtype:'Input'});this.items.push(A);}});
+var A={cls:'test'};return A;},initEvents:function(){Roo.log('MultiLineTag initEvents');var A=this.addxtype({xns:Roo.bootstrap.form,xtype:'Input'});Roo.log(A);}});
 // Roo/data/SortTypes.js
 Roo.data.SortTypes={none:function(s){return s;},stripTagsRE:/<\/?[^>]+>/gi,asText:function(s){return String(s).replace(this.stripTagsRE,"");},asUCText:function(s){return String(s).toUpperCase().replace(this.stripTagsRE,"");},asUCString:function(s){return String(s).toUpperCase();
 },asDate:function(s){if(!s){return 0;}if(s instanceof Date){return s.getTime();}return Date.parse(String(s));},asFloat:function(s){var A=parseFloat(String(s).replace(/,/g,""));if(isNaN(A)){A=0;}return A;},asInt:function(s){var A=parseInt(String(s).replace(/,/g,""));
