@@ -15,7 +15,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     {
         Roo.log('MultiLineTag getAutoCreate');
         var config = {
-            cls : 'form-control'
+            cls : 'test'
         }
 
         this.items.push(input);
