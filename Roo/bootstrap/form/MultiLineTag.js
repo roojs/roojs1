@@ -87,6 +87,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
         var db = this.addxtype(deleteButton);
 
+        this.items.push(cb);
+
         var cb = this.addxtype(cbConfig);
 
         this.items.push(cb);
