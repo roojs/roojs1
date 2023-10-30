@@ -26,11 +26,6 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         Roo.log('MultiLineTag initEvents');
         this.items = [];
 
-        var row = {
-            xtype: 'Row',
-            xns: Roo.bootstrap
-        };
-
         var comboBox = {
             xns: Roo.bootstrap.form,
             xtype : 'ComboBox',
@@ -88,7 +83,9 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
         for (var i = 0; i < 2; i++) {
             var r = this.addxtype(row);
-            
+
+
+
             var cb = this.addxtype(comboBox);
 
             this.items.push(cb);
