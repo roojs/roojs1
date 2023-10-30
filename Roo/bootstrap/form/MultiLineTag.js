@@ -81,7 +81,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             html : '-'
         };
 
-        for (var i = 0; i < 1; i++) {
+        for (var i = 0; i < 2; i++) {
             var r = this.addxtype({
                 xtype: 'Row',
                 xns: Roo.bootstrap,
