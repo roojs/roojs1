@@ -25,7 +25,14 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     {
         Roo.log('MultiLineTag initEvents');
         this.items = [];
-        
+
+        var input = this.addxtype({
+            xns : Roo.bootstrap.form,
+            xtype : 'Input'
+        });
+
+        this.items.push(input);
+
         var input = this.addxtype({
             xns : Roo.bootstrap.form,
             xtype : 'Input'
