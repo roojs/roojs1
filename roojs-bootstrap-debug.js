@@ -14780,7 +14780,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         Roo.log('MultiLineTag initEvents');
         this.items = [];
 
-        var cb = this.addxtype({
+        var cbConfig = {
             xns: Roo.bootstrap.form,
             xtype : 'ComboBox',
             editable : true,
@@ -14827,7 +14827,13 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                     ]
                 }
             }
-        });
+        };
+
+        var cb = this.addxtype(cbConfig);
+
+        this.items.push(cb);
+
+        var cb = this.addxtype(cbConfig);
 
         this.items.push(cb);
     }
