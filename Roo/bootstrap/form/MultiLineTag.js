@@ -41,10 +41,4 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         Roo.log('MultiLineTag initEvents');
         Roo.log(this.items);
     },
-
-    onRender : function()
-    {
-        Roo.log('MultiLineTag onRender');
-        Roo.log(this.itmes);
-    }
 });
