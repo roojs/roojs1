@@ -90,8 +90,11 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
             var tagRow = {
                 xns : Roo.bootstrap,
-                xtype : 'Row'
-
+                xtype : 'Row',
+                items : [
+                    tagBox,
+                    tagDelete
+                ]
             };
         }
 
