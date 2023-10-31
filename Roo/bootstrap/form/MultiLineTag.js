@@ -72,7 +72,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                         }
                     ]
                 }
-            }
+            },
+            style : 'display:table-cell'
         };
 
         var deleteButton = {
