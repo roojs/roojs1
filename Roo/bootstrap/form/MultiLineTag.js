@@ -108,7 +108,9 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                 }
             };
 
-            this.items.push(this.addxtype(row));
+            var r = this.addxtype(row);
+
+            this.items.push(r);
         }
     }
 });
