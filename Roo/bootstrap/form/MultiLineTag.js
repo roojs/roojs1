@@ -21,6 +21,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     initEvents : function()
     {
+        var _this = this;
+        
         this.items = [];
 
         for (var i = 0; i < 2; i++) {
