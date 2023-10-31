@@ -73,7 +73,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                 }
             });
 
-            Roo.log(tagBox)
+            Roo.log(tagBox);
 
             var tagDelete = Roo.factory({
                 xns : Roo.bootstrap,
