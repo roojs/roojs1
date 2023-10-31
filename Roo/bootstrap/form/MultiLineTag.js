@@ -97,6 +97,10 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                         this.removeBtn = button;
                         Roo.log('RENDER');
                         Roo.log(this);
+
+                        this.inputCb.on('click', function() {
+                            Roo.log('REMOVVVVEVEVEV CLICKCKKC');
+                        });
                     }
                 }
             };
