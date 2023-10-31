@@ -1,10 +1,10 @@
 Roo.example = Roo.example || {};
 
-Roo.example.calendar = new Roo.XComponent({
-    part     :  ["layout","viewpanel"],
+Roo.example.multiLineTag = new Roo.XComponent({
+    part     :  ["example","multiLineTag"],
     order    : '001-viewpanel',
     region   : '',
-    parent   : '#bootstrap',
+    parent   : false,
     name     : "unnamed module",
     disabled : false, 
     permname : '', 
