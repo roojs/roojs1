@@ -14826,22 +14826,19 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                         }
                     ]
                 }
-            },
-            style : 'display:table-cell'
+            }
         };
 
         var deleteButton = {
             xns : Roo.bootstrap,
             xtype : 'Button',
-            html : '-',
-            style : 'display:table-cell'
+            html : '-'
         };
 
         for (var i = 0; i < 2; i++) {
             var r = this.addxtype({
                 xtype: 'Row',
                 xns: Roo.bootstrap,
-                style : 'display:table',
                 items : [
                     comboBox,
                     deleteButton
