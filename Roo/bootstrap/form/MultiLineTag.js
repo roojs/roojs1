@@ -94,7 +94,13 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                 items : [
                     tagBox,
                     tagDelete
-                ]
+                ],
+                listeners : {
+                    'render' : function (_self) {
+                        Roo.log('RENDER');
+                        Roo.log(this);
+                    }
+                }
             };
         }
 
