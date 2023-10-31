@@ -14777,8 +14777,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     {
         this.items = [];
 
-        for (var i = 0; i < 1; i++) {
-            var tagBox = Roo.factory({
+        for (var i = 0; i < 2; i++) {
+            var comboBox = Roo.factory({
                 xns: Roo.bootstrap.form,
                 xtype : 'ComboBox',
                 editable : true,
@@ -14827,39 +14827,36 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                 }
             });
 
-            Roo.log(tagBox);
-
-            var tagDelete = Roo.factory({
+            var button = Roo.factory({
                 xns : Roo.bootstrap,
                 xtype : 'Button',
                 html : '-',
                 listeners : {
                     'click' : function(_self, e) {
-                        Roo.log('DELETE CLICK');
+                        Roo.log('REMOVE CLICK');
                     }
                 }
             });
 
-            Roo.log(tagDelete);
-
-            var tagRow = {
+            var row = {
                 xns : Roo.bootstrap,
-                xtype : 'Row'
-
+                xtype : 'Row',
+                items : [
+                    comboBox,
+                    button
+                ],
+                listeners : {
+                    'render' : function (_self) {
+                        this.inputCb = comboBox;
+                        this.removeBtn = button;
+                        Roo.log('RENDER');
+                        Roo.log(this);
+                    }
+                }
             };
-        }
 
-        // for (var i = 0; i < 2; i++) {
-        //     var r = this.addxtype({
-        //         xtype: 'Row',
-        //         xns: Roo.bootstrap,
-        //         items : [
-        //             comboBox,
-        //             deleteButton
-        //         ]
-        //     });
-        //     this.items.push(r);
-        // }
+            this.items.push(this.addxtype(row));
+        }
     }
 });
 /*
