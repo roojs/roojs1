@@ -87,6 +87,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             var r = this.addxtype({
                 xtype: 'Row',
                 xns: Roo.bootstrap,
+                style : 'display:talbe',
                 items : [
                     comboBox,
                     deleteButton
