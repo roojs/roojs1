@@ -14775,6 +14775,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     initEvents : function()
     {
+        var _this = this;
+
         this.items = [];
 
         for (var i = 0; i < 2; i++) {
@@ -14853,9 +14855,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                         Roo.log(this);
 
                         this.removeBtn.on('click', function() {
-                            Roo.log(_self);
                             _self.destroy();
-                            Roo.log(_self);
+                            Roo.log(_this);
                         });
                     }
                 }
