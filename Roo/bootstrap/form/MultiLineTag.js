@@ -124,6 +124,12 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     // a new tag row should be added when all existing rows are not empty
     shouldAddTagRow : function()
     {
+        Roo.each(_this.tagRows, function(r) {
+            if(r.getRawValue() == '') {
+                return false;
+            }
+        });
+
         return true;
     }
 });
