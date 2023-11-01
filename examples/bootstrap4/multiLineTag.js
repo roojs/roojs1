@@ -34,6 +34,10 @@ Roo.example.multiLineTag = new Roo.XComponent({
                                                 beforeload : function(_self, store, options) {
                                                     options.params = options.params || {};
                                                     options.params._clients = 1;
+                                                },
+                                                change : function(_self, newValue, oldValue) {
+                                                    Roo.log('onCHANGE');
+                                                    Roo.log(newValue);
                                                 }
                                             }
                                         } 
