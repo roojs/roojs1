@@ -14861,7 +14861,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
             this.addListener('childrenrendered', function(_self) {
                 Roo.log('CHILDREN RENDERED');
-            })
+            }, this);
         }
     }
 });
