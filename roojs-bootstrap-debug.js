@@ -14875,14 +14875,10 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         this.tagRows.push(this.addxtype(row));
 
         Roo.each(this.tagRows, function (r) {
-            Roo.log(r.removeBtn);
-            Roo.log(_this.tagRows.length);
-            /*
             r,removeBtn.show();
-            if(this.length == 2) {
+            if(_this.tagRows.length == 2) {
                 r.removeBtn.hide();
             }
-            */
         });
     },
 
