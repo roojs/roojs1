@@ -104,10 +104,6 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                 }
             };
             this.tagRows.push(this.addxtype(row));
-
-            this.addListener('childrenrendered', function(_self) {
-                Roo.log('CHILDREN RENDERED');
-            }, this);
         }
     }
 });
