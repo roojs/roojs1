@@ -124,7 +124,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         _this.showHideRemoveBtn();
     },
 
-    // a new tag row should be added when all existing rows are not empty
+    // a new tags should be added when all existing tags are not empty
     shouldAddTagRow : function()
     {
         var ret = true;
@@ -138,7 +138,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         return ret;
     },
 
-    // show remove buttons only if there are more than 2 tag rows
+    // show remove buttons only if there are more than 2 tags
     showHideRemoveBtn : function()
     {
         var _this = this;
