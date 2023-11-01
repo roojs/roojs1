@@ -14871,6 +14871,10 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                         Roo.log('onChange');
                         Roo.log(_self.getRawValue());
                     });
+                },
+                'select' : function(_self, record, index) {
+                    Roo.log('onSelect');
+                    Roo.log(_self.getValue());
                 }
             }
         });
