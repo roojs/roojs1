@@ -142,7 +142,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         return ret;
     },
 
-    // 
+    // show the remove button only if there are more than 3 tag rows
     showHideRemoveBtn : function()
     {
         var _this = this;
