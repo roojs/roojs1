@@ -14765,8 +14765,6 @@ Roo.bootstrap.form.MultiLineTag = function(config){
 
 Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
-    tagRows : [],
-
     getAutoCreate : function()
     {
         var config = {
@@ -14778,9 +14776,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     initEvents : function()
     {
-        var _this = this;
-
-        this.items = [];
+        this.tagRows = [];
 
         for (var i = 0; i < 2; i++) {
             var comboBox = Roo.factory({
