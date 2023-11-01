@@ -14965,12 +14965,9 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         //     this.tagRows[i].inputCb.setRawValue(arr[i][this.valueField]);
         // }
 
-        var _this = this;
-
-
-        Roo.each(this.tagRows, function(r) {
-            _this.removeTagRow(r);
-        });
+        for(var i = 0; i < this.tagRows.length; i ++) {
+            this.removeTagRow(this.tagRows[0]);
+        }
         
         
     }
