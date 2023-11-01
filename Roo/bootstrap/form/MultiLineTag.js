@@ -57,7 +57,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             listWidth: 500,
             minChars: 2,
             placeholder : _this.placeholder,
-            queryParam : 'query[name]',
+            queryParam : _this.queryParam,
             triggerAction: 'all',
             store : {
                 xns : Roo.data,
