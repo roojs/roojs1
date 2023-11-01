@@ -14761,6 +14761,18 @@ Roo.bootstrap.form.CardUploader.ID = -1;/**
 
 Roo.bootstrap.form.MultiLineTag = function(config){
     Roo.bootstrap.form.MultiLineTag.superclass.constructor.call(this, config);
+
+    this.addEvents({
+        /**
+         * @event beforeload
+         * Fires before a request is made for a new data object.  If the beforeload handler returns false
+         * the load action will be canceled.
+         * @param {Roo.boostrap.form.MultiLineTag} this
+         * @param {Store} store
+         * @param {Object} options The loading options that were specified (see {@link #load} for details)
+         */
+         beforeload : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
@@ -14833,8 +14845,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                 listeners : {
                     beforeload : function(_self, options)
                     {
-                        options.params = options.params || {};
-                        options.params._clients = 1;
+                        _this.fireEvent('beforeload', _this, _self, options);
                     }
                 },
                 proxy : {

@@ -17,7 +17,7 @@ Roo.bootstrap.form.MultiLineTag = function(config){
          * @param {Store} store
          * @param {Object} options The loading options that were specified (see {@link #load} for details)
          */
-         beforeload : true,
+         beforeload : true
     });
 };
 
