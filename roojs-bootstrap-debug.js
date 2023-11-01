@@ -14895,14 +14895,14 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     // show the remove button only if there are more than 2 tag rows
     showHideRemoveBtn : function()
     {
-        // Roo.each(this.tagRows, function (r) {
+        Roo.each(this.tagRows, function (r) {
 
-        //     r.removeBtn.show();
+            r.removeBtn.show();
 
-        //     if(r.inputCb.getRawValue() == '') {
-        //         r.removeBtn.hide();
-        //     }
-        // });
+            if(r.inputCb.getRawValue() == '') {
+                r.removeBtn.hide();
+            }
+        });
     }
 });
 /*
