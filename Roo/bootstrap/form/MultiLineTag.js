@@ -23,6 +23,7 @@ Roo.bootstrap.form.MultiLineTag = function(config){
 
 Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
+    value : [],
     tagRows : [],
     minimumRow : 2,
 
