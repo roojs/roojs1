@@ -151,7 +151,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     },
 
     // a new tags should be added when all existing tags are not empty
-    shouldAddTagRow : function()
+    shouldAutoAddTagRow : function()
     {
         var ret = true;
 
@@ -198,6 +198,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     setValue : function(json)
     {
         var arr = JSON.parse(json);
+
+        
         
     }
 });
