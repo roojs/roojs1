@@ -198,11 +198,16 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     setValue : function(json)
     {
         var arr = JSON.parse(json);
-        for (var i = 0; i < arr.length; i ++) {
+        var i = 0;
+        for (; i < arr.length; i ++) {
             if(this.tagRows.length == i) {
                 this.addTagRow();
             }
             this.tagRows[i].inputCb.setRawValue(arr[i][this.valueField]);
+        }
+
+        if(arr.length < this.tagRows.length) {
+
         }
         
         
