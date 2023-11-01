@@ -14967,7 +14967,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
 
         Roo.each(this.tagRows, function(r) {
-            this.removeTagRow(r);
+            _this.removeTagRow(r);
         });
         
         
