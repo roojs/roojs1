@@ -14776,6 +14776,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     initEvents : function()
     {
+        var _this = this;
         this.tagRows = [];
 
         for (var i = 0; i < 2; i++) {
@@ -14853,15 +14854,12 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
                         this.removeBtn.on('click', function() {
                             _self.destroy();
+                            Roo.log(_this);
                         });
                     }
                 }
             };
             this.tagRows.push(this.addxtype(row));
-
-            this.addListener('childrenrendered', function(_self) {
-                Roo.log('CHILDREN RENDERED');
-            }, this);
         }
     }
 });
