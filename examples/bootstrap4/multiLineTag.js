@@ -29,7 +29,13 @@ Roo.example.multiLineTag = new Roo.XComponent({
                                     items : [
                                         {
                                             xtype: 'MultiLineTag',
-                                            xns: Roo.bootstrap.form
+                                            xns: Roo.bootstrap.form,
+                                            listeners : {
+                                                beforeload : function(_self, store, options) {
+                                                    options.params = options.params || {};
+                                                    options.params._clients = 1;
+                                                }
+                                            }
                                         } 
                                     ]
                                 }
