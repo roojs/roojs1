@@ -43,10 +43,6 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         {
             'name' : 'name',
             'type' : 'string'
-        },
-        {
-            'name' : 'logo_url',
-            'type' : 'string'
         }
     ],
 
