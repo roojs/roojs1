@@ -169,7 +169,6 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         row.destroy();
         this.tagRows.splice(this.tagRows.indexOf(row), 1);
         this.fireEvent('change', this, this.getValue(), false);
-
         this.showHideRemoveBtn();
     },
 

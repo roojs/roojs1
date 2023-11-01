@@ -14918,6 +14918,14 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         return ret;
     },
 
+    removeTagRow : function(row)
+    {
+        row.destroy();
+        this.tagRows.splice(this.tagRows.indexOf(row), 1);
+        this.fireEvent('change', this, this.getValue(), false);
+        this.showHideRemoveBtn();
+    },
+
     // show remove buttons only if there are more than {minimumRow} tags
     showHideRemoveBtn : function()
     {
@@ -14961,7 +14969,9 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         }
 
         if(arr.length < this.tagRows.length) {
+            for(; i < this.tagRows.length; i ++) {
 
+            }
         }
         
         
