@@ -164,6 +164,11 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         return ret;
     },
 
+    removeTagRow : function()
+    {
+
+    },
+
     // show remove buttons only if there are more than {minimumRow} tags
     showHideRemoveBtn : function()
     {
@@ -208,7 +213,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
         if(arr.length < this.tagRows.length) {
             for(; i < this.tagRows.length; i ++) {
-                
+
             }
         }
         
