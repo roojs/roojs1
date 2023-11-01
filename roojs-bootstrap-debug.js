@@ -14870,7 +14870,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                 },
                 'select' : function(_self, record, index) {
                     Roo.log('onSelect');
-                    Roo.log(_self.getValue());
+                    Roo.log(_self.getRawValue());
                     Roo.log(_this.getValue());
                 }
             }
@@ -14942,7 +14942,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         var tags = [];
         Roo.each(_this.tagRows, function(r) {
             var tag = {};
-            tag[_this.valueField] = r.inputCb.getValue();
+            tag[_this.valueField] = r.inputCb.getRawValue();
             tags.push(tag);
         });
         Roo.log(tags);
