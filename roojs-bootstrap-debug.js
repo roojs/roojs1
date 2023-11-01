@@ -14840,6 +14840,12 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                     Roo.log('COMBO BOX ON CHANGE');
                     Roo.log(newValue);
                     Roo.log(oldValue);
+                },
+                'blur' : function (_self) {
+                    Roo.log('COMBO BOX ON BLUR');
+                },
+                'render' : function (_self) {
+                    Roo.log('COMBO BOX RENDER');
                 }
             }
         });
