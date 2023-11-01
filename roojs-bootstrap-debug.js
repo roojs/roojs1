@@ -14858,7 +14858,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             listeners : {
                 'render' : function (_self) {
                     _self.inputEl().on('keyup', function(e) {
-                        if(_this.shouldAddTagRow()) {
+                        if(_this.shouldAutoAddTagRow()) {
                             _this.addTagRow();
                         }
                     });
@@ -14904,8 +14904,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         _this.showHideRemoveBtn();
     },
 
-    // a new tags should be added when all existing tags are not empty
-    shouldAddTagRow : function()
+    // a new tags should be added automatically when all existing tags are not empty
+    shouldAutoAddTagRow : function()
     {
         var ret = true;
 
@@ -14951,8 +14951,15 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     setValue : function(json)
     {
-        var obj = JSON.parse(json);
-        Roo.log(obj);
+        var arr = JSON.parse(json);
+        for (var i = 0; i < arr.length; i ++) {
+            if(this.tagRows.length == i) {
+                this.addTagRow();
+            }
+            this.tagRows[index].inputCb.setRawValue(arr[0][this.valueField]);
+        }
+        
+        
     }
 });
 /*
