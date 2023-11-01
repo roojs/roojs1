@@ -14874,7 +14874,12 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         };
         this.tagRows.push(this.addxtype(row));
 
-        this.tagRows[0].removeBtn.hide();
+        Roo.each(this.tagRows, function (r) {
+            r,removeBtn.show();
+            if(this.tagRows.length == 2) {
+                r.removeBtn.hide();
+            }
+        });
     },
 
     // a new tag row should be added when all existing rows are not empty
