@@ -20,6 +20,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     valueField : 'id',
     placehodler : 'Corporate, CSR, ESG Product',
     queryParam : 'query[name]',
+    listWidth : 300,
 
     url : 'http://localhost/web.MediaOutreach.publisher/index.local.php/Roo/Core_company',
 
