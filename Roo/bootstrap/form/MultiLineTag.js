@@ -142,9 +142,11 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     showHideRemoveBtn : function()
     {
         var _this = this;
+
+        var hide = this.tagRows.length <= 2 && this.shouldAddTagRow();
         Roo.each(this.tagRows, function (r) {
             r.removeBtn.show();
-            if(_this.tagRows.length <= 2) {
+            if(hide) {
                 r.removeBtn.hide();
             }
         });
