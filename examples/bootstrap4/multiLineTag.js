@@ -30,6 +30,9 @@ Roo.example.multiLineTag = new Roo.XComponent({
                                         {
                                             xtype: 'MultiLineTag',
                                             xns: Roo.bootstrap.form,
+                                            placeholder : 'Corporate, CSR, ESG Product',
+                                            queryParam : 'query[name]',
+                                            url : '',
                                             listeners : {
                                                 render : function(_self) {
                                                     window.qwer = _self;
