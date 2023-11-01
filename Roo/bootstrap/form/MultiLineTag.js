@@ -220,6 +220,10 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
         // add one extra empty tag
         this.addTagRow();
+
+        while(this.tagRows.length < this.minimumRow) {
+            this.addTagRow();
+        }
         
     }
 });
