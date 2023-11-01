@@ -128,7 +128,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
         Roo.each(this.tagRows, function(r) {
             Roo.log(r);
-            if(r.getRawValue() == '') {
+            if(r.inputCb.getRawValue() == '') {
                 ret = false;
             }
         });
