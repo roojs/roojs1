@@ -108,6 +108,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                 }
             };
             this.tagRows.push(this.addxtype(row));
+
+            Roo.log(this.tagRows);
         }
 
         Roo.log(this);
