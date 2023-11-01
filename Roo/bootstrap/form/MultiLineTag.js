@@ -117,5 +117,11 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             }
         };
         this.tagRows.push(this.addxtype(row));
+    },
+
+    // a new tag row should be added when all existing rows are not empty
+    shouldAddTagRow : function()
+    {
+
     }
 });
