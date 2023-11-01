@@ -14836,13 +14836,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                 }
             },
             listeners : {
-                'change' : function (_self, newValue, oldValue) {
-                    Roo.log('COMBO BOX ON CHANGE');
-                    Roo.log(newValue);
-                    Roo.log(oldValue);
-                },
-                'blur' : function (_self) {
-                    Roo.log('COMBO BOX ON BLUR');
+                'select' : function (_self) {
+                    Roo.log('COMBO BOX SELECT');
                 },
                 'render' : function (_self) {
                     Roo.log('COMBO BOX RENDER');
