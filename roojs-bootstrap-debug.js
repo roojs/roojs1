@@ -14857,6 +14857,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                         this.removeBtn.on('click', function() {
                             _self.destroy();
                             Roo.log(_this);
+                            Roo.log(_this.items);
                         });
                     }
                 }
