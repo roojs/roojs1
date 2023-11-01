@@ -14776,14 +14776,12 @@ Roo.bootstrap.form.MultiLineTag = function(config){
 };
 
 Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
-
-    value : [],
     tagRows : [],
     minimumRow : 2,
 
     // for combo box
     displayField : 'name',
-    valueField : 'id',
+    valueField : 'name',
     placeholder : 'Corporate, CSR, ESG Product',
     queryParam : 'query[name]',
     listWidth : 300,
@@ -14938,7 +14936,16 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         });
     },
 
-    getValue : function(){
+    getValue : function()
+    {
+        var _this = this;
+        var tags = [];
+        Roo.each(_this.tagRows, function(r) {
+            var tag = {};
+            tag[_this.valueField] = r.inputCb.getValue();
+            tags.push(tag);
+        });
+        Roo.log(tags);
         return 'TEST GET VALUE';
     }
 });
