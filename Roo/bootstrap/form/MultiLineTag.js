@@ -33,7 +33,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     listWidth : 300,
 
     // for combo box store
-    url : 'http://localhost/web.MediaOutreach.publisher/index.local.php/Roo/Core_company',
+    url : '',
     fields : [
         {
             'name' : 'id',

@@ -32,7 +32,7 @@ Roo.example.multiLineTag = new Roo.XComponent({
                                             xns: Roo.bootstrap.form,
                                             placeholder : 'Corporate, CSR, ESG Product',
                                             queryParam : 'query[name]',
-                                            url : '',
+                                            url : 'http://localhost/web.MediaOutreach.publisher/index.local.php/Roo/Core_company',
                                             listeners : {
                                                 render : function(_self) {
                                                     window.qwer = _self;
