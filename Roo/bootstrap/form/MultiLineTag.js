@@ -58,7 +58,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             // labelWidth: 0,
             listWidth: 500,
             minChars: 2,
-            placeholder : 'Corporate, CSR, ESG Product',
+            placeholder : _this.placeholder,
             queryParam : 'query[name]',
             triggerAction: 'all',
             store : {
