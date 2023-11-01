@@ -34,7 +34,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     addTagRow : function()
     {
         var _this = this; 
-        
+
         var comboBox = Roo.factory({
             xns: Roo.bootstrap.form,
             xtype : 'ComboBox',
@@ -85,9 +85,9 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             listeners : {
                 'render' : function (_self) {
                     _self.inputEl().on('keyup', function(e) {
-                        Roo.log('CB ON KEY UP');
-                        Roo.log(_self.getRawValue());
-                        if(s)
+                        if(_this.shouldAddTagRow()) {
+                            _this.addTagRow();
+                        }
                     });
                 }
             }
