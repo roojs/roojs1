@@ -122,7 +122,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
         Roo.each(this.tagRows, function (r) {
             Roo.log(r.removeBtn);
-            Roo.log(this.length);
+            Roo.log(this);
             /*
             r,removeBtn.show();
             if(this.length == 2) {
