@@ -96,12 +96,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         var button = Roo.factory({
             xns : Roo.bootstrap,
             xtype : 'Button',
-            html : '-',
-            listeners : {
-                'render' : function (_self) {
-                    this.hide();
-                }
-            }
+            html : '-'
         });
 
         var row = {
