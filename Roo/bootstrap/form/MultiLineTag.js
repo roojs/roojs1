@@ -145,6 +145,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
             r.removeBtn.show();
 
+            Roo.log(r.inputCb.getRawValue());
             if(r.inputCb.getRawValue() == '') {
                 r.removeBtn.hide();
             }
