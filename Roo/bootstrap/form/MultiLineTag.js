@@ -218,9 +218,10 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             this.tagRows[i].inputCb.setRawValue(arr[i][this.valueField]);
         }
 
-        // add one extra empty tag
+        // always add one extra empty tag
         this.addTagRow();
 
+        //
         while(this.tagRows.length < this.minimumRow) {
             this.addTagRow();
         }
