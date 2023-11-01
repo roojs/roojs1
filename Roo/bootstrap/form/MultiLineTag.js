@@ -175,5 +175,9 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                 r.removeBtn.hide();
             }
         });
+    },
+
+    getValue : function(){
+        return 'TEST GET VALUE';
     }
 });
