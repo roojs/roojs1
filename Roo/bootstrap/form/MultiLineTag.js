@@ -81,7 +81,6 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                 html : '-',
                 listeners : {
                     'click' : function(_self, e) {
-                        Roo.log('REMOVE CLICK');
                     }
                 }
             });
@@ -100,10 +99,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
                         this.removeBtn.on('click', function() {
                             _self.destroy();
-                            Roo.log(_this);
-                            Roo.log(_this.tagRows.indexOf(_self));
                             _this.tagRows.splice(_this.tagRows.indexOf(_self), 1);
-                            Roo.log(_this.tagRows);
                         });
                     }
                 }
