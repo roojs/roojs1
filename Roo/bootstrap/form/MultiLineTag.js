@@ -26,6 +26,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         this.tagRows = [];
 
         for (var i = 0; i < 2; i++) {
+            this.addTagRow();
         }
     },
 
@@ -85,5 +86,26 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             xtype : 'Button',
             html : '-'
         });
+
+        var row = {
+            xns : Roo.bootstrap,
+            xtype : 'Row',
+            items : [
+                comboBox,
+                button
+            ],
+            listeners : {
+                'render' : function (_self) {
+                    this.inputCb = comboBox;
+                    this.removeBtn = button;
+
+                    this.removeBtn.on('click', function() {
+                        _self.destroy();
+                        _this.tagRows.splice(_this.tagRows.indexOf(_self), 1);
+                    });
+                }
+            }
+        };
+        this.tagRows.push(this.addxtype(row));
     }
 });
