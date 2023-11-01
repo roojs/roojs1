@@ -28,7 +28,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     {
         this.tagRows = [];
 
-        for (var i = 0; i < 2; i++) {
+        for (var i = 0; i < this.minimumRow; i++) {
             this.addTagRow();
         }
     },
