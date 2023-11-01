@@ -202,14 +202,6 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     setValue : function(json)
     {
-        // var arr = JSON.parse(json);
-        // var i = 0;
-        // for (; i < arr.length; i ++) {
-        //     if(this.tagRows.length == i) {
-        //         this.addTagRow();
-        //     }
-        //     this.tagRows[i].inputCb.setRawValue(arr[i][this.valueField]);
-        // }
 
         // remove all old tags
         var oldTotal = this.tagRows.length;
@@ -219,7 +211,14 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         }
 
         // set new tags
+        var arr = JSON.parse(json);
         
+        for (var i = 0; i < arr.length; i ++) {
+            if(this.tagRows.length == i) {
+                this.addTagRow();
+            }
+            this.tagRows[i].inputCb.setRawValue(arr[i][this.valueField]);
+        }
         
     }
 });
