@@ -114,6 +114,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                     this.removeBtn.on('click', function() {
                         _self.destroy();
                         _this.tagRows.splice(_this.tagRows.indexOf(_self), 1);
+                        _this.showHideRemoveBtn();
                     });
                 }
             }
