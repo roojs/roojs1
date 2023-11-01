@@ -14766,15 +14766,15 @@ Roo.bootstrap.form.MultiLineTag = function(config){
 Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     tagRows : [],
-
     minimumRow : 5,
 
     // for combo box
 
-    // for combo box store
-
     displayField : 'name',
     valueField : 'id',
+    placehodler : 'Corporate, CSR, ESG Product',
+    queryParam : 'query[name]',
+    listWidth : 300,
 
     url : 'http://localhost/web.MediaOutreach.publisher/index.local.php/Roo/Core_company',
 
@@ -14809,10 +14809,10 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             displayField: _this.displayField,
             valueField : _this.valueField,
             // labelWidth: 0,
-            listWidth: 500,
+            listWidth: _this.listWidth,
             minChars: 2,
-            placeholder : 'Corporate, CSR, ESG Product',
-            queryParam : 'query[name]',
+            placeholder : _this.placeholder,
+            queryParam : _this.queryParam,
             triggerAction: 'all',
             store : {
                 xns : Roo.data,

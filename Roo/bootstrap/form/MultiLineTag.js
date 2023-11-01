@@ -55,7 +55,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             displayField: _this.displayField,
             valueField : _this.valueField,
             // labelWidth: 0,
-            listWidth: 500,
+            listWidth: _this.listWidth,
             minChars: 2,
             placeholder : _this.placeholder,
             queryParam : _this.queryParam,
