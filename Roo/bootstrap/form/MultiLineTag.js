@@ -91,8 +91,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                 listeners : {
                     beforeload : function(_self, options)
                     {
-                        options.params = options.params || {};
-                        options.params._clients = 1;
+                        _this.fireEvent('beforeload', _this, _self, options);
                     }
                 },
                 proxy : {
