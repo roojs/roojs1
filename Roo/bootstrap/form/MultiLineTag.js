@@ -18,7 +18,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     displayField : 'name',
     valueField : 'id',
-    placehodler : 'Corporate, CSR, ESG Product',
+    placeholder : 'Corporate, CSR, ESG Product',
     queryParam : 'query[name]',
     listWidth : 300,
 
