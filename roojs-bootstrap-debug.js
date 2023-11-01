@@ -14848,7 +14848,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                     _self.inputEl().on('blur', function(e) {
                         Roo.log("CB ON BLUR");
                         Roo.log(_self.getValue());
-                    }
+                    });
                 }
             }
         });
