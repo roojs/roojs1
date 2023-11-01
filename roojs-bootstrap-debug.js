@@ -14867,9 +14867,14 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                             _this.addTagRow();
                         }
                     });
+                    _self.inputEl().on('focus', function(e) {
+                        Roo.log('onFocus');
+                        this.startValue = this.getRawValue();
+                    });
                     _self.inputEl().on('change', function(e) {
-                        Roo.log('on changeee');
-                        Roo.log(e);
+                        Roo.log('onChange');
+                        Roo.log(this.startValue);
+                        Roo.log(this.getRawValue());
                     });
                 }
             }
