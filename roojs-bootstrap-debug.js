@@ -14773,6 +14773,9 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     // for combo box store
 
+    displayField : 'name',
+    valueField : 'id',
+
     url : 'http://localhost/web.MediaOutreach.publisher/index.local.php/Roo/Core_company',
 
 
@@ -14803,9 +14806,9 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             xns: Roo.bootstrap.form,
             xtype : 'ComboBox',
             editable : true,
-            displayField: 'name',
-            valueField : 'id',
-            labelWidth: 0,
+            displayField: _this.displayField,
+            valueField : _this.valueField,
+            // labelWidth: 0,
             listWidth: 500,
             minChars: 2,
             placeholder : 'Corporate, CSR, ESG Product',
