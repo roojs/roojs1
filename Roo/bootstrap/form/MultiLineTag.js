@@ -102,5 +102,10 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             };
             this.tagRows.push(this.addxtype(row));
         }
+    },
+
+    addTagRow : function()
+    {
+        
     }
 });
