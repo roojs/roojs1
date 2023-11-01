@@ -219,6 +219,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         }
 
         // add one extra empty tag
+        this.addTagRow();
         
     }
 });
