@@ -140,5 +140,17 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         });
 
         return ret;
+    },
+
+    // 
+    showHideRemoveBtn : function()
+    {
+        var _this = this;
+        Roo.each(this.tagRows, function (r) {
+            r.removeBtn.show();
+            if(_this.tagRows.length <=2) {
+                r.removeBtn.hide();
+            }
+        });
     }
 });
