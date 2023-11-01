@@ -115,7 +115,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                     });
 
                     _self.inputEl().on('change', function() {
-                        _this.fireEvent('onChange')
+                        _this.fireEvent('onChange');
                     });
                 }
             }
