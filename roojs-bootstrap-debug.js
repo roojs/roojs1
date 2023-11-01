@@ -14851,13 +14851,9 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                     'render' : function (_self) {
                         this.inputCb = comboBox;
                         this.removeBtn = button;
-                        Roo.log('RENDER');
-                        Roo.log(this);
 
                         this.removeBtn.on('click', function() {
                             _self.destroy();
-                            Roo.log(_this);
-                            Roo.log(_this.items);
                         });
                     }
                 }
@@ -14866,12 +14862,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             var r = this.addxtype(row);
 
             this.items.push(r);
-
-            Roo.log(this);
-            Roo.log(this.items);
         }
-        Roo.log(this);
-        Roo.log(this.items);
     }
 });
 /*
