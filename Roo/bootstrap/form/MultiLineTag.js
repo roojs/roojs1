@@ -104,7 +104,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             listeners : {
                 'render' : function (_self) {
                     _self.inputEl().on('keyup', function(e) {
-                        if(_this.shouldAddTagRow()) {
+                        if(_this.shouldAutoAddTagRow()) {
                             _this.addTagRow();
                         }
                     });
