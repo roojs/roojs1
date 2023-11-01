@@ -14779,7 +14779,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         var _this = this;
         this.tagRows = [];
 
-        for (var i = 0; i < 2; i++) {
+        for (var i = 0; i < 3; i++) {
             var comboBox = Roo.factory({
                 xns: Roo.bootstrap.form,
                 xtype : 'ComboBox',
