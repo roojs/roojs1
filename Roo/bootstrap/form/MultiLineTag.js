@@ -23,6 +23,20 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     // for combo box store
     url : 'http://localhost/web.MediaOutreach.publisher/index.local.php/Roo/Core_company',
+    field : [
+        {
+            'name' : 'id',
+            'type' : 'int'
+        },
+        {
+            'name' : 'name',
+            'type' : 'string'
+        },
+        {
+            'name' : 'logo_url',
+            'type' : 'string'
+        }
+    ],
 
 
 
