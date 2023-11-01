@@ -31,6 +31,9 @@ Roo.example.multiLineTag = new Roo.XComponent({
                                             xtype: 'MultiLineTag',
                                             xns: Roo.bootstrap.form,
                                             listeners : {
+                                                render : function(_self) {
+                                                    window.qwer = _self;
+                                                },
                                                 beforeload : function(_self, store, options) {
                                                     Roo.log('BEFORE LOAD');
                                                     options.params = options.params || {};
