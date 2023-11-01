@@ -147,9 +147,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
             r.removeBtn.show();
 
-            Roo.log(r.inputCb.getRawValue());
-            // show if not more than 2 tag rows OR empty row value
-            if(_this.tagRows.length <= 2 || r.inputCb.getRawValue() == '') {
+            if(_this.tagRows.length <= 2 ) {
                 r.removeBtn.hide();
             }
         });
