@@ -187,9 +187,12 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         var _this = this;
         var tags = [];
         Roo.each(_this.tagRows, function(r) {
-            var tag = {};
-            tag[_this.valueField] = r.inputCb.getRawValue();
-            tags.push(tag);
+            var value = r.inputCb.getRawValue();
+            if(value != '') {
+                var tag = {};
+                tag[_this.valueField] = r.inputCb.getRawValue();
+                tags.push(tag);
+            }
         });
         
         return JSON.stringify(tags);
