@@ -27,7 +27,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     // for combo box
     displayField : 'name',
-    valueField : 'id',
+    valueField : 'name',
     placeholder : 'Corporate, CSR, ESG Product',
     queryParam : 'query[name]',
     listWidth : 300,
