@@ -12,16 +12,14 @@ Roo.bootstrap.form.MultiLineTag = function(config){
 Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     tagRows : [],
-
     minimumRow : 5,
 
     // for combo box
 
-    // for combo box store
-
     displayField : 'name',
     valueField : 'id',
     placehodler : 'Corporate, CSR, ESG Product',
+    queryParam : 'query[name]',
 
     url : 'http://localhost/web.MediaOutreach.publisher/index.local.php/Roo/Core_company',
 
