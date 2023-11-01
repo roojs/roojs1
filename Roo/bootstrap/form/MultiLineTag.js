@@ -15,6 +15,10 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     minimumRow : 5,
 
+    // for combo box
+
+    url : 'http://localhost/web.MediaOutreach.publisher/index.local.php/Roo/Core_company'
+
     getAutoCreate : function()
     {
         var config = {
