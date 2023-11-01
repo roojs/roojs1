@@ -14881,6 +14881,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         var ret = true;
 
         Roo.each(this.tagRows, function(r) {
+            Roo.log(r);
             if(r.getRawValue() == '') {
                 ret = false;
             }
