@@ -14779,7 +14779,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         var _this = this;
         this.tagRows = [];
 
-        for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < 2; i++) {
             var comboBox = Roo.factory({
                 xns: Roo.bootstrap.form,
                 xtype : 'ComboBox',
@@ -14835,7 +14835,6 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                 html : '-',
                 listeners : {
                     'click' : function(_self, e) {
-                        Roo.log('REMOVE CLICK');
                     }
                 }
             });
@@ -14854,10 +14853,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
                         this.removeBtn.on('click', function() {
                             _self.destroy();
-                            Roo.log(_this);
-                            Roo.log(_this.tagRows.indexOf(_self));
                             _this.tagRows.splice(_this.tagRows.indexOf(_self), 1);
-                            Roo.log(_this.tagRows);
                         });
                     }
                 }
