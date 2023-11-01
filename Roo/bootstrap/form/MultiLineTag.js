@@ -24,7 +24,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     initEvents : function()
     {
-        var _this = this;
+        this.tagRows = [];
 
         for (var i = 0; i < 2; i++) {
             var comboBox = Roo.factory({
