@@ -14932,7 +14932,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
             r.removeBtn.show();
 
-            if(_this.tagRows.length <= _this.minimumRow) {
+            if(_this.tagRows.length <= _this.minimumRow || r.inputCb.getRawValue() == '') {
                 r.removeBtn.hide();
             }
         });
