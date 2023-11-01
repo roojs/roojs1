@@ -83,16 +83,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             },
             listeners : {
                 'render' : function (_self) {
-                    Roo.log('COMBO BOX RENDER');
-                    Roo.log(_self.inputEl());
-
                     _self.inputEl().on('keyup', function(e) {
                         Roo.log('CB ON KEY UP');
-                        Roo.log(_self.getRawValue());
-                    });
-
-                    _self.inputEl().on('blur', function(e) {
-                        Roo.log("CB ON BLUR");
                         Roo.log(_self.getRawValue());
                     });
                 }
