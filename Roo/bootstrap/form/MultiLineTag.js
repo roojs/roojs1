@@ -211,11 +211,14 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         //     this.tagRows[i].inputCb.setRawValue(arr[i][this.valueField]);
         // }
 
+        // remove all old tags
         var oldTotal = this.tagRows.length;
 
         for(var i = 0; i < oldTotal; i ++) {
             this.removeTagRow(this.tagRows[0]);
         }
+
+        // set new tags
         
         
     }
