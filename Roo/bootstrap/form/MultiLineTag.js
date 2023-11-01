@@ -15,13 +15,13 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     minimumRow : 2,
 
     // for combo box
-
     displayField : 'name',
     valueField : 'id',
     placeholder : 'Corporate, CSR, ESG Product',
     queryParam : 'query[name]',
     listWidth : 300,
 
+    // for combo box store
     url : 'http://localhost/web.MediaOutreach.publisher/index.local.php/Roo/Core_company',
 
 
