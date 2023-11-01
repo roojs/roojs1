@@ -213,7 +213,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
         if(arr.length < this.tagRows.length) {
             for(; i < this.tagRows.length; i ++) {
-
+                this.removeTagRow(this.tagRows[i]);
             }
         }
         
