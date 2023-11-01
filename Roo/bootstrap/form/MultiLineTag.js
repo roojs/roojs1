@@ -84,7 +84,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             listeners : {
                 'render' : function (_self) {
                     Roo.log('COMBO BOX RENDER');
-                    Roo.log(_self.input());
+                    Roo.log(_self.inputEl());
 
                     _self.inputEl().on('keyup', function(e) {
                         Roo.log('CB ON KEY UP');
