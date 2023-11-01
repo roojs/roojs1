@@ -40,6 +40,7 @@ Roo.example.multiLineTag = new Roo.XComponent({
                                                     Roo.log('ON CHANGE');
                                                     Roo.log(newValue);
                                                     Roo.log(_self.getValue());
+                                                    _self.setValue([{"name":"dc"},{"name":"a"}]);
                                                 }
                                             }
                                         } 
