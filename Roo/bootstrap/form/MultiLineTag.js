@@ -202,6 +202,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             if(this.tagRows.length == i) {
                 this.addTagRow();
             }
+
+            this.tagRows[index].inputCb.setRawValue(arr[0].[this.valueField])
         }
         
         
