@@ -14778,7 +14778,6 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     initEvents : function()
     {
-        var _this = this;
         this.tagRows = [];
 
         for (var i = 0; i < 2; i++) {
@@ -14788,6 +14787,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     addTagRow : function()
     {
+        var _this = this; 
+
         var comboBox = Roo.factory({
             xns: Roo.bootstrap.form,
             xtype : 'ComboBox',
@@ -14837,17 +14838,10 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             },
             listeners : {
                 'render' : function (_self) {
-                    Roo.log('COMBO BOX RENDER');
-                    Roo.log(_self.inputEl());
-
                     _self.inputEl().on('keyup', function(e) {
-                        Roo.log('CB ON KEY UP');
-                        Roo.log(_self.getRawValue());
-                    });
-
-                    _self.inputEl().on('blur', function(e) {
-                        Roo.log("CB ON BLUR");
-                        Roo.log(_self.getRawValue());
+                        if(_this.shouldAddTagRow()) {
+                            _this.addTagRow();
+                        }
                     });
                 }
             }
@@ -14879,6 +14873,12 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             }
         };
         this.tagRows.push(this.addxtype(row));
+    },
+
+    // a new tag row should be added when all existing rows are not empty
+    shouldAddTagRow : function()
+    {
+        return true;
     }
 });
 /*
