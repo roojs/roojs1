@@ -150,7 +150,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         _this.showHideRemoveBtn();
     },
 
-    // a new tags should be added when all existing tags are not empty
+    // a new tags should be added automatically when all existing tags are not empty
     shouldAutoAddTagRow : function()
     {
         var ret = true;
