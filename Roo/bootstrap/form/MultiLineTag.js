@@ -120,12 +120,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         };
         this.tagRows.push(this.addxtype(row));
 
-        Roo.each(this.tagRows, function (r) {
-            r.removeBtn.show();
-            if(_this.tagRows.length == 2) {
-                r.removeBtn.hide();
-            }
-        });
+        this.showHideRemoveBtn();
     },
 
     // a new tag row should be added when all existing rows are not empty
