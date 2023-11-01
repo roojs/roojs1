@@ -202,19 +202,17 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     setValue : function(json)
     {
-        var arr = JSON.parse(json);
-        var i = 0;
-        for (; i < arr.length; i ++) {
-            if(this.tagRows.length == i) {
-                this.addTagRow();
-            }
-            this.tagRows[i].inputCb.setRawValue(arr[i][this.valueField]);
-        }
+        // var arr = JSON.parse(json);
+        // var i = 0;
+        // for (; i < arr.length; i ++) {
+        //     if(this.tagRows.length == i) {
+        //         this.addTagRow();
+        //     }
+        //     this.tagRows[i].inputCb.setRawValue(arr[i][this.valueField]);
+        // }
 
-        if(arr.length < this.tagRows.length) {
-            for(; i < this.tagRows.length; i ++) {
-                this.removeTagRow(this.tagRows[i]);
-            }
+        for(var i = 0; i < this.tagRows.length; i ++) {
+            this.removeTagRow(this.tagRows[i]);
         }
         
         
