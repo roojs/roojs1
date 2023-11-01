@@ -166,7 +166,11 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     removeTagRow : function(row)
     {
+        row.destroy();
+        this.tagRows.splice(this.tagRows.indexOf(row), 1);
+        this.fireEvent('change', this, this.getValue(), false);
 
+        this.showHideRemoveBtn();
     },
 
     // show remove buttons only if there are more than {minimumRow} tags
