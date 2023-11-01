@@ -88,12 +88,12 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
                     _self.inputEl().on('keyup', function(e) {
                         Roo.log('CB ON KEY UP');
-                        Roo.log(_self.getValue());
+                        Roo.log(_self.getRawValue());
                     });
 
                     _self.inputEl().on('blur', function(e) {
                         Roo.log("CB ON BLUR");
-                        Roo.log(_self.getValue());
+                        Roo.log(_self.getRawValue());
                     });
                 }
             }
