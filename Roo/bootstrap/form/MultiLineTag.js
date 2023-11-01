@@ -185,6 +185,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     },
 
     getValue : function(){
+        
         return 'TEST GET VALUE';
     }
 });
