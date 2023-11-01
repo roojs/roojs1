@@ -14868,18 +14868,15 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                     this.removeBtn.on('click', function() {
                         _self.destroy();
                         _this.tagRows.splice(_this.tagRows.indexOf(_self), 1);
+
+                        this.showHideRemoveBtn();
                     });
                 }
             }
         };
         this.tagRows.push(this.addxtype(row));
 
-        Roo.each(this.tagRows, function (r) {
-            r.removeBtn.show();
-            if(_this.tagRows.length == 2) {
-                r.removeBtn.hide();
-            }
-        });
+        this.showHideRemoveBtn();
     },
 
     // a new tag row should be added when all existing rows are not empty
@@ -14894,6 +14891,18 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         });
 
         return ret;
+    },
+
+    // show the remove button only if there are more than 3 tag rows
+    showHideRemoveBtn : function()
+    {
+        var _this = this;
+        Roo.each(this.tagRows, function (r) {
+            r.removeBtn.show();
+            if(_this.tagRows.length <= 2) {
+                r.removeBtn.hide();
+            }
+        });
     }
 });
 /*
