@@ -211,10 +211,6 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         //     this.tagRows[i].inputCb.setRawValue(arr[i][this.valueField]);
         // }
 
-        for(var i = 0; i < this.tagRows.length; i ++) {
-            this.removeTagRow(this.tagRows[i]);
-        }
-
 
         Roo.each(this.tagRows, function(r) {
             this.removeTagRow(r);
