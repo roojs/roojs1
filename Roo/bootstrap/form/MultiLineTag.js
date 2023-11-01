@@ -19,7 +19,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     url : 'http://localhost/web.MediaOutreach.publisher/index.local.php/Roo/Core_company',
 
-    
+
 
     getAutoCreate : function()
     {
@@ -69,7 +69,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                     xns : Roo.data,
                     xtype : 'HttpProxy',
                     method : 'GET',
-                    url : 'http://localhost/web.MediaOutreach.publisher/index.local.php/Roo/Core_company'
+                    url : _this.url
                 },
                 reader : {
                     xns : Roo.data,
