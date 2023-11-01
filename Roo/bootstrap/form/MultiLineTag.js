@@ -191,7 +191,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             tag[_this.valueField] = r.inputCb.getRawValue();
             tags.push(tag);
         });
-        Roo.log(tags);
-        return 'TEST GET VALUE';
+        
+        return JSON.stringify(tags);
     }
 });

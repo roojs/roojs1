@@ -633,7 +633,7 @@ Roo.bootstrap.form.MultiLineTag=function(A){Roo.bootstrap.form.MultiLineTag.supe
 Roo.log(E.getRawValue());Roo.log(A.getValue());});},'select':function(E,F,G){Roo.log('onSelect');Roo.log(E.getRawValue());Roo.log(A.getValue());}}});var C=Roo.factory({xns:Roo.bootstrap,xtype:'Button',html:'-'});var D={xns:Roo.bootstrap,xtype:'Row',items:[B,C],listeners:{'render':function(E){this.inputCb=B;
 this.removeBtn=C;this.removeBtn.on('click',function(){E.destroy();A.tagRows.splice(A.tagRows.indexOf(E),1);A.showHideRemoveBtn();});}}};this.tagRows.push(this.addxtype(D));A.showHideRemoveBtn();},shouldAddTagRow:function(){var A=true;Roo.each(this.tagRows,function(r){if(r.inputCb.getRawValue()==''){A=false;
 }});return A;},showHideRemoveBtn:function(){var A=this;Roo.each(this.tagRows,function(r){r.removeBtn.show();if(A.tagRows.length<=A.minimumRow){r.removeBtn.hide();}});},getValue:function(){var A=this;var B=[];Roo.each(A.tagRows,function(r){var C={};C[A.valueField]=r.inputCb.getRawValue();
-B.push(C);});Roo.log(B);return 'TEST GET VALUE';}});
+B.push(C);});return JSON.stringify(B);}});
 // Roo/data/SortTypes.js
 Roo.data.SortTypes={none:function(s){return s;},stripTagsRE:/<\/?[^>]+>/gi,asText:function(s){return String(s).replace(this.stripTagsRE,"");},asUCText:function(s){return String(s).toUpperCase().replace(this.stripTagsRE,"");},asUCString:function(s){return String(s).toUpperCase();
 },asDate:function(s){if(!s){return 0;}if(s instanceof Date){return s.getTime();}return Date.parse(String(s));},asFloat:function(s){var A=parseFloat(String(s).replace(/,/g,""));if(isNaN(A)){A=0;}return A;},asInt:function(s){var A=parseInt(String(s).replace(/,/g,""));
