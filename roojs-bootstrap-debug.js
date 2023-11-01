@@ -14859,9 +14859,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                 }
             };
 
-            var r = this.addxtype(row);
-
-            this.items.push(r);
+            this.addxtype(row);
         }
     }
 });
