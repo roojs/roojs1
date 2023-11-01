@@ -109,11 +109,11 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                         }
                     });
                     _self.inputEl().on('change', function(e) {
-                        _this.fireEvent('change', _this.getValue(), false);
+                        _this.fireEvent('change', _this, _this.getValue(), false);
                     });
                 },
                 'select' : function(_self, record, index) {
-                    _this.fireEvent('change', _this.getValue(), false);
+                    _this.fireEvent('change', _this, _this.getValue(), false);
                 }
             }
         });
@@ -140,7 +140,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                         _self.destroy();
                         _this.tagRows.splice(_this.tagRows.indexOf(_self), 1);
                         _this.showHideRemoveBtn();
-                        _this.fireEvent('change', _this.getValue(), false);
+                        _this.fireEvent('change', _this, _this.getValue(), false);
                     });
                 }
             }
