@@ -38,6 +38,7 @@ Roo.example.multiLineTag = new Roo.XComponent({
                                                 change : function(_self, newValue, oldValue) {
                                                     Roo.log('onCHANGE');
                                                     Roo.log(newValue);
+                                                    Roo.log(_self.getValue());
                                                 }
                                             }
                                         } 
