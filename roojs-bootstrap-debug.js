@@ -14769,14 +14769,28 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     minimumRow : 2,
 
     // for combo box
-
     displayField : 'name',
     valueField : 'id',
     placeholder : 'Corporate, CSR, ESG Product',
     queryParam : 'query[name]',
     listWidth : 300,
 
+    // for combo box store
     url : 'http://localhost/web.MediaOutreach.publisher/index.local.php/Roo/Core_company',
+    fields : [
+        {
+            'name' : 'id',
+            'type' : 'int'
+        },
+        {
+            'name' : 'name',
+            'type' : 'string'
+        },
+        {
+            'name' : 'logo_url',
+            'type' : 'string'
+        }
+    ],
 
 
 
@@ -14806,13 +14820,13 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             xns: Roo.bootstrap.form,
             xtype : 'ComboBox',
             editable : true,
+            triggerAction: 'all',
+            minChars: 2,
             displayField: _this.displayField,
             valueField : _this.valueField,
             listWidth: _this.listWidth,
-            minChars: 2,
             placeholder : _this.placeholder,
             queryParam : _this.queryParam,
-            triggerAction: 'all',
             store : {
                 xns : Roo.data,
                 xtype : 'Store',
@@ -14832,20 +14846,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                 reader : {
                     xns : Roo.data,
                     xtype : 'JsonReader',
-                    fields : [
-                        {
-                            'name' : 'id',
-                            'type' : 'int'
-                        },
-                        {
-                            'name' : 'name',
-                            'type' : 'string'
-                        },
-                        {
-                            'name' : 'logo_url',
-                            'type' : 'string'
-                        }
-                    ]
+                    fields : _this.fields
                 }
             },
             listeners : {
