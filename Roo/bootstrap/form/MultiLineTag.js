@@ -113,7 +113,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                             _this.addTagRow();
                         }
                     });
-                    _self.inputEl().on('change', e) {
+                    _self.inputEl().on('change', function(e) {
                         Roo.log('on changeee');
                         Roo.log(e);
                     });
