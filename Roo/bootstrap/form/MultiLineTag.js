@@ -13,7 +13,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     tagRows : [],
 
-    minimumRow : 2,
+    minimumRow : 5,
 
     getAutoCreate : function()
     {

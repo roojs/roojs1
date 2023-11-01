@@ -14767,6 +14767,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     tagRows : [],
 
+    minimumRow : 5,
+
     getAutoCreate : function()
     {
         var config = {
@@ -14780,7 +14782,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     {
         this.tagRows = [];
 
-        for (var i = 0; i < 2; i++) {
+        for (var i = 0; i < this.minimumRow; i++) {
             this.addTagRow();
         }
     },
@@ -14878,7 +14880,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         _this.showHideRemoveBtn();
     },
 
-    // a new tag row should be added when all existing rows are not empty
+    // a new tags should be added when all existing tags are not empty
     shouldAddTagRow : function()
     {
         var ret = true;
@@ -14892,9 +14894,9 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         return ret;
     },
 
+    // show remove buttons only if there are more than 2 tags
     showHideRemoveBtn : function()
     {
-        Roo.log('SHOW HIDE REMOVE BTN');
         var _this = this;
         
         Roo.each(this.tagRows, function (r) {
