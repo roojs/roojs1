@@ -80,6 +80,13 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                         }
                     ]
                 }
+            },
+            listeners : {
+                'change' : function (_self, newValue, oldValue) {
+                    Roo.log('COMBO BOX ON CHANGE');
+                    Roo.log(newValue);
+                    Roo.log(oldValue);
+                }
             }
         });
 
