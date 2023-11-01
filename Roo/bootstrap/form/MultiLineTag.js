@@ -110,6 +110,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                     });
                     _self.inputEl().on('change', function(e) {
                         _this.fireEvent('change', _this, _this.getValue(), false);
+                        _this.showHideRemoveBtn();
+
                     });
                 },
                 'select' : function(_self, record, index) {
