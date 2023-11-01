@@ -110,13 +110,11 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                     });
                     _self.inputEl().on('change', function(e) {
                         Roo.log('onChange');
-                        Roo.log(_self.getRawValue());
                         Roo.log(_this.getValue());
                     });
                 },
                 'select' : function(_self, record, index) {
                     Roo.log('onSelect');
-                    Roo.log(_self.getRawValue());
                     Roo.log(_this.getValue());
                 }
             }
@@ -144,6 +142,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                         _self.destroy();
                         _this.tagRows.splice(_this.tagRows.indexOf(_self), 1);
                         _this.showHideRemoveBtn();
+                        Roo.log('onDestroy');
+                        Roo.log(_this.getValue());
                     });
                 }
             }
