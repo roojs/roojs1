@@ -115,10 +115,10 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                     });
                     _self.inputEl().on('focus', function(e) {
                         Roo.log('onFocus');
-                        this.startValue = this.getValue();
+                        this.startValue = this.getRawValue();
                     });
                     _self.inputEl().on('change', function(e) {
-                        Roo.log('on changeee');
+                        Roo.log('onChange');
                         Roo.log(e);
                     });
                 }
