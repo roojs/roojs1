@@ -26,31 +26,26 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     minimumRow : 2,
 
     // for combo box
-    displayField : 'name',
-    valueField : 'name',
+    displayField : '',
+    valueField : '',
     placeholder : '',
     queryParam : '',
     listWidth : 300,
 
     // for combo box store
-    url : '',
-    fields : [
-        {
-            'name' : 'id',
-            'type' : 'int'
-        },
-        {
-            'name' : 'name',
-            'type' : 'string'
-        }
-    ],
+    url : undefined,
+    fields : [],
 
 
 
     getAutoCreate : function()
     {
         var config = {
-            cls : 'roo-multi-line-tag'
+            tag : 'row',
+            cls : 'roo-multi-line-tag',
+            cn : [
+                tag : 'column'
+            ]
         };
 
         return config;
@@ -171,7 +166,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         this.showHideRemoveBtn();
     },
 
-    // show remove buttons only if there are more than {minimumRow} tags
+    // hide all remove buttons if there are {minimumRow} or less tags
+    // hide the remove button for empty tag
     showHideRemoveBtn : function()
     {
         var _this = this;
@@ -228,5 +224,12 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             this.addTagRow();
         }
         
+    },
+
+    getChildContainer : function()
+    {
+        Roo.log('GET CHILD CONTAINER');
+        Roo.log(this);
+        return this.el;
     }
 });
