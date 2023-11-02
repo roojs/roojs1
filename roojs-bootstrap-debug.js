@@ -14962,10 +14962,11 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             this.removeTagRow(this.tagRows[0]);
         }
 
+        // empty tag if invalid json
         var arr = [];
 
-        // set new tags
         try {
+            // set new tags
             arr = JSON.parse(json);
         }
         catch {}
@@ -14987,13 +14988,9 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     getChildContainer : function()
     {
-        Roo.log(Roo.select('.roo-multi-line-tag-container', true).elements[0]);
-        Roo.log(this.el);
         return Roo.select('.roo-multi-line-tag-container', true).elements[0];
-        // return this.el;
     }
-});
-/*
+});/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
