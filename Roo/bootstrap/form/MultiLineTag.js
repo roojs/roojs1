@@ -211,8 +211,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         // empty tag if invalid json
         var arr = [];
 
-        // set new tags
         try {
+                    // set new tags
             arr = JSON.parse(json);
         }
         catch {}
