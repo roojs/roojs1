@@ -14795,7 +14795,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     getAutoCreate : function()
     {
         var config = {
-            cls : 'roo-multi-line-tag'
+            cls : 'roo-multi-line-tag form-group'
         };
 
         config = this.getAutoCreateLabel( config, {
