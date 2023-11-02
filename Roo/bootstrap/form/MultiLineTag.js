@@ -44,7 +44,13 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             tag : 'row',
             cls : 'roo-multi-line-tag',
             cn : [
-                tag : 'column'
+                {
+                    tag : 'column'
+                },
+                {
+                    tag : 'column',
+                    cls : 'roo-multi-line-tag-container'
+                }
             ]
         };
 
