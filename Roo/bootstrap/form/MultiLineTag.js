@@ -46,10 +46,10 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                 {
                     cls : 'col',
                     cn : [
-                        {
-                            tag : 'label',
-                            html : 'TEST LABEL'
-                        }
+                        // {
+                        //     tag : 'label',
+                        //     html : 'TEST LABEL'
+                        // }
                     ]
                 },
                 {
