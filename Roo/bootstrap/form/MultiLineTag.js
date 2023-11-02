@@ -236,6 +236,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     {
         Roo.log('GET CHILD CONTAINER');
         Roo.log(this);
+        Roo.log(Roo.select('.roo-multi-line-tag-container', true))
         return this.el;
     }
 });
