@@ -46,6 +46,7 @@ Roo.example.multiLineTag = new Roo.XComponent({
                                                 }
                                             ],
                                             fieldLabel : 'TEST',
+                                            labelWidth : 0,
                                             listeners : {
                                                 render : function(_self) {
                                                     window.qwer = _self;
