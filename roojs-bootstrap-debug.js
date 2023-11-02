@@ -14899,7 +14899,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
                 }
             }
         };
-        this.tagRows.push(this.addxtype(row));
+        this.tagRows.push(this.addxtype(row, 'getTagContainer'));
 
         _this.showHideRemoveBtn();
     },
@@ -14986,7 +14986,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         
     },
 
-    getChildContainer : function()
+    getTagContainer : function()
     {
         return Roo.select('.roo-multi-line-tag-container', true)[0];
     }
