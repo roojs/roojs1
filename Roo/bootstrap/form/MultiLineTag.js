@@ -41,22 +41,12 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     getAutoCreate : function()
     {
         var config = {
-            cls : 'row roo-multi-line-tag',
-            cn : [
-                {
-                    cls : 'col',
-                    cn : [
-                        {
-                            tag : 'label',
-                            html : 'TEST LABEL'
-                        }
-                    ]
-                },
-                {
-                    cls : 'col roo-multi-line-tag-container'
-                }
-            ]
+            cls : 'row roo-multi-line-tag'
         };
+
+        config = this.getAutoCreateLabel( config, {
+            cls : 'col roo-multi-line-tag-container'
+        } );
 
         return config;
     },
