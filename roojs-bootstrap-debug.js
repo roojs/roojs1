@@ -14972,6 +14972,8 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         }
         catch {}
 
+        Roo.log(arr);
+
         for (var i = 0; i < arr.length; i ++) {
             this.addTagRow();
             this.tagRows[i].inputCb.setRawValue(arr[i][this.valueField]);
