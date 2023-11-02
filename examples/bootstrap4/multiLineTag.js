@@ -30,15 +30,27 @@ Roo.example.multiLineTag = new Roo.XComponent({
                                         {
                                             xtype: 'MultiLineTag',
                                             xns: Roo.bootstrap.form,
+                                            displayField : 'name',
+                                            valueField : 'name',
                                             placeholder : 'Corporate, CSR, ESG Product',
                                             queryParam : 'query[name]',
                                             url : 'http://localhost/web.MediaOutreach.publisher/index.local.php/Roo/Core_company',
+                                            fields : [
+                                                {
+                                                    'name' : 'id',
+                                                    'type' : 'int'
+                                                },
+                                                {
+                                                    'name' : 'name',
+                                                    'type' : 'string'
+                                                }
+                                            ],
+                                            fieldLabel : 'TEST',
                                             listeners : {
                                                 render : function(_self) {
                                                     window.qwer = _self;
                                                 },
                                                 beforeload : function(_self, store, options) {
-                                                    Roo.log('BEFORE LOAD');
                                                     options.params = options.params || {};
                                                     options.params._clients = 1;
                                                 },
