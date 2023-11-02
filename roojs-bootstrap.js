@@ -634,7 +634,7 @@ A.showHideRemoveBtn();});},'select':function(E,F,G){A.fireEvent('change',A,A.get
 this.removeBtn=C;this.removeBtn.on('click',function(){A.removeTagRow(E);});}}};this.tagRows.push(this.addxtype(D));A.showHideRemoveBtn();},shouldAutoAddTagRow:function(){var A=true;Roo.each(this.tagRows,function(r){if(r.inputCb.getRawValue()==''){A=false;
 }});return A;},removeTagRow:function(A){A.destroy();this.tagRows.splice(this.tagRows.indexOf(A),1);this.fireEvent('change',this,this.getValue(),false);this.showHideRemoveBtn();},showHideRemoveBtn:function(){var A=this;Roo.each(this.tagRows,function(r){r.removeBtn.show();
 if(A.tagRows.length<=A.minimumRow||r.inputCb.getRawValue()==''){r.removeBtn.hide();}});},getValue:function(){var A=this;var B=[];Roo.each(A.tagRows,function(r){var C=r.inputCb.getRawValue();if(C!=''){var D={};D[A.valueField]=r.inputCb.getRawValue();B.push(D);
-}});return JSON.stringify(B);},setValue:function(A){var B=this.tagRows.length;for(var i=0;i<B;i++){this.removeTagRow(this.tagRows[0]);}var C=JSON.parse(A);for(var i=0;i<C.length;i++){this.addTagRow();this.tagRows[i].inputCb.setRawValue(C[i][this.valueField]);
+}});return JSON.stringify(B);},setValue:function(A){var B=this.tagRows.length;for(var i=0;i<B;i++){this.removeTagRow(this.tagRows[0]);}var C=[];try{C=JSON.parse(A);}catch{}for(var i=0;i<C.length;i++){this.addTagRow();this.tagRows[i].inputCb.setRawValue(C[i][this.valueField]);
 }this.addTagRow();while(this.tagRows.length<this.minimumRow){this.addTagRow();}},getChildContainer:function(){Roo.log(Roo.select('.roo-multi-line-tag-container',true).elements[0]);Roo.log(this.el);return Roo.select('.roo-multi-line-tag-container',true).elements[0];
 }});
 // Roo/data/SortTypes.js
