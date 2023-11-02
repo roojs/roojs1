@@ -162,7 +162,6 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
 
     removeTagRow : function(row,)
     {
-        Roo.log('removeTagRow');
         row.destroy();
         this.tagRows.splice(this.tagRows.indexOf(row), 1);
         this.showHideRemoveBtn();
@@ -218,8 +217,6 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             arr = JSON.parse(json);
         }
         catch {}
-
-        Roo.log(arr);
 
         for (var i = 0; i < arr.length; i ++) {
             this.addTagRow();
