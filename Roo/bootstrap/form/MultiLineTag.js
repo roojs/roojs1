@@ -208,8 +208,13 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             this.removeTagRow(this.tagRows[0]);
         }
 
+        var arr = [];
+
         // set new tags
-        var arr = JSON.parse(json);
+        try {
+            arr = JSON.parse(json);
+        }
+        catch {}
 
         for (var i = 0; i < arr.length; i ++) {
             this.addTagRow();
