@@ -31,6 +31,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
     placeholder : '',
     queryParam : '',
     listWidth : 300,
+    minChars : 2,
 
     // for combo box store
     url : undefined,
@@ -69,7 +70,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
             xtype : 'ComboBox',
             editable : true,
             triggerAction: 'all',
-            minChars: 2,
+            minChars: _this.minChars,
             displayField: _this.displayField,
             valueField : _this.valueField,
             listWidth: _this.listWidth,
