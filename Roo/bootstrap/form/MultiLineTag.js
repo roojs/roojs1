@@ -160,7 +160,7 @@ Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
         return ret;
     },
 
-    removeTagRow : function(row,)
+    removeTagRow : function(row)
     {
         row.destroy();
         this.tagRows.splice(this.tagRows.indexOf(row), 1);
