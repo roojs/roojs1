@@ -31823,6 +31823,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (this.enableBlocks) {
             Roo.htmleditor.Block.initAll(this.doc.body);
         }
+
+        Roo.log('onPaste');
+        Roo.log(d);
          
         
         e.preventDefault();
