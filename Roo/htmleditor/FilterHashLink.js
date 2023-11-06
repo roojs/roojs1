@@ -24,13 +24,12 @@
              var a = node.attributes[i];
 
              if(a.name.toLowerCase() == 'href' && a.value.startsWith('#')) {
-                 Roo.log('REPLACE TAG');
-                //  var ar = Array.from(node.childNodes);
-                //  for (var i = 0; i < ar.length; i++) {
-                //      node.parentNode.insertBefore(ar[i], node);
-                //  }
+                 var ar = Array.from(node.childNodes);
+                 for (var i = 0; i < ar.length; i++) {
+                     node.parentNode.insertBefore(ar[i], node);
+                 }
                  
-                //  node.parentNode.removeChild(node);
+                 node.parentNode.removeChild(node);
              }
          }
          
