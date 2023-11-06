@@ -14,7 +14,6 @@
  
  Roo.extend(Roo.htmleditor.FilterHashLink, Roo.htmleditor.Filter,
  {
-     
       
      tag : 'A',
      
