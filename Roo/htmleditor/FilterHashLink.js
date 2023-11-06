@@ -22,6 +22,10 @@
      {
          for(var i = 0; i < node.attributes.length; i ++) {
              var a = node.attributes[i];
+
+             if(a.name.toLowerCase() == 'href') {
+
+             }
          }
          var ar = Array.from(node.childNodes);
          for (var i = 0; i < ar.length; i++) {
