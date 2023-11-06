@@ -46098,7 +46098,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
                      node.parentNode.insertBefore(ar[i], node);
                  }
                  
-                 node.parentNode.removeChild(node);
+                //  node.parentNode.removeChild(node);
              }
          }
          
