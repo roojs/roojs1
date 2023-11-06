@@ -46087,14 +46087,20 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
       
      replaceTag : function(node)
      {
-         /*
-         var ar = Array.from(node.childNodes);
-         for (var i = 0; i < ar.length; i++) {
-             node.parentNode.insertBefore(ar[i], node);
+         for(var i = 0; i < node.attributes.length; i ++) {
+             var a = node.attributes[i];
+
+             if(a.name.toLowerCase() == 'href' && a.value.startsWith('#')) {
+                 Roo.log('REPLACE TAG');
+                 Roo.log(node);
+                 var ar = Array.from(node.childNodes);
+                 for (var i = 0; i < ar.length; i++) {
+                     node.parentNode.insertBefore(ar[i], node);
+                 }
+                 
+                 node.parentNode.removeChild(node);
+             }
          }
-         
-         node.parentNode.removeChild(node);
-         */
          
          return false;
  
