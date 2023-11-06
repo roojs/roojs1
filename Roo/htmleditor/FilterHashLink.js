@@ -6,17 +6,17 @@
  * @param {Object} config Configuration options
  */
 
- Roo.htmleditor.FilterParagraph = function(cfg)
+ Roo.htmleditor.FilterHashLink = function(cfg)
  {
      // no need to apply config.
      this.walk(cfg.node);
  }
  
- Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
+ Roo.extend(Roo.htmleditor.FilterHashLink, Roo.htmleditor.Filter,
  {
      
       
-     tag : 'P',
+     tag : 'A',
      
       
      replaceTag : function(node)
