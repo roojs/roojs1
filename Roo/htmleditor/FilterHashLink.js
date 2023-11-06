@@ -23,7 +23,7 @@
          for(var i = 0; i < node.attributes.length; i ++) {
              var a = node.attributes[i];
 
-             if(a.name.toLowerCase() == 'href') {
+             if(a.name.toLowerCase() == 'href' && a.value.startsWith('#')) {
 
              }
          }
