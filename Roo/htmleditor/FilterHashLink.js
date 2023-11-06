@@ -20,6 +20,9 @@
       
      replaceTag : function(node)
      {
+         for(var i = 0; i < node.attributes.length; i ++) {
+             var a = node.attributes[i];
+         }
          var ar = Array.from(node.childNodes);
          for (var i = 0; i < ar.length; i++) {
              node.parentNode.insertBefore(ar[i], node);
