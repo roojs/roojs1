@@ -24,7 +24,8 @@
              var a = node.attributes[i];
 
              if(a.name.toLowerCase() == 'href' && a.value.startsWith('#')) {
-
+                 Roo.log('REPLACE TAG');
+                 Roo.log(node);
              }
          }
          var ar = Array.from(node.childNodes);
