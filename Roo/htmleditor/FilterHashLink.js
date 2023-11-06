@@ -22,7 +22,6 @@
      {
          var ar = Array.from(node.childNodes);
          for (var i = 0; i < ar.length; i++) {
-             node.removeChild(ar[i]);
              node.parentNode.insertBefore(ar[i], node);
          }
          
