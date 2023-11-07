@@ -18708,6 +18708,8 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
         if (!this.editable) {
             Roo.get(document).on('keydown', this.listKeyPress, this);
         }
+
+        this.list.setStyle('maxHeight', 'calc(100% - ' + this.list.getTop() + 'px - 50px)');
         
         this.fireEvent('expand', this);
     },
