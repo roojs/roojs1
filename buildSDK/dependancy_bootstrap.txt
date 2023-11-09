@@ -92,6 +92,7 @@ Roo.bootstrap.form.Input
 Roo.bootstrap.form.TextArea
 Roo.bootstrap.form.TriggerField
 Roo.bootstrap.form.CardUploader
+Roo.bootstrap.form.MultiLineTag
 
 
 Roo.data.SortTypes
