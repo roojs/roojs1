@@ -578,6 +578,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         this.picker().hide();
         this.viewMode = this.startViewMode;
         this.showMode();
+
+        this.inputEl().blur();
         
         this.fireEvent('hidepopup', this, this.date);
         
