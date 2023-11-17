@@ -3,7 +3,6 @@ Roo.onReady(function() {
     Roo.log(document.body);
     var div = document.createElement('div');
     div.innerHTML = document.body.innerHTML;
-    Roo.log(Roo.htmleditor);
     new Roo.htmleditor.FilterHashLink({ node : div });
-    Roo.log(div);
+    Roo.log(div.innerHTML);
 });
