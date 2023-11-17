@@ -4,5 +4,6 @@ Roo.onReady(function() {
     var div = document.createElement('div');
     div.innerHTML = document.body.innerHTML;
     Roo.log(Roo.htmleditor);
-    new Roo.htmleditor.FilterEmpty({ node : div });
+    new Roo.htmleditor.FilterHashLink({ node : div });
+    Roo.log(div);
 });
