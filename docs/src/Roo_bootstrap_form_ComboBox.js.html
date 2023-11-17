@@ -195,8 +195,8 @@
     </span><span class="jsdoc-comment">/**
      * @cfg {Number} maxHeight The maximum height in pixels of the dropdown list before scrollbars are shown (defaults to 300)
      */
-    </span><span class="jsdoc-var">maxHeight</span><span class="jsdoc-syntax">: 300,
-    </span><span class="jsdoc-comment">/**
+    // maxHeight: 300, // not used (change maxHeight in CSS. target the list using listClass)
+    /**
      * @cfg {String} triggerAction The action to execute when the trigger field is activated.  Use 'all' to run the
      * query specified by the allQuery config option (defaults to 'query')
      */
@@ -720,6 +720,8 @@
         </span><span class="jsdoc-comment">//this.list = new Roo.Layer({
         //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
         //});
+
+        </span><span class="jsdoc-var">this.list.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.listClass</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
 
@@ -1826,6 +1828,8 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editable</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keydown'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.listKeyPress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
+
+        </span><span class="jsdoc-var">this.list.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'maxHeight'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'calc(100% - ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.list.getTop</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-string">'px - 50px)'</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'expand'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },

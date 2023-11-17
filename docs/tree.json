@@ -738,6 +738,11 @@
                 "is_class" : true
               },
               {
+                "name" : "Roo.bootstrap.form.MultiLineTag",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
                 "name" : "Roo.bootstrap.form.NumberField",
                 "cn" : [],
                 "is_class" : true
