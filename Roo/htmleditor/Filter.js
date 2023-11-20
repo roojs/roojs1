@@ -87,7 +87,12 @@ Roo.htmleditor.Filter.prototype = {
 
         var elements = document.getElementsByTagName(this.tag);
         for (var el of elements) {
-            Roo.log(el);
+            if (this.replaceTag && false === this.replaceTag(e)) {
+                return;
+            }
+            if (e.hasChildNodes()) {
+                this.walkTag(e);
+            }
         }
     }
 };
