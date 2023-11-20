@@ -21605,11 +21605,14 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
              var a = node.attributes[i];
 
              if(a.name.toLowerCase() == 'href' && a.value.startsWith('#')) {
+                 Roo.log('REMOVE NODE KEEP CHILDREN');
+                 Roo.log(node);
                  this.removeNodeKeepChildren(node);
              }
          }
          
          return false;
+ 
      }
      
  });/**
