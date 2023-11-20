@@ -84,7 +84,8 @@ Roo.htmleditor.Filter.prototype = {
         if(this.tag === false) {
             return;
         }
-        
+
         var a = document.getElementsByTagName(tag);
+        Roo.log(a);
     }
 };
