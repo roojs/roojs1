@@ -25,14 +25,7 @@
              var a = node.attributes[i];
 
              if(a.name.toLowerCase() == 'href' && a.value.startsWith('#')) {
-                 Roo.log('REPLACE HASH LINK');
-                 Roo.log(node);
-                 var ar = Array.from(node.childNodes);
-                 for (var i = 0; i < ar.length; i++) {
-                     node.parentNode.insertBefore(ar[i], node);
-                 }
-                 
-                 node.parentNode.removeChild(node);
+                 this.removeNodeKeepChildren();
              }
          }
          
