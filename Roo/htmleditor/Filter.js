@@ -85,6 +85,14 @@ Roo.htmleditor.Filter.prototype = {
             return;
         }
 
+        Roo.log('WALK TAG');
+        var els = dom.getElementsByTagName(this.tag);
+        Roo.log(els.length);
+
+        for(var i = 0 ; i < els.length; i++) {
+            Roo.log(els.length);
+        }
+
         Roo.each( Array.from(dom.getElementsByTagName(this.tag)), function(e) {
             Roo.log(e);
             if(this.replaceTag) {
