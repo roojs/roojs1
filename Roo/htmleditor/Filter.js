@@ -85,12 +85,10 @@ Roo.htmleditor.Filter.prototype = {
             return;
         }
 
-        Roo.each( Array.from(dom.getElementsByTagName(this.tag)), function( e ) {
-        }, this);
-        for(var i = 0; i < elements.length; i++) {
+        Roo.each( Array.from(dom.getElementsByTagName(this.tag)), function(e) {
             if(this.replaceTag) {
-                this.replaceTag(elements[i]);
+                this.replaceTag(e);
             }
-        }
+        }, this);
     }
 };
