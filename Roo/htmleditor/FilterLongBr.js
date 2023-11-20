@@ -63,6 +63,8 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
             Roo.log(ps);
             ps = ps.previousSibling;
         }
+        Roo.log('FINAL');
+        Roo.log(ps);
         if (!ps || ps.nodeType != 1) {
             return false;
         }
