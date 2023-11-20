@@ -90,14 +90,10 @@ Roo.htmleditor.Filter.prototype = {
         Roo.log(els.length);
 
         for(var i = 0 ; i < els.length; i++) {
+            if(this.replaceTag) {
+                this.replaceTag(els[i]);
+            }
             Roo.log(els.length);
         }
-
-        Roo.each( Array.from(dom.getElementsByTagName(this.tag)), function(e) {
-            Roo.log(e);
-            if(this.replaceTag) {
-                this.replaceTag(e);
-            }
-        }, this);
     }
 };
