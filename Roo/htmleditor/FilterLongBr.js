@@ -21,16 +21,11 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
      
     replaceTag : function(node)
     {
-        Roo.log('REPLACE TAG');
         
         var ps = node.nextSibling;
         while (ps && ps.nodeType == 3 && ps.nodeValue.trim().length < 1) {
-            Roo.log('NEXT');
-            Roo.log(ps);
             ps = ps.nextSibling;
         }
-        Roo.log('FINAL');
-        Roo.log(ps);
         
         if (!ps &&  [ 'TD', 'TH', 'LI', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6' ].indexOf(node.parentNode.tagName) > -1) { 
             node.parentNode.removeChild(node); // remove last BR inside one fo these tags
@@ -45,9 +40,6 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
            
             return false;
         }
-
-        Roo.log('REPLACE TAG MID');
-        Roo.log(node);
         
         
         
@@ -59,12 +51,8 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
         var ps = node.previousSibling;
         
         while (ps && ps.nodeType == 3 && ps.nodeValue.trim().length < 1) {
-            Roo.log('PREVIOUS');
-            Roo.log(ps);
             ps = ps.previousSibling;
         }
-        Roo.log('FINAL');
-        Roo.log(ps);
         if (!ps || ps.nodeType != 1) {
             return false;
         }
@@ -72,8 +60,6 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
         if (!ps || [ 'BR', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6' ].indexOf(ps.tagName) < 0) {
             return false;
         }
-
-        Roo.log('REMOVE');
         
         node.parentNode.removeChild(node); // remove me...
         
