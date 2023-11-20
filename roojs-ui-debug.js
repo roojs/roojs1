@@ -21247,6 +21247,20 @@ Roo.htmleditor.Filter.prototype = {
            
         }
         node.parentNode.removeChild(node);
+    },
+
+    walkTag : function(dom)
+    {
+        if(this.tag === false) {
+            return;
+        }
+
+        var elements = dom.getElementsByTagName(this.tag);
+        Roo.each(Array.from(elements), function(e) {
+            if (this.replaceTag && false === this.replaceTag(e)) {
+                return;
+            }
+        }, this);
     }
 }; 
 
@@ -21524,7 +21538,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
 Roo.htmleditor.FilterParagraph = function(cfg)
 {
     // no need to apply config.
-    this.walk(cfg.node);
+    this.walkTag(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
@@ -21545,6 +21559,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
             node.parentNode.replaceChild(node.ownerDocument.createElement('BR'),node);
             return false; // no need to walk..
         }
+
         var ar = Array.from(node.childNodes);
         for (var i = 0; i < ar.length; i++) {
             node.removeChild(ar[i]);
@@ -21574,7 +21589,8 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
  Roo.htmleditor.FilterHashLink = function(cfg)
  {
      // no need to apply config.
-     this.walk(cfg.node);
+    //  this.walk(cfg.node);
+    this.walkTag(cfg.node);
  }
  
  Roo.extend(Roo.htmleditor.FilterHashLink, Roo.htmleditor.Filter,
@@ -21589,17 +21605,11 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
              var a = node.attributes[i];
 
              if(a.name.toLowerCase() == 'href' && a.value.startsWith('#')) {
-                 var ar = Array.from(node.childNodes);
-                 for (var i = 0; i < ar.length; i++) {
-                     node.parentNode.insertBefore(ar[i], node);
-                 }
-                 
-                 node.parentNode.removeChild(node);
+                 this.removeNodeKeepChildren(node);
              }
          }
          
          return false;
- 
      }
      
  });/**
@@ -21613,7 +21623,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
 Roo.htmleditor.FilterSpan = function(cfg)
 {
     // no need to apply config.
-    this.walk(cfg.node);
+    this.walkTag(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.FilterKeepChildren,
@@ -22212,7 +22222,7 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
 Roo.htmleditor.FilterLongBr = function(cfg)
 {
     // no need to apply config.
-    this.walk(cfg.node);
+    this.walkTag(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
