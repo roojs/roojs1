@@ -85,7 +85,7 @@ Roo.htmleditor.Filter.prototype = {
             return;
         }
 
-        var elements = document.getElementsByTagName(this.tag);
+        var elements = dom.getElementsByTagName(this.tag);
         Roo.log(elements);
         Roo.each(Array.from(elements), function(e) {
             Roo.log(e);
