@@ -87,6 +87,7 @@ Roo.htmleditor.Filter.prototype = {
 
         Roo.log('WALK TAG');
         var els = dom.getElementsByTagName(this.tag);
+        var l = els.length;
         Roo.log(els.length);
 
         for(var i = 0 ; i < els.length; i++) {
