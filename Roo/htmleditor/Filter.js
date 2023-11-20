@@ -87,17 +87,12 @@ Roo.htmleditor.Filter.prototype = {
 
         var elements = document.getElementsByTagName(this.tag);
         Roo.each(Array.from(elements), function(e) {
-            Roo.log(e);
-        });
-        /*
-        for (var el of elements) {
             if (this.replaceTag && false === this.replaceTag(e)) {
                 return;
             }
             if (e.hasChildNodes()) {
-                this.walkTag(e);
+                this.walk(e);
             }
-        }
-        */
+        });
     }
 };
