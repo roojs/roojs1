@@ -27103,12 +27103,16 @@ Roo.htmleditor.Filter.prototype = {
             return;
         }
 
-        Roo.each( Array.from(dom.getElementsByTagName(this.tag)), function(e) {
-            Roo.log(e);
+        Roo.log('WALK TAG');
+        var els = dom.getElementsByTagName(this.tag);
+        Roo.log(els.length);
+
+        for(var i = 0 ; i < els.length; i++) {
             if(this.replaceTag) {
-                this.replaceTag(e);
+                this.replaceTag(els[i]);
             }
-        }, this);
+            Roo.log(els.length);
+        }
     }
 }; 
 
