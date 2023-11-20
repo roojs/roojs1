@@ -9,7 +9,8 @@
  Roo.htmleditor.FilterHashLink = function(cfg)
  {
      // no need to apply config.
-     this.walk(cfg.node);
+    //  this.walk(cfg.node);
+    this.walkTag(cfg.node);
  }
  
  Roo.extend(Roo.htmleditor.FilterHashLink, Roo.htmleditor.Filter,
