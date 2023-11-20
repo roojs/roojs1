@@ -45757,15 +45757,19 @@ Roo.htmleditor.Filter.prototype = {
             return;
         }
 
-        Roo.log('WALK TAG');
         var els = dom.getElementsByTagName(this.tag);
-        Roo.log(els.length);
+        var l = els.length;
 
         for(var i = 0 ; i < els.length; i++) {
             if(this.replaceTag) {
                 this.replaceTag(els[i]);
             }
-            Roo.log(els.length);
+
+            // a node is removed
+            if(l != els.length) {
+                l = els.length;
+                i --;
+            }
         }
     }
 }; 
