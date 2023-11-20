@@ -44,8 +44,8 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
         // <p> &nbsp; </p>
         
         // double BR.
-        // node.parentNode.insertBefore(node.ownerDocument.createElement('BR'), node);
-        // node.parentNode.insertBefore(node.ownerDocument.createElement('BR'), node);
+        node.parentNode.insertBefore(node.ownerDocument.createElement('BR'), node);
+        node.parentNode.insertBefore(node.ownerDocument.createElement('BR'), node);
         node.parentNode.removeChild(node);
         
         return false;
