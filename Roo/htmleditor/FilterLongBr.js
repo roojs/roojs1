@@ -21,6 +21,7 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
      
     replaceTag : function(node)
     {
+        Roo.log('REPLACE TAG');
         
         var ps = node.nextSibling;
         while (ps && ps.nodeType == 3 && ps.nodeValue.trim().length < 1) {
@@ -45,7 +46,7 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
             return false;
         }
 
-        Roo.log('REPLACE TAG');
+        Roo.log('REPLACE TAG MID');
         Roo.log(node);
         
         
