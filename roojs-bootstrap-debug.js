@@ -27455,7 +27455,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
              if(a.name.toLowerCase() == 'href' && a.value.startsWith('#')) {
                  Roo.log('REMOVE NODE KEEP CHILDREN');
                  Roo.log(node);
-                 this.removeNodeKeepChildren(node);
+                //  this.removeNodeKeepChildren(node);
              }
          }
          
