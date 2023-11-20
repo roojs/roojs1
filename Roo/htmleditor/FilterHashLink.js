@@ -28,6 +28,7 @@
                  Roo.log('REMOVE NODE KEEP CHILDREN');
                  Roo.log(node);
                 //  this.removeNodeKeepChildren(node);
+                Roo.log('?');
              }
          }
          
