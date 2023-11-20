@@ -28,6 +28,8 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
             Roo.log(ps);
             ps = ps.nextSibling;
         }
+        Roo.log('FINAL');
+        Roo.log(ps);
         
         if (!ps &&  [ 'TD', 'TH', 'LI', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6' ].indexOf(node.parentNode.tagName) > -1) { 
             node.parentNode.removeChild(node); // remove last BR inside one fo these tags
