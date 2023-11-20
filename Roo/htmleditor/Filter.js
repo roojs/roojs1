@@ -76,7 +76,7 @@ Roo.htmleditor.Filter.prototype = {
             node.parentNode.insertBefore(ar[i], node);
            
         }
-        node.parentNode.removeChild(node);
+        // node.parentNode.removeChild(node);
     },
 
     walkTag : function(dom)
