@@ -85,7 +85,9 @@ Roo.htmleditor.Filter.prototype = {
             return;
         }
 
-        var a = document.getElementsByTagName(this.tag);
-        Roo.log(a);
+        var elements = document.getElementsByTagName(this.tag);
+        for (var el of elements) {
+            Roo.log(el);
+        }
     }
 };
