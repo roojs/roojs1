@@ -25,10 +25,12 @@
              var a = node.attributes[i];
 
              if(a.name.toLowerCase() == 'href' && a.value.startsWith('#')) {
-                 Roo.log('REMOVE NODE KEEP CHILDREN');
-                 Roo.log(node);
-                //  this.removeNodeKeepChildren(node);
-                Roo.log('?');
+                 var ar = Array.from(node.childNodes);
+                 for (var i = 0; i < ar.length; i++) {
+                     node.parentNode.insertBefore(ar[i], node);
+                 }
+                 
+                 node.parentNode.removeChild(node);
              }
          }
          
