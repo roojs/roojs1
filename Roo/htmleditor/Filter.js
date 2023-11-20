@@ -81,6 +81,6 @@ Roo.htmleditor.Filter.prototype = {
 
     walkTag : function(dom)
     {
-        var a = document.getElementsByTagName('');
+        var a = document.getElementsByTagName(tag);
     }
 };
