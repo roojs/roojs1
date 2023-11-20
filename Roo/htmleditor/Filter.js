@@ -77,5 +77,10 @@ Roo.htmleditor.Filter.prototype = {
            
         }
         node.parentNode.removeChild(node);
+    },
+
+    walkTag : function(dom)
+    {
+
     }
 };
