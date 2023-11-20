@@ -9,7 +9,7 @@
 Roo.htmleditor.FilterSpan = function(cfg)
 {
     // no need to apply config.
-    this.walkTag(cfg.node);
+    this.walk(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.FilterKeepChildren,
