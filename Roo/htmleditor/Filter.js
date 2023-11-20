@@ -81,6 +81,7 @@ Roo.htmleditor.Filter.prototype = {
 
     walkTag : function(dom)
     {
+        Roo.log('WALK TAG');
         if(this.tag === false) {
             return;
         }
