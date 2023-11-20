@@ -24,6 +24,7 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
         
         var ps = node.nextSibling;
         while (ps && ps.nodeType == 3 && ps.nodeValue.trim().length < 1) {
+            Roo.log('NEXT');
             ps = ps.nextSibling;
         }
         
