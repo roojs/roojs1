@@ -27099,8 +27099,6 @@ Roo.htmleditor.Filter.prototype = {
 
     walkTag : function(dom)
     {
-        this.walk(dom);
-        return;
         if(this.tag === false) {
             return;
         }
