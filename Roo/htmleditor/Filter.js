@@ -85,17 +85,17 @@ Roo.htmleditor.Filter.prototype = {
             return;
         }
 
-        Roo.log('WALK TAG');
         var els = dom.getElementsByTagName(this.tag);
         var l = els.length;
-        Roo.log(els.length);
 
         for(var i = 0 ; i < els.length; i++) {
             if(this.replaceTag) {
                 this.replaceTag(els[i]);
             }
-            if(l == els - 1) {
-                l = els - 1;
+
+            // a node is removed
+            if(l != els.length) {
+                l = els.length;
                 i --;
             }
         }

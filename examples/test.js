@@ -1,9 +1,6 @@
 Roo.onReady(function() {
-    var div = document.createElement('div');
-    div.innerHTML = document.body.innerHTML;
-    new Roo.htmleditor.FilterHashLink({ node : div });
-    new Roo.htmleditor.FilterParagraph({ node : div });
-    new Roo.htmleditor.FilterLongBr({ node : div });
-    new Roo.htmleditor.FilterSpan({ node : div });
-    document.body.appendChild(div);
+    new Roo.htmleditor.FilterHashLink({ node : document.body });
+    new Roo.htmleditor.FilterParagraph({ node : document.body });
+    new Roo.htmleditor.FilterLongBr({ node : document.body });
+    new Roo.htmleditor.FilterSpan({ node : document.body });
 });
