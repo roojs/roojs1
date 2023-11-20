@@ -45758,11 +45758,11 @@ Roo.htmleditor.Filter.prototype = {
         }
 
         var elements = dom.getElementsByTagName(this.tag);
-        Roo.each(Array.from(elements), function(e) {
-            if (this.replaceTag && false === this.replaceTag(e)) {
-                return;
+        for(var i = 0; i < elements.length; i++) {
+            if(this.replaceTag) {
+                this.replaceTag(elements[i]);
             }
-        }, this);
+        }
     }
 }; 
 
@@ -46107,8 +46107,6 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
              var a = node.attributes[i];
 
              if(a.name.toLowerCase() == 'href' && a.value.startsWith('#')) {
-                 Roo.log('REMOVE NODE KEEP CHILDREN');
-                 Roo.log(node);
                  this.removeNodeKeepChildren(node);
              }
          }
