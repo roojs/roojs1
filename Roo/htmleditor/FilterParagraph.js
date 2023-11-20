@@ -22,7 +22,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
      
     replaceTag : function(node)
     {
-        Roo.log(replaceTag);
+        Roo.log('REPALCE TAG');
         
         if (node.childNodes.length == 1 &&
             node.childNodes[0].nodeType == 3 &&
