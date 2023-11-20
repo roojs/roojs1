@@ -21,6 +21,7 @@
       
      replaceTag : function(node)
      {
+         Roo.log(node);
          for(var i = 0; i < node.attributes.length; i ++) {
              var a = node.attributes[i];
 
