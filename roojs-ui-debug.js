@@ -21255,12 +21255,12 @@ Roo.htmleditor.Filter.prototype = {
             return;
         }
 
-        var elements = dom.getElementsByTagName(this.tag);
-        for(var i = 0; i < elements.length; i++) {
+        Roo.each( Array.from(dom.getElementsByTagName(this.tag)), function(e) {
+            Roo.log(e);
             if(this.replaceTag) {
-                this.replaceTag(elements[i]);
+                this.replaceTag(e);
             }
-        }
+        }, this);
     }
 }; 
 
