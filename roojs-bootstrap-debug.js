@@ -27099,16 +27099,13 @@ Roo.htmleditor.Filter.prototype = {
 
     walkTag : function(dom)
     {
-        this.walk(dom);
         if(this.tag === false) {
             return;
         }
 
         var elements = dom.getElementsByTagName(this.tag);
         Roo.each(Array.from(elements), function(e) {
-            if (this.replaceTag && false === this.replaceTag(e)) {
-                return;
-            }
+            this.replaceTag && this.replaceTag(e);
         }, this);
     }
 }; 
