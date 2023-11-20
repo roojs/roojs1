@@ -72,6 +72,8 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
         if (!ps || [ 'BR', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6' ].indexOf(ps.tagName) < 0) {
             return false;
         }
+
+        Roo.log('REMOVE');
         
         node.parentNode.removeChild(node); // remove me...
         
