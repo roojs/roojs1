@@ -90,9 +90,6 @@ Roo.htmleditor.Filter.prototype = {
             if (this.replaceTag && false === this.replaceTag(e)) {
                 return;
             }
-            if (e.hasChildNodes()) {
-                this.walk(e);
-            }
         });
     }
 };
