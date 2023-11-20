@@ -94,7 +94,10 @@ Roo.htmleditor.Filter.prototype = {
             if(this.replaceTag) {
                 this.replaceTag(els[i]);
             }
-            Roo.log(els.length);
+            if(l == els - 1) {
+                l = els - 1;
+                i --;
+            }
         }
     }
 };
