@@ -22,15 +22,12 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
      
     replaceTag : function(node)
     {
-        Roo.log('REPALCE TAG');
-        Roo.log(node);
         
         if (node.childNodes.length == 1 &&
             node.childNodes[0].nodeType == 3 &&
             node.childNodes[0].textContent.trim().length < 1
             ) {
             // remove and replace with '<BR>';
-            Roo.log('REPLACE');
             node.parentNode.replaceChild(node.ownerDocument.createElement('BR'),node);
             return false; // no need to walk..
         }
