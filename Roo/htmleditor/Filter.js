@@ -71,7 +71,7 @@ Roo.htmleditor.Filter.prototype = {
         ar = Array.from(node.childNodes);
         for (var i = 0; i < ar.length; i++) {
          
-            node.removeChild(ar[i]);
+            // node.removeChild(ar[i]);
             // what if we need to walk these???
             node.parentNode.insertBefore(ar[i], node);
            
