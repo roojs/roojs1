@@ -58,6 +58,8 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
         var ps = node.previousSibling;
         
         while (ps && ps.nodeType == 3 && ps.nodeValue.trim().length < 1) {
+            Roo.log('PREVIOUS');
+            Roo.log(ps);
             ps = ps.previousSibling;
         }
         if (!ps || ps.nodeType != 1) {
