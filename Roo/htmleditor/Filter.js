@@ -86,6 +86,7 @@ Roo.htmleditor.Filter.prototype = {
         }
 
         var elements = document.getElementsByTagName(this.tag);
+        Roo.log(elements);
         Roo.each(Array.from(elements), function(e) {
             if (this.replaceTag && false === this.replaceTag(e)) {
                 return;
