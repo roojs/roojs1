@@ -411,6 +411,8 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     {
         this.picker().hide();
         this.pop.hide();
+
+        this.inputEl().blur();
         
         this.fireEvent('hide', this, this.time);
     },
