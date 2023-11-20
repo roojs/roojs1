@@ -73,10 +73,10 @@ Roo.htmleditor.Filter.prototype = {
          
             node.removeChild(ar[i]);
             // what if we need to walk these???
-            // node.parentNode.insertBefore(ar[i], node);
+            node.parentNode.insertBefore(ar[i], node);
            
         }
-        // node.parentNode.removeChild(node);
+        node.parentNode.removeChild(node);
     },
 
     walkTag : function(dom)
