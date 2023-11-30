@@ -107,6 +107,6 @@ Roo.htmleditor.Filter.prototype = {
             if(this.replaceTag) {
                 this.replaceTag(e);
             }
-        });
+        }, this);
     }
 };
