@@ -86,6 +86,8 @@ Roo.htmleditor.Filter.prototype = {
         }
 
         var els = dom.getElementsByTagName(this.tag);
+
+        /*
         var l = els.length;
 
         for(var i = 0 ; i < els.length; i++) {
@@ -99,5 +101,10 @@ Roo.htmleditor.Filter.prototype = {
                 i --;
             }
         }
+        */
+
+        Roo.each(Array.from(els), function(e){
+            Roo.log(e);
+        });
     }
 };
