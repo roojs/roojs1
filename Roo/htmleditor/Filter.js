@@ -79,7 +79,7 @@ Roo.htmleditor.Filter.prototype = {
         node.parentNode.removeChild(node);
     },
 
-    walkTag : function(dom)
+    searchTag : function(dom)
     {
         if(this.tag === false) {
             return;
