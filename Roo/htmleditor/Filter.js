@@ -106,6 +106,9 @@ Roo.htmleditor.Filter.prototype = {
 
         Roo.each(Array.from(els), function(e){
             Roo.log(e);
+            if(this.replaceTag) {
+                this.replaceTag(e);
+            }
         });
     }
 };
