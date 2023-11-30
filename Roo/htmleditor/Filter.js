@@ -79,25 +79,18 @@ Roo.htmleditor.Filter.prototype = {
         node.parentNode.removeChild(node);
     },
 
-    walkTag : function(dom)
+    searchTag : function(dom)
     {
         if(this.tag === false) {
             return;
         }
 
         var els = dom.getElementsByTagName(this.tag);
-        var l = els.length;
 
-        for(var i = 0 ; i < els.length; i++) {
+        Roo.each(Array.from(els), function(e){
             if(this.replaceTag) {
-                this.replaceTag(els[i]);
+                this.replaceTag(e);
             }
-
-            // a node is removed
-            if(l != els.length) {
-                l = els.length;
-                i --;
-            }
-        }
+        }, this);
     }
 };

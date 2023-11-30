@@ -21249,26 +21249,20 @@ Roo.htmleditor.Filter.prototype = {
         node.parentNode.removeChild(node);
     },
 
-    walkTag : function(dom)
+    searchTag : function(dom)
     {
         if(this.tag === false) {
             return;
         }
 
         var els = dom.getElementsByTagName(this.tag);
-        var l = els.length;
 
-        for(var i = 0 ; i < els.length; i++) {
+        Roo.each(Array.from(els), function(e){
+            Roo.log(e);
             if(this.replaceTag) {
-                this.replaceTag(els[i]);
+                this.replaceTag(e);
             }
-
-            // a node is removed
-            if(l != els.length) {
-                l = els.length;
-                i --;
-            }
-        }
+        }, this);
     }
 }; 
 
@@ -21546,7 +21540,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
 Roo.htmleditor.FilterParagraph = function(cfg)
 {
     // no need to apply config.
-    this.walkTag(cfg.node);
+    this.searchTag(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
@@ -21598,7 +21592,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
  {
      // no need to apply config.
     //  this.walk(cfg.node);
-    this.walkTag(cfg.node);
+    this.searchTag(cfg.node);
  }
  
  Roo.extend(Roo.htmleditor.FilterHashLink, Roo.htmleditor.Filter,
@@ -21632,7 +21626,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
 Roo.htmleditor.FilterSpan = function(cfg)
 {
     // no need to apply config.
-    this.walkTag(cfg.node);
+    this.searchTag(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.FilterKeepChildren,
@@ -22231,7 +22225,7 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
 Roo.htmleditor.FilterLongBr = function(cfg)
 {
     // no need to apply config.
-    this.walkTag(cfg.node);
+    this.searchTag(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
@@ -22262,8 +22256,6 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
            
             return false;
         }
-        
-        
         
         
         

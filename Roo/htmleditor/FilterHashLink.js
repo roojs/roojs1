@@ -10,7 +10,7 @@
  {
      // no need to apply config.
     //  this.walk(cfg.node);
-    this.walkTag(cfg.node);
+    this.searchTag(cfg.node);
  }
  
  Roo.extend(Roo.htmleditor.FilterHashLink, Roo.htmleditor.Filter,
