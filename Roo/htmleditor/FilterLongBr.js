@@ -41,7 +41,7 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
             return false;
         }
         
-        
+        Roo.log('MIDEELE');
         
         
         
