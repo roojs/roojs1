@@ -87,22 +87,6 @@ Roo.htmleditor.Filter.prototype = {
 
         var els = dom.getElementsByTagName(this.tag);
 
-        /*
-        var l = els.length;
-
-        for(var i = 0 ; i < els.length; i++) {
-            if(this.replaceTag) {
-                this.replaceTag(els[i]);
-            }
-
-            // a node is removed
-            if(l != els.length) {
-                l = els.length;
-                i --;
-            }
-        }
-        */
-
         Roo.each(Array.from(els), function(e){
             if(this.replaceTag) {
                 this.replaceTag(e);
