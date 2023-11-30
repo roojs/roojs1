@@ -104,6 +104,7 @@ Roo.htmleditor.Filter.prototype = {
         */
 
         Roo.each(Array.from(els), function(e){
+            Roo.log(this);
             if(this.replaceTag) {
                 this.replaceTag(e);
             }
