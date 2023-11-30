@@ -102,6 +102,7 @@ Roo.htmleditor.Filter.prototype = {
             }
         }
         */
+       Roo.log('a');
 
         Roo.each(Array.from(els), function(e){
             Roo.log(e);
