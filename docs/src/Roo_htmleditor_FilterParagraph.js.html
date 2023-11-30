@@ -10,7 +10,7 @@
 </span><span class="jsdoc-var">Roo.htmleditor.FilterParagraph </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
 {
     </span><span class="jsdoc-comment">// no need to apply config.
-    </span><span class="jsdoc-var">this.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.searchTag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
 }
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.htmleditor.FilterParagraph</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.htmleditor.Filter</span><span class="jsdoc-syntax">,
@@ -31,6 +31,7 @@
             </span><span class="jsdoc-var">node.parentNode.replaceChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.ownerDocument.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'BR'</span><span class="jsdoc-syntax">),</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// no need to walk..
         </span><span class="jsdoc-syntax">}
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">ar.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
             </span><span class="jsdoc-var">node.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);

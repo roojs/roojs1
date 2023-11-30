@@ -1378,6 +1378,11 @@
             "is_class" : false
           },
           {
+            "name" : "Roo.htmleditor.FilterHashLink",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
             "name" : "Roo.htmleditor.FilterKeepChildren",
             "cn" : [],
             "is_class" : false

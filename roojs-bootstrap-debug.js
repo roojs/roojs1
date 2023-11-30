@@ -27110,7 +27110,6 @@ Roo.htmleditor.Filter.prototype = {
         var els = dom.getElementsByTagName(this.tag);
 
         Roo.each(Array.from(els), function(e){
-            Roo.log(e);
             if(this.replaceTag) {
                 this.replaceTag(e);
             }

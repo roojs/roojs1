@@ -9,7 +9,7 @@
 </span><span class="jsdoc-var">Roo.htmleditor.FilterLongBr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
 {
     </span><span class="jsdoc-comment">// no need to apply config.
-    </span><span class="jsdoc-var">this.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.searchTag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
 }
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.htmleditor.FilterLongBr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.htmleditor.Filter</span><span class="jsdoc-syntax">,
@@ -40,8 +40,6 @@
 
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
-
-
 
 
 
