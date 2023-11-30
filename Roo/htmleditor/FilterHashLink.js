@@ -9,7 +9,8 @@
  Roo.htmleditor.FilterHashLink = function(cfg)
  {
      // no need to apply config.
-     this.walk(cfg.node);
+    //  this.walk(cfg.node);
+    this.searchTag(cfg.node);
  }
  
  Roo.extend(Roo.htmleditor.FilterHashLink, Roo.htmleditor.Filter,
@@ -24,12 +25,7 @@
              var a = node.attributes[i];
 
              if(a.name.toLowerCase() == 'href' && a.value.startsWith('#')) {
-                 var ar = Array.from(node.childNodes);
-                 for (var i = 0; i < ar.length; i++) {
-                     node.parentNode.insertBefore(ar[i], node);
-                 }
-                 
-                 node.parentNode.removeChild(node);
+                 this.removeNodeKeepChildren(node);
              }
          }
          

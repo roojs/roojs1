@@ -21247,6 +21247,22 @@ Roo.htmleditor.Filter.prototype = {
            
         }
         node.parentNode.removeChild(node);
+    },
+
+    searchTag : function(dom)
+    {
+        if(this.tag === false) {
+            return;
+        }
+
+        var els = dom.getElementsByTagName(this.tag);
+
+        Roo.each(Array.from(els), function(e){
+            Roo.log(e);
+            if(this.replaceTag) {
+                this.replaceTag(e);
+            }
+        }, this);
     }
 }; 
 
@@ -21524,7 +21540,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
 Roo.htmleditor.FilterParagraph = function(cfg)
 {
     // no need to apply config.
-    this.walk(cfg.node);
+    this.searchTag(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
@@ -21545,6 +21561,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
             node.parentNode.replaceChild(node.ownerDocument.createElement('BR'),node);
             return false; // no need to walk..
         }
+
         var ar = Array.from(node.childNodes);
         for (var i = 0; i < ar.length; i++) {
             node.removeChild(ar[i]);
@@ -21564,6 +21581,41 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
     }
     
 });/**
+ * @class Roo.htmleditor.FilterHashLink
+ * remove hash link
+ * @constructor
+ * Run a new Hash Link Filter
+ * @param {Object} config Configuration options
+ */
+
+ Roo.htmleditor.FilterHashLink = function(cfg)
+ {
+     // no need to apply config.
+    //  this.walk(cfg.node);
+    this.searchTag(cfg.node);
+ }
+ 
+ Roo.extend(Roo.htmleditor.FilterHashLink, Roo.htmleditor.Filter,
+ {
+      
+     tag : 'A',
+     
+      
+     replaceTag : function(node)
+     {
+         for(var i = 0; i < node.attributes.length; i ++) {
+             var a = node.attributes[i];
+
+             if(a.name.toLowerCase() == 'href' && a.value.startsWith('#')) {
+                 this.removeNodeKeepChildren(node);
+             }
+         }
+         
+         return false;
+ 
+     }
+     
+ });/**
  * @class Roo.htmleditor.FilterSpan
  * filter span's with no attributes out..
  * @constructor
@@ -21574,7 +21626,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
 Roo.htmleditor.FilterSpan = function(cfg)
 {
     // no need to apply config.
-    this.walk(cfg.node);
+    this.searchTag(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.FilterKeepChildren,
@@ -22173,7 +22225,7 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
 Roo.htmleditor.FilterLongBr = function(cfg)
 {
     // no need to apply config.
-    this.walk(cfg.node);
+    this.searchTag(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
@@ -22204,8 +22256,6 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
            
             return false;
         }
-        
-        
         
         
         
@@ -26193,6 +26243,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             // should be fonts..
             new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', ':' ]} );
             new Roo.htmleditor.FilterParagraph({ node : d });
+            new Roo.htmleditor.FilterHashLink({node : d});
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
             new Roo.htmleditor.FilterComment({ node : d });

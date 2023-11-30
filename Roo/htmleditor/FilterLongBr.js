@@ -9,7 +9,7 @@
 Roo.htmleditor.FilterLongBr = function(cfg)
 {
     // no need to apply config.
-    this.walk(cfg.node);
+    this.searchTag(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
@@ -40,8 +40,6 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
            
             return false;
         }
-        
-        
         
         
         
