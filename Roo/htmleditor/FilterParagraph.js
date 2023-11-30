@@ -28,7 +28,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
             node.childNodes[0].textContent.trim().length < 1
             ) {
             // remove and replace with '<BR>';
-            node.parentNode.replaceChild(node.ownerDocument.createElement('HR'),node);
+            node.parentNode.replaceChild(node.ownerDocument.createElement('BR'),node);
             return false; // no need to walk..
         }
 
