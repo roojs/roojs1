@@ -34187,9 +34187,6 @@ Roo.bootstrap.PagingToolbar = function(config)
     Roo.bootstrap.PagingToolbar.superclass.constructor.call(this, config);
     
     this.cursor = 0;
-
-    Roo.log('PAGING TOOL BAR');
-    Roo.log(this.ds);
     
     if (this.ds) { 
         this.bind(this.ds);
@@ -34386,6 +34383,9 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.nav.Simplebar, {
         var d = this.getPageData(),
             ap = d.activePage,
             ps = d.pages;
+
+        Roo.log('onLoad');
+        Roo.log(d);
         
         
         this.afterTextEl.dom.innerHTML = String.format(this.afterPageText, d.pages);
