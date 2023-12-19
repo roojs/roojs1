@@ -39,9 +39,6 @@ Roo.bootstrap.PagingToolbar = function(config)
     Roo.bootstrap.PagingToolbar.superclass.constructor.call(this, config);
     
     this.cursor = 0;
-
-    Roo.log('PAGING TOOL BAR');
-    Roo.log(this.ds);
     
     if (this.ds) { 
         this.bind(this.ds);
