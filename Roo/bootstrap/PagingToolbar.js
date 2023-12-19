@@ -257,6 +257,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.nav.Simplebar, {
         var total = this.ds.getTotalCount();
         Roo.log('total:' + total);
         Roo.log('cursor: ' + this.cursor);
+        Roo.log('pagesize: ' + this.pageSize);
         return {
             total : total,
             activePage : Math.ceil((this.cursor+this.pageSize)/this.pageSize),
