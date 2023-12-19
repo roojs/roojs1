@@ -34406,6 +34406,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.nav.Simplebar, {
         Roo.log('total:' + total);
         Roo.log('cursor: ' + this.cursor);
         Roo.log('pagesize: ' + this.pageSize);
+        Roo.log(total/this.pageSize);
         return {
             total : total,
             activePage : Math.ceil((this.cursor+this.pageSize)/this.pageSize),
