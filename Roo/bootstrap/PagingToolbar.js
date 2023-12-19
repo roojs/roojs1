@@ -238,6 +238,8 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.nav.Simplebar, {
 
         Roo.log('onLoad');
         Roo.log(d);
+        Roo.log(this.pageSize);
+        
         
         
         this.afterTextEl.dom.innerHTML = String.format(this.afterPageText, d.pages);
