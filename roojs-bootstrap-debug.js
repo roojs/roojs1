@@ -34383,11 +34383,6 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.nav.Simplebar, {
         var d = this.getPageData(),
             ap = d.activePage,
             ps = d.pages;
-
-        Roo.log('onLoad');
-        Roo.log(d);
-        Roo.log(this.pageSize);
-        
         
         
         this.afterTextEl.dom.innerHTML = String.format(this.afterPageText, d.pages);
@@ -34403,10 +34398,6 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.nav.Simplebar, {
     // private
     getPageData : function(){
         var total = this.ds.getTotalCount();
-        Roo.log('total:' + total);
-        Roo.log('cursor: ' + this.cursor);
-        Roo.log('pagesize: ' + this.pageSize);
-        Roo.log(total/this.pageSize);
         return {
             total : total,
             activePage : Math.ceil((this.cursor+this.pageSize)/this.pageSize),
