@@ -735,6 +735,11 @@ return false;}if(this.vtype){var vt=Roo.form.VTypes;if(!vt[this.vtype](A,this)){
 }var el=this.el;var v=el.dom.value;var d=document.createElement('div');d.appendChild(document.createTextNode(v));v=d.innerHTML;d=null;v+="&#160;";var w=Math.min(this.growMax,Math.max(this.metrics.getWidth(v)+10,this.growMin));this.el.setWidth(w);this.fireEvent("autosize",this,w);
 },SafariOnKeyDown:function(A){var B=false;if(this.el.dom.selectionEnd>0){B=(this.el.dom.selectionEnd-this.el.dom.selectionStart-this.getValue().length==0)?true:false;}if(((A.getKey()==8||A.getKey()==46)&&this.getValue().length==1)){A.preventDefault();this.setValue('');
 return;}if(B&&A.getCharCode()>31){A.preventDefault();var cc=String.fromCharCode(A.getCharCode());this.setValue(A.shiftKey?cc:cc.toLowerCase());}}});
+// Roo/form/Password.js
+Roo.form.Password=function(A){Roo.form.Password.superclass.constructor.call(this,A);this.inputType='password';};Roo.extend(Roo.form.Password,Roo.form.TextField,{onRender:function(ct,position){Roo.form.Password.superclass.onRender.call(this,ct,position);this.el.addClass('form-password');
+this.wrap=this.inputEl().wrap({cls:'password-wrap'});this.toggle=this.wrap.createChild({tag:'Button',cls:'password-toggle'});this.toggleEl().addClass('password-hidden');this.toggleEl().on('click',this.onToggleClick,this);;},toggleEl:function(){return this.el.select('button.password-toggle',true).first();
+},onToggleClick:function(e){var input=this.inputEl();var toggle=this.toggleEl();toggle.removeClass(['password-visible','password-hidden']);if(input.attr('type')=='password'){input.attr('type','text');toggle.addClass('password-visible');}else{input.attr('type','password');
+toggle.addClass('password-hidden');}}}
 // Roo/form/Hidden.js
 Roo.form.Hidden=function(A){Roo.form.Hidden.superclass.constructor.call(this,A);};Roo.extend(Roo.form.Hidden,Roo.form.TextField,{fieldLabel:'',inputType:'hidden',width:50,allowBlank:true,labelSeparator:'',hidden:true,itemCls:'x-form-item-display-none'});
 // Roo/form/TriggerField.js
