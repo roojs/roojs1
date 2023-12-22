@@ -7,7 +7,7 @@ Roo.form.Password = function(config){
 Roo.extend(Roo.form.Password, Roo.form.TextField,  {
     onRender : function(ct, position)
     {
-        Roo.bootstrap.form.Password.superclass.onRender.call(this, ct, position);
+        Roo.form.Password.superclass.onRender.call(this, ct, position);
 
         this.el.addClass('form-password');
 
