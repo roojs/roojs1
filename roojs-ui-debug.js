@@ -16973,11 +16973,6 @@ Roo.extend(Roo.form.Password, Roo.form.TextField,  {
 
         this.toggleEl().on('click', this.onToggleClick, this);;
     },
-
-    initEvents : function()
-    {
-        Roo.form.Password.superclass.initEvents.call(this);
-    },
     
     parentEl : function()
     {
@@ -16999,7 +16994,6 @@ Roo.extend(Roo.form.Password, Roo.form.TextField,  {
         if(input.attr('type') == 'password') {
             input.attr('type', 'text');
             toggle.addClass('password-visible');
-            Roo.log(input);
         }
         else {
             input.attr('type', 'password');
