@@ -31,7 +31,7 @@ Roo.extend(Roo.form.Password, Roo.form.TextField,  {
     parentEl : function()
     {
         return this.el.findParent('.x-form-element', 5, true);
-    }
+    },
 
     toggleEl: function()
     {
