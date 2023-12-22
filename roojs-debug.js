@@ -41433,6 +41433,8 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
             this.setValue('');
             return;
         }
+
+        Roo.log('ISSELECTALL');
         
         if(isSelectAll && event.getCharCode() > 31){ // backspace and delete key
             
