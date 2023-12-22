@@ -16983,8 +16983,6 @@ Roo.extend(Roo.form.Password, Roo.form.TextField,  {
 
     onPaste : function(e)
     {
-        Roo.log('On Paste');
-        Roo.log(e);
     },
     
     parentEl : function()
