@@ -9,9 +9,7 @@ Roo.extend(Roo.form.Password, Roo.form.TextField,  {
     {
         Roo.form.Password.superclass.onRender.call(this, ct, position);
 
-        var elp = this.el.findParent('.x-form-element', 5, true);
-
-        elp.addClass('form-password');
+        this.parentEl().addClass('form-password');
 
         this.wrap = this.el.wrap({
             cls : 'password-wrap'
