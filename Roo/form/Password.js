@@ -9,7 +9,9 @@ Roo.extend(Roo.form.Password, Roo.form.TextField,  {
     {
         Roo.form.Password.superclass.onRender.call(this, ct, position);
 
-        // this.el.addClass('form-password');
+        var elp = this.el.findParent('.x-form-element', 5, true);
+
+        elp.addClass('form-password');
 
         this.wrap = this.el.wrap({
             cls : 'password-wrap'
@@ -25,6 +27,11 @@ Roo.extend(Roo.form.Password, Roo.form.TextField,  {
 
         this.toggleEl().on('click', this.onToggleClick, this);;
     },
+    
+    parentEl : function()
+    {
+        return this.el.findParent('.x-form-element', 5, true);
+    }
 
     toggleEl: function()
     {
