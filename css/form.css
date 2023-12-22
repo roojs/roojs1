@@ -76,6 +76,7 @@
 
 .form-password .password-wrap {
     display: flex;
+    width: 200px;
 }
 
 .form-password .password-toggle {
