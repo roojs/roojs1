@@ -16957,9 +16957,9 @@ Roo.extend(Roo.form.Password, Roo.form.TextField,  {
     {
         Roo.form.Password.superclass.onRender.call(this, ct, position);
 
-        this.el.addClass('form-password');
+        this.parentEl().addClass('form-password');
 
-        this.wrap = this.inputEl().wrap({
+        this.wrap = this.el.wrap({
             cls : 'password-wrap'
         });
 
@@ -16973,15 +16973,20 @@ Roo.extend(Roo.form.Password, Roo.form.TextField,  {
 
         this.toggleEl().on('click', this.onToggleClick, this);;
     },
+    
+    parentEl : function()
+    {
+        return this.el.findParent('.x-form-element', 5, true);
+    },
 
     toggleEl: function()
     {
-        return this.el.select('button.password-toggle',true).first();
+        return this.parentEl().select('button.password-toggle',true).first();
     },
 
     onToggleClick : function(e) 
     {
-        var input = this.inputEl();
+        var input = this.el;
         var toggle = this.toggleEl();
 
         toggle.removeClass(['password-visible', 'password-hidden']);
