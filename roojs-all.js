@@ -1684,7 +1684,7 @@ return false;}if(this.vtype){var vt=Roo.form.VTypes;if(!vt[this.vtype](A,this)){
 return;}if(B&&A.getCharCode()>31){A.preventDefault();var cc=String.fromCharCode(A.getCharCode());this.setValue(A.shiftKey?cc:cc.toLowerCase());}}});
 // Roo/form/Password.js
 Roo.form.Password=function(A){Roo.form.Password.superclass.constructor.call(this,A);this.inputType='password';};Roo.extend(Roo.form.Password,Roo.form.TextField,{onRender:function(ct,A){Roo.form.Password.superclass.onRender.call(this,ct,A);this.parentEl().addClass('form-password');
-this.wrap=this.el.wrap({cls:'password-wrap'});this.toggle=this.wrap.createChild({tag:'Button',cls:'password-toggle'});this.toggleEl().addClass('password-hidden');this.toggleEl().on('click',this.onToggleClick,this);;},initEvents:function(){Roo.form.Password.superclass.initEvents.call(this,ct,position);
+this.wrap=this.el.wrap({cls:'password-wrap'});this.toggle=this.wrap.createChild({tag:'Button',cls:'password-toggle'});this.toggleEl().addClass('password-hidden');this.toggleEl().on('click',this.onToggleClick,this);;},initEvents:function(){Roo.form.Password.superclass.initEvents.call(this);
 this.el.on('paste',this.onPaste,this);},onPaste:function(e){Roo.log('On Paste');Roo.log(e);},parentEl:function(){return this.el.findParent('.x-form-element',5,true);},toggleEl:function(){return this.parentEl().select('button.password-toggle',true).first();
 },onToggleClick:function(e){var A=this.el;var B=this.toggleEl();B.removeClass(['password-visible','password-hidden']);if(A.attr('type')=='password'){A.attr('type','text');B.addClass('password-visible');}else{A.attr('type','password');B.addClass('password-hidden');
 }}});
