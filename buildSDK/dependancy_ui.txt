@@ -83,6 +83,7 @@ Roo.menu.ColorMenu
 Roo.form.TextItem
 Roo.form.Field
 Roo.form.TextField
+Roo.form.Password
 Roo.form.Hidden
 Roo.form.TriggerField
 Roo.form.TextArea
