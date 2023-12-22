@@ -33,7 +33,7 @@ Roo.extend(Roo.form.Password, Roo.form.TextField,  {
 
     toggleEl: function()
     {
-        return this.el.select('button.password-toggle',true).first();
+        return this.parentEl().select('button.password-toggle',true).first();
     },
 
     onToggleClick : function(e) 
