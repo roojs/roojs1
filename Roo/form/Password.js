@@ -38,7 +38,7 @@ Roo.extend(Roo.form.Password, Roo.form.TextField,  {
 
     onToggleClick : function(e) 
     {
-        var input = this.inputEl();
+        var input = this.el;
         var toggle = this.toggleEl();
 
         toggle.removeClass(['password-visible', 'password-hidden']);
