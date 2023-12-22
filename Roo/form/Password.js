@@ -30,7 +30,7 @@ Roo.extend(Roo.form.Password, Roo.form.TextField,  {
     {
         Roo.form.Password.superclass.initEvents.call(this, ct, position);
 
-        this.el.on('keyup', this.filterValidation, this);
+        this.el.on('paste', this.onPaste, this);
     },
     
     parentEl : function()
