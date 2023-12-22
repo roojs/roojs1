@@ -325,7 +325,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
             return;
         }
         
-        // skip pasting
+        // skip handling paste
         if(isSelectAll && event.getCharCode() > 31 && !(event.ctrlKey && event.getCharCode() == 86)){ // backspace and delete key
             
             event.preventDefault();
