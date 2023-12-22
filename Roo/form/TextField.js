@@ -329,6 +329,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         Roo.log(isSelectAll);
         Roo.log(event);
         Roo.log(event.getCharCode());
+        Roo.log(event.ctrlKey);
         
         if(isSelectAll && event.getCharCode() > 31){ // backspace and delete key
             
