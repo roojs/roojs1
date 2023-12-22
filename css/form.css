@@ -82,6 +82,7 @@
 .form-password .password-toggle {
     width: 17px;
     border: 1px solid #9ab;
+    border-left: none;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
