@@ -47,4 +47,4 @@ Roo.extend(Roo.form.Password, Roo.form.TextField,  {
             toggle.addClass('password-hidden');
         }
     }
-}
+});
