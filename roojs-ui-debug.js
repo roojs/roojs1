@@ -16973,6 +16973,19 @@ Roo.extend(Roo.form.Password, Roo.form.TextField,  {
 
         this.toggleEl().on('click', this.onToggleClick, this);;
     },
+
+    initEvents : function()
+    {
+        Roo.form.Password.superclass.initEvents.call(this, ct, position);
+
+        this.el.on('paste', this.onPaste, this);
+    },
+
+    onPaste : function(e)
+    {
+        Roo.log('On Paste');
+        Roo.log(e);
+    },
     
     parentEl : function()
     {

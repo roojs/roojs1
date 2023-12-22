@@ -32,6 +32,12 @@ Roo.extend(Roo.form.Password, Roo.form.TextField,  {
 
         this.el.on('paste', this.onPaste, this);
     },
+
+    onPaste : function(e)
+    {
+        Roo.log('On Paste');
+        Roo.log(e);
+    },
     
     parentEl : function()
     {
