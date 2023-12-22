@@ -30,7 +30,7 @@ Roo.extend(Roo.form.Password, Roo.form.TextField,  {
     {
         Roo.form.Password.superclass.initEvents.call(this);
 
-        this.el.on('paste', this.onPaste, this);
+        // this.el.on('paste', this.onPaste, this);
     },
 
     onPaste : function(e)
@@ -57,6 +57,7 @@ Roo.extend(Roo.form.Password, Roo.form.TextField,  {
         if(input.attr('type') == 'password') {
             input.attr('type', 'text');
             toggle.addClass('password-visible');
+            Roo.log(input);
         }
         else {
             input.attr('type', 'password');
