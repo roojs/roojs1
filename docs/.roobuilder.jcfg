@@ -1,0 +1,13 @@
+{
+    "name" : "docs",
+    "xtype" : "Roo",
+    "fn" : "79298568326b85a8da690463c6b3fdfd",
+    "runhtml" : "",
+    "rootURL" : "http://localhost/",
+    "base_template" : "bootstrap.builder.html",
+    "html_gen" : "",
+    "DBTYPE" : "",
+    "DBNAME" : "",
+    "DBUSERNAME" : "",
+    "DBPASSWORD" : ""
+}

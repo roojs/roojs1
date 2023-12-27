@@ -1681,7 +1681,12 @@ return false;}if(this.vtype){var vt=Roo.form.VTypes;if(!vt[this.vtype](A,this)){
 }else if(d.createTextRange){var C=d.createTextRange();C.moveStart("character",A);C.moveEnd("character",v.length-B);C.select();}}},autoSize:function(){if(!this.grow||!this.rendered){return;}if(!this.metrics){this.metrics=Roo.util.TextMetrics.createInstance(this.el);
 }var el=this.el;var v=el.dom.value;var d=document.createElement('div');d.appendChild(document.createTextNode(v));v=d.innerHTML;d=null;v+="&#160;";var w=Math.min(this.growMax,Math.max(this.metrics.getWidth(v)+10,this.growMin));this.el.setWidth(w);this.fireEvent("autosize",this,w);
 },SafariOnKeyDown:function(A){var B=false;if(this.el.dom.selectionEnd>0){B=(this.el.dom.selectionEnd-this.el.dom.selectionStart-this.getValue().length==0)?true:false;}if(((A.getKey()==8||A.getKey()==46)&&this.getValue().length==1)){A.preventDefault();this.setValue('');
-return;}if(B&&A.getCharCode()>31){A.preventDefault();var cc=String.fromCharCode(A.getCharCode());this.setValue(A.shiftKey?cc:cc.toLowerCase());}}});
+return;}if(B&&A.getCharCode()>31&&!(A.ctrlKey&&A.getCharCode()==86)){A.preventDefault();var cc=String.fromCharCode(A.getCharCode());this.setValue(A.shiftKey?cc:cc.toLowerCase());}}});
+// Roo/form/Password.js
+Roo.form.Password=function(A){Roo.form.Password.superclass.constructor.call(this,A);this.inputType='password';};Roo.extend(Roo.form.Password,Roo.form.TextField,{onRender:function(ct,A){Roo.form.Password.superclass.onRender.call(this,ct,A);this.parentEl().addClass('form-password');
+this.wrap=this.el.wrap({cls:'password-wrap'});this.toggle=this.wrap.createChild({tag:'Button',cls:'password-toggle'});this.toggleEl().addClass('password-hidden');this.toggleEl().on('click',this.onToggleClick,this);;},parentEl:function(){return this.el.findParent('.x-form-element',5,true);
+},toggleEl:function(){return this.parentEl().select('button.password-toggle',true).first();},onToggleClick:function(e){var A=this.el;var B=this.toggleEl();B.removeClass(['password-visible','password-hidden']);if(A.attr('type')=='password'){A.attr('type','text');
+B.addClass('password-visible');}else{A.attr('type','password');B.addClass('password-hidden');}}});
 // Roo/form/Hidden.js
 Roo.form.Hidden=function(A){Roo.form.Hidden.superclass.constructor.call(this,A);};Roo.extend(Roo.form.Hidden,Roo.form.TextField,{fieldLabel:'',inputType:'hidden',width:50,allowBlank:true,labelSeparator:'',hidden:true,itemCls:'x-form-item-display-none'});
 // Roo/form/TriggerField.js

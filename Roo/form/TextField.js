@@ -325,7 +325,8 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
             return;
         }
         
-        if(isSelectAll && event.getCharCode() > 31){ // backspace and delete key
+        // skip handling paste
+        if(isSelectAll && event.getCharCode() > 31 && !(event.ctrlKey && event.getCharCode() == 86)){ // backspace and delete key
             
             event.preventDefault();
             // this is very hacky as keydown always get's upper case.
