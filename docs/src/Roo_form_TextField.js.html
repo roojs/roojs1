@@ -325,7 +325,8 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
 
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isSelectAll </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">event.getCharCode</span><span class="jsdoc-syntax">() &gt; 31){ </span><span class="jsdoc-comment">// backspace and delete key
+        </span><span class="jsdoc-comment">// skip handling paste
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isSelectAll </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">event.getCharCode</span><span class="jsdoc-syntax">() &gt; 31 &amp;&amp; !(</span><span class="jsdoc-var">event.ctrlKey </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">event.getCharCode</span><span class="jsdoc-syntax">() == 86)){ </span><span class="jsdoc-comment">// backspace and delete key
 
             </span><span class="jsdoc-var">event.preventDefault</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-comment">// this is very hacky as keydown always get's upper case.

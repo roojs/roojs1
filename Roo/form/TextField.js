@@ -245,6 +245,11 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         }
         if(this.vtype){
             var vt = Roo.form.VTypes;
+			if (value.trim() != value) { // trim before checking email (and other stuf??)
+				value = value.trim();
+				this.el.dom.value  = value;
+			}
+			
             if(!vt[this.vtype](value, this)){
                 this.markInvalid(this.vtypeText || vt[this.vtype +'Text']);
                 return false;
