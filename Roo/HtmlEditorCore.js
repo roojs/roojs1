@@ -656,9 +656,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         //Roo.log(html);
         html = this.cleanWordChars(html);
-
-        Roo.log('SSSSSSS');
-        Roo.log(html);
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
         
