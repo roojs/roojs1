@@ -481,8 +481,8 @@ Roo.data.Store = function(config){
          * If you return Json { data: [] , success: false, .... } then this will be thrown with the following args
          * 
          * @param {Proxy} 
-         * @param {Object} return from JsonData.reader() - success, totalRecords, records
-         * @param {Object} load options 
+         * @param {Object} ret return data from JsonData.reader() - success, totalRecords, records
+         * @param {Object} opts - load Options
          * @param {Object} jsonData from your request (normally this contains the Exception)
          */
         loadexception : true
@@ -1488,24 +1488,24 @@ Roo.extend(Roo.data.HttpProxy, Roo.data.DataProxy, {
     // thse are take from connection...
     
     /**
-     * @cfg {String} url (Optional) The default URL to be used for requests to the server. (defaults to undefined)
+     * @cfg {String} url  The default URL to be used for requests to the server. (defaults to undefined)
      */
     /**
-     * @cfg {Object} extraParams (Optional) An object containing properties which are used as
+     * @cfg {Object} extraParams  An object containing properties which are used as
      * extra parameters to each request made by this object. (defaults to undefined)
      */
     /**
-     * @cfg {Object} defaultHeaders (Optional) An object containing request headers which are added
+     * @cfg {Object} defaultHeaders   An object containing request headers which are added
      *  to each request made by this object. (defaults to undefined)
      */
     /**
-     * @cfg {String} method (Optional) The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
+     * @cfg {String} method (GET|POST)  The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
      */
     /**
-     * @cfg {Number} timeout (Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)
+     * @cfg {Number} timeout The timeout in milliseconds to be used for requests. (defaults to 30000)
      */
      /**
-     * @cfg {Boolean} autoAbort (Optional) Whether this request should abort any pending requests. (defaults to false)
+     * @cfg {Boolean} autoAbort Whether this request should abort any pending requests. (defaults to false)
      * @type Boolean
      */
   
@@ -5842,6 +5842,9 @@ Roo.extend(Roo.panel.Cropbox, Roo.Component,  {
             case 'download' :
                 this.download(e);
                 break;
+            case 'center' :
+                this.center(e);
+                break;
             default :
                 break;
         }
@@ -5882,6 +5885,11 @@ Roo.extend(Roo.panel.Cropbox, Roo.Component,  {
     download : function(e)
     {
         this.fireEvent('download', this);
+    },
+
+    center : function(e)
+    {
+        this.setCanvasPosition();
     },
     
     loadCanvas : function(src)
@@ -5937,17 +5945,37 @@ Roo.extend(Roo.panel.Cropbox, Roo.Component,  {
         
     },
     
-    setCanvasPosition : function()
+    setCanvasPosition : function(center = true)
     {   
         if(!this.canvasEl){
             return;
         }
+
+        var newCenterLeft = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
+        var newCenterTop = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
+
+        if(center) {
+            this.previewEl.setLeft(newCenterLeft);
+            this.previewEl.setTop(newCenterTop);
+
+            return;
+        }
         
-        var pw = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
-        var ph = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
-        
-        this.previewEl.setLeft(pw);
-        this.previewEl.setTop(ph);
+        var oldScaleLevel = this.baseScale * Math.pow(1.02, this.startScale);
+        var oldCanvasWidth = Math.floor(this.imageEl.OriginWidth * oldScaleLevel);
+        var oldCanvasHeight = Math.floor(this.imageEl.OriginHeight * oldScaleLevel);
+
+        var oldCenterLeft = Math.ceil((this.bodyEl.getWidth() - oldCanvasWidth) / 2);
+        var oldCenterTop = Math.ceil((this.bodyEl.getHeight() - oldCanvasHeight) / 2);
+
+        var leftDiff = newCenterLeft - oldCenterLeft;
+        var topDiff = newCenterTop - oldCenterTop;
+
+        var newPreviewLeft = this.previewEl.getLeft(true) + leftDiff;
+        var newPreviewTop = this.previewEl.getTop(true) + topDiff;
+
+        this.previewEl.setLeft(newPreviewLeft);
+        this.previewEl.setTop(newPreviewTop);
         
     },
     
@@ -5979,12 +6007,23 @@ Roo.extend(Roo.panel.Cropbox, Roo.Component,  {
         if (!this.dragable){
             return;
         }
+
+        var maxPaddingLeft = this.canvasEl.width / 0.9 * 0.05;
+        var maxPaddingTop = maxPaddingLeft * this.minHeight / this.minWidth;
+
+        if ((this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight)) {
+            maxPaddingLeft = (this.canvasEl.height * this.minWidth / this.minHeight - this.canvasEl.width) / 2 + maxPaddingLeft;
+        }
+
+        if ((this.imageEl.OriginWidth / this.imageEl.OriginHeight >= this.minWidth / this.minHeight)) {
+            maxPaddingTop = (this.canvasEl.width * this.minHeight / this.minWidth - this.canvasEl.height) / 2 + maxPaddingTop;
+        }
         
-        var minX = Math.ceil(this.thumbEl.getLeft(true));
-        var minY = Math.ceil(this.thumbEl.getTop(true));
+        var minX = Math.ceil(this.thumbEl.getLeft(true) + this.thumbEl.getWidth() - this.canvasEl.width - maxPaddingLeft);
+        var minY = Math.ceil(this.thumbEl.getTop(true) + this.thumbEl.getHeight() - this.canvasEl.height - maxPaddingTop);
         
-        var maxX = Math.ceil(minX + this.thumbEl.getWidth() - this.canvasEl.width);
-        var maxY = Math.ceil(minY + this.thumbEl.getHeight() - this.canvasEl.height);
+        var maxX = Math.ceil(this.thumbEl.getLeft(true) + maxPaddingLeft);
+        var maxY = Math.ceil(this.thumbEl.getTop(true) +  maxPaddingTop);
 
         if(minX > maxX) {
             var tempX = minX;
@@ -6055,6 +6094,39 @@ Roo.extend(Roo.panel.Cropbox, Roo.Component,  {
  
         var maxWidth = this.imageEl.OriginWidth;
         var maxHeight = this.imageEl.OriginHeight;
+
+
+        var newCanvasWidth = Math.floor(this.imageEl.OriginWidth * this.getScaleLevel());
+        var newCanvasHeight = Math.floor(this.imageEl.OriginHeight * this.getScaleLevel());
+
+        var oldCenterLeft = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
+        var oldCenterTop = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
+
+        var newCenterLeft = Math.ceil((this.bodyEl.getWidth() - newCanvasWidth) / 2);
+        var newCenterTop = Math.ceil((this.bodyEl.getHeight() - newCanvasHeight) / 2);
+
+        var leftDiff = newCenterLeft - oldCenterLeft;
+        var topDiff = newCenterTop - oldCenterTop;
+
+        var newPreviewLeft = this.previewEl.getLeft(true) + leftDiff;
+        var newPreviewTop = this.previewEl.getTop(true) + topDiff;
+
+        var paddingLeft = newPreviewLeft - this.thumbEl.getLeft(true);
+        var paddingTop = newPreviewTop - this.thumbEl.getTop(true);
+
+        var paddingRight = this.thumbEl.getLeft(true) + this.thumbEl.getWidth() - newCanvasWidth - newPreviewLeft;
+        var paddingBottom = this.thumbEl.getTop(true) + this.thumbEl.getHeight() - newCanvasHeight - newPreviewTop;
+
+        var maxPaddingLeft = newCanvasWidth / 0.9 * 0.05;
+        var maxPaddingTop = maxPaddingLeft * this.minHeight / this.minWidth;
+
+        if ((this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight)) {
+            maxPaddingLeft = (newCanvasHeight * this.minWidth / this.minHeight - newCanvasWidth) / 2 + maxPaddingLeft;
+        }
+
+        if ((this.imageEl.OriginWidth / this.imageEl.OriginHeight >= this.minWidth / this.minHeight)) {
+            maxPaddingTop = (newCanvasWidth * this.minHeight / this.minWidth - newCanvasHeight) / 2 + maxPaddingTop;
+        }
         
         if(
                 this.isDocument &&
@@ -6084,8 +6156,12 @@ Roo.extend(Roo.panel.Cropbox, Roo.Component,  {
                 !this.isDocument &&
                 (this.rotate == 0 || this.rotate == 180) && 
                 (
-                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight >= this.minWidth / this.minHeight) && width < this.minWidth ||
-                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight) && height < this.minHeight ||
+                    // for zoom out
+                    paddingLeft > maxPaddingLeft ||
+                    paddingRight > maxPaddingLeft ||
+                    paddingTop > maxPaddingTop ||
+                    paddingBottom > maxPaddingTop ||
+                    // for zoom in
                     width > maxWidth ||
                     height > maxHeight
                 )
@@ -6309,7 +6385,7 @@ Roo.extend(Roo.panel.Cropbox, Roo.Component,  {
         
         this.previewEl.appendChild(this.canvasEl);
         
-        this.setCanvasPosition();
+        this.setCanvasPosition(false);
     },
     
     crop : function()
@@ -7266,6 +7342,20 @@ Roo.apply(Roo.panel.Cropbox, {
                         tag : 'button',
                         cls : 'btn btn-default',
                         html : '<i class="fa fa-repeat"></i>'
+                    }
+                ]
+            }
+        ],
+        CENTER : [
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-center',
+                action : 'center',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : 'CENTER'
                     }
                 ]
             }
@@ -17853,6 +17943,9 @@ Roo.extend(Roo.form.Field, Roo.BoxComponent,  {
     /**
      * @cfg {String} fieldLabel Label to use when rendering a form.
      */
+	/**
+     * @cfg {String} labelSeparator the ':' after a field label (default :)  = set it to empty string to hide the field label.
+     */
        /**
      * @cfg {String} qtip Mouse over tip
      */
@@ -18654,6 +18747,11 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         }
         if(this.vtype){
             var vt = Roo.form.VTypes;
+			if (value.trim() != value) { // trim before checking email (and other stuf??)
+				value = value.trim();
+				this.el.dom.value  = value;
+			}
+			
             if(!vt[this.vtype](value, this)){
                 this.markInvalid(this.vtypeText || vt[this.vtype +'Text']);
                 return false;
@@ -18734,7 +18832,8 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
             return;
         }
         
-        if(isSelectAll && event.getCharCode() > 31){ // backspace and delete key
+        // skip handling paste
+        if(isSelectAll && event.getCharCode() > 31 && !(event.ctrlKey && event.getCharCode() == 86)){ // backspace and delete key
             
             event.preventDefault();
             // this is very hacky as keydown always get's upper case.
@@ -18747,6 +18846,60 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         }
         
         
+    }
+});Roo.form.Password = function(config){
+    Roo.form.Password.superclass.constructor.call(this, config);
+
+    this.inputType = 'password';
+};
+
+Roo.extend(Roo.form.Password, Roo.form.TextField,  {
+    onRender : function(ct, position)
+    {
+        Roo.form.Password.superclass.onRender.call(this, ct, position);
+
+        this.parentEl().addClass('form-password');
+
+        this.wrap = this.el.wrap({
+            cls : 'password-wrap'
+        });
+
+        this.toggle = this.wrap.createChild({
+            tag : 'Button',
+            cls : 'password-toggle'
+        });
+
+
+        this.toggleEl().addClass('password-hidden');
+
+        this.toggleEl().on('click', this.onToggleClick, this);;
+    },
+    
+    parentEl : function()
+    {
+        return this.el.findParent('.x-form-element', 5, true);
+    },
+
+    toggleEl: function()
+    {
+        return this.parentEl().select('button.password-toggle',true).first();
+    },
+
+    onToggleClick : function(e) 
+    {
+        var input = this.el;
+        var toggle = this.toggleEl();
+
+        toggle.removeClass(['password-visible', 'password-hidden']);
+
+        if(input.attr('type') == 'password') {
+            input.attr('type', 'text');
+            toggle.addClass('password-visible');
+        }
+        else {
+            input.attr('type', 'password');
+            toggle.addClass('password-hidden');
+        }
     }
 });/*
  * Based on:
@@ -20442,7 +20595,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
     {
         Roo.form.ComboBox.superclass.onRender.call(this, ct, position);
         
-	if(this.hiddenName){
+		if(this.hiddenName){
             this.hiddenField = this.el.insertSibling({tag:'input', type:'hidden', name: this.hiddenName, id:  (this.hiddenId||this.hiddenName)},
                     'before', true);
             this.hiddenField.value =
@@ -21204,7 +21357,11 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         this.view.select(match);
         var sn = Roo.get(this.view.getSelectedNodes()[0]);
         sn.scrollIntoView(sn.dom.parentNode, false);
-    } 
+    },
+	cleanLeadingSpace : function()
+	{
+		// override textfield strip white space (trigers set on blur)
+	}
 
     /** 
     * @cfg {Boolean} grow 
@@ -21323,7 +21480,8 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
      */
     seperator : ',',
     
-    // private the array of items that are displayed..
+    
+	// private the array of items that are displayed..
     items  : false,
     // private - the hidden field el.
     hiddenEl : false,
@@ -21417,8 +21575,10 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
             // add to list
             
         }, this);
-        
-        
+         
+	
+	
+	    
     },
     
     
@@ -21652,7 +21812,7 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
     cb: false,
     displayField : false,
     tipField : false,
-    
+     
     
     defaultAutoCreate : {
         tag: 'div',
@@ -22331,7 +22491,9 @@ Roo.extend(Roo.form.Checkbox, Roo.form.Field,  {
             this.fireEvent('check', this, state);
         }
         this.inSetChecked = true;
-        this.el.dom.value = state ? this.inputValue : this.valueOff;
+		 
+		this.el.dom.value = state ? this.inputValue : this.valueOff;
+		 
         this.inSetChecked = false;
         
     },
@@ -22422,8 +22584,48 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
             this.el.dom.checked =   'checked' ;
         }
          
+    },
+    /**
+     * Sets the checked state of the checkbox.
+     * On is always based on a string comparison between inputValue and the param.
+     * @param {Boolean/String} value - the value to set 
+     * @param {Boolean/String} suppressEvent - whether to suppress the checkchange event.
+     */
+    setValue : function(v,suppressEvent){
+        
+        
+        //this.checked = (v === true || v === 'true' || v == '1' || String(v).toLowerCase() == 'on');
+        //if(this.el && this.el.dom){
+        //    this.el.dom.checked = this.checked;
+        //    this.el.dom.defaultChecked = this.checked;
+        //}
+        this.setChecked(String(v) === String(this.inputValue), suppressEvent);
+        
+        this.el.dom.form[this.name].value = v;
+     
+        //this.fireEvent("check", this, this.checked);
+    },
+    // private..
+    setChecked : function(state,suppressEvent)
+    {
+         
+        if(this.wrap){
+            this.wrap[state ? 'addClass' : 'removeClass']('x-menu-item-checked');
+        }
+        this.checked = state;
+        if(suppressEvent !== true){
+            this.fireEvent('check', this, state);
+        }
+		 
+		  
+       
+        
+    },
+    reset : function(){
+        // this.setValue(this.resetValue);
+        //this.originalValue = this.getValue();
+        this.clearInvalid();
     } 
-    
     
 });Roo.rtf = {}; // namespace
 Roo.rtf.Hex = function(hex)
@@ -23000,6 +23202,24 @@ Roo.htmleditor.Filter.prototype = {
            
         }
         node.parentNode.removeChild(node);
+    },
+
+    searchTag : function(dom)
+    {
+        if(this.tag === false) {
+            return;
+        }
+
+        var els = dom.getElementsByTagName(this.tag);
+
+        Roo.each(Array.from(els), function(e){
+            if(e.parentNode == null) {
+                return;
+            }
+            if(this.replaceTag) {
+                this.replaceTag(e);
+            }
+        }, this);
     }
 }; 
 
@@ -23277,7 +23497,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
 Roo.htmleditor.FilterParagraph = function(cfg)
 {
     // no need to apply config.
-    this.walk(cfg.node);
+    this.searchTag(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
@@ -23298,6 +23518,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
             node.parentNode.replaceChild(node.ownerDocument.createElement('BR'),node);
             return false; // no need to walk..
         }
+
         var ar = Array.from(node.childNodes);
         for (var i = 0; i < ar.length; i++) {
             node.removeChild(ar[i]);
@@ -23317,6 +23538,41 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
     }
     
 });/**
+ * @class Roo.htmleditor.FilterHashLink
+ * remove hash link
+ * @constructor
+ * Run a new Hash Link Filter
+ * @param {Object} config Configuration options
+ */
+
+ Roo.htmleditor.FilterHashLink = function(cfg)
+ {
+     // no need to apply config.
+    //  this.walk(cfg.node);
+    this.searchTag(cfg.node);
+ }
+ 
+ Roo.extend(Roo.htmleditor.FilterHashLink, Roo.htmleditor.Filter,
+ {
+      
+     tag : 'A',
+     
+      
+     replaceTag : function(node)
+     {
+         for(var i = 0; i < node.attributes.length; i ++) {
+             var a = node.attributes[i];
+
+             if(a.name.toLowerCase() == 'href' && a.value.startsWith('#')) {
+                 this.removeNodeKeepChildren(node);
+             }
+         }
+         
+         return false;
+ 
+     }
+     
+ });/**
  * @class Roo.htmleditor.FilterSpan
  * filter span's with no attributes out..
  * @constructor
@@ -23327,7 +23583,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
 Roo.htmleditor.FilterSpan = function(cfg)
 {
     // no need to apply config.
-    this.walk(cfg.node);
+    this.searchTag(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.FilterKeepChildren,
@@ -23424,7 +23680,7 @@ Roo.htmleditor.FilterWord = function(cfg)
     this.replaceAname(cfg.node);
     // this is disabled as the removal is done by other filters;
    // this.walk(cfg.node);
-    
+    this.replaceImageTable(cfg.node);
     
 }
 
@@ -23577,44 +23833,44 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         // this is a bit odd - but it appears some indents use ql-indent-1
          //Roo.log(doc.innerHTML);
         
-        var listpara = doc.getElementsByClassName('MsoListParagraphCxSpFirst');
+        var listpara = Array.from(doc.getElementsByClassName('MsoListParagraphCxSpFirst'));
         for( var i = 0; i < listpara.length; i ++) {
-            listpara.item(i).className = "MsoListParagraph";
+            listpara[i].className = "MsoListParagraph";
         }
         
-        listpara = doc.getElementsByClassName('MsoListParagraphCxSpMiddle');
+        listpara =  Array.from(doc.getElementsByClassName('MsoListParagraphCxSpMiddle'));
         for( var i = 0; i < listpara.length; i ++) {
-            listpara.item(i).className = "MsoListParagraph";
+            listpara[i].className = "MsoListParagraph";
         }
-        listpara = doc.getElementsByClassName('MsoListParagraphCxSpLast');
+        listpara =  Array.from(doc.getElementsByClassName('MsoListParagraphCxSpLast'));
         for( var i = 0; i < listpara.length; i ++) {
-            listpara.item(i).className = "MsoListParagraph";
+            listpara[i].className = "MsoListParagraph";
         }
-        listpara = doc.getElementsByClassName('ql-indent-1');
+        listpara =  Array.from(doc.getElementsByClassName('ql-indent-1'));
         for( var i = 0; i < listpara.length; i ++) {
-            listpara.item(i).className = "MsoListParagraph";
+            listpara[i].className = "MsoListParagraph";
         }
         
         // this is a bit hacky - we had one word document where h2 had a miso-list attribute.
-        var htwo = doc.getElementsByTagName('h2');
+        var htwo =  Array.from(doc.getElementsByTagName('h2'));
         for( var i = 0; i < htwo.length; i ++) {
-            if (htwo.item(i).hasAttribute('style') && htwo.item(i).getAttribute('style').match(/mso-list:/)) {
-                htwo.item(i).className = "MsoListParagraph";
+            if (htwo[i].hasAttribute('style') && htwo[i].getAttribute('style').match(/mso-list:/)) {
+                htwo[i].className = "MsoListParagraph";
             }
         }
-        listpara = doc.getElementsByClassName('MsoNormal');
-        while(listpara.length) {
-            if (listpara.item(0).hasAttribute('style') && listpara.item(0).getAttribute('style').match(/mso-list:/)) {
-                listpara.item(0).className = "MsoListParagraph";
+        listpara =  Array.from(doc.getElementsByClassName('MsoNormal'));
+        for( var i = 0; i < listpara.length; i ++) {
+            if (listpara[i].hasAttribute('style') && listpara[i].getAttribute('style').match(/mso-list:/)) {
+                listpara[i].className = "MsoListParagraph";
             } else {
-                listpara.item(0).className = "MsoNormalx";
+                listpara[i].className = "MsoNormalx";
             }
         }
        
         listpara = doc.getElementsByClassName('MsoListParagraph');
+        // Roo.log(doc.innerHTML);
         
         
-        //Roo.log(doc.innerHTML);
         
         while(listpara.length) {
             
@@ -23632,7 +23888,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             parent = p.parentNode,
             doc = parent.ownerDocument,
             items = [];
-            
+         
+        //Roo.log("Parsing: " + p.innerText)    ;
         var listtype = 'ul';   
         while (ns) {
             if (ns.nodeType != 1) {
@@ -23640,22 +23897,38 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 continue;
             }
             if (!ns.className.match(/(MsoListParagraph|ql-indent-1)/i)) {
+                //Roo.log("Missing para r q1indent - got:" + ns.className);
                 break;
             }
             var spans = ns.getElementsByTagName('span');
+            
             if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
                 items.push(ns);
                 ns = ns.nextSibling;
                 has_list = true;
-                if (spans.length && spans[0].hasAttribute('style')) {
-                    var  style = this.styleToObject(spans[0]);
-                    if (typeof(style['font-family']) != 'undefined' && !style['font-family'].match(/Symbol/)) {
-                        listtype = 'ol';
+                if (!spans.length) {
+                    continue;
+                }
+                var ff = '';
+                var se = spans[0];
+                for (var i = 0; i < spans.length;i++) {
+                    se = spans[i];
+                    if (se.hasAttribute('style')  && se.hasAttribute('style') && se.style.fontFamily != '') {
+                        ff = se.style.fontFamily;
+                        break;
                     }
+                }
+                 
+                    
+                //Roo.log("got font family: " + ff);
+                if (typeof(ff) != 'undefined' && !ff.match(/(Symbol|Wingdings)/) && "·o".indexOf(se.innerText.trim()) < 0) {
+                    listtype = 'ol';
                 }
                 
                 continue;
             }
+            //Roo.log("no mso-list?");
+            
             var spans = ns.getElementsByTagName('span');
             if (!spans.length) {
                 break;
@@ -23748,7 +24021,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             lvl = nlvl;
             
             // not starting at 1..
-            if (!stack[nlvl].hasAttribute("start") && num > 1) {
+            if (!stack[nlvl].hasAttribute("start") && listtype == "ol") {
                 stack[nlvl].setAttribute("start", num);
             }
             
@@ -23766,9 +24039,63 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         
         
         
+    },
+    
+    replaceImageTable : function(doc)
+    {
+         /*
+          <table cellpadding=0 cellspacing=0 align=left>
+  <tr>
+   <td width=423 height=0></td>
+  </tr>
+  <tr>
+   <td></td>
+   <td><img width=601 height=401
+   src="file:///C:/Users/Alan/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg"
+   v:shapes="Picture_x0020_2"></td>
+  </tr>
+ </table>
+ */
+        var imgs = Array.from(doc.getElementsByTagName('img'));
+        Roo.each(imgs, function(img) {
+            var td = img.parentNode;
+            if (td.nodeName !=  'TD') {
+                return;
+            }
+            var tr = td.parentNode;
+            if (tr.nodeName !=  'TR') {
+                return;
+            }
+            var tbody = tr.parentNode;
+            if (tbody.nodeName !=  'TBODY') {
+                return;
+            }
+            var table = tbody.parentNode;
+            if (table.nodeName !=  'TABLE') {
+                return;
+            }
+            // first row..
+            
+            if (table.getElementsByTagName('tr').length != 2) {
+                return;
+            }
+            if (table.getElementsByTagName('td').length != 3) {
+                return;
+            }
+            if (table.innerText.trim() != '') {
+                return;
+            }
+            var p = table.parentNode;
+            img.parentNode.removeChild(img);
+            p.insertBefore(img, table);
+            p.removeChild(table);
+            
+            
+            
+        });
+        
+      
     }
-    
-    
     
 });
 /**
@@ -23855,7 +24182,7 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
 Roo.htmleditor.FilterLongBr = function(cfg)
 {
     // no need to apply config.
-    this.walk(cfg.node);
+    this.searchTag(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
@@ -23886,8 +24213,6 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
            
             return false;
         }
-        
-        
         
         
         
@@ -25686,7 +26011,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 }
             },
             
-            
+              
             {
                 xtype : 'Button',
                 text: 'Hide Caption',
@@ -25774,14 +26099,15 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 ]
             };
         }
-        // we remove caption totally if its hidden... - will delete data.. but otherwise we end up with fake caption
-        var captionhtml = this.caption_display == 'none' ? '' : (this.caption.length ? this.caption : "Caption");
-        
+
+
   
         var ret =   {
             tag: 'figure',
             'data-block' : 'Figure',
-            'data-width' : this.width, 
+            'data-width' : this.width,
+            'data-caption' : this.caption, 
+            'data-caption-display' : this.caption_display,
             contenteditable : 'false',
             
             style : {
@@ -25794,51 +26120,52 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 textAlign : this.align   // seems to work for email..
                 
             },
-           
             
             align : this.align,
             cn : [
-                img,
-              
-                {
-                    tag: 'figcaption',
-                    'data-display' : this.caption_display,
-                    style : {
-                        textAlign : 'left',
-                        fontSize : '16px',
-                        lineHeight : '24px',
-                        display : this.caption_display,
-                        maxWidth : (this.align == 'center' ?  this.width : '100%' ) + ' !important',
-                        margin: m,
-                        width: this.align == 'center' ?  this.width : '100%' 
-                    
-                         
-                    },
-                    cls : this.cls.length > 0 ? (this.cls  + '-thumbnail' ) : '',
-                    cn : [
-                        {
-                            tag: 'div',
-                            style  : {
-                                marginTop : '16px',
-                                textAlign : 'left'
-                            },
-                            align: 'left',
-                            cn : [
-                                {
-                                    // we can not rely on yahoo syndication to use CSS elements - so have to use  '<i>' to encase stuff.
-                                    tag : 'i',
-                                    contenteditable : true,
-                                    html : captionhtml
-                                }
-                                
-                            ]
-                        }
-                        
-                    ]
-                    
-                }
+                img
             ]
         };
+
+        // show figcaption only if caption_display is 'block'
+        if(this.caption_display == 'block') {
+            ret['cn'].push({
+                tag: 'figcaption',
+                style : {
+                    textAlign : 'left',
+                    fontSize : '16px',
+                    lineHeight : '24px',
+                    display : this.caption_display,
+                    maxWidth : (this.align == 'center' ?  this.width : '100%' ) + ' !important',
+                    margin: m,
+                    width: this.align == 'center' ?  this.width : '100%' 
+                
+                     
+                },
+                cls : this.cls.length > 0 ? (this.cls  + '-thumbnail' ) : '',
+                cn : [
+                    {
+                        tag: 'div',
+                        style  : {
+                            marginTop : '16px',
+                            textAlign : 'start'
+                        },
+                        align: 'left',
+                        cn : [
+                            {
+                                // we can not rely on yahoo syndication to use CSS elements - so have to use  '<i>' to encase stuff.
+                                tag : 'i',
+                                contenteditable : Roo.htmleditor.BlockFigure.caption_edit,
+                                html : this.caption.length ? this.caption : "Caption" // fake caption
+                            }
+                            
+                        ]
+                    }
+                    
+                ]
+                
+            });
+        }
         return ret;
          
     },
@@ -25854,13 +26181,31 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         this.image_src = this.getVal(node, 'img', 'src');
          
         this.align = this.getVal(node, 'figure', 'align');
+
+        // caption display is stored in figure
+        this.caption_display = this.getVal(node, true, 'data-caption-display');
+
+        // backward compatible
+        // it was stored in figcaption
+        if(this.caption_display == '') {
+            this.caption_display = this.getVal(node, 'figcaption', 'data-display');
+        }
+
+        // read caption from figcaption
         var figcaption = this.getVal(node, 'figcaption', false);
+
         if (figcaption !== '') {
             this.caption = this.getVal(figcaption, 'i', 'html');
         }
-        
+                
 
-        this.caption_display = this.getVal(node, 'figcaption', 'data-display');
+        // read caption from data-caption in figure if no caption from figcaption
+        var dc = this.getVal(node, true, 'data-caption');
+
+        if(this.caption_display == 'none' && dc && dc.length){
+            this.caption = dc;
+        }
+
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, true, 'data-width');
         //this.margin = this.getVal(node, 'figure', 'style', 'margin');
@@ -25878,7 +26223,11 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     
     
     
-})
+});
+
+Roo.apply(Roo.htmleditor.BlockFigure, {
+    caption_edit : true
+});
 
  
 
@@ -27201,7 +27550,7 @@ Roo.HtmlEditorCore = function(config){
          * @param {Roo.HtmlEditorCore} this
          */
         editorevent: true 
-         
+        
         
     });
     
@@ -27225,10 +27574,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     owner : false,
     
      /**
-     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
-     *                        Roo.resizable.
+     * @cfg {String} css styling for resizing. (used on bootstrap only)
      */
-    resizable : false,
+    resize : false,
      /**
      * @cfg {Number} height (in pixels)
      */   
@@ -27361,17 +27709,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         this.frameId = Roo.id();
         
-         
-        
-        var iframe = this.owner.wrap.createChild({
+        var ifcfg = {
             tag: 'iframe',
             cls: 'form-control', // bootstrap..
             id: this.frameId,
             name: this.frameId,
             frameBorder : 'no',
             'src' : Roo.SSL_SECURE_URL ? Roo.SSL_SECURE_URL  :  "javascript:false"
-        }, this.el
-        );
+        };
+        if (this.resize) {
+            ifcfg.style = { resize : this.resize };
+        }
+        
+        var iframe = this.owner.wrap.createChild(ifcfg, this.el); 
         
         
         this.iframe = iframe.dom;
@@ -27506,11 +27856,44 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if (this.enableBlocks) {
                 new Roo.htmleditor.FilterBlock({ node : div });
             }
+            
+            var html = div.innerHTML;
+            
             //?? tidy?
-            var tidy = new Roo.htmleditor.TidySerializer({
-                inner:  true
-            });
-            var html  = tidy.serialize(div);
+            if (this.autoClean) {
+                
+                new Roo.htmleditor.FilterAttributes({
+                    node : div,
+                    attrib_white : [
+                            'href',
+                            'src',
+                            'name',
+                            'align',
+                            'colspan',
+                            'rowspan',
+                            'data-display',
+                            'data-caption-display',
+                            'data-width',
+                            'data-caption',
+                            'start' ,
+                            'style',
+                            // youtube embed.
+                            'class',
+                            'allowfullscreen',
+                            'frameborder',
+                            'width',
+                            'height',
+                            'alt'
+                            ],
+                    attrib_clean : ['href', 'src' ] 
+                });
+                
+                var tidy = new Roo.htmleditor.TidySerializer({
+                    inner:  true
+                });
+                html  = tidy.serialize(div);
+                
+            }
             
             
             if(Roo.isSafari){
@@ -27698,14 +28081,39 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
         
         // check what type of paste - if it's an image, then handle it differently.
-        if (cd.files && cd.files.length > 0) {
-            // pasting images?
+        if (cd.files && cd.files.length > 0 && cd.types.indexOf('text/html') < 0) {
+            // pasting images? 
             var urlAPI = (window.createObjectURL && window) || 
                 (window.URL && URL.revokeObjectURL && URL) || 
                 (window.webkitURL && webkitURL);
-    
-            var url = urlAPI.createObjectURL( cd.files[0]);
-            this.insertAtCursor('<img src=" + url + ">');
+            
+            var r = new FileReader();
+            var t = this;
+            r.addEventListener('load',function()
+            {
+                
+                var d = (new DOMParser().parseFromString('<img src="' + r.result+ '">', 'text/html')).body;
+                // is insert asycn?
+                if (t.enableBlocks) {
+                    
+                    Array.from(d.getElementsByTagName('img')).forEach(function(img) {
+                        if (img.closest('figure')) { // assume!! that it's aready
+                            return;
+                        }
+                        var fig  = new Roo.htmleditor.BlockFigure({
+                            image_src  : img.src
+                        });
+                        fig.updateElement(img); // replace it..
+                        
+                    });
+                }
+                t.insertAtCursor(d.innerHTML.replace(/&nbsp;/g,' '));
+                t.owner.fireEvent('paste', this);
+            });
+            r.readAsDataURL(cd.files[0]);
+            
+            e.preventDefault();
+            
             return false;
         }
         if (cd.types.indexOf('text/html') < 0 ) {
@@ -27717,8 +28125,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
-        //Roo.log(images);
-        //Roo.log(imgs);
+        // Roo.log(images);
+        // Roo.log(imgs);
         // fixme..
         images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl|listtable|footerf)/); }) // ignore headers/footers etc.
                        .map(function(g) { return g.toDataURL(); })
@@ -27763,13 +28171,36 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
                 node : d,
-                attrib_white : ['href', 'src', 'name', 'align', 'colspan', 'rowspan', 'data-display', 'data-width', 'start'],
+                attrib_white : [
+                    'href',
+                    'src',
+                    'name',
+                    'align',
+                    'colspan',
+                    'rowspan' 
+                /*  THESE ARE NOT ALLWOED FOR PASTE
+                 *    'data-display',
+                    'data-caption-display',
+                    'data-width',
+                    'data-caption',
+                    'start' ,
+                    'style',
+                    // youtube embed.
+                    'class',
+                    'allowfullscreen',
+                    'frameborder',
+                    'width',
+                    'height',
+                    'alt'
+                    */
+                    ],
                 attrib_clean : ['href', 'src' ] 
             });
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
             // should be fonts..
             new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', ':' ]} );
             new Roo.htmleditor.FilterParagraph({ node : d });
+            new Roo.htmleditor.FilterHashLink({node : d});
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
             new Roo.htmleditor.FilterComment({ node : d });
@@ -27798,6 +28229,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
          
         
         e.preventDefault();
+        this.owner.fireEvent('paste', this);
         return false;
         // default behaveiour should be our local cleanup paste? (optional?)
         // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
@@ -27874,6 +28306,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (e && (e.ctrlKey || e.metaKey) && e.keyCode === 90) {
             return; // we do not handle this.. (undo manager does..)
         }
+        // clicking a 'block'?
+        
         // in theory this detects if the last element is not a br, then we try and do that.
         // its so clicking in space at bottom triggers adding a br and moving the cursor.
         if (e &&
@@ -27976,6 +28410,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 break;
             case 'bold':
             case 'italic':
+            case 'underline':                
                 // if there is no selection, then we insert, and set the curson inside it..
                 this.execCmd('styleWithCSS', false); 
                 break;
@@ -28966,6 +29401,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             * @param {Roo.HtmlEditorCore} this
             */
             paste: true 
+            
         });
         this.defaultAutoCreate =  {
             tag: "textarea",
@@ -31189,12 +31625,12 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
     disableMask : false,
     
     /**
-     * @cfg {Boolean} errorMask (true|false) default false
+     * @cfg {Boolean} errorMask Should the form be masked (and the active element highlighted on error - default false
      */
     errorMask : false,
     
     /**
-     * @cfg {Number} maskOffset Default 100
+     * @cfg {Number} maskOffset space around form element to mask if there is an error Default 100
      */
     maskOffset : 100,
 
@@ -31565,6 +32001,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             for(id in values){
                 if(typeof values[id] != 'function' && (field = this.findField(id))){
                     
+                    
+                    
+                    
                     if (field.setFromData && 
                         field.valueField && 
                         field.displayField &&
@@ -31579,6 +32018,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                         sd[field.displayField] = typeof(values[field.name]) == 'undefined' ? '' : values[field.name];
                         field.setFromData(sd);
                         
+                    } else if (field.inputType && field.inputType == 'radio') {
+                        
+                        field.setValue(values[id]);
                     } else {
                         field.setValue(values[id]);
                     }
@@ -31604,7 +32046,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     /**
      * Returns the fields in this form as an object with key/value pairs. If multiple fields exist with the same name
      * they are returned as an array.
-     * @param {Boolean} asString
+     * @param {Boolean} asString (def)
      * @return {Object}
      */
     getValues : function(asString)
@@ -32027,7 +32469,7 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
      * @cfg {String} itemCls A css class to apply to the x-form-item of fields. This property cascades to child containers.
      */
     /**
-     * @cfg {String} (left|center|right) buttonAlign Valid values are "left," "center" and "right" (defaults to "center")
+     * @cfg {String} buttonAlign (left|center|right)  Valid values are "left," "center" and "right" (defaults to "center")
      */
     buttonAlign:'center',
 
@@ -32684,7 +33126,13 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         }
         var ret = false;
         try {
-            ret = Roo.decode(response.responseText);
+            var rt = response.responseText;
+            if (rt.match(/^\<!--\[CDATA\[/)) {
+                rt = rt.replace(/^\<!--\[CDATA\[/,'');
+                rt = rt.replace(/\]\]--\>$/,'');
+            }
+            
+            ret = Roo.decode(rt);
         } catch (e) {
             ret = {
                 success: false,
@@ -33077,8 +33525,9 @@ Roo.form.VTypes = function(){
     // closure these in so they are only created once.
     var alpha = /^[a-zA-Z_]+$/;
     var alphanum = /^[a-zA-Z0-9_]+$/;
-    var email = /^([\w]+)(.[\w]+)*@([\w-]+\.){1,5}([A-Za-z]){2,24}$/;
-    var url = /(((https?)|(ftp)):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
+    var email = /^([\w'-]+)(\.[\w'-]+)*@([\w-]+\.){1,5}([A-Za-z]){2,24}$/;
+    var url = /^(((https?)|(ftp)):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
+    var urlWeb = /^((https?):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
 
     // All these messages and functions are configurable
     return {
@@ -33086,68 +33535,75 @@ Roo.form.VTypes = function(){
          * The function used to validate email addresses
          * @param {String} value The email address
          */
-        'email' : function(v){
+        email : function(v){
             return email.test(v);
         },
         /**
          * The error text to display when the email validation function returns false
          * @type String
          */
-        'emailText' : 'This field should be an e-mail address in the format "user@domain.com"',
+        emailText : 'This field should be an e-mail address in the format "user@domain.com"',
         /**
          * The keystroke filter mask to be applied on email input
          * @type RegExp
          */
-        'emailMask' : /[a-z0-9_\.\-@]/i,
+        emailMask : /[a-z0-9_\.\-@]/i,
 
         /**
          * The function used to validate URLs
          * @param {String} value The URL
          */
-        'url' : function(v){
+        url : function(v){
             return url.test(v);
+        },
+        /**
+         * The funciton used to validate URLs (only allow schemes 'https' and 'http')
+         * @param {String} v The URL
+         */
+        urlWeb : function(v) {
+            return urlWeb.test(v);
         },
         /**
          * The error text to display when the url validation function returns false
          * @type String
          */
-        'urlText' : 'This field should be a URL in the format "http:/'+'/www.domain.com"',
+        urlText : 'This field should be a URL in the format "http:/'+'/www.domain.com"',
         
         /**
          * The function used to validate alpha values
          * @param {String} value The value
          */
-        'alpha' : function(v){
+        alpha : function(v){
             return alpha.test(v);
         },
         /**
          * The error text to display when the alpha validation function returns false
          * @type String
          */
-        'alphaText' : 'This field should only contain letters and _',
+        alphaText : 'This field should only contain letters and _',
         /**
          * The keystroke filter mask to be applied on alpha input
          * @type RegExp
          */
-        'alphaMask' : /[a-z_]/i,
+        alphaMask : /[a-z_]/i,
 
         /**
          * The function used to validate alphanumeric values
          * @param {String} value The value
          */
-        'alphanum' : function(v){
+        alphanum : function(v){
             return alphanum.test(v);
         },
         /**
          * The error text to display when the alphanumeric validation function returns false
          * @type String
          */
-        'alphanumText' : 'This field should only contain letters, numbers and _',
+        alphanumText : 'This field should only contain letters, numbers and _',
         /**
          * The keystroke filter mask to be applied on alphanumeric input
          * @type RegExp
          */
-        'alphanumMask' : /[a-z0-9_]/i
+        alphanumMask : /[a-z0-9_]/i
     };
 }();//<script type="text/javascript">
 
@@ -34017,16 +34473,30 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         this.view.singleSelect = false;
         this.view.multiSelect = true;
         this.view.toggleSelect = true;
-        this.pageTb.add(new Roo.Toolbar.Fill(), {
+        this.pageTb.add(new Roo.Toolbar.Fill(),{
             
+            text: 'Select All',
+            handler: function() {
+                _t.selectAll();
+            }
+        },
+        {
             text: 'Done',
-            handler: function()
-            {
+            handler: function() {
                 _t.collapse();
             }
         });
     },
     
+    cleanLeadingSpace : function(e)
+    {
+        // this is disabled, as it retriggers setvalue on blur
+        return;
+    },
+    doForce : function() {
+        // no idea what this did, but it blanks out our values.
+        return;
+    },
     onViewOver : function(e, t){
         // do nothing...
         return;
@@ -34059,7 +34529,17 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         return false;
     },
     
-    
+    selectAll : function()
+    {
+        var sels = [];
+        this.store.each(function(r,i) {
+            sels.push(i);
+        });
+        this.view.select(sels);
+        this.collapse();
+        return false;
+
+    },
     
     onSelect : function(record, index){
        // Roo.log("onselect Called");
@@ -39175,6 +39655,11 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
 	/**
 	 * @cfg {Roo.Toolbar} toolbar a toolbar for buttons etc.
 	 */
+	 
+	 /**
+	 * @cfg {Roo.PagingToolbar} footer the paging toolbar
+	 */
+	
 	/**
      * @cfg {String} ddGroup - drag drop group.
      */

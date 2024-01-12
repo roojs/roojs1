@@ -48,6 +48,7 @@ Roo.example.calendar = new Roo.XComponent({
                                             fieldLabel : "Editor",
                                             labelAlign: 'top',
                                             name : "editor",
+                                          
                                             listeners : {
                                                 render : function() {
                                                     htmleditor = this;

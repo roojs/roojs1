@@ -58,6 +58,7 @@
     "Roo.bootstrap.form.MoneyField",
     "Roo.bootstrap.form.MonthField",
     "Roo.bootstrap.form.NumberField",
+    "Roo.bootstrap.form.Password",
     "Roo.bootstrap.form.PhoneInput",
     "Roo.bootstrap.form.Radio",
     "Roo.bootstrap.form.RadioSet",

@@ -1,0 +1,521 @@
+<html><head><title>Roo/bootstrap/form/HtmlEditorToolbar/Standard.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/**
+ * @class Roo.bootstrap.form.HtmlEditorToolbar.Standard
+ * @parent Roo.bootstrap.form.HtmlEditor
+ * @extends Roo.bootstrap.nav.Simplebar
+ * Basic Toolbar
+ * 
+ * @example
+ * Usage:
+ *
+ new Roo.bootstrap.form.HtmlEditor({
+    ....
+    toolbars : [
+        new Roo.bootstrap.form.HtmlEditorToolbar.Standard({
+            disable : { fonts: 1 , format: 1, ..., ... , ...],
+            btns : [ .... ]
+        })
+    }
+     
+ * 
+ * @cfg {Object} disable List of elements to disable..
+ * @cfg {Array} btns List of additional buttons.
+ * 
+ * 
+ * NEEDS Extra CSS? 
+ * .x-html-editor-tb .x-edit-none .x-btn-text { background: none; }
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.form.HtmlEditorToolbar.Standard </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
+{
+
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-comment">// default disabled, based on 'good practice'..
+    </span><span class="jsdoc-var">this.disable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.disable </span><span class="jsdoc-syntax">|| {};
+    </span><span class="jsdoc-var">Roo.applyIf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disable</span><span class="jsdoc-syntax">, {
+        </span><span class="jsdoc-var">fontSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">colors </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">specialElements </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">Roo.bootstrap.form.HtmlEditorToolbar.Standard.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.editor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.editor</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.editorcore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.editor.editorcore</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-var">this.buttons   </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o.btnid</span><span class="jsdoc-syntax">; });
+
+    </span><span class="jsdoc-comment">//Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
+    // dont call parent... till later.
+</span><span class="jsdoc-syntax">}
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.form.HtmlEditorToolbar.Standard</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.nav.Simplebar</span><span class="jsdoc-syntax">,  {
+
+    </span><span class="jsdoc-var">bar </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">editor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">editorcore </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+
+    </span><span class="jsdoc-var">formats </span><span class="jsdoc-syntax">: [
+        </span><span class="jsdoc-string">&quot;p&quot; </span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;h1&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;h2&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;h3&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;h4&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;h5&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;h6&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;pre&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;code&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;abbr&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;acronym&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;address&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;cite&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;samp&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;var&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'span'
+    </span><span class="jsdoc-syntax">],
+
+
+    </span><span class="jsdoc-var">deleteBtn</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
+    {
+       </span><span class="jsdoc-comment">// Roo.log(&quot;Call onRender: &quot; + this.xtype);
+
+       </span><span class="jsdoc-var">Roo.bootstrap.form.HtmlEditorToolbar.Standard.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-var">this.el.dom.style.marginBottom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'0'</span><span class="jsdoc-syntax">;
+       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">editorcore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore</span><span class="jsdoc-syntax">;
+       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editor</span><span class="jsdoc-syntax">;
+
+       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">children </span><span class="jsdoc-syntax">= [];
+       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">btn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">toggle</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">){
+
+            </span><span class="jsdoc-keyword">var  </span><span class="jsdoc-var">event </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">toggle </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'toggle' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">xtype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">xns</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-comment">//glyphicon : id,
+                </span><span class="jsdoc-var">btnid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">fa</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-html-editor-btn-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// why id || cmd
+                </span><span class="jsdoc-var">enableToggle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">toggle </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">pressed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">toggle </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {}
+            };
+            </span><span class="jsdoc-var">a.listeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">toggle </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'toggle' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                </span><span class="jsdoc-var">handler </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">handler.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">) :</span><span class="jsdoc-var">_this.onBtnClick.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">||  </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+            };
+            </span><span class="jsdoc-var">children.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">;
+       }
+
+    </span><span class="jsdoc-comment">//    var cb_box = function...
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">xtype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">xns</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">fa </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'font'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-html-editor-font-chooser'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-comment">//html : 'submit'
+                </span><span class="jsdoc-var">menu </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">xtype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Menu'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">xns</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">:  []
+                }
+        };
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formats</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">style.menu.items.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'MenuItem'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">xns</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">' style=&quot;margin:2px&quot;&gt;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&lt;/'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&gt;'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">tagname </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+                    {
+                        </span><span class="jsdoc-var">editorcore.insertTag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tagname</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">editor.focus</span><span class="jsdoc-syntax">();
+                    }
+                }
+
+            });
+        });
+        </span><span class="jsdoc-var">children.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'bold'</span><span class="jsdoc-syntax">,         </span><span class="jsdoc-string">'bold'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'italic'</span><span class="jsdoc-syntax">,       </span><span class="jsdoc-string">'italic'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'underline'</span><span class="jsdoc-syntax">,     </span><span class="jsdoc-string">'underline'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'align-left'</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-string">'justifyleft'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'align-center'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'justifycenter'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'align-right' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'justifyright'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'link'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLinkClick</span><span class="jsdoc-syntax">);
+
+
+        </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'image'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onImageClick</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'list'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'insertunorderedlist'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'list-ol'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'insertorderedlist'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'pencil'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.toggleSourceEdit</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn.pressed</span><span class="jsdoc-syntax">);
+        });
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editor.btns.length </span><span class="jsdoc-syntax">&gt; 0) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt;</span><span class="jsdoc-var">this.editor.btns.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-var">children.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editor.btns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            }
+        }
+
+
+
+        </span><span class="jsdoc-var">this.xtype </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'NavSimplebar'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// why?
+
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">=0;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">children.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+
+            </span><span class="jsdoc-var">this.buttons.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.addxtypeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">children</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]));
+
+        }
+        </span><span class="jsdoc-var">this.buildToolbarDelete</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-var">editor.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.updateToolbar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">buildToolbarDelete </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+
+       </span><span class="jsdoc-comment">/* this.addxtypeChild({
+            xtype : 'Element',
+            xns : Roo.bootstrap,
+            cls : 'roo-htmleditor-fill'
+        });
+        */
+        </span><span class="jsdoc-var">this.deleteBtn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addxtypeChild</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">xtype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">xns</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">fa</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'trash'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onDelete.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)
+            }
+        });
+        </span><span class="jsdoc-var">this.deleteBtn.hide</span><span class="jsdoc-syntax">();
+
+    },
+
+    </span><span class="jsdoc-var">onImageClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.input</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.input.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onFileSelected</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.input </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">({
+          </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
+          </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'file'</span><span class="jsdoc-syntax">,
+          </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display:none'</span><span class="jsdoc-syntax">,
+          </span><span class="jsdoc-var">multiple</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'multiple'
+       </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.input.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onFileSelected</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.input.dom.click</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">onFileSelected </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.input.dom.files</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.input.dom.files.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+
+        </span><span class="jsdoc-var">this.addFiles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Array.prototype.slice.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.input.dom.files</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">addFiles </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fire_add</span><span class="jsdoc-syntax">) {
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">editor </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">this.editorcore</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">far.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fire_add</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.editor.syncValue</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imageadd'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">far.pop</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">f.type.match</span><span class="jsdoc-syntax">(/^image/)) {
+            </span><span class="jsdoc-var">this.addFiles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fire_add</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selectedNode</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sn  </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.editorcore.enableBlocks </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">reader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">FileReader</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">reader.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bl</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oldSrc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">bl.image_src</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">bl.image_src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">reader.result</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-comment">//bl.caption = f.name;
+                </span><span class="jsdoc-var">bl.updateElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.editor.syncValue</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imageupdate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oldSrc</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-comment">// we only do the first file!! and replace.
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editorcore.enableBlocks</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fig </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.BlockFigure</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">image_src </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">reader.result</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">caption </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">caption_display </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'  </span><span class="jsdoc-comment">//default to hide captions..
+                 </span><span class="jsdoc-syntax">});
+                </span><span class="jsdoc-var">editor.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fig.toHTML</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-var">this.addFiles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-comment">// just a standard img..
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">sn.tagName.toUpperCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'IMG'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oldSrc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sn.src</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">sn.src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">reader.result</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.editor.syncValue</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imageupdate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oldSrc</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">editor.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;img src=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">reader.result </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot;&gt;'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.addFiles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+
+        })</span><span class="jsdoc-var">.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">reader.readAsDataURL</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">);
+
+
+     },
+
+
+    </span><span class="jsdoc-var">onBtnClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">)
+    {
+       </span><span class="jsdoc-var">this.editorcore.relayCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-var">this.editorcore.focus</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">onLinkClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selectedNode </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.selectedNode.tagName.toUpperCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'A' </span><span class="jsdoc-syntax">?
+                </span><span class="jsdoc-var">this.selectedNode.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">Roo.bootstrap.MessageBox.show</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Add / Edit Link URL&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Enter the URL for the link&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">buttons</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap.MessageBox.OKCANCEL</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">minWidth</span><span class="jsdoc-syntax">: 250,
+            </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">prompt</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">multiline</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">modal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pressed</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newurl</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pressed </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'ok'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.editorcore.focus</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.selectedNode.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newurl</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">this.editor.syncValue</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newurl </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">newurl .match</span><span class="jsdoc-syntax">(/http(s):\/\/.+/)) {
+                    </span><span class="jsdoc-var">this.editorcore.relayCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'createlink'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newurl</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-var">this.editorcore.focus</span><span class="jsdoc-syntax">();
+            },
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.editorcore.linkDialogCls
+        </span><span class="jsdoc-syntax">});
+    },
+    </span><span class="jsdoc-comment">/**
+     * Protected method that will not generally be called directly. It triggers
+     * a toolbar update by reading the markup state of the current selection in the editor.
+     */
+    </span><span class="jsdoc-var">updateToolbar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editor </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">){
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editorcore.activated</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.editor.onFirstFocus</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">// is this neeed?
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">btns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.buttons</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore.doc</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hasToggle  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">btns.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.enableToggle </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.cmd</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">hasToggle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">hasToggle  </span><span class="jsdoc-syntax">|| ([</span><span class="jsdoc-string">'align-left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'align-right'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'align-center'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'image' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'link'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'underline'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.btnid</span><span class="jsdoc-syntax">) &lt; 0 &amp;&amp; </span><span class="jsdoc-var">doc.queryCommandState</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.cmd</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-var">e.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.queryCommandState</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.cmd</span><span class="jsdoc-syntax">));
+            }
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">&amp;&amp;
+            (</span><span class="jsdoc-var">ev.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'mouseup' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'click' </span><span class="jsdoc-syntax">) &amp;&amp;
+            </span><span class="jsdoc-var">ev.target </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ev.target.tagName </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'BODY' </span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// &amp;&amp; ev.target.tagName == 'IMG') {
+            // they have click on an image...
+            // let's see if we can change the selection...
+            </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.target</span><span class="jsdoc-syntax">;
+
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore.getAllAncestors</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ans.length </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">ans</span><span class="jsdoc-syntax">[0] ?  </span><span class="jsdoc-var">ans</span><span class="jsdoc-syntax">[0]  : </span><span class="jsdoc-var">ans</span><span class="jsdoc-syntax">[1]) : </span><span class="jsdoc-var">this.editorcore.doc.body</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.editorcore.doc.body</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.tagName.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.editorcore.doc.body</span><span class="jsdoc-syntax">;
+
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lastSel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selectedNode</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.selectedNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">// ok see if we are editing a block?
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">// you are not actually selecting the block.
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">sel.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">sel.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[data-block]'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[data-block]'</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editorcore.doc.body.querySelectorAll</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-ed-selection'</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">e.classList.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-ed-selection'</span><span class="jsdoc-syntax">);
+        });
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">block </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.editorcore.enableBlocks</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">block </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">db</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">db.className </span><span class="jsdoc-syntax">=  (</span><span class="jsdoc-var">db.classList.length </span><span class="jsdoc-syntax">&gt; 0  ? </span><span class="jsdoc-var">db.className </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) +
+                    </span><span class="jsdoc-string">' roo-ed-selection'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selectedNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">db</span><span class="jsdoc-syntax">;
+            }
+        }
+
+        </span><span class="jsdoc-comment">// highlight the 'a'..
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">sel.tagName.toUpperCase</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">block </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'A'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">asel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'A'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">asel</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">asel</span><span class="jsdoc-syntax">;
+            }
+        }
+
+        </span><span class="jsdoc-var">btns.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'link'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'A' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.selectedNode.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">btns.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'image'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'IMG' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.editorcore.enableBlocks </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'FIGURE'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">btns.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'underline'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'U' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">sel.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'u'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">Roo.bootstrap.menu.Manager.hideAll</span><span class="jsdoc-syntax">();
+
+
+
+
+
+        </span><span class="jsdoc-comment">// handle delete button..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hasToggle </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">tn.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'BODY'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">this.deleteBtn.hide</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+
+        }
+        </span><span class="jsdoc-var">this.deleteBtn.show</span><span class="jsdoc-syntax">();
+
+
+
+        </span><span class="jsdoc-comment">//this.editorsyncValue();
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-var">onFirstFocus</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-var">this.buttons.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-var">item.enable</span><span class="jsdoc-syntax">();
+        });
+    },
+
+    </span><span class="jsdoc-var">onDelete </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore.createRange</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">selection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore.getSelection</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selectedNode</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">range.setStart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">,0);
+        </span><span class="jsdoc-var">range.setEnd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">,0);
+
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">block </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selectedNode</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">block.removeNode</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">sn.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">selection.removeAllRanges</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">selection.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.updateToolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn.tagName.toUpperCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'FIGURE'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.editor.syncValue</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">this.editor.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imagedelete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
+                }
+
+                </span><span class="jsdoc-var">this.selectedNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.editorcore.fireEditorEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// should not really happen..
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">sn.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'BODY'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">stn </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">sn.childNodes</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">sn.nextSibling </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">sn.previousSibling </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">sn.parentNode</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">// remove and keep parents.
+        </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterKeepChildren</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">a.replaceTag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">selection.removeAllRanges</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">selection.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn.tagName.toUpperCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'IMG&quot;'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.editor.syncValue</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.editor.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imagedelete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-var">this.selectedNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.editorcore.fireEditorEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+
+
+    },
+
+
+    </span><span class="jsdoc-var">toggleSourceEdit </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sourceEditMode</span><span class="jsdoc-syntax">){
+
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sourceEditMode</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;disabling buttons&quot;</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-var">this.buttons.each</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.cmd </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'pencil'</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">item.disable</span><span class="jsdoc-syntax">();
+                }
+            });
+
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;enabling buttons&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editorcore.initialized</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.buttons.each</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">item.enable</span><span class="jsdoc-syntax">();
+                });
+            }
+
+        }
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;calling toggole on editor&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">// tell the editor that it's been pressed..
+        </span><span class="jsdoc-var">this.editor.toggleSourceEdit</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sourceEditMode</span><span class="jsdoc-syntax">);
+
+    }
+});
+
+
+
+
+</span></code></body></html>

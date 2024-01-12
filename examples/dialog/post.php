@@ -1,4 +1,4 @@
-<?
+<?php
 //This file does nothing. All it does is kick out a bogus new comment in JSON format.
 ?>{"comments": [{
 		id: "10", 

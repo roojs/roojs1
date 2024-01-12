@@ -19,8 +19,13 @@ var cropboxDialog = {
         this.dialog = Roo.factory({
             xns : Roo,
             xtype : 'LayoutDialog',
-            width : 700,
+            width : 800,
             height : 600,
+            north : {
+                xns : Roo,
+                xtype : 'LayoutRegion',
+                height : 50
+            },
             center : {
                 xns : Roo,
                 xtype : 'LayoutRegion'
@@ -39,11 +44,13 @@ var cropboxDialog = {
                             outputMaxWidth : 1200,
                             windowSize : 300,
                             url: 'http://localhost/web.MediaOutreach/press.local.php/Roo/Images.php',
-                            buttons: [],
+                            buttons: Roo.dialog.UploadCropbox.footer.CENTER,
                             listeners : {
                                 render : function (_self)
                                 {
                                     _this.cropbox = _self;
+                                    _this.cropbox.bodyEl.dom.style.height = (parseInt(_this.cropbox.bodyEl.dom.parentNode.parentNode.parentNode.style.height) - 34) + 'px';
+                                    _this.cropbox.bodyEl.dom.style.maxHeight = (parseInt(_this.cropbox.bodyEl.dom.parentNode.parentNode.parentNode.style.height) - 34) + 'px';
                                 },
                                 loadcanvas : function (_self, imageEl)
                                 {
@@ -68,7 +75,21 @@ var cropboxDialog = {
                             }
                         }
                     ]
-                }
+                },
+                {
+                    xtype : 'ContentPanel',
+                    xns: Roo,
+                    region : 'north',
+                    listeners : {
+                        activate : function (_self)
+                        {
+                            var style = 'font:bold 16px sans serif,tahoma,verdana,helvetica; color:rgba(0, 0, 0, 0.5);';
+                            this.setContent("<div style='width:100%; height:50px; display:flex; flex-direction:column; align-items:center; justify-content:center'>" 
+                            + "<h3 style='" + style + "'>Scroll the mouse wheel to resize the image</h3>"
+                            + "<h3 style='" + style + "'>Drag the image to move the image</h3></div>");
+                        }
+                    }
+               }
             ],
             buttons : [
                 {

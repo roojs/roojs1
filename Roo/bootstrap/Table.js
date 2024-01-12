@@ -80,6 +80,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  *                also adds table-responsive (see bootstrap docs for details)
  * @cfg {Boolean} loadMask (true|false) default false
  * @cfg {Boolean} footerShow (true|false) generate tfoot, default true
+ * @cfg {Boolean} footerRow (true|false) generate tfoot with columns of values, default false
  * @cfg {Boolean} headerShow (true|false) generate thead, default true
  * @cfg {Boolean} rowSelection (true|false) default false
  * @cfg {Boolean} cellSelection (true|false) default false
@@ -88,6 +89,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
  * @cfg {Boolean} auto_hide_footer  auto hide footer if only one page (default false)
  * @cfg {Boolean} enableColumnResize default true if columns can be resized = needs scrollBody to be set to work (drag/drop)
+ * @cfg {Boolean} disableAutoSize disable autoSize() and initCSS()
  *
  * 
  * @cfg {Number} minColumnWidth default 50 pixels minimum column width 
@@ -263,8 +265,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     store : false,
     loadMask : false,
     footerShow : true,
+    footerRow : false,
     headerShow : true,
     enableColumnResize: true,
+    disableAutoSize: false,
   
     rowSelection : false,
     cellSelection : false,
@@ -337,9 +341,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             cfg.cn.push(this.renderBody());
             
-            if(this.footerShow){
+            if(this.footerShow || this.footerRow){
                 cfg.cn.push(this.renderFooter());
             }
+
             // where does this come from?
             //cfg.cls+=  ' TableGrid';
         }
@@ -426,7 +431,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     initCSS : function()
     {
-        
+        if(this.disableAutoSize) {
+            return;
+        }
         
         var cm = this.cm, styles = [];
         this.CSS.removeStyleSheet(this.id + '-cssrules');
@@ -898,8 +905,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         return footer;
     },
     
-    
-    
     onLoad : function()
     {
 //        Roo.log('ds onload');
@@ -946,7 +951,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var tfoot = this.el.select('tfoot', true).first();
         
-        if(this.footerShow && this.auto_hide_footer && this.mainFoot){
+        if(this.footerShow && !this.footerRow && this.auto_hide_footer && this.mainFoot){
             
             this.mainFoot.setVisibilityMode(Roo.Element.DISPLAY).hide();
             
@@ -955,6 +960,30 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(this.footer.pageSize < total){
                 this.mainFoot.show();
             }
+        }
+
+        if(!this.footerShow && this.footerRow) {
+
+            var tr = {
+                tag : 'tr',
+                cn : []
+            };
+
+            for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+                var footer = typeof(cm.config[i].footer) == "function" ? cm.config[i].footer(ds, cm.config[i]) : cm.config[i].footer;
+                var td = {
+                    tag: 'td',
+                    cls : ' x-fcol-' + i,
+                    html: footer
+                };
+
+                tr.cn.push(td);
+                
+            }
+            
+            tfoot.dom.innerHTML = '';
+
+            tfoot.createChild(tr);
         }
         
         Roo.each(this.el.select('tbody td', true).elements, function(e){
@@ -1223,7 +1252,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             var id = false;
             
             if(typeof(renderer) !== 'undefined'){
-                value = renderer(d.data[cm.getDataIndex(i)], false, d);
+                value = renderer.call(config, d.data[cm.getDataIndex(i)], false, d);
             }
             // if object are returned, then they are expected to be Roo.bootstrap.Component instances
             // and are rendered into the cells after the row is rendered - using the id for the element.
@@ -1430,6 +1459,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
      */
     autoSize : function()
     {
+        if(this.disableAutoSize) {
+            return;
+        }
         //var ctr = Roo.get(this.container.dom.parentElement);
         var ctr = Roo.get(this.el.dom);
         

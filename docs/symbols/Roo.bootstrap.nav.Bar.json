@@ -13,7 +13,7 @@
     "Roo.bootstrap.nav.Simplebar" : [
       "Roo.bootstrap.PagingToolbar",
       "Roo.bootstrap.PopoverNav",
-      "Roo.bootstrap.form.HtmlEditorToolbarStandard",
+      "Roo.bootstrap.form.HtmlEditorToolbar.Standard",
       "Roo.bootstrap.nav.Headerbar"
     ]
   },

@@ -8,6 +8,8 @@ Roo.bootstrap.nav.namespace
 Roo.bootstrap.form.namespace
 Roo.bootstrap.panel.namespace
 Roo.bootstrap.layout.namespace
+Roo.htmleditor.namespace
+Roo.bootstrap.form.HtmlEditorToolbar.namespace
 
 
 Roo.Shadow
@@ -90,6 +92,7 @@ Roo.bootstrap.form.Input
 Roo.bootstrap.form.TextArea
 Roo.bootstrap.form.TriggerField
 Roo.bootstrap.form.CardUploader
+Roo.bootstrap.form.MultiLineTag
 
 
 Roo.data.SortTypes
@@ -126,21 +129,36 @@ Roo.bootstrap.form.MonthField
 Roo.bootstrap.form.CheckBox
 Roo.bootstrap.form.Radio
 Roo.bootstrap.form.SecurePass
+Roo.bootstrap.form.Password
 
-Roo.htmleditor.namespace
+
+Roo.rtf.namespace
+Roo.rtf.Hex
+Roo.rtf.Paragraph
+Roo.rtf.Span
+Roo.rtf.Group
+Roo.rtf.Document
+Roo.rtf.Ctrl
+Roo.rtf.Parser
+
 Roo.htmleditor.Filter
 Roo.htmleditor.FilterAttributes
 Roo.htmleditor.FilterBlack
 Roo.htmleditor.FilterComment
 Roo.htmleditor.FilterKeepChildren
 Roo.htmleditor.FilterParagraph
+Roo.htmleditor.FilterHashLink
 Roo.htmleditor.FilterSpan
 Roo.htmleditor.FilterTableWidth
 Roo.htmleditor.FilterWord
 Roo.htmleditor.FilterStyleToTag
 Roo.htmleditor.FilterLongBr
 Roo.htmleditor.FilterBlock
+Roo.htmleditor.TidySerializer
+Roo.htmleditor.TidyWriter
+Roo.htmleditor.TidyEntities
 Roo.htmleditor.KeyEnter
+
 
 Roo.htmleditor.Block
 Roo.htmleditor.BlockFigure
@@ -149,7 +167,9 @@ Roo.htmleditor.BlockTd
 
 Roo.HtmlEditorCore
 Roo.bootstrap.form.HtmlEditor
-Roo.bootstrap.form.HtmlEditorToolbarStandard
+
+Roo.bootstrap.form.HtmlEditorToolbar.Standard
+ 
 
 Roo.bootstrap.form.Markdown
 

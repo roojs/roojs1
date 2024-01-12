@@ -1,0 +1,65 @@
+{
+  "name" : "Roo.bootstrap.form.MultiLineTag",
+  "augments" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
+  "desc" : "",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
+  "memberOf" : "MultiLineTag",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "The config object",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [],
+  "methods" : [],
+  "events" : [
+    {
+      "name" : "beforeload",
+      "type" : "function",
+      "desc" : "Fires before a request is made for a new data object.  If the beforeload handler returns false\nthe load action will be canceled.",
+      "sig" : "function (_self, store, options)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.boostrap.form.MultiLineTag",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "store",
+          "type" : "Store",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "The loading options that were specified (see {@link #load} for details)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    }
+  ]
+}

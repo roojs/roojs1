@@ -1,0 +1,13 @@
+{
+    "name" : "bootstrap",
+    "xtype" : "Roo",
+    "fn" : "81b47aefdd9bd542aa5119aab347a526",
+    "runhtml" : " \n<script type=\"text/javascript\">\nbaseURL = 'http://localhost/';\nBuilderUseBootstrap = true;\nRegistrar = {};\n</script>\n <!--  <link href=\"../bootswatch/design-agency/css/styles.css\" rel=\"stylesheet\" type=\"text/css\" />   -->\n\n<link href=\"../roojs1/css-bootstrap/font-awesome.css\" rel=\"stylesheet\" type=\"text/css\" /> \n<!-- <link href=\"../bootswatch/AdminLTE-master/css/AdminLTE.css\" rel=\"stylesheet\" type=\"text/css\" />    -->\n  \n\n<!--<link href=\"../roojs1/css-bootstrap/sidebar-nav.css\" rel=\"stylesheet\" type=\"text/css\" /> -->\n \n<script type=\"text/javascript\" src=\"../roojs1/Roo/bootstrap/Card.js\"></script>\n<script type=\"text/javascript\" src=\"../roojs1/Roo/bootstrap/ButtonUploader.js\"></script>",
+    "rootURL" : "http://localhost/",
+    "base_template" : "bootstrap4.builder.html",
+    "html_gen" : "",
+    "DBTYPE" : "",
+    "DBNAME" : "",
+    "DBUSERNAME" : "",
+    "DBPASSWORD" : ""
+}

@@ -51,7 +51,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     
     imgResponsive: true,
     border: '',
-    src: 'about:blank',
+    src: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=',
     href: false,
     target: false,
     xsUrl: '',

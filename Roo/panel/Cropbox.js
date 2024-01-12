@@ -373,6 +373,9 @@ Roo.extend(Roo.panel.Cropbox, Roo.Component,  {
             case 'download' :
                 this.download(e);
                 break;
+            case 'center' :
+                this.center(e);
+                break;
             default :
                 break;
         }
@@ -413,6 +416,11 @@ Roo.extend(Roo.panel.Cropbox, Roo.Component,  {
     download : function(e)
     {
         this.fireEvent('download', this);
+    },
+
+    center : function(e)
+    {
+        this.setCanvasPosition();
     },
     
     loadCanvas : function(src)
@@ -468,17 +476,37 @@ Roo.extend(Roo.panel.Cropbox, Roo.Component,  {
         
     },
     
-    setCanvasPosition : function()
+    setCanvasPosition : function(center = true)
     {   
         if(!this.canvasEl){
             return;
         }
+
+        var newCenterLeft = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
+        var newCenterTop = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
+
+        if(center) {
+            this.previewEl.setLeft(newCenterLeft);
+            this.previewEl.setTop(newCenterTop);
+
+            return;
+        }
         
-        var pw = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
-        var ph = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
-        
-        this.previewEl.setLeft(pw);
-        this.previewEl.setTop(ph);
+        var oldScaleLevel = this.baseScale * Math.pow(1.02, this.startScale);
+        var oldCanvasWidth = Math.floor(this.imageEl.OriginWidth * oldScaleLevel);
+        var oldCanvasHeight = Math.floor(this.imageEl.OriginHeight * oldScaleLevel);
+
+        var oldCenterLeft = Math.ceil((this.bodyEl.getWidth() - oldCanvasWidth) / 2);
+        var oldCenterTop = Math.ceil((this.bodyEl.getHeight() - oldCanvasHeight) / 2);
+
+        var leftDiff = newCenterLeft - oldCenterLeft;
+        var topDiff = newCenterTop - oldCenterTop;
+
+        var newPreviewLeft = this.previewEl.getLeft(true) + leftDiff;
+        var newPreviewTop = this.previewEl.getTop(true) + topDiff;
+
+        this.previewEl.setLeft(newPreviewLeft);
+        this.previewEl.setTop(newPreviewTop);
         
     },
     
@@ -510,12 +538,23 @@ Roo.extend(Roo.panel.Cropbox, Roo.Component,  {
         if (!this.dragable){
             return;
         }
+
+        var maxPaddingLeft = this.canvasEl.width / 0.9 * 0.05;
+        var maxPaddingTop = maxPaddingLeft * this.minHeight / this.minWidth;
+
+        if ((this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight)) {
+            maxPaddingLeft = (this.canvasEl.height * this.minWidth / this.minHeight - this.canvasEl.width) / 2 + maxPaddingLeft;
+        }
+
+        if ((this.imageEl.OriginWidth / this.imageEl.OriginHeight >= this.minWidth / this.minHeight)) {
+            maxPaddingTop = (this.canvasEl.width * this.minHeight / this.minWidth - this.canvasEl.height) / 2 + maxPaddingTop;
+        }
         
-        var minX = Math.ceil(this.thumbEl.getLeft(true));
-        var minY = Math.ceil(this.thumbEl.getTop(true));
+        var minX = Math.ceil(this.thumbEl.getLeft(true) + this.thumbEl.getWidth() - this.canvasEl.width - maxPaddingLeft);
+        var minY = Math.ceil(this.thumbEl.getTop(true) + this.thumbEl.getHeight() - this.canvasEl.height - maxPaddingTop);
         
-        var maxX = Math.ceil(minX + this.thumbEl.getWidth() - this.canvasEl.width);
-        var maxY = Math.ceil(minY + this.thumbEl.getHeight() - this.canvasEl.height);
+        var maxX = Math.ceil(this.thumbEl.getLeft(true) + maxPaddingLeft);
+        var maxY = Math.ceil(this.thumbEl.getTop(true) +  maxPaddingTop);
 
         if(minX > maxX) {
             var tempX = minX;
@@ -586,6 +625,39 @@ Roo.extend(Roo.panel.Cropbox, Roo.Component,  {
  
         var maxWidth = this.imageEl.OriginWidth;
         var maxHeight = this.imageEl.OriginHeight;
+
+
+        var newCanvasWidth = Math.floor(this.imageEl.OriginWidth * this.getScaleLevel());
+        var newCanvasHeight = Math.floor(this.imageEl.OriginHeight * this.getScaleLevel());
+
+        var oldCenterLeft = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
+        var oldCenterTop = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
+
+        var newCenterLeft = Math.ceil((this.bodyEl.getWidth() - newCanvasWidth) / 2);
+        var newCenterTop = Math.ceil((this.bodyEl.getHeight() - newCanvasHeight) / 2);
+
+        var leftDiff = newCenterLeft - oldCenterLeft;
+        var topDiff = newCenterTop - oldCenterTop;
+
+        var newPreviewLeft = this.previewEl.getLeft(true) + leftDiff;
+        var newPreviewTop = this.previewEl.getTop(true) + topDiff;
+
+        var paddingLeft = newPreviewLeft - this.thumbEl.getLeft(true);
+        var paddingTop = newPreviewTop - this.thumbEl.getTop(true);
+
+        var paddingRight = this.thumbEl.getLeft(true) + this.thumbEl.getWidth() - newCanvasWidth - newPreviewLeft;
+        var paddingBottom = this.thumbEl.getTop(true) + this.thumbEl.getHeight() - newCanvasHeight - newPreviewTop;
+
+        var maxPaddingLeft = newCanvasWidth / 0.9 * 0.05;
+        var maxPaddingTop = maxPaddingLeft * this.minHeight / this.minWidth;
+
+        if ((this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight)) {
+            maxPaddingLeft = (newCanvasHeight * this.minWidth / this.minHeight - newCanvasWidth) / 2 + maxPaddingLeft;
+        }
+
+        if ((this.imageEl.OriginWidth / this.imageEl.OriginHeight >= this.minWidth / this.minHeight)) {
+            maxPaddingTop = (newCanvasWidth * this.minHeight / this.minWidth - newCanvasHeight) / 2 + maxPaddingTop;
+        }
         
         if(
                 this.isDocument &&
@@ -615,8 +687,12 @@ Roo.extend(Roo.panel.Cropbox, Roo.Component,  {
                 !this.isDocument &&
                 (this.rotate == 0 || this.rotate == 180) && 
                 (
-                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight >= this.minWidth / this.minHeight) && width < this.minWidth ||
-                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight) && height < this.minHeight ||
+                    // for zoom out
+                    paddingLeft > maxPaddingLeft ||
+                    paddingRight > maxPaddingLeft ||
+                    paddingTop > maxPaddingTop ||
+                    paddingBottom > maxPaddingTop ||
+                    // for zoom in
                     width > maxWidth ||
                     height > maxHeight
                 )
@@ -840,7 +916,7 @@ Roo.extend(Roo.panel.Cropbox, Roo.Component,  {
         
         this.previewEl.appendChild(this.canvasEl);
         
-        this.setCanvasPosition();
+        this.setCanvasPosition(false);
     },
     
     crop : function()
@@ -1797,6 +1873,20 @@ Roo.apply(Roo.panel.Cropbox, {
                         tag : 'button',
                         cls : 'btn btn-default',
                         html : '<i class="fa fa-repeat"></i>'
+                    }
+                ]
+            }
+        ],
+        CENTER : [
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-center',
+                action : 'center',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : 'CENTER'
                     }
                 ]
             }

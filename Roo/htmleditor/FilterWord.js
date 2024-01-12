@@ -17,7 +17,7 @@ Roo.htmleditor.FilterWord = function(cfg)
     this.replaceAname(cfg.node);
     // this is disabled as the removal is done by other filters;
    // this.walk(cfg.node);
-    
+    this.replaceImageTable(cfg.node);
     
 }
 
@@ -170,44 +170,44 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         // this is a bit odd - but it appears some indents use ql-indent-1
          //Roo.log(doc.innerHTML);
         
-        var listpara = doc.getElementsByClassName('MsoListParagraphCxSpFirst');
+        var listpara = Array.from(doc.getElementsByClassName('MsoListParagraphCxSpFirst'));
         for( var i = 0; i < listpara.length; i ++) {
-            listpara.item(i).className = "MsoListParagraph";
+            listpara[i].className = "MsoListParagraph";
         }
         
-        listpara = doc.getElementsByClassName('MsoListParagraphCxSpMiddle');
+        listpara =  Array.from(doc.getElementsByClassName('MsoListParagraphCxSpMiddle'));
         for( var i = 0; i < listpara.length; i ++) {
-            listpara.item(i).className = "MsoListParagraph";
+            listpara[i].className = "MsoListParagraph";
         }
-        listpara = doc.getElementsByClassName('MsoListParagraphCxSpLast');
+        listpara =  Array.from(doc.getElementsByClassName('MsoListParagraphCxSpLast'));
         for( var i = 0; i < listpara.length; i ++) {
-            listpara.item(i).className = "MsoListParagraph";
+            listpara[i].className = "MsoListParagraph";
         }
-        listpara = doc.getElementsByClassName('ql-indent-1');
+        listpara =  Array.from(doc.getElementsByClassName('ql-indent-1'));
         for( var i = 0; i < listpara.length; i ++) {
-            listpara.item(i).className = "MsoListParagraph";
+            listpara[i].className = "MsoListParagraph";
         }
         
         // this is a bit hacky - we had one word document where h2 had a miso-list attribute.
-        var htwo = doc.getElementsByTagName('h2');
+        var htwo =  Array.from(doc.getElementsByTagName('h2'));
         for( var i = 0; i < htwo.length; i ++) {
-            if (htwo.item(i).hasAttribute('style') && htwo.item(i).getAttribute('style').match(/mso-list:/)) {
-                htwo.item(i).className = "MsoListParagraph";
+            if (htwo[i].hasAttribute('style') && htwo[i].getAttribute('style').match(/mso-list:/)) {
+                htwo[i].className = "MsoListParagraph";
             }
         }
-        listpara = doc.getElementsByClassName('MsoNormal');
-        while(listpara.length) {
-            if (listpara.item(0).hasAttribute('style') && listpara.item(0).getAttribute('style').match(/mso-list:/)) {
-                listpara.item(0).className = "MsoListParagraph";
+        listpara =  Array.from(doc.getElementsByClassName('MsoNormal'));
+        for( var i = 0; i < listpara.length; i ++) {
+            if (listpara[i].hasAttribute('style') && listpara[i].getAttribute('style').match(/mso-list:/)) {
+                listpara[i].className = "MsoListParagraph";
             } else {
-                listpara.item(0).className = "MsoNormalx";
+                listpara[i].className = "MsoNormalx";
             }
         }
        
         listpara = doc.getElementsByClassName('MsoListParagraph');
+        // Roo.log(doc.innerHTML);
         
         
-        //Roo.log(doc.innerHTML);
         
         while(listpara.length) {
             
@@ -225,7 +225,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             parent = p.parentNode,
             doc = parent.ownerDocument,
             items = [];
-            
+         
+        //Roo.log("Parsing: " + p.innerText)    ;
         var listtype = 'ul';   
         while (ns) {
             if (ns.nodeType != 1) {
@@ -233,22 +234,38 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 continue;
             }
             if (!ns.className.match(/(MsoListParagraph|ql-indent-1)/i)) {
+                //Roo.log("Missing para r q1indent - got:" + ns.className);
                 break;
             }
             var spans = ns.getElementsByTagName('span');
+            
             if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
                 items.push(ns);
                 ns = ns.nextSibling;
                 has_list = true;
-                if (spans.length && spans[0].hasAttribute('style')) {
-                    var  style = this.styleToObject(spans[0]);
-                    if (typeof(style['font-family']) != 'undefined' && !style['font-family'].match(/Symbol/)) {
-                        listtype = 'ol';
+                if (!spans.length) {
+                    continue;
+                }
+                var ff = '';
+                var se = spans[0];
+                for (var i = 0; i < spans.length;i++) {
+                    se = spans[i];
+                    if (se.hasAttribute('style')  && se.hasAttribute('style') && se.style.fontFamily != '') {
+                        ff = se.style.fontFamily;
+                        break;
                     }
+                }
+                 
+                    
+                //Roo.log("got font family: " + ff);
+                if (typeof(ff) != 'undefined' && !ff.match(/(Symbol|Wingdings)/) && "·o".indexOf(se.innerText.trim()) < 0) {
+                    listtype = 'ol';
                 }
                 
                 continue;
             }
+            //Roo.log("no mso-list?");
+            
             var spans = ns.getElementsByTagName('span');
             if (!spans.length) {
                 break;
@@ -341,7 +358,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             lvl = nlvl;
             
             // not starting at 1..
-            if (!stack[nlvl].hasAttribute("start") && num > 1) {
+            if (!stack[nlvl].hasAttribute("start") && listtype == "ol") {
                 stack[nlvl].setAttribute("start", num);
             }
             
@@ -359,8 +376,62 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         
         
         
+    },
+    
+    replaceImageTable : function(doc)
+    {
+         /*
+          <table cellpadding=0 cellspacing=0 align=left>
+  <tr>
+   <td width=423 height=0></td>
+  </tr>
+  <tr>
+   <td></td>
+   <td><img width=601 height=401
+   src="file:///C:/Users/Alan/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg"
+   v:shapes="Picture_x0020_2"></td>
+  </tr>
+ </table>
+ */
+        var imgs = Array.from(doc.getElementsByTagName('img'));
+        Roo.each(imgs, function(img) {
+            var td = img.parentNode;
+            if (td.nodeName !=  'TD') {
+                return;
+            }
+            var tr = td.parentNode;
+            if (tr.nodeName !=  'TR') {
+                return;
+            }
+            var tbody = tr.parentNode;
+            if (tbody.nodeName !=  'TBODY') {
+                return;
+            }
+            var table = tbody.parentNode;
+            if (table.nodeName !=  'TABLE') {
+                return;
+            }
+            // first row..
+            
+            if (table.getElementsByTagName('tr').length != 2) {
+                return;
+            }
+            if (table.getElementsByTagName('td').length != 3) {
+                return;
+            }
+            if (table.innerText.trim() != '') {
+                return;
+            }
+            var p = table.parentNode;
+            img.parentNode.removeChild(img);
+            p.insertBefore(img, table);
+            p.removeChild(table);
+            
+            
+            
+        });
+        
+      
     }
-    
-    
     
 });

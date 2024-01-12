@@ -17,9 +17,9 @@
     </span><span class="jsdoc-var">this.replaceAname</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-comment">// this is disabled as the removal is done by other filters;
    // this.walk(cfg.node);
+    </span><span class="jsdoc-var">this.replaceImageTable</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
 
-
-</span><span class="jsdoc-syntax">}
+}
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.htmleditor.FilterWord</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.htmleditor.Filter</span><span class="jsdoc-syntax">,
 {
@@ -170,44 +170,44 @@
         </span><span class="jsdoc-comment">// this is a bit odd - but it appears some indents use ql-indent-1
          //Roo.log(doc.innerHTML);
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">listpara </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.getElementsByClassName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'MsoListParagraphCxSpFirst'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">listpara </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.getElementsByClassName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'MsoListParagraphCxSpFirst'</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">listpara.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">++) {
-            </span><span class="jsdoc-var">listpara.item</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;MsoListParagraph&quot;</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">listpara</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;MsoListParagraph&quot;</span><span class="jsdoc-syntax">;
         }
 
-        </span><span class="jsdoc-var">listpara </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.getElementsByClassName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'MsoListParagraphCxSpMiddle'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">listpara </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.getElementsByClassName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'MsoListParagraphCxSpMiddle'</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">listpara.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">++) {
-            </span><span class="jsdoc-var">listpara.item</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;MsoListParagraph&quot;</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">listpara</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;MsoListParagraph&quot;</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-var">listpara </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.getElementsByClassName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'MsoListParagraphCxSpLast'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">listpara </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.getElementsByClassName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'MsoListParagraphCxSpLast'</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">listpara.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">++) {
-            </span><span class="jsdoc-var">listpara.item</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;MsoListParagraph&quot;</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">listpara</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;MsoListParagraph&quot;</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-var">listpara </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.getElementsByClassName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ql-indent-1'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">listpara </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.getElementsByClassName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ql-indent-1'</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">listpara.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">++) {
-            </span><span class="jsdoc-var">listpara.item</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;MsoListParagraph&quot;</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">listpara</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;MsoListParagraph&quot;</span><span class="jsdoc-syntax">;
         }
 
         </span><span class="jsdoc-comment">// this is a bit hacky - we had one word document where h2 had a miso-list attribute.
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">htwo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'h2'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">htwo </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'h2'</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">htwo.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">++) {
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">htwo.item</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">htwo.item</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/mso-list:/)) {
-                </span><span class="jsdoc-var">htwo.item</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;MsoListParagraph&quot;</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">htwo</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">htwo</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/mso-list:/)) {
+                </span><span class="jsdoc-var">htwo</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;MsoListParagraph&quot;</span><span class="jsdoc-syntax">;
             }
         }
-        </span><span class="jsdoc-var">listpara </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.getElementsByClassName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'MsoNormal'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">listpara.length</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">listpara.item</span><span class="jsdoc-syntax">(0)</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">listpara.item</span><span class="jsdoc-syntax">(0)</span><span class="jsdoc-var">.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/mso-list:/)) {
-                </span><span class="jsdoc-var">listpara.item</span><span class="jsdoc-syntax">(0)</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;MsoListParagraph&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">listpara </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.getElementsByClassName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'MsoNormal'</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">listpara.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">listpara</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">listpara</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/mso-list:/)) {
+                </span><span class="jsdoc-var">listpara</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;MsoListParagraph&quot;</span><span class="jsdoc-syntax">;
             } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-                </span><span class="jsdoc-var">listpara.item</span><span class="jsdoc-syntax">(0)</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;MsoNormalx&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">listpara</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;MsoNormalx&quot;</span><span class="jsdoc-syntax">;
             }
         }
 
         </span><span class="jsdoc-var">listpara </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.getElementsByClassName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'MsoListParagraph'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">// Roo.log(doc.innerHTML);
 
 
-        </span><span class="jsdoc-comment">//Roo.log(doc.innerHTML);
 
         </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">listpara.length</span><span class="jsdoc-syntax">) {
 
@@ -226,6 +226,7 @@
             </span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parent.ownerDocument</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= [];
 
+        </span><span class="jsdoc-comment">//Roo.log(&quot;Parsing: &quot; + p.innerText)    ;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">listtype </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns.nodeType </span><span class="jsdoc-syntax">!= 1) {
@@ -233,22 +234,38 @@
                 </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ns.className.match</span><span class="jsdoc-syntax">(/(MsoListParagraph|ql-indent-1)/i)) {
+                </span><span class="jsdoc-comment">//Roo.log(&quot;Missing para r q1indent - got:&quot; + ns.className);
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">spans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">);
+
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">ns.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/mso-list/)) {
                 </span><span class="jsdoc-var">items.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns.nextSibling</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">has_list </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">spans.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">)) {
-                    </span><span class="jsdoc-keyword">var  </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.styleToObject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[0]);
-                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'font-family'</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'font-family'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/Symbol/)) {
-                        </span><span class="jsdoc-var">listtype </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'ol'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">spans.length</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">se </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[0];
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">spans.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                    </span><span class="jsdoc-var">se </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">se.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">)  &amp;&amp; </span><span class="jsdoc-var">se.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">se.style.fontFamily </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">ff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">se.style.fontFamily</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
                     }
+                }
+
+
+                </span><span class="jsdoc-comment">//Roo.log(&quot;got font family: &quot; + ff);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ff</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">ff.match</span><span class="jsdoc-syntax">(/(Symbol|Wingdings)/) &amp;&amp; </span><span class="jsdoc-string">&quot;·o&quot;</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">se.innerText.trim</span><span class="jsdoc-syntax">()) &lt; 0) {
+                    </span><span class="jsdoc-var">listtype </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'ol'</span><span class="jsdoc-syntax">;
                 }
 
                 </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
             }
+            </span><span class="jsdoc-comment">//Roo.log(&quot;no mso-list?&quot;);
+
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">spans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">spans.length</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
@@ -341,7 +358,7 @@
             </span><span class="jsdoc-var">lvl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nlvl</span><span class="jsdoc-syntax">;
 
             </span><span class="jsdoc-comment">// not starting at 1..
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">nlvl</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;start&quot;</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">num </span><span class="jsdoc-syntax">&gt; 1) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">nlvl</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;start&quot;</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">listtype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;ol&quot;</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">nlvl</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;start&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">num</span><span class="jsdoc-syntax">);
             }
 
@@ -359,8 +376,62 @@
 
 
 
+    },
+
+    </span><span class="jsdoc-var">replaceImageTable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc</span><span class="jsdoc-syntax">)
+    {
+         </span><span class="jsdoc-comment">/*
+          &lt;table cellpadding=0 cellspacing=0 align=left&gt;
+  &lt;tr&gt;
+   &lt;td width=423 height=0&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;/td&gt;
+   &lt;td&gt;&lt;img width=601 height=401
+   src=&quot;file:///C:/Users/Alan/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg&quot;
+   v:shapes=&quot;Picture_x0020_2&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/table&gt;
+ */
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">imgs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">imgs</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">img.parentNode</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td.nodeName </span><span class="jsdoc-syntax">!=  </span><span class="jsdoc-string">'TD'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">td.parentNode</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tr.nodeName </span><span class="jsdoc-syntax">!=  </span><span class="jsdoc-string">'TR'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tbody </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tr.parentNode</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tbody.nodeName </span><span class="jsdoc-syntax">!=  </span><span class="jsdoc-string">'TBODY'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">table </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tbody.parentNode</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table.nodeName </span><span class="jsdoc-syntax">!=  </span><span class="jsdoc-string">'TABLE'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-comment">// first row..
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">!= 2) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">!= 3) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table.innerText.trim</span><span class="jsdoc-syntax">() != </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">table.parentNode</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">img.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">p.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">p.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">);
+
+
+
+        });
+
+
     }
-
-
 
 });</span></code></body></html>

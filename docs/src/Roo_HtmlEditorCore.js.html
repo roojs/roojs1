@@ -96,10 +96,9 @@
     </span><span class="jsdoc-var">owner </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
      </span><span class="jsdoc-comment">/**
-     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
-     *                        Roo.resizable.
+     * @cfg {String} css styling for resizing. (used on bootstrap only)
      */
-    </span><span class="jsdoc-var">resizable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
      </span><span class="jsdoc-comment">/**
      * @cfg {Number} height (in pixels)
      */
@@ -232,17 +231,19 @@
 
         </span><span class="jsdoc-var">this.frameId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
 
-
-
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">iframe </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.owner.wrap.createChild</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ifcfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'iframe'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-control'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// bootstrap..
             </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.frameId</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.frameId</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">frameBorder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'no'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'src' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.SSL_SECURE_URL </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.SSL_SECURE_URL  </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-string">&quot;javascript:false&quot;
-        </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">this.el
-        </span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-syntax">};
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ifcfg.style </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.resize </span><span class="jsdoc-syntax">};
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">iframe </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.owner.wrap.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ifcfg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
 
 
         </span><span class="jsdoc-var">this.iframe </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">iframe.dom</span><span class="jsdoc-syntax">;
@@ -377,11 +378,44 @@
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enableBlocks</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterBlock</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">div </span><span class="jsdoc-syntax">});
             }
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">div.innerHTML</span><span class="jsdoc-syntax">;
+
             </span><span class="jsdoc-comment">//?? tidy?
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tidy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.TidySerializer</span><span class="jsdoc-syntax">({
-                </span><span class="jsdoc-var">inner</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">true
-            </span><span class="jsdoc-syntax">});
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tidy.serialize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">div</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoClean</span><span class="jsdoc-syntax">) {
+
+                </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterAttributes</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">div</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">attrib_white </span><span class="jsdoc-syntax">: [
+                            </span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'align'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'colspan'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'rowspan'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'data-display'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'data-caption-display'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'data-width'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'data-caption'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'start' </span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-comment">// youtube embed.
+                            </span><span class="jsdoc-string">'class'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'allowfullscreen'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'frameborder'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'height'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'alt'
+                            </span><span class="jsdoc-syntax">],
+                    </span><span class="jsdoc-var">attrib_clean </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'src' </span><span class="jsdoc-syntax">]
+                });
+
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tidy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.TidySerializer</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">inner</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">true
+                </span><span class="jsdoc-syntax">});
+                </span><span class="jsdoc-var">html  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tidy.serialize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">div</span><span class="jsdoc-syntax">);
+
+            }
 
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isSafari</span><span class="jsdoc-syntax">){
@@ -569,14 +603,39 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cd </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">e.browserEvent.clipboardData </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">window.clipboardData</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-comment">// check what type of paste - if it's an image, then handle it differently.
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.files </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">cd.files.length </span><span class="jsdoc-syntax">&gt; 0) {
-            </span><span class="jsdoc-comment">// pasting images?
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.files </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">cd.files.length </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-var">cd.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/html'</span><span class="jsdoc-syntax">) &lt; 0) {
+            </span><span class="jsdoc-comment">// pasting images? 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">urlAPI </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">window.createObjectURL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">) ||
                 (</span><span class="jsdoc-var">window.URL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">URL.revokeObjectURL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">URL</span><span class="jsdoc-syntax">) ||
                 (</span><span class="jsdoc-var">window.webkitURL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">webkitURL</span><span class="jsdoc-syntax">);
 
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">urlAPI.createObjectURL</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">cd.files</span><span class="jsdoc-syntax">[0]);
-            </span><span class="jsdoc-var">this.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;img src=&quot; + url + &quot;&gt;'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">FileReader</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">r.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+            {
+
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">DOMParser</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.parseFromString</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;img src=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">r.result</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'text/html'</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.body</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-comment">// is insert asycn?
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.enableBlocks</span><span class="jsdoc-syntax">) {
+
+                    </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'figure'</span><span class="jsdoc-syntax">)) { </span><span class="jsdoc-comment">// assume!! that it's aready
+                            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                        }
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fig  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.BlockFigure</span><span class="jsdoc-syntax">({
+                            </span><span class="jsdoc-var">image_src  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">img.src
+                        </span><span class="jsdoc-syntax">});
+                        </span><span class="jsdoc-var">fig.updateElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// replace it..
+
+                    </span><span class="jsdoc-syntax">});
+                }
+                </span><span class="jsdoc-var">t.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.innerHTML.replace</span><span class="jsdoc-syntax">(/&amp;nbsp;/g,</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-var">t.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'paste'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            });
+            </span><span class="jsdoc-var">r.readAsDataURL</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.files</span><span class="jsdoc-syntax">[0]);
+
+            </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/html'</span><span class="jsdoc-syntax">) &lt; 0 ) {
@@ -588,8 +647,8 @@
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.rtf.Parser</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.getData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/rtf'</span><span class="jsdoc-syntax">));
             </span><span class="jsdoc-var">images </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parser.doc </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">parser.doc.getElementsByType</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'pict'</span><span class="jsdoc-syntax">) : [];
         }
-        </span><span class="jsdoc-comment">//Roo.log(images);
-        //Roo.log(imgs);
+        </span><span class="jsdoc-comment">// Roo.log(images);
+        // Roo.log(imgs);
         // fixme..
         </span><span class="jsdoc-var">images </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">images.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">g.path.match</span><span class="jsdoc-syntax">(/^rtf\/(head|pgdsctbl|listtable|footerf)/); }) </span><span class="jsdoc-comment">// ignore headers/footers etc.
                        </span><span class="jsdoc-var">.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">g.toDataURL</span><span class="jsdoc-syntax">(); })
@@ -634,13 +693,36 @@
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterStyleToTag</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterAttributes</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">attrib_white </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'align'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'colspan'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'rowspan'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'data-display'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'data-width'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'start'</span><span class="jsdoc-syntax">],
+                </span><span class="jsdoc-var">attrib_white </span><span class="jsdoc-syntax">: [
+                    </span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'align'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'colspan'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'rowspan'
+                </span><span class="jsdoc-comment">/*  THESE ARE NOT ALLWOED FOR PASTE
+                 *    'data-display',
+                    'data-caption-display',
+                    'data-width',
+                    'data-caption',
+                    'start' ,
+                    'style',
+                    // youtube embed.
+                    'class',
+                    'allowfullscreen',
+                    'frameborder',
+                    'width',
+                    'height',
+                    'alt'
+                    */
+                    </span><span class="jsdoc-syntax">],
                 </span><span class="jsdoc-var">attrib_clean </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'src' </span><span class="jsdoc-syntax">]
             });
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterBlack</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.black</span><span class="jsdoc-syntax">});
             </span><span class="jsdoc-comment">// should be fonts..
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterKeepChildren</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'FONT'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">':' </span><span class="jsdoc-syntax">]} );
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterParagraph</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterHashLink</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">});
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterSpan</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterLongBr</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterComment</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
@@ -669,6 +751,7 @@
 
 
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'paste'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-comment">// default behaveiour should be our local cleanup paste? (optional?)
         // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
@@ -745,7 +828,9 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">e.ctrlKey </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">e.metaKey</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">e.keyCode </span><span class="jsdoc-syntax">=== 90) {
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// we do not handle this.. (undo manager does..)
         </span><span class="jsdoc-syntax">}
-        </span><span class="jsdoc-comment">// in theory this detects if the last element is not a br, then we try and do that.
+        </span><span class="jsdoc-comment">// clicking a 'block'?
+
+        // in theory this detects if the last element is not a br, then we try and do that.
         // its so clicking in space at bottom triggers adding a br and moving the cursor.
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">&amp;&amp;
             </span><span class="jsdoc-var">e.target.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'BODY' </span><span class="jsdoc-syntax">&amp;&amp;
@@ -847,6 +932,7 @@
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'bold'</span><span class="jsdoc-syntax">:
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'italic'</span><span class="jsdoc-syntax">:
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'underline'</span><span class="jsdoc-syntax">:
                 </span><span class="jsdoc-comment">// if there is no selection, then we insert, and set the curson inside it..
                 </span><span class="jsdoc-var">this.execCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'styleWithCSS'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;

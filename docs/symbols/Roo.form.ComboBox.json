@@ -187,6 +187,14 @@
       "optvals" : []
     },
     {
+      "name" : "style",
+      "type" : "String",
+      "desc" : "css styles to add to component\neg. text-align:right;",
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "disableClear",
       "type" : "Boolean",
       "desc" : "Disable showing of clear button.",
@@ -351,6 +359,14 @@
       "type" : "Boolean",
       "desc" : "True to hide the trigger element and display only the base text field (defaults to false)",
       "memberOf" : "Roo.form.TriggerField",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "labelSeparator",
+      "type" : "String",
+      "desc" : "the ':' after a field label (default :)  = set it to empty string to hide the field label.",
+      "memberOf" : "Roo.form.Field",
       "isOptional" : false,
       "optvals" : []
     },

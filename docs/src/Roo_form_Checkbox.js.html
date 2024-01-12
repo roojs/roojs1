@@ -190,7 +190,9 @@
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'check'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-var">this.inSetChecked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.el.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.inputValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.valueOff</span><span class="jsdoc-syntax">;
+
+		</span><span class="jsdoc-var">this.el.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.inputValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.valueOff</span><span class="jsdoc-syntax">;
+
         </span><span class="jsdoc-var">this.inSetChecked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 
     },

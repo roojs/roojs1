@@ -1,0 +1,240 @@
+<html><head><title>Roo/bootstrap/form/MultiLineTag.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
+ * 
+ * @class Roo.bootstrap.form.MultiLineTag
+ * @param {Object} config The config object
+ * 
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.form.MultiLineTag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.form.MultiLineTag.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event beforeload
+         * Fires before a request is made for a new data object.  If the beforeload handler returns false
+         * the load action will be canceled.
+         * @param {Roo.boostrap.form.MultiLineTag} this
+         * @param {Store} store
+         * @param {Object} options The loading options that were specified (see {@link #load} for details)
+         */
+         </span><span class="jsdoc-var">beforeload </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.form.MultiLineTag</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.form.Input</span><span class="jsdoc-syntax">,  {
+    </span><span class="jsdoc-var">tagRows </span><span class="jsdoc-syntax">: [],
+    </span><span class="jsdoc-var">minimumRow </span><span class="jsdoc-syntax">: 2,
+
+    </span><span class="jsdoc-comment">// for combo box
+    </span><span class="jsdoc-var">displayField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">valueField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">queryParam </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">listWidth </span><span class="jsdoc-syntax">: 300,
+    </span><span class="jsdoc-var">minChars </span><span class="jsdoc-syntax">: 2,
+
+    </span><span class="jsdoc-comment">// for combo box store
+    </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">fields </span><span class="jsdoc-syntax">: [],
+
+
+
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-multi-line-tag form-group'
+        </span><span class="jsdoc-syntax">};
+
+        </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getAutoCreateLabel</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, {
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-multi-line-tag-container'
+        </span><span class="jsdoc-syntax">} );
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.tagRows </span><span class="jsdoc-syntax">= [];
+
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minimumRow</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">this.addTagRow</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-var">addTagRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">comboBox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">xns</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap.form</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ComboBox'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">editable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">triggerAction</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'all'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">minChars</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_this.minChars</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">displayField</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_this.displayField</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">valueField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_this.valueField</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">listWidth</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_this.listWidth</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_this.placeholder</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">queryParam </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_this.queryParam</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">store </span><span class="jsdoc-syntax">: {
+                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Store'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">beforeload </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">)
+                    {
+                        </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeload'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">);
+                    }
+                },
+                </span><span class="jsdoc-var">proxy </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'HttpProxy'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">method </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'GET'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_this.url
+                </span><span class="jsdoc-syntax">},
+                </span><span class="jsdoc-var">reader </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'JsonReader'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">fields </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_this.fields
+                </span><span class="jsdoc-syntax">}
+            },
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                </span><span class="jsdoc-string">'render' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">_self.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.shouldAutoAddTagRow</span><span class="jsdoc-syntax">()) {
+                            </span><span class="jsdoc-var">_this.addTagRow</span><span class="jsdoc-syntax">();
+                        }
+                    });
+                    </span><span class="jsdoc-var">_self.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this.getValue</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">_this.showHideRemoveBtn</span><span class="jsdoc-syntax">();
+
+                    });
+                },
+                </span><span class="jsdoc-string">'select' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this.getValue</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                }
+            }
+        });
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">button </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'-'
+        </span><span class="jsdoc-syntax">});
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Row'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">: [
+                </span><span class="jsdoc-var">comboBox</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">button
+            </span><span class="jsdoc-syntax">],
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                </span><span class="jsdoc-string">'render' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.inputCb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">comboBox</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">this.removeBtn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">button</span><span class="jsdoc-syntax">;
+
+                    </span><span class="jsdoc-var">this.removeBtn.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                        </span><span class="jsdoc-var">_this.removeTagRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this.getValue</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                    });
+                }
+            }
+        };
+        </span><span class="jsdoc-var">this.tagRows.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">));
+
+        </span><span class="jsdoc-var">_this.showHideRemoveBtn</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">// a new tags should be added automatically when all existing tags are not empty
+    </span><span class="jsdoc-var">shouldAutoAddTagRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tagRows</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.inputCb.getRawValue</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            }
+        });
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">removeTagRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">row.destroy</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.tagRows.splice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tagRows.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">), 1);
+        </span><span class="jsdoc-var">this.showHideRemoveBtn</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">// hide all remove buttons if there are {minimumRow} or less tags
+    // hide the remove button for empty tag
+    </span><span class="jsdoc-var">showHideRemoveBtn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tagRows</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">) {
+
+            </span><span class="jsdoc-var">r.removeBtn.show</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.tagRows.length </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">_this.minimumRow </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">r.inputCb.getRawValue</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">r.removeBtn.hide</span><span class="jsdoc-syntax">();
+            }
+        });
+    },
+
+    </span><span class="jsdoc-var">getValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tags </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.tagRows</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">r.inputCb.getRawValue</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">= {};
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">_this.valueField</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">r.inputCb.getRawValue</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">tags.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">);
+            }
+        });
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">JSON.stringify</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tags</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">json</span><span class="jsdoc-syntax">)
+    {
+
+        </span><span class="jsdoc-comment">// remove all old tags
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oldTotal </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tagRows.length</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">oldTotal</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">this.removeTagRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tagRows</span><span class="jsdoc-syntax">[0]);
+        }
+
+        </span><span class="jsdoc-comment">// empty tag if invalid json
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">arr </span><span class="jsdoc-syntax">= [];
+
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-comment">// set new tags
+            </span><span class="jsdoc-var">arr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">JSON.parse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">json</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">{}
+
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">arr.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">this.addTagRow</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.tagRows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.inputCb.setRawValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arr</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">]);
+        }
+
+        </span><span class="jsdoc-comment">// always add one extra empty tag
+        </span><span class="jsdoc-var">this.addTagRow</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-comment">// add empty tags until there are {minimumRow} tags
+        </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tagRows.length </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minimumRow</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.addTagRow</span><span class="jsdoc-syntax">();
+        }
+
+    },
+
+    </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-multi-line-tag-container'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">[0];
+    }
+});</span></code></body></html>

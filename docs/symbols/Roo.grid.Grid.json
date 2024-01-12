@@ -44,6 +44,14 @@
   "requires" : "",
   "config" : [
     {
+      "name" : "footer",
+      "type" : "Roo.PagingToolbar",
+      "desc" : "the paging toolbar",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "autoSizeColumns",
       "type" : "Boolean",
       "desc" : "True to automatically resize the columns to fit their content\n<b>on initial render.</b> It is more efficient to explicitly size the columns\nthrough the ColumnModel's {@link Roo.grid.ColumnModel#width} config option.  Default is false.",

@@ -254,12 +254,14 @@ trigger.applyTo('my-field');
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator ' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.indicatorpos </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'right'  </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'right' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">) +</span><span class="jsdoc-string">'-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
         </span><span class="jsdoc-syntax">};
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.version </span><span class="jsdoc-syntax">== 4) {
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">indicator </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display:none'
             </span><span class="jsdoc-syntax">};
         }
+
 
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {

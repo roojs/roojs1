@@ -505,15 +505,18 @@ Roo.factory(conf, Roo.data);
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">s.replace</span><span class="jsdoc-syntax">(/([.*+?^${}()|[\]\/\\])/g, </span><span class="jsdoc-string">&quot;\\$1&quot;</span><span class="jsdoc-syntax">);
         },
 
-        </span><span class="jsdoc-comment">// internal
-        </span><span class="jsdoc-var">callback </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">delay</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">cb </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">delay</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-var">cb.defer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">delay</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">|| []);
-                }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-                    </span><span class="jsdoc-var">cb.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">|| []);
-                }
-            }
+        </span><span class="jsdoc-comment">// internal (non-delayed, will get a return value..)
+        </span><span class="jsdoc-var">callback </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">delay</span><span class="jsdoc-syntax">)
+		{
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">cb </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">){
+				</span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+			}
+			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">delay</span><span class="jsdoc-syntax">){
+				</span><span class="jsdoc-var">cb.defer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">delay</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">|| []);
+				</span><span class="jsdoc-keyword">return false
+            </span><span class="jsdoc-syntax">}
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cb.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">|| []);
+
         },
 
         </span><span class="jsdoc-comment">/**

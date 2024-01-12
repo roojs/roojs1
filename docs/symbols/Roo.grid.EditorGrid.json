@@ -47,41 +47,9 @@
   "requires" : "",
   "config" : [
     {
-      "name" : "listeners",
-      "type" : "Object",
-      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "autoSizeColumns",
+      "name" : "trackMouseOver",
       "type" : "Boolean",
-      "desc" : "True to automatically resize the columns to fit their content\n<b>on initial render.</b> It is more efficient to explicitly size the columns\nthrough the ColumnModel's {@link Roo.grid.ColumnModel#width} config option.  Default is false.",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "cm[]",
-      "type" : "Roo.grid.ColumnModel",
-      "desc" : "The columns of the grid",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "maxRowsToMeasure",
-      "type" : "Boolean",
-      "desc" : "If autoSizeColumns is on, maxRowsToMeasure can be used to limit the number of\nrows measured to get a columns size. Default is 0 (all rows).",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "minColumnWidth",
-      "type" : "Number",
-      "desc" : "The minimum width a column can be resized to. Default is 25.",
+      "desc" : "True to highlight rows when the mouse is over. Default is true.",
       "memberOf" : "Roo.grid.Grid",
       "isOptional" : false,
       "optvals" : []
@@ -95,22 +63,6 @@
       "optvals" : []
     },
     {
-      "name" : "toolbar",
-      "type" : "Roo.Toolbar",
-      "desc" : "a toolbar for buttons etc.",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "autoExpandColumn",
-      "type" : "String",
-      "desc" : "The id (or dataIndex) of a column in this grid that should expand to fill unused space. This id can not be 0. Default is false.",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
       "name" : "autoExpandMax",
       "type" : "Number",
       "desc" : "The maximum width the autoExpandColumn can have (if enabled). Default is 1000.",
@@ -119,33 +71,9 @@
       "optvals" : []
     },
     {
-      "name" : "enableRowHeightSync",
-      "type" : "Boolean",
-      "desc" : "True to manually sync row heights across locked and not locked rows. Default is false.",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "enableDrop",
-      "type" : "Boolean",
-      "desc" : "True to enable drop of elements. Default is false. (double check if this is needed?)",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "monitorWindowResize",
-      "type" : "Boolean",
-      "desc" : "True to autoSize the grid when the window resizes. Default is true.",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "autoExpandMin",
-      "type" : "Number",
-      "desc" : "The minimum width the autoExpandColumn can have (if enabled).\nDefault is 50.",
+      "name" : "cm[]",
+      "type" : "Roo.grid.ColumnModel",
+      "desc" : "The columns of the grid",
       "memberOf" : "Roo.grid.Grid",
       "isOptional" : false,
       "optvals" : []
@@ -159,9 +87,97 @@
       "optvals" : []
     },
     {
+      "name" : "stripeRows",
+      "type" : "Boolean",
+      "desc" : "True to stripe the rows.  Default is true.",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "minColumnWidth",
+      "type" : "Number",
+      "desc" : "The minimum width a column can be resized to. Default is 25.",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "monitorWindowResize",
+      "type" : "Boolean",
+      "desc" : "True to autoSize the grid when the window resizes. Default is true.",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "enableRowHeightSync",
+      "type" : "Boolean",
+      "desc" : "True to manually sync row heights across locked and not locked rows. Default is false.",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "ds",
       "type" : "Roo.data.Store",
       "desc" : "The data store for the grid",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "autoSizeHeaders",
+      "type" : "Boolean",
+      "desc" : "True to measure headers with column data when auto sizing columns. Default is true.",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "toolbar",
+      "type" : "Roo.Toolbar",
+      "desc" : "a toolbar for buttons etc.",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "sm",
+      "type" : "Roo.grid.AbstractSelectionModel",
+      "desc" : "The selection Model (default = Roo.grid.RowSelectionModel)",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "enableColumnHide",
+      "type" : "Boolean",
+      "desc" : "True to enable hiding of columns with the header context menu. Default is true.",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "enableColumnMove",
+      "type" : "Boolean",
+      "desc" : "True to enable drag and drop reorder of columns. Default is true.",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "dragGroup",
+      "type" : "String",
+      "desc" : "- drag group (?? not sure if needed.)",
       "memberOf" : "Roo.grid.Grid",
       "isOptional" : false,
       "optvals" : []
@@ -175,9 +191,97 @@
       "optvals" : []
     },
     {
+      "name" : "footer",
+      "type" : "Roo.PagingToolbar",
+      "desc" : "the paging toolbar",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "enableDragDrop",
+      "type" : "Boolean",
+      "desc" : "True to enable drag and drop of rows. Default is false.",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "enableDrop",
+      "type" : "Boolean",
+      "desc" : "True to enable drop of elements. Default is false. (double check if this is needed?)",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "sortColMenu",
+      "type" : "boolean",
+      "desc" : "Sort the column order menu when it shows (usefull for long lists..) default false",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "clicksToEdit",
+      "type" : "Number",
+      "desc" : "The number of clicks on a cell required to display the cell's editor (defaults to 2)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "autoExpandColumn",
+      "type" : "String",
+      "desc" : "The id (or dataIndex) of a column in this grid that should expand to fill unused space. This id can not be 0. Default is false.",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "maxRowsToMeasure",
+      "type" : "Boolean",
+      "desc" : "If autoSizeColumns is on, maxRowsToMeasure can be used to limit the number of\nrows measured to get a columns size. Default is 0 (all rows).",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "loadMask",
+      "type" : "Object",
+      "desc" : "An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "autoHeight",
+      "type" : "Boolean",
+      "desc" : "True to fit the height of the grid container to the height of the data. Default is false.",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "autoSizeColumns",
+      "type" : "Boolean",
+      "desc" : "True to automatically resize the columns to fit their content\n<b>on initial render.</b> It is more efficient to explicitly size the columns\nthrough the ColumnModel's {@link Roo.grid.ColumnModel#width} config option.  Default is false.",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "enableDrag",
       "type" : "Boolean",
       "desc" : "True to enable drag of rows. Default is false. (double check if this is needed?)",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "dropTarget",
+      "type" : "Roo.dd.DropTarget",
+      "desc" : "An {@link Roo.dd.DropTarget} config",
       "memberOf" : "Roo.grid.Grid",
       "isOptional" : false,
       "optvals" : []
@@ -199,105 +303,9 @@
       "optvals" : []
     },
     {
-      "name" : "trackMouseOver",
-      "type" : "Boolean",
-      "desc" : "True to highlight rows when the mouse is over. Default is true.",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "loadMask",
-      "type" : "Object",
-      "desc" : "An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "stripeRows",
-      "type" : "Boolean",
-      "desc" : "True to stripe the rows.  Default is true.",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "enableColumnMove",
-      "type" : "Boolean",
-      "desc" : "True to enable drag and drop reorder of columns. Default is true.",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "enableColumnHide",
-      "type" : "Boolean",
-      "desc" : "True to enable hiding of columns with the header context menu. Default is true.",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "clicksToEdit",
+      "name" : "autoExpandMin",
       "type" : "Number",
-      "desc" : "The number of clicks on a cell required to display the cell's editor (defaults to 2)",
-      "memberOf" : "",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "autoSizeHeaders",
-      "type" : "Boolean",
-      "desc" : "True to measure headers with column data when auto sizing columns. Default is true.",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "sortColMenu",
-      "type" : "boolean",
-      "desc" : "Sort the column order menu when it shows (usefull for long lists..) default false",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "enableDragDrop",
-      "type" : "Boolean",
-      "desc" : "True to enable drag and drop of rows. Default is false.",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "dropTarget",
-      "type" : "Roo.dd.DropTarget",
-      "desc" : "An {@link Roo.dd.DropTarget} config",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "sm",
-      "type" : "Roo.grid.AbstractSelectionModel",
-      "desc" : "The selection Model (default = Roo.grid.RowSelectionModel)",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "dragGroup",
-      "type" : "String",
-      "desc" : "- drag group (?? not sure if needed.)",
-      "memberOf" : "Roo.grid.Grid",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "autoHeight",
-      "type" : "Boolean",
-      "desc" : "True to fit the height of the grid container to the height of the data. Default is false.",
+      "desc" : "The minimum width the autoExpandColumn can have (if enabled).\nDefault is 50.",
       "memberOf" : "Roo.grid.Grid",
       "isOptional" : false,
       "optvals" : []

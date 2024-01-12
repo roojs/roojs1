@@ -273,7 +273,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         
         var id = Roo.id();
         
@@ -342,7 +341,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             cls: 'glyphicon form-control-feedback'
         };
             
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             inputblock = {
                 cls : 'has-feedback',
@@ -397,11 +396,39 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 });
             }
             
-            if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+            if(this.hasFeedback && this.inputType != 'hidden'){
                 inputblock.cls += ' has-feedback';
                 inputblock.cn.push(feedback);
             }
         };
+        
+        
+        
+        cfg = this.getAutoCreateLabel( cfg, inputblock );
+        
+       
+         
+        
+        if (this.parentType === 'Navbar' &&  this.parent().bar) {
+           cfg.cls += ' navbar-form';
+        }
+        
+        if (this.parentType === 'NavGroup' && !(Roo.bootstrap.version == 4 && this.parent().form)) {
+            // on BS4 we do this only if not form 
+            cfg.cls += ' navbar-form';
+            cfg.tag = 'li';
+        }
+        
+        return cfg;
+        
+    },
+    /**
+     * autocreate the label - also used by textara... ?? and others?
+     */
+    getAutoCreateLabel : function( cfg, inputblock )
+    {
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
+       
         var indicator = {
             tag : 'i',
             cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
@@ -545,20 +572,10 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 
                 
         };
-        
-        if (this.parentType === 'Navbar' &&  this.parent().bar) {
-           cfg.cls += ' navbar-form';
-        }
-        
-        if (this.parentType === 'NavGroup' && !(Roo.bootstrap.version == 4 && this.parent().form)) {
-            // on BS4 we do this only if not form 
-            cfg.cls += ' navbar-form';
-            cfg.tag = 'li';
-        }
-        
         return cfg;
-        
     },
+    
+    
     /**
      * return the real input element.
      */
@@ -651,6 +668,15 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         
         this.inputEl().on('change', this.onChange, this);
+
+        if(this.hasFeedback && this.inputType != 'hidden'){
+            
+            var feedback = this.el.select('.form-control-feedback', true).first();
+
+            if(feedback) {
+                feedback.hide();
+            }
+        }
         
     },
     filterValidation : function(e){
@@ -707,11 +733,11 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         if(typeof this.validator == "function"){
             var msg = this.validator(value);
-            if(msg !== true){
-                return false;
-            }
             if (typeof(msg) == 'string') {
                 this.invalidText = msg;
+            }
+            if(msg !== true){
+                return false;
             }
         }
         
@@ -784,7 +810,21 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      */
     reset : function(){
         this.setValue(this.originalValue);
-        this.validate();
+        // this.validate();
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.inputEl().removeClass(['is-valid', 'is-invalid']);
+
+        if(this.hasFeedback && this.inputType != 'hidden'){
+            
+            var feedback = this.el.select('.form-control-feedback', true).first();
+            
+            if(feedback){
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                feedback.update('');
+                feedback.hide();
+            }
+            
+        }
     },
      /**
      * Returns the name of the field
@@ -798,9 +838,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      * @return {Mixed} value The field value
      */
     getValue : function(){
-        
         var v = this.inputEl().getValue();
-        
         return v;
     },
     /**
@@ -891,14 +929,17 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         
         
-        this.el.removeClass([this.invalidClass, 'is-invalid']);
+        this.inputEl().removeClass([this.invalidClass, 'is-invalid']);
         
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass(this.invalidFeedbackClass);
+
+                feedback.update('');
+                feedback.hide();
             }
             
         }
@@ -915,7 +956,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      * Mark this field as valid
      */
     markValid : function()
-    {
+    {   
         if(!this.el  || this.preventMark){ // not rendered...
             return;
         }
@@ -927,6 +968,8 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+            feedback.update('');
+            feedback.hide();
         }
         
         if(this.indicator){
@@ -948,7 +991,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             this.inputEl().addClass('is-valid');
         }
 
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
@@ -980,6 +1023,8 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass(
                     [this.invalidFeedbackClass, this.validFeedbackClass]);
+            feedback.update('');
+            feedback.hide();
         }
 
         if(this.disabled){
@@ -1002,15 +1047,23 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         
         
         
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 
-                if(this.getValue().length || this.forceFeedback){
-                    this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+
+                feedback.update(typeof(msg) == 'undefined' ? this.invalidText : msg);
+
+                if(!this.allowBlank && !this.getRawValue().length){
+                    feedback.update(this.blankText);
+                }
+
+                if(feedback.dom.innerHTML) {
+                    feedback.show();
                 }
                 
             }

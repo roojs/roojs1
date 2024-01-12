@@ -1,12 +1,15 @@
 div.input-group.has-feedback > .form-control-feedback {
     right: 30px;
+    width: 100%;
 }
 
 div.input-group.has-feedback > .roo-input-after + .form-control-feedback {
     right: 39px;
 }
 
-.roo-required-indicator {
+
+.roo-required-indicator,
+.roo-required-indicator.fa-lg {
     font-size: 8px;
     color: $brand-danger;
     vertical-align: top;

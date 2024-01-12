@@ -203,6 +203,7 @@
       "Roo.bootstrap.form.DateField",
       "Roo.bootstrap.form.MonthField",
       "Roo.bootstrap.form.NumberField",
+      "Roo.bootstrap.form.Password",
       "Roo.bootstrap.form.RadioSet",
       "Roo.bootstrap.form.SecurePass",
       "Roo.bootstrap.form.TextArea",
@@ -301,7 +302,7 @@
     "Roo.bootstrap.nav.Simplebar" : [
       "Roo.bootstrap.PagingToolbar",
       "Roo.bootstrap.PopoverNav",
-      "Roo.bootstrap.form.HtmlEditorToolbarStandard",
+      "Roo.bootstrap.form.HtmlEditorToolbar.Standard",
       "Roo.bootstrap.nav.Headerbar"
     ],
     "Roo.data.Connection" : [

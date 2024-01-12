@@ -1,6 +1,7 @@
 <?php
 
  
+die("disabled");
 $lib  = empty($_REQUEST['lib']) ? dirname(__FILE__)."/../../" : dirname(__FILE__)."/../" ;
 $rnode = empty($_REQUEST['node']) ? '' : $_REQUEST['node'];
 $node = preg_replace('/^(source|yui)/i', '',$rnode);

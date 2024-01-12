@@ -67,6 +67,14 @@
       ]
     },
     {
+      "name" : "style",
+      "type" : "String",
+      "desc" : "css styles to add to component\neg. text-align:right;",
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
@@ -78,6 +86,14 @@
       "name" : "language",
       "type" : "String",
       "desc" : "default en - language of text (usefull for rtl languages)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "css",
+      "type" : "String",
+      "desc" : "styling for resizing. (used on bootstrap only)",
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []
@@ -102,14 +118,6 @@
       "name" : "width",
       "type" : "Number",
       "desc" : "(in pixels)",
-      "memberOf" : "",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "resizable",
-      "type" : "String",
-      "desc" : "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []

@@ -129,17 +129,9 @@
       "optvals" : []
     },
     {
-      "name" : "resizable",
-      "type" : "String",
-      "desc" : "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
-      "memberOf" : "",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
       "name" : "toolbars",
-      "type" : "Array",
-      "desc" : "Array of toolbars. - defaults to just the Standard one",
+      "type" : "Array|boolean",
+      "desc" : "Array of toolbars, or names of toolbars. - true for standard, and false for none.",
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []
@@ -501,17 +493,15 @@
     },
     {
       "name" : "resize",
-      "type" : "string",
-      "desc" : "",
-      "memberOf" : "Roo.bootstrap.form.TextArea",
+      "type" : "String",
+      "desc" : "l) - css resize of eleme",
+      "memberOf" : "",
       "isOptional" : false,
       "optvals" : [
         "none",
         "both",
         "horizontal",
-        "vertical",
-        "inherit",
-        "initial"
+        "vertical"
       ]
     },
     {
@@ -883,6 +873,25 @@
       "name" : "reset",
       "type" : "function",
       "desc" : "Resets the current field value to the originally loaded value and clears any validation messages",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "getAutoCreateLabel",
+      "type" : "function",
+      "desc" : "autocreate the label - also used by textara... ?? and others?",
       "sig" : "()\n{\n\n}",
       "static" : false,
       "memberOf" : "Roo.bootstrap.form.Input",
@@ -1737,7 +1746,7 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "HtmlEditor",
+          "type" : "Roo.bootstrap.form.HtmlEditor",
           "desc" : "",
           "isOptional" : false
         },
@@ -1763,7 +1772,7 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "HtmlEditor",
+          "type" : "Roo.bootstrap.form.HtmlEditor",
           "desc" : "",
           "isOptional" : false
         },
@@ -1790,6 +1799,26 @@
       "returns" : []
     },
     {
+      "name" : "stylesheetsclick",
+      "type" : "function",
+      "desc" : "Fires when press the Sytlesheets button",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.HtmlEditorCore",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "initialize",
       "type" : "function",
       "desc" : "Fires when the editor is fully initialized (including the iframe)",
@@ -1802,7 +1831,7 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "HtmlEditor",
+          "type" : "Roo.bootstrap.form.HtmlEditor",
           "desc" : "",
           "isOptional" : false
         }
@@ -1861,7 +1890,27 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "HtmlEditor",
+          "type" : "Roo.bootstrap.form.HtmlEditor",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "imageadd",
+      "type" : "function",
+      "desc" : "Fires when on any editor when an image is added (excluding paste)",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.form.HtmlEditor",
           "desc" : "",
           "isOptional" : false
         }
@@ -1881,7 +1930,7 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "HtmlEditor",
+          "type" : "Roo.bootstrap.form.HtmlEditor",
           "desc" : "",
           "isOptional" : false
         }
@@ -1901,7 +1950,7 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "HtmlEditor",
+          "type" : "Roo.bootstrap.form.HtmlEditor",
           "desc" : "",
           "isOptional" : false
         },
@@ -1909,6 +1958,38 @@
           "name" : "html",
           "type" : "String",
           "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "imagedelete",
+      "type" : "function",
+      "desc" : "Fires when on any editor when an image is deleted",
+      "sig" : "function (_self, img, oldSrc)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.form.HtmlEditor",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "img",
+          "type" : "HTMLElement",
+          "desc" : "could also be a figure if blocks are enabled",
+          "isOptional" : false
+        },
+        {
+          "name" : "oldSrc",
+          "type" : "HTMLElement",
+          "desc" : "source of image being replaced",
           "isOptional" : false
         }
       ],
@@ -1927,7 +2008,7 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "HtmlEditor",
+          "type" : "Roo.bootstrap.form.HtmlEditor",
           "desc" : "",
           "isOptional" : false
         },
@@ -1953,8 +2034,34 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "HtmlEditor",
+          "type" : "Roo.bootstrap.form.HtmlEditor",
           "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "imageupdated",
+      "type" : "function",
+      "desc" : "Fires when on any editor when an image is changed (excluding paste)",
+      "sig" : "function (_self, img)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.form.HtmlEditor",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "img",
+          "type" : "HTMLElement",
+          "desc" : "could also be a figure if blocks are enabled",
           "isOptional" : false
         }
       ],
@@ -1973,7 +2080,27 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "HtmlEditor",
+          "type" : "Roo.bootstrap.form.HtmlEditor",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "paste",
+      "type" : "function",
+      "desc" : "Fires when press user pastes into the editor",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.HtmlEditorCore",
           "desc" : "",
           "isOptional" : false
         }
@@ -1993,7 +2120,7 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "HtmlEditor",
+          "type" : "Roo.bootstrap.form.HtmlEditor",
           "desc" : "",
           "isOptional" : false
         },
@@ -2019,34 +2146,8 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "HtmlEditor",
+          "type" : "Roo.bootstrap.form.HtmlEditor",
           "desc" : "",
-          "isOptional" : false
-        }
-      ],
-      "returns" : []
-    },
-    {
-      "name" : "paste",
-      "type" : "function",
-      "desc" : "Fires after the user pastes into input",
-      "sig" : "function (_self, e)\n{\n\n}",
-      "memberOf" : "Roo.bootstrap.form.Input",
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "params" : [
-        {
-          "name" : "this",
-          "type" : "Roo.form.Field",
-          "desc" : "",
-          "isOptional" : false
-        },
-        {
-          "name" : "e",
-          "type" : "Roo.EventObject",
-          "desc" : "The event Object",
           "isOptional" : false
         }
       ],

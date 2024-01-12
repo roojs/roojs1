@@ -87,6 +87,7 @@ Roo.menu.ColorMenu
 Roo.form.TextItem
 Roo.form.Field
 Roo.form.TextField
+Roo.form.Password
 Roo.form.Hidden
 Roo.form.TriggerField
 Roo.form.TextArea
@@ -115,6 +116,7 @@ Roo.htmleditor.FilterBlack
 Roo.htmleditor.FilterComment
 Roo.htmleditor.FilterKeepChildren
 Roo.htmleditor.FilterParagraph
+Roo.htmleditor.FilterHashLink
 Roo.htmleditor.FilterSpan
 Roo.htmleditor.FilterTableWidth
 Roo.htmleditor.FilterWord

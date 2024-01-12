@@ -131,12 +131,12 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
     disableMask : false,
     
     /**
-     * @cfg {Boolean} errorMask (true|false) default false
+     * @cfg {Boolean} errorMask Should the form be masked (and the active element highlighted on error - default false
      */
     errorMask : false,
     
     /**
-     * @cfg {Number} maskOffset Default 100
+     * @cfg {Number} maskOffset space around form element to mask if there is an error Default 100
      */
     maskOffset : 100,
 
@@ -507,6 +507,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             for(id in values){
                 if(typeof values[id] != 'function' && (field = this.findField(id))){
                     
+                    
+                    
+                    
                     if (field.setFromData && 
                         field.valueField && 
                         field.displayField &&
@@ -521,6 +524,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                         sd[field.displayField] = typeof(values[field.name]) == 'undefined' ? '' : values[field.name];
                         field.setFromData(sd);
                         
+                    } else if (field.inputType && field.inputType == 'radio') {
+                        
+                        field.setValue(values[id]);
                     } else {
                         field.setValue(values[id]);
                     }
@@ -546,7 +552,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     /**
      * Returns the fields in this form as an object with key/value pairs. If multiple fields exist with the same name
      * they are returned as an array.
-     * @param {Boolean} asString
+     * @param {Boolean} asString (def)
      * @return {Object}
      */
     getValues : function(asString)

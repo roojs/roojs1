@@ -1,6 +1,8 @@
 #!/usr/bin/php
 <?php
-
+if (php_sapi_name() != 'cli') {
+    die("CLI ONLY");
+}
 // install : ln -s buildSDK/pre-commit .git/hooks/
 
 // the recomendation is to check if the current commit is same as the one on any of the files/directories that need monitoring.

@@ -1,0 +1,36 @@
+<html><head><title>Roo/htmleditor/FilterHashLink.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
+ * @class Roo.htmleditor.FilterHashLink
+ * remove hash link
+ * @constructor
+ * Run a new Hash Link Filter
+ * @param {Object} config Configuration options
+ */
+
+ </span><span class="jsdoc-var">Roo.htmleditor.FilterHashLink </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
+ {
+     </span><span class="jsdoc-comment">// no need to apply config.
+    //  this.walk(cfg.node);
+    </span><span class="jsdoc-var">this.searchTag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
+ }
+
+ </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.htmleditor.FilterHashLink</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.htmleditor.Filter</span><span class="jsdoc-syntax">,
+ {
+
+     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'A'</span><span class="jsdoc-syntax">,
+
+
+     </span><span class="jsdoc-var">replaceTag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
+     {
+         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">node.attributes.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">++) {
+             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.attributes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+
+             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'href' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">a.value.startsWith</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">)) {
+                 </span><span class="jsdoc-var">this.removeNodeKeepChildren</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+             }
+         }
+
+         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+
+     }
+
+ });</span></code></body></html>

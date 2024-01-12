@@ -360,7 +360,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (!skip_children) {    
             for(var i =0;i < items.length;i++) {
               //  Roo.log(['add child', items[i]]);
-                nitems.push(cn.addxtype(Roo.apply({}, items[i])));
+                nitems.push(cn.addxtype(items[i].xns == false ? items[i] : Roo.apply({}, items[i])));
             }
         }
         

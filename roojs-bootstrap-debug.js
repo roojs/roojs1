@@ -17,7 +17,10 @@ Roo.bootstrap.version = ( function() {
 })(); Roo.bootstrap.menu = Roo.bootstrap.menu || {};
 Roo.bootstrap.nav = {};
 
-Roo.bootstrap.form = {};Roo.bootstrap.panel = {};Roo.bootstrap.layout = {};/*
+Roo.bootstrap.form = {};Roo.bootstrap.panel = {};Roo.bootstrap.layout = {};
+Roo.htmleditor = {};
+Roo.namespace('Roo.bootstrap.form.HtmlEditorToolbar');
+/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -577,7 +580,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (!skip_children) {    
             for(var i =0;i < items.length;i++) {
               //  Roo.log(['add child', items[i]]);
-                nitems.push(cn.addxtype(Roo.apply({}, items[i])));
+                nitems.push(cn.addxtype(items[i].xns == false ? items[i] : Roo.apply({}, items[i])));
             }
         }
         
@@ -3092,7 +3095,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     
     imgResponsive: true,
     border: '',
-    src: 'about:blank',
+    src: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=',
     href: false,
     target: false,
     xsUrl: '',
@@ -4545,10 +4548,16 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             : this.el.select('.modal-footer div',true).first();
 
     },
+    
+    closeClick : function()
+    {
+        this.hide();
+    },
+    
     initEvents : function()
     {
         if (this.allow_close) {
-            this.closeEl.on('click', this.hide, this);
+            this.closeEl.on('click', this.closeClick, this);
         }
         Roo.EventManager.onWindowResize(this.resize, this, true);
         if (this.editableTitle) {
@@ -9157,6 +9166,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  *                also adds table-responsive (see bootstrap docs for details)
  * @cfg {Boolean} loadMask (true|false) default false
  * @cfg {Boolean} footerShow (true|false) generate tfoot, default true
+ * @cfg {Boolean} footerRow (true|false) generate tfoot with columns of values, default false
  * @cfg {Boolean} headerShow (true|false) generate thead, default true
  * @cfg {Boolean} rowSelection (true|false) default false
  * @cfg {Boolean} cellSelection (true|false) default false
@@ -9165,6 +9175,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
  * @cfg {Boolean} auto_hide_footer  auto hide footer if only one page (default false)
  * @cfg {Boolean} enableColumnResize default true if columns can be resized = needs scrollBody to be set to work (drag/drop)
+ * @cfg {Boolean} disableAutoSize disable autoSize() and initCSS()
  *
  * 
  * @cfg {Number} minColumnWidth default 50 pixels minimum column width 
@@ -9340,8 +9351,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     store : false,
     loadMask : false,
     footerShow : true,
+    footerRow : false,
     headerShow : true,
     enableColumnResize: true,
+    disableAutoSize: false,
   
     rowSelection : false,
     cellSelection : false,
@@ -9414,9 +9427,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             cfg.cn.push(this.renderBody());
             
-            if(this.footerShow){
+            if(this.footerShow || this.footerRow){
                 cfg.cn.push(this.renderFooter());
             }
+
             // where does this come from?
             //cfg.cls+=  ' TableGrid';
         }
@@ -9503,7 +9517,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     initCSS : function()
     {
-        
+        if(this.disableAutoSize) {
+            return;
+        }
         
         var cm = this.cm, styles = [];
         this.CSS.removeStyleSheet(this.id + '-cssrules');
@@ -9975,8 +9991,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         return footer;
     },
     
-    
-    
     onLoad : function()
     {
 //        Roo.log('ds onload');
@@ -10023,7 +10037,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var tfoot = this.el.select('tfoot', true).first();
         
-        if(this.footerShow && this.auto_hide_footer && this.mainFoot){
+        if(this.footerShow && !this.footerRow && this.auto_hide_footer && this.mainFoot){
             
             this.mainFoot.setVisibilityMode(Roo.Element.DISPLAY).hide();
             
@@ -10032,6 +10046,30 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(this.footer.pageSize < total){
                 this.mainFoot.show();
             }
+        }
+
+        if(!this.footerShow && this.footerRow) {
+
+            var tr = {
+                tag : 'tr',
+                cn : []
+            };
+
+            for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+                var footer = typeof(cm.config[i].footer) == "function" ? cm.config[i].footer(ds, cm.config[i]) : cm.config[i].footer;
+                var td = {
+                    tag: 'td',
+                    cls : ' x-fcol-' + i,
+                    html: footer
+                };
+
+                tr.cn.push(td);
+                
+            }
+            
+            tfoot.dom.innerHTML = '';
+
+            tfoot.createChild(tr);
         }
         
         Roo.each(this.el.select('tbody td', true).elements, function(e){
@@ -10300,7 +10338,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             var id = false;
             
             if(typeof(renderer) !== 'undefined'){
-                value = renderer(d.data[cm.getDataIndex(i)], false, d);
+                value = renderer.call(config, d.data[cm.getDataIndex(i)], false, d);
             }
             // if object are returned, then they are expected to be Roo.bootstrap.Component instances
             // and are rendered into the cells after the row is rendered - using the id for the element.
@@ -10507,6 +10545,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
      */
     autoSize : function()
     {
+        if(this.disableAutoSize) {
+            return;
+        }
         //var ctr = Roo.get(this.container.dom.parentElement);
         var ctr = Roo.get(this.el.dom);
         
@@ -11277,7 +11318,13 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         }
         var ret = false;
         try {
-            ret = Roo.decode(response.responseText);
+            var rt = response.responseText;
+            if (rt.match(/^\<!--\[CDATA\[/)) {
+                rt = rt.replace(/^\<!--\[CDATA\[/,'');
+                rt = rt.replace(/\]\]--\>$/,'');
+            }
+            
+            ret = Roo.decode(rt);
         } catch (e) {
             ret = {
                 success: false,
@@ -12152,8 +12199,9 @@ Roo.form.VTypes = function(){
     // closure these in so they are only created once.
     var alpha = /^[a-zA-Z_]+$/;
     var alphanum = /^[a-zA-Z0-9_]+$/;
-    var email = /^([\w]+)(.[\w]+)*@([\w-]+\.){1,5}([A-Za-z]){2,24}$/;
-    var url = /(((https?)|(ftp)):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
+    var email = /^([\w'-]+)(\.[\w'-]+)*@([\w-]+\.){1,5}([A-Za-z]){2,24}$/;
+    var url = /^(((https?)|(ftp)):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
+    var urlWeb = /^((https?):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
 
     // All these messages and functions are configurable
     return {
@@ -12161,68 +12209,75 @@ Roo.form.VTypes = function(){
          * The function used to validate email addresses
          * @param {String} value The email address
          */
-        'email' : function(v){
+        email : function(v){
             return email.test(v);
         },
         /**
          * The error text to display when the email validation function returns false
          * @type String
          */
-        'emailText' : 'This field should be an e-mail address in the format "user@domain.com"',
+        emailText : 'This field should be an e-mail address in the format "user@domain.com"',
         /**
          * The keystroke filter mask to be applied on email input
          * @type RegExp
          */
-        'emailMask' : /[a-z0-9_\.\-@]/i,
+        emailMask : /[a-z0-9_\.\-@]/i,
 
         /**
          * The function used to validate URLs
          * @param {String} value The URL
          */
-        'url' : function(v){
+        url : function(v){
             return url.test(v);
+        },
+        /**
+         * The funciton used to validate URLs (only allow schemes 'https' and 'http')
+         * @param {String} v The URL
+         */
+        urlWeb : function(v) {
+            return urlWeb.test(v);
         },
         /**
          * The error text to display when the url validation function returns false
          * @type String
          */
-        'urlText' : 'This field should be a URL in the format "http:/'+'/www.domain.com"',
+        urlText : 'This field should be a URL in the format "http:/'+'/www.domain.com"',
         
         /**
          * The function used to validate alpha values
          * @param {String} value The value
          */
-        'alpha' : function(v){
+        alpha : function(v){
             return alpha.test(v);
         },
         /**
          * The error text to display when the alpha validation function returns false
          * @type String
          */
-        'alphaText' : 'This field should only contain letters and _',
+        alphaText : 'This field should only contain letters and _',
         /**
          * The keystroke filter mask to be applied on alpha input
          * @type RegExp
          */
-        'alphaMask' : /[a-z_]/i,
+        alphaMask : /[a-z_]/i,
 
         /**
          * The function used to validate alphanumeric values
          * @param {String} value The value
          */
-        'alphanum' : function(v){
+        alphanum : function(v){
             return alphanum.test(v);
         },
         /**
          * The error text to display when the alphanumeric validation function returns false
          * @type String
          */
-        'alphanumText' : 'This field should only contain letters, numbers and _',
+        alphanumText : 'This field should only contain letters, numbers and _',
         /**
          * The keystroke filter mask to be applied on alphanumeric input
          * @type RegExp
          */
-        'alphanumMask' : /[a-z0-9_]/i
+        alphanumMask : /[a-z0-9_]/i
     };
 }();/*
  * - LGPL
@@ -12499,7 +12554,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         
         var id = Roo.id();
         
@@ -12568,7 +12622,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             cls: 'glyphicon form-control-feedback'
         };
             
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             inputblock = {
                 cls : 'has-feedback',
@@ -12623,11 +12677,39 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 });
             }
             
-            if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+            if(this.hasFeedback && this.inputType != 'hidden'){
                 inputblock.cls += ' has-feedback';
                 inputblock.cn.push(feedback);
             }
         };
+        
+        
+        
+        cfg = this.getAutoCreateLabel( cfg, inputblock );
+        
+       
+         
+        
+        if (this.parentType === 'Navbar' &&  this.parent().bar) {
+           cfg.cls += ' navbar-form';
+        }
+        
+        if (this.parentType === 'NavGroup' && !(Roo.bootstrap.version == 4 && this.parent().form)) {
+            // on BS4 we do this only if not form 
+            cfg.cls += ' navbar-form';
+            cfg.tag = 'li';
+        }
+        
+        return cfg;
+        
+    },
+    /**
+     * autocreate the label - also used by textara... ?? and others?
+     */
+    getAutoCreateLabel : function( cfg, inputblock )
+    {
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
+       
         var indicator = {
             tag : 'i',
             cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
@@ -12771,20 +12853,10 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 
                 
         };
-        
-        if (this.parentType === 'Navbar' &&  this.parent().bar) {
-           cfg.cls += ' navbar-form';
-        }
-        
-        if (this.parentType === 'NavGroup' && !(Roo.bootstrap.version == 4 && this.parent().form)) {
-            // on BS4 we do this only if not form 
-            cfg.cls += ' navbar-form';
-            cfg.tag = 'li';
-        }
-        
         return cfg;
-        
     },
+    
+    
     /**
      * return the real input element.
      */
@@ -12877,6 +12949,15 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         
         this.inputEl().on('change', this.onChange, this);
+
+        if(this.hasFeedback && this.inputType != 'hidden'){
+            
+            var feedback = this.el.select('.form-control-feedback', true).first();
+
+            if(feedback) {
+                feedback.hide();
+            }
+        }
         
     },
     filterValidation : function(e){
@@ -12933,11 +13014,11 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         if(typeof this.validator == "function"){
             var msg = this.validator(value);
-            if(msg !== true){
-                return false;
-            }
             if (typeof(msg) == 'string') {
                 this.invalidText = msg;
+            }
+            if(msg !== true){
+                return false;
             }
         }
         
@@ -13010,7 +13091,21 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      */
     reset : function(){
         this.setValue(this.originalValue);
-        this.validate();
+        // this.validate();
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.inputEl().removeClass(['is-valid', 'is-invalid']);
+
+        if(this.hasFeedback && this.inputType != 'hidden'){
+            
+            var feedback = this.el.select('.form-control-feedback', true).first();
+            
+            if(feedback){
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                feedback.update('');
+                feedback.hide();
+            }
+            
+        }
     },
      /**
      * Returns the name of the field
@@ -13024,9 +13119,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      * @return {Mixed} value The field value
      */
     getValue : function(){
-        
         var v = this.inputEl().getValue();
-        
         return v;
     },
     /**
@@ -13117,14 +13210,17 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         
         
-        this.el.removeClass([this.invalidClass, 'is-invalid']);
+        this.inputEl().removeClass([this.invalidClass, 'is-invalid']);
         
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass(this.invalidFeedbackClass);
+
+                feedback.update('');
+                feedback.hide();
             }
             
         }
@@ -13141,7 +13237,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      * Mark this field as valid
      */
     markValid : function()
-    {
+    {   
         if(!this.el  || this.preventMark){ // not rendered...
             return;
         }
@@ -13153,6 +13249,8 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+            feedback.update('');
+            feedback.hide();
         }
         
         if(this.indicator){
@@ -13174,7 +13272,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             this.inputEl().addClass('is-valid');
         }
 
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
@@ -13206,6 +13304,8 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass(
                     [this.invalidFeedbackClass, this.validFeedbackClass]);
+            feedback.update('');
+            feedback.hide();
         }
 
         if(this.disabled){
@@ -13228,15 +13328,23 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         
         
         
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 
-                if(this.getValue().length || this.forceFeedback){
-                    this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+
+                feedback.update(typeof(msg) == 'undefined' ? this.invalidText : msg);
+
+                if(!this.allowBlank && !this.getRawValue().length){
+                    feedback.update(this.blankText);
+                }
+
+                if(feedback.dom.innerHTML) {
+                    feedback.show();
                 }
                 
             }
@@ -13425,7 +13533,7 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
         
         var inputblock = input;
         
-        if(this.hasFeedback && !this.allowBlank){
+        if(this.hasFeedback){
             
             var feedback = {
                 tag: 'span',
@@ -13458,7 +13566,7 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
             
             inputblock.cn.push(input);
             
-            if(this.hasFeedback && !this.allowBlank){
+            if(this.hasFeedback){
                 inputblock.cls += ' has-feedback';
                 inputblock.cn.push(feedback);
             }
@@ -13473,74 +13581,10 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
             
         }
         
-        if (align ==='left' && this.fieldLabel.length) {
-            cfg.cn = [
-                {
-                    tag: 'label',
-                    'for' :  id,
-                    cls : 'control-label',
-                    html : this.fieldLabel
-                },
-                {
-                    cls : "",
-                    cn: [
-                        inputblock
-                    ]
-                }
+        
+        cfg = this.getAutoCreateLabel( cfg, inputblock );
 
-            ];
-            
-            if(this.labelWidth > 12){
-                cfg.cn[0].style = "width: " + this.labelWidth + 'px';
-            }
-
-            if(this.labelWidth < 13 && this.labelmd == 0){
-                this.labelmd = this.labelWidth;
-            }
-
-            if(this.labellg > 0){
-                cfg.cn[0].cls += ' col-lg-' + this.labellg;
-                cfg.cn[1].cls += ' col-lg-' + (12 - this.labellg);
-            }
-
-            if(this.labelmd > 0){
-                cfg.cn[0].cls += ' col-md-' + this.labelmd;
-                cfg.cn[1].cls += ' col-md-' + (12 - this.labelmd);
-            }
-
-            if(this.labelsm > 0){
-                cfg.cn[0].cls += ' col-sm-' + this.labelsm;
-                cfg.cn[1].cls += ' col-sm-' + (12 - this.labelsm);
-            }
-
-            if(this.labelxs > 0){
-                cfg.cn[0].cls += ' col-xs-' + this.labelxs;
-                cfg.cn[1].cls += ' col-xs-' + (12 - this.labelxs);
-            }
-            
-        } else if ( this.fieldLabel.length) {
-            cfg.cn = [
-
-               {
-                   tag: 'label',
-                   //cls : 'input-group-addon',
-                   html : this.fieldLabel
-
-               },
-
-               inputblock
-
-           ];
-
-        } else {
-
-            cfg.cn = [
-
-                inputblock
-
-            ];
-                
-        }
+         
         
         if (this.disabled) {
             input.disabled=true;
@@ -13568,20 +13612,23 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
         }
         
         var label = this.el.select('label', true).first();
-        var icon = this.el.select('i.fa-star', true).first();
+        //var icon = this.el.select('i.fa-star', true).first();
         
-        if(label && icon){
-            icon.remove();
-        }
+        //if(label && icon){
+        //    icon.remove();
+        //}
         this.el.removeClass( this.validClass);
         this.inputEl().removeClass('is-invalid');
          
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass(this.invalidFeedbackClass);
+
+                feedback.update('');
+                feedback.hide();
             }
             
         }
@@ -13605,6 +13652,8 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
             
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+            feedback.update('');
+            feedback.hide();
         }
 
         if(this.disabled || this.allowBlank){
@@ -13614,9 +13663,9 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
         var label = this.el.select('label', true).first();
         var icon = this.el.select('i.fa-star', true).first();
         
-        if(label && icon){
-            icon.remove();
-        }
+        //if(label && icon){
+        //    icon.remove();
+        //}
         if (Roo.bootstrap.version == 3) {
             this.el.addClass(this.validClass);
         } else {
@@ -13624,7 +13673,7 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
         }
         
         
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
@@ -13655,23 +13704,26 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
             
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+            feedback.update('');
+            feedback.hide();
         }
 
-        if(this.disabled || this.allowBlank){
+        if(this.disabled){
             return;
         }
         
         var label = this.el.select('label', true).first();
-        var icon = this.el.select('i.fa-star', true).first();
+        //var icon = this.el.select('i.fa-star', true).first();
         
-        if(!this.getValue().length && label && !icon){
-            this.el.createChild({
+        //if(!this.getValue().length && label && !icon){
+          /*  this.el.createChild({
                 tag : 'i',
                 cls : 'text-danger fa fa-lg fa-star',
                 tooltip : 'This field is required',
                 style : 'margin-right:5px;'
             }, label, true);
-        }
+            */
+        //}
         
         if (Roo.bootstrap.version == 3) {
             this.el.addClass(this.invalidClass);
@@ -13680,15 +13732,23 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
         }
         
         // fixme ... this may be depricated need to test..
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 
-                if(this.getValue().length || this.forceFeedback){
-                    this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+
+                feedback.update(this.invalidText);
+
+                if(!this.allowBlank && !this.getRawValue().length){
+                    feedback.update(this.blankText);
+                }
+
+                if(feedback.dom.innerHTML) {
+                    feedback.show();
                 }
                 
             }
@@ -13956,12 +14016,14 @@ Roo.extend(Roo.bootstrap.form.TriggerField, Roo.bootstrap.form.Input,  {
             cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
             tooltip : 'This field is required'
         };
-        if (Roo.bootstrap.version == 4) {
+      
+        if (this.allowBlank) {
             indicator = {
                 tag : 'i',
                 style : 'display:none'
             };
         }
+         
         
         
         if (align ==='left' && this.fieldLabel.length) {
@@ -14690,7 +14752,246 @@ Roo.extend(Roo.bootstrap.form.CardUploader, Roo.bootstrap.form.Input,  {
 });
 
 
-Roo.bootstrap.form.CardUploader.ID = -1;/*
+Roo.bootstrap.form.CardUploader.ID = -1;/**
+ * 
+ * @class Roo.bootstrap.form.MultiLineTag
+ * @param {Object} config The config object
+ * 
+ */
+
+Roo.bootstrap.form.MultiLineTag = function(config){
+    Roo.bootstrap.form.MultiLineTag.superclass.constructor.call(this, config);
+
+    this.addEvents({
+        /**
+         * @event beforeload
+         * Fires before a request is made for a new data object.  If the beforeload handler returns false
+         * the load action will be canceled.
+         * @param {Roo.boostrap.form.MultiLineTag} this
+         * @param {Store} store
+         * @param {Object} options The loading options that were specified (see {@link #load} for details)
+         */
+         beforeload : true
+    });
+};
+
+Roo.extend(Roo.bootstrap.form.MultiLineTag, Roo.bootstrap.form.Input,  {
+    tagRows : [],
+    minimumRow : 2,
+
+    // for combo box
+    displayField : '',
+    valueField : '',
+    placeholder : '',
+    queryParam : '',
+    listWidth : 300,
+    minChars : 2,
+
+    // for combo box store
+    url : undefined,
+    fields : [],
+
+
+
+    getAutoCreate : function()
+    {
+        var config = {
+            cls : 'roo-multi-line-tag form-group'
+        };
+
+        config = this.getAutoCreateLabel( config, {
+            cls : 'roo-multi-line-tag-container'
+        } );
+
+        return config;
+    },
+
+    initEvents : function()
+    {
+        this.tagRows = [];
+
+        for (var i = 0; i < this.minimumRow; i++) {
+            this.addTagRow();
+        }
+    },
+
+    addTagRow : function()
+    {
+        var _this = this; 
+
+        var comboBox = Roo.factory({
+            xns: Roo.bootstrap.form,
+            xtype : 'ComboBox',
+            editable : true,
+            triggerAction: 'all',
+            minChars: _this.minChars,
+            displayField: _this.displayField,
+            valueField : _this.valueField,
+            listWidth: _this.listWidth,
+            placeholder : _this.placeholder,
+            queryParam : _this.queryParam,
+            store : {
+                xns : Roo.data,
+                xtype : 'Store',
+                listeners : {
+                    beforeload : function(_self, options)
+                    {
+                        _this.fireEvent('beforeload', _this, _self, options);
+                    }
+                },
+                proxy : {
+                    xns : Roo.data,
+                    xtype : 'HttpProxy',
+                    method : 'GET',
+                    url : _this.url
+                },
+                reader : {
+                    xns : Roo.data,
+                    xtype : 'JsonReader',
+                    fields : _this.fields
+                }
+            },
+            listeners : {
+                'render' : function (_self) {
+                    _self.inputEl().on('keyup', function(e) {
+                        if(_this.shouldAutoAddTagRow()) {
+                            _this.addTagRow();
+                        }
+                    });
+                    _self.inputEl().on('change', function(e) {
+                        _this.fireEvent('change', _this, _this.getValue(), false);
+                        _this.showHideRemoveBtn();
+
+                    });
+                },
+                'select' : function(_self, record, index) {
+                    _this.fireEvent('change', _this, _this.getValue(), false);
+                }
+            }
+        });
+
+        var button = Roo.factory({
+            xns : Roo.bootstrap,
+            xtype : 'Button',
+            html : '-'
+        });
+
+        var row = {
+            xns : Roo.bootstrap,
+            xtype : 'Row',
+            items : [
+                comboBox,
+                button
+            ],
+            listeners : {
+                'render' : function (_self) {
+                    this.inputCb = comboBox;
+                    this.removeBtn = button;
+
+                    this.removeBtn.on('click', function() {
+                        _this.removeTagRow(_self);
+                        _this.fireEvent('change', _this, _this.getValue(), false);
+                    });
+                }
+            }
+        };
+        this.tagRows.push(this.addxtype(row));
+
+        _this.showHideRemoveBtn();
+    },
+
+    // a new tags should be added automatically when all existing tags are not empty
+    shouldAutoAddTagRow : function()
+    {
+        var ret = true;
+
+        Roo.each(this.tagRows, function(r) {
+            if(r.inputCb.getRawValue() == '') {
+                ret = false;
+            }
+        });
+
+        return ret;
+    },
+
+    removeTagRow : function(row)
+    {
+        row.destroy();
+        this.tagRows.splice(this.tagRows.indexOf(row), 1);
+        this.showHideRemoveBtn();
+    },
+
+    // hide all remove buttons if there are {minimumRow} or less tags
+    // hide the remove button for empty tag
+    showHideRemoveBtn : function()
+    {
+        var _this = this;
+        
+        Roo.each(this.tagRows, function (r) {
+
+            r.removeBtn.show();
+
+            if(_this.tagRows.length <= _this.minimumRow || r.inputCb.getRawValue() == '') {
+                r.removeBtn.hide();
+            }
+        });
+    },
+
+    getValue : function()
+    {
+        var _this = this;
+        var tags = [];
+        Roo.each(_this.tagRows, function(r) {
+            var value = r.inputCb.getRawValue();
+            if(value != '') {
+                var tag = {};
+                tag[_this.valueField] = r.inputCb.getRawValue();
+                tags.push(tag);
+            }
+        });
+        
+        return JSON.stringify(tags);
+    },
+
+    setValue : function(json)
+    {
+
+        // remove all old tags
+        var oldTotal = this.tagRows.length;
+
+        for(var i = 0; i < oldTotal; i ++) {
+            this.removeTagRow(this.tagRows[0]);
+        }
+
+        // empty tag if invalid json
+        var arr = [];
+
+        try {
+            // set new tags
+            arr = JSON.parse(json);
+        }
+        catch {}
+
+        for (var i = 0; i < arr.length; i ++) {
+            this.addTagRow();
+            this.tagRows[i].inputCb.setRawValue(arr[i][this.valueField]);
+        }
+
+        // always add one extra empty tag
+        this.addTagRow();
+
+        // add empty tags until there are {minimumRow} tags
+        while(this.tagRows.length < this.minimumRow) {
+            this.addTagRow();
+        }
+        
+    },
+
+    getChildContainer : function()
+    {
+        return Roo.select('.roo-multi-line-tag-container', true).elements[0];
+    }
+});/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -15173,8 +15474,8 @@ Roo.data.Store = function(config){
          * If you return Json { data: [] , success: false, .... } then this will be thrown with the following args
          * 
          * @param {Proxy} 
-         * @param {Object} return from JsonData.reader() - success, totalRecords, records
-         * @param {Object} load options 
+         * @param {Object} ret return data from JsonData.reader() - success, totalRecords, records
+         * @param {Object} opts - load Options
          * @param {Object} jsonData from your request (normally this contains the Exception)
          */
         loadexception : true
@@ -16180,24 +16481,24 @@ Roo.extend(Roo.data.HttpProxy, Roo.data.DataProxy, {
     // thse are take from connection...
     
     /**
-     * @cfg {String} url (Optional) The default URL to be used for requests to the server. (defaults to undefined)
+     * @cfg {String} url  The default URL to be used for requests to the server. (defaults to undefined)
      */
     /**
-     * @cfg {Object} extraParams (Optional) An object containing properties which are used as
+     * @cfg {Object} extraParams  An object containing properties which are used as
      * extra parameters to each request made by this object. (defaults to undefined)
      */
     /**
-     * @cfg {Object} defaultHeaders (Optional) An object containing request headers which are added
+     * @cfg {Object} defaultHeaders   An object containing request headers which are added
      *  to each request made by this object. (defaults to undefined)
      */
     /**
-     * @cfg {String} method (Optional) The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
+     * @cfg {String} method (GET|POST)  The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
      */
     /**
-     * @cfg {Number} timeout (Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)
+     * @cfg {Number} timeout The timeout in milliseconds to be used for requests. (defaults to 30000)
      */
      /**
-     * @cfg {Boolean} autoAbort (Optional) Whether this request should abort any pending requests. (defaults to false)
+     * @cfg {Boolean} autoAbort Whether this request should abort any pending requests. (defaults to false)
      * @type Boolean
      */
   
@@ -17013,7 +17314,7 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
     /**
      * @cfg {Number} maxHeight The maximum height in pixels of the dropdown list before scrollbars are shown (defaults to 300)
      */
-    maxHeight: 300,
+    // maxHeight: 300, // not used (change maxHeight in CSS. target the list using listClass)
     /**
      * @cfg {String} triggerAction The action to execute when the trigger field is activated.  Use 'all' to run the
      * query specified by the allQuery config option (defaults to 'query')
@@ -17320,12 +17621,13 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
             cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
             tooltip : 'This field is required'
         };
-        if (Roo.bootstrap.version == 4) {
+         
+        if (this.allowBlank) {
             indicator = {
                 tag : 'i',
                 style : 'display:none'
             };
-        }
+        } 
         if (align ==='left' && this.fieldLabel.length) {
             
             cfg.cls += ' roo-form-group-label-left'  + (Roo.bootstrap.version == 4 ? ' row' : '');
@@ -17537,6 +17839,8 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
         //this.list = new Roo.Layer({
         //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
         //});
+
+        this.list.addClass(this.listClass);
         
         var _this = this;
         
@@ -18643,6 +18947,8 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
         if (!this.editable) {
             Roo.get(document).on('keydown', this.listKeyPress, this);
         }
+
+        this.list.setStyle('maxHeight', 'calc(100% - ' + this.list.getTop() + 'px - 50px)');
         
         this.fireEvent('expand', this);
     },
@@ -22810,7 +23116,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
  * Create a new DateField
  * @param {Object} config The config object
  */
-
+ 
 Roo.bootstrap.form.DateField = function(config){
     Roo.bootstrap.form.DateField.superclass.constructor.call(this, config);
      this.addEvents({
@@ -22853,12 +23159,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
      * valid according to {@link Date#parseDate} (defaults to 'm/d/y').
      */
     format : "m/d/y",
-    /**
-     * @cfg {String} altFormats
-     * Multiple date formats separated by "|" to try when parsing a user input value and it doesn't match the defined
-     * format (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').
-     */
-    altFormats : "m/d/Y|m-d-y|m-d-Y|m/d|m-d|md|mdy|mdY|d",
     
     weekStart : 0,
     
@@ -22885,6 +23185,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     _events: [],
     
     singleMode : false,
+
+    hiddenField : false,
     
     UTCDate: function()
     {
@@ -22912,17 +23214,77 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     
     setUTCDate: function(d) {
             this.date = d;
-            this.setValue(this.formatDate(this.date));
+            this.setValue(this.date);
+    },
+
+    translateDates: function(lang) 
+    {
+        var translation = Roo.bootstrap.form.DateField.dates[lang] = {
+            days: [],
+            daysShort: [],
+            daysMin: [],
+            months: [],
+            monthsShort: []
+        };
+
+        var locale = lang.replace('_', '-');
+
+        var is_latin = [ 'zh-hk', 'zh-cn', 'jp', 'ko' ].indexOf(locale.toLowerCase()) < 0; 
+		 
+
+        // fill days
+        for(var i = 0; i < 7; i++) {
+            var date = new Date(2020, 0, 5 + i);
+
+            var day = new Intl.DateTimeFormat(locale, {
+                weekday : 'long'
+            }).format(date);
+
+            var dayShort = new Intl.DateTimeFormat(locale, {
+                weekday : 'short'
+            }).format(date);
+
+            var dayMin = new Intl.DateTimeFormat(locale, {
+                weekday : 'narrow'
+            }).format(date);
+
+            if(is_latin) {
+                dayShort = day.substring(0, 3);
+                dayMin = day.substring(0, 2);
+            }
+            
+            translation.days.push(day);
+            translation.daysShort.push(dayShort);
+            translation.daysMin.push(dayMin);
+        }
+
+        // fill months
+        for(var i = 0; i < 12; i++) {
+            var date = new Date(2020, i);
+
+            var month = new Intl.DateTimeFormat(locale, {
+                month : 'long'
+            }).format(date);
+
+            var monthShort = new Intl.DateTimeFormat(locale, {
+                month : 'short'
+            }).format(date);
+
+            if(is_latin) {
+                monthShort = month.substring(0, 3);
+            }
+
+            translation.months.push(month);
+            translation.monthsShort.push(monthShort);
+        }
     },
         
     onRender: function(ct, position)
     {
         
         Roo.bootstrap.form.DateField.superclass.onRender.call(this, ct, position);
-        
-        this.language = this.language || 'en';
-        this.language = this.language in Roo.bootstrap.form.DateField.dates ? this.language : this.language.split('-')[0];
-        this.language = this.language in Roo.bootstrap.form.DateField.dates ? this.language : "en";
+
+        this.translateDates(this.language);
         
         this.isRTL = Roo.bootstrap.form.DateField.dates[this.language].rtl || false;
         this.format = this.format || 'm/d/y';
@@ -22985,15 +23347,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         }
         
         Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
-            if(!this.calendarWeeks){
-                v.remove();
-                return;
-            }
-            
-            v.dom.innerHTML = Roo.bootstrap.form.DateField.dates[this.language].today;
-            v.attr('colspan', function(i, val){
-                return parseInt(val) + 1;
-            });
+            v.dom.innerHTML = Roo.bootstrap.form.DateField.todayText;
         });
 			
         
@@ -23012,6 +23366,14 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         if(this.isInline) {
             this.showPopup();
         }
+
+        this.hiddenField = this.inputEl().insertSibling(
+            {tag : 'input', type : 'hidden', name : this.name},
+            'before',
+            true
+        );
+        this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
+
     },
     
     picker : function()
@@ -23030,14 +23392,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 
             ]
         };
-        
-        if(this.calendarWeeks){
-            dow.cn.push({
-                tag: 'th',
-                cls: 'cw',
-                html: '&nbsp;'
-            })
-        }
         
         while (dowCnt < this.weekStart + 7) {
             dow.cn.push({
@@ -23097,12 +23451,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 today = this.UTCToday();
         
         this.picker().select('>.datepicker-days thead th.switch', true).first().dom.innerHTML = Roo.bootstrap.form.DateField.dates[this.language].months[month]+' '+year;
-        
-//        this.picker().select('>tfoot th.today', true).first().dom.innerHTML = Roo.bootstrap.form.DateField.dates[this.language].today;
-        
-//        this.picker.select('>tfoot th.today').
-//						.text(dates[this.language].today)
-//						.toggle(this.todayBtn !== false);
     
         this.updateNavArrows();
         this.fillMonths();
@@ -23137,26 +23485,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                     tag: 'tr',
                     cn: []
                 };
-                
-                if(this.calendarWeeks){
-                    // ISO 8601: First week contains first thursday.
-                    // ISO also states week starts on Monday, but we can be more abstract here.
-                    var
-                    // Start of current week: based on weekstart/current date
-                    ws = new Date(+prevMonth + (this.weekStart - prevMonth.getUTCDay() - 7) % 7 * 864e5),
-                    // Thursday of this week
-                    th = new Date(+ws + (7 + 4 - ws.getUTCDay()) % 7 * 864e5),
-                    // First Thursday of year, year from thursday
-                    yth = new Date(+(yth = this.UTCDate(th.getUTCFullYear(), 0, 1)) + (7 + 4 - yth.getUTCDay())%7*864e5),
-                    // Calendar week: ms between thursdays, div ms per day, div 7 days
-                    calWeek =  (th - yth) / 864e5 / 7 + 1;
-                    
-                    fillMonths.cn.push({
-                        tag: 'td',
-                        cls: 'cw',
-                        html: calWeek
-                    });
-                }
             }
             
             if (prevMonth.getUTCFullYear() < year || (prevMonth.getUTCFullYear() == year && prevMonth.getUTCMonth() < month)) {
@@ -23264,30 +23592,38 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         this.picker().setTop(this.inputEl().getBottom()).setLeft(this.inputEl().getLeft());
     },
     
+    // return false when it fails
     parseDate : function(value)
     {
-        if(!value || value instanceof Date){
+        if(!value) {
+            return false;
+        }
+        if(value instanceof Date){
             return value;
         }
-        var v = Date.parseDate(value, this.format);
-        if (!v && (this.useIso || value.match(/^(\d{4})-0?(\d+)-0?(\d+)/))) {
-            v = Date.parseDate(value, 'Y-m-d');
-        }
-        if(!v && this.altFormats){
-            if(!this.altFormatsArray){
-                this.altFormatsArray = this.altFormats.split("|");
-            }
-            for(var i = 0, len = this.altFormatsArray.length; i < len && !v; i++){
-                v = Date.parseDate(value, this.altFormatsArray[i]);
-            }
-        }
-        return v;
+        var v = Date.parseDate(value, 'Y-m-d');
+
+        return (typeof(v) == 'undefined') ? false : v;
     },
     
     formatDate : function(date, fmt)
     {   
         return (!date || !(date instanceof Date)) ?
         date : date.dateFormat(fmt || this.format);
+    },
+
+    translateDate : function(date)
+    {
+        switch(this.language) {
+            case 'zh_CN':
+                return new Intl.DateTimeFormat('zh-CN', {
+                    year : 'numeric',
+                    month : 'long',
+                    day : 'numeric'
+                }).format(date);
+            default :
+                return this.formatDate(date);
+        }
     },
     
     onFocus : function()
@@ -23299,10 +23635,17 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     onBlur : function()
     {
         Roo.bootstrap.form.DateField.superclass.onBlur.call(this);
-        
-        var d = this.inputEl().getValue();
-        
-        this.setValue(d);
+
+        if(!this.readOnly) {
+            var d = this.inputEl().getValue();
+            var date = this.parseDate(d);
+            if(date) {
+                this.setValue(date);
+            }
+            else {
+                this.setValue(this.getValue());
+            }
+        }
                 
         this.hidePopup();
     },
@@ -23324,6 +23667,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         this.picker().hide();
         this.viewMode = this.startViewMode;
         this.showMode();
+
+        this.inputEl().blur();
         
         this.fireEvent('hidepopup', this, this.date);
         
@@ -23344,17 +23689,56 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     setValue: function(v)
     {
         if(this.fireEvent('beforeselect', this, v) !== false){
-            var d = new Date(this.parseDate(v) ).clearTime();
-        
-            if(isNaN(d.getTime())){
-                this.date = this.viewDate = '';
-                Roo.bootstrap.form.DateField.superclass.setValue.call(this, '');
+            var d = this.parseDate(v);
+
+            if(!d) {
+                this.date = this.viewDate = this.value = this.hiddenField.value =  '';
+                if(this.rendered){
+                    this.inputEl().dom.value = '';
+                    this.validate();
+                }
                 return;
             }
 
-            v = this.formatDate(d);
+            d = new Date(d).clearTime();
 
-            Roo.bootstrap.form.DateField.superclass.setValue.call(this, v);
+            this.value = this.hiddenField.value = d.dateFormat('Y-m-d');
+
+            v = this.translateDate(d);
+            if(this.rendered){
+                this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+                this.validate();
+            }
+
+            this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
+
+            this.update();
+
+            this.fireEvent('select', this, this.date);
+        }
+    },
+
+    // bypass validation
+    setRawValue : function(v){
+        if(this.fireEvent('beforeselect', this, v) !== false){
+            var d = this.parseDate(v);
+
+            if(!d) {
+                this.date = this.viewDate = this.value = this.hiddenField.value =  '';
+                if(this.rendered){
+                    this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+                }
+                return;
+            }
+
+            d = new Date(d).clearTime();
+
+            this.value = this.hiddenField.value = d.dateFormat('Y-m-d');
+
+            v = this.translateDate(d);
+            if(this.rendered){
+                this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+            }
 
             this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
 
@@ -23366,7 +23750,11 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     
     getValue: function()
     {
-        return this.formatDate(this.date);
+        return this.value;
+    },
+
+    getRawValue : function(){
+        return this.getValue();
     },
     
     fireKey: function(e)
@@ -23409,7 +23797,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 if (this.dateWithinRange(newDate)){
                     this.date = newDate;
                     this.viewDate = newViewDate;
-                    this.setValue(this.formatDate(this.date));
+                    this.setValue(this.date);
 //                    this.update();
                     e.preventDefault();
                     dateChanged = true;
@@ -23436,19 +23824,19 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 if (this.dateWithinRange(newDate)){
                     this.date = newDate;
                     this.viewDate = newViewDate;
-                    this.setValue(this.formatDate(this.date));
+                    this.setValue(this.date);
 //                    this.update();
                     e.preventDefault();
                     dateChanged = true;
                 }
                 break;
             case 13: // enter
-                this.setValue(this.formatDate(this.date));
+                this.setValue(this.date);
                 this.hidePopup();
                 e.preventDefault();
                 break;
             case 9: // tab
-                this.setValue(this.formatDate(this.date));
+                this.setValue(this.date);
                 this.hidePopup();
                 break;
             case 16: // shift
@@ -23502,7 +23890,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                         var date = new Date();
                         this.date = this.UTCDate(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
 //                        this.fill()
-                        this.setValue(this.formatDate(this.date));
+                        this.setValue(this.date);
                         
                         this.hidePopup();
                         break;
@@ -23523,7 +23911,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                     }
                     
                     if(this.singleMode){
-                        this.setValue(this.formatDate(this.viewDate));
+                        this.setValue(this.viewDate);
                         this.hidePopup();
                         return;
                     }
@@ -23559,8 +23947,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                     this.date = this.UTCDate(year, month, day,0,0,0,0);
                     this.viewDate = this.UTCDate(year, month, Math.min(28, day),0,0,0,0);
 //                    this.fill();
-                    //Roo.log(this.formatDate(this.date));
-                    this.setValue(this.formatDate(this.date));
+                    this.setValue(this.date);
                     this.hidePopup();
                 }
                 break;
@@ -23571,7 +23958,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     {
         this.startDate = startDate || -Infinity;
         if (this.startDate !== -Infinity) {
-            this.startDate = this.parseDate(this.startDate);
+            var date = this.parseDate(this.startDate);
+            this.startDate = date ? date : -Infinity;
         }
         this.update();
         this.updateNavArrows();
@@ -23581,7 +23969,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     {
         this.endDate = endDate || Infinity;
         if (this.endDate !== Infinity) {
-            this.endDate = this.parseDate(this.endDate);
+            var date = this.parseDate(this.endDate);
+            this.endDate = date ? date : Infinity;
         }
         this.update();
         this.updateNavArrows();
@@ -23750,7 +24139,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             return false;
         }
         
-        if(typeof(this.parseDate(value)) == 'undefined'){
+        if(!this.parseDate(value)){
             return false;
         }
         
@@ -23836,16 +24225,9 @@ Roo.apply(Roo.bootstrap.form.DateField,  {
         ]
     },
     
-    dates:{
-        en: {
-            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-            daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
-            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-            monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            today: "Today"
-        }
-    },
+    dates : {},
+
+    todayText : "Today",
     
     modes: [
     {
@@ -23935,6 +24317,7 @@ Roo.apply(Roo.bootstrap.form.DateField,  {
  * @class Roo.bootstrap.form.TimeField
  * @extends Roo.bootstrap.form.Input
  * Bootstrap DateField class
+ * @cfg {Number} minuteStep the minutes is always the multiple of a fixed number, default 1
  * 
  * 
  * @constructor
@@ -23977,7 +24360,9 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
      * valid according to {@link Date#parseDate} (defaults to 'H:i').
      */
     format : "H:i",
-
+    minuteStep : 1,
+    language : 'en',
+    hiddenField : false,
     getAutoCreate : function()
     {
         this.after = '<i class="fa far fa-clock"></i>';
@@ -23989,6 +24374,8 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     {
         
         Roo.bootstrap.form.TimeField.superclass.onRender.call(this, ct, position);
+
+        this.language = this.language in Roo.bootstrap.form.TimeField.periodText ? this.language : "en";
                 
         this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.TimeField.template);
         
@@ -24011,6 +24398,14 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.pop.select('.minutes-down', true).first().on('click', this.onDecrementMinutes, this);
         this.pop.select('button.period', true).first().on('click', this.onTogglePeriod, this);
         this.pop.select('button.ok', true).first().on('click', this.setTime, this);
+        this.pop.select('button.ok', true).first().dom.innerHTML = Roo.bootstrap.form.TimeField.okText;
+
+        this.hiddenField = this.inputEl().insertSibling(
+            {tag : 'input', type : 'hidden', name : this.name},
+            'before',
+            true
+        );
+        this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
 
     },
     
@@ -24204,8 +24599,12 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     
     update: function()
     {
-        
-        this.time = (typeof(this.time) === 'undefined') ? new Date() : this.time;
+        // default minute is a multiple of minuteStep
+        if(typeof(this.time) === 'undefined' || this.time.length == 0) {
+            this.time = new Date();
+            this.time = this.time.add(Date.MINUTE, Math.round(parseInt(this.time.format('i')) / this.minuteStep) * this.minuteStep - parseInt(this.time.format('i')));
+        }
+        this.time = (typeof(this.time) === 'undefined' || this.time.length == 0) ? new Date() : this.time;
         
         this.fill();
     },
@@ -24214,10 +24613,10 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     {
         var hours = this.time.getHours();
         var minutes = this.time.getMinutes();
-        var period = 'AM';
+        var period = Roo.bootstrap.form.TimeField.periodText[this.language]['am'];
         
         if(hours > 11){
-            period = 'PM';
+            period = Roo.bootstrap.form.TimeField.periodText[this.language]['pm'];
         }
         
         if(hours == 0){
@@ -24313,25 +24712,116 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.update();
         this.place();
         
-        this.fireEvent('show', this, this.date);
+        this.fireEvent('show', this, this.time);
     },
     
     hide : function()
     {
         this.picker().hide();
         this.pop.hide();
+
+        this.inputEl().blur();
         
-        this.fireEvent('hide', this, this.date);
+        this.fireEvent('hide', this, this.time);
     },
     
     setTime : function()
     {
         this.hide();
-        this.setValue(this.time.format(this.format));
+        this.setValue(this.time);
         
-        this.fireEvent('select', this, this.date);
+        this.fireEvent('select', this, this.time);
         
         
+    },
+
+    // return false when it fails
+    parseTime : function(value)
+    {
+        if(!value) {
+            return false;
+        }
+        if(value instanceof Date){
+            return value;
+        }
+        var v = Date.parseDate(value, 'H:i:s');
+
+        return (typeof(v) == 'undefined') ? false : v;
+    },
+
+    translateTime : function(time)
+    {
+        switch(this.language) {
+            case 'zh_CN':
+                return new Intl.DateTimeFormat('zh-CN', {
+                    hour : 'numeric',
+                    minute : 'numeric',
+                    hour12 : true
+                }).format(time);
+            default :
+                return time.format(this.format);
+        }
+    },
+
+    setValue: function(v)
+    {
+        var t = this.parseTime(v);
+
+        if(!t) {
+            this.time = this.value = this.hiddenField.value =  '';
+            if(this.rendered){
+                this.inputEl().dom.value = '';
+                this.validate();
+            }
+            return;
+        }
+
+        this.value = this.hiddenField.value = t.dateFormat('H:i:s');
+
+        v = this.translateTime(t);
+
+        if(this.rendered){
+            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+            this.validate();
+        }
+
+        this.time = t;
+
+        this.update();
+    },
+
+    setRawValue: function(v)
+    {
+        var t = this.parseTime(v);
+
+        if(!t) {
+            this.time = this.value = this.hiddenField.value =  '';
+            if(this.rendered){
+                this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+            }
+            return;
+        }
+
+        this.value = this.hiddenField.value = t.dateFormat('H:i:s');
+
+        v = this.translateTime(t);
+
+        if(this.rendered){
+            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+        }
+
+        this.time = t;
+
+        this.update();
+    },
+
+    getValue: function()
+    {
+        return this.value;
+    },
+
+    getRawValue : function(){
+        return this.getValue();
     },
     
     onMousedown: function(e){
@@ -24357,14 +24847,16 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     onIncrementMinutes: function()
     {
         Roo.log('onIncrementMinutes');
-        this.time = this.time.add(Date.MINUTE, 1);
+        var minutesToAdd = Math.round((parseInt(this.time.format('i')) + this.minuteStep) / this.minuteStep) * this.minuteStep - parseInt(this.time.format('i'));
+        this.time = this.time.add(Date.MINUTE, minutesToAdd);
         this.update();
     },
     
     onDecrementMinutes: function()
     {
         Roo.log('onDecrementMinutes');
-        this.time = this.time.add(Date.MINUTE, -1);
+        var minutesToSubtract = parseInt(this.time.format('i')) - Math.round((parseInt(this.time.format('i')) - this.minuteStep) / this.minuteStep) * this.minuteStep;
+        this.time = this.time.add(Date.MINUTE, -1 * minutesToSubtract);
         this.update();
     },
     
@@ -24377,10 +24869,21 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     
    
 });
- 
+Roo.apply(Roo.bootstrap.form.TimeField,  {
+    okText : 'OK',
+    periodText : {
+        en : {
+            am : 'AM',
+            pm : 'PM'
+        },
+        zh_CN : {
+            am : '上午',
+            pm : '下午'
+        }
+    }
+});
 
 Roo.apply(Roo.bootstrap.form.TimeField,  {
-  
     template : {
         tag: 'div',
         cls: 'datepicker dropdown-menu',
@@ -24421,7 +24924,7 @@ Roo.apply(Roo.bootstrap.form.TimeField,  {
                                             {
                                                 tag: 'button',
                                                 cls: 'btn btn-info ok',
-                                                html: 'OK'
+                                                html: "OK" // this is overridden on construciton
                                             }
                                         ]
                                     }
@@ -25650,6 +26153,7 @@ Roo.extend(Roo.bootstrap.form.Radio, Roo.bootstrap.Component, {
  * @class Roo.bootstrap.form.SecurePass
  * @extends Roo.bootstrap.form.Input
  * Bootstrap SecurePass class
+ * @cfg {Number} minimumStrength invalid if the strength of the password input is less than the minimum strength (from 0 to 3) (default 2)
  *
  * 
  * @constructor
@@ -25658,63 +26162,15 @@ Roo.extend(Roo.bootstrap.form.Radio, Roo.bootstrap.Component, {
  */
  
 Roo.bootstrap.form.SecurePass = function (config) {
-    // these go here, so the translation tool can replace them..
-    this.errors = {
-        PwdEmpty: "Please type a password, and then retype it to confirm.",
-        PwdShort: "Your password must be at least 6 characters long. Please type a different password.",
-        PwdLong: "Your password can't contain more than 16 characters. Please type a different password.",
-        PwdBadChar: "The password contains characters that aren't allowed. Please type a different password.",
-        IDInPwd: "Your password can't include the part of your ID. Please type a different password.",
-        FNInPwd: "Your password can't contain your first name. Please type a different password.",
-        LNInPwd: "Your password can't contain your last name. Please type a different password.",
-        TooWeak: "Your password is Too Weak."
-    },
-    this.meterLabel = "Password strength:";
-    this.pwdStrengths = ["Too Weak", "Weak", "Medium", "Strong"];
-    this.meterClass = [
-        "roo-password-meter-tooweak", 
-        "roo-password-meter-weak", 
-        "roo-password-meter-medium", 
-        "roo-password-meter-strong", 
-        "roo-password-meter-grey"
-    ];
-    
-    this.errors = {};
     
     Roo.bootstrap.form.SecurePass.superclass.constructor.call(this, config);
 }
 
 Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
-    /**
-     * @cfg {String/Object} errors A Error spec, or true for a default spec (defaults to
-     * {
-     *  PwdEmpty: "Please type a password, and then retype it to confirm.",
-     *  PwdShort: "Your password must be at least 6 characters long. Please type a different password.",
-     *  PwdLong: "Your password can't contain more than 16 characters. Please type a different password.",
-     *  PwdBadChar: "The password contains characters that aren't allowed. Please type a different password.",
-     *  IDInPwd: "Your password can't include the part of your ID. Please type a different password.",
-     *  FNInPwd: "Your password can't contain your first name. Please type a different password.",
-     *  LNInPwd: "Your password can't contain your last name. Please type a different password."
-     * })
-     */
+    minimumStrength : 2,
     // private
-    
-    meterWidth: 300,
-    errorMsg :'',    
-    errors: false,
-    imageRoot: '/',
-    /**
-     * @cfg {String/Object} Label for the strength meter (defaults to
-     * 'Password strength:')
-     */
-    // private
-    meterLabel: '',
-    /**
-     * @cfg {String/Object} pwdStrengths A pwdStrengths spec, or true for a default spec (defaults to
-     * ['Weak', 'Medium', 'Strong'])
-     */
-    // private    
-    pwdStrengths: false,    
+    meterWidth: 300, 
+    imageRoot: '/',  
     // private
     strength: 0,
     // private
@@ -25802,13 +26258,13 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         
         //var pm = this.trigger.child('div/div/div').dom;
         var pm = this.trigger.child('div/div');
-        pm.removeClass(this.meterClass);
-        pm.addClass(this.meterClass[strength]);
+        pm.removeClass(Roo.bootstrap.form.SecurePass.meterClass);
+        pm.addClass(Roo.bootstrap.form.SecurePass.meterClass[strength]);
                 
         
         var pt = this.trigger.child('/div').child('>*[class=roo-password-meter-text]').dom;        
                 
-        pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
+        pt.innerHTML = Roo.bootstrap.form.SecurePass.meterLabel + '&nbsp;' + Roo.bootstrap.form.SecurePass.pwdStrengths[strength];
         
         this._lastPwd = pwd;
     },
@@ -25819,7 +26275,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         this._lastPwd = '';
         
         var pm = this.trigger.child('div/div');
-        pm.removeClass(this.meterClass);
+        pm.removeClass(Roo.bootstrap.form.SecurePass.meterClass);
         pm.addClass('roo-password-meter-grey');        
         
         
@@ -25840,8 +26296,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
                 return true;
             }
 
-            this.markInvalid(this.errors.PwdEmpty);
-            this.errorMsg = this.errors.PwdEmpty;
+            this.invalidText = Roo.bootstrap.form.SecurePass.errors.PwdEmpty;
             return false;
         }
         
@@ -25850,18 +26305,15 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         }
         
         if (!value.match(/[\x21-\x7e]+/)) {
-            this.markInvalid(this.errors.PwdBadChar);
-            this.errorMsg = this.errors.PwdBadChar;
+            this.invalidText = Roo.bootstrap.form.SecurePass.errors.PwdBadChar;
             return false;
         }
         if (value.length < 6) {
-            this.markInvalid(this.errors.PwdShort);
-            this.errorMsg = this.errors.PwdShort;
+            this.invalidText = Roo.bootstrap.form.SecurePass.errors.PwdShort;
             return false;
         }
         if (value.length > 16) {
-            this.markInvalid(this.errors.PwdLong);
-            this.errorMsg = this.errors.PwdLong;
+            this.invalidText = Roo.bootstrap.form.SecurePass.errors.PwdLong;
             return false;
         }
         var strength;
@@ -25876,10 +26328,9 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         }
 
         
-        if (strength < 2) {
-            //this.markInvalid(this.errors.TooWeak);
-            this.errorMsg = this.errors.TooWeak;
-            //return false;
+        if (strength < this.minimumStrength) {
+            this.invalidText = Roo.bootstrap.form.SecurePass.errors.TooWeak;
+            return false;
         }
         
         
@@ -25888,14 +26339,13 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         //var pm = this.trigger.child('div/div/div').dom;
         
         var pm = this.trigger.child('div/div');
-        pm.removeClass(this.meterClass);
-        pm.addClass(this.meterClass[strength]);
+        pm.removeClass(Roo.bootstrap.form.SecurePass.meterClass);
+        pm.addClass(Roo.bootstrap.form.SecurePass.meterClass[strength]);
                 
         var pt = this.trigger.child('/div').child('>*[class=roo-password-meter-text]').dom;        
                 
-        pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
-        
-        this.errorMsg = ''; 
+        pt.innerHTML = Roo.bootstrap.form.SecurePass.meterLabel + '&nbsp;' + Roo.bootstrap.form.SecurePass.pwdStrengths[strength];
+
         return true;
     },
     // private
@@ -25993,8 +26443,584 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
     }
           
 });
-Roo.htmleditor = {};
+
+Roo.bootstrap.form.SecurePass.errors = {
+    PwdEmpty: "Please type a password, and then retype it to confirm.",
+    PwdShort: "Your password must be at least 6 characters long. Please type a different password.",
+    PwdLong: "Your password can't contain more than 16 characters. Please type a different password.",
+    PwdBadChar: "The password contains characters that aren't allowed. Please type a different password.",
+    IDInPwd: "Your password can't include the part of your ID. Please type a different password.",
+    FNInPwd: "Your password can't contain your first name. Please type a different password.",
+    LNInPwd: "Your password can't contain your last name. Please type a different password.",
+    TooWeak: "Your password is Too Weak."
+};
+
+Roo.bootstrap.form.SecurePass.meterLabel = "Password strength:";
+Roo.bootstrap.form.SecurePass.pwdStrengths = ["Too Weak", "Weak", "Medium", "Strong"];
+Roo.bootstrap.form.SecurePass.meterClass = [
+    "roo-password-meter-tooweak", 
+    "roo-password-meter-weak", 
+    "roo-password-meter-medium", 
+    "roo-password-meter-strong", 
+    "roo-password-meter-grey"
+];/**
+ * @class Roo.bootstrap.form.Password
+ * @extends Roo.bootstrap.form.Input
+ * Bootstrap Password class
+ * 
+ * 
+ * 
+ * 
+ * @constructor
+ * Create a new Password
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.form.Password = function(config){
+    Roo.bootstrap.form.Password.superclass.constructor.call(this, config);
+
+    this.inputType = 'password';
+};
+
+Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
+
+    onRender : function(ct, position)
+    {
+        Roo.bootstrap.form.SecurePass.superclass.onRender.call(this, ct, position);
+
+        this.el.addClass('form-password');
+
+        this.wrap = this.inputEl().wrap({
+            cls : 'password-wrap'
+        });
+
+        this.toggle = this.wrap.createChild({
+            tag : 'Button',
+            cls : 'password-toggle'
+        });
+
+
+        this.toggleEl().addClass('password-hidden');
+
+        this.toggleEl().on('click', this.onToggleClick, this);;
+    },
+
+    toggleEl: function()
+    {
+        return this.el.select('button.password-toggle',true).first();
+    },
+
+    onToggleClick : function(e) 
+    {
+        var input = this.inputEl();
+        var toggle = this.toggleEl();
+
+        toggle.removeClass(['password-visible', 'password-hidden']);
+
+        if(input.attr('type') == 'password') {
+            input.attr('type', 'text');
+            toggle.addClass('password-visible');
+        }
+        else {
+            input.attr('type', 'password');
+            toggle.addClass('password-hidden');
+        }
+    }
+});Roo.rtf = {}; // namespace
+Roo.rtf.Hex = function(hex)
+{
+    this.hexstr = hex;
+};
+Roo.rtf.Paragraph = function(opts)
+{
+    this.content = []; ///??? is that used?
+};Roo.rtf.Span = function(opts)
+{
+    this.value = opts.value;
+};
+
+Roo.rtf.Group = function(parent)
+{
+    // we dont want to acutally store parent - it will make debug a nightmare..
+    this.content = [];
+    this.cn  = [];
+     
+       
+    
+};
+
+Roo.rtf.Group.prototype = {
+    ignorable : false,
+    content: false,
+    cn: false,
+    addContent : function(node) {
+        // could set styles...
+        this.content.push(node);
+    },
+    addChild : function(cn)
+    {
+        this.cn.push(cn);
+    },
+    // only for images really...
+    toDataURL : function()
+    {
+        var mimetype = false;
+        switch(true) {
+            case this.content.filter(function(a) { return a.value == 'pngblip' } ).length > 0: 
+                mimetype = "image/png";
+                break;
+             case this.content.filter(function(a) { return a.value == 'jpegblip' } ).length > 0:
+                mimetype = "image/jpeg";
+                break;
+            default :
+                return 'about:blank'; // ?? error?
+        }
+        
+        
+        var hexstring = this.content[this.content.length-1].value;
+        
+        return 'data:' + mimetype + ';base64,' + btoa(hexstring.match(/\w{2}/g).map(function(a) {
+            return String.fromCharCode(parseInt(a, 16));
+        }).join(""));
+    }
+    
+};
+// this looks like it's normally the {rtf{ .... }}
+Roo.rtf.Document = function()
+{
+    // we dont want to acutally store parent - it will make debug a nightmare..
+    this.rtlch  = [];
+    this.content = [];
+    this.cn = [];
+    
+};
+Roo.extend(Roo.rtf.Document, Roo.rtf.Group, { 
+    addChild : function(cn)
+    {
+        this.cn.push(cn);
+        switch(cn.type) {
+            case 'rtlch': // most content seems to be inside this??
+            case 'listtext':
+            case 'shpinst':
+                this.rtlch.push(cn);
+                return;
+            default:
+                this[cn.type] = cn;
+        }
+        
+    },
+    
+    getElementsByType : function(type)
+    {
+        var ret =  [];
+        this._getElementsByType(type, ret, this.cn, 'rtf');
+        return ret;
+    },
+    _getElementsByType : function (type, ret, search_array, path)
+    {
+        search_array.forEach(function(n,i) {
+            if (n.type == type) {
+                n.path = path + '/' + n.type + ':' + i;
+                ret.push(n);
+            }
+            if (n.cn.length > 0) {
+                this._getElementsByType(type, ret, n.cn, path + '/' + n.type+':'+i);
+            }
+        },this);
+    }
+    
+});
  
+Roo.rtf.Ctrl = function(opts)
+{
+    this.value = opts.value;
+    this.param = opts.param;
+};
+/**
+ *
+ *
+ * based on this https://github.com/iarna/rtf-parser
+ * it's really only designed to extract pict from pasted RTF 
+ *
+ * usage:
+ *
+ *  var images = new Roo.rtf.Parser().parse(a_string).filter(function(g) { return g.type == 'pict'; });
+ *  
+ *
+ */
+
+ 
+
+
+
+Roo.rtf.Parser = function(text) {
+    //super({objectMode: true})
+    this.text = '';
+    this.parserState = this.parseText;
+    
+    // these are for interpeter...
+    this.doc = {};
+    ///this.parserState = this.parseTop
+    this.groupStack = [];
+    this.hexStore = [];
+    this.doc = false;
+    
+    this.groups = []; // where we put the return.
+    
+    for (var ii = 0; ii < text.length; ++ii) {
+        ++this.cpos;
+        
+        if (text[ii] === '\n') {
+            ++this.row;
+            this.col = 1;
+        } else {
+            ++this.col;
+        }
+        this.parserState(text[ii]);
+    }
+    
+    
+    
+};
+Roo.rtf.Parser.prototype = {
+    text : '', // string being parsed..
+    controlWord : '',
+    controlWordParam :  '',
+    hexChar : '',
+    doc : false,
+    group: false,
+    groupStack : false,
+    hexStore : false,
+    
+    
+    cpos : 0, 
+    row : 1, // reportin?
+    col : 1, //
+
+     
+    push : function (el)
+    {
+        var m = 'cmd'+ el.type;
+        if (typeof(this[m]) == 'undefined') {
+            Roo.log('invalid cmd:' + el.type);
+            return;
+        }
+        this[m](el);
+        //Roo.log(el);
+    },
+    flushHexStore : function()
+    {
+        if (this.hexStore.length < 1) {
+            return;
+        }
+        var hexstr = this.hexStore.map(
+            function(cmd) {
+                return cmd.value;
+        }).join('');
+        
+        this.group.addContent( new Roo.rtf.Hex( hexstr ));
+              
+            
+        this.hexStore.splice(0)
+        
+    },
+    
+    cmdgroupstart : function()
+    {
+        this.flushHexStore();
+        if (this.group) {
+            this.groupStack.push(this.group);
+        }
+         // parent..
+        if (this.doc === false) {
+            this.group = this.doc = new Roo.rtf.Document();
+            return;
+            
+        }
+        this.group = new Roo.rtf.Group(this.group);
+    },
+    cmdignorable : function()
+    {
+        this.flushHexStore();
+        this.group.ignorable = true;
+    },
+    cmdendparagraph : function()
+    {
+        this.flushHexStore();
+        this.group.addContent(new Roo.rtf.Paragraph());
+    },
+    cmdgroupend : function ()
+    {
+        this.flushHexStore();
+        var endingGroup = this.group;
+        
+        
+        this.group = this.groupStack.pop();
+        if (this.group) {
+            this.group.addChild(endingGroup);
+        }
+        
+        
+        
+        var doc = this.group || this.doc;
+        //if (endingGroup instanceof FontTable) {
+        //  doc.fonts = endingGroup.table
+        //} else if (endingGroup instanceof ColorTable) {
+        //  doc.colors = endingGroup.table
+        //} else if (endingGroup !== this.doc && !endingGroup.get('ignorable')) {
+        if (endingGroup.ignorable === false) {
+            //code
+            this.groups.push(endingGroup);
+           // Roo.log( endingGroup );
+        }
+            //Roo.each(endingGroup.content, function(item)) {
+            //    doc.addContent(item);
+            //}
+            //process.emit('debug', 'GROUP END', endingGroup.type, endingGroup.get('ignorable'))
+        //}
+    },
+    cmdtext : function (cmd)
+    {
+        this.flushHexStore();
+        if (!this.group) { // an RTF fragment, missing the {\rtf1 header
+            //this.group = this.doc
+            return;  // we really don't care about stray text...
+        }
+        this.group.addContent(new Roo.rtf.Span(cmd));
+    },
+    cmdcontrolword : function (cmd)
+    {
+        this.flushHexStore();
+        if (!this.group.type) {
+            this.group.type = cmd.value;
+            return;
+        }
+        this.group.addContent(new Roo.rtf.Ctrl(cmd));
+        // we actually don't care about ctrl words...
+        return ;
+        /*
+        var method = 'ctrl$' + cmd.value.replace(/-(.)/g, (_, char) => char.toUpperCase())
+        if (this[method]) {
+            this[method](cmd.param)
+        } else {
+            if (!this.group.get('ignorable')) process.emit('debug', method, cmd.param)
+        }
+        */
+    },
+    cmdhexchar : function(cmd) {
+        this.hexStore.push(cmd);
+    },
+    cmderror : function(cmd) {
+        throw cmd.value;
+    },
+    
+    /*
+      _flush (done) {
+        if (this.text !== '\u0000') this.emitText()
+        done()
+      }
+      */
+      
+      
+    parseText : function(c)
+    {
+        if (c === '\\') {
+            this.parserState = this.parseEscapes;
+        } else if (c === '{') {
+            this.emitStartGroup();
+        } else if (c === '}') {
+            this.emitEndGroup();
+        } else if (c === '\x0A' || c === '\x0D') {
+            // cr/lf are noise chars
+        } else {
+            this.text += c;
+        }
+    },
+    
+    parseEscapes: function (c)
+    {
+        if (c === '\\' || c === '{' || c === '}') {
+            this.text += c;
+            this.parserState = this.parseText;
+        } else {
+            this.parserState = this.parseControlSymbol;
+            this.parseControlSymbol(c);
+        }
+    },
+    parseControlSymbol: function(c)
+    {
+        if (c === '~') {
+            this.text += '\u00a0'; // nbsp
+            this.parserState = this.parseText
+        } else if (c === '-') {
+             this.text += '\u00ad'; // soft hyphen
+        } else if (c === '_') {
+            this.text += '\u2011'; // non-breaking hyphen
+        } else if (c === '*') {
+            this.emitIgnorable();
+            this.parserState = this.parseText;
+        } else if (c === "'") {
+            this.parserState = this.parseHexChar;
+        } else if (c === '|') { // formula cacter
+            this.emitFormula();
+            this.parserState = this.parseText;
+        } else if (c === ':') { // subentry in an index entry
+            this.emitIndexSubEntry();
+            this.parserState = this.parseText;
+        } else if (c === '\x0a') {
+            this.emitEndParagraph();
+            this.parserState = this.parseText;
+        } else if (c === '\x0d') {
+            this.emitEndParagraph();
+            this.parserState = this.parseText;
+        } else {
+            this.parserState = this.parseControlWord;
+            this.parseControlWord(c);
+        }
+    },
+    parseHexChar: function (c)
+    {
+        if (/^[A-Fa-f0-9]$/.test(c)) {
+            this.hexChar += c;
+            if (this.hexChar.length >= 2) {
+              this.emitHexChar();
+              this.parserState = this.parseText;
+            }
+            return;
+        }
+        this.emitError("Invalid character \"" + c + "\" in hex literal.");
+        this.parserState = this.parseText;
+        
+    },
+    parseControlWord : function(c)
+    {
+        if (c === ' ') {
+            this.emitControlWord();
+            this.parserState = this.parseText;
+        } else if (/^[-\d]$/.test(c)) {
+            this.parserState = this.parseControlWordParam;
+            this.controlWordParam += c;
+        } else if (/^[A-Za-z]$/.test(c)) {
+          this.controlWord += c;
+        } else {
+          this.emitControlWord();
+          this.parserState = this.parseText;
+          this.parseText(c);
+        }
+    },
+    parseControlWordParam : function (c) {
+        if (/^\d$/.test(c)) {
+          this.controlWordParam += c;
+        } else if (c === ' ') {
+          this.emitControlWord();
+          this.parserState = this.parseText;
+        } else {
+          this.emitControlWord();
+          this.parserState = this.parseText;
+          this.parseText(c);
+        }
+    },
+    
+    
+    
+    
+    emitText : function () {
+        if (this.text === '') {
+            return;
+        }
+        this.push({
+            type: 'text',
+            value: this.text,
+            pos: this.cpos,
+            row: this.row,
+            col: this.col
+        });
+        this.text = ''
+    },
+    emitControlWord : function ()
+    {
+        this.emitText();
+        if (this.controlWord === '') {
+            // do we want to track this - it seems just to cause problems.
+            //this.emitError('empty control word');
+        } else {
+            this.push({
+                  type: 'controlword',
+                  value: this.controlWord,
+                  param: this.controlWordParam !== '' && Number(this.controlWordParam),
+                  pos: this.cpos,
+                  row: this.row,
+                  col: this.col
+            });
+        }
+        this.controlWord = '';
+        this.controlWordParam = '';
+    },
+    emitStartGroup : function ()
+    {
+        this.emitText();
+        this.push({
+            type: 'groupstart',
+            pos: this.cpos,
+            row: this.row,
+            col: this.col
+        });
+    },
+    emitEndGroup : function ()
+    {
+        this.emitText();
+        this.push({
+            type: 'groupend',
+            pos: this.cpos,
+            row: this.row,
+            col: this.col
+        });
+    },
+    emitIgnorable : function ()
+    {
+        this.emitText();
+        this.push({
+            type: 'ignorable',
+            pos: this.cpos,
+            row: this.row,
+            col: this.col
+        });
+    },
+    emitHexChar : function ()
+    {
+        this.emitText();
+        this.push({
+            type: 'hexchar',
+            value: this.hexChar,
+            pos: this.cpos,
+            row: this.row,
+            col: this.col
+        });
+        this.hexChar = ''
+    },
+    emitError : function (message)
+    {
+      this.emitText();
+      this.push({
+            type: 'error',
+            value: message,
+            row: this.row,
+            col: this.col,
+            char: this.cpos //,
+            //stack: new Error().stack
+        });
+    },
+    emitEndParagraph : function () {
+        this.emitText();
+        this.push({
+            type: 'endparagraph',
+            pos: this.cpos,
+            row: this.row,
+            col: this.col
+        });
+    }
+     
+} ; 
 /**
  * @class Roo.htmleditor.Filter
  * Base Class for filtering htmleditor stuff. - do not use this directly - extend it.
@@ -26073,6 +27099,24 @@ Roo.htmleditor.Filter.prototype = {
            
         }
         node.parentNode.removeChild(node);
+    },
+
+    searchTag : function(dom)
+    {
+        if(this.tag === false) {
+            return;
+        }
+
+        var els = dom.getElementsByTagName(this.tag);
+
+        Roo.each(Array.from(els), function(e){
+            if(e.parentNode == null) {
+                return;
+            }
+            if(this.replaceTag) {
+                this.replaceTag(e);
+            }
+        }, this);
     }
 }; 
 
@@ -26350,7 +27394,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
 Roo.htmleditor.FilterParagraph = function(cfg)
 {
     // no need to apply config.
-    this.walk(cfg.node);
+    this.searchTag(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
@@ -26371,6 +27415,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
             node.parentNode.replaceChild(node.ownerDocument.createElement('BR'),node);
             return false; // no need to walk..
         }
+
         var ar = Array.from(node.childNodes);
         for (var i = 0; i < ar.length; i++) {
             node.removeChild(ar[i]);
@@ -26390,6 +27435,41 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
     }
     
 });/**
+ * @class Roo.htmleditor.FilterHashLink
+ * remove hash link
+ * @constructor
+ * Run a new Hash Link Filter
+ * @param {Object} config Configuration options
+ */
+
+ Roo.htmleditor.FilterHashLink = function(cfg)
+ {
+     // no need to apply config.
+    //  this.walk(cfg.node);
+    this.searchTag(cfg.node);
+ }
+ 
+ Roo.extend(Roo.htmleditor.FilterHashLink, Roo.htmleditor.Filter,
+ {
+      
+     tag : 'A',
+     
+      
+     replaceTag : function(node)
+     {
+         for(var i = 0; i < node.attributes.length; i ++) {
+             var a = node.attributes[i];
+
+             if(a.name.toLowerCase() == 'href' && a.value.startsWith('#')) {
+                 this.removeNodeKeepChildren(node);
+             }
+         }
+         
+         return false;
+ 
+     }
+     
+ });/**
  * @class Roo.htmleditor.FilterSpan
  * filter span's with no attributes out..
  * @constructor
@@ -26400,7 +27480,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
 Roo.htmleditor.FilterSpan = function(cfg)
 {
     // no need to apply config.
-    this.walk(cfg.node);
+    this.searchTag(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.FilterKeepChildren,
@@ -26497,7 +27577,7 @@ Roo.htmleditor.FilterWord = function(cfg)
     this.replaceAname(cfg.node);
     // this is disabled as the removal is done by other filters;
    // this.walk(cfg.node);
-    
+    this.replaceImageTable(cfg.node);
     
 }
 
@@ -26650,44 +27730,44 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         // this is a bit odd - but it appears some indents use ql-indent-1
          //Roo.log(doc.innerHTML);
         
-        var listpara = doc.getElementsByClassName('MsoListParagraphCxSpFirst');
+        var listpara = Array.from(doc.getElementsByClassName('MsoListParagraphCxSpFirst'));
         for( var i = 0; i < listpara.length; i ++) {
-            listpara.item(i).className = "MsoListParagraph";
+            listpara[i].className = "MsoListParagraph";
         }
         
-        listpara = doc.getElementsByClassName('MsoListParagraphCxSpMiddle');
+        listpara =  Array.from(doc.getElementsByClassName('MsoListParagraphCxSpMiddle'));
         for( var i = 0; i < listpara.length; i ++) {
-            listpara.item(i).className = "MsoListParagraph";
+            listpara[i].className = "MsoListParagraph";
         }
-        listpara = doc.getElementsByClassName('MsoListParagraphCxSpLast');
+        listpara =  Array.from(doc.getElementsByClassName('MsoListParagraphCxSpLast'));
         for( var i = 0; i < listpara.length; i ++) {
-            listpara.item(i).className = "MsoListParagraph";
+            listpara[i].className = "MsoListParagraph";
         }
-        listpara = doc.getElementsByClassName('ql-indent-1');
+        listpara =  Array.from(doc.getElementsByClassName('ql-indent-1'));
         for( var i = 0; i < listpara.length; i ++) {
-            listpara.item(i).className = "MsoListParagraph";
+            listpara[i].className = "MsoListParagraph";
         }
         
         // this is a bit hacky - we had one word document where h2 had a miso-list attribute.
-        var htwo = doc.getElementsByTagName('h2');
+        var htwo =  Array.from(doc.getElementsByTagName('h2'));
         for( var i = 0; i < htwo.length; i ++) {
-            if (htwo.item(i).hasAttribute('style') && htwo.item(i).getAttribute('style').match(/mso-list:/)) {
-                htwo.item(i).className = "MsoListParagraph";
+            if (htwo[i].hasAttribute('style') && htwo[i].getAttribute('style').match(/mso-list:/)) {
+                htwo[i].className = "MsoListParagraph";
             }
         }
-        listpara = doc.getElementsByClassName('MsoNormal');
-        while(listpara.length) {
-            if (listpara.item(0).hasAttribute('style') && listpara.item(0).getAttribute('style').match(/mso-list:/)) {
-                listpara.item(0).className = "MsoListParagraph";
+        listpara =  Array.from(doc.getElementsByClassName('MsoNormal'));
+        for( var i = 0; i < listpara.length; i ++) {
+            if (listpara[i].hasAttribute('style') && listpara[i].getAttribute('style').match(/mso-list:/)) {
+                listpara[i].className = "MsoListParagraph";
             } else {
-                listpara.item(0).className = "MsoNormalx";
+                listpara[i].className = "MsoNormalx";
             }
         }
        
         listpara = doc.getElementsByClassName('MsoListParagraph');
+        // Roo.log(doc.innerHTML);
         
         
-        //Roo.log(doc.innerHTML);
         
         while(listpara.length) {
             
@@ -26705,7 +27785,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             parent = p.parentNode,
             doc = parent.ownerDocument,
             items = [];
-            
+         
+        //Roo.log("Parsing: " + p.innerText)    ;
         var listtype = 'ul';   
         while (ns) {
             if (ns.nodeType != 1) {
@@ -26713,22 +27794,38 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 continue;
             }
             if (!ns.className.match(/(MsoListParagraph|ql-indent-1)/i)) {
+                //Roo.log("Missing para r q1indent - got:" + ns.className);
                 break;
             }
             var spans = ns.getElementsByTagName('span');
+            
             if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
                 items.push(ns);
                 ns = ns.nextSibling;
                 has_list = true;
-                if (spans.length && spans[0].hasAttribute('style')) {
-                    var  style = this.styleToObject(spans[0]);
-                    if (typeof(style['font-family']) != 'undefined' && !style['font-family'].match(/Symbol/)) {
-                        listtype = 'ol';
+                if (!spans.length) {
+                    continue;
+                }
+                var ff = '';
+                var se = spans[0];
+                for (var i = 0; i < spans.length;i++) {
+                    se = spans[i];
+                    if (se.hasAttribute('style')  && se.hasAttribute('style') && se.style.fontFamily != '') {
+                        ff = se.style.fontFamily;
+                        break;
                     }
+                }
+                 
+                    
+                //Roo.log("got font family: " + ff);
+                if (typeof(ff) != 'undefined' && !ff.match(/(Symbol|Wingdings)/) && "·o".indexOf(se.innerText.trim()) < 0) {
+                    listtype = 'ol';
                 }
                 
                 continue;
             }
+            //Roo.log("no mso-list?");
+            
             var spans = ns.getElementsByTagName('span');
             if (!spans.length) {
                 break;
@@ -26821,7 +27918,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             lvl = nlvl;
             
             // not starting at 1..
-            if (!stack[nlvl].hasAttribute("start") && num > 1) {
+            if (!stack[nlvl].hasAttribute("start") && listtype == "ol") {
                 stack[nlvl].setAttribute("start", num);
             }
             
@@ -26839,9 +27936,63 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         
         
         
+    },
+    
+    replaceImageTable : function(doc)
+    {
+         /*
+          <table cellpadding=0 cellspacing=0 align=left>
+  <tr>
+   <td width=423 height=0></td>
+  </tr>
+  <tr>
+   <td></td>
+   <td><img width=601 height=401
+   src="file:///C:/Users/Alan/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg"
+   v:shapes="Picture_x0020_2"></td>
+  </tr>
+ </table>
+ */
+        var imgs = Array.from(doc.getElementsByTagName('img'));
+        Roo.each(imgs, function(img) {
+            var td = img.parentNode;
+            if (td.nodeName !=  'TD') {
+                return;
+            }
+            var tr = td.parentNode;
+            if (tr.nodeName !=  'TR') {
+                return;
+            }
+            var tbody = tr.parentNode;
+            if (tbody.nodeName !=  'TBODY') {
+                return;
+            }
+            var table = tbody.parentNode;
+            if (table.nodeName !=  'TABLE') {
+                return;
+            }
+            // first row..
+            
+            if (table.getElementsByTagName('tr').length != 2) {
+                return;
+            }
+            if (table.getElementsByTagName('td').length != 3) {
+                return;
+            }
+            if (table.innerText.trim() != '') {
+                return;
+            }
+            var p = table.parentNode;
+            img.parentNode.removeChild(img);
+            p.insertBefore(img, table);
+            p.removeChild(table);
+            
+            
+            
+        });
+        
+      
     }
-    
-    
     
 });
 /**
@@ -26928,7 +28079,7 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
 Roo.htmleditor.FilterLongBr = function(cfg)
 {
     // no need to apply config.
-    this.walk(cfg.node);
+    this.searchTag(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
@@ -26959,8 +28110,6 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
            
             return false;
         }
-        
-        
         
         
         
@@ -27023,6 +28172,1273 @@ Roo.apply(Roo.htmleditor.FilterBlock.prototype,
         
     
 });
+/***
+ * This is based loosely on tinymce 
+ * @class Roo.htmleditor.TidySerializer
+ * https://github.com/thorn0/tinymce.html/blob/master/tinymce.html.js
+ * @constructor
+ * @method Serializer
+ * @param {Object} settings Name/value settings object.
+ */
+
+
+Roo.htmleditor.TidySerializer = function(settings)
+{
+    Roo.apply(this, settings);
+    
+    this.writer = new Roo.htmleditor.TidyWriter(settings);
+    
+    
+
+};
+Roo.htmleditor.TidySerializer.prototype = {
+    
+    /**
+     * @param {boolean} inner do the inner of the node.
+     */
+    inner : false,
+    
+    writer : false,
+    
+    /**
+    * Serializes the specified node into a string.
+    *
+    * @example
+    * new tinymce.html.Serializer().serialize(new tinymce.html.DomParser().parse('<p>text</p>'));
+    * @method serialize
+    * @param {DomElement} node Node instance to serialize.
+    * @return {String} String with HTML based on DOM tree.
+    */
+    serialize : function(node) {
+        
+        // = settings.validate;
+        var writer = this.writer;
+        var self  = this;
+        this.handlers = {
+            // #text
+            3: function(node) {
+                
+                writer.text(node.nodeValue, node);
+            },
+            // #comment
+            8: function(node) {
+                writer.comment(node.nodeValue);
+            },
+            // Processing instruction
+            7: function(node) {
+                writer.pi(node.name, node.nodeValue);
+            },
+            // Doctype
+            10: function(node) {
+                writer.doctype(node.nodeValue);
+            },
+            // CDATA
+            4: function(node) {
+                writer.cdata(node.nodeValue);
+            },
+            // Document fragment
+            11: function(node) {
+                node = node.firstChild;
+                if (!node) {
+                    return;
+                }
+                while(node) {
+                    self.walk(node);
+                    node = node.nextSibling
+                }
+            }
+        };
+        writer.reset();
+        1 != node.nodeType || this.inner ? this.handlers[11](node) : this.walk(node);
+        return writer.getContent();
+    },
+
+    walk: function(node)
+    {
+        var attrName, attrValue, sortedAttrs, i, l, elementRule,
+            handler = this.handlers[node.nodeType];
+            
+        if (handler) {
+            handler(node);
+            return;
+        }
+    
+        var name = node.nodeName;
+        var isEmpty = node.childNodes.length < 1;
+      
+        var writer = this.writer;
+        var attrs = node.attributes;
+        // Sort attributes
+        
+        writer.start(node.nodeName, attrs, isEmpty, node);
+        if (isEmpty) {
+            return;
+        }
+        node = node.firstChild;
+        if (!node) {
+            writer.end(name);
+            return;
+        }
+        while (node) {
+            this.walk(node);
+            node = node.nextSibling;
+        }
+        writer.end(name);
+        
+    
+    }
+    // Serialize element and treat all non elements as fragments
+   
+}; 
+
+/***
+ * This is based loosely on tinymce 
+ * @class Roo.htmleditor.TidyWriter
+ * https://github.com/thorn0/tinymce.html/blob/master/tinymce.html.js
+ *
+ * Known issues?
+ * - not tested much with 'PRE' formated elements.
+ * 
+ *
+ *
+ */
+
+Roo.htmleditor.TidyWriter = function(settings)
+{
+    
+    // indent, indentBefore, indentAfter, encode, htmlOutput, html = [];
+    Roo.apply(this, settings);
+    this.html = [];
+    this.state = [];
+     
+    this.encode = Roo.htmleditor.TidyEntities.getEncodeFunc(settings.entity_encoding || 'raw', settings.entities);
+  
+}
+Roo.htmleditor.TidyWriter.prototype = {
+
+ 
+    state : false,
+    
+    indent :  '  ',
+    
+    // part of state...
+    indentstr : '',
+    in_pre: false,
+    in_inline : false,
+    last_inline : false,
+    encode : false,
+     
+    
+            /**
+    * Writes the a start element such as <p id="a">.
+    *
+    * @method start
+    * @param {String} name Name of the element.
+    * @param {Array} attrs Optional attribute array or undefined if it hasn't any.
+    * @param {Boolean} empty Optional empty state if the tag should end like <br />.
+    */
+    start: function(name, attrs, empty, node)
+    {
+        var i, l, attr, value;
+        
+        // there are some situations where adding line break && indentation will not work. will not work.
+        // <span / b / i ... formating?
+        
+        var in_inline = this.in_inline || Roo.htmleditor.TidyWriter.inline_elements.indexOf(name) > -1;
+        var in_pre    = this.in_pre    || Roo.htmleditor.TidyWriter.whitespace_elements.indexOf(name) > -1;
+        
+        var is_short   = empty ? Roo.htmleditor.TidyWriter.shortend_elements.indexOf(name) > -1 : false;
+        
+        var add_lb = name == 'BR' ? false : in_inline;
+        
+        if (!add_lb && !this.in_pre && this.lastElementEndsWS()) {
+            i_inline = false;
+        }
+
+        var indentstr =  this.indentstr;
+        
+        // e_inline = elements that can be inline, but still allow \n before and after?
+        // only 'BR' ??? any others?
+        
+        // ADD LINE BEFORE tage
+        if (!this.in_pre) {
+            if (in_inline) {
+                //code
+                if (name == 'BR') {
+                    this.addLine();
+                } else if (this.lastElementEndsWS()) {
+                    this.addLine();
+                } else{
+                    // otherwise - no new line. (and dont indent.)
+                    indentstr = '';
+                }
+                
+            } else {
+                this.addLine();
+            }
+        } else {
+            indentstr = '';
+        }
+        
+        this.html.push(indentstr + '<', name.toLowerCase());
+        
+        if (attrs) {
+            for (i = 0, l = attrs.length; i < l; i++) {
+                attr = attrs[i];
+                this.html.push(' ', attr.name, '="', this.encode(attr.value, true), '"');
+            }
+        }
+     
+        if (empty) {
+            if (is_short) {
+                this.html[this.html.length] = '/>';
+            } else {
+                this.html[this.html.length] = '></' + name.toLowerCase() + '>';
+            }
+            var e_inline = name == 'BR' ? false : this.in_inline;
+            
+            if (!e_inline && !this.in_pre) {
+                this.addLine();
+            }
+            return;
+        
+        }
+        // not empty..
+        this.html[this.html.length] = '>';
+        
+        // there is a special situation, where we need to turn on in_inline - if any of the imediate chidlren are one of these.
+        /*
+        if (!in_inline && !in_pre) {
+            var cn = node.firstChild;
+            while(cn) {
+                if (Roo.htmleditor.TidyWriter.inline_elements.indexOf(cn.nodeName) > -1) {
+                    in_inline = true
+                    break;
+                }
+                cn = cn.nextSibling;
+            }
+             
+        }
+        */
+        
+        
+        this.pushState({
+            indentstr : in_pre   ? '' : (this.indentstr + this.indent),
+            in_pre : in_pre,
+            in_inline :  in_inline
+        });
+        // add a line after if we are not in a
+        
+        if (!in_inline && !in_pre) {
+            this.addLine();
+        }
+        
+            
+         
+        
+    },
+    
+    lastElementEndsWS : function()
+    {
+        var value = this.html.length > 0 ? this.html[this.html.length-1] : false;
+        if (value === false) {
+            return true;
+        }
+        return value.match(/\s+$/);
+        
+    },
+    
+    /**
+     * Writes the a end element such as </p>.
+     *
+     * @method end
+     * @param {String} name Name of the element.
+     */
+    end: function(name) {
+        var value;
+        this.popState();
+        var indentstr = '';
+        var in_inline = this.in_inline || Roo.htmleditor.TidyWriter.inline_elements.indexOf(name) > -1;
+        
+        if (!this.in_pre && !in_inline) {
+            this.addLine();
+            indentstr  = this.indentstr;
+        }
+        this.html.push(indentstr + '</', name.toLowerCase(), '>');
+        this.last_inline = in_inline;
+        
+        // pop the indent state..
+    },
+    /**
+     * Writes a text node.
+     *
+     * In pre - we should not mess with the contents.
+     * 
+     *
+     * @method text
+     * @param {String} text String to write out.
+     * @param {Boolean} raw Optional raw state if true the contents wont get encoded.
+     */
+    text: function(in_text, node)
+    {
+        // if not in whitespace critical
+        if (in_text.length < 1) {
+            return;
+        }
+        var text = new XMLSerializer().serializeToString(document.createTextNode(in_text)); // escape it properly?
+        
+        if (this.in_pre) {
+            this.html[this.html.length] =  text;
+            return;   
+        }
+        
+        if (this.in_inline) {
+            text = text.replace(/\s+/g,' '); // all white space inc line breaks to a slingle' '
+            if (text != ' ') {
+                text = text.replace(/\s+/,' ');  // all white space to single white space
+                
+                    
+                // if next tag is '<BR>', then we can trim right..
+                if (node.nextSibling &&
+                    node.nextSibling.nodeType == 1 &&
+                    node.nextSibling.nodeName == 'BR' )
+                {
+                    text = text.replace(/\s+$/g,'');
+                }
+                // if previous tag was a BR, we can also trim..
+                if (node.previousSibling &&
+                    node.previousSibling.nodeType == 1 &&
+                    node.previousSibling.nodeName == 'BR' )
+                {
+                    text = this.indentstr +  text.replace(/^\s+/g,'');
+                }
+                if (text.match(/\n/)) {
+                    text = text.replace(
+                        /(?![^\n]{1,64}$)([^\n]{1,64})\s/g, '$1\n' + this.indentstr
+                    );
+                    // remoeve the last whitespace / line break.
+                    text = text.replace(/\n\s+$/,'');
+                }
+                // repace long lines
+                
+            }
+             
+            this.html[this.html.length] =  text;
+            return;   
+        }
+        // see if previous element was a inline element.
+        var indentstr = this.indentstr;
+   
+        text = text.replace(/\s+/g," "); // all whitespace into single white space.
+        
+        // should trim left?
+        if (node.previousSibling &&
+            node.previousSibling.nodeType == 1 &&
+            Roo.htmleditor.TidyWriter.inline_elements.indexOf(node.previousSibling.nodeName) > -1)
+        {
+            indentstr = '';
+            
+        } else {
+            this.addLine();
+            text = text.replace(/^\s+/,''); // trim left
+          
+        }
+        // should trim right?
+        if (node.nextSibling &&
+            node.nextSibling.nodeType == 1 &&
+            Roo.htmleditor.TidyWriter.inline_elements.indexOf(node.nextSibling.nodeName) > -1)
+        {
+          // noop
+            
+        }  else {
+            text = text.replace(/\s+$/,''); // trim right
+        }
+         
+              
+        
+        
+        
+        if (text.length < 1) {
+            return;
+        }
+        if (!text.match(/\n/)) {
+            this.html.push(indentstr + text);
+            return;
+        }
+        
+        text = this.indentstr + text.replace(
+            /(?![^\n]{1,64}$)([^\n]{1,64})\s/g, '$1\n' + this.indentstr
+        );
+        // remoeve the last whitespace / line break.
+        text = text.replace(/\s+$/,''); 
+        
+        this.html.push(text);
+        
+        // split and indent..
+        
+        
+    },
+    /**
+     * Writes a cdata node such as <![CDATA[data]]>.
+     *
+     * @method cdata
+     * @param {String} text String to write out inside the cdata.
+     */
+    cdata: function(text) {
+        this.html.push('<![CDATA[', text, ']]>');
+    },
+    /**
+    * Writes a comment node such as <!-- Comment -->.
+    *
+    * @method cdata
+    * @param {String} text String to write out inside the comment.
+    */
+   comment: function(text) {
+       this.html.push('<!--', text, '-->');
+   },
+    /**
+     * Writes a PI node such as <?xml attr="value" ?>.
+     *
+     * @method pi
+     * @param {String} name Name of the pi.
+     * @param {String} text String to write out inside the pi.
+     */
+    pi: function(name, text) {
+        text ? this.html.push('<?', name, ' ', this.encode(text), '?>') : this.html.push('<?', name, '?>');
+        this.indent != '' && this.html.push('\n');
+    },
+    /**
+     * Writes a doctype node such as <!DOCTYPE data>.
+     *
+     * @method doctype
+     * @param {String} text String to write out inside the doctype.
+     */
+    doctype: function(text) {
+        this.html.push('<!DOCTYPE', text, '>', this.indent != '' ? '\n' : '');
+    },
+    /**
+     * Resets the internal buffer if one wants to reuse the writer.
+     *
+     * @method reset
+     */
+    reset: function() {
+        this.html.length = 0;
+        this.state = [];
+        this.pushState({
+            indentstr : '',
+            in_pre : false, 
+            in_inline : false
+        })
+    },
+    /**
+     * Returns the contents that got serialized.
+     *
+     * @method getContent
+     * @return {String} HTML contents that got written down.
+     */
+    getContent: function() {
+        return this.html.join('').replace(/\n$/, '');
+    },
+    
+    pushState : function(cfg)
+    {
+        this.state.push(cfg);
+        Roo.apply(this, cfg);
+    },
+    
+    popState : function()
+    {
+        if (this.state.length < 1) {
+            return; // nothing to push
+        }
+        var cfg = {
+            in_pre: false,
+            indentstr : ''
+        };
+        this.state.pop();
+        if (this.state.length > 0) {
+            cfg = this.state[this.state.length-1]; 
+        }
+        Roo.apply(this, cfg);
+    },
+    
+    addLine: function()
+    {
+        if (this.html.length < 1) {
+            return;
+        }
+        
+        
+        var value = this.html[this.html.length - 1];
+        if (value.length > 0 && '\n' !== value) {
+            this.html.push('\n');
+        }
+    }
+    
+    
+//'pre script noscript style textarea video audio iframe object code'
+// shortended... 'area base basefont br col frame hr img input isindex link  meta param embed source wbr track');
+// inline 
+};
+
+Roo.htmleditor.TidyWriter.inline_elements = [
+        'SPAN','STRONG','B','EM','I','FONT','STRIKE','U','VAR',
+        'CITE','DFN','CODE','MARK','Q','SUP','SUB','SAMP', 'A'
+];
+Roo.htmleditor.TidyWriter.shortend_elements = [
+    'AREA','BASE','BASEFONT','BR','COL','FRAME','HR','IMG','INPUT',
+    'ISINDEX','LINK','','META','PARAM','EMBED','SOURCE','WBR','TRACK'
+];
+
+Roo.htmleditor.TidyWriter.whitespace_elements = [
+    'PRE','SCRIPT','NOSCRIPT','STYLE','TEXTAREA','VIDEO','AUDIO','IFRAME','OBJECT','CODE'
+];/***
+ * This is based loosely on tinymce 
+ * @class Roo.htmleditor.TidyEntities
+ * @static
+ * https://github.com/thorn0/tinymce.html/blob/master/tinymce.html.js
+ *
+ * Not 100% sure this is actually used or needed.
+ */
+
+Roo.htmleditor.TidyEntities = {
+    
+    /**
+     * initialize data..
+     */
+    init : function (){
+     
+        this.namedEntities = this.buildEntitiesLookup(this.namedEntitiesData, 32);
+       
+    },
+
+
+    buildEntitiesLookup: function(items, radix) {
+        var i, chr, entity, lookup = {};
+        if (!items) {
+            return {};
+        }
+        items = typeof(items) == 'string' ? items.split(',') : items;
+        radix = radix || 10;
+        // Build entities lookup table
+        for (i = 0; i < items.length; i += 2) {
+            chr = String.fromCharCode(parseInt(items[i], radix));
+            // Only add non base entities
+            if (!this.baseEntities[chr]) {
+                entity = '&' + items[i + 1] + ';';
+                lookup[chr] = entity;
+                lookup[entity] = chr;
+            }
+        }
+        return lookup;
+        
+    },
+    
+    asciiMap : {
+            128: '€',
+            130: '‚',
+            131: 'ƒ',
+            132: '„',
+            133: '…',
+            134: '†',
+            135: '‡',
+            136: 'ˆ',
+            137: '‰',
+            138: 'Š',
+            139: '‹',
+            140: 'Œ',
+            142: 'Ž',
+            145: '‘',
+            146: '’',
+            147: '“',
+            148: '”',
+            149: '•',
+            150: '–',
+            151: '—',
+            152: '˜',
+            153: '™',
+            154: 'š',
+            155: '›',
+            156: 'œ',
+            158: 'ž',
+            159: 'Ÿ'
+    },
+    // Raw entities
+    baseEntities : {
+        '"': '&quot;',
+        // Needs to be escaped since the YUI compressor would otherwise break the code
+        '\'': '&#39;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '&': '&amp;',
+        '`': '&#96;'
+    },
+    // Reverse lookup table for raw entities
+    reverseEntities : {
+        '&lt;': '<',
+        '&gt;': '>',
+        '&amp;': '&',
+        '&quot;': '"',
+        '&apos;': '\''
+    },
+    
+    attrsCharsRegExp : /[&<>\"\u0060\u007E-\uD7FF\uE000-\uFFEF]|[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
+    textCharsRegExp : /[<>&\u007E-\uD7FF\uE000-\uFFEF]|[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
+    rawCharsRegExp : /[<>&\"\']/g,
+    entityRegExp : /&#([a-z0-9]+);?|&([a-z0-9]+);/gi,
+    namedEntities  : false,
+    namedEntitiesData : [ 
+        '50',
+        'nbsp',
+        '51',
+        'iexcl',
+        '52',
+        'cent',
+        '53',
+        'pound',
+        '54',
+        'curren',
+        '55',
+        'yen',
+        '56',
+        'brvbar',
+        '57',
+        'sect',
+        '58',
+        'uml',
+        '59',
+        'copy',
+        '5a',
+        'ordf',
+        '5b',
+        'laquo',
+        '5c',
+        'not',
+        '5d',
+        'shy',
+        '5e',
+        'reg',
+        '5f',
+        'macr',
+        '5g',
+        'deg',
+        '5h',
+        'plusmn',
+        '5i',
+        'sup2',
+        '5j',
+        'sup3',
+        '5k',
+        'acute',
+        '5l',
+        'micro',
+        '5m',
+        'para',
+        '5n',
+        'middot',
+        '5o',
+        'cedil',
+        '5p',
+        'sup1',
+        '5q',
+        'ordm',
+        '5r',
+        'raquo',
+        '5s',
+        'frac14',
+        '5t',
+        'frac12',
+        '5u',
+        'frac34',
+        '5v',
+        'iquest',
+        '60',
+        'Agrave',
+        '61',
+        'Aacute',
+        '62',
+        'Acirc',
+        '63',
+        'Atilde',
+        '64',
+        'Auml',
+        '65',
+        'Aring',
+        '66',
+        'AElig',
+        '67',
+        'Ccedil',
+        '68',
+        'Egrave',
+        '69',
+        'Eacute',
+        '6a',
+        'Ecirc',
+        '6b',
+        'Euml',
+        '6c',
+        'Igrave',
+        '6d',
+        'Iacute',
+        '6e',
+        'Icirc',
+        '6f',
+        'Iuml',
+        '6g',
+        'ETH',
+        '6h',
+        'Ntilde',
+        '6i',
+        'Ograve',
+        '6j',
+        'Oacute',
+        '6k',
+        'Ocirc',
+        '6l',
+        'Otilde',
+        '6m',
+        'Ouml',
+        '6n',
+        'times',
+        '6o',
+        'Oslash',
+        '6p',
+        'Ugrave',
+        '6q',
+        'Uacute',
+        '6r',
+        'Ucirc',
+        '6s',
+        'Uuml',
+        '6t',
+        'Yacute',
+        '6u',
+        'THORN',
+        '6v',
+        'szlig',
+        '70',
+        'agrave',
+        '71',
+        'aacute',
+        '72',
+        'acirc',
+        '73',
+        'atilde',
+        '74',
+        'auml',
+        '75',
+        'aring',
+        '76',
+        'aelig',
+        '77',
+        'ccedil',
+        '78',
+        'egrave',
+        '79',
+        'eacute',
+        '7a',
+        'ecirc',
+        '7b',
+        'euml',
+        '7c',
+        'igrave',
+        '7d',
+        'iacute',
+        '7e',
+        'icirc',
+        '7f',
+        'iuml',
+        '7g',
+        'eth',
+        '7h',
+        'ntilde',
+        '7i',
+        'ograve',
+        '7j',
+        'oacute',
+        '7k',
+        'ocirc',
+        '7l',
+        'otilde',
+        '7m',
+        'ouml',
+        '7n',
+        'divide',
+        '7o',
+        'oslash',
+        '7p',
+        'ugrave',
+        '7q',
+        'uacute',
+        '7r',
+        'ucirc',
+        '7s',
+        'uuml',
+        '7t',
+        'yacute',
+        '7u',
+        'thorn',
+        '7v',
+        'yuml',
+        'ci',
+        'fnof',
+        'sh',
+        'Alpha',
+        'si',
+        'Beta',
+        'sj',
+        'Gamma',
+        'sk',
+        'Delta',
+        'sl',
+        'Epsilon',
+        'sm',
+        'Zeta',
+        'sn',
+        'Eta',
+        'so',
+        'Theta',
+        'sp',
+        'Iota',
+        'sq',
+        'Kappa',
+        'sr',
+        'Lambda',
+        'ss',
+        'Mu',
+        'st',
+        'Nu',
+        'su',
+        'Xi',
+        'sv',
+        'Omicron',
+        't0',
+        'Pi',
+        't1',
+        'Rho',
+        't3',
+        'Sigma',
+        't4',
+        'Tau',
+        't5',
+        'Upsilon',
+        't6',
+        'Phi',
+        't7',
+        'Chi',
+        't8',
+        'Psi',
+        't9',
+        'Omega',
+        'th',
+        'alpha',
+        'ti',
+        'beta',
+        'tj',
+        'gamma',
+        'tk',
+        'delta',
+        'tl',
+        'epsilon',
+        'tm',
+        'zeta',
+        'tn',
+        'eta',
+        'to',
+        'theta',
+        'tp',
+        'iota',
+        'tq',
+        'kappa',
+        'tr',
+        'lambda',
+        'ts',
+        'mu',
+        'tt',
+        'nu',
+        'tu',
+        'xi',
+        'tv',
+        'omicron',
+        'u0',
+        'pi',
+        'u1',
+        'rho',
+        'u2',
+        'sigmaf',
+        'u3',
+        'sigma',
+        'u4',
+        'tau',
+        'u5',
+        'upsilon',
+        'u6',
+        'phi',
+        'u7',
+        'chi',
+        'u8',
+        'psi',
+        'u9',
+        'omega',
+        'uh',
+        'thetasym',
+        'ui',
+        'upsih',
+        'um',
+        'piv',
+        '812',
+        'bull',
+        '816',
+        'hellip',
+        '81i',
+        'prime',
+        '81j',
+        'Prime',
+        '81u',
+        'oline',
+        '824',
+        'frasl',
+        '88o',
+        'weierp',
+        '88h',
+        'image',
+        '88s',
+        'real',
+        '892',
+        'trade',
+        '89l',
+        'alefsym',
+        '8cg',
+        'larr',
+        '8ch',
+        'uarr',
+        '8ci',
+        'rarr',
+        '8cj',
+        'darr',
+        '8ck',
+        'harr',
+        '8dl',
+        'crarr',
+        '8eg',
+        'lArr',
+        '8eh',
+        'uArr',
+        '8ei',
+        'rArr',
+        '8ej',
+        'dArr',
+        '8ek',
+        'hArr',
+        '8g0',
+        'forall',
+        '8g2',
+        'part',
+        '8g3',
+        'exist',
+        '8g5',
+        'empty',
+        '8g7',
+        'nabla',
+        '8g8',
+        'isin',
+        '8g9',
+        'notin',
+        '8gb',
+        'ni',
+        '8gf',
+        'prod',
+        '8gh',
+        'sum',
+        '8gi',
+        'minus',
+        '8gn',
+        'lowast',
+        '8gq',
+        'radic',
+        '8gt',
+        'prop',
+        '8gu',
+        'infin',
+        '8h0',
+        'ang',
+        '8h7',
+        'and',
+        '8h8',
+        'or',
+        '8h9',
+        'cap',
+        '8ha',
+        'cup',
+        '8hb',
+        'int',
+        '8hk',
+        'there4',
+        '8hs',
+        'sim',
+        '8i5',
+        'cong',
+        '8i8',
+        'asymp',
+        '8j0',
+        'ne',
+        '8j1',
+        'equiv',
+        '8j4',
+        'le',
+        '8j5',
+        'ge',
+        '8k2',
+        'sub',
+        '8k3',
+        'sup',
+        '8k4',
+        'nsub',
+        '8k6',
+        'sube',
+        '8k7',
+        'supe',
+        '8kl',
+        'oplus',
+        '8kn',
+        'otimes',
+        '8l5',
+        'perp',
+        '8m5',
+        'sdot',
+        '8o8',
+        'lceil',
+        '8o9',
+        'rceil',
+        '8oa',
+        'lfloor',
+        '8ob',
+        'rfloor',
+        '8p9',
+        'lang',
+        '8pa',
+        'rang',
+        '9ea',
+        'loz',
+        '9j0',
+        'spades',
+        '9j3',
+        'clubs',
+        '9j5',
+        'hearts',
+        '9j6',
+        'diams',
+        'ai',
+        'OElig',
+        'aj',
+        'oelig',
+        'b0',
+        'Scaron',
+        'b1',
+        'scaron',
+        'bo',
+        'Yuml',
+        'm6',
+        'circ',
+        'ms',
+        'tilde',
+        '802',
+        'ensp',
+        '803',
+        'emsp',
+        '809',
+        'thinsp',
+        '80c',
+        'zwnj',
+        '80d',
+        'zwj',
+        '80e',
+        'lrm',
+        '80f',
+        'rlm',
+        '80j',
+        'ndash',
+        '80k',
+        'mdash',
+        '80o',
+        'lsquo',
+        '80p',
+        'rsquo',
+        '80q',
+        'sbquo',
+        '80s',
+        'ldquo',
+        '80t',
+        'rdquo',
+        '80u',
+        'bdquo',
+        '810',
+        'dagger',
+        '811',
+        'Dagger',
+        '81g',
+        'permil',
+        '81p',
+        'lsaquo',
+        '81q',
+        'rsaquo',
+        '85c',
+        'euro'
+    ],
+
+         
+    /**
+     * Encodes the specified string using raw entities. This means only the required XML base entities will be encoded.
+     *
+     * @method encodeRaw
+     * @param {String} text Text to encode.
+     * @param {Boolean} attr Optional flag to specify if the text is attribute contents.
+     * @return {String} Entity encoded text.
+     */
+    encodeRaw: function(text, attr)
+    {
+        var t = this;
+        return text.replace(attr ? this.attrsCharsRegExp : this.textCharsRegExp, function(chr) {
+            return t.baseEntities[chr] || chr;
+        });
+    },
+    /**
+     * Encoded the specified text with both the attributes and text entities. This function will produce larger text contents
+     * since it doesn't know if the context is within a attribute or text node. This was added for compatibility
+     * and is exposed as the DOMUtils.encode function.
+     *
+     * @method encodeAllRaw
+     * @param {String} text Text to encode.
+     * @return {String} Entity encoded text.
+     */
+    encodeAllRaw: function(text) {
+        var t = this;
+        return ('' + text).replace(this.rawCharsRegExp, function(chr) {
+            return t.baseEntities[chr] || chr;
+        });
+    },
+    /**
+     * Encodes the specified string using numeric entities. The core entities will be
+     * encoded as named ones but all non lower ascii characters will be encoded into numeric entities.
+     *
+     * @method encodeNumeric
+     * @param {String} text Text to encode.
+     * @param {Boolean} attr Optional flag to specify if the text is attribute contents.
+     * @return {String} Entity encoded text.
+     */
+    encodeNumeric: function(text, attr) {
+        var t = this;
+        return text.replace(attr ? this.attrsCharsRegExp : this.textCharsRegExp, function(chr) {
+            // Multi byte sequence convert it to a single entity
+            if (chr.length > 1) {
+                return '&#' + (1024 * (chr.charCodeAt(0) - 55296) + (chr.charCodeAt(1) - 56320) + 65536) + ';';
+            }
+            return t.baseEntities[chr] || '&#' + chr.charCodeAt(0) + ';';
+        });
+    },
+    /**
+     * Encodes the specified string using named entities. The core entities will be encoded
+     * as named ones but all non lower ascii characters will be encoded into named entities.
+     *
+     * @method encodeNamed
+     * @param {String} text Text to encode.
+     * @param {Boolean} attr Optional flag to specify if the text is attribute contents.
+     * @param {Object} entities Optional parameter with entities to use.
+     * @return {String} Entity encoded text.
+     */
+    encodeNamed: function(text, attr, entities) {
+        var t = this;
+        entities = entities || this.namedEntities;
+        return text.replace(attr ? this.attrsCharsRegExp : this.textCharsRegExp, function(chr) {
+            return t.baseEntities[chr] || entities[chr] || chr;
+        });
+    },
+    /**
+     * Returns an encode function based on the name(s) and it's optional entities.
+     *
+     * @method getEncodeFunc
+     * @param {String} name Comma separated list of encoders for example named,numeric.
+     * @param {String} entities Optional parameter with entities to use instead of the built in set.
+     * @return {function} Encode function to be used.
+     */
+    getEncodeFunc: function(name, entities) {
+        entities = this.buildEntitiesLookup(entities) || this.namedEntities;
+        var t = this;
+        function encodeNamedAndNumeric(text, attr) {
+            return text.replace(attr ? t.attrsCharsRegExp : t.textCharsRegExp, function(chr) {
+                return t.baseEntities[chr] || entities[chr] || '&#' + chr.charCodeAt(0) + ';' || chr;
+            });
+        }
+
+        function encodeCustomNamed(text, attr) {
+            return t.encodeNamed(text, attr, entities);
+        }
+        // Replace + with , to be compatible with previous TinyMCE versions
+        name = this.makeMap(name.replace(/\+/g, ','));
+        // Named and numeric encoder
+        if (name.named && name.numeric) {
+            return this.encodeNamedAndNumeric;
+        }
+        // Named encoder
+        if (name.named) {
+            // Custom names
+            if (entities) {
+                return encodeCustomNamed;
+            }
+            return this.encodeNamed;
+        }
+        // Numeric
+        if (name.numeric) {
+            return this.encodeNumeric;
+        }
+        // Raw encoder
+        return this.encodeRaw;
+    },
+    /**
+     * Decodes the specified string, this will replace entities with raw UTF characters.
+     *
+     * @method decode
+     * @param {String} text Text to entity decode.
+     * @return {String} Entity decoded string.
+     */
+    decode: function(text)
+    {
+        var  t = this;
+        return text.replace(this.entityRegExp, function(all, numeric) {
+            if (numeric) {
+                numeric = 'x' === numeric.charAt(0).toLowerCase() ? parseInt(numeric.substr(1), 16) : parseInt(numeric, 10);
+                // Support upper UTF
+                if (numeric > 65535) {
+                    numeric -= 65536;
+                    return String.fromCharCode(55296 + (numeric >> 10), 56320 + (1023 & numeric));
+                }
+                return t.asciiMap[numeric] || String.fromCharCode(numeric);
+            }
+            return t.reverseEntities[all] || t.namedEntities[all] || t.nativeDecode(all);
+        });
+    },
+    nativeDecode : function (text) {
+        return text;
+    },
+    makeMap : function (items, delim, map) {
+		var i;
+		items = items || [];
+		delim = delim || ',';
+		if (typeof items == "string") {
+			items = items.split(delim);
+		}
+		map = map || {};
+		i = items.length;
+		while (i--) {
+			map[items[i]] = {};
+		}
+		return map;
+	}
+};
+    
+    
+    
+Roo.htmleditor.TidyEntities.init();
 /**
  * @class Roo.htmleditor.KeyEnter
  * Handle Enter press..
@@ -27492,7 +29908,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 }
             },
             
-            
+              
             {
                 xtype : 'Button',
                 text: 'Hide Caption',
@@ -27580,14 +29996,15 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 ]
             };
         }
-        // we remove caption totally if its hidden... - will delete data.. but otherwise we end up with fake caption
-        var captionhtml = this.caption_display == 'none' ? '' : (this.caption.length ? this.caption : "Caption");
-        
+
+
   
         var ret =   {
             tag: 'figure',
             'data-block' : 'Figure',
-            'data-width' : this.width, 
+            'data-width' : this.width,
+            'data-caption' : this.caption, 
+            'data-caption-display' : this.caption_display,
             contenteditable : 'false',
             
             style : {
@@ -27600,51 +30017,52 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 textAlign : this.align   // seems to work for email..
                 
             },
-           
             
             align : this.align,
             cn : [
-                img,
-              
-                {
-                    tag: 'figcaption',
-                    'data-display' : this.caption_display,
-                    style : {
-                        textAlign : 'left',
-                        fontSize : '16px',
-                        lineHeight : '24px',
-                        display : this.caption_display,
-                        maxWidth : (this.align == 'center' ?  this.width : '100%' ) + ' !important',
-                        margin: m,
-                        width: this.align == 'center' ?  this.width : '100%' 
-                    
-                         
-                    },
-                    cls : this.cls.length > 0 ? (this.cls  + '-thumbnail' ) : '',
-                    cn : [
-                        {
-                            tag: 'div',
-                            style  : {
-                                marginTop : '16px',
-                                textAlign : 'left'
-                            },
-                            align: 'left',
-                            cn : [
-                                {
-                                    // we can not rely on yahoo syndication to use CSS elements - so have to use  '<i>' to encase stuff.
-                                    tag : 'i',
-                                    contenteditable : true,
-                                    html : captionhtml
-                                }
-                                
-                            ]
-                        }
-                        
-                    ]
-                    
-                }
+                img
             ]
         };
+
+        // show figcaption only if caption_display is 'block'
+        if(this.caption_display == 'block') {
+            ret['cn'].push({
+                tag: 'figcaption',
+                style : {
+                    textAlign : 'left',
+                    fontSize : '16px',
+                    lineHeight : '24px',
+                    display : this.caption_display,
+                    maxWidth : (this.align == 'center' ?  this.width : '100%' ) + ' !important',
+                    margin: m,
+                    width: this.align == 'center' ?  this.width : '100%' 
+                
+                     
+                },
+                cls : this.cls.length > 0 ? (this.cls  + '-thumbnail' ) : '',
+                cn : [
+                    {
+                        tag: 'div',
+                        style  : {
+                            marginTop : '16px',
+                            textAlign : 'start'
+                        },
+                        align: 'left',
+                        cn : [
+                            {
+                                // we can not rely on yahoo syndication to use CSS elements - so have to use  '<i>' to encase stuff.
+                                tag : 'i',
+                                contenteditable : Roo.htmleditor.BlockFigure.caption_edit,
+                                html : this.caption.length ? this.caption : "Caption" // fake caption
+                            }
+                            
+                        ]
+                    }
+                    
+                ]
+                
+            });
+        }
         return ret;
          
     },
@@ -27660,13 +30078,31 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         this.image_src = this.getVal(node, 'img', 'src');
          
         this.align = this.getVal(node, 'figure', 'align');
+
+        // caption display is stored in figure
+        this.caption_display = this.getVal(node, true, 'data-caption-display');
+
+        // backward compatible
+        // it was stored in figcaption
+        if(this.caption_display == '') {
+            this.caption_display = this.getVal(node, 'figcaption', 'data-display');
+        }
+
+        // read caption from figcaption
         var figcaption = this.getVal(node, 'figcaption', false);
+
         if (figcaption !== '') {
             this.caption = this.getVal(figcaption, 'i', 'html');
         }
-        
+                
 
-        this.caption_display = this.getVal(node, 'figcaption', 'data-display');
+        // read caption from data-caption in figure if no caption from figcaption
+        var dc = this.getVal(node, true, 'data-caption');
+
+        if(this.caption_display == 'none' && dc && dc.length){
+            this.caption = dc;
+        }
+
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, true, 'data-width');
         //this.margin = this.getVal(node, 'figure', 'style', 'margin');
@@ -27684,7 +30120,11 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     
     
     
-})
+});
+
+Roo.apply(Roo.htmleditor.BlockFigure, {
+    caption_edit : true
+});
 
  
 
@@ -29007,7 +31447,7 @@ Roo.HtmlEditorCore = function(config){
          * @param {Roo.HtmlEditorCore} this
          */
         editorevent: true 
-         
+        
         
     });
     
@@ -29031,10 +31471,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     owner : false,
     
      /**
-     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
-     *                        Roo.resizable.
+     * @cfg {String} css styling for resizing. (used on bootstrap only)
      */
-    resizable : false,
+    resize : false,
      /**
      * @cfg {Number} height (in pixels)
      */   
@@ -29167,17 +31606,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         this.frameId = Roo.id();
         
-         
-        
-        var iframe = this.owner.wrap.createChild({
+        var ifcfg = {
             tag: 'iframe',
             cls: 'form-control', // bootstrap..
             id: this.frameId,
             name: this.frameId,
             frameBorder : 'no',
             'src' : Roo.SSL_SECURE_URL ? Roo.SSL_SECURE_URL  :  "javascript:false"
-        }, this.el
-        );
+        };
+        if (this.resize) {
+            ifcfg.style = { resize : this.resize };
+        }
+        
+        var iframe = this.owner.wrap.createChild(ifcfg, this.el); 
         
         
         this.iframe = iframe.dom;
@@ -29312,11 +31753,44 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if (this.enableBlocks) {
                 new Roo.htmleditor.FilterBlock({ node : div });
             }
+            
+            var html = div.innerHTML;
+            
             //?? tidy?
-            var tidy = new Roo.htmleditor.TidySerializer({
-                inner:  true
-            });
-            var html  = tidy.serialize(div);
+            if (this.autoClean) {
+                
+                new Roo.htmleditor.FilterAttributes({
+                    node : div,
+                    attrib_white : [
+                            'href',
+                            'src',
+                            'name',
+                            'align',
+                            'colspan',
+                            'rowspan',
+                            'data-display',
+                            'data-caption-display',
+                            'data-width',
+                            'data-caption',
+                            'start' ,
+                            'style',
+                            // youtube embed.
+                            'class',
+                            'allowfullscreen',
+                            'frameborder',
+                            'width',
+                            'height',
+                            'alt'
+                            ],
+                    attrib_clean : ['href', 'src' ] 
+                });
+                
+                var tidy = new Roo.htmleditor.TidySerializer({
+                    inner:  true
+                });
+                html  = tidy.serialize(div);
+                
+            }
             
             
             if(Roo.isSafari){
@@ -29504,14 +31978,39 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
         
         // check what type of paste - if it's an image, then handle it differently.
-        if (cd.files && cd.files.length > 0) {
-            // pasting images?
+        if (cd.files && cd.files.length > 0 && cd.types.indexOf('text/html') < 0) {
+            // pasting images? 
             var urlAPI = (window.createObjectURL && window) || 
                 (window.URL && URL.revokeObjectURL && URL) || 
                 (window.webkitURL && webkitURL);
-    
-            var url = urlAPI.createObjectURL( cd.files[0]);
-            this.insertAtCursor('<img src=" + url + ">');
+            
+            var r = new FileReader();
+            var t = this;
+            r.addEventListener('load',function()
+            {
+                
+                var d = (new DOMParser().parseFromString('<img src="' + r.result+ '">', 'text/html')).body;
+                // is insert asycn?
+                if (t.enableBlocks) {
+                    
+                    Array.from(d.getElementsByTagName('img')).forEach(function(img) {
+                        if (img.closest('figure')) { // assume!! that it's aready
+                            return;
+                        }
+                        var fig  = new Roo.htmleditor.BlockFigure({
+                            image_src  : img.src
+                        });
+                        fig.updateElement(img); // replace it..
+                        
+                    });
+                }
+                t.insertAtCursor(d.innerHTML.replace(/&nbsp;/g,' '));
+                t.owner.fireEvent('paste', this);
+            });
+            r.readAsDataURL(cd.files[0]);
+            
+            e.preventDefault();
+            
             return false;
         }
         if (cd.types.indexOf('text/html') < 0 ) {
@@ -29523,8 +32022,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
-        //Roo.log(images);
-        //Roo.log(imgs);
+        // Roo.log(images);
+        // Roo.log(imgs);
         // fixme..
         images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl|listtable|footerf)/); }) // ignore headers/footers etc.
                        .map(function(g) { return g.toDataURL(); })
@@ -29569,13 +32068,36 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
                 node : d,
-                attrib_white : ['href', 'src', 'name', 'align', 'colspan', 'rowspan', 'data-display', 'data-width', 'start'],
+                attrib_white : [
+                    'href',
+                    'src',
+                    'name',
+                    'align',
+                    'colspan',
+                    'rowspan' 
+                /*  THESE ARE NOT ALLWOED FOR PASTE
+                 *    'data-display',
+                    'data-caption-display',
+                    'data-width',
+                    'data-caption',
+                    'start' ,
+                    'style',
+                    // youtube embed.
+                    'class',
+                    'allowfullscreen',
+                    'frameborder',
+                    'width',
+                    'height',
+                    'alt'
+                    */
+                    ],
                 attrib_clean : ['href', 'src' ] 
             });
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
             // should be fonts..
             new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', ':' ]} );
             new Roo.htmleditor.FilterParagraph({ node : d });
+            new Roo.htmleditor.FilterHashLink({node : d});
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
             new Roo.htmleditor.FilterComment({ node : d });
@@ -29604,6 +32126,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
          
         
         e.preventDefault();
+        this.owner.fireEvent('paste', this);
         return false;
         // default behaveiour should be our local cleanup paste? (optional?)
         // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
@@ -29680,6 +32203,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (e && (e.ctrlKey || e.metaKey) && e.keyCode === 90) {
             return; // we do not handle this.. (undo manager does..)
         }
+        // clicking a 'block'?
+        
         // in theory this detects if the last element is not a br, then we try and do that.
         // its so clicking in space at bottom triggers adding a br and moving the cursor.
         if (e &&
@@ -29782,6 +32307,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 break;
             case 'bold':
             case 'italic':
+            case 'underline':                
                 // if there is no selection, then we insert, and set the curson inside it..
                 this.execCmd('styleWithCSS', false); 
                 break;
@@ -30566,31 +33092,26 @@ Roo.HtmlEditorCore.cblack= [
  */
 
 Roo.bootstrap.form.HtmlEditor = function(config){
-    Roo.bootstrap.form.HtmlEditor.superclass.constructor.call(this, config);
-    if (!this.toolbars) {
-        this.toolbars = [];
-    }
-    
-    this.editorcore = new Roo.HtmlEditorCore(Roo.apply({ owner : this} , config));
+
     this.addEvents({
             /**
              * @event initialize
              * Fires when the editor is fully initialized (including the iframe)
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             initialize: true,
             /**
              * @event activate
              * Fires when the editor is first receives the focus. Any insertion must wait
              * until after this event.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             activate: true,
              /**
              * @event beforesync
              * Fires before the textarea is updated with content from the editor iframe. Return false
              * to cancel the sync.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             beforesync: true,
@@ -30598,56 +33119,96 @@ Roo.bootstrap.form.HtmlEditor = function(config){
              * @event beforepush
              * Fires before the iframe editor is updated with content from the textarea. Return false
              * to cancel the push.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             beforepush: true,
              /**
              * @event sync
              * Fires when the textarea is updated with content from the editor iframe.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             sync: true,
              /**
              * @event push
              * Fires when the iframe editor is updated with content from the textarea.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             push: true,
              /**
              * @event editmodechange
              * Fires when the editor switches edit modes
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {Boolean} sourceEdit True if source edit, false if standard editing.
              */
             editmodechange: true,
             /**
              * @event editorevent
              * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             editorevent: true,
             /**
              * @event firstfocus
              * Fires when on first focus - needed by toolbars..
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             firstfocus: true,
             /**
              * @event autosave
              * Auto save the htmlEditor value as a file into Events
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             autosave: true,
             /**
              * @event savedpreview
              * preview the saved version of htmlEditor
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
-            savedpreview: true
-        });
+            savedpreview: true,
+             /**
+            * @event stylesheetsclick
+            * Fires when press the Sytlesheets button
+            * @param {Roo.HtmlEditorCore} this
+            */
+            stylesheetsclick: true,
+            /**
+            * @event paste
+            * Fires when press user pastes into the editor
+            * @param {Roo.HtmlEditorCore} this
+            */
+            paste: true,
+            /**
+            * @event imageadd
+            * Fires when on any editor when an image is added (excluding paste)
+            * @param {Roo.bootstrap.form.HtmlEditor} this
+            */
+           imageadd: true ,
+            /**
+            * @event imageupdated
+            * Fires when on any editor when an image is changed (excluding paste)
+            * @param {Roo.bootstrap.form.HtmlEditor} this
+            * @param {HTMLElement} img could also be a figure if blocks are enabled
+            */
+           imageupdate: true ,
+           /**
+            * @event imagedelete
+            * Fires when on any editor when an image is deleted
+            * @param {Roo.bootstrap.form.HtmlEditor} this
+            * @param {HTMLElement} img could also be a figure if blocks are enabled
+            * @param {HTMLElement} oldSrc source of image being replaced
+            */
+           imagedelete: true  
+    });
+    Roo.bootstrap.form.HtmlEditor.superclass.constructor.call(this, config);
+    if (!this.toolbars) {
+        this.toolbars = [];
+    }
+    
+    this.editorcore = new Roo.HtmlEditorCore(Roo.apply({ owner : this} , config));
+    
 };
 
 
@@ -30655,9 +33216,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
     
     
       /**
-     * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
+     * @cfg {Array|boolean} toolbars Array of toolbars, or names of toolbars. - true for standard, and false for none.
      */
-    toolbars : false,
+    toolbars : true,
     
      /**
     * @cfg {Array} buttons Array of toolbar's buttons. - defaults to empty
@@ -30665,10 +33226,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
     btns : [],
    
      /**
-     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
-     *                        Roo.resizable.
+     * @cfg {String} resize  (none|both|horizontal|vertical) - css resize of element
      */
-    resizable : false,
+    resize : false,
      /**
      * @cfg {Number} height (in pixels)
      */   
@@ -30700,6 +33260,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
     tbContainer : false,
     
     bodyCls : '',
+
+    linkDialogCls : '',
     
     toolbarContainer :function() {
         return this.wrap.select('.x-html-editor-tb',true).first();
@@ -30711,26 +33273,35 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
      * add custom toolbar buttons.
      * @param {HtmlEditor} editor
      */
-    createToolbar : function(){
-        Roo.log('renewing');
-        Roo.log("create toolbars");
+    createToolbar : function()
+    {
+        //Roo.log('renewing');
+        //Roo.log("create toolbars");
+        if (this.toolbars === false) {
+            return;
+        }
+        if (this.toolbars === true) {
+            this.toolbars = [ 'Standard' ];
+        }
         
-        this.toolbars = [ new Roo.bootstrap.form.HtmlEditorToolbarStandard({editor: this} ) ];
-        this.toolbars[0].render(this.toolbarContainer());
+        var ar = Array.from(this.toolbars);
+        this.toolbars = [];
+        ar.forEach(function(t,i) {
+            if (typeof(t) == 'string') {
+                t = {
+                    xtype : t
+                };
+            }
+            if (typeof(t) == 'object' && typeof(t.xtype) == 'string') {
+                t.editor = this;
+                t.xns = t.xns || Roo.bootstrap.form.HtmlEditorToolbar;
+                t = Roo.factory(t);
+            }
+            this.toolbars[i] = t;
+            this.toolbars[i].render(this.toolbarContainer());
+        }, this);
         
-        return;
         
-//        if (!editor.toolbars || !editor.toolbars.length) {
-//            editor.toolbars = [ new Roo.bootstrap.form.HtmlEditorToolbarStandard() ]; // can be empty?
-//        }
-//        
-//        for (var i =0 ; i < editor.toolbars.length;i++) {
-//            editor.toolbars[i] = Roo.factory(
-//                    typeof(editor.toolbars[i]) == 'string' ?
-//                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
-//                Roo.bootstrap.form.HtmlEditor);
-//            editor.toolbars[i].init(editor);
-//        }
     },
 
      
@@ -30747,33 +33318,11 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
         
         this.editorcore.onRender(ct, position);
          
-        if (this.resizable) {
-            this.resizeEl = new Roo.Resizable(this.wrap, {
-                pinned : true,
-                wrap: true,
-                dynamic : true,
-                minHeight : this.height,
-                height: this.height,
-                handles : this.resizable,
-                width: this.width,
-                listeners : {
-                    resize : function(r, w, h) {
-                        _t.onResize(w,h); // -something
-                    }
-                }
-            });
-            
-        }
+         
         this.createToolbar(this);
        
         
-        if(!this.width && this.resizable){
-            this.setSize(this.wrap.getSize());
-        }
-        if (this.resizeEl) {
-            this.resizeEl.resizeTo.defer(100, this.resizeEl,[ this.width,this.height ] );
-            // should trigger onReize..
-        }
+          
         
     },
 
@@ -30844,9 +33393,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
             //this.deferFocus();
         }
          
-        if(this.resizable){
-            this.setSize(this.wrap.getSize());
-        }
+        //if(this.resizable){
+        //    this.setSize(this.wrap.getSize());
+        //}
         
         this.fireEvent('editmodechange', this, this.editorcore.sourceEditMode);
     },
@@ -30983,9 +33532,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
    
    
       
-Roo.namespace('Roo.bootstrap.form.HtmlEditor');
 /**
- * @class Roo.bootstrap.form.HtmlEditorToolbarStandard
+ * @class Roo.bootstrap.form.HtmlEditorToolbar.Standard
  * @parent Roo.bootstrap.form.HtmlEditor
  * @extends Roo.bootstrap.nav.Simplebar
  * Basic Toolbar
@@ -30996,7 +33544,7 @@ Roo.namespace('Roo.bootstrap.form.HtmlEditor');
  new Roo.bootstrap.form.HtmlEditor({
     ....
     toolbars : [
-        new Roo.bootstrap.form.HtmlEditorToolbarStandard({
+        new Roo.bootstrap.form.HtmlEditorToolbar.Standard({
             disable : { fonts: 1 , format: 1, ..., ... , ...],
             btns : [ .... ]
         })
@@ -31011,7 +33559,7 @@ Roo.namespace('Roo.bootstrap.form.HtmlEditor');
  * .x-html-editor-tb .x-edit-none .x-btn-text { background: none; }
  */
  
-Roo.bootstrap.form.HtmlEditorToolbarStandard = function(config)
+Roo.bootstrap.form.HtmlEditorToolbar.Standard = function(config)
 {
     
     Roo.apply(this, config);
@@ -31023,17 +33571,17 @@ Roo.bootstrap.form.HtmlEditorToolbarStandard = function(config)
         colors : true,
         specialElements : true
     });
-    Roo.bootstrap.form.HtmlEditorToolbarStandard.superclass.constructor.call(this, config);
+    Roo.bootstrap.form.HtmlEditorToolbar.Standard.superclass.constructor.call(this, config);
     
     this.editor = config.editor;
     this.editorcore = config.editor.editorcore;
     
-    this.buttons   = new Roo.util.MixedCollection(false, function(o) { return o.cmd; });
+    this.buttons   = new Roo.util.MixedCollection(false, function(o) { return o.btnid; });
     
     //Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
     // dont call parent... till later.
 }
-Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simplebar,  {
+Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simplebar,  {
      
     bar : true,
     
@@ -31049,11 +33597,14 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simpl
         'div','span'
     ],
     
+    
+    deleteBtn: false,
+    
     onRender : function(ct, position)
     {
        // Roo.log("Call onRender: " + this.xtype);
         
-       Roo.bootstrap.form.HtmlEditorToolbarStandard.superclass.onRender.call(this, ct, position);
+       Roo.bootstrap.form.HtmlEditorToolbar.Standard.superclass.onRender.call(this, ct, position);
        Roo.log(this.el);
        this.el.dom.style.marginBottom = '0';
        var _this = this;
@@ -31061,7 +33612,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simpl
        var editor= this.editor;
        
        var children = [];
-       var btn = function(id,cmd , toggle, handler, html){
+       var btn = function(id, cmd , toggle, handler, html){
        
             var  event = toggle ? 'toggle' : 'click';
        
@@ -31070,9 +33621,11 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simpl
                 xtype: 'Button',
                 xns: Roo.bootstrap,
                 //glyphicon : id,
+                btnid : id,
                 fa: id,
-                cmd : id || cmd,
-                enableToggle:toggle !== false,
+                cls : 'roo-html-editor-btn-' + id,
+                cmd : cmd, // why id || cmd
+                enableToggle: toggle !== false,
                 html : html || '',
                 pressed : toggle ? false : null,
                 listeners : {}
@@ -31091,6 +33644,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simpl
                 size : 'sm',
                 xns: Roo.bootstrap,
                 fa : 'font',
+                cls : 'roo-html-editor-font-chooser',
                 //html : 'submit'
                 menu : {
                     xtype: 'Menu',
@@ -31116,19 +33670,19 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simpl
         });
         children.push(style);   
         
-        btn('bold',false,true);
-        btn('italic',false,true);
-        btn('align-left', 'justifyleft',true);
+        btn('bold',         'bold',true);
+        btn('italic',       'italic',true);
+        btn('underline',     'underline',true);
+        btn('align-left',   'justifyleft',true);
         btn('align-center', 'justifycenter',true);
         btn('align-right' , 'justifyright',true);
-        btn('link', false, false, function(btn) {
-            //Roo.log("create link?");
-            var url = prompt(this.createLinkText, this.defaultLinkValue);
-            if(url && url != 'http:/'+'/'){
-                this.editorcore.relayCmd('createlink', url);
-            }
-        }),
+        btn('link', false, true, this.onLinkClick);
+        
+        
+        btn('image', false, true, this.onImageClick);
         btn('list','insertunorderedlist',true);
+        btn('list-ol','insertorderedlist',true);
+
         btn('pencil', false,true, function(btn){
                 Roo.log(this);
                 this.toggleSourceEdit(btn.pressed);
@@ -31140,58 +33694,180 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simpl
             }
         }
         
-        /*
-        var cog = {
-                xtype: 'Button',
-                size : 'sm',
-                xns: Roo.bootstrap,
-                glyphicon : 'cog',
-                //html : 'submit'
-                menu : {
-                    xtype: 'Menu',
-                    xns: Roo.bootstrap,
-                    items:  []
-                }
-        };
-        
-        cog.menu.items.push({
-            xtype :'MenuItem',
-            xns: Roo.bootstrap,
-            html : Clean styles,
-            tagname : f,
-            listeners : {
-                click : function()
-                {
-                    editorcore.insertTag(this.tagname);
-                    editor.focus();
-                }
-            }
-            
-        });
-       */
         
          
-       this.xtype = 'NavSimplebar';
+        this.xtype = 'NavSimplebar'; // why?
         
         for(var i=0;i< children.length;i++) {
             
             this.buttons.add(this.addxtypeChild(children[i]));
             
         }
-        
+        this.buildToolbarDelete();
+
         editor.on('editorevent', this.updateToolbar, this);
     },
+    
+    buildToolbarDelete : function()
+    {
+        
+       /* this.addxtypeChild({
+            xtype : 'Element',
+            xns : Roo.bootstrap,
+            cls : 'roo-htmleditor-fill'
+        });
+        */
+        this.deleteBtn = this.addxtypeChild({
+            size : 'sm',
+            xtype: 'Button',
+            xns: Roo.bootstrap,
+            fa: 'trash',
+            listeners : {
+                click : this.onDelete.createDelegate(this)
+            }
+        });
+        this.deleteBtn.hide();     
+        
+    },
+    
+    onImageClick : function()
+    {
+        if (this.input) {
+            this.input.un('change', this.onFileSelected, this);
+        }
+        this.input = Roo.get(document.body).createChild({ 
+          tag: 'input', 
+          type : 'file', 
+          style : 'display:none', 
+          multiple: 'multiple'
+       });
+        this.input.on('change', this.onFileSelected, this);
+        this.input.dom.click();
+    },
+    
+    onFileSelected : function(e)
+    {
+         e.preventDefault();
+        
+        if(typeof(this.input.dom.files) == 'undefined' || !this.input.dom.files.length){
+            return;
+        }
+    
+         
+        this.addFiles(Array.prototype.slice.call(this.input.dom.files), false);
+    },
+    
+    addFiles : function(far, fire_add) {
+
+         
+        var editor =  this.editorcore;
+  
+        if (!far.length) {
+            if (fire_add) {
+                this.editor.syncValue();
+                editor.owner.fireEvent('editorevent', editor.owner, false);
+                editor.owner.fireEvent('imageadd', editor.owner, false);
+            }
+            return;
+        }
+        
+        var f = far.pop();
+        
+        if (!f.type.match(/^image/)) {
+            this.addFiles(far, fire_add);
+            return;
+        }
+         
+        var sn = this.selectedNode;
+        
+        var bl = sn  && this.editorcore.enableBlocks ? Roo.htmleditor.Block.factory(sn) : false;
+        
+        
+        var reader = new FileReader();
+        reader.addEventListener('load', (function() {
+            if (bl) {
+                var oldSrc = bl.image_src;
+                bl.image_src = reader.result;
+                //bl.caption = f.name;
+                bl.updateElement(sn);
+                this.editor.syncValue();
+                editor.owner.fireEvent('editorevent', editor.owner, false);
+                editor.owner.fireEvent('imageupdate', editor.owner, sn, oldSrc);
+                // we only do the first file!! and replace.
+                return;
+            }
+            if (this.editorcore.enableBlocks) {
+                var fig = new Roo.htmleditor.BlockFigure({
+                    image_src :  reader.result,
+                    caption : '',
+                    caption_display : 'none'  //default to hide captions..
+                 });
+                editor.insertAtCursor(fig.toHTML());
+                this.addFiles(far, true);
+                return;
+            }
+            // just a standard img..
+            if (sn && sn.tagName.toUpperCase() == 'IMG') {
+                var oldSrc = sn.src;
+                sn.src = reader.result;
+                this.editor.syncValue();
+                editor.owner.fireEvent('editorevent', editor.owner, false);
+                editor.owner.fireEvent('imageupdate', editor.owner, sn, oldSrc);
+                return;
+            }
+            editor.insertAtCursor('<img src="' + reader.result +'">');
+            this.addFiles(far, true);
+            
+        }).createDelegate(this));
+        reader.readAsDataURL(f);
+        
+    
+     },
+    
+    
     onBtnClick : function(id)
     {
        this.editorcore.relayCmd(id);
        this.editorcore.focus();
     },
     
+    onLinkClick : function(btn) {
+        var url = this.selectedNode && this.selectedNode.tagName.toUpperCase() == 'A' ?
+                this.selectedNode.getAttribute('href') : '';
+            
+        Roo.bootstrap.MessageBox.show({
+            title : "Add / Edit Link URL",
+            msg : "Enter the URL for the link",
+            buttons: Roo.bootstrap.MessageBox.OKCANCEL,
+            minWidth: 250,
+            scope : this,
+            prompt:true,
+            multiline: false,
+            modal : true,
+            value : url,
+            fn:  function(pressed, newurl) {
+                if (pressed != 'ok') {
+                    this.editorcore.focus();
+                    return;
+                }
+                if (url != '') {
+                    this.selectedNode.setAttribute('href', newurl);
+                    this.editor.syncValue();
+                    return;
+                }
+                if(newurl && newurl .match(/http(s):\/\/.+/)) {
+                    this.editorcore.relayCmd('createlink', newurl);
+                }
+                this.editorcore.focus();
+            },
+            cls : this.editorcore.linkDialogCls
+        });
+    },
     /**
      * Protected method that will not generally be called directly. It triggers
      * a toolbar update by reading the markup state of the current selection in the editor.
      */
-    updateToolbar: function(){
+    updateToolbar: function(editor ,ev, sel){
 
         if(!this.editorcore.activated){
             this.editor.onFirstFocus(); // is this neeed?
@@ -31200,39 +33876,89 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simpl
 
         var btns = this.buttons; 
         var doc = this.editorcore.doc;
-        btns.get('bold').setActive(doc.queryCommandState('bold'));
-        btns.get('italic').setActive(doc.queryCommandState('italic'));
-        //btns.get('underline').setActive(doc.queryCommandState('underline'));
+        var hasToggle  = false;
+        btns.each(function(e) {
+            if (e.enableToggle && e.cmd) {
+                hasToggle = hasToggle  || (['align-left', 'align-right', 'align-center', 'image' , 'link', 'underline'].indexOf(e.btnid) < 0 && doc.queryCommandState(e.cmd));
+                e.setActive(doc.queryCommandState(e.cmd));
+            }
+        }, this);
         
-        btns.get('align-left').setActive(doc.queryCommandState('justifyleft'));
-        btns.get('align-center').setActive(doc.queryCommandState('justifycenter'));
-        btns.get('align-right').setActive(doc.queryCommandState('justifyright'));
         
-        //btns[frameId + '-insertorderedlist').setActive(doc.queryCommandState('insertorderedlist'));
-        btns.get('list').setActive(doc.queryCommandState('insertunorderedlist'));
-         /*
+        if (ev &&
+            (ev.type == 'mouseup' || ev.type == 'click' ) &&
+            ev.target && ev.target.tagName != 'BODY' ) { // && ev.target.tagName == 'IMG') {
+            // they have click on an image...
+            // let's see if we can change the selection...
+            sel = ev.target;
+            
+        }
         
         var ans = this.editorcore.getAllAncestors();
-        if (this.formatCombo) {
+        if (!sel) { 
+            sel = ans.length ? (ans[0] ?  ans[0]  : ans[1]) : this.editorcore.doc.body;
+            sel = sel ? sel : this.editorcore.doc.body;
+            sel = sel.tagName.length ? sel : this.editorcore.doc.body;
             
+        }
+        
+        var lastSel = this.selectedNode;
+        this.selectedNode = sel;
+         
+        // ok see if we are editing a block?
+        
+        var db = false;
+        // you are not actually selecting the block.
+        if (sel && sel.hasAttribute('data-block')) {
+            db = sel;
+        } else if (sel && sel.closest('[data-block]')) {
+            db = sel.closest('[data-block]');
+        }
+        
+        Array.from(this.editorcore.doc.body.querySelectorAll('.roo-ed-selection')).forEach(function(e) {
+            e.classList.remove('roo-ed-selection');
+        });
+        
+        var block = false;
+        if (db && this.editorcore.enableBlocks) {
+            block = Roo.htmleditor.Block.factory(db);
             
-            var store = this.formatCombo.store;
-            this.formatCombo.setValue("");
-            for (var i =0; i < ans.length;i++) {
-                if (ans[i] && store.query('tag',ans[i].tagName.toLowerCase(), false).length) {
-                    // select it..
-                    this.formatCombo.setValue(ans[i].tagName.toLowerCase());
-                    break;
-                }
+            if (block) {
+                db.className =  (db.classList.length > 0  ? db.className + ' ' : '') +
+                    ' roo-ed-selection';
+                sel = this.selectedNode = db;
             }
         }
         
+        // highlight the 'a'..
+        var tn = sel && sel.tagName.toUpperCase() || '';
+        if (!block && sel && tn != 'A') {
+            var asel = sel.closest('A');
+            if (asel) {
+                sel = asel;
+            }
+        }
+       
+        btns.get('link').setActive(tn == 'A' && this.selectedNode.hasAttribute('href'));
+        btns.get('image').setActive(tn == 'IMG' || this.editorcore.enableBlocks && tn == 'FIGURE');
+        btns.get('underline').setActive(tn == 'U' || sel.closest('u') ? true : false);
         
-        
-        // hides menus... - so this cant be on a menu...
-        Roo.bootstrap.MenuMgr.hideAll();
-        */
         Roo.bootstrap.menu.Manager.hideAll();
+         
+        
+        
+        
+        
+        // handle delete button..
+        if (hasToggle || (tn.length && tn == 'BODY')) {
+            this.deleteBtn.hide();
+            return;
+            
+        }
+        this.deleteBtn.show();
+        
+        
+        
         //this.editorsyncValue();
     },
     onFirstFocus: function() {
@@ -31240,6 +33966,61 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simpl
            item.enable();
         });
     },
+    
+    onDelete : function()
+    {
+        var range = this.editorcore.createRange();
+        var selection = this.editorcore.getSelection();
+        var sn = this.selectedNode;
+        range.setStart(sn,0);
+        range.setEnd(sn,0); 
+        
+        
+        if (sn.hasAttribute('data-block')) {
+            var block = Roo.htmleditor.Block.factory(this.selectedNode);
+            if (block) {
+                sn = block.removeNode();
+                sn.parentNode.removeChild(sn);
+                selection.removeAllRanges();
+                selection.addRange(range);
+                this.updateToolbar(null, null, null);
+                if (sn.tagName.toUpperCase() == 'FIGURE') {
+                    this.editor.syncValue();
+                    this.editor.fireEvent('imagedelete', this.editor, sn);
+                }
+                
+                this.selectedNode = false;
+                this.editorcore.fireEditorEvent(false);
+                return;
+            }   
+             
+        }
+        if (!sn) {
+            return; // should not really happen..
+        }
+        if (sn && sn.tagName == 'BODY') {
+            return;
+        }
+        var stn =  sn.childNodes[0] || sn.nextSibling || sn.previousSibling || sn.parentNode;
+        
+        // remove and keep parents.
+        a = new Roo.htmleditor.FilterKeepChildren({tag : false});
+        a.replaceTag(sn);
+        
+        selection.removeAllRanges();
+        selection.addRange(range);
+        if (sn.tagName.toUpperCase() == 'IMG"') {
+            this.editor.syncValue();
+            this.editor.fireEvent('imagedelete', this.editor, sn);
+        }
+        
+        this.selectedNode = false;
+        this.editorcore.fireEditorEvent(false);
+        
+        
+    },
+    
+    
     toggleSourceEdit : function(sourceEditMode){
         
           
@@ -32738,10 +35519,18 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         
         this.el.removeClass(['fade','top','bottom', 'left', 'right','in',
                              'bs-tooltip-top','bs-tooltip-bottom', 'bs-tooltip-left', 'bs-tooltip-right']);
+
+        if(this.bindEl.attr('tooltip-class')) {
+            this.el.addClass(this.bindEl.attr('tooltip-class'));
+        }
         
         var placement = typeof this.placement == 'function' ?
             this.placement.call(this, this.el, on_el) :
             this.placement;
+        
+        if(this.bindEl.attr('tooltip-placement')) {
+            placement = this.bindEl.attr('tooltip-placement');
+        }
             
         var autoToken = /\s?auto?\s?/i;
         var autoPlace = autoToken.test(placement);
@@ -32831,6 +35620,9 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             return;
         }
         //this.el.setXY([0,0]);
+        if(this.bindEl.attr('tooltip-class')) {
+            this.el.removeClass(this.bindEl.attr('tooltip-class'));
+        }
         this.el.removeClass(['show', 'in']);
         //this.el.hide();
         
@@ -43143,7 +45935,7 @@ Roo.bootstrap.panel.Content = function( config){
                     {
                         tag : 'iframe',
                         style : 'border: 0px',
-                        src : 'about:blank'
+                        src : 'data:text/html,%3Cbody%3E%3C%2Fbody%3E'
                     }
                 ];
             }

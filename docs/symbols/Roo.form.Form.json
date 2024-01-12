@@ -73,14 +73,6 @@
       ]
     },
     {
-      "name" : "(left|center|right)",
-      "type" : "String",
-      "desc" : "buttonAlign Valid values are \"left,\" \"center\" and \"right\" (defaults to \"center\")",
-      "memberOf" : "",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -137,6 +129,18 @@
       "optvals" : []
     },
     {
+      "name" : "buttonAlign",
+      "type" : "String",
+      "desc" : "t)  Valid values are \"left,\" \"center\" and \"right\" (defaults to \"center",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : [
+        "left",
+        "center",
+        "right"
+      ]
+    },
+    {
       "name" : "method",
       "type" : "String",
       "desc" : "The request method to use (GET or POST) for form actions if one isn't supplied in the action options.",
@@ -147,13 +151,10 @@
     {
       "name" : "errorMask",
       "type" : "Boolean",
-      "desc" : "e) default fal",
+      "desc" : "Should the form be masked (and the active element highlighted on error - default false",
       "memberOf" : "Roo.form.BasicForm",
       "isOptional" : false,
-      "optvals" : [
-        "true",
-        "false"
-      ]
+      "optvals" : []
     },
     {
       "name" : "itemCls",
@@ -230,7 +231,7 @@
     {
       "name" : "maskOffset",
       "type" : "Number",
-      "desc" : "Default 100",
+      "desc" : "space around form element to mask if there is an error Default 100",
       "memberOf" : "Roo.form.BasicForm",
       "isOptional" : false,
       "optvals" : []
@@ -808,7 +809,7 @@
         {
           "name" : "asString",
           "type" : "Boolean",
-          "desc" : "",
+          "desc" : "(def)",
           "isOptional" : false
         }
       ],

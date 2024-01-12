@@ -77,5 +77,23 @@ Roo.htmleditor.Filter.prototype = {
            
         }
         node.parentNode.removeChild(node);
+    },
+
+    searchTag : function(dom)
+    {
+        if(this.tag === false) {
+            return;
+        }
+
+        var els = dom.getElementsByTagName(this.tag);
+
+        Roo.each(Array.from(els), function(e){
+            if(e.parentNode == null) {
+                return;
+            }
+            if(this.replaceTag) {
+                this.replaceTag(e);
+            }
+        }, this);
     }
 };

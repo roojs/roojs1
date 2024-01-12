@@ -1,5 +1,7 @@
 <?php
-
+if (php_sapi_name() != 'cli') {
+    die("CLI ONLY");
+}
 $cwd = getcwd();
 
 $cc = explode('/', $cwd);

@@ -183,6 +183,14 @@
       "optvals" : []
     },
     {
+      "name" : "style",
+      "type" : "String",
+      "desc" : "css styles to add to component\neg. text-align:right;",
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "disableClear",
       "type" : "Boolean",
       "desc" : "Disable showing of clear button.",
@@ -287,18 +295,18 @@
       "optvals" : []
     },
     {
-      "name" : "readOnly",
-      "type" : "Boolean",
-      "desc" : "True to mark the field as readOnly in HTML (defaults to false) -- Note: this only sets the element's readOnly DOM attribute.",
-      "memberOf" : "Roo.form.Field",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
       "name" : "shadow",
       "type" : "Boolean/String",
       "desc" : "True or \"sides\" for the default effect, \"frame\" for 4-way shadow, and \"drop\" for bottom-right",
       "memberOf" : "Roo.form.ComboBox",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "readOnly",
+      "type" : "Boolean",
+      "desc" : "True to mark the field as readOnly in HTML (defaults to false) -- Note: this only sets the element's readOnly DOM attribute.",
+      "memberOf" : "Roo.form.Field",
       "isOptional" : false,
       "optvals" : []
     },
@@ -347,6 +355,14 @@
       "type" : "Boolean",
       "desc" : "True to hide the trigger element and display only the base text field (defaults to false)",
       "memberOf" : "Roo.form.TriggerField",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "labelSeparator",
+      "type" : "String",
+      "desc" : "the ':' after a field label (default :)  = set it to empty string to hide the field label.",
+      "memberOf" : "Roo.form.Field",
       "isOptional" : false,
       "optvals" : []
     },

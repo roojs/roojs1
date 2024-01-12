@@ -58,6 +58,14 @@
       "optvals" : []
     },
     {
+      "name" : "style",
+      "type" : "String",
+      "desc" : "css styles to add to component\neg. text-align:right;",
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",

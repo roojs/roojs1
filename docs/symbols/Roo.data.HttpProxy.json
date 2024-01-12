@@ -41,10 +41,13 @@
     {
       "name" : "method",
       "type" : "String",
-      "desc" : "The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)",
+      "desc" : "T)  The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GE",
       "memberOf" : "",
       "isOptional" : false,
-      "optvals" : []
+      "optvals" : [
+        "GET",
+        "POST"
+      ]
     },
     {
       "name" : "timeout",

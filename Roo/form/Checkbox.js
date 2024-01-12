@@ -190,7 +190,9 @@ Roo.extend(Roo.form.Checkbox, Roo.form.Field,  {
             this.fireEvent('check', this, state);
         }
         this.inSetChecked = true;
-        this.el.dom.value = state ? this.inputValue : this.valueOff;
+		 
+		this.el.dom.value = state ? this.inputValue : this.valueOff;
+		 
         this.inSetChecked = false;
         
     },

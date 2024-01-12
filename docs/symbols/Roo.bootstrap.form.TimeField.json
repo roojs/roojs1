@@ -96,6 +96,14 @@
       "optvals" : []
     },
     {
+      "name" : "minuteStep",
+      "type" : "Number",
+      "desc" : "the minutes is always the multiple of a fixed number, default 1",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
@@ -285,14 +293,6 @@
       ]
     },
     {
-      "name" : "focusClass",
-      "type" : "String",
-      "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
-      "memberOf" : "Roo.bootstrap.form.Input",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
       "name" : "size",
       "type" : "string",
       "desc" : "- (lg|sm) or leave empty..",
@@ -304,6 +304,14 @@
       "name" : "labellg",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "focusClass",
+      "type" : "String",
+      "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
       "optvals" : []
@@ -730,6 +738,25 @@
       "name" : "reset",
       "type" : "function",
       "desc" : "Resets the current field value to the originally loaded value and clears any validation messages",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "getAutoCreateLabel",
+      "type" : "function",
+      "desc" : "autocreate the label - also used by textara... ?? and others?",
       "sig" : "()\n{\n\n}",
       "static" : false,
       "memberOf" : "Roo.bootstrap.form.Input",

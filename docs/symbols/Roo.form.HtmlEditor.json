@@ -109,6 +109,14 @@
       "optvals" : []
     },
     {
+      "name" : "style",
+      "type" : "String",
+      "desc" : "css styles to add to component\neg. text-align:right;",
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "clearUp",
       "type" : "Boolean",
       "desc" : "",
@@ -177,6 +185,14 @@
       "type" : "String",
       "desc" : "default en - language of text (usefull for rtl languages)",
       "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "labelSeparator",
+      "type" : "String",
+      "desc" : "the ':' after a field label (default :)  = set it to empty string to hide the field label.",
+      "memberOf" : "Roo.form.Field",
       "isOptional" : false,
       "optvals" : []
     },

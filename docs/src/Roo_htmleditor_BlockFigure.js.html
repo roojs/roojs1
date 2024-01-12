@@ -315,14 +315,15 @@
                 </span><span class="jsdoc-syntax">]
             };
         }
-        </span><span class="jsdoc-comment">// we remove caption totally if its hidden... - will delete data.. but otherwise we end up with fake caption
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">captionhtml </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.caption_display </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'none' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.caption.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.caption </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Caption&quot;</span><span class="jsdoc-syntax">);
+
 
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">=   {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'figure'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'data-block' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Figure'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'data-width' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">'data-caption' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.caption</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">'data-caption-display' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.caption_display</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">contenteditable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'false'</span><span class="jsdoc-syntax">,
 
             </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: {
@@ -336,50 +337,51 @@
 
             </span><span class="jsdoc-syntax">},
 
-
             </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.align</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
-                </span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">,
-
-                {
-                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'figcaption'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-string">'data-display' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.caption_display</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: {
-                        </span><span class="jsdoc-var">textAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">fontSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'16px'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">lineHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'24px'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">display </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.caption_display</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">maxWidth </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'100%' </span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">' !important'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">margin</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'100%'
-
-
-                    </span><span class="jsdoc-syntax">},
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cls.length </span><span class="jsdoc-syntax">&gt; 0 ? (</span><span class="jsdoc-var">this.cls  </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-thumbnail' </span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
-                        {
-                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">style  </span><span class="jsdoc-syntax">: {
-                                </span><span class="jsdoc-var">marginTop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'16px'</span><span class="jsdoc-syntax">,
-                                </span><span class="jsdoc-var">textAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'
-                            </span><span class="jsdoc-syntax">},
-                            </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
-                                {
-                                    </span><span class="jsdoc-comment">// we can not rely on yahoo syndication to use CSS elements - so have to use  '&lt;i&gt;' to encase stuff.
-                                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
-                                    </span><span class="jsdoc-var">contenteditable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-                                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">captionhtml
-                                </span><span class="jsdoc-syntax">}
-
-                            ]
-                        }
-
-                    ]
-
-                }
-            ]
+                </span><span class="jsdoc-var">img
+            </span><span class="jsdoc-syntax">]
         };
+
+        </span><span class="jsdoc-comment">// show figcaption only if caption_display is 'block'
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.caption_display </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'cn'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'figcaption'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">textAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">fontSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'16px'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">lineHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'24px'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">display </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.caption_display</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">maxWidth </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'100%' </span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">' !important'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">margin</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'100%'
+
+
+                </span><span class="jsdoc-syntax">},
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cls.length </span><span class="jsdoc-syntax">&gt; 0 ? (</span><span class="jsdoc-var">this.cls  </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-thumbnail' </span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                    {
+                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">style  </span><span class="jsdoc-syntax">: {
+                            </span><span class="jsdoc-var">marginTop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'16px'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">textAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'start'
+                        </span><span class="jsdoc-syntax">},
+                        </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                            {
+                                </span><span class="jsdoc-comment">// we can not rely on yahoo syndication to use CSS elements - so have to use  '&lt;i&gt;' to encase stuff.
+                                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">contenteditable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.htmleditor.BlockFigure.caption_edit</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.caption.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.caption </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Caption&quot; </span><span class="jsdoc-comment">// fake caption
+                            </span><span class="jsdoc-syntax">}
+
+                        ]
+                    }
+
+                ]
+
+            });
+        }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
 
     },
@@ -395,13 +397,31 @@
         </span><span class="jsdoc-var">this.image_src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'figure'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'align'</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">// caption display is stored in figure
+        </span><span class="jsdoc-var">this.caption_display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'data-caption-display'</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">// backward compatible
+        // it was stored in figcaption
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.caption_display </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.caption_display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'figcaption'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'data-display'</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-comment">// read caption from figcaption
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">figcaption </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'figcaption'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">figcaption </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.caption </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">figcaption</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'html'</span><span class="jsdoc-syntax">);
         }
 
 
-        </span><span class="jsdoc-var">this.caption_display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'figcaption'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'data-display'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">// read caption from data-caption in figure if no caption from figcaption
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'data-caption'</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.caption_display </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'none' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">dc </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">dc.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.caption </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dc</span><span class="jsdoc-syntax">;
+        }
+
         </span><span class="jsdoc-comment">//this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'data-width'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//this.margin = this.getVal(node, 'figure', 'style', 'margin');
@@ -419,6 +439,10 @@
 
 
 
-})
+});
+
+</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.htmleditor.BlockFigure</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">caption_edit </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+</span><span class="jsdoc-syntax">});
 
 </span></code></body></html>

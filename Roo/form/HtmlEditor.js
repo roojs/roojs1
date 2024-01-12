@@ -222,6 +222,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             * @param {Roo.HtmlEditorCore} this
             */
             paste: true 
+            
         });
         this.defaultAutoCreate =  {
             tag: "textarea",

@@ -17,8 +17,9 @@
     </span><span class="jsdoc-comment">// closure these in so they are only created once.
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">alpha </span><span class="jsdoc-syntax">= /^[a-zA-Z_]+$/;
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">alphanum </span><span class="jsdoc-syntax">= /^[a-zA-Z0-9_]+$/;
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">email </span><span class="jsdoc-syntax">= /^([\w]+)(.[\w]+)*@([\w-]+\.){1,5}([A-Za-z]){2,24}$/;
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">= /(((https?)|(ftp)):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&amp;#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">email </span><span class="jsdoc-syntax">= /^([\w'-]+)(\.[\w'-]+)*@([\w-]+\.){1,5}([A-Za-z]){2,24}$/;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">= /^(((https?)|(ftp)):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&amp;#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">urlWeb </span><span class="jsdoc-syntax">= /^((https?):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&amp;#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
 
     </span><span class="jsdoc-comment">// All these messages and functions are configurable
     </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
@@ -26,67 +27,74 @@
          * The function used to validate email addresses
          * @param {String} value The email address
          */
-        </span><span class="jsdoc-string">'email' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">email </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">email.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
         },
         </span><span class="jsdoc-comment">/**
          * The error text to display when the email validation function returns false
          * @type String
          */
-        </span><span class="jsdoc-string">'emailText' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field should be an e-mail address in the format &quot;user@domain.com&quot;'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">emailText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field should be an e-mail address in the format &quot;user@domain.com&quot;'</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * The keystroke filter mask to be applied on email input
          * @type RegExp
          */
-        </span><span class="jsdoc-string">'emailMask' </span><span class="jsdoc-syntax">: /[a-z0-9_\.\-@]/i,
+        </span><span class="jsdoc-var">emailMask </span><span class="jsdoc-syntax">: /[a-z0-9_\.\-@]/i,
 
         </span><span class="jsdoc-comment">/**
          * The function used to validate URLs
          * @param {String} value The URL
          */
-        </span><span class="jsdoc-string">'url' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">url.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+        },
+        </span><span class="jsdoc-comment">/**
+         * The funciton used to validate URLs (only allow schemes 'https' and 'http')
+         * @param {String} v The URL
+         */
+        </span><span class="jsdoc-var">urlWeb </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">urlWeb.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
         },
         </span><span class="jsdoc-comment">/**
          * The error text to display when the url validation function returns false
          * @type String
          */
-        </span><span class="jsdoc-string">'urlText' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field should be a URL in the format &quot;http:/'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'/www.domain.com&quot;'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">urlText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field should be a URL in the format &quot;http:/'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'/www.domain.com&quot;'</span><span class="jsdoc-syntax">,
 
         </span><span class="jsdoc-comment">/**
          * The function used to validate alpha values
          * @param {String} value The value
          */
-        </span><span class="jsdoc-string">'alpha' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">alpha </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">alpha.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
         },
         </span><span class="jsdoc-comment">/**
          * The error text to display when the alpha validation function returns false
          * @type String
          */
-        </span><span class="jsdoc-string">'alphaText' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field should only contain letters and _'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">alphaText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field should only contain letters and _'</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * The keystroke filter mask to be applied on alpha input
          * @type RegExp
          */
-        </span><span class="jsdoc-string">'alphaMask' </span><span class="jsdoc-syntax">: /[a-z_]/i,
+        </span><span class="jsdoc-var">alphaMask </span><span class="jsdoc-syntax">: /[a-z_]/i,
 
         </span><span class="jsdoc-comment">/**
          * The function used to validate alphanumeric values
          * @param {String} value The value
          */
-        </span><span class="jsdoc-string">'alphanum' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">alphanum </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">alphanum.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
         },
         </span><span class="jsdoc-comment">/**
          * The error text to display when the alphanumeric validation function returns false
          * @type String
          */
-        </span><span class="jsdoc-string">'alphanumText' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field should only contain letters, numbers and _'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">alphanumText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field should only contain letters, numbers and _'</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * The keystroke filter mask to be applied on alphanumeric input
          * @type RegExp
          */
-        </span><span class="jsdoc-string">'alphanumMask' </span><span class="jsdoc-syntax">: /[a-z0-9_]/i
+        </span><span class="jsdoc-var">alphanumMask </span><span class="jsdoc-syntax">: /[a-z0-9_]/i
     };
 }();</span></code></body></html>

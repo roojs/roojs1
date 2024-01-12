@@ -245,6 +245,11 @@
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.vtype</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">vt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.VTypes</span><span class="jsdoc-syntax">;
+			</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value.trim</span><span class="jsdoc-syntax">() != </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// trim before checking email (and other stuf??)
+				</span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value.trim</span><span class="jsdoc-syntax">();
+				</span><span class="jsdoc-var">this.el.dom.value  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+			}
+
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">vt</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.vtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)){
                 </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.vtypeText </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">vt</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.vtype </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'Text'</span><span class="jsdoc-syntax">]);
                 </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
@@ -325,7 +330,8 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
 
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isSelectAll </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">event.getCharCode</span><span class="jsdoc-syntax">() &gt; 31){ </span><span class="jsdoc-comment">// backspace and delete key
+        </span><span class="jsdoc-comment">// skip handling paste
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isSelectAll </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">event.getCharCode</span><span class="jsdoc-syntax">() &gt; 31 &amp;&amp; !(</span><span class="jsdoc-var">event.ctrlKey </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">event.getCharCode</span><span class="jsdoc-syntax">() == 86)){ </span><span class="jsdoc-comment">// backspace and delete key
 
             </span><span class="jsdoc-var">event.preventDefault</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-comment">// this is very hacky as keydown always get's upper case.

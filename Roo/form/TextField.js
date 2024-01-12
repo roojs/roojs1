@@ -245,6 +245,11 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         }
         if(this.vtype){
             var vt = Roo.form.VTypes;
+			if (value.trim() != value) { // trim before checking email (and other stuf??)
+				value = value.trim();
+				this.el.dom.value  = value;
+			}
+			
             if(!vt[this.vtype](value, this)){
                 this.markInvalid(this.vtypeText || vt[this.vtype +'Text']);
                 return false;
@@ -325,7 +330,8 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
             return;
         }
         
-        if(isSelectAll && event.getCharCode() > 31){ // backspace and delete key
+        // skip handling paste
+        if(isSelectAll && event.getCharCode() > 31 && !(event.ctrlKey && event.getCharCode() == 86)){ // backspace and delete key
             
             event.preventDefault();
             // this is very hacky as keydown always get's upper case.

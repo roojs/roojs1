@@ -1296,17 +1296,17 @@ table.fc-border-separate {
 .datepicker table tr td.today.disabled:active,
 .datepicker table tr td.today.disabled:hover:active,
 .datepicker table tr td.today.active,
-.datepicker table tr td.today.active:hover,
+.datepicker table tr td.today:hover.active,
 .datepicker table tr td.today.disabled.active,
-.datepicker table tr td.today.disabled.active:hover,
+.datepicker table tr td.today.disabled:hover.active,
 .datepicker table tr td.today.disabled,
-.datepicker table tr td.today.disabled:hover,
+.datepicker table tr td.today:hover.disabled,
 .datepicker table tr td.today.disabled.disabled,
-.datepicker table tr td.today.disabled.disabled:hover,
+.datepicker table tr td.today.disabled:hover.disabled,
 .datepicker table tr td.today[disabled],
-.datepicker table tr td.today[disabled]:hover,
+.datepicker table tr td.today:hover[disabled],
 .datepicker table tr td.today.disabled[disabled],
-.datepicker table tr td.today.disabled[disabled]:hover {
+.datepicker table tr td.today.disabled:hover[disabled] {
   background-color: #ffc107; }
 
 .datepicker table tr td.today:active,
@@ -1314,9 +1314,9 @@ table.fc-border-separate {
 .datepicker table tr td.today.disabled:active,
 .datepicker table tr td.today.disabled:hover:active,
 .datepicker table tr td.today.active,
-.datepicker table tr td.today.active:hover,
+.datepicker table tr td.today:hover.active,
 .datepicker table tr td.today.disabled.active,
-.datepicker table tr td.today.disabled.active:hover {
+.datepicker table tr td.today.disabled:hover.active {
   background-color: #ffc107; }
 
 .datepicker table tr td.active,
@@ -1347,17 +1347,17 @@ table.fc-border-separate {
 .datepicker table tr td.active.disabled:active,
 .datepicker table tr td.active.disabled:hover:active,
 .datepicker table tr td.active.active,
-.datepicker table tr td.active.active:hover,
+.datepicker table tr td.active:hover.active,
 .datepicker table tr td.active.disabled.active,
-.datepicker table tr td.active.disabled.active:hover,
+.datepicker table tr td.active.disabled:hover.active,
 .datepicker table tr td.active.disabled,
-.datepicker table tr td.active.disabled:hover,
+.datepicker table tr td.active:hover.disabled,
 .datepicker table tr td.active.disabled.disabled,
-.datepicker table tr td.active.disabled.disabled:hover,
+.datepicker table tr td.active.disabled:hover.disabled,
 .datepicker table tr td.active[disabled],
-.datepicker table tr td.active[disabled]:hover,
+.datepicker table tr td.active:hover[disabled],
 .datepicker table tr td.active.disabled[disabled],
-.datepicker table tr td.active.disabled[disabled]:hover {
+.datepicker table tr td.active.disabled:hover[disabled] {
   background-color: #007bff; }
 
 .datepicker table tr td.active:active,
@@ -1365,9 +1365,9 @@ table.fc-border-separate {
 .datepicker table tr td.active.disabled:active,
 .datepicker table tr td.active.disabled:hover:active,
 .datepicker table tr td.active.active,
-.datepicker table tr td.active.active:hover,
+.datepicker table tr td.active:hover.active,
 .datepicker table tr td.active.disabled.active,
-.datepicker table tr td.active.disabled.active:hover {
+.datepicker table tr td.active.disabled:hover.active {
   background-color: #0062cc; }
 
 .datepicker table tr td span {
@@ -1419,17 +1419,17 @@ table.fc-border-separate {
 .datepicker table tr td span.active.disabled:active,
 .datepicker table tr td span.active.disabled:hover:active,
 .datepicker table tr td span.active.active,
-.datepicker table tr td span.active.active:hover,
+.datepicker table tr td span.active:hover.active,
 .datepicker table tr td span.active.disabled.active,
-.datepicker table tr td span.active.disabled.active:hover,
+.datepicker table tr td span.active.disabled:hover.active,
 .datepicker table tr td span.active.disabled,
-.datepicker table tr td span.active.disabled:hover,
+.datepicker table tr td span.active:hover.disabled,
 .datepicker table tr td span.active.disabled.disabled,
-.datepicker table tr td span.active.disabled.disabled:hover,
+.datepicker table tr td span.active.disabled:hover.disabled,
 .datepicker table tr td span.active[disabled],
-.datepicker table tr td span.active[disabled]:hover,
+.datepicker table tr td span.active:hover[disabled],
 .datepicker table tr td span.active.disabled[disabled],
-.datepicker table tr td span.active.disabled[disabled]:hover {
+.datepicker table tr td span.active.disabled:hover[disabled] {
   background-color: #007bff; }
 
 .datepicker table tr td span.active:active,
@@ -1437,9 +1437,9 @@ table.fc-border-separate {
 .datepicker table tr td span.active.disabled:active,
 .datepicker table tr td span.active.disabled:hover:active,
 .datepicker table tr td span.active.active,
-.datepicker table tr td span.active.active:hover,
+.datepicker table tr td span.active:hover.active,
 .datepicker table tr td span.active.disabled.active,
-.datepicker table tr td span.active.disabled.active:hover {
+.datepicker table tr td span.active.disabled:hover.active {
   background-color: #0062cc; }
 
 .datepicker table tr td span.old {
@@ -1846,12 +1846,14 @@ li.dropdown-toggle button > i.glyphicon {
   white-space: nowrap; }
 
 div.input-group.has-feedback > .form-control-feedback {
-  right: 30px; }
+  right: 30px;
+  width: 100%; }
 
 div.input-group.has-feedback > .roo-input-after + .form-control-feedback {
   right: 39px; }
 
-.roo-required-indicator {
+.roo-required-indicator,
+.roo-required-indicator.fa-lg {
   font-size: 8px;
   color: #dc3545;
   vertical-align: top; }
@@ -2545,7 +2547,7 @@ a.roo-brick-link:hover {
 .nav-tabs-custom > .nav-tabs > li:first-of-type {
   margin-left: 0px; }
 
-.nav-tabs-custom > .nav-tabs > li.active:first-of-type > a {
+.nav-tabs-custom > .nav-tabs > li:first-of-type.active > a {
   border-left-width: 0; }
 
 .nav-tabs-custom > .nav-tabs.pull-right {
@@ -2557,7 +2559,7 @@ a.roo-brick-link:hover {
 .nav-tabs-custom > .nav-tabs.pull-right > li:first-of-type {
   margin-right: 0px; }
 
-.nav-tabs-custom > .nav-tabs.pull-right > li.active:first-of-type > a {
+.nav-tabs-custom > .nav-tabs.pull-right > li:first-of-type.active > a {
   border-left-width: 1px;
   border-right-width: 0px; }
 
@@ -4826,5 +4828,11 @@ not sure why it was so small..
 */
 .tooltip-inner {
   max-width: 500px; }
+
+.roo-multi-line-tag .row {
+  flex-wrap: nowrap; }
+
+.roo-multi-line-tag .roo-select2-container .input-group-addon {
+  display: none; }
 
 /*# sourceMappingURL=roojs-bootstrap-debug.css.map */

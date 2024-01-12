@@ -16,31 +16,26 @@
  */
 
 </span><span class="jsdoc-var">Roo.bootstrap.form.HtmlEditor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
-    </span><span class="jsdoc-var">Roo.bootstrap.form.HtmlEditor.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">= [];
-    }
 
-    </span><span class="jsdoc-var">this.editorcore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.HtmlEditorCore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">owner </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">} , </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">));
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-comment">/**
              * @event initialize
              * Fires when the editor is fully initialized (including the iframe)
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             </span><span class="jsdoc-var">initialize</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-comment">/**
              * @event activate
              * Fires when the editor is first receives the focus. Any insertion must wait
              * until after this event.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             </span><span class="jsdoc-var">activate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
              </span><span class="jsdoc-comment">/**
              * @event beforesync
              * Fires before the textarea is updated with content from the editor iframe. Return false
              * to cancel the sync.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             </span><span class="jsdoc-var">beforesync</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
@@ -48,56 +43,96 @@
              * @event beforepush
              * Fires before the iframe editor is updated with content from the textarea. Return false
              * to cancel the push.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             </span><span class="jsdoc-var">beforepush</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
              </span><span class="jsdoc-comment">/**
              * @event sync
              * Fires when the textarea is updated with content from the editor iframe.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             </span><span class="jsdoc-var">sync</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
              </span><span class="jsdoc-comment">/**
              * @event push
              * Fires when the iframe editor is updated with content from the textarea.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             </span><span class="jsdoc-var">push</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
              </span><span class="jsdoc-comment">/**
              * @event editmodechange
              * Fires when the editor switches edit modes
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {Boolean} sourceEdit True if source edit, false if standard editing.
              */
             </span><span class="jsdoc-var">editmodechange</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-comment">/**
              * @event editorevent
              * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             </span><span class="jsdoc-var">editorevent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-comment">/**
              * @event firstfocus
              * Fires when on first focus - needed by toolbars..
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             </span><span class="jsdoc-var">firstfocus</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-comment">/**
              * @event autosave
              * Auto save the htmlEditor value as a file into Events
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             </span><span class="jsdoc-var">autosave</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-comment">/**
              * @event savedpreview
              * preview the saved version of htmlEditor
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
-            </span><span class="jsdoc-var">savedpreview</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
-        </span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-var">savedpreview</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+             </span><span class="jsdoc-comment">/**
+            * @event stylesheetsclick
+            * Fires when press the Sytlesheets button
+            * @param {Roo.HtmlEditorCore} this
+            */
+            </span><span class="jsdoc-var">stylesheetsclick</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+            * @event paste
+            * Fires when press user pastes into the editor
+            * @param {Roo.HtmlEditorCore} this
+            */
+            </span><span class="jsdoc-var">paste</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+            * @event imageadd
+            * Fires when on any editor when an image is added (excluding paste)
+            * @param {Roo.bootstrap.form.HtmlEditor} this
+            */
+           </span><span class="jsdoc-var">imageadd</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+            * @event imageupdated
+            * Fires when on any editor when an image is changed (excluding paste)
+            * @param {Roo.bootstrap.form.HtmlEditor} this
+            * @param {HTMLElement} img could also be a figure if blocks are enabled
+            */
+           </span><span class="jsdoc-var">imageupdate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">,
+           </span><span class="jsdoc-comment">/**
+            * @event imagedelete
+            * Fires when on any editor when an image is deleted
+            * @param {Roo.bootstrap.form.HtmlEditor} this
+            * @param {HTMLElement} img could also be a figure if blocks are enabled
+            * @param {HTMLElement} oldSrc source of image being replaced
+            */
+           </span><span class="jsdoc-var">imagedelete</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">Roo.bootstrap.form.HtmlEditor.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">= [];
+    }
+
+    </span><span class="jsdoc-var">this.editorcore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.HtmlEditorCore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">owner </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">} , </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">));
+
 };
 
 
@@ -105,9 +140,9 @@
 
 
       </span><span class="jsdoc-comment">/**
-     * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
+     * @cfg {Array|boolean} toolbars Array of toolbars, or names of toolbars. - true for standard, and false for none.
      */
-    </span><span class="jsdoc-var">toolbars </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">toolbars </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
 
      </span><span class="jsdoc-comment">/**
     * @cfg {Array} buttons Array of toolbar's buttons. - defaults to empty
@@ -115,10 +150,9 @@
     </span><span class="jsdoc-var">btns </span><span class="jsdoc-syntax">: [],
 
      </span><span class="jsdoc-comment">/**
-     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
-     *                        Roo.resizable.
+     * @cfg {String} resize  (none|both|horizontal|vertical) - css resize of element
      */
-    </span><span class="jsdoc-var">resizable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
      </span><span class="jsdoc-comment">/**
      * @cfg {Number} height (in pixels)
      */
@@ -151,6 +185,8 @@
 
     </span><span class="jsdoc-var">bodyCls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
 
+    </span><span class="jsdoc-var">linkDialogCls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+
     </span><span class="jsdoc-var">toolbarContainer </span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.wrap.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.x-html-editor-tb'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
     },
@@ -161,27 +197,36 @@
      * add custom toolbar buttons.
      * @param {HtmlEditor} editor
      */
-    </span><span class="jsdoc-var">createToolbar </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'renewing'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;create toolbars&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">createToolbar </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-comment">//Roo.log('renewing');
+        //Roo.log(&quot;create toolbars&quot;);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-string">'Standard' </span><span class="jsdoc-syntax">];
+        }
 
-        </span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.form.HtmlEditorToolbarStandard</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">} ) ];
-        </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbarContainer</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">ar.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= {
+                    </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">t
+                </span><span class="jsdoc-syntax">};
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.xtype</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">t.editor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">t.xns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t.xns </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.bootstrap.form.HtmlEditorToolbar</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbarContainer</span><span class="jsdoc-syntax">());
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
 
-</span><span class="jsdoc-comment">//        if (!editor.toolbars || !editor.toolbars.length) {
-//            editor.toolbars = [ new Roo.bootstrap.form.HtmlEditorToolbarStandard() ]; // can be empty?
-//        }
-//        
-//        for (var i =0 ; i &lt; editor.toolbars.length;i++) {
-//            editor.toolbars[i] = Roo.factory(
-//                    typeof(editor.toolbars[i]) == 'string' ?
-//                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
-//                Roo.bootstrap.form.HtmlEditor);
-//            editor.toolbars[i].init(editor);
-//        }
-    </span><span class="jsdoc-syntax">},
+    },
 
 
     </span><span class="jsdoc-comment">// private
@@ -197,33 +242,11 @@
 
         </span><span class="jsdoc-var">this.editorcore.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizable</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.resizeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Resizable</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap</span><span class="jsdoc-syntax">, {
-                </span><span class="jsdoc-var">pinned </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">wrap</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">dynamic </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">minHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">handles </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.resizable</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
-                    </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">_t.onResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// -something
-                    </span><span class="jsdoc-syntax">}
-                }
-            });
 
-        }
         </span><span class="jsdoc-var">this.createToolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
 
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.resizable</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap.getSize</span><span class="jsdoc-syntax">());
-        }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeEl</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.resizeEl.resizeTo.defer</span><span class="jsdoc-syntax">(100, </span><span class="jsdoc-var">this.resizeEl</span><span class="jsdoc-syntax">,[ </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.height </span><span class="jsdoc-syntax">] );
-            </span><span class="jsdoc-comment">// should trigger onReize..
-        </span><span class="jsdoc-syntax">}
+
 
     },
 
@@ -294,9 +317,9 @@
             </span><span class="jsdoc-comment">//this.deferFocus();
         </span><span class="jsdoc-syntax">}
 
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizable</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap.getSize</span><span class="jsdoc-syntax">());
-        }
+        </span><span class="jsdoc-comment">//if(this.resizable){
+        //    this.setSize(this.wrap.getSize());
+        //}
 
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editmodechange'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.editorcore.sourceEditMode</span><span class="jsdoc-syntax">);
     },

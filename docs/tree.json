@@ -707,9 +707,15 @@
                 "is_class" : true
               },
               {
-                "name" : "Roo.bootstrap.form.HtmlEditorToolbarStandard",
-                "cn" : [],
-                "is_class" : true
+                "name" : "Roo.bootstrap.form.HtmlEditorToolbar",
+                "cn" : [
+                  {
+                    "name" : "Roo.bootstrap.form.HtmlEditorToolbar.Standard",
+                    "cn" : [],
+                    "is_class" : true
+                  }
+                ],
+                "is_class" : false
               },
               {
                 "name" : "Roo.bootstrap.form.Input",
@@ -732,7 +738,17 @@
                 "is_class" : true
               },
               {
+                "name" : "Roo.bootstrap.form.MultiLineTag",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
                 "name" : "Roo.bootstrap.form.NumberField",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.Password",
                 "cn" : [],
                 "is_class" : true
               },
@@ -1358,6 +1374,11 @@
           },
           {
             "name" : "Roo.htmleditor.FilterComment",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterHashLink",
             "cn" : [],
             "is_class" : false
           },

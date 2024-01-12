@@ -1,0 +1,13 @@
+{
+    "name" : "grid",
+    "xtype" : "Roo",
+    "fn" : "db691fdb52c694f15ed3f26bbe8a4b39",
+    "runhtml" : "",
+    "rootURL" : "http://localhost/",
+    "base_template" : "",
+    "html_gen" : "",
+    "DBTYPE" : "",
+    "DBNAME" : "",
+    "DBUSERNAME" : "",
+    "DBPASSWORD" : ""
+}

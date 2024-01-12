@@ -22,7 +22,7 @@
   "config" : [],
   "methods" : [
     {
-      "name" : "email'",
+      "name" : "email",
       "type" : "function",
       "desc" : "The function used to validate email addresses",
       "sig" : "(value)",
@@ -48,33 +48,7 @@
       "returns" : []
     },
     {
-      "name" : "url'",
-      "type" : "function",
-      "desc" : "The function used to validate URLs",
-      "sig" : "(value)",
-      "static" : false,
-      "memberOf" : "",
-      "isStatic" : false,
-      "isConstructor" : false,
-      "isPrivate" : false,
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "exceptions" : "",
-      "requires" : "",
-      "params" : [
-        {
-          "name" : "value",
-          "type" : "String",
-          "desc" : "The URL",
-          "isOptional" : false
-        }
-      ],
-      "returns" : []
-    },
-    {
-      "name" : "alpha'",
+      "name" : "alpha",
       "type" : "function",
       "desc" : "The function used to validate alpha values",
       "sig" : "(value)",
@@ -100,7 +74,59 @@
       "returns" : []
     },
     {
-      "name" : "alphanum'",
+      "name" : "url",
+      "type" : "function",
+      "desc" : "The function used to validate URLs",
+      "sig" : "(value)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "String",
+          "desc" : "The URL",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "urlWeb",
+      "type" : "function",
+      "desc" : "The funciton used to validate URLs (only allow schemes 'https' and 'http')",
+      "sig" : "(v)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "v",
+          "type" : "String",
+          "desc" : "The URL",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "alphanum",
       "type" : "function",
       "desc" : "The function used to validate alphanumeric values",
       "sig" : "(value)",

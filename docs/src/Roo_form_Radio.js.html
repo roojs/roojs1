@@ -60,7 +60,47 @@
             </span><span class="jsdoc-var">this.el.dom.checked </span><span class="jsdoc-syntax">=   </span><span class="jsdoc-string">'checked' </span><span class="jsdoc-syntax">;
         }
 
-    }
+    },
+    </span><span class="jsdoc-comment">/**
+     * Sets the checked state of the checkbox.
+     * On is always based on a string comparison between inputValue and the param.
+     * @param {Boolean/String} value - the value to set 
+     * @param {Boolean/String} suppressEvent - whether to suppress the checkchange event.
+     */
+    </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">){
 
+
+        </span><span class="jsdoc-comment">//this.checked = (v === true || v === 'true' || v == '1' || String(v).toLowerCase() == 'on');
+        //if(this.el &amp;&amp; this.el.dom){
+        //    this.el.dom.checked = this.checked;
+        //    this.el.dom.defaultChecked = this.checked;
+        //}
+        </span><span class="jsdoc-var">this.setChecked</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputValue</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.el.dom.form</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">//this.fireEvent(&quot;check&quot;, this, this.checked);
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-comment">// private..
+    </span><span class="jsdoc-var">setChecked </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">)
+    {
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.wrap</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'addClass' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'removeClass'</span><span class="jsdoc-syntax">](</span><span class="jsdoc-string">'x-menu-item-checked'</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.checked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">suppressEvent </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'check'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
+        }
+
+
+
+
+    },
+    </span><span class="jsdoc-var">reset </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-comment">// this.setValue(this.resetValue);
+        //this.originalValue = this.getValue();
+        </span><span class="jsdoc-var">this.clearInvalid</span><span class="jsdoc-syntax">();
+    }
 
 });</span></code></body></html>

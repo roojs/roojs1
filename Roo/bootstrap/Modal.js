@@ -295,10 +295,16 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             : this.el.select('.modal-footer div',true).first();
 
     },
+    
+    closeClick : function()
+    {
+        this.hide();
+    },
+    
     initEvents : function()
     {
         if (this.allow_close) {
-            this.closeEl.on('click', this.hide, this);
+            this.closeEl.on('click', this.closeClick, this);
         }
         Roo.EventManager.onWindowResize(this.resize, this, true);
         if (this.editableTitle) {

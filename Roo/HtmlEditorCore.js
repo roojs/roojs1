@@ -72,7 +72,7 @@ Roo.HtmlEditorCore = function(config){
          * @param {Roo.HtmlEditorCore} this
          */
         editorevent: true 
-         
+        
         
     });
     
@@ -96,10 +96,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     owner : false,
     
      /**
-     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
-     *                        Roo.resizable.
+     * @cfg {String} css styling for resizing. (used on bootstrap only)
      */
-    resizable : false,
+    resize : false,
      /**
      * @cfg {Number} height (in pixels)
      */   
@@ -232,17 +231,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         this.frameId = Roo.id();
         
-         
-        
-        var iframe = this.owner.wrap.createChild({
+        var ifcfg = {
             tag: 'iframe',
             cls: 'form-control', // bootstrap..
             id: this.frameId,
             name: this.frameId,
             frameBorder : 'no',
             'src' : Roo.SSL_SECURE_URL ? Roo.SSL_SECURE_URL  :  "javascript:false"
-        }, this.el
-        );
+        };
+        if (this.resize) {
+            ifcfg.style = { resize : this.resize };
+        }
+        
+        var iframe = this.owner.wrap.createChild(ifcfg, this.el); 
         
         
         this.iframe = iframe.dom;
@@ -377,11 +378,44 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if (this.enableBlocks) {
                 new Roo.htmleditor.FilterBlock({ node : div });
             }
+            
+            var html = div.innerHTML;
+            
             //?? tidy?
-            var tidy = new Roo.htmleditor.TidySerializer({
-                inner:  true
-            });
-            var html  = tidy.serialize(div);
+            if (this.autoClean) {
+                
+                new Roo.htmleditor.FilterAttributes({
+                    node : div,
+                    attrib_white : [
+                            'href',
+                            'src',
+                            'name',
+                            'align',
+                            'colspan',
+                            'rowspan',
+                            'data-display',
+                            'data-caption-display',
+                            'data-width',
+                            'data-caption',
+                            'start' ,
+                            'style',
+                            // youtube embed.
+                            'class',
+                            'allowfullscreen',
+                            'frameborder',
+                            'width',
+                            'height',
+                            'alt'
+                            ],
+                    attrib_clean : ['href', 'src' ] 
+                });
+                
+                var tidy = new Roo.htmleditor.TidySerializer({
+                    inner:  true
+                });
+                html  = tidy.serialize(div);
+                
+            }
             
             
             if(Roo.isSafari){
@@ -569,14 +603,39 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
         
         // check what type of paste - if it's an image, then handle it differently.
-        if (cd.files && cd.files.length > 0) {
-            // pasting images?
+        if (cd.files && cd.files.length > 0 && cd.types.indexOf('text/html') < 0) {
+            // pasting images? 
             var urlAPI = (window.createObjectURL && window) || 
                 (window.URL && URL.revokeObjectURL && URL) || 
                 (window.webkitURL && webkitURL);
-    
-            var url = urlAPI.createObjectURL( cd.files[0]);
-            this.insertAtCursor('<img src=" + url + ">');
+            
+            var r = new FileReader();
+            var t = this;
+            r.addEventListener('load',function()
+            {
+                
+                var d = (new DOMParser().parseFromString('<img src="' + r.result+ '">', 'text/html')).body;
+                // is insert asycn?
+                if (t.enableBlocks) {
+                    
+                    Array.from(d.getElementsByTagName('img')).forEach(function(img) {
+                        if (img.closest('figure')) { // assume!! that it's aready
+                            return;
+                        }
+                        var fig  = new Roo.htmleditor.BlockFigure({
+                            image_src  : img.src
+                        });
+                        fig.updateElement(img); // replace it..
+                        
+                    });
+                }
+                t.insertAtCursor(d.innerHTML.replace(/&nbsp;/g,' '));
+                t.owner.fireEvent('paste', this);
+            });
+            r.readAsDataURL(cd.files[0]);
+            
+            e.preventDefault();
+            
             return false;
         }
         if (cd.types.indexOf('text/html') < 0 ) {
@@ -588,8 +647,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
-        //Roo.log(images);
-        //Roo.log(imgs);
+        // Roo.log(images);
+        // Roo.log(imgs);
         // fixme..
         images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl|listtable|footerf)/); }) // ignore headers/footers etc.
                        .map(function(g) { return g.toDataURL(); })
@@ -634,13 +693,36 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
                 node : d,
-                attrib_white : ['href', 'src', 'name', 'align', 'colspan', 'rowspan', 'data-display', 'data-width', 'start'],
+                attrib_white : [
+                    'href',
+                    'src',
+                    'name',
+                    'align',
+                    'colspan',
+                    'rowspan' 
+                /*  THESE ARE NOT ALLWOED FOR PASTE
+                 *    'data-display',
+                    'data-caption-display',
+                    'data-width',
+                    'data-caption',
+                    'start' ,
+                    'style',
+                    // youtube embed.
+                    'class',
+                    'allowfullscreen',
+                    'frameborder',
+                    'width',
+                    'height',
+                    'alt'
+                    */
+                    ],
                 attrib_clean : ['href', 'src' ] 
             });
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
             // should be fonts..
             new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', ':' ]} );
             new Roo.htmleditor.FilterParagraph({ node : d });
+            new Roo.htmleditor.FilterHashLink({node : d});
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
             new Roo.htmleditor.FilterComment({ node : d });
@@ -669,6 +751,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
          
         
         e.preventDefault();
+        this.owner.fireEvent('paste', this);
         return false;
         // default behaveiour should be our local cleanup paste? (optional?)
         // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
@@ -745,6 +828,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (e && (e.ctrlKey || e.metaKey) && e.keyCode === 90) {
             return; // we do not handle this.. (undo manager does..)
         }
+        // clicking a 'block'?
+        
         // in theory this detects if the last element is not a br, then we try and do that.
         // its so clicking in space at bottom triggers adding a br and moving the cursor.
         if (e &&
@@ -847,6 +932,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 break;
             case 'bold':
             case 'italic':
+            case 'underline':                
                 // if there is no selection, then we insert, and set the curson inside it..
                 this.execCmd('styleWithCSS', false); 
                 break;

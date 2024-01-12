@@ -195,7 +195,7 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
     /**
      * @cfg {Number} maxHeight The maximum height in pixels of the dropdown list before scrollbars are shown (defaults to 300)
      */
-    maxHeight: 300,
+    // maxHeight: 300, // not used (change maxHeight in CSS. target the list using listClass)
     /**
      * @cfg {String} triggerAction The action to execute when the trigger field is activated.  Use 'all' to run the
      * query specified by the allQuery config option (defaults to 'query')
@@ -502,12 +502,13 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
             cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
             tooltip : 'This field is required'
         };
-        if (Roo.bootstrap.version == 4) {
+         
+        if (this.allowBlank) {
             indicator = {
                 tag : 'i',
                 style : 'display:none'
             };
-        }
+        } 
         if (align ==='left' && this.fieldLabel.length) {
             
             cfg.cls += ' roo-form-group-label-left'  + (Roo.bootstrap.version == 4 ? ' row' : '');
@@ -719,6 +720,8 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
         //this.list = new Roo.Layer({
         //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
         //});
+
+        this.list.addClass(this.listClass);
         
         var _this = this;
         
@@ -1825,6 +1828,8 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
         if (!this.editable) {
             Roo.get(document).on('keydown', this.listKeyPress, this);
         }
+
+        this.list.setStyle('maxHeight', 'calc(100% - ' + this.list.getTop() + 'px - 50px)');
         
         this.fireEvent('expand', this);
     },

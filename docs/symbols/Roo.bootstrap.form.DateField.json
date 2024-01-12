@@ -171,14 +171,6 @@
       "optvals" : []
     },
     {
-      "name" : "altFormats",
-      "type" : "String",
-      "desc" : "Multiple date formats separated by \"|\" to try when parsing a user input value and it doesn't match the defined\nformat (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').",
-      "memberOf" : "",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
       "name" : "viewMode",
       "type" : "String",
       "desc" : "default empty, (months|years)",
@@ -834,6 +826,25 @@
       "name" : "reset",
       "type" : "function",
       "desc" : "Resets the current field value to the originally loaded value and clears any validation messages",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "getAutoCreateLabel",
+      "type" : "function",
+      "desc" : "autocreate the label - also used by textara... ?? and others?",
       "sig" : "()\n{\n\n}",
       "static" : false,
       "memberOf" : "Roo.bootstrap.form.Input",

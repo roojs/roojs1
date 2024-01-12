@@ -66,16 +66,30 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         this.view.singleSelect = false;
         this.view.multiSelect = true;
         this.view.toggleSelect = true;
-        this.pageTb.add(new Roo.Toolbar.Fill(), {
+        this.pageTb.add(new Roo.Toolbar.Fill(),{
             
+            text: 'Select All',
+            handler: function() {
+                _t.selectAll();
+            }
+        },
+        {
             text: 'Done',
-            handler: function()
-            {
+            handler: function() {
                 _t.collapse();
             }
         });
     },
     
+    cleanLeadingSpace : function(e)
+    {
+        // this is disabled, as it retriggers setvalue on blur
+        return;
+    },
+    doForce : function() {
+        // no idea what this did, but it blanks out our values.
+        return;
+    },
     onViewOver : function(e, t){
         // do nothing...
         return;
@@ -108,7 +122,17 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         return false;
     },
     
-    
+    selectAll : function()
+    {
+        var sels = [];
+        this.store.each(function(r,i) {
+            sels.push(i);
+        });
+        this.view.select(sels);
+        this.collapse();
+        return false;
+
+    },
     
     onSelect : function(record, index){
        // Roo.log("onselect Called");

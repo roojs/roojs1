@@ -505,15 +505,18 @@ Roo.factory(conf, Roo.data);
             return s.replace(/([.*+?^${}()|[\]\/\\])/g, "\\$1");
         },
 
-        // internal
-        callback : function(cb, scope, args, delay){
-            if(typeof cb == "function"){
-                if(delay){
-                    cb.defer(delay, scope, args || []);
-                }else{
-                    cb.apply(scope, args || []);
-                }
+        // internal (non-delayed, will get a return value..)
+        callback : function(cb, scope, args, delay)
+		{
+            if(typeof cb != "function"){
+				return false;
+			}
+			if(delay){
+				cb.defer(delay, scope, args || []);
+				return false
             }
+			return cb.apply(scope, args || []);
+
         },
 
         /**
@@ -5513,7 +5516,7 @@ Roo.DomHelper = function(){
         if (typeof(o) == 'string') {
             return parentNode.appendChild(document.createTextNode(o));
         }
-        o.tag = o.tag || div;
+        o.tag = o.tag || 'div';
         if (o.ns && Roo.isIE) {
             ns = false;
             o.tag = o.ns + ':' + o.tag;
@@ -16992,6 +16995,13 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
      */
     actionMode : "el",
 
+	 /**
+     * @cfg {String} style
+     * css styles to add to component
+     * eg. text-align:right;
+     */
+    style : false,
+	
     /** @private */
     getActionEl : function(){
         return this[this.actionMode];

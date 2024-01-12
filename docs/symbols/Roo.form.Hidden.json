@@ -109,6 +109,14 @@
       "optvals" : []
     },
     {
+      "name" : "style",
+      "type" : "String",
+      "desc" : "css styles to add to component\neg. text-align:right;",
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "value",
       "type" : "Mixed",
       "desc" : "A value to initialize this field with.",
@@ -189,6 +197,14 @@
       "optvals" : []
     },
     {
+      "name" : "labelSeparator",
+      "type" : "String",
+      "desc" : "the ':' after a field label (default :)  = set it to empty string to hide the field label.",
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "cls",
       "type" : "String",
       "desc" : "A CSS class to apply to the field's underlying element.",
@@ -229,14 +245,6 @@
       "optvals" : []
     },
     {
-      "name" : "autoCreate",
-      "type" : "String/Object",
-      "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"text\", size: \"20\", autocomplete: \"off\"})",
-      "memberOf" : "Roo.form.Field",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
       "name" : "invalidClass",
       "type" : "String",
       "desc" : "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
@@ -265,6 +273,14 @@
       "type" : "Number",
       "desc" : "The minimum width to allow when grow = true (defaults to 30)",
       "memberOf" : "Roo.form.TextField",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "autoCreate",
+      "type" : "String/Object",
+      "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"text\", size: \"20\", autocomplete: \"off\"})",
+      "memberOf" : "Roo.form.Field",
       "isOptional" : false,
       "optvals" : []
     },

@@ -128,6 +128,14 @@
       "optvals" : []
     },
     {
+      "name" : "style",
+      "type" : "String",
+      "desc" : "css styles to add to component\neg. text-align:right;",
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "value",
       "type" : "Mixed",
       "desc" : "A value to initialize this field with.",
@@ -219,6 +227,14 @@
       "name" : "cls",
       "type" : "String",
       "desc" : "A CSS class to apply to the field's underlying element.",
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "labelSeparator",
+      "type" : "String",
+      "desc" : "the ':' after a field label (default :)  = set it to empty string to hide the field label.",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
       "optvals" : []

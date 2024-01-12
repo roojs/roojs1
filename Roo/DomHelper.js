@@ -120,7 +120,7 @@ Roo.DomHelper = function(){
         if (typeof(o) == 'string') {
             return parentNode.appendChild(document.createTextNode(o));
         }
-        o.tag = o.tag || div;
+        o.tag = o.tag || 'div';
         if (o.ns && Roo.isIE) {
             ns = false;
             o.tag = o.ns + ':' + o.tag;

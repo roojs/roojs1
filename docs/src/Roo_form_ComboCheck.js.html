@@ -66,16 +66,30 @@
         </span><span class="jsdoc-var">this.view.singleSelect </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.view.multiSelect </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.view.toggleSelect </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.pageTb.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Toolbar.Fill</span><span class="jsdoc-syntax">(), {
+        </span><span class="jsdoc-var">this.pageTb.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Toolbar.Fill</span><span class="jsdoc-syntax">(),{
 
+            </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Select All'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                </span><span class="jsdoc-var">_t.selectAll</span><span class="jsdoc-syntax">();
+            }
+        },
+        {
             </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Done'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
-            {
+            </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
                 </span><span class="jsdoc-var">_t.collapse</span><span class="jsdoc-syntax">();
             }
         });
     },
 
+    </span><span class="jsdoc-var">cleanLeadingSpace </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// this is disabled, as it retriggers setvalue on blur
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">doForce </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-comment">// no idea what this did, but it blanks out our values.
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+    },
     </span><span class="jsdoc-var">onViewOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-comment">// do nothing...
         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
@@ -108,7 +122,17 @@
         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
     },
 
+    </span><span class="jsdoc-var">selectAll </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sels </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">this.store.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">sels.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+        });
+        </span><span class="jsdoc-var">this.view.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sels</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
 
+    },
 
     </span><span class="jsdoc-var">onSelect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
        </span><span class="jsdoc-comment">// Roo.log(&quot;onselect Called&quot;);

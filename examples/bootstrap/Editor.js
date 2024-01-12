@@ -44,15 +44,17 @@ Roo.example.Editor = new Roo.XComponent({
                                         },
                                         {
                                             xtype : 'HtmlEditor',
-                                            xns : Roo.bootstrap,
+                                            xns : Roo.bootstrap.form,
                                             name : 'thanks-email',
                                             width : 1000,
-                                            height : 1500,
+                                            height : 500,
+											resize : 'vertical',
+											//toolbars : [ 'Standard', 'Context' ],
                                             stylesheets : (function(){
                                                 var css = [];
                                                 
-                                                css.push('../css-bootstrap/bootstrap.css');
-                                                css.push('../css-bootstrap/font-awesome.css');
+                                                css.push('../../css-bootstrap/bootstrap.css');
+                                                css.push('../../css-bootstrap/font-awesome.css');
                                                 //css.push(rootURL + '/Campaign/editor/editor.css');
                                                 
                                                 return css;
@@ -61,6 +63,15 @@ Roo.example.Editor = new Roo.XComponent({
                                                 render : function (_self)
                                                 {
                                                     _this.previewPanel = _self;
+                                                },
+                                                imageadd : function(a) {
+                                                    Roo.log(['imageadd', a])
+                                                },
+                                                imageupdate : function(a,b) {
+                                                    Roo.log(['imageupdate', a,b])
+                                                },
+                                                imagedelete : function(a,b) {
+                                                    Roo.log(['imagedelete', a,b])
                                                 }
                                             }
                                         }
