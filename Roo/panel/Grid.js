@@ -2,7 +2,7 @@
 /**
  * @class Roo.panel.Grid
  * @extends Roo.panel.Content
- * @parent Roo.BorderLayout Roo.LayoutDialog builder
+ * @parent Roo.layout.Border Roo.LayoutDialog builder
  * @constructor
  * Create a new GridPanel.
  * @cfg {Roo.grid.Grid} grid The grid for this panel

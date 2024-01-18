@@ -260,7 +260,7 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
         if(!provider){
             provider = Roo.state.Manager;
         }
-        var sm = new Roo.LayoutStateManager();
+        var sm = new Roo.layout.StateManager();
         sm.init(this, provider);
     },
 */
@@ -294,7 +294,7 @@ layout.addxtype({
     {
         // basically accepts a pannel...
         // can accept a layout region..!?!?
-        //Roo.log('Roo.BorderLayout add ' + cfg.xtype)
+        //Roo.log('Roo.layout.Border add ' + cfg.xtype)
         
         
         // theory?  children can only be panels??

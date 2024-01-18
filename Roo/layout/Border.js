@@ -10,7 +10,7 @@
  */
 /**
  * @class Roo.layout.Border
- * @extends Roo.LayoutManager
+ * @extends Roo.layout.Manager
  * @children Roo.panel.Content
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
  * please see: <br><br>
@@ -92,22 +92,22 @@ Roo.layout.Border = function(container, config){
     }
 };
 
-Roo.extend(Roo.layout.Border, Roo.LayoutManager, {
+Roo.extend(Roo.layout.Border, Roo.layout.Manager, {
 	
 	/**
-	 * @cfg {Roo.LayoutRegion} east
+	 * @cfg {Roo.layout.Region} east
 	 */
 	/**
-	 * @cfg {Roo.LayoutRegion} west
+	 * @cfg {Roo.layout.Region} west
 	 */
 	/**
-	 * @cfg {Roo.LayoutRegion} north
+	 * @cfg {Roo.layout.Region} north
 	 */
 	/**
-	 * @cfg {Roo.LayoutRegion} south
+	 * @cfg {Roo.layout.Region} south
 	 */
 	/**
-	 * @cfg {Roo.LayoutRegion} center
+	 * @cfg {Roo.layout.Region} center
 	 */
     /**
      * Creates and adds a new region if it doesn't already exist.
@@ -292,7 +292,7 @@ Roo.extend(Roo.layout.Border, Roo.LayoutManager, {
         if(!provider){
             provider = Roo.state.Manager;
         }
-        var sm = new Roo.LayoutStateManager();
+        var sm = new Roo.layout.StateManager();
         sm.init(this, provider);
     },
 
@@ -691,20 +691,14 @@ Roo.layout.Border.RegionFactory = {
     create : function(target, mgr, config){
         target = target.toLowerCase();
         if(config.lightweight || config.basic){
-            return new Roo.BasicLayoutRegion(mgr, config, target);
+            return new Roo.layout.BasicRegion(mgr, config, target);
         }
-        switch(target){
-            case "north":
-                return new Roo.NorthLayoutRegion(mgr, config);
-            case "south":
-                return new Roo.SouthLayoutRegion(mgr, config);
-            case "east":
-                return new Roo.EastLayoutRegion(mgr, config);
-            case "west":
-                return new Roo.WestLayoutRegion(mgr, config);
-            case "center":
-                return new Roo.CenterLayoutRegion(mgr, config);
-        }
-        throw 'Layout region "'+target+'" not supported.';
+		var cn = target.charAt(0).toUpperCase() + target.slice(1);
+		if (typeof (Roo.layout[cn]) == 'undefined') {
+			throw 'Layout region "'+target+'" not supported.';
+		}
+		return new Roo.layout[cn](mgr, config);
+         
+        
     }
 };

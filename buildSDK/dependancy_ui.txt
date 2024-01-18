@@ -157,21 +157,30 @@ Roo.form.Select
 // Must be after view and form.field as it uses both.
 Roo.DDView
 
-Roo.LayoutManager
-Roo.BorderLayout
-Roo.BasicLayoutRegion
-Roo.LayoutRegion
-Roo.SplitLayoutRegion
-Roo.CenterLayoutRegion
-Roo.LayoutStateManager
+
+  
+Roo.layout.namespace
+
+Roo.layout.Manager
+Roo.layout.Border
+Roo.layout.BasicRegion
+Roo.layout.Region
+Roo.layout.SplitRegion
+Roo.layout.Center
+Roo.layout.West
+Roo.layout.East
+Roo.layout.South
+Roo.layout.North
+Roo.layout.StateManager
+
 Roo.panel.Content
 Roo.panel.Grid
 Roo.panel.NestedLayout
-Roo.ScrollPanel
+Roo.panel.Scroll
 Roo.panel.Tree
 
 //		*** Can be Optional *** - only if you use it..
-Roo.ReaderLayout
+Roo.layout.Reader
 
 Roo.grid.Grid
 Roo.grid.AbstractGridView

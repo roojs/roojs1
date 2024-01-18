@@ -29,7 +29,7 @@ if(!dialog){
     dialog.addButton("Build It!", this.getDownload, this);
 
     // we can even add nested layouts
-    var innerLayout = new Roo.BorderLayout("dl-inner", {
+    var innerLayout = new Roo.layout.Border("dl-inner", {
         east: {
             initialSize: 200,
             autoScroll:true,
@@ -74,7 +74,7 @@ Roo.LayoutDialog = function(el, cfg){
     config.autoTabs = false;
     Roo.LayoutDialog.superclass.constructor.call(this, el, config);
     this.body.setStyle({overflow:"hidden", position:"relative"});
-    this.layout = new Roo.BorderLayout(this.body.dom, config);
+    this.layout = new Roo.layout.Border(this.body.dom, config);
     this.layout.monitorWindowResize = false;
     this.el.addClass("x-dlg-auto-layout");
     // fix case when center region overwrites center function
@@ -92,19 +92,19 @@ Roo.extend(Roo.LayoutDialog, Roo.BasicDialog, {
     
     
     /**
-     * @cfg {Roo.LayoutRegion} east  
+     * @cfg {Roo.layout.Region} east  
      */
     /**
-     * @cfg {Roo.LayoutRegion} west
+     * @cfg {Roo.layout.Region} west
      */
     /**
-     * @cfg {Roo.LayoutRegion} south
+     * @cfg {Roo.layout.Region} south
      */
     /**
-     * @cfg {Roo.LayoutRegion} north
+     * @cfg {Roo.layout.Region} north
      */
     /**
-     * @cfg {Roo.LayoutRegion} center
+     * @cfg {Roo.layout.Region} center
      */
     /**
      * @cfg {Roo.Button} buttons[]  Bottom buttons..
@@ -129,7 +129,7 @@ Roo.extend(Roo.LayoutDialog, Roo.BasicDialog, {
 
     /**
      * Get the BorderLayout for this dialog
-     * @return {Roo.BorderLayout}
+     * @return {Roo.layout.Border}
      */
     getLayout : function(){
         return this.layout;

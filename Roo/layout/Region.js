@@ -11,7 +11,7 @@
  
 /**
  * @class Roo.layout.Region
- * @extends Roo.BasicLayoutRegion
+ * @extends Roo.layout.BasicRegion
  * This class represents a region in a layout manager.
  * @cfg {Boolean}   collapsible     False to disable collapsing (defaults to true)
  * @cfg {Boolean}   collapsed       True to set the initial display to collapsed (defaults to false)
@@ -77,7 +77,7 @@ Roo.layout.Region = function(mgr, config, pos){
     this.applyConfig(config);
 };
 
-Roo.extend(Roo.layout.Region, Roo.BasicLayoutRegion, {
+Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
 
     createBody : function(){
         /** This region's body element 

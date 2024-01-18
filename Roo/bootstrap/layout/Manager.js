@@ -32,26 +32,26 @@ Roo.bootstrap.layout.Manager = function(config)
         /**
          * @event layout
          * Fires when a layout is performed.
-         * @param {Roo.LayoutManager} this
+         * @param {Roo.layout.Manager} this
          */
         "layout" : true,
         /**
          * @event regionresized
          * Fires when the user resizes a region.
-         * @param {Roo.LayoutRegion} region The resized region
+         * @param {Roo.layout.Region} region The resized region
          * @param {Number} newSize The new size (width for east/west, height for north/south)
          */
         "regionresized" : true,
         /**
          * @event regioncollapsed
          * Fires when a region is collapsed.
-         * @param {Roo.LayoutRegion} region The collapsed region
+         * @param {Roo.layout.Region} region The collapsed region
          */
         "regioncollapsed" : true,
         /**
          * @event regionexpanded
          * Fires when a region is expanded.
-         * @param {Roo.LayoutRegion} region The expanded region
+         * @param {Roo.layout.Region} region The expanded region
          */
         "regionexpanded" : true
     });
@@ -178,7 +178,7 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
     /**
      * Returns the specified region.
      * @param {String} target The region key ('center', 'north', 'south', 'east' or 'west')
-     * @return {Roo.LayoutRegion}
+     * @return {Roo.layout.Region}
      */
     getRegion : function(target){
         return this.regions[target.toLowerCase()];
