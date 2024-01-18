@@ -419,10 +419,4 @@ Widgets (Classic Roo)
             [examples/tabs/tabs-adv.html]Advanced Tabs(dynamic adding of tabs)
             [examples/panel/cropbox.html]Cropbox
         
-        Examples
-            [examples/layout/simple.html]Simple Layout
-            [examples/layout/nested.html]Nested Layout
-            [examples/layout/complex.html]Complex Layout ( Broken - needs converting to Roo JS)
-            [examples/tabs/tabs.html]Basic Tabs  (borders broken on tab boxes)
-            [examples/tabs/tabs-adv.html]Advanced Tabs(dynamic adding of tabs)
-            [examples/panel/cropbox.html]Cropbox
+         
