@@ -31301,7 +31301,11 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                  this.colWidths[i] = nw;
                 return;
             }
-            this.colWidths[i] += otherAdd
+            if (typeof(this.colWidths[i]) == 'undefined') {
+                this.colWidths[i] = otherAdd;
+            } else {
+                this.colWidths[i] += otherAdd;
+            }
         }, this);
         this.updateWidths(table);
          
@@ -31321,7 +31325,12 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 this.colWidths[i] = nw;
                 return;
             }
-            this.colWidths[i] -= otherSub
+            if (typeof(this.colWidths[i]) == 'undefined') {
+                this.colWidths[i] = otherSub;
+            } else {
+                this.colWidths[i] -= otherSub;
+            }
+            
         }, this);
         this.updateWidths(table);
          
