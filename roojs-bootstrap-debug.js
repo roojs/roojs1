@@ -43506,26 +43506,26 @@ Roo.bootstrap.layout.Manager = function(config)
         /**
          * @event layout
          * Fires when a layout is performed.
-         * @param {Roo.LayoutManager} this
+         * @param {Roo.layout.Manager} this
          */
         "layout" : true,
         /**
          * @event regionresized
          * Fires when the user resizes a region.
-         * @param {Roo.LayoutRegion} region The resized region
+         * @param {Roo.layout.Region} region The resized region
          * @param {Number} newSize The new size (width for east/west, height for north/south)
          */
         "regionresized" : true,
         /**
          * @event regioncollapsed
          * Fires when a region is collapsed.
-         * @param {Roo.LayoutRegion} region The collapsed region
+         * @param {Roo.layout.Region} region The collapsed region
          */
         "regioncollapsed" : true,
         /**
          * @event regionexpanded
          * Fires when a region is expanded.
-         * @param {Roo.LayoutRegion} region The expanded region
+         * @param {Roo.layout.Region} region The expanded region
          */
         "regionexpanded" : true
     });
@@ -43652,7 +43652,7 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
     /**
      * Returns the specified region.
      * @param {String} target The region key ('center', 'north', 'south', 'east' or 'west')
-     * @return {Roo.LayoutRegion}
+     * @return {Roo.layout.Region}
      */
     getRegion : function(target){
         return this.regions[target.toLowerCase()];
@@ -43926,7 +43926,7 @@ Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
         if(!provider){
             provider = Roo.state.Manager;
         }
-        var sm = new Roo.LayoutStateManager();
+        var sm = new Roo.layout.StateManager();
         sm.init(this, provider);
     },
 */
@@ -43960,7 +43960,7 @@ layout.addxtype({
     {
         // basically accepts a pannel...
         // can accept a layout region..!?!?
-        //Roo.log('Roo.BorderLayout add ' + cfg.xtype)
+        //Roo.log('Roo.layout.Border add ' + cfg.xtype)
         
         
         // theory?  children can only be panels??
@@ -44197,13 +44197,13 @@ Roo.bootstrap.layout.Basic = function(config){
     
     this.events = {
         /**
-         * @scope Roo.BasicLayoutRegion
+         * @scope Roo.layout.BasicRegion
          */
         
         /**
          * @event beforeremove
          * Fires before a panel is removed (or closed). To cancel the removal set "e.cancel = true" on the event argument.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Roo.ContentPanel} panel The panel
          * @param {Object} e The cancel event object
          */
@@ -44211,71 +44211,71 @@ Roo.bootstrap.layout.Basic = function(config){
         /**
          * @event invalidated
          * Fires when the layout for this region is changed.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "invalidated" : true,
         /**
          * @event visibilitychange
          * Fires when this region is shown or hidden 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Boolean} visibility true or false
          */
         "visibilitychange" : true,
         /**
          * @event paneladded
          * Fires when a panel is added. 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Roo.ContentPanel} panel The panel
          */
         "paneladded" : true,
         /**
          * @event panelremoved
          * Fires when a panel is removed. 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Roo.ContentPanel} panel The panel
          */
         "panelremoved" : true,
         /**
          * @event beforecollapse
          * Fires when this region before collapse.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "beforecollapse" : true,
         /**
          * @event collapsed
          * Fires when this region is collapsed.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "collapsed" : true,
         /**
          * @event expanded
          * Fires when this region is expanded.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "expanded" : true,
         /**
          * @event slideshow
          * Fires when this region is slid into view.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "slideshow" : true,
         /**
          * @event slidehide
          * Fires when this region slides out of view. 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "slidehide" : true,
         /**
          * @event panelactivated
          * Fires when a panel is activated. 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Roo.ContentPanel} panel The activated panel
          */
         "panelactivated" : true,
         /**
          * @event resized
          * Fires when the user resizes this region. 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Number} newSize The new size (width for east/west, height for north/south)
          */
         "resized" : true
@@ -45245,9 +45245,9 @@ Roo.extend(Roo.bootstrap.layout.Region, Roo.bootstrap.layout.Basic, {
 
 
 /**
- * @class Roo.SplitLayoutRegion
- * @extends Roo.LayoutRegion
- * Adds a splitbar and other (private) useful functionality to a {@link Roo.LayoutRegion}.
+ * @class Roo.layout.SplitRegion
+ * @extends Roo.layout.Region
+ * Adds a splitbar and other (private) useful functionality to a {@link Roo.layout.Region}.
  */
 Roo.bootstrap.layout.Split = function(config){
     this.cursor = config.cursor;
@@ -46664,7 +46664,7 @@ Roo.bootstrap.panel.Nest = function(config)
 
 Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
     /**
-    * @cfg {Roo.BorderLayout} layout The layout for this panel
+    * @cfg {Roo.layout.Border} layout The layout for this panel
     */
     layout : false,
 
@@ -46724,7 +46724,7 @@ Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
     
     /**
      * Returns the nested BorderLayout for this panel
-     * @return {Roo.BorderLayout} 
+     * @return {Roo.layout.Border} 
      */
     getLayout : function(){
         return this.layout;

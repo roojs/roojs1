@@ -63,11 +63,9 @@
     ],
     "Roo.util.Observable" : [
       "Roo.BasicDialog",
-      "Roo.BasicLayoutRegion",
       "Roo.Button",
       "Roo.Component",
       "Roo.Document",
-      "Roo.LayoutManager",
       "Roo.Resizable",
       "Roo.SplitBar",
       "Roo.UpdateManager",
@@ -90,6 +88,8 @@
       "Roo.grid.ColumnModel",
       "Roo.grid.Grid",
       "Roo.grid.GridView",
+      "Roo.layout.BasicRegion",
+      "Roo.layout.Manager",
       "Roo.menu.Menu",
       "Roo.panel.Content",
       "Roo.panel.Tab",
@@ -117,6 +117,10 @@
     "Roo.menu.Item" : [
       "Roo.menu.CheckItem"
     ],
+    "Roo.layout.Region" : [
+      "Roo.bootstrap.layout.Split",
+      "Roo.layout.SplitRegion"
+    ],
     "Roo.bootstrap.form.TextArea" : [
       "Roo.bootstrap.form.HtmlEditor",
       "Roo.bootstrap.form.Markdown"
@@ -132,6 +136,9 @@
     ],
     "Roo.form.BasicForm" : [
       "Roo.form.Form"
+    ],
+    "Roo.layout.Border" : [
+      "Roo.layout.Reader"
     ],
     "Roo.SplitButton" : [
       "Roo.Toolbar.SplitButton"
@@ -158,6 +165,9 @@
     "Roo.data.Store" : [
       "Roo.data.JsonStore",
       "Roo.data.SimpleStore"
+    ],
+    "Roo.layout.BasicRegion" : [
+      "Roo.layout.Region"
     ],
     "Roo.dd.DDProxy" : [
       "Roo.dd.DragSource",
@@ -208,6 +218,9 @@
     "Roo.bootstrap.Button" : [
       "Roo.bootstrap.ButtonUploader",
       "Roo.bootstrap.form.CardUploader"
+    ],
+    "Roo.layout.Manager" : [
+      "Roo.layout.Border"
     ],
     "Roo.bootstrap.Component" : [
       "Roo.bootstrap.Alert",

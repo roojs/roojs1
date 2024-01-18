@@ -33,11 +33,6 @@
         "is_class" : true
       },
       {
-        "name" : "Roo.BasicLayoutRegion",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
         "name" : "Roo.BoxComponent",
         "cn" : [],
         "is_class" : true
@@ -163,11 +158,6 @@
         "is_class" : true
       },
       {
-        "name" : "Roo.LayoutManager",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
         "name" : "Roo.LoadMask",
         "cn" : [],
         "is_class" : true
@@ -191,11 +181,6 @@
         "name" : "Roo.QuickTips",
         "cn" : [],
         "is_class" : true
-      },
-      {
-        "name" : "Roo.ReaderLayout",
-        "cn" : [],
-        "is_class" : false
       },
       {
         "name" : "Roo.Resizable",
@@ -1373,6 +1358,42 @@
           },
           {
             "name" : "Roo.htmleditor.TidyWriter",
+            "cn" : [],
+            "is_class" : true
+          }
+        ],
+        "is_class" : false
+      },
+      {
+        "name" : "Roo.layout",
+        "cn" : [
+          {
+            "name" : "Roo.layout.BasicRegion",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.layout.Border",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.layout.Manager",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.layout.Reader",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.layout.Region",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.layout.SplitRegion",
             "cn" : [],
             "is_class" : true
           }

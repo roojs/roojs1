@@ -295,7 +295,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.LayoutRegion",
+          "type" : "Roo.layout.Region",
           "desc" : ""
         }
       ]
@@ -1032,7 +1032,7 @@
       "params" : [
         {
           "name" : "region",
-          "type" : "Roo.LayoutRegion",
+          "type" : "Roo.layout.Region",
           "desc" : "The collapsed region",
           "isOptional" : false
         }
@@ -1052,7 +1052,7 @@
       "params" : [
         {
           "name" : "region",
-          "type" : "Roo.LayoutRegion",
+          "type" : "Roo.layout.Region",
           "desc" : "The expanded region",
           "isOptional" : false
         }
@@ -1072,7 +1072,7 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "Roo.LayoutManager",
+          "type" : "Roo.layout.Manager",
           "desc" : "",
           "isOptional" : false
         }
@@ -1092,7 +1092,7 @@
       "params" : [
         {
           "name" : "region",
-          "type" : "Roo.LayoutRegion",
+          "type" : "Roo.layout.Region",
           "desc" : "The resized region",
           "isOptional" : false
         },

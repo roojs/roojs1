@@ -1,10 +1,14 @@
 {
   "name" : "Roo.bootstrap.layout.Split",
-  "augments" : [],
+  "augments" : [
+    "Roo.layout.Region",
+    "Roo.layout.BasicRegion",
+    "Roo.util.Observable"
+  ],
   "childClasses" : {  },
   "tree_children" : [],
   "tree_parent" : [],
-  "desc" : "Adds a splitbar and other (private) useful functionality to a {@link Roo.LayoutRegion}.",
+  "desc" : "Adds a splitbar and other (private) useful functionality to a {@link Roo.layout.Region}.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
@@ -19,7 +23,235 @@
   "returns" : [],
   "throws" : "",
   "requires" : "",
-  "config" : [],
+  "config" : [
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "cmargins",
+      "type" : "Object",
+      "desc" : "Margins for the element when collapsed (defaults to: north/south {top: 2, left: 0, right:0, bottom: 2} or east/west {top: 0, left: 2, right:2, bottom: 0})",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "alwaysShowTabs",
+      "type" : "Boolean",
+      "desc" : "True to always display tabs even when there is only 1 panel (defaults to false)",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "margins",
+      "type" : "Object",
+      "desc" : "Margins for the element (defaults to {top: 0, left: 0, right:0, bottom: 0})",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "preferredTabWidth",
+      "type" : "Number",
+      "desc" : "The preferred tab width (defaults to 150)",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "disableTabTips",
+      "type" : "Boolean",
+      "desc" : "True to disable tab tooltips",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "collapsible",
+      "type" : "Boolean",
+      "desc" : "False to disable collapsing (defaults to true)",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "collapsedTitle",
+      "type" : "String",
+      "desc" : "Optional string message to display in the collapsed block of a north or south region",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "autoScroll",
+      "type" : "Boolean",
+      "desc" : "True to enable overflow scrolling (defaults to false)",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "hidden",
+      "type" : "Boolean",
+      "desc" : "True to start the region hidden (defaults to false)",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "toolbar",
+      "type" : "Boolean",
+      "desc" : "xtype configuration for a toolbar - shows on right of tabbar",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "title",
+      "type" : "String",
+      "desc" : "The title for the region (overrides panel titles)",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "hideWhenEmpty",
+      "type" : "Boolean",
+      "desc" : "True to hide the region when it has no panels",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "collapsed",
+      "type" : "Boolean",
+      "desc" : "True to set the initial display to collapsed (defaults to false)",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "hideTabs",
+      "type" : "Boolean",
+      "desc" : "True to hide the tab strip (defaults to false)",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "resizeTabs",
+      "type" : "Boolean",
+      "desc" : "True to enable automatic tab resizing. This will resize the tabs so they are all the same size and fit within\n                     the space available, similar to FireFox 1.5 tabs (defaults to false)",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "tabPosition",
+      "type" : "String",
+      "desc" : "m) \"top\" or \"bottom\" (defaults to \"bottom",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : [
+        "top",
+        "bottom"
+      ]
+    },
+    {
+      "name" : "width",
+      "type" : "Number",
+      "desc" : "For East/West panels",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "floatable",
+      "type" : "Boolean",
+      "desc" : "False to disable floating (defaults to true)",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "minTabWidth",
+      "type" : "Number",
+      "desc" : "The minimum tab width (defaults to 40)",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "split",
+      "type" : "Boolean",
+      "desc" : "To show the splitter",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "titlebar",
+      "type" : "Boolean",
+      "desc" : "True to display a title bar (defaults to true)",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "preservePanels",
+      "type" : "Boolean",
+      "desc" : "True to preserve removed panels so they can be readded later (defaults to false)",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "closeOnTab",
+      "type" : "Boolean",
+      "desc" : "True to place the close icon on the tabs instead of the region titlebar (defaults to false)",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "height",
+      "type" : "Number",
+      "desc" : "For North/South panels",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "animate",
+      "type" : "Boolean",
+      "desc" : "True to animate expand/collapse (defaults to false)",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "autoHide",
+      "type" : "Boolean",
+      "desc" : "False to disable auto hiding when the mouse leaves the \"floated\" region (defaults to true)",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "showPin",
+      "type" : "Boolean",
+      "desc" : "True to show a pin button",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    }
+  ],
   "methods" : [
     {
       "name" : "getSplitBar",
@@ -45,7 +277,1124 @@
           "desc" : ""
         }
       ]
+    },
+    {
+      "name" : "add",
+      "type" : "function",
+      "desc" : "Adds the passed ContentPanel(s) to this region.",
+      "sig" : "(panel)",
+      "static" : false,
+      "memberOf" : "Roo.layout.Region",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "panel",
+          "type" : "panel.Content...",
+          "desc" : "The ContentPanel(s) to add (you can pass more than one)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.panel.Content",
+          "desc" : "The panel added (if only one was added; null otherwise)"
+        }
+      ]
+    },
+    {
+      "name" : "hidePanel",
+      "type" : "function",
+      "desc" : "Hides the tab for the specified panel.",
+      "sig" : "(panel)",
+      "static" : false,
+      "memberOf" : "Roo.layout.Region",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "panel",
+          "type" : "Number/String/panel.Content",
+          "desc" : "The panel's index, id or the panel itself",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "remove",
+      "type" : "function",
+      "desc" : "Removes the specified panel. If preservePanel is not true (either here or in the config), the panel is destroyed.",
+      "sig" : "(panel, preservePanel)",
+      "static" : false,
+      "memberOf" : "Roo.layout.Region",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "panel",
+          "type" : "Number/String/panel.Content",
+          "desc" : "The panel's index, id or the panel itself",
+          "isOptional" : false
+        },
+        {
+          "name" : "preservePanel",
+          "type" : "Boolean",
+          "desc" : "Overrides the config preservePanel option",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.panel.Content",
+          "desc" : "The panel that was removed"
+        }
+      ]
+    },
+    {
+      "name" : "getActivePanel",
+      "type" : "function",
+      "desc" : "Get the active panel for this region.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.layout.Region",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.panel.Content",
+          "desc" : "The active panel or null"
+        }
+      ]
+    },
+    {
+      "name" : "isVisible",
+      "type" : "function",
+      "desc" : "Returns true if this region is currently visible.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.layout.Region",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "getEl",
+      "type" : "function",
+      "desc" : "Returns the container element for this region.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.layout.Region",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "showPanel",
+      "type" : "function",
+      "desc" : "Shows the specified panel.",
+      "sig" : "(panelId)",
+      "static" : false,
+      "memberOf" : "Roo.layout.Region",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "panelId",
+          "type" : "Number/String/panel.Content",
+          "desc" : "The panel's index, id or the panel itself",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.panel.Content",
+          "desc" : "The shown panel, or null if a panel could not be found from panelId"
+        }
+      ]
+    },
+    {
+      "name" : "expand",
+      "type" : "function",
+      "desc" : "Expands this region if it was previously collapsed.",
+      "sig" : "(e, skipAnim)",
+      "static" : false,
+      "memberOf" : "Roo.layout.Region",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "The event that triggered the expand (or null if calling manually)",
+          "isOptional" : false
+        },
+        {
+          "name" : "skipAnim",
+          "type" : "Boolean",
+          "desc" : "(optional) true to expand the element without animation (if animate is true)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "setCollapsedTitle",
+      "type" : "function",
+      "desc" : "Updates the title for collapsed north/south regions (used with {@link #collapsedTitle} config option)",
+      "sig" : "(title)",
+      "static" : false,
+      "memberOf" : "Roo.layout.Region",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "title",
+          "type" : "String",
+          "desc" : "(optional) The title text (accepts HTML markup, defaults to the numeric character reference for a non-breaking space, \"&amp;#160;\")",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "collapse",
+      "type" : "function",
+      "desc" : "Collapses this region.",
+      "sig" : "(skipAnim)",
+      "static" : false,
+      "memberOf" : "Roo.layout.Region",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "skipAnim",
+          "type" : "Boolean",
+          "desc" : "(optional) true to collapse the element without animation (if animate is true)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "unhidePanel",
+      "type" : "function",
+      "desc" : "Unhides the tab for a previously hidden panel.",
+      "sig" : "(panel)",
+      "static" : false,
+      "memberOf" : "Roo.layout.Region",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "panel",
+          "type" : "Number/String/panel.Content",
+          "desc" : "The panel's index, id or the panel itself",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "getTabs",
+      "type" : "function",
+      "desc" : "Returns the TabPanel component used by this region",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.layout.Region",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.panel.Tab",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "hide",
+      "type" : "function",
+      "desc" : "Hides this region.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.layout.Region",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "show",
+      "type" : "function",
+      "desc" : "Shows this region if it was previously hidden.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.layout.Region",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "getPanel",
+      "type" : "function",
+      "desc" : "Returns the panel specified or null if it's not in this region.",
+      "sig" : "(panel)",
+      "static" : false,
+      "memberOf" : "Roo.layout.BasicRegion",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "panel",
+          "type" : "Number/String/panel.Content",
+          "desc" : "The panels index, id or the panel itself",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.panel.Content",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "hasPanel",
+      "type" : "function",
+      "desc" : "Returns true if the panel is in this region.",
+      "sig" : "(panel)",
+      "static" : false,
+      "memberOf" : "Roo.layout.BasicRegion",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "panel",
+          "type" : "Number/String/panel.Content",
+          "desc" : "The panels index, id or the panel itself",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "resizeTo",
+      "type" : "function",
+      "desc" : "Resizes the region to the specified size. For vertical regions (west, east) this adjusts \nthe width, for horizontal (north, south) the height.",
+      "sig" : "(newSize)",
+      "static" : false,
+      "memberOf" : "Roo.layout.BasicRegion",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "newSize",
+          "type" : "Number",
+          "desc" : "The new width or height",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "getPosition",
+      "type" : "function",
+      "desc" : "Returns this regions position (north/south/east/west/center).",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.layout.BasicRegion",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "purgeListeners",
+      "type" : "function",
+      "desc" : "Removes all listeners for this object",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "on",
+      "type" : "function",
+      "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "un",
+      "type" : "function",
+      "desc" : "Removes a listener (shorthand for removeListener)",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "addEvents",
+      "type" : "function",
+      "desc" : "Used to define events on this Observable",
+      "sig" : "(object)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "object",
+          "type" : "Object",
+          "desc" : "The object with the events defined",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "releaseCapture",
+      "type" : "function",
+      "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "sig" : "(o)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to release",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "removeListener",
+      "type" : "function",
+      "desc" : "Removes a listener",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "fireEvent",
+      "type" : "function",
+      "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "sig" : "(eventName, args)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "args",
+          "type" : "Object...",
+          "desc" : "Variable number of parameters are passed to handlers",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
+    },
+    {
+      "name" : "hasListener",
+      "type" : "function",
+      "desc" : "Checks to see if this object has any listeners for a specified event",
+      "sig" : "(eventName)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The name of the event to check for",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
+    },
+    {
+      "name" : "capture",
+      "type" : "function",
+      "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "sig" : "(o, fn, scope)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to capture",
+          "isOptional" : false
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The function to call",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the fn",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "addListener",
+      "type" : "function",
+      "desc" : "Appends an event handler to this component",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
     }
   ],
-  "events" : []
+  "events" : [
+    {
+      "name" : "beforecollapse",
+      "type" : "function",
+      "desc" : "Fires when this region before collapse.",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "Roo.layout.BasicRegion",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.layout.Region",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "expanded",
+      "type" : "function",
+      "desc" : "Fires when this region is expanded.",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "Roo.layout.BasicRegion",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.layout.Region",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "panelactivated",
+      "type" : "function",
+      "desc" : "Fires when a panel is activated.",
+      "sig" : "function (_self, panel)\n{\n\n}",
+      "memberOf" : "Roo.layout.BasicRegion",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.layout.Region",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "panel",
+          "type" : "Roo.panel.Content",
+          "desc" : "The activated panel",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "invalidated",
+      "type" : "function",
+      "desc" : "Fires when the layout for this region is changed.",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "Roo.layout.BasicRegion",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.layout.Region",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "visibilitychange",
+      "type" : "function",
+      "desc" : "Fires when this region is shown or hidden",
+      "sig" : "function (_self, visibility)\n{\n\n}",
+      "memberOf" : "Roo.layout.BasicRegion",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.layout.Region",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "visibility",
+          "type" : "Boolean",
+          "desc" : "true or false",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "resized",
+      "type" : "function",
+      "desc" : "Fires when the user resizes this region.",
+      "sig" : "function (_self, newSize)\n{\n\n}",
+      "memberOf" : "Roo.layout.BasicRegion",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.layout.Region",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "newSize",
+          "type" : "Number",
+          "desc" : "The new size (width for east/west, height for north/south)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "beforeremove",
+      "type" : "function",
+      "desc" : "Fires before a panel is removed (or closed). To cancel the removal set \"e.cancel = true\" on the event argument.",
+      "sig" : "function (_self, panel, e)\n{\n\n}",
+      "memberOf" : "Roo.layout.BasicRegion",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.layout.Region",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "panel",
+          "type" : "Roo.panel.Content",
+          "desc" : "The panel",
+          "isOptional" : false
+        },
+        {
+          "name" : "e",
+          "type" : "Object",
+          "desc" : "The cancel event object",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "paneladded",
+      "type" : "function",
+      "desc" : "Fires when a panel is added.",
+      "sig" : "function (_self, panel)\n{\n\n}",
+      "memberOf" : "Roo.layout.BasicRegion",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.layout.Region",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "panel",
+          "type" : "Roo.panel.Content",
+          "desc" : "The panel",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "collapsed",
+      "type" : "function",
+      "desc" : "Fires when this region is collapsed.",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "Roo.layout.BasicRegion",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.layout.Region",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "panelremoved",
+      "type" : "function",
+      "desc" : "Fires when a panel is removed.",
+      "sig" : "function (_self, panel)\n{\n\n}",
+      "memberOf" : "Roo.layout.BasicRegion",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.layout.Region",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "panel",
+          "type" : "Roo.panel.Content",
+          "desc" : "The panel",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "slidehide",
+      "type" : "function",
+      "desc" : "Fires when this region slides out of view.",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "Roo.layout.BasicRegion",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.layout.Region",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "slideshow",
+      "type" : "function",
+      "desc" : "Fires when this region is slid into view.",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "Roo.layout.BasicRegion",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.layout.Region",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    }
+  ]
 }

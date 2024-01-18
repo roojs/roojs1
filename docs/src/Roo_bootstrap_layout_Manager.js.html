@@ -32,26 +32,26 @@
         </span><span class="jsdoc-comment">/**
          * @event layout
          * Fires when a layout is performed.
-         * @param {Roo.LayoutManager} this
+         * @param {Roo.layout.Manager} this
          */
         </span><span class="jsdoc-string">&quot;layout&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event regionresized
          * Fires when the user resizes a region.
-         * @param {Roo.LayoutRegion} region The resized region
+         * @param {Roo.layout.Region} region The resized region
          * @param {Number} newSize The new size (width for east/west, height for north/south)
          */
         </span><span class="jsdoc-string">&quot;regionresized&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event regioncollapsed
          * Fires when a region is collapsed.
-         * @param {Roo.LayoutRegion} region The collapsed region
+         * @param {Roo.layout.Region} region The collapsed region
          */
         </span><span class="jsdoc-string">&quot;regioncollapsed&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event regionexpanded
          * Fires when a region is expanded.
-         * @param {Roo.LayoutRegion} region The expanded region
+         * @param {Roo.layout.Region} region The expanded region
          */
         </span><span class="jsdoc-string">&quot;regionexpanded&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
@@ -178,7 +178,7 @@
     </span><span class="jsdoc-comment">/**
      * Returns the specified region.
      * @param {String} target The region key ('center', 'north', 'south', 'east' or 'west')
-     * @return {Roo.LayoutRegion}
+     * @return {Roo.layout.Region}
      */
     </span><span class="jsdoc-var">getRegion </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.regions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">target.toLowerCase</span><span class="jsdoc-syntax">()];

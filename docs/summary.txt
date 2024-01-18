@@ -388,12 +388,18 @@ Widgets (Classic Roo)
             [examples/view/chooser.html]Image Chooser</a>  </li>
     
     Regions / Layout
-        Roo.BasicLayoutRegion
-        Roo.BorderRegion
-        Roo.LayoutRegion
-        Roo.ReaderLayout
+        Roo.layout.Manager
+        Roo.layout.Border
+        Roo.layout.BasicRegion
+        Roo.layout.Region
+        Roo.layout.SplitRegion
+        Roo.layout.Center
+        Roo.layout.West
+        Roo.layout.East
+        Roo.layout.South
+        Roo.layout.North
+        Roo.layout.StateManager
         Roo.SplitBar
-        Roo.SplitLayoutRegion
         Examples
             [examples/layout/simple.html]Simple Layout
             [examples/layout/nested.html]Nested Layout
@@ -410,6 +416,7 @@ Widgets (Classic Roo)
         Roo.panel.Tab
         Roo.panel.TabItem
         Roo.panel.Tree
+        Roo.panel.Scroll
         Examples
             [examples/panel/cropbox.html]Cropbox
         
