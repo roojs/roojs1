@@ -614,7 +614,13 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 if (this.colWidths[0] != false && table[r][c].colspan > 1) {
                     var el = Roo.htmleditor.Block.factory(table[r][c].cell);
                     var width = 0;
+                    var lv = false;
                     for(var i = 0; i < table[r][c].colspan; i ++) {
+                        if (typeof(this.colWidths[c + i]) != 'undefined') {
+                            lv = this.colWidths[c + i];
+                        } else {
+                            this.colWidths[c + i] = lv;
+                        }
                         width += Math.floor(this.colWidths[c + i]);
                     }
                     el.width = width  +'%';
