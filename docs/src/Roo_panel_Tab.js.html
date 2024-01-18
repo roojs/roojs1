@@ -1,0 +1,487 @@
+<html><head><title>Roo/panel/Tab.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">        <span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+/**
+ * @class Roo.panel.Tab
+ * @extends Roo.util.Observable
+ * A lightweight tab container.
+ * &lt;br&gt;&lt;br&gt;
+ * Usage:
+ * &lt;pre&gt;&lt;code&gt;
+// basic tabs 1, built from existing content
+var tabs = new Roo.panel.Tab(&quot;tabs1&quot;);
+tabs.addTab(&quot;script&quot;, &quot;View Script&quot;);
+tabs.addTab(&quot;markup&quot;, &quot;View Markup&quot;);
+tabs.activate(&quot;script&quot;);
+
+// more advanced tabs, built from javascript
+var jtabs = new Roo.panel.Tab(&quot;jtabs&quot;);
+jtabs.addTab(&quot;jtabs-1&quot;, &quot;Normal Tab&quot;, &quot;My content was added during construction.&quot;);
+
+// set up the UpdateManager
+var tab2 = jtabs.addTab(&quot;jtabs-2&quot;, &quot;Ajax Tab 1&quot;);
+var updater = tab2.getUpdateManager();
+updater.setDefaultUrl(&quot;ajax1.htm&quot;);
+tab2.on('activate', updater.refresh, updater, true);
+
+// Use setUrl for Ajax loading
+var tab3 = jtabs.addTab(&quot;jtabs-3&quot;, &quot;Ajax Tab 2&quot;);
+tab3.setUrl(&quot;ajax2.htm&quot;, null, true);
+
+// Disabled tab
+var tab4 = jtabs.addTab(&quot;tabs1-5&quot;, &quot;Disabled Tab&quot;, &quot;Can't see me cause I'm disabled&quot;);
+tab4.disable();
+
+jtabs.activate(&quot;jtabs-1&quot;);
+ * &lt;/code&gt;&lt;/pre&gt;
+ * @constructor
+ * Create a new TabPanel.
+ * @param {String/HTMLElement/Roo.Element} container The id, DOM element or Roo.Element container where this TabPanel is to be rendered.
+ * @param {Object/Boolean} config Config object to set any properties for this TabPanel, or true to render the tabs on the bottom.
+ */
+</span><span class="jsdoc-var">Roo.panel.Tab </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-comment">/**
+    * The container element for this TabPanel.
+    * @type Roo.Element
+    */
+    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;boolean&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.tabPosition </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;bottom&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;top&quot;</span><span class="jsdoc-syntax">;
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+        }
+    }
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabPosition </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;bottom&quot;</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.createBody</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-tabs-bottom&quot;</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-var">this.stripWrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.createStrip</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.stripEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.createStripList</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stripWrap.dom</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.stripBody </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stripWrap.dom.firstChild.firstChild</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stripWrap.dom.firstChild</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow-x&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;hidden&quot;</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabPosition </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;bottom&quot;</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-comment">/** The body element that contains {@link Roo.panel.TabItem} bodies. +
+         * @type Roo.Element
+         */
+        </span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.createBody</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-tabs-top&quot;</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= [];
+
+    </span><span class="jsdoc-var">this.bodyEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;position&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;relative&quot;</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.activateDelegate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.activate.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event tabchange
+         * Fires when the active tab changes
+         * @param {Roo.panel.Tab} this
+         * @param {Roo.panel.TabItem} activePanel The new active tab
+         */
+        </span><span class="jsdoc-string">&quot;tabchange&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event beforetabchange
+         * Fires before the active tab changes, set cancel to true on the &quot;e&quot; parameter to cancel the change
+         * @param {Roo.panel.Tab} this
+         * @param {Object} e Set cancel to true on this object to cancel the tab change
+         * @param {Roo.panel.TabItem} tab The tab being changed to
+         */
+        </span><span class="jsdoc-string">&quot;beforetabchange&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+
+    </span><span class="jsdoc-var">Roo.EventManager.onWindowResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.onResize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.cpad </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lr&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.hiddenCount </span><span class="jsdoc-syntax">= 0;
+
+
+    </span><span class="jsdoc-comment">// toolbar on the tabbar support...
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tcfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">tcfg.container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.stripEl.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'td.x-tab-strip-toolbar'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.toolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tcfg</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isSafari</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tbl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tcfg.container.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">tbl.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'100%'</span><span class="jsdoc-syntax">);
+        }
+
+    }
+
+
+
+    </span><span class="jsdoc-var">Roo.panel.Tab.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.panel.Tab</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/*
+     *@cfg {String} tabPosition &quot;top&quot; or &quot;bottom&quot; (defaults to &quot;top&quot;)
+     */
+    </span><span class="jsdoc-var">tabPosition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;top&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/*
+     *@cfg {Number} currentTabWidth The width of the current tab (defaults to 0)
+     */
+    </span><span class="jsdoc-var">currentTabWidth </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-comment">/*
+     *@cfg {Number} minTabWidth The minimum width of a tab (defaults to 40) (ignored if {@link #resizeTabs} is not true)
+     */
+    </span><span class="jsdoc-var">minTabWidth </span><span class="jsdoc-syntax">: 40,
+    </span><span class="jsdoc-comment">/*
+     *@cfg {Number} maxTabWidth The maximum width of a tab (defaults to 250) (ignored if {@link #resizeTabs} is not true)
+     */
+    </span><span class="jsdoc-var">maxTabWidth </span><span class="jsdoc-syntax">: 250,
+    </span><span class="jsdoc-comment">/*
+     *@cfg {Number} preferredTabWidth The preferred (default) width of a tab (defaults to 175) (ignored if {@link #resizeTabs} is not true)
+     */
+    </span><span class="jsdoc-var">preferredTabWidth </span><span class="jsdoc-syntax">: 175,
+    </span><span class="jsdoc-comment">/*
+     *@cfg {Boolean} resizeTabs True to enable dynamic tab resizing (defaults to false)
+     */
+    </span><span class="jsdoc-var">resizeTabs </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/*
+     *@cfg {Boolean} monitorResize Set this to true to turn on window resize monitoring (ignored if {@link #resizeTabs} is not true) (defaults to true)
+     */
+    </span><span class="jsdoc-var">monitorResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/*
+     *@cfg {Object} toolbar xtype description of toolbar to show at the right of the tab bar. 
+     */
+    </span><span class="jsdoc-var">toolbar </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * Creates a new {@link Roo.panel.TabItem} by looking for an existing element with the provided id -- if it's not found it creates one.
+     * @param {String} id The id of the div to use &lt;b&gt;or create&lt;/b&gt;
+     * @param {String} text The text for the tab
+     * @param {String} content (optional) Content to put in the TabPanelItem body
+     * @param {Boolean} closable (optional) True to create a close icon on the tab
+     * @return {Roo.panel.TabItem} The created TabPanelItem
+     */
+    </span><span class="jsdoc-var">addTab </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.panel.TabItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.addTabItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">item.setContent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the {@link Roo.panel.TabItem} with the specified id/index
+     * @param {String/Number} id The id or index of the TabPanelItem to fetch.
+     * @return {Roo.panel.TabItem}
+     */
+    </span><span class="jsdoc-var">getTab </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Hides the {@link Roo.panel.TabItem} with the specified id/index
+     * @param {String/Number} id The id or index of the TabPanelItem to hide.
+     */
+    </span><span class="jsdoc-var">hideTab </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">t.isHidden</span><span class="jsdoc-syntax">()){
+           </span><span class="jsdoc-var">t.setHidden</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-var">this.hiddenCount</span><span class="jsdoc-syntax">++;
+           </span><span class="jsdoc-var">this.autoSizeTabs</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * &quot;Unhides&quot; the {@link Roo.panel.TabItem} with the specified id/index.
+     * @param {String/Number} id The id or index of the TabPanelItem to unhide.
+     */
+    </span><span class="jsdoc-var">unhideTab </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.isHidden</span><span class="jsdoc-syntax">()){
+           </span><span class="jsdoc-var">t.setHidden</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-var">this.hiddenCount</span><span class="jsdoc-syntax">--;
+           </span><span class="jsdoc-var">this.autoSizeTabs</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Adds an existing {@link Roo.panel.TabItem}.
+     * @param {Roo.panel.TabItem} item The TabPanelItem to add
+     */
+    </span><span class="jsdoc-var">addTabItem </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">item.id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.items.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeTabs</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-var">item.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currentTabWidth </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.preferredTabWidth</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-var">this.autoSizeTabs</span><span class="jsdoc-syntax">();
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">item.autoSize</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Removes a {@link Roo.panel.TabItem}.
+     * @param {String/Number} id The id or index of the TabPanelItem to remove.
+     */
+    </span><span class="jsdoc-var">removeTab </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tab </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tab</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">items.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tab</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">tab </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">items.length </span><span class="jsdoc-syntax">&gt; 1){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newTab </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getNextAvailable</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newTab</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">newTab.activate</span><span class="jsdoc-syntax">();
+            }
+        }
+        </span><span class="jsdoc-var">this.stripEl.dom.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tab.pnode.dom</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tab.bodyEl.dom.parentNode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.bodyEl.dom</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// if it was moved already prevent error
+            </span><span class="jsdoc-var">this.bodyEl.dom.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tab.bodyEl.dom</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">items.splice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, 1);
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tab.id</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-var">tab.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;close&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tab</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">tab.purgeListeners</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.autoSizeTabs</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">getNextAvailable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">// look for a next tab that will slide over to
+        // replace the one being removed
+        </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">items.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">item.isHidden</span><span class="jsdoc-syntax">()){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-comment">// if one isn't found select the previous tab (on the left)
+        </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&gt;= 0){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[--</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">item.isHidden</span><span class="jsdoc-syntax">()){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Disables a {@link Roo.panel.TabItem}. It cannot be the active tab, if it is this call is ignored.
+     * @param {String/Number} id The id or index of the TabPanelItem to disable.
+     */
+    </span><span class="jsdoc-var">disableTab </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tab </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tab </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">tab</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">tab.disable</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Enables a {@link Roo.panel.TabItem} that is disabled.
+     * @param {String/Number} id The id or index of the TabPanelItem to enable.
+     */
+    </span><span class="jsdoc-var">enableTab </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tab </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-var">tab.enable</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Activates a {@link Roo.panel.TabItem}. The currently active one will be deactivated.
+     * @param {String/Number} id The id or index of the TabPanelItem to activate.
+     * @return {Roo.panel.TabItem} The TabPanelItem.
+     */
+    </span><span class="jsdoc-var">activate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tab </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tab</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tab </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">tab.disabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">tab</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">= {};
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforetabchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tab</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.cancel </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">tab.disabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.active</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.active.hide</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-var">this.active.show</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;tabchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.active</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">tab</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Gets the active {@link Roo.panel.TabItem}.
+     * @return {Roo.panel.TabItem} The active TabPanelItem or null if none are active.
+     */
+    </span><span class="jsdoc-var">getActiveTab </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.active</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Updates the tab body element to fit the height of the container element
+     * for overflow scrolling
+     * @param {Number} targetHeight (optional) Override the starting height from the elements height
+     */
+    </span><span class="jsdoc-var">syncHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">targetHeight</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">targetHeight </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.el.getHeight</span><span class="jsdoc-syntax">())-</span><span class="jsdoc-var">this.el.getBorderWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;tb&quot;</span><span class="jsdoc-syntax">)-</span><span class="jsdoc-var">this.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;tb&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl.getMargins</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">-(</span><span class="jsdoc-var">this.stripWrap.getHeight</span><span class="jsdoc-syntax">()||0)-(</span><span class="jsdoc-var">bm.top</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">bm.bottom</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.bodyEl.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newHeight</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">newHeight</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">onResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.monitorResize</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.autoSizeTabs</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Disables tab resizing while tabs are being added (if {@link #resizeTabs} is false this does nothing)
+     */
+    </span><span class="jsdoc-var">beginUpdate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.updating </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Stops an update and resizes the tabs (if {@link #resizeTabs} is false this does nothing)
+     */
+    </span><span class="jsdoc-var">endUpdate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.updating </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.autoSizeTabs</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Manual call to resize the tabs (if {@link #resizeTabs} is false this does nothing)
+     */
+    </span><span class="jsdoc-var">autoSizeTabs </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">count </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items.length</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">vcount </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">count </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.hiddenCount</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.resizeTabs </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">count </span><span class="jsdoc-syntax">&lt; 1 || </span><span class="jsdoc-var">vcount </span><span class="jsdoc-syntax">&lt; 1 || </span><span class="jsdoc-var">this.updating</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.cpad</span><span class="jsdoc-syntax">, 10);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">availWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">vcount</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.stripBody</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b.getWidth</span><span class="jsdoc-syntax">() &gt; </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tabs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.setTabWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">availWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.minTabWidth</span><span class="jsdoc-syntax">)-2);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">availWidth </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minTabWidth</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-comment">/*if(!this.sleft){    // incomplete scrolling code
+                    this.createScrollButtons();
+                }
+                this.showScroll();
+                this.stripClip.setWidth(w - (this.sleft.getWidth()+this.sright.getWidth()));*/
+            </span><span class="jsdoc-syntax">}
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currentTabWidth </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.preferredTabWidth</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.setTabWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">availWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.preferredTabWidth</span><span class="jsdoc-syntax">)-2);
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the number of tabs in this TabPanel.
+     * @return {Number}
+     */
+     </span><span class="jsdoc-var">getCount </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.items.length</span><span class="jsdoc-syntax">;
+     },
+
+    </span><span class="jsdoc-comment">/**
+     * Resizes all the tabs to the passed width
+     * @param {Number} The new width
+     */
+    </span><span class="jsdoc-var">setTabWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.currentTabWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+        	</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.isHidden</span><span class="jsdoc-syntax">()) {
+                </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Destroys this TabPanel
+     * @param {Boolean} removeEl (optional) True to remove the element from the DOM as well (defaults to undefined)
+     */
+    </span><span class="jsdoc-var">destroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">removeEl</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.EventManager.removeResizeListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.onResize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.purgeListeners</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">removeEl </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.el.remove</span><span class="jsdoc-syntax">();
+        }
+    }
+});
+
+
+</span><span class="jsdoc-comment">/** @private */
+</span><span class="jsdoc-var">Roo.panel.Tab.prototype.createStripList </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">strip</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-comment">// div wrapper for retard IE
+    // returns the &quot;tr&quot; element.
+    </span><span class="jsdoc-var">strip.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;div class=&quot;x-tabs-strip-wrap&quot;&gt;'</span><span class="jsdoc-syntax">+
+        </span><span class="jsdoc-string">'&lt;table class=&quot;x-tabs-strip&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;'</span><span class="jsdoc-syntax">+
+        </span><span class="jsdoc-string">'&lt;td class=&quot;x-tab-strip-toolbar&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;'</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">strip.firstChild.firstChild.firstChild.firstChild</span><span class="jsdoc-syntax">;
+};
+</span><span class="jsdoc-comment">/** @private */
+</span><span class="jsdoc-var">Roo.panel.Tab.prototype.createBody </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;tab-body&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-tabs-body&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">container.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">;
+};
+</span><span class="jsdoc-comment">/** @private */
+</span><span class="jsdoc-var">Roo.panel.Tab.prototype.createItemBody </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bodyEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">body.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-tabs-item-body&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">bodyEl.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bodyEl.firstChild</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">;
+};
+</span><span class="jsdoc-comment">/** @private */
+</span><span class="jsdoc-var">Roo.panel.Tab.prototype.createStripElements </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stripEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;td&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">stripEl.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stripEl.childNodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">stripEl.childNodes.length</span><span class="jsdoc-syntax">-1]);
+    </span><span class="jsdoc-comment">//stripEl.appendChild(td);
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">td.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;x-tabs-closable&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.closeTpl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.closeTpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
+               </span><span class="jsdoc-string">'&lt;a href=&quot;#&quot; class=&quot;x-tabs-right&quot;&gt;&lt;span class=&quot;x-tabs-left&quot;&gt;&lt;em class=&quot;x-tabs-inner&quot;&gt;' </span><span class="jsdoc-syntax">+
+               </span><span class="jsdoc-string">'&lt;span unselectable=&quot;on&quot;' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.disableTooltips </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">' title=&quot;{text}&quot;'</span><span class="jsdoc-syntax">) +</span><span class="jsdoc-string">' class=&quot;x-tabs-text&quot;&gt;{text}&lt;/span&gt;' </span><span class="jsdoc-syntax">+
+               </span><span class="jsdoc-string">'&lt;div unselectable=&quot;on&quot; class=&quot;close-icon&quot;&gt;&amp;#160;&lt;/div&gt;&lt;/em&gt;&lt;/span&gt;&lt;/a&gt;'
+            </span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.closeTpl.overwrite</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-string">&quot;text&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">close </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">)[0];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">inner </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;em&quot;</span><span class="jsdoc-syntax">)[0];
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{</span><span class="jsdoc-string">&quot;el&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;close&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">close</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;inner&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">inner</span><span class="jsdoc-syntax">};
+    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.tabTpl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.tabTpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
+               </span><span class="jsdoc-string">'&lt;a href=&quot;#&quot; class=&quot;x-tabs-right&quot;&gt;&lt;span class=&quot;x-tabs-left&quot;&gt;&lt;em class=&quot;x-tabs-inner&quot;&gt;' </span><span class="jsdoc-syntax">+
+               </span><span class="jsdoc-string">'&lt;span unselectable=&quot;on&quot;' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.disableTooltips </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">' title=&quot;{text}&quot;'</span><span class="jsdoc-syntax">) +</span><span class="jsdoc-string">' class=&quot;x-tabs-text&quot;&gt;{text}&lt;/span&gt;&lt;/em&gt;&lt;/span&gt;&lt;/a&gt;'
+            </span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tabTpl.overwrite</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-string">&quot;text&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">inner </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;em&quot;</span><span class="jsdoc-syntax">)[0];
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{</span><span class="jsdoc-string">&quot;el&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;inner&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">inner</span><span class="jsdoc-syntax">};
+    }
+};</span></code></body></html>

@@ -1,0 +1,62 @@
+<html><head><title>Roo/panel/Tree.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+
+
+<span class="jsdoc-comment">/**
+ * @class Roo.panel.Tree
+ * @extends Roo.panel.Content
+ * @parent Roo.layout.Border Roo.LayoutDialog builder
+ * Treepanel component
+ * 
+ * @constructor
+ * Create a new TreePanel. - defaults to fit/scoll contents.
+ * @param {String/Object} config A string to set only the panel's title, or a config object
+ */
+</span><span class="jsdoc-var">Roo.panel.Tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.el</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.tree</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">config.tree</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">config.el</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// hopefull!
+
+    // wrapper for IE7 strict &amp; safari scroll issue
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">treeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.createChild</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-var">config.resizeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">treeEl</span><span class="jsdoc-syntax">;
+
+
+
+    </span><span class="jsdoc-var">Roo.panel.Tree.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+
+    </span><span class="jsdoc-var">this.tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.tree.TreePanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">treeEl </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">//console.log(tree);
+    </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'activate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tree.rendered</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">//console.log('render tree');
+        </span><span class="jsdoc-var">this.tree.render</span><span class="jsdoc-syntax">();
+    });
+    </span><span class="jsdoc-comment">// this should not be needed.. - it's actually the 'el' that resizes?
+    // actuall it breaks the containerScroll - dragging nodes auto scroll at top
+
+    //this.on('resize',  function (cp, w, h) {
+    //        this.tree.innerCt.setWidth(w);
+    //        this.tree.innerCt.setHeight(h);
+    //        //this.tree.innerCt.setStyle('overflow-y', 'auto');
+    //});
+
+
+
+</span><span class="jsdoc-syntax">};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.panel.Tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.panel.Content</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">fitToFrame </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">autoScroll </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/*
+     * @cfg {Roo.tree.panel.Tree} tree [required] The tree TreePanel, with config etc.
+     */
+    </span><span class="jsdoc-var">tree </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
+
+</span><span class="jsdoc-syntax">});
+</span></code></body></html>

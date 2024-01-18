@@ -1,0 +1,626 @@
+{
+  "name" : "Roo.layout.Manager",
+  "augments" : [
+    "Roo.util.Observable"
+  ],
+  "childClasses" : {
+    "Roo.layout.Border" : [
+      "Roo.layout.Reader"
+    ],
+    "Roo.layout.Manager" : [
+      "Roo.layout.Border"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
+  "desc" : "Base class for layout managers.",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
+  "memberOf" : "Manager",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable",
+      "isOptional" : false,
+      "optvals" : []
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "getRegion",
+      "type" : "function",
+      "desc" : "Returns the specified region.",
+      "sig" : "(target)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "target",
+          "type" : "String",
+          "desc" : "The region key ('center', 'north', 'south', 'east' or 'west')",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.layout.Region",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "isUpdating",
+      "type" : "function",
+      "desc" : "Returns true if this layout is currently being updated",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "getViewSize",
+      "type" : "function",
+      "desc" : "Returns the size of the current view. This method normalizes document.body and element embedded layouts and\nperforms box-model adjustments.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The size as an object {width: (the width), height: (the height)}"
+        }
+      ]
+    },
+    {
+      "name" : "getEl",
+      "type" : "function",
+      "desc" : "Returns the Element this layout is bound to.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "beginUpdate",
+      "type" : "function",
+      "desc" : "Suspend the LayoutManager from doing auto-layouts while\nmaking multiple add or remove calls",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "endUpdate",
+      "type" : "function",
+      "desc" : "Restore auto-layouts and optionally disable the manager from performing a layout",
+      "sig" : "(noLayout)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "noLayout",
+          "type" : "Boolean",
+          "desc" : "true to disable a layout update",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "purgeListeners",
+      "type" : "function",
+      "desc" : "Removes all listeners for this object",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "on",
+      "type" : "function",
+      "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "un",
+      "type" : "function",
+      "desc" : "Removes a listener (shorthand for removeListener)",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "addEvents",
+      "type" : "function",
+      "desc" : "Used to define events on this Observable",
+      "sig" : "(object)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "object",
+          "type" : "Object",
+          "desc" : "The object with the events defined",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "releaseCapture",
+      "type" : "function",
+      "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "sig" : "(o)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to release",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "removeListener",
+      "type" : "function",
+      "desc" : "Removes a listener",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "fireEvent",
+      "type" : "function",
+      "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "sig" : "(eventName, args)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "args",
+          "type" : "Object...",
+          "desc" : "Variable number of parameters are passed to handlers",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
+    },
+    {
+      "name" : "hasListener",
+      "type" : "function",
+      "desc" : "Checks to see if this object has any listeners for a specified event",
+      "sig" : "(eventName)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The name of the event to check for",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
+    },
+    {
+      "name" : "capture",
+      "type" : "function",
+      "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "sig" : "(o, fn, scope)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to capture",
+          "isOptional" : false
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The function to call",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the fn",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "addListener",
+      "type" : "function",
+      "desc" : "Appends an event handler to this component",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    }
+  ],
+  "events" : [
+    {
+      "name" : "regioncollapsed",
+      "type" : "function",
+      "desc" : "Fires when a region is collapsed.",
+      "sig" : "function (region)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "region",
+          "type" : "Roo.layout.Region",
+          "desc" : "The collapsed region",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "regionexpanded",
+      "type" : "function",
+      "desc" : "Fires when a region is expanded.",
+      "sig" : "function (region)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "region",
+          "type" : "Roo.layout.Region",
+          "desc" : "The expanded region",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "regionresized",
+      "type" : "function",
+      "desc" : "Fires when the user resizes a region.",
+      "sig" : "function (region, newSize)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "region",
+          "type" : "Roo.layout.Region",
+          "desc" : "The resized region",
+          "isOptional" : false
+        },
+        {
+          "name" : "newSize",
+          "type" : "Number",
+          "desc" : "The new size (width for east/west, height for north/south)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "layout",
+      "type" : "function",
+      "desc" : "Fires when a layout is performed.",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.layout.Manager",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    }
+  ]
+}

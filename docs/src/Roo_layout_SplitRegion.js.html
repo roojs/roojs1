@@ -1,0 +1,343 @@
+<html><head><title>Roo/layout/SplitRegion.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+
+
+/**
+ * @class Roo.layout.SplitRegion
+ * @extends Roo.layout.Region
+ * Adds a splitbar and other (private) useful functionality to a {@link Roo.layout.Region}.
+ */
+</span><span class="jsdoc-var">Roo.layout.SplitRegion </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mgr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cursor</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">this.cursor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cursor</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">Roo.layout.SplitRegion.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mgr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.layout.SplitRegion</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.layout.Region</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">splitTip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Drag to resize.&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">collapsibleSplitTip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Drag to resize. Double click to hide.&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">useSplitTips </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">applyConfig </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.layout.SplitRegion.superclass.applyConfig.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.split</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.split</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">splitEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mgr.el.dom</span><span class="jsdoc-syntax">,
+                        {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.el.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;-split&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-layout-split x-layout-split-&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#160;&quot;</span><span class="jsdoc-syntax">});
+                </span><span class="jsdoc-comment">/** The SplitBar for this region 
+                * @type Roo.SplitBar */
+                </span><span class="jsdoc-var">this.split </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.SplitBar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">splitEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.orientation</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.split.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;moved&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onSplitMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.split.useShim </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.useShim </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.split.getMaximumSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'north' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'south' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'getVMaxSize' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'getHMaxSize'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.useSplitTips</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.split.el.dom.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.collapsible </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.collapsibleSplitTip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.splitTip</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.collapsible</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.split.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;dblclick&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                }
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">config.minSize </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.split.minSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.minSize</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">config.maxSize </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.split.maxSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.maxSize</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.hideWhenEmpty </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">config.hidden </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">config.collapsed</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.hideSplitter</span><span class="jsdoc-syntax">();
+            }
+        }
+    },
+
+    </span><span class="jsdoc-var">getHMaxSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cmax </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.maxSize </span><span class="jsdoc-syntax">|| 10000;
+         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">center </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.mgr.getRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;center&quot;</span><span class="jsdoc-syntax">);
+         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmax</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">()+</span><span class="jsdoc-var">center.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getWidth</span><span class="jsdoc-syntax">())-</span><span class="jsdoc-var">center.getMinWidth</span><span class="jsdoc-syntax">());
+    },
+
+    </span><span class="jsdoc-var">getVMaxSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cmax </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.maxSize </span><span class="jsdoc-syntax">|| 10000;
+         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">center </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.mgr.getRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;center&quot;</span><span class="jsdoc-syntax">);
+         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmax</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-var">this.el.getHeight</span><span class="jsdoc-syntax">()+</span><span class="jsdoc-var">center.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">())-</span><span class="jsdoc-var">center.getMinHeight</span><span class="jsdoc-syntax">());
+    },
+
+    </span><span class="jsdoc-var">onSplitMove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">split</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;resized&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/** 
+     * Returns the {@link Roo.SplitBar} for this region.
+     * @return {Roo.SplitBar}
+     */
+    </span><span class="jsdoc-var">getSplitBar </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.split</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.hideSplitter</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">Roo.layout.SplitRegion.superclass.hide.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">hideSplitter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.split</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.split.el.setLocation</span><span class="jsdoc-syntax">(-2000,-2000);
+            </span><span class="jsdoc-var">this.split.el.hide</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.split</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.split.el.show</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">Roo.layout.SplitRegion.superclass.show.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">beforeSlide</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isGecko</span><span class="jsdoc-syntax">){</span><span class="jsdoc-comment">// firefox overflow auto bug workaround
+            </span><span class="jsdoc-var">this.bodyEl.clip</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabs</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.tabs.bodyEl.clip</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.activePanel</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.activePanel.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.clip</span><span class="jsdoc-syntax">();
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.activePanel.beforeSlide</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.activePanel.beforeSlide</span><span class="jsdoc-syntax">();
+                }
+            }
+        }
+    },
+
+    </span><span class="jsdoc-var">afterSlide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isGecko</span><span class="jsdoc-syntax">){</span><span class="jsdoc-comment">// firefox overflow auto bug workaround
+            </span><span class="jsdoc-var">this.bodyEl.unclip</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabs</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.tabs.bodyEl.unclip</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.activePanel</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.activePanel.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.unclip</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.activePanel.afterSlide</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.activePanel.afterSlide</span><span class="jsdoc-syntax">();
+                }
+            }
+        }
+    },
+
+    </span><span class="jsdoc-var">initAutoHide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoHide </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.autoHideHd</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.DelayedTask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.slideIn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.autoHideHd </span><span class="jsdoc-syntax">= {
+                    </span><span class="jsdoc-string">&quot;mouseout&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">e.within</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)){
+                            </span><span class="jsdoc-var">st.delay</span><span class="jsdoc-syntax">(500);
+                        }
+                    },
+                    </span><span class="jsdoc-string">&quot;mouseover&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">st.cancel</span><span class="jsdoc-syntax">();
+                    },
+                    </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this
+                </span><span class="jsdoc-syntax">};
+            }
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoHideHd</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">clearAutoHide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoHide </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseout&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.autoHideHd.mouseout</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.el.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseover&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.autoHideHd.mouseover</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">clearMonitor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.slideInIf</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// these names are backwards but not changed for compat
+    </span><span class="jsdoc-var">slideOut </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isSlid </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.el.hasActiveFx</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.isSlid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapseBtn</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.collapseBtn.hide</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.closeBtnState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.closeBtn.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'display'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.closeBtn.hide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stickBtn</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.stickBtn.show</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.el.show</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.el.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapsedEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.getCollapseAnchor</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-var">this.beforeSlide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;z-index&quot;</span><span class="jsdoc-syntax">, 10001);
+        </span><span class="jsdoc-var">this.el.slideIn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getSlideAnchor</span><span class="jsdoc-syntax">(), {
+            </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+                </span><span class="jsdoc-var">this.afterSlide</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.initAutoHide</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.slideInIf</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;slideshow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-syntax">});
+    },
+
+    </span><span class="jsdoc-var">afterSlideIn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.clearAutoHide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.isSlid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.clearMonitor</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;z-index&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapseBtn</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.collapseBtn.show</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.closeBtn.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'display'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.closeBtnState</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stickBtn</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.stickBtn.hide</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;slidehide&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">slideIn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isSlid </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.el.hasActiveFx</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-var">Roo.callback</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.isSlid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.beforeSlide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.el.slideOut</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getSlideAnchor</span><span class="jsdoc-syntax">(), {
+            </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+                </span><span class="jsdoc-var">this.el.setLeftTop</span><span class="jsdoc-syntax">(-10000, -10000);
+                </span><span class="jsdoc-var">this.afterSlide</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.afterSlideIn</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">Roo.callback</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-syntax">});
+    },
+
+    </span><span class="jsdoc-var">slideInIf </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">e.within</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">this.slideIn</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-var">animateCollapse </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.beforeSlide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;z-index&quot;</span><span class="jsdoc-syntax">, 20000);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">anchor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getSlideAnchor</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.el.slideOut</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">anchor</span><span class="jsdoc-syntax">, {
+            </span><span class="jsdoc-var">callback </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+                </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;z-index&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.collapsedEl.slideIn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">anchor</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">duration</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">.3</span><span class="jsdoc-syntax">});
+                </span><span class="jsdoc-var">this.afterSlide</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.el.setLocation</span><span class="jsdoc-syntax">(-10000,-10000);
+                </span><span class="jsdoc-var">this.el.hide</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;collapsed&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-syntax">});
+    },
+
+    </span><span class="jsdoc-var">animateExpand </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.beforeSlide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.el.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapsedEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.getCollapseAnchor</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.getExpandAdj</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;z-index&quot;</span><span class="jsdoc-syntax">, 20000);
+        </span><span class="jsdoc-var">this.collapsedEl.hide</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">duration</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">.1
+        </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.el.slideIn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getSlideAnchor</span><span class="jsdoc-syntax">(), {
+            </span><span class="jsdoc-var">callback </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+                </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;z-index&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.afterSlide</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.split</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.split.el.show</span><span class="jsdoc-syntax">();
+                }
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;invalidated&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;expanded&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-syntax">});
+    },
+
+    </span><span class="jsdoc-var">anchors </span><span class="jsdoc-syntax">: {
+        </span><span class="jsdoc-string">&quot;west&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;left&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;east&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;right&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;north&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;top&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;south&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;bottom&quot;
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-var">sanchors </span><span class="jsdoc-syntax">: {
+        </span><span class="jsdoc-string">&quot;west&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;l&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;east&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;r&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;north&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;t&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;south&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;b&quot;
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-var">canchors </span><span class="jsdoc-syntax">: {
+        </span><span class="jsdoc-string">&quot;west&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;tl-tr&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;east&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;tr-tl&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;north&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;tl-bl&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;south&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;bl-tl&quot;
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-var">getAnchor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.anchors</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">];
+    },
+
+    </span><span class="jsdoc-var">getCollapseAnchor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.canchors</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">];
+    },
+
+    </span><span class="jsdoc-var">getSlideAnchor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.sanchors</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">];
+    },
+
+    </span><span class="jsdoc-var">getAlignAdj </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cmargins</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;west&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[0, 0];
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;east&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[0, 0];
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;north&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[0, 0];
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;south&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[0, 0];
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+        }
+    },
+
+    </span><span class="jsdoc-var">getExpandAdj </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.collapsedEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cmargins</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;west&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[-(</span><span class="jsdoc-var">cm.right</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">c.getWidth</span><span class="jsdoc-syntax">()+</span><span class="jsdoc-var">cm.left</span><span class="jsdoc-syntax">), 0];
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;east&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cm.right</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">c.getWidth</span><span class="jsdoc-syntax">()+</span><span class="jsdoc-var">cm.left</span><span class="jsdoc-syntax">, 0];
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;north&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[0, -(</span><span class="jsdoc-var">cm.top</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">cm.bottom</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">c.getHeight</span><span class="jsdoc-syntax">())];
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;south&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[0, </span><span class="jsdoc-var">cm.top</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">cm.bottom</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">c.getHeight</span><span class="jsdoc-syntax">()];
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+        }
+    }
+});</span></code></body></html>

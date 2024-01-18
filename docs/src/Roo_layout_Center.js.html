@@ -1,0 +1,37 @@
+<html><head><title>Roo/layout/Center.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+/*
+ * These classes are private internal classes
+ */
+</span><span class="jsdoc-var">Roo.layout.Center </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mgr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.layout.Region.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mgr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;center&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.visible </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.minWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.minWidth </span><span class="jsdoc-syntax">|| 20;
+    </span><span class="jsdoc-var">this.minHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.minHeight </span><span class="jsdoc-syntax">|| 20;
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.layout.Center</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.layout.Region</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-comment">// center panel can't be hidden
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-comment">// center panel can't be hidden
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-var">getMinWidth</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getMinHeight</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.minHeight</span><span class="jsdoc-syntax">;
+    }
+});</span></code></body></html>

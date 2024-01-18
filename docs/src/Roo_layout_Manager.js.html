@@ -1,0 +1,146 @@
+<html><head><title>Roo/layout/Manager.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.layout.Manager
+ * @extends Roo.util.Observable
+ * Base class for layout managers.
+ */
+</span><span class="jsdoc-var">Roo.layout.Manager </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.layout.Manager.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">// ie scrollbar fix
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">document.body </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">config.allowScroll</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">document.body.scroll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;no&quot;</span><span class="jsdoc-syntax">;
+    }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">document.body </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.el.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'static'</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.el.position</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'relative'</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.id</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-layout-container&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">/** false to disable window resize monitoring @type Boolean */
+    </span><span class="jsdoc-var">this.monitorWindowResize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.regions </span><span class="jsdoc-syntax">= {};
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event layout
+         * Fires when a layout is performed. 
+         * @param {Roo.layout.Manager} this
+         */
+        </span><span class="jsdoc-string">&quot;layout&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event regionresized
+         * Fires when the user resizes a region. 
+         * @param {Roo.layout.Region} region The resized region
+         * @param {Number} newSize The new size (width for east/west, height for north/south)
+         */
+        </span><span class="jsdoc-string">&quot;regionresized&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event regioncollapsed
+         * Fires when a region is collapsed. 
+         * @param {Roo.layout.Region} region The collapsed region
+         */
+        </span><span class="jsdoc-string">&quot;regioncollapsed&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event regionexpanded
+         * Fires when a region is expanded.  
+         * @param {Roo.layout.Region} region The expanded region
+         */
+        </span><span class="jsdoc-string">&quot;regionexpanded&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">this.updating </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">Roo.EventManager.onWindowResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.onWindowResize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.layout.Manager</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+     * Returns true if this layout is currently being updated
+     * @return {Boolean}
+     */
+    </span><span class="jsdoc-var">isUpdating </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.updating</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Suspend the LayoutManager from doing auto-layouts while
+     * making multiple add or remove calls
+     */
+    </span><span class="jsdoc-var">beginUpdate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.updating </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Restore auto-layouts and optionally disable the manager from performing a layout
+     * @param {Boolean} noLayout true to disable a layout update 
+     */
+    </span><span class="jsdoc-var">endUpdate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">noLayout</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.updating </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">noLayout</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-var">layout</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+
+    },
+
+    </span><span class="jsdoc-var">onRegionResized </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;regionresized&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">onRegionCollapsed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;regioncollapsed&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">onRegionExpanded </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;regionexpanded&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the size of the current view. This method normalizes document.body and element embedded layouts and
+     * performs box-model adjustments.
+     * @return {Object} The size as an object {width: (the width), height: (the height)}
+     */
+    </span><span class="jsdoc-var">getViewSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getSize</span><span class="jsdoc-syntax">();
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= {</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">()};
+        }
+        </span><span class="jsdoc-var">size.width </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">this.el.getBorderWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lr&quot;</span><span class="jsdoc-syntax">)-</span><span class="jsdoc-var">this.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lr&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">size.height </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">this.el.getBorderWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;tb&quot;</span><span class="jsdoc-syntax">)-</span><span class="jsdoc-var">this.el.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;tb&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the Element this layout is bound to.
+     * @return {Roo.Element}
+     */
+    </span><span class="jsdoc-var">getEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the specified region.
+     * @param {String} target The region key ('center', 'north', 'south', 'east' or 'west')
+     * @return {Roo.layout.Region}
+     */
+    </span><span class="jsdoc-var">getRegion </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.regions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">target.toLowerCase</span><span class="jsdoc-syntax">()];
+    },
+
+    </span><span class="jsdoc-var">onWindowResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.monitorWindowResize</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">();
+        }
+    }
+});</span></code></body></html>

@@ -1,0 +1,133 @@
+<html><head><title>Roo/panel/NestedLayout.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+
+<span class="jsdoc-comment">/**
+ * @class Roo.panel.NestedLayout
+ * @extends Roo.panel.Content
+ * @parent Roo.layout.Border Roo.LayoutDialog builder
+ * @cfg {Roo.layout.Border} layout   [required] The layout for this panel
+ *
+ * 
+ * @constructor
+ * Create a new NestedLayoutPanel.
+ * 
+ * 
+ * @param {Roo.layout.Border} layout [required] The layout for this panel
+ * @param {String/Object} config A string to set only the title or a config object
+ */
+</span><span class="jsdoc-var">Roo.panel.NestedLayout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">layout</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
+{
+    </span><span class="jsdoc-comment">// construct with only one argument..
+    /* FIXME - implement nicer consturctors
+    if (layout.layout) {
+        config = layout;
+        layout = config.layout;
+        delete config.layout;
+    }
+    if (layout.xtype &amp;&amp; !layout.getEl) {
+        // then layout needs constructing..
+        layout = Roo.factory(layout, Roo);
+    }
+    */
+
+
+    </span><span class="jsdoc-var">Roo.panel.NestedLayout.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">layout.getEl</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">layout.monitorWindowResize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// turn off autosizing
+    </span><span class="jsdoc-var">this.layout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">layout</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.layout.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-layout-nested-layout&quot;</span><span class="jsdoc-syntax">);
+
+
+
+
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.panel.NestedLayout</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.panel.Content</span><span class="jsdoc-syntax">, {
+
+    </span><span class="jsdoc-var">layout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">setSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.ignoreResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.adjustForComponents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.layout.getEl</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">el.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size.height</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">touch </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.dom.offsetWidth</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.layout.layout</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-comment">// ie requires a double layout on the first pass
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.initialized</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.initialized </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.layout.layout</span><span class="jsdoc-syntax">();
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">// activate all subpanels if not currently active..
+
+    </span><span class="jsdoc-var">setActiveState </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;deactivate&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;activate&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">// not sure if this should happen before or after..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// should not happen..
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">reg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.layout.regions</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">reg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.layout.getRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">reg.getActivePanel</span><span class="jsdoc-syntax">()) {
+                </span><span class="jsdoc-comment">//reg.showPanel(reg.getActivePanel()); // force it to activate.. 
+                </span><span class="jsdoc-var">reg.setActivePanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">reg.getActivePanel</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">reg.panels.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">reg.showPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">reg.getPanel</span><span class="jsdoc-syntax">(0));
+        }
+
+
+
+
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the nested BorderLayout for this panel
+     * @return {Roo.layout.Border}
+     */
+    </span><span class="jsdoc-var">getLayout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">;
+    },
+
+     </span><span class="jsdoc-comment">/**
+     * Adds a xtype elements to the layout of the nested panel
+     * &lt;pre&gt;&lt;code&gt;
+
+panel.addxtype({
+       xtype : 'ContentPanel',
+       region: 'west',
+       items: [ .... ]
+   }
+);
+
+panel.addxtype({
+        xtype : 'panel.NestedLayout',
+        region: 'west',
+        layout: {
+           center: { },
+           west: { }   
+        },
+        items : [ ... list of content panels or nested layout panels.. ]
+   }
+);
+&lt;/code&gt;&lt;/pre&gt;
+     * @param {Object} cfg Xtype definition of item to add.
+     */
+    </span><span class="jsdoc-var">addxtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.layout.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+
+    }
+});
+</span></code></body></html>

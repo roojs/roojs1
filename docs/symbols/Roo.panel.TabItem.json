@@ -1,0 +1,872 @@
+{
+  "name" : "Roo.panel.TabItem",
+  "augments" : [
+    "Roo.util.Observable"
+  ],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
+  "desc" : "Represents an individual item (tab plus body) in a TabPanel.",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
+  "memberOf" : "TabItem",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "tabPanel",
+      "type" : "Roo.panel.Tab",
+      "desc" : "The {@link Roo.panel.Tab} this TabPanelItem belongs to",
+      "isOptional" : false
+    },
+    {
+      "name" : "id",
+      "type" : "String",
+      "desc" : "The id of this TabPanelItem",
+      "isOptional" : false
+    },
+    {
+      "name" : "text",
+      "type" : "String",
+      "desc" : "The text for the tab of this TabPanelItem",
+      "isOptional" : false
+    },
+    {
+      "name" : "closable",
+      "type" : "Boolean",
+      "desc" : "True to allow this TabPanelItem to be closable (defaults to false)",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable",
+      "isOptional" : false,
+      "optvals" : []
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "getUpdateManager",
+      "type" : "function",
+      "desc" : "Gets the {@link Roo.UpdateManager} for the body of this TabPanelItem. Enables you to perform Ajax updates.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.UpdateManager",
+          "desc" : "The UpdateManager"
+        }
+      ]
+    },
+    {
+      "name" : "disable",
+      "type" : "function",
+      "desc" : "Disables this TabPanelItem -- this does nothing if this is the active TabPanelItem.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "setHidden",
+      "type" : "function",
+      "desc" : "Show or hide the tab",
+      "sig" : "(hidden)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "hidden",
+          "type" : "Boolean",
+          "desc" : "True to hide or false to show.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "isHidden",
+      "type" : "function",
+      "desc" : "Returns true if this tab is \"hidden\"",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "activate",
+      "type" : "function",
+      "desc" : "Activates this TabPanelItem -- this <b>does</b> deactivate the currently active TabPanelItem.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "getText",
+      "type" : "function",
+      "desc" : "Returns the text for this tab",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "setText",
+      "type" : "function",
+      "desc" : "Sets the text for the tab (Note: this also sets the tooltip text)",
+      "sig" : "(text)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "The tab's text and tooltip",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "isActive",
+      "type" : "function",
+      "desc" : "Returns true if this tab is the active tab.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "setUrl",
+      "type" : "function",
+      "desc" : "Set a URL to be used to load the content for this TabPanelItem.",
+      "sig" : "(url, params, loadOnce)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "url",
+          "type" : "String/Function",
+          "desc" : "The URL to load the content from, or a function to call to get the URL",
+          "isOptional" : false
+        },
+        {
+          "name" : "params",
+          "type" : "String/Object",
+          "desc" : "(optional) The string params for the update call or an object of the params. See {@link Roo.UpdateManager#update} for more details. (Defaults to null)",
+          "isOptional" : false
+        },
+        {
+          "name" : "loadOnce",
+          "type" : "Boolean",
+          "desc" : "(optional) Whether to only load the content once. If this is false it makes the Ajax call every time this TabPanelItem is activated. (Defaults to false)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.UpdateManager",
+          "desc" : "The UpdateManager"
+        }
+      ]
+    },
+    {
+      "name" : "enable",
+      "type" : "function",
+      "desc" : "Enables this TabPanelItem if it was previously disabled.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "hide",
+      "type" : "function",
+      "desc" : "Hides this TabPanelItem -- if you don't activate another TabPanelItem this could look odd.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "show",
+      "type" : "function",
+      "desc" : "Shows this TabPanelItem -- this <b>does not</b> deactivate the currently active TabPanelItem.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "setTooltip",
+      "type" : "function",
+      "desc" : "Set the tooltip for the tab.",
+      "sig" : "(tooltip)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "tooltip",
+          "type" : "String",
+          "desc" : "The tab's tooltip",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "refresh",
+      "type" : "function",
+      "desc" : "Forces a content refresh from the URL specified in the {@link #setUrl} method.\n  Will fail silently if the setUrl method has not been called.\n  This does not activate the panel, just updates its content.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "setContent",
+      "type" : "function",
+      "desc" : "Sets the content for this TabPanelItem.",
+      "sig" : "(content, loadScripts)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "content",
+          "type" : "String",
+          "desc" : "The content",
+          "isOptional" : false
+        },
+        {
+          "name" : "loadScripts",
+          "type" : "Boolean",
+          "desc" : "true to look for and load scripts",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "purgeListeners",
+      "type" : "function",
+      "desc" : "Removes all listeners for this object",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "on",
+      "type" : "function",
+      "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "un",
+      "type" : "function",
+      "desc" : "Removes a listener (shorthand for removeListener)",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "addEvents",
+      "type" : "function",
+      "desc" : "Used to define events on this Observable",
+      "sig" : "(object)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "object",
+          "type" : "Object",
+          "desc" : "The object with the events defined",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "releaseCapture",
+      "type" : "function",
+      "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "sig" : "(o)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to release",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "removeListener",
+      "type" : "function",
+      "desc" : "Removes a listener",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "fireEvent",
+      "type" : "function",
+      "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "sig" : "(eventName, args)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "args",
+          "type" : "Object...",
+          "desc" : "Variable number of parameters are passed to handlers",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
+    },
+    {
+      "name" : "hasListener",
+      "type" : "function",
+      "desc" : "Checks to see if this object has any listeners for a specified event",
+      "sig" : "(eventName)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The name of the event to check for",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
+    },
+    {
+      "name" : "capture",
+      "type" : "function",
+      "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "sig" : "(o, fn, scope)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to capture",
+          "isOptional" : false
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The function to call",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the fn",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "addListener",
+      "type" : "function",
+      "desc" : "Appends an event handler to this component",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    }
+  ],
+  "events" : [
+    {
+      "name" : "deactivate",
+      "type" : "function",
+      "desc" : "Fires when this tab is no longer the active tab.",
+      "sig" : "function (tabPanel, _self)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "tabPanel",
+          "type" : "Roo.panel.Tab",
+          "desc" : "The parent TabPanel",
+          "isOptional" : false
+        },
+        {
+          "name" : "this",
+          "type" : "Roo.panel.TabItem",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "close",
+      "type" : "function",
+      "desc" : "Fires when this tab is closed.",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.panel.TabItem",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "activate",
+      "type" : "function",
+      "desc" : "Fires when this tab becomes the active tab.",
+      "sig" : "function (tabPanel, _self)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "tabPanel",
+          "type" : "Roo.panel.Tab",
+          "desc" : "The parent TabPanel",
+          "isOptional" : false
+        },
+        {
+          "name" : "this",
+          "type" : "Roo.panel.TabItem",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "beforeclose",
+      "type" : "function",
+      "desc" : "Fires before this tab is closed. To cancel the close, set cancel to true on e (e.cancel = true).",
+      "sig" : "function (_self, e)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.panel.TabItem",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "e",
+          "type" : "Object",
+          "desc" : "Set cancel to true on this object to cancel the close.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    }
+  ]
+}

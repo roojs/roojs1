@@ -1,0 +1,315 @@
+<html><head><title>Roo/layout/BasicRegion.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.layout.BasicRegion
+ * @extends Roo.util.Observable
+ * This class represents a lightweight region in a layout manager. This region does not move dom nodes
+ * and does not have a titlebar, tabs or any other features. All it does is size and position 
+ * panels. To create a BasicLayoutRegion, add lightweight:true or basic:true to your regions config.
+ */
+</span><span class="jsdoc-var">Roo.layout.BasicRegion</span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mgr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">skipConfig</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">this.mgr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">mgr</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.position  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.events </span><span class="jsdoc-syntax">= {
+        </span><span class="jsdoc-comment">/**
+         * @scope Roo.layout.BasicRegion
+         */
+
+        /**
+         * @event beforeremove
+         * Fires before a panel is removed (or closed). To cancel the removal set &quot;e.cancel = true&quot; on the event argument.
+         * @param {Roo.layout.Region} this
+         * @param {Roo.panel.Content} panel The panel
+         * @param {Object} e The cancel event object
+         */
+        </span><span class="jsdoc-string">&quot;beforeremove&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event invalidated
+         * Fires when the layout for this region is changed.
+         * @param {Roo.layout.Region} this
+         */
+        </span><span class="jsdoc-string">&quot;invalidated&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event visibilitychange
+         * Fires when this region is shown or hidden 
+         * @param {Roo.layout.Region} this
+         * @param {Boolean} visibility true or false
+         */
+        </span><span class="jsdoc-string">&quot;visibilitychange&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event paneladded
+         * Fires when a panel is added. 
+         * @param {Roo.layout.Region} this
+         * @param {Roo.panel.Content} panel The panel
+         */
+        </span><span class="jsdoc-string">&quot;paneladded&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event panelremoved
+         * Fires when a panel is removed. 
+         * @param {Roo.layout.Region} this
+         * @param {Roo.panel.Content} panel The panel
+         */
+        </span><span class="jsdoc-string">&quot;panelremoved&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event beforecollapse
+         * Fires when this region before collapse.
+         * @param {Roo.layout.Region} this
+         */
+        </span><span class="jsdoc-string">&quot;beforecollapse&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event collapsed
+         * Fires when this region is collapsed.
+         * @param {Roo.layout.Region} this
+         */
+        </span><span class="jsdoc-string">&quot;collapsed&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event expanded
+         * Fires when this region is expanded.
+         * @param {Roo.layout.Region} this
+         */
+        </span><span class="jsdoc-string">&quot;expanded&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event slideshow
+         * Fires when this region is slid into view.
+         * @param {Roo.layout.Region} this
+         */
+        </span><span class="jsdoc-string">&quot;slideshow&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event slidehide
+         * Fires when this region slides out of view. 
+         * @param {Roo.layout.Region} this
+         */
+        </span><span class="jsdoc-string">&quot;slidehide&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event panelactivated
+         * Fires when a panel is activated. 
+         * @param {Roo.layout.Region} this
+         * @param {Roo.panel.Content} panel The activated panel
+         */
+        </span><span class="jsdoc-string">&quot;panelactivated&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event resized
+         * Fires when the user resizes this region. 
+         * @param {Roo.layout.Region} this
+         * @param {Number} newSize The new size (width for east/west, height for north/south)
+         */
+        </span><span class="jsdoc-string">&quot;resized&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">};
+    </span><span class="jsdoc-comment">/** A collection of panels in this region. @type Roo.util.MixedCollection */
+    </span><span class="jsdoc-var">this.panels </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-var">this.panels.getKey </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getPanelId.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.box </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.activePanel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-comment">// ensure listeners are added...
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.listeners </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">config.events</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">Roo.layout.BasicRegion.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, {
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">config.listeners </span><span class="jsdoc-syntax">|| {},
+            </span><span class="jsdoc-var">events </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">config.events </span><span class="jsdoc-syntax">|| {}
+        });
+    }
+
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">skipConfig </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.applyConfig</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    }
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.layout.BasicRegion</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">getPanelId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">p.getId</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">applyConfig </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.margins </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.margins </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.margins </span><span class="jsdoc-syntax">|| {</span><span class="jsdoc-var">top</span><span class="jsdoc-syntax">: 0, </span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">: 0, </span><span class="jsdoc-var">right</span><span class="jsdoc-syntax">:0, </span><span class="jsdoc-var">bottom</span><span class="jsdoc-syntax">: 0};
+        </span><span class="jsdoc-var">this.config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">;
+
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Resizes the region to the specified size. For vertical regions (west, east) this adjusts 
+     * the width, for horizontal (north, south) the height.
+     * @param {Number} newSize The new width or height
+     */
+    </span><span class="jsdoc-var">resizeTo </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">:
+                 (</span><span class="jsdoc-var">this.activePanel </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.activePanel.getEl</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;east&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;west&quot;</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-var">el.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;resized&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;north&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;south&quot;</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-var">el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;resized&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            }
+        }
+    },
+
+    </span><span class="jsdoc-var">getBox </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.activePanel </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.activePanel.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getMargins </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.margins</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">updateBox </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.box </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.activePanel.getEl</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">el.dom.style.left </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">box.x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">el.dom.style.top </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">box.y </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.activePanel.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box.height</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the container element for this region.
+     * @return {Roo.Element}
+     */
+    </span><span class="jsdoc-var">getEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.activePanel</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns true if this region is currently visible.
+     * @return {Boolean}
+     */
+    </span><span class="jsdoc-var">isVisible </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.activePanel </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">setActivePanel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">panel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.activePanel </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.activePanel </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.activePanel.setActiveState</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.activePanel.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setLeftTop</span><span class="jsdoc-syntax">(-10000,-10000);
+        }
+        </span><span class="jsdoc-var">this.activePanel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">panel.setActiveState</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.box</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">panel.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.box.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.box.height</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;panelactivated&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;invalidated&quot;</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Show the specified panel.
+     * @param {Number/String/panel.Content} panelId The panels index, id or the panel itself
+     * @return {Roo.panel.Content} The shown panel or null
+     */
+    </span><span class="jsdoc-var">showPanel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">this.setActivePanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Get the active panel for this region.
+     * @return {Roo.panel.Content} The active panel or null
+     */
+    </span><span class="jsdoc-var">getActivePanel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.activePanel</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Add the passed ContentPanel(s)
+     * @param {panel.Content...} panel The ContentPanel(s) to add (you can pass more than one)
+     * @return {Roo.panel.Content} The panel added (if only one was added)
+     */
+    </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments.length </span><span class="jsdoc-syntax">&gt; 1){
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">arguments.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            	</span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            }
+            </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">this.showPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">panel.getEl</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.dom.parentNode </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.mgr.el.dom</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.mgr.el.dom.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.dom</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel.setRegion</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">panel.setRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.panels.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;position&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;absolute&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">panel.background</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setActivePanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.config.initialSize </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.panels.getCount</span><span class="jsdoc-syntax">()==1){
+                </span><span class="jsdoc-var">this.resizeTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.config.initialSize</span><span class="jsdoc-syntax">);
+            }
+        }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;paneladded&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns true if the panel is in this region.
+     * @param {Number/String/panel.Content} panel The panels index, id or the panel itself
+     * @return {Boolean}
+     */
+    </span><span class="jsdoc-var">hasPanel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">panel </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;object&quot;</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// must be panel obj
+            </span><span class="jsdoc-var">panel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">panel.getId</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Removes the specified panel. If preservePanel is not true (either here or in the config), the panel is destroyed.
+     * @param {Number/String/panel.Content} panel The panels index, id or the panel itself
+     * @param {Boolean} preservePanel Overrides the config preservePanel option
+     * @return {Roo.panel.Content} The panel that was removed
+     */
+    </span><span class="jsdoc-var">remove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">preservePanel</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">panel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">= {};
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeremove&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.cancel </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">panelId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">panel.getId</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.panels.removeKey</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panelId</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the panel specified or null if it's not in this region.
+     * @param {Number/String/panel.Content} panel The panels index, id or the panel itself
+     * @return {Roo.panel.Content}
+     */
+    </span><span class="jsdoc-var">getPanel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;object&quot;</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// must be panel obj
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.panels.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns this regions position (north/south/east/west/center).
+     * @return {String} 
+     */
+    </span><span class="jsdoc-var">getPosition</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">;
+    }
+});</span></code></body></html>
