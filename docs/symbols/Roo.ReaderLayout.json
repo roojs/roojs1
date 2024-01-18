@@ -8,7 +8,7 @@
   "childClasses" : {  },
   "tree_children" : [],
   "tree_parent" : [],
-  "desc" : "This is a pre-built layout that represents a classic, 5-pane application.  It consists of a header, a primary\ncenter region containing two nested regions (a top one for a list view and one for item preview below),\nand regions on either side that can be used for navigation, application commands, informational displays, etc.\nThe setup and configuration work exactly the same as it does for a {@link Roo.BorderLayout} - this class simply\nexpedites the setup of the overall layout and regions for this common application style.\nExample:\n <pre><code>\nvar reader = new Roo.ReaderLayout();\nvar CP = Roo.ContentPanel;  // shortcut for adding\n\nreader.beginUpdate();\nreader.add(\"north\", new CP(\"north\", \"North\"));\nreader.add(\"west\", new CP(\"west\", {title: \"West\"}));\nreader.add(\"east\", new CP(\"east\", {title: \"East\"}));\n\nreader.regions.listView.add(new CP(\"listView\", \"List\"));\nreader.regions.preview.add(new CP(\"preview\", \"Preview\"));\nreader.endUpdate();\n</code></pre>",
+  "desc" : "This is a pre-built layout that represents a classic, 5-pane application.  It consists of a header, a primary\ncenter region containing two nested regions (a top one for a list view and one for item preview below),\nand regions on either side that can be used for navigation, application commands, informational displays, etc.\nThe setup and configuration work exactly the same as it does for a {@link Roo.BorderLayout} - this class simply\nexpedites the setup of the overall layout and regions for this common application style.\nExample:\n <pre><code>\nvar reader = new Roo.ReaderLayout();\nvar CP = Roo.panel.Content;  // shortcut for adding\n\nreader.beginUpdate();\nreader.add(\"north\", new CP(\"north\", \"North\"));\nreader.add(\"west\", new CP(\"west\", {title: \"West\"}));\nreader.add(\"east\", new CP(\"east\", {title: \"East\"}));\n\nreader.regions.listView.add(new CP(\"listView\", \"List\"));\nreader.regions.preview.add(new CP(\"preview\", \"Preview\"));\nreader.endUpdate();\n</code></pre>",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
@@ -202,7 +202,7 @@
       "params" : [
         {
           "name" : "panelId",
-          "type" : "String/ContentPanel",
+          "type" : "String/panel.Content",
           "desc" : "The panels id or the panel itself",
           "isOptional" : false
         }
@@ -210,7 +210,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The shown panel or null"
         }
       ]
@@ -266,7 +266,7 @@
         },
         {
           "name" : "panel",
-          "type" : "Number/String/Roo.ContentPanel",
+          "type" : "Number/String/Roo.panel.Content",
           "desc" : "The index, id or panel to remove",
           "isOptional" : false
         }
@@ -274,7 +274,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The removed panel"
         }
       ]
@@ -306,7 +306,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The panel or null if it wasn't found"
         }
       ]
@@ -381,7 +381,7 @@
         },
         {
           "name" : "panel",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The panel to add",
           "isOptional" : false
         }
@@ -389,7 +389,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The added panel"
         }
       ]

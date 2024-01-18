@@ -5,11 +5,6 @@
     "Roo.bootstrap.nav.Item" : [
       "Roo.bootstrap.nav.SidebarItem"
     ],
-    "Roo.ContentPanel" : [
-      "Roo.GridPanel",
-      "Roo.NestedLayoutPanel",
-      "Roo.TreePanel"
-    ],
     "Roo.LayoutRegion" : [
       "Roo.SplitLayoutRegion",
       "Roo.bootstrap.layout.Split"
@@ -78,13 +73,10 @@
       "Roo.BasicLayoutRegion",
       "Roo.Button",
       "Roo.Component",
-      "Roo.ContentPanel",
       "Roo.Document",
       "Roo.LayoutManager",
       "Roo.Resizable",
       "Roo.SplitBar",
-      "Roo.TabPanel",
-      "Roo.TabPanelItem",
       "Roo.UpdateManager",
       "Roo.View",
       "Roo.XComponent",
@@ -106,6 +98,9 @@
       "Roo.grid.Grid",
       "Roo.grid.GridView",
       "Roo.menu.Menu",
+      "Roo.panel.Content",
+      "Roo.panel.Tab",
+      "Roo.panel.TabItem",
       "Roo.tree.DefaultSelectionModel",
       "Roo.tree.MultiSelectionModel",
       "Roo.tree.TreeLoader",
@@ -117,14 +112,14 @@
     ],
     "Roo.Component" : [
       "Roo.BoxComponent",
-      "Roo.CalendarPanel",
       "Roo.ColorPalette",
       "Roo.DatePicker",
       "Roo.Editor",
       "Roo.HtmlEditorCore",
       "Roo.bootstrap.Component",
       "Roo.form.Layout",
-      "Roo.menu.BaseItem"
+      "Roo.menu.BaseItem",
+      "Roo.panel.Calendar"
     ],
     "Roo.BorderLayout" : [
       "Roo.ReaderLayout"
@@ -165,10 +160,10 @@
       "Roo.menu.TextItem"
     ],
     "Roo.BoxComponent" : [
-      "Roo.dialog.UploadCropbox",
       "Roo.form.ComboBoxArray.Item",
       "Roo.form.Field",
-      "Roo.form.TextItem"
+      "Roo.form.TextItem",
+      "Roo.panel.Cropbox"
     ],
     "Roo.data.Store" : [
       "Roo.data.JsonStore",
@@ -304,6 +299,11 @@
       "Roo.bootstrap.PopoverNav",
       "Roo.bootstrap.form.HtmlEditorToolbar.Standard",
       "Roo.bootstrap.nav.Headerbar"
+    ],
+    "Roo.panel.Content" : [
+      "Roo.panel.Grid",
+      "Roo.panel.NestedLayout",
+      "Roo.panel.Tree"
     ],
     "Roo.data.Connection" : [
       "Roo.Ajax"

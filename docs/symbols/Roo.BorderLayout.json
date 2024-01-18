@@ -10,13 +10,13 @@
     ]
   },
   "tree_children" : [
-    "Roo.ContentPanel",
-    "Roo.GridPanel",
-    "Roo.NestedLayoutPanel",
-    "Roo.TreePanel"
+    "Roo.panel.Content",
+    "Roo.panel.Grid",
+    "Roo.panel.NestedLayout",
+    "Roo.panel.Tree"
   ],
   "tree_parent" : [],
-  "desc" : "This class represents a common layout manager used in desktop applications. For screenshots and more details,\nplease see: <br><br>\n<a href=\"http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/\">Cross Browser Layouts - Part 1</a><br>\n<a href=\"http://www.jackslocum.com/yui/2006/10/28/cross-browser-web-20-layouts-part-2-ajax-feed-viewer-20/\">Cross Browser Layouts - Part 2</a><br><br>\nExample:\n <pre><code>\n var layout = new Roo.BorderLayout(document.body, {\n    north: {\n        initialSize: 25,\n        titlebar: false\n    },\n    west: {\n        split:true,\n        initialSize: 200,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true\n    },\n    east: {\n        split:true,\n        initialSize: 202,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true\n    },\n    south: {\n        split:true,\n        initialSize: 100,\n        minSize: 100,\n        maxSize: 200,\n        titlebar: true,\n        collapsible: true\n    },\n    center: {\n        titlebar: true,\n        autoScroll:true,\n        resizeTabs: true,\n        minTabWidth: 50,\n        preferredTabWidth: 150\n    }\n});\n\n// shorthand\nvar CP = Roo.ContentPanel;\n\nlayout.beginUpdate();\nlayout.add(\"north\", new CP(\"north\", \"North\"));\nlayout.add(\"south\", new CP(\"south\", {title: \"South\", closable: true}));\nlayout.add(\"west\", new CP(\"west\", {title: \"West\"}));\nlayout.add(\"east\", new CP(\"autoTabs\", {title: \"Auto Tabs\", closable: true}));\nlayout.add(\"center\", new CP(\"center1\", {title: \"Close Me\", closable: true}));\nlayout.add(\"center\", new CP(\"center2\", {title: \"Center Panel\", closable: false}));\nlayout.getRegion(\"center\").showPanel(\"center1\");\nlayout.endUpdate();\n</code></pre>\n\n<b>The container the layout is rendered into can be either the body element or any other element.\nIf it is not the body element, the container needs to either be an absolute positioned element,\nor you will need to add \"position:relative\" to the css of the container.  You will also need to specify\nthe container size if it is not the body element.</b>",
+  "desc" : "This class represents a common layout manager used in desktop applications. For screenshots and more details,\nplease see: <br><br>\n<a href=\"http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/\">Cross Browser Layouts - Part 1</a><br>\n<a href=\"http://www.jackslocum.com/yui/2006/10/28/cross-browser-web-20-layouts-part-2-ajax-feed-viewer-20/\">Cross Browser Layouts - Part 2</a><br><br>\nExample:\n <pre><code>\n var layout = new Roo.BorderLayout(document.body, {\n    north: {\n        initialSize: 25,\n        titlebar: false\n    },\n    west: {\n        split:true,\n        initialSize: 200,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true\n    },\n    east: {\n        split:true,\n        initialSize: 202,\n        minSize: 175,\n        maxSize: 400,\n        titlebar: true,\n        collapsible: true\n    },\n    south: {\n        split:true,\n        initialSize: 100,\n        minSize: 100,\n        maxSize: 200,\n        titlebar: true,\n        collapsible: true\n    },\n    center: {\n        titlebar: true,\n        autoScroll:true,\n        resizeTabs: true,\n        minTabWidth: 50,\n        preferredTabWidth: 150\n    }\n});\n\n// shorthand\nvar CP = Roo.panel.Content;\n\nlayout.beginUpdate();\nlayout.add(\"north\", new CP(\"north\", \"North\"));\nlayout.add(\"south\", new CP(\"south\", {title: \"South\", closable: true}));\nlayout.add(\"west\", new CP(\"west\", {title: \"West\"}));\nlayout.add(\"east\", new CP(\"autoTabs\", {title: \"Auto Tabs\", closable: true}));\nlayout.add(\"center\", new CP(\"center1\", {title: \"Close Me\", closable: true}));\nlayout.add(\"center\", new CP(\"center2\", {title: \"Center Panel\", closable: false}));\nlayout.getRegion(\"center\").showPanel(\"center1\");\nlayout.endUpdate();\n</code></pre>\n\n<b>The container the layout is rendered into can be either the body element or any other element.\nIf it is not the body element, the container needs to either be an absolute positioned element,\nor you will need to add \"position:relative\" to the css of the container.  You will also need to specify\nthe container size if it is not the body element.</b>",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
@@ -210,7 +210,7 @@
       "params" : [
         {
           "name" : "panelId",
-          "type" : "String/ContentPanel",
+          "type" : "String/panel.Content",
           "desc" : "The panels id or the panel itself",
           "isOptional" : false
         }
@@ -218,7 +218,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The shown panel or null"
         }
       ]
@@ -274,7 +274,7 @@
         },
         {
           "name" : "panel",
-          "type" : "Number/String/Roo.ContentPanel",
+          "type" : "Number/String/Roo.panel.Content",
           "desc" : "The index, id or panel to remove",
           "isOptional" : false
         }
@@ -282,7 +282,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The removed panel"
         }
       ]
@@ -314,7 +314,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The panel or null if it wasn't found"
         }
       ]
@@ -389,7 +389,7 @@
         },
         {
           "name" : "panel",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The panel to add",
           "isOptional" : false
         }
@@ -397,7 +397,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The added panel"
         }
       ]

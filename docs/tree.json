@@ -53,11 +53,6 @@
         "is_class" : true
       },
       {
-        "name" : "Roo.CalendarPanel",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
         "name" : "Roo.ColorPalette",
         "cn" : [],
         "is_class" : true
@@ -79,11 +74,6 @@
       },
       {
         "name" : "Roo.CompositeElementLite",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
-        "name" : "Roo.ContentPanel",
         "cn" : [],
         "is_class" : true
       },
@@ -148,11 +138,6 @@
         "is_class" : true
       },
       {
-        "name" : "Roo.GridPanel",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
         "name" : "Roo.HtmlEditorCore",
         "cn" : [],
         "is_class" : true
@@ -208,11 +193,6 @@
         "is_class" : true
       },
       {
-        "name" : "Roo.NestedLayoutPanel",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
         "name" : "Roo.PagingToolbar",
         "cn" : [],
         "is_class" : true
@@ -264,16 +244,6 @@
         "is_class" : true
       },
       {
-        "name" : "Roo.TabPanel",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
-        "name" : "Roo.TabPanelItem",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
         "name" : "Roo.Template",
         "cn" : [],
         "is_class" : true
@@ -317,11 +287,6 @@
             "is_class" : true
           }
         ],
-        "is_class" : true
-      },
-      {
-        "name" : "Roo.TreePanel",
-        "cn" : [],
         "is_class" : true
       },
       {
@@ -1080,17 +1045,6 @@
         "is_class" : false
       },
       {
-        "name" : "Roo.dialog",
-        "cn" : [
-          {
-            "name" : "Roo.dialog.UploadCropbox",
-            "cn" : [],
-            "is_class" : true
-          }
-        ],
-        "is_class" : false
-      },
-      {
         "name" : "Roo.form",
         "cn" : [
           {
@@ -1551,6 +1505,52 @@
           },
           {
             "name" : "Roo.menu.TextItem",
+            "cn" : [],
+            "is_class" : true
+          }
+        ],
+        "is_class" : false
+      },
+      {
+        "name" : "Roo.panel",
+        "cn" : [
+          {
+            "name" : "Roo.panel.Calendar",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.panel.Content",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.panel.Cropbox",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.panel.Grid",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.panel.NestedLayout",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.panel.Tab",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.panel.TabItem",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.panel.Tree",
             "cn" : [],
             "is_class" : true
           }

@@ -21,7 +21,7 @@
  * Example:
  &lt;pre&gt;&lt;code&gt;
 var reader = new Roo.ReaderLayout();
-var CP = Roo.ContentPanel;  // shortcut for adding
+var CP = Roo.panel.Content;  // shortcut for adding
 
 reader.beginUpdate();
 reader.add(&quot;north&quot;, new CP(&quot;north&quot;, &quot;North&quot;));
@@ -97,7 +97,7 @@ reader.endUpdate();
             </span><span class="jsdoc-var">minHeight</span><span class="jsdoc-syntax">:200
         }, </span><span class="jsdoc-var">c.listView</span><span class="jsdoc-syntax">)
     });
-    </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.NestedLayoutPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">inner</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.panel.NestedLayout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">inner</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">c.mainTitle </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">tabTip</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">},</span><span class="jsdoc-var">c.innerPanelCfg</span><span class="jsdoc-syntax">)));
 
     </span><span class="jsdoc-var">this.endUpdate</span><span class="jsdoc-syntax">();

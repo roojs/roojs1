@@ -360,7 +360,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (!skip_children) {    
             for(var i =0;i < items.length;i++) {
               //  Roo.log(['add child', items[i]]);
-                nitems.push(cn.addxtype(Roo.apply({}, items[i])));
+                nitems.push(cn.addxtype(items[i].xns == false ? items[i] : Roo.apply({}, items[i])));
             }
         }
         
@@ -1357,7 +1357,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.CalendarPanel = function(config){
+Roo.panel.Calendar = function(config){
     
     Roo.log("cal panel ctr");
   
@@ -1366,7 +1366,7 @@ Roo.CalendarPanel = function(config){
         
     //this.wrapper.dom.appendChild(grid.getGridEl().dom);
     
-    Roo.CalendarPanel.superclass.constructor.call(this, this.wrapper, config);
+    Roo.panel.Calendar.superclass.constructor.call(this, this.wrapper, config);
     
     Roo.log(this.el);
     
@@ -1449,7 +1449,7 @@ Roo.CalendarPanel = function(config){
 };
 
 
-Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
+Roo.extend(Roo.panel.Calendar, Roo.panel.Content, {
     
       
     render : function()

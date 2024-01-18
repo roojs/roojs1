@@ -301,7 +301,7 @@
       "params" : [
         {
           "name" : "panel",
-          "type" : "Number/String/ContentPanel",
+          "type" : "Number/String/panel.Content",
           "desc" : "The panel's index, id or the panel itself",
           "isOptional" : false
         },
@@ -315,7 +315,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The panel that was removed"
         }
       ]
@@ -340,7 +340,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The active panel or null"
         }
       ]
@@ -390,7 +390,7 @@
       "params" : [
         {
           "name" : "panel",
-          "type" : "Number/String/ContentPanel",
+          "type" : "Number/String/panel.Content",
           "desc" : "The panel's index, id or the panel itself",
           "isOptional" : false
         }
@@ -443,7 +443,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.TabPanel",
+          "type" : "Roo.panel.Tab",
           "desc" : ""
         }
       ]
@@ -524,7 +524,7 @@
       "params" : [
         {
           "name" : "panelId",
-          "type" : "Number/String/ContentPanel",
+          "type" : "Number/String/panel.Content",
           "desc" : "The panel's index, id or the panel itself",
           "isOptional" : false
         }
@@ -532,7 +532,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The shown panel, or null if a panel could not be found from panelId"
         }
       ]
@@ -594,7 +594,7 @@
       "params" : [
         {
           "name" : "panel",
-          "type" : "ContentPanel...",
+          "type" : "panel.Content...",
           "desc" : "The ContentPanel(s) to add (you can pass more than one)",
           "isOptional" : false
         }
@@ -602,7 +602,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The panel added (if only one was added; null otherwise)"
         }
       ]
@@ -626,7 +626,7 @@
       "params" : [
         {
           "name" : "panel",
-          "type" : "Number/String/ContentPanel",
+          "type" : "Number/String/panel.Content",
           "desc" : "The panel's index, id or the panel itself",
           "isOptional" : false
         }
@@ -652,7 +652,7 @@
       "params" : [
         {
           "name" : "panel",
-          "type" : "Number/String/ContentPanel",
+          "type" : "Number/String/panel.Content",
           "desc" : "The panels index, id or the panel itself",
           "isOptional" : false
         }
@@ -735,7 +735,7 @@
       "params" : [
         {
           "name" : "panel",
-          "type" : "Number/String/ContentPanel",
+          "type" : "Number/String/panel.Content",
           "desc" : "The panels index, id or the panel itself",
           "isOptional" : false
         }
@@ -743,7 +743,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : ""
         }
       ]
@@ -1112,7 +1112,7 @@
         },
         {
           "name" : "panel",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The panel",
           "isOptional" : false
         }
@@ -1178,7 +1178,7 @@
         },
         {
           "name" : "panel",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The panel",
           "isOptional" : false
         },
@@ -1230,7 +1230,7 @@
         },
         {
           "name" : "panel",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The panel",
           "isOptional" : false
         }
@@ -1342,7 +1342,7 @@
         },
         {
           "name" : "panel",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The activated panel",
           "isOptional" : false
         }

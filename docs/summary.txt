@@ -386,20 +386,43 @@ Widgets (Classic Roo)
         Roo.View
         Examples
             [examples/view/chooser.html]Image Chooser</a>  </li>
-    Layout / Tabs
+    
+    Regions
         Roo.BasicLayoutRegion
         Roo.BorderRegion
-        Roo.ContentPanel
         Roo.LayoutRegion
-        Roo.NestedLayoutPanel
         Roo.ReaderLayout
         Roo.SplitBar
         Roo.SplitLayoutRegion
-        Roo.TabPanel
-        Roo.TabPanelItem
+    Examples
+            [examples/layout/simple.html]Simple Layout
+            [examples/layout/nested.html]Nested Layout
+            [examples/layout/complex.html]Complex Layout ( Broken - needs converting to Roo JS)
+            [examples/tabs/tabs.html]Basic Tabs  (borders broken on tab boxes)
+            [examples/tabs/tabs-adv.html]Advanced Tabs(dynamic adding of tabs)
+            [examples/panel/cropbox.html]Cropbox
+            
+    Panels (that go into Regions)
+        Roo.panel.Content
+        Roo.panel.NestedLayout
+        Roo.panel.Calendar
+        Roo.panel.Grid
+        Roo.panel.Cropbox
+        Roo.panel.Tab
+        Roo.panel.TabItem
+        Roo.panel.Tree
         Examples
             [examples/layout/simple.html]Simple Layout
             [examples/layout/nested.html]Nested Layout
             [examples/layout/complex.html]Complex Layout ( Broken - needs converting to Roo JS)
             [examples/tabs/tabs.html]Basic Tabs  (borders broken on tab boxes)
             [examples/tabs/tabs-adv.html]Advanced Tabs(dynamic adding of tabs)
+            [examples/panel/cropbox.html]Cropbox
+        
+        Examples
+            [examples/layout/simple.html]Simple Layout
+            [examples/layout/nested.html]Nested Layout
+            [examples/layout/complex.html]Complex Layout ( Broken - needs converting to Roo JS)
+            [examples/tabs/tabs.html]Basic Tabs  (borders broken on tab boxes)
+            [examples/tabs/tabs-adv.html]Advanced Tabs(dynamic adding of tabs)
+            [examples/panel/cropbox.html]Cropbox

@@ -6,16 +6,16 @@
   ],
   "childClasses" : {  },
   "tree_children" : [
-    "Roo.ContentPanel",
-    "Roo.GridPanel",
-    "Roo.NestedLayoutPanel",
-    "Roo.TreePanel"
+    "Roo.panel.Content",
+    "Roo.panel.Grid",
+    "Roo.panel.NestedLayout",
+    "Roo.panel.Tree"
   ],
   "tree_parent" : [
     "builder",
     "none"
   ],
-  "desc" : "Dialog which provides adjustments for working with a layout in a Dialog.\nAdd your necessary layout config options to the dialog's config.<br>\nExample usage (including a nested layout):\n<pre><code>\nif(!dialog){\n    dialog = new Roo.LayoutDialog(\"download-dlg\", {\n        modal: true,\n        width:600,\n        height:450,\n        shadow:true,\n        minWidth:500,\n        minHeight:350,\n        autoTabs:true,\n        proxyDrag:true,\n        // layout config merges with the dialog config\n        center:{\n            tabPosition: \"top\",\n            alwaysShowTabs: true\n        }\n    });\n    dialog.addKeyListener(27, dialog.hide, dialog);\n    dialog.setDefaultButton(dialog.addButton(\"Close\", dialog.hide, dialog));\n    dialog.addButton(\"Build It!\", this.getDownload, this);\n\n    // we can even add nested layouts\n    var innerLayout = new Roo.BorderLayout(\"dl-inner\", {\n        east: {\n            initialSize: 200,\n            autoScroll:true,\n            split:true\n        },\n        center: {\n            autoScroll:true\n        }\n    });\n    innerLayout.beginUpdate();\n    innerLayout.add(\"east\", new Roo.ContentPanel(\"dl-details\"));\n    innerLayout.add(\"center\", new Roo.ContentPanel(\"selection-panel\"));\n    innerLayout.endUpdate(true);\n\n    var layout = dialog.getLayout();\n    layout.beginUpdate();\n    layout.add(\"center\", new Roo.ContentPanel(\"standard-panel\",\n                        {title: \"Download the Source\", fitToFrame:true}));\n    layout.add(\"center\", new Roo.NestedLayoutPanel(innerLayout,\n               {title: \"Build your own roo.js\"}));\n    layout.getRegion(\"center\").showPanel(sp);\n    layout.endUpdate();\n}\n</code></pre>",
+  "desc" : "Dialog which provides adjustments for working with a layout in a Dialog.\nAdd your necessary layout config options to the dialog's config.<br>\nExample usage (including a nested layout):\n<pre><code>\nif(!dialog){\n    dialog = new Roo.LayoutDialog(\"download-dlg\", {\n        modal: true,\n        width:600,\n        height:450,\n        shadow:true,\n        minWidth:500,\n        minHeight:350,\n        autoTabs:true,\n        proxyDrag:true,\n        // layout config merges with the dialog config\n        center:{\n            tabPosition: \"top\",\n            alwaysShowTabs: true\n        }\n    });\n    dialog.addKeyListener(27, dialog.hide, dialog);\n    dialog.setDefaultButton(dialog.addButton(\"Close\", dialog.hide, dialog));\n    dialog.addButton(\"Build It!\", this.getDownload, this);\n\n    // we can even add nested layouts\n    var innerLayout = new Roo.BorderLayout(\"dl-inner\", {\n        east: {\n            initialSize: 200,\n            autoScroll:true,\n            split:true\n        },\n        center: {\n            autoScroll:true\n        }\n    });\n    innerLayout.beginUpdate();\n    innerLayout.add(\"east\", new Roo.panel.Content(\"dl-details\"));\n    innerLayout.add(\"center\", new Roo.panel.Content(\"selection-panel\"));\n    innerLayout.endUpdate(true);\n\n    var layout = dialog.getLayout();\n    layout.beginUpdate();\n    layout.add(\"center\", new Roo.panel.Content(\"standard-panel\",\n                        {title: \"Download the Source\", fitToFrame:true}));\n    layout.add(\"center\", new Roo.panel.NestedLayout(innerLayout,\n               {title: \"Build your own roo.js\"}));\n    layout.getRegion(\"center\").showPanel(sp);\n    layout.endUpdate();\n}\n</code></pre>",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
@@ -636,7 +636,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.TabPanel",
+          "type" : "Roo.panel.Tab",
           "desc" : "The tabs component"
         }
       ]
@@ -954,7 +954,7 @@
     {
       "name" : "getTabs",
       "type" : "function",
-      "desc" : "Returns the TabPanel component (creates it if it doesn't exist).\nNote: If you wish to simply check for the existence of tabs without creating them,\ncheck for a null 'tabs' property.",
+      "desc" : "Returns the panel.Tab component (creates it if it doesn't exist).\nNote: If you wish to simply check for the existence of tabs without creating them,\ncheck for a null 'tabs' property.",
       "sig" : "()\n{\n\n}",
       "static" : false,
       "memberOf" : "Roo.BasicDialog",
@@ -971,7 +971,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.TabPanel",
+          "type" : "Roo.panel.Tab",
           "desc" : "The tabs component"
         }
       ]
