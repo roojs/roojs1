@@ -387,7 +387,7 @@ Widgets (Classic Roo)
         Examples
             [examples/view/chooser.html]Image Chooser</a>  </li>
     
-    Regions
+    Regions / Layout
         Roo.BasicLayoutRegion
         Roo.BorderRegion
         Roo.LayoutRegion
