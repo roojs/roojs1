@@ -46101,3 +46101,17 @@ Roo.NestedLayoutPanel = Roo.panel.NestedLayout;
 Roo.TabPanel = Roo.panel.Tab;
 Roo.TabPanelItem = Roo.panel.TabItem;
 Roo.TreePanel = Roo.panel.Tree;
+
+Roo.BorderLayout = Roo.layout.Border;
+Roo.NorthLayoutRegion = Roo.layout.North;
+Roo.EastLayoutRegion = Roo.layout.East;
+Roo.WestLayoutRegion = Roo.layout.West;
+Roo.CenterLayoutRegion = Roo.layout.Center;
+
+Roo.LayoutRegion = Roo.layout.Region;
+Roo.BasicLayoutRegion = Roo.layout.BasicRegion;
+Roo.SplitLayoutRegion = Roo.layout.SplitRegion;
+
+Roo.LayoutManager = Roo.layout.Manager;
+
+

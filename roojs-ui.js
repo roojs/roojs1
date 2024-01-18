@@ -2069,4 +2069,6 @@ F.push("(typeof("+G+") == 'undefined')");});var H='(('+F.join(" || ")+") ? undef
 B.push(tpl.body.replace(/(\r\n|\n)/g,'\\n').replace(/'/g,"\\'").replace(this.re,fn));B.push("'].join('');};};");B=B.join('');}Roo.debug&&Roo.log(B.replace(/\\n/,'\n'));eval(B);return this;},applyTemplate:function(A){return this.master.compiled.call(this,A,{}
 );},apply:function(){return this.applyTemplate.apply(this,arguments);}});Roo.XTemplate.from=function(el){el=Roo.getDom(el);return new Roo.XTemplate(el.value||el.innerHTML);};
 // Roo/depreicated.js
-Roo.GridPanel=Roo.panel.Grid;Roo.CalendarPanel=Roo.panel.Calendar;Roo.ContentPanel=Roo.panel.Content;Roo.NestedLayoutPanel=Roo.panel.NestedLayout;Roo.TabPanel=Roo.panel.Tab;Roo.TabPanelItem=Roo.panel.TabItem;Roo.TreePanel=Roo.panel.Tree;
+Roo.GridPanel=Roo.panel.Grid;Roo.CalendarPanel=Roo.panel.Calendar;Roo.ContentPanel=Roo.panel.Content;Roo.NestedLayoutPanel=Roo.panel.NestedLayout;Roo.TabPanel=Roo.panel.Tab;Roo.TabPanelItem=Roo.panel.TabItem;Roo.TreePanel=Roo.panel.Tree;Roo.BorderLayout=Roo.layout.Border;
+Roo.NorthLayoutRegion=Roo.layout.North;Roo.EastLayoutRegion=Roo.layout.East;Roo.WestLayoutRegion=Roo.layout.West;Roo.CenterLayoutRegion=Roo.layout.Center;Roo.LayoutRegion=Roo.layout.Region;Roo.BasicLayoutRegion=Roo.layout.BasicRegion;Roo.SplitLayoutRegion=Roo.layout.SplitRegion;
+Roo.LayoutManager=Roo.layout.Manager;
