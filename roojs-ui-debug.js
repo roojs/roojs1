@@ -46114,4 +46114,5 @@ Roo.SplitLayoutRegion = Roo.layout.SplitRegion;
 
 Roo.LayoutManager = Roo.layout.Manager;
 
+Roo.ReaderLayout = Roo.layout.Reader;
 
