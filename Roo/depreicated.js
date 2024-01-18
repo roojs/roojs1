@@ -13,7 +13,10 @@ Roo.EastLayoutRegion = Roo.layout.East;
 Roo.WestLayoutRegion = Roo.layout.West;
 Roo.CenterLayoutRegion = Roo.layout.Center;
 
+Roo.LayoutRegion = Roo.layout.Region;
 Roo.BasicLayoutRegion = Roo.layout.BasicRegion;
+Roo.SplitLayoutRegion = Roo.layout.SplitRegion;
+
 Roo.LayoutManager = Roo.layout.Manager;
 
 
