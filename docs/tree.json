@@ -38,11 +38,6 @@
         "is_class" : true
       },
       {
-        "name" : "Roo.BorderLayout",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
         "name" : "Roo.BoxComponent",
         "cn" : [],
         "is_class" : true
@@ -173,11 +168,6 @@
         "is_class" : true
       },
       {
-        "name" : "Roo.LayoutRegion",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
         "name" : "Roo.LoadMask",
         "cn" : [],
         "is_class" : true
@@ -205,7 +195,7 @@
       {
         "name" : "Roo.ReaderLayout",
         "cn" : [],
-        "is_class" : true
+        "is_class" : false
       },
       {
         "name" : "Roo.Resizable",
@@ -235,11 +225,6 @@
       },
       {
         "name" : "Roo.SplitButton",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
-        "name" : "Roo.SplitLayoutRegion",
         "cn" : [],
         "is_class" : true
       },

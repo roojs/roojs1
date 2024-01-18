@@ -5,10 +5,6 @@
     "Roo.bootstrap.nav.Item" : [
       "Roo.bootstrap.nav.SidebarItem"
     ],
-    "Roo.LayoutRegion" : [
-      "Roo.SplitLayoutRegion",
-      "Roo.bootstrap.layout.Split"
-    ],
     "Roo.form.Layout" : [
       "Roo.form.Column",
       "Roo.form.FieldSet",
@@ -20,23 +16,20 @@
     "Roo.grid.EditorGrid" : [
       "Roo.grid.PropertyGrid"
     ],
-    "Roo.LayoutManager" : [
-      "Roo.BorderLayout"
-    ],
     "Roo.dd.DropTarget" : [
       "Roo.dd.DropZone"
-    ],
-    "Roo.bootstrap.Element" : [
-      "Roo.bootstrap.CardFooter",
-      "Roo.bootstrap.CardHeader",
-      "Roo.bootstrap.CardImageTop",
-      "Roo.bootstrap.DropTarget"
     ],
     "Roo.form.TriggerField" : [
       "Roo.form.ComboBox",
       "Roo.form.DateField",
       "Roo.form.MonthField",
       "Roo.form.Select"
+    ],
+    "Roo.bootstrap.Element" : [
+      "Roo.bootstrap.CardFooter",
+      "Roo.bootstrap.CardHeader",
+      "Roo.bootstrap.CardImageTop",
+      "Roo.bootstrap.DropTarget"
     ],
     "Roo.form.ComboBox" : [
       "Roo.form.ComboCheck",
@@ -120,9 +113,6 @@
       "Roo.form.Layout",
       "Roo.menu.BaseItem",
       "Roo.panel.Calendar"
-    ],
-    "Roo.BorderLayout" : [
-      "Roo.ReaderLayout"
     ],
     "Roo.menu.Item" : [
       "Roo.menu.CheckItem"
@@ -314,9 +304,6 @@
     "Roo.bootstrap.nav.Bar" : [
       "Roo.bootstrap.nav.Sidebar",
       "Roo.bootstrap.nav.Simplebar"
-    ],
-    "Roo.BasicLayoutRegion" : [
-      "Roo.LayoutRegion"
     ],
     "Roo.data.Node" : [
       "Roo.tree.TreeNode"

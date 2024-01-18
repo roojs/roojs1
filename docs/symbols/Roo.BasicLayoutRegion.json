@@ -3,15 +3,7 @@
   "augments" : [
     "Roo.util.Observable"
   ],
-  "childClasses" : {
-    "Roo.LayoutRegion" : [
-      "Roo.SplitLayoutRegion",
-      "Roo.bootstrap.layout.Split"
-    ],
-    "Roo.BasicLayoutRegion" : [
-      "Roo.LayoutRegion"
-    ]
-  },
+  "childClasses" : {  },
   "tree_children" : [],
   "tree_parent" : [],
   "desc" : "This class represents a lightweight region in a layout manager. This region does not move dom nodes\nand does not have a titlebar, tabs or any other features. All it does is size and position \npanels. To create a BasicLayoutRegion, add lightweight:true or basic:true to your regions config.",
