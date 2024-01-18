@@ -1,0 +1,80 @@
+<html><head><title>Roo/layout/StateManager.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+
+/*
+ * Private internal class for reading and applying state
+ */
+</span><span class="jsdoc-var">Roo.layout.StateManager </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">layout</span><span class="jsdoc-syntax">){
+     </span><span class="jsdoc-comment">// default empty state
+     </span><span class="jsdoc-var">this.state </span><span class="jsdoc-syntax">= {
+        </span><span class="jsdoc-var">north</span><span class="jsdoc-syntax">: {},
+        </span><span class="jsdoc-var">south</span><span class="jsdoc-syntax">: {},
+        </span><span class="jsdoc-var">east</span><span class="jsdoc-syntax">: {},
+        </span><span class="jsdoc-var">west</span><span class="jsdoc-syntax">: {}
+    };
+};
+
+</span><span class="jsdoc-var">Roo.layout.StateManager.prototype </span><span class="jsdoc-syntax">= {
+    </span><span class="jsdoc-var">init </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">layout</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">provider</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.provider </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">provider</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">provider.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">layout.id</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot;-layout-state&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">wasUpdating </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">layout.isUpdating</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">wasUpdating</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">layout.beginUpdate</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">key </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">] != </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rstate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">];
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">layout.getRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">rstate</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rstate.size</span><span class="jsdoc-syntax">){
+                            </span><span class="jsdoc-var">r.resizeTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rstate.size</span><span class="jsdoc-syntax">);
+                        }
+                        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rstate.collapsed </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+                            </span><span class="jsdoc-var">r.collapse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+                        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                            </span><span class="jsdoc-var">r.expand</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+                        }
+                    }
+                }
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">wasUpdating</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">layout.endUpdate</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-var">this.state </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.layout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">layout</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">layout.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;regionresized&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRegionResized</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">layout.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;regioncollapsed&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRegionCollapsed</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">layout.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;regionexpanded&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRegionExpanded</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">storeState </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.provider.set</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.layout.id</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot;-layout-state&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.state</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">onRegionResized </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.state</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">region.getPosition</span><span class="jsdoc-syntax">()]</span><span class="jsdoc-var">.size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">newSize</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.storeState</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">onRegionCollapsed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.state</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">region.getPosition</span><span class="jsdoc-syntax">()]</span><span class="jsdoc-var">.collapsed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.storeState</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">onRegionExpanded </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.state</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">region.getPosition</span><span class="jsdoc-syntax">()]</span><span class="jsdoc-var">.collapsed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.storeState</span><span class="jsdoc-syntax">();
+    }
+};</span></code></body></html>

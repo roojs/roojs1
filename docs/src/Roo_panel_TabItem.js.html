@@ -1,0 +1,324 @@
+<html><head><title>Roo/panel/TabItem.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
+ * @class Roo.panel.TabItem
+ * @extends Roo.util.Observable
+ * Represents an individual item (tab plus body) in a TabPanel.
+ * @param {Roo.panel.Tab} tabPanel The {@link Roo.panel.Tab} this TabPanelItem belongs to
+ * @param {String} id The id of this TabPanelItem
+ * @param {String} text The text for the tab of this TabPanelItem
+ * @param {Boolean} closable True to allow this TabPanelItem to be closable (defaults to false)
+ */
+ </span><span class="jsdoc-var">Roo.panel.TabItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tabPanel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-comment">/**
+     * The {@link Roo.panel.Tab} this TabPanelItem belongs to
+     * @type Roo.panel.Tab
+     */
+    </span><span class="jsdoc-var">this.tabPanel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tabPanel</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-comment">/**
+     * The id for this TabPanelItem
+     * @type String
+     */
+    </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-comment">/** @private */
+    </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-comment">/** @private */
+    </span><span class="jsdoc-var">this.text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-comment">/** @private */
+    </span><span class="jsdoc-var">this.loaded </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.closable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-comment">/**
+     * The body element for this TabPanelItem.
+     * @type Roo.Element
+     */
+    </span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tabPanel.createItemBody</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tabPanel.bodyEl.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">));
+    </span><span class="jsdoc-var">this.bodyEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.VISIBILITY</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.bodyEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;display&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.bodyEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;zoom&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;1&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.hideAction</span><span class="jsdoc-syntax">();
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">els </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tabPanel.createStripElements</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tabPanel.stripEl.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">/** @private */
+    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">els.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.inner </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">els.inner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.textEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom.firstChild.firstChild.firstChild</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.pnode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">els.el.parentNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mousedown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTabMouseDown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTabClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">/** @private */
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">els.close</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">c.dom.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.closeText</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">c.addClassOnOver</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;close-over&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">c.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.closeClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+     }
+
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+         </span><span class="jsdoc-comment">/**
+         * @event activate
+         * Fires when this tab becomes the active tab.
+         * @param {Roo.panel.Tab} tabPanel The parent TabPanel
+         * @param {Roo.panel.TabItem} this
+         */
+        </span><span class="jsdoc-string">&quot;activate&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event beforeclose
+         * Fires before this tab is closed. To cancel the close, set cancel to true on e (e.cancel = true).
+         * @param {Roo.panel.TabItem} this
+         * @param {Object} e Set cancel to true on this object to cancel the close.
+         */
+        </span><span class="jsdoc-string">&quot;beforeclose&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event close
+         * Fires when this tab is closed.
+         * @param {Roo.panel.TabItem} this
+         */
+         </span><span class="jsdoc-string">&quot;close&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event deactivate
+         * Fires when this tab is no longer the active tab.
+         * @param {Roo.panel.Tab} tabPanel The parent TabPanel
+         * @param {Roo.panel.TabItem} this
+         */
+         </span><span class="jsdoc-string">&quot;deactivate&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-var">Roo.panel.TabItem.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.panel.TabItem</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">purgeListeners </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+       </span><span class="jsdoc-var">Roo.util.Observable.prototype.purgeListeners.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-var">this.el.removeAllListeners</span><span class="jsdoc-syntax">();
+    },
+    </span><span class="jsdoc-comment">/**
+     * Shows this TabPanelItem -- this &lt;b&gt;does not&lt;/b&gt; deactivate the currently active TabPanelItem.
+     */
+    </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.pnode.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;on&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.showAction</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isOpera</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.tabPanel.stripWrap.repaint</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;activate&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tabPanel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns true if this tab is the active tab.
+     * @return {Boolean}
+     */
+    </span><span class="jsdoc-var">isActive </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.tabPanel.getActiveTab</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Hides this TabPanelItem -- if you don't activate another TabPanelItem this could look odd.
+     */
+    </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.pnode.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;on&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.hideAction</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;deactivate&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tabPanel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">hideAction </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.bodyEl.hide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.bodyEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;position&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;absolute&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.bodyEl.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;-20000px&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.bodyEl.setTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;-20000px&quot;</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">showAction </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.bodyEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;position&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;relative&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.bodyEl.setTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.bodyEl.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.bodyEl.show</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Set the tooltip for the tab.
+     * @param {String} tooltip The tab's tooltip
+     */
+    </span><span class="jsdoc-var">setTooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.QuickTips </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.QuickTips.isEnabled</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-var">this.textEl.dom.qtip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.textEl.dom.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'title'</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.textEl.dom.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">;
+        }
+    },
+
+    </span><span class="jsdoc-var">onTabClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.tabPanel.activate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">onTabMouseDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.tabPanel.activate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">getWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.inner.getWidth</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">setWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">iwidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.pnode.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lr&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.inner.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">iwidth</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.textEl.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">iwidth</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">this.inner.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lr&quot;</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.pnode.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Show or hide the tab
+     * @param {Boolean} hidden True to hide or false to show.
+     */
+    </span><span class="jsdoc-var">setHidden </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hidden</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">hidden</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.pnode.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;display&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hidden </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;none&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns true if this tab is &quot;hidden&quot;
+     * @return {Boolean}
+     */
+    </span><span class="jsdoc-var">isHidden </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.hidden</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the text for this tab
+     * @return {String}
+     */
+    </span><span class="jsdoc-var">getText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.text</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">autoSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-comment">//this.el.beginMeasure();
+        </span><span class="jsdoc-var">this.textEl.setWidth</span><span class="jsdoc-syntax">(1);
+        </span><span class="jsdoc-comment">/*
+         *  #2804 [new] Tabs in Roojs
+         *  increase the width by 2-4 pixels to prevent the ellipssis showing in chrome
+         */
+        </span><span class="jsdoc-var">this.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.textEl.dom.scrollWidth</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.pnode.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lr&quot;</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-var">this.inner.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lr&quot;</span><span class="jsdoc-syntax">) + 2);
+        </span><span class="jsdoc-comment">//this.el.endMeasure();
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the text for the tab (Note: this also sets the tooltip text)
+     * @param {String} text The tab's text and tooltip
+     */
+    </span><span class="jsdoc-var">setText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.textEl.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.setTooltip</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.tabPanel.resizeTabs</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.autoSize</span><span class="jsdoc-syntax">();
+        }
+    },
+    </span><span class="jsdoc-comment">/**
+     * Activates this TabPanelItem -- this &lt;b&gt;does&lt;/b&gt; deactivate the currently active TabPanelItem.
+     */
+    </span><span class="jsdoc-var">activate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.tabPanel.activate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Disables this TabPanelItem -- this does nothing if this is the active TabPanelItem.
+     */
+    </span><span class="jsdoc-var">disable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabPanel.active </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.pnode.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;disabled&quot;</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Enables this TabPanelItem if it was previously disabled.
+     */
+    </span><span class="jsdoc-var">enable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.pnode.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;disabled&quot;</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the content for this TabPanelItem.
+     * @param {String} content The content
+     * @param {Boolean} loadScripts true to look for and load scripts
+     */
+    </span><span class="jsdoc-var">setContent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadScripts</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.bodyEl.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadScripts</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Gets the {@link Roo.UpdateManager} for the body of this TabPanelItem. Enables you to perform Ajax updates.
+     * @return {Roo.UpdateManager} The UpdateManager
+     */
+    </span><span class="jsdoc-var">getUpdateManager </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.bodyEl.getUpdateManager</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Set a URL to be used to load the content for this TabPanelItem.
+     * @param {String/Function} url The URL to load the content from, or a function to call to get the URL
+     * @param {String/Object} params (optional) The string params for the update call or an object of the params. See {@link Roo.UpdateManager#update} for more details. (Defaults to null)
+     * @param {Boolean} loadOnce (optional) Whether to only load the content once. If this is false it makes the Ajax call every time this TabPanelItem is activated. (Defaults to false)
+     * @return {Roo.UpdateManager} The UpdateManager
+     */
+    </span><span class="jsdoc-var">setUrl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadOnce</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.refreshDelegate</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'activate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.refreshDelegate</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.refreshDelegate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this._handleRefresh.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadOnce</span><span class="jsdoc-syntax">]);
+        </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;activate&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.refreshDelegate</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.bodyEl.getUpdateManager</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/** @private */
+    </span><span class="jsdoc-var">_handleRefresh </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadOnce</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">loadOnce </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.loaded</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">updater </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl.getUpdateManager</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">updater.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this._setLoaded.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     *   Forces a content refresh from the URL specified in the {@link #setUrl} method.
+     *   Will fail silently if the setUrl method has not been called.
+     *   This does not activate the panel, just updates its content.
+     */
+    </span><span class="jsdoc-var">refresh </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.refreshDelegate</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-var">this.loaded </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+           </span><span class="jsdoc-var">this.refreshDelegate</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">/** @private */
+    </span><span class="jsdoc-var">_setLoaded </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.loaded </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/** @private */
+    </span><span class="jsdoc-var">closeClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= {};
+        </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeclose&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.cancel </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.tabPanel.removeTab</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">);
+        }
+    },
+    </span><span class="jsdoc-comment">/**
+     * The text displayed in the tooltip for the close icon.
+     * @type String
+     */
+    </span><span class="jsdoc-var">closeText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Close this tab&quot;
+</span><span class="jsdoc-syntax">});
+
+</span><span class="jsdoc-comment">/** @private */
+</span><span class="jsdoc-var">Roo.panel.Tab.prototype.createStrip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">strip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">strip.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;x-tabs-wrap&quot;</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">container.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">strip</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">strip</span><span class="jsdoc-syntax">;
+};</span></code></body></html>

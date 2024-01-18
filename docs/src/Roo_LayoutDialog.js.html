@@ -2,7 +2,7 @@
 <span class="jsdoc-comment">/**
  * @class Roo.LayoutDialog
  * @extends Roo.BasicDialog
- * @children Roo.ContentPanel
+ * @children Roo.panel.Content
  * @parent builder none
  * Dialog which provides adjustments for working with a layout in a Dialog.
  * Add your necessary layout config options to the dialog's config.&lt;br&gt;
@@ -29,7 +29,7 @@ if(!dialog){
     dialog.addButton(&quot;Build It!&quot;, this.getDownload, this);
 
     // we can even add nested layouts
-    var innerLayout = new Roo.BorderLayout(&quot;dl-inner&quot;, {
+    var innerLayout = new Roo.layout.Border(&quot;dl-inner&quot;, {
         east: {
             initialSize: 200,
             autoScroll:true,
@@ -40,15 +40,15 @@ if(!dialog){
         }
     });
     innerLayout.beginUpdate();
-    innerLayout.add(&quot;east&quot;, new Roo.ContentPanel(&quot;dl-details&quot;));
-    innerLayout.add(&quot;center&quot;, new Roo.ContentPanel(&quot;selection-panel&quot;));
+    innerLayout.add(&quot;east&quot;, new Roo.panel.Content(&quot;dl-details&quot;));
+    innerLayout.add(&quot;center&quot;, new Roo.panel.Content(&quot;selection-panel&quot;));
     innerLayout.endUpdate(true);
 
     var layout = dialog.getLayout();
     layout.beginUpdate();
-    layout.add(&quot;center&quot;, new Roo.ContentPanel(&quot;standard-panel&quot;,
+    layout.add(&quot;center&quot;, new Roo.panel.Content(&quot;standard-panel&quot;,
                         {title: &quot;Download the Source&quot;, fitToFrame:true}));
-    layout.add(&quot;center&quot;, new Roo.NestedLayoutPanel(innerLayout,
+    layout.add(&quot;center&quot;, new Roo.panel.NestedLayout(innerLayout,
                {title: &quot;Build your own roo.js&quot;}));
     layout.getRegion(&quot;center&quot;).showPanel(sp);
     layout.endUpdate();
@@ -74,7 +74,7 @@ if(!dialog){
     </span><span class="jsdoc-var">config.autoTabs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">Roo.LayoutDialog.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.body.setStyle</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">overflow</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;hidden&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;relative&quot;</span><span class="jsdoc-syntax">});
-    </span><span class="jsdoc-var">this.layout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.BorderLayout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.body.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.layout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.layout.Border</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.body.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.layout.monitorWindowResize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-dlg-auto-layout&quot;</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-comment">// fix case when center region overwrites center function
@@ -92,19 +92,19 @@ if(!dialog){
 
 
     </span><span class="jsdoc-comment">/**
-     * @cfg {Roo.LayoutRegion} east  
+     * @cfg {Roo.layout.Region} east  
      */
     /**
-     * @cfg {Roo.LayoutRegion} west
+     * @cfg {Roo.layout.Region} west
      */
     /**
-     * @cfg {Roo.LayoutRegion} south
+     * @cfg {Roo.layout.Region} south
      */
     /**
-     * @cfg {Roo.LayoutRegion} north
+     * @cfg {Roo.layout.Region} north
      */
     /**
-     * @cfg {Roo.LayoutRegion} center
+     * @cfg {Roo.layout.Region} center
      */
     /**
      * @cfg {Roo.Button} buttons[]  Bottom buttons..
@@ -129,7 +129,7 @@ if(!dialog){
 
     </span><span class="jsdoc-comment">/**
      * Get the BorderLayout for this dialog
-     * @return {Roo.BorderLayout}
+     * @return {Roo.layout.Border}
      */
     </span><span class="jsdoc-var">getLayout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">;

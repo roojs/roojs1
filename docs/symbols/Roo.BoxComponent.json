@@ -18,10 +18,10 @@
       "Roo.form.FCKeditor"
     ],
     "Roo.BoxComponent" : [
-      "Roo.dialog.UploadCropbox",
       "Roo.form.ComboBoxArray.Item",
       "Roo.form.Field",
-      "Roo.form.TextItem"
+      "Roo.form.TextItem",
+      "Roo.panel.Cropbox"
     ],
     "Roo.form.Checkbox" : [
       "Roo.form.Radio"

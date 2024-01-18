@@ -19,24 +19,7 @@
   "returns" : [],
   "throws" : "",
   "requires" : "",
-  "config" : [
-    {
-      "name" : "grid",
-      "type" : "Roo.grid.Grid",
-      "desc" : "The grid for this panel",
-      "memberOf" : "",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "layout",
-      "type" : "Roo.BorderLayout",
-      "desc" : "The layout for this panel",
-      "memberOf" : "",
-      "isOptional" : false,
-      "optvals" : []
-    }
-  ],
+  "config" : [],
   "methods" : [
     {
       "name" : "each",

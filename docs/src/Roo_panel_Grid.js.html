@@ -1,0 +1,79 @@
+<html><head><title>Roo/panel/Grid.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/**
+ * @class Roo.panel.Grid
+ * @extends Roo.panel.Content
+ * @parent Roo.layout.Border Roo.LayoutDialog builder
+ * @constructor
+ * Create a new GridPanel.
+ * @cfg {Roo.grid.Grid} grid The grid for this panel
+ */
+</span><span class="jsdoc-var">Roo.panel.Grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+
+    </span><span class="jsdoc-comment">// universal ctor...
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid.grid</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.grid</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-var">this.wrapper </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// wrapper for IE7 strict &amp; safari scroll issue
+        </span><span class="jsdoc-syntax">{</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-layout-grid-wrapper x-layout-inactive-content&quot;</span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.wrapper.dom.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">Roo.panel.Grid.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.wrapper</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.toolbar.el.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrapper.dom.firstChild</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-comment">// xtype created footer. - not sure if will work as we normally have to render first..
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.footer.el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.footer.xtype</span><span class="jsdoc-syntax">) {
+
+        </span><span class="jsdoc-var">this.footer.container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getFooterPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.footer.dataSource </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.dataSource</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">);
+
+    }
+
+    </span><span class="jsdoc-var">grid.monitorWindowResize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// turn off autosizing
+    </span><span class="jsdoc-var">grid.autoHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">grid.autoWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.replaceClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-layout-inactive-content&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;x-layout-component-panel&quot;</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.panel.Grid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.panel.Content</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">getId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.grid.id</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the grid for this panel
+     * @return {Roo.grid.Grid} 
+     */
+    </span><span class="jsdoc-var">getGrid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">setSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.ignoreResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.adjustForComponents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size.height</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">grid.autoSize</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-var">beforeSlide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.grid.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.scroller.clip</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">afterSlide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.grid.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.scroller.unclip</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">destroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.grid.destroy</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.panel.Grid.superclass.destroy.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    }
+});
+</span></code></body></html>

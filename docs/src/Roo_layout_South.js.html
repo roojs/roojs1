@@ -1,0 +1,42 @@
+<html><head><title>Roo/layout/South.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-var">Roo.layout.South </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mgr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.layout.SplitRegion.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mgr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;south&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;s-resize&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.split</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.split.placement </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.SplitBar.BOTTOM</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.split.orientation </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.SplitBar.VERTICAL</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.split.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-layout-split-v&quot;</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.initialSize </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">config.height</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">);
+    }
+};
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.layout.South</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.layout.SplitRegion</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">orientation</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.SplitBar.VERTICAL</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">getBox </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapsed</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.collapsedEl.getBox</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getBox</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.split</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.split.el.getHeight</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">box.height </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">sh</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">box.y </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">sh</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">updateBox </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.split </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.collapsed</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.split.el.getHeight</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">box.height </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">sh</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">box.y </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">sh</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.split.el.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.x</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.split.el.setTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.y</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">sh</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.split.el.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.width</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapsed</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.updateBody</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">Roo.layout.Region.prototype.updateBox.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">);
+    }
+});</span></code></body></html>

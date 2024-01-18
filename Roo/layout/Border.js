@@ -9,8 +9,8 @@
  * <script type="text/javascript">
  */
 /**
- * @class Roo.BorderLayout
- * @extends Roo.LayoutManager
+ * @class Roo.layout.Border
+ * @extends Roo.layout.Manager
  * @children Roo.panel.Content
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
  * please see: <br><br>
@@ -18,7 +18,7 @@
  * <a href="http://www.jackslocum.com/yui/2006/10/28/cross-browser-web-20-layouts-part-2-ajax-feed-viewer-20/">Cross Browser Layouts - Part 2</a><br><br>
  * Example:
  <pre><code>
- var layout = new Roo.BorderLayout(document.body, {
+ var layout = new Roo.layout.Border(document.body, {
     north: {
         initialSize: 25,
         titlebar: false
@@ -80,10 +80,10 @@ the container size if it is not the body element.</b>
 * @param {String/HTMLElement/Element} container The container this layout is bound to
 * @param {Object} config Configuration options
  */
-Roo.BorderLayout = function(container, config){
+Roo.layout.Border = function(container, config){
     config = config || {};
-    Roo.BorderLayout.superclass.constructor.call(this, container, config);
-    this.factory = config.factory || Roo.BorderLayout.RegionFactory;
+    Roo.layout.Border.superclass.constructor.call(this, container, config);
+    this.factory = config.factory || Roo.layout.Border.RegionFactory;
     for(var i = 0, len = this.factory.validRegions.length; i < len; i++) {
     	var target = this.factory.validRegions[i];
     	if(config[target]){
@@ -92,22 +92,22 @@ Roo.BorderLayout = function(container, config){
     }
 };
 
-Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
+Roo.extend(Roo.layout.Border, Roo.layout.Manager, {
 	
 	/**
-	 * @cfg {Roo.LayoutRegion} east
+	 * @cfg {Roo.layout.Region} east
 	 */
 	/**
-	 * @cfg {Roo.LayoutRegion} west
+	 * @cfg {Roo.layout.Region} west
 	 */
 	/**
-	 * @cfg {Roo.LayoutRegion} north
+	 * @cfg {Roo.layout.Region} north
 	 */
 	/**
-	 * @cfg {Roo.LayoutRegion} south
+	 * @cfg {Roo.layout.Region} south
 	 */
 	/**
-	 * @cfg {Roo.LayoutRegion} center
+	 * @cfg {Roo.layout.Region} center
 	 */
     /**
      * Creates and adds a new region if it doesn't already exist.
@@ -292,7 +292,7 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
         if(!provider){
             provider = Roo.state.Manager;
         }
-        var sm = new Roo.LayoutStateManager();
+        var sm = new Roo.layout.StateManager();
         sm.init(this, provider);
     },
 
@@ -302,7 +302,7 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
      * a valid ContentPanel config object.  Example:
      * <pre><code>
 // Create the main layout
-var layout = new Roo.BorderLayout('main-ct', {
+var layout = new Roo.layout.Border('main-ct', {
     west: {
         split:true,
         minSize: 175,
@@ -391,7 +391,7 @@ layout.addxtype({
     {
         // basically accepts a pannel...
         // can accept a layout region..!?!?
-        //Roo.log('Roo.BorderLayout add ' + cfg.xtype)
+        //Roo.log('Roo.layout.Border add ' + cfg.xtype)
         
         // if (!cfg.xtype.match(/Panel$/)) {
         //     return false;
@@ -464,7 +464,7 @@ layout.addxtype({
                 if (region == 'center' && this.active && this.getRegion('center').panels.length < 1) {
                     cfg.background = false;
                 }
-                var layout = new Roo.BorderLayout(el, clayout);
+                var layout = new Roo.layout.Border(el, clayout);
                 
                 ret = new Roo.panel[cfg.xtype](layout, cfg); // new panel!!!!!
                 //console.log('adding nested layout panel '  + cfg.toSource());
@@ -514,7 +514,7 @@ layout.addxtype({
                 if (region == 'center' && this.active && this.getRegion('center').panels.length < 1) {
                     cfg.background = false;
                 }
-                var layout = new Roo.BorderLayout(el, clayout);
+                var layout = new Roo.layout.Border(el, clayout);
                 
                 ret = new Roo[cfg.xtype](layout, cfg); // new panel!!!!!
                 //console.log('adding nested layout panel '  + cfg.toSource());
@@ -615,7 +615,7 @@ layout.addxtype({
 // shorthand
 var CP = Roo.ContentPanel;
 
-var layout = Roo.BorderLayout.create({
+var layout = Roo.layout.Border.create({
     north: {
         initialSize: 25,
         titlebar: false,
@@ -666,10 +666,10 @@ layout.getRegion("center").showPanel("center1");
  * @param config
  * @param targetEl
  */
-Roo.BorderLayout.create = function(config, targetEl){
-    var layout = new Roo.BorderLayout(targetEl || document.body, config);
+Roo.layout.Border.create = function(config, targetEl){
+    var layout = new Roo.layout.Border(targetEl || document.body, config);
     layout.beginUpdate();
-    var regions = Roo.BorderLayout.RegionFactory.validRegions;
+    var regions = Roo.layout.Border.RegionFactory.validRegions;
     for(var j = 0, jlen = regions.length; j < jlen; j++){
         var lr = regions[j];
         if(layout.regions[lr] && config[lr].panels){
@@ -683,7 +683,7 @@ Roo.BorderLayout.create = function(config, targetEl){
 };
 
 // private
-Roo.BorderLayout.RegionFactory = {
+Roo.layout.Border.RegionFactory = {
     // private
     validRegions : ["north","south","east","west","center"],
 
@@ -691,20 +691,14 @@ Roo.BorderLayout.RegionFactory = {
     create : function(target, mgr, config){
         target = target.toLowerCase();
         if(config.lightweight || config.basic){
-            return new Roo.BasicLayoutRegion(mgr, config, target);
+            return new Roo.layout.BasicRegion(mgr, config, target);
         }
-        switch(target){
-            case "north":
-                return new Roo.NorthLayoutRegion(mgr, config);
-            case "south":
-                return new Roo.SouthLayoutRegion(mgr, config);
-            case "east":
-                return new Roo.EastLayoutRegion(mgr, config);
-            case "west":
-                return new Roo.WestLayoutRegion(mgr, config);
-            case "center":
-                return new Roo.CenterLayoutRegion(mgr, config);
-        }
-        throw 'Layout region "'+target+'" not supported.';
+		var cn = target.charAt(0).toUpperCase() + target.slice(1);
+		if (typeof (Roo.layout[cn]) == 'undefined') {
+			throw 'Layout region "'+target+'" not supported.';
+		}
+		return new Roo.layout[cn](mgr, config);
+         
+        
     }
 };

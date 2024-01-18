@@ -12,9 +12,9 @@
 
 
 /**
- * @class Roo.SplitLayoutRegion
- * @extends Roo.LayoutRegion
- * Adds a splitbar and other (private) useful functionality to a {@link Roo.LayoutRegion}.
+ * @class Roo.layout.SplitRegion
+ * @extends Roo.layout.Region
+ * Adds a splitbar and other (private) useful functionality to a {@link Roo.layout.Region}.
  */
 Roo.bootstrap.layout.Split = function(config){
     this.cursor = config.cursor;

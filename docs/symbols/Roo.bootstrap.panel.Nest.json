@@ -160,7 +160,7 @@
     },
     {
       "name" : "layout",
-      "type" : "Roo.BorderLayout",
+      "type" : "Roo.layout.Border",
       "desc" : "The layout for this panel",
       "memberOf" : "",
       "isOptional" : false,
@@ -212,7 +212,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.BorderLayout",
+          "type" : "Roo.layout.Border",
           "desc" : ""
         }
       ]

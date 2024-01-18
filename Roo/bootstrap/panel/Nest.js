@@ -39,7 +39,7 @@ Roo.bootstrap.panel.Nest = function(config)
 
 Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
     /**
-    * @cfg {Roo.BorderLayout} layout The layout for this panel
+    * @cfg {Roo.layout.Border} layout The layout for this panel
     */
     layout : false,
 
@@ -99,7 +99,7 @@ Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
     
     /**
      * Returns the nested BorderLayout for this panel
-     * @return {Roo.BorderLayout} 
+     * @return {Roo.layout.Border} 
      */
     getLayout : function(){
         return this.layout;

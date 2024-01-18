@@ -18,8 +18,8 @@
 init : function(){
    Roo.state.Manager.setProvider(new Roo.state.CookieProvider());
    ...
-   // supposed you have a {@link Roo.BorderLayout}
-   var layout = new Roo.BorderLayout(...);
+   // supposed you have a {@link Roo.layout.Border}
+   var layout = new Roo.layout.Border(...);
    layout.restoreState();
    // or a {Roo.BasicDialog}
    var dialog = new Roo.BasicDialog(...);

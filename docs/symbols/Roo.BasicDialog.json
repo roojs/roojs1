@@ -498,7 +498,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.TabPanel",
+          "type" : "Roo.panel.Tab",
           "desc" : "The tabs component"
         }
       ]
@@ -816,7 +816,7 @@
     {
       "name" : "getTabs",
       "type" : "function",
-      "desc" : "Returns the TabPanel component (creates it if it doesn't exist).\nNote: If you wish to simply check for the existence of tabs without creating them,\ncheck for a null 'tabs' property.",
+      "desc" : "Returns the panel.Tab component (creates it if it doesn't exist).\nNote: If you wish to simply check for the existence of tabs without creating them,\ncheck for a null 'tabs' property.",
       "sig" : "()\n{\n\n}",
       "static" : false,
       "memberOf" : "",
@@ -833,7 +833,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.TabPanel",
+          "type" : "Roo.panel.Tab",
           "desc" : "The tabs component"
         }
       ]

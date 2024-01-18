@@ -4,7 +4,7 @@
 /**
  * @class Roo.panel.Tree
  * @extends Roo.panel.Content
- * @parent Roo.BorderLayout Roo.LayoutDialog builder
+ * @parent Roo.layout.Border Roo.LayoutDialog builder
  * Treepanel component
  * 
  * @constructor

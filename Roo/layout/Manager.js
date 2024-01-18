@@ -10,12 +10,12 @@
  */
  
 /**
- * @class Roo.LayoutManager
+ * @class Roo.layout.Manager
  * @extends Roo.util.Observable
  * Base class for layout managers.
  */
-Roo.LayoutManager = function(container, config){
-    Roo.LayoutManager.superclass.constructor.call(this);
+Roo.layout.Manager = function(container, config){
+    Roo.layout.Manager.superclass.constructor.call(this);
     this.el = Roo.get(container);
     // ie scrollbar fix
     if(this.el.dom == document.body && Roo.isIE && !config.allowScroll){
@@ -32,26 +32,26 @@ Roo.LayoutManager = function(container, config){
         /**
          * @event layout
          * Fires when a layout is performed. 
-         * @param {Roo.LayoutManager} this
+         * @param {Roo.layout.Manager} this
          */
         "layout" : true,
         /**
          * @event regionresized
          * Fires when the user resizes a region. 
-         * @param {Roo.LayoutRegion} region The resized region
+         * @param {Roo.layout.Region} region The resized region
          * @param {Number} newSize The new size (width for east/west, height for north/south)
          */
         "regionresized" : true,
         /**
          * @event regioncollapsed
          * Fires when a region is collapsed. 
-         * @param {Roo.LayoutRegion} region The collapsed region
+         * @param {Roo.layout.Region} region The collapsed region
          */
         "regioncollapsed" : true,
         /**
          * @event regionexpanded
          * Fires when a region is expanded.  
-         * @param {Roo.LayoutRegion} region The expanded region
+         * @param {Roo.layout.Region} region The expanded region
          */
         "regionexpanded" : true
     });
@@ -59,7 +59,7 @@ Roo.LayoutManager = function(container, config){
     Roo.EventManager.onWindowResize(this.onWindowResize, this, true);
 };
 
-Roo.extend(Roo.LayoutManager, Roo.util.Observable, {
+Roo.extend(Roo.layout.Manager, Roo.util.Observable, {
     /**
      * Returns true if this layout is currently being updated
      * @return {Boolean}
@@ -132,7 +132,7 @@ Roo.extend(Roo.LayoutManager, Roo.util.Observable, {
     /**
      * Returns the specified region.
      * @param {String} target The region key ('center', 'north', 'south', 'east' or 'west')
-     * @return {Roo.LayoutRegion}
+     * @return {Roo.layout.Region}
      */
     getRegion : function(target){
         return this.regions[target.toLowerCase()];

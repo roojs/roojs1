@@ -44,7 +44,7 @@
  *
  * Each sub module is expected to have a parent pointing to the class name of it's parent module.
  *
- * When the top level is false, a 'Roo.BorderLayout' is created and the element is flagged as 'topModule'
+ * When the top level is false, a 'Roo.layout.Border' is created and the element is flagged as 'topModule'
  * - if mulitple topModules exist, the last one is defined as the top module.
  *
  * Embeded Roo
@@ -263,7 +263,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             
             el = el ? Roo.get(el) : false; 	
             
-            if (typeof(Roo.BorderLayout) == 'undefined' ) {
+            if (typeof(Roo.layout.Border) == 'undefined' ) {
                 
                 this.parent =  {
                     el : new Roo.bootstrap.layout.Border({
@@ -286,7 +286,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             
                 // it's a top level one..
                 this.parent =  {
-                    el : new Roo.BorderLayout(el || document.body, {
+                    el : new Roo.layout.Border(el || document.body, {
                         center: {
                             titlebar: false,
                             autoScroll:false,

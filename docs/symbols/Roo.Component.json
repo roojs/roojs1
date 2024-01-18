@@ -43,23 +43,23 @@
     ],
     "Roo.Component" : [
       "Roo.BoxComponent",
-      "Roo.CalendarPanel",
       "Roo.ColorPalette",
       "Roo.DatePicker",
       "Roo.Editor",
       "Roo.HtmlEditorCore",
       "Roo.bootstrap.Component",
       "Roo.form.Layout",
-      "Roo.menu.BaseItem"
+      "Roo.menu.BaseItem",
+      "Roo.panel.Calendar"
     ],
     "Roo.bootstrap.layout.Manager" : [
       "Roo.bootstrap.layout.Border"
     ],
     "Roo.BoxComponent" : [
-      "Roo.dialog.UploadCropbox",
       "Roo.form.ComboBoxArray.Item",
       "Roo.form.Field",
-      "Roo.form.TextItem"
+      "Roo.form.TextItem",
+      "Roo.panel.Cropbox"
     ],
     "Roo.bootstrap.Element" : [
       "Roo.bootstrap.CardFooter",

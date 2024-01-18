@@ -335,7 +335,7 @@ dlg.show();
 
     </span><span class="jsdoc-comment">/**
      * Reinitializes the tabs component, clearing out old tabs and finding new ones.
-     * @return {Roo.TabPanel} The tabs component
+     * @return {Roo.panel.Tab} The tabs component
      */
     </span><span class="jsdoc-var">initTabs </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tabs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getTabs</span><span class="jsdoc-syntax">();
@@ -456,16 +456,16 @@ dlg.show();
     },
 
     </span><span class="jsdoc-comment">/**
-     * Returns the TabPanel component (creates it if it doesn't exist).
+     * Returns the panel.Tab component (creates it if it doesn't exist).
      * Note: If you wish to simply check for the existence of tabs without creating them,
      * check for a null 'tabs' property.
-     * @return {Roo.TabPanel} The tabs component
+     * @return {Roo.panel.Tab} The tabs component
      */
     </span><span class="jsdoc-var">getTabs </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.tabs</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-dlg-auto-tabs&quot;</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.body.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabPosition </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;bottom&quot; </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;x-tabs-bottom&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-tabs-top&quot;</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.tabs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.TabPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.body.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tabPosition </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;bottom&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.tabs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.panel.Tab</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.body.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tabPosition </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;bottom&quot;</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.tabs</span><span class="jsdoc-syntax">;
     },

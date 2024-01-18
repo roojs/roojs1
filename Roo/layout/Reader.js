@@ -11,16 +11,16 @@
  
 
 /**
- * @class Roo.ReaderLayout
- * @extends Roo.BorderLayout
+ * @class Roo.layout.Reader
+ * @extends Roo.layout.Border
  * This is a pre-built layout that represents a classic, 5-pane application.  It consists of a header, a primary
  * center region containing two nested regions (a top one for a list view and one for item preview below),
  * and regions on either side that can be used for navigation, application commands, informational displays, etc.
- * The setup and configuration work exactly the same as it does for a {@link Roo.BorderLayout} - this class simply
+ * The setup and configuration work exactly the same as it does for a {@link Roo.layout.Border} - this class simply
  * expedites the setup of the overall layout and regions for this common application style.
  * Example:
  <pre><code>
-var reader = new Roo.ReaderLayout();
+var reader = new Roo.layout.Reader();
 var CP = Roo.panel.Content;  // shortcut for adding
 
 reader.beginUpdate();
@@ -38,9 +38,9 @@ reader.endUpdate();
 * @param {String/HTMLElement/Element} container (optional) The container this layout is bound to (defaults to
 * document.body if omitted)
 */
-Roo.ReaderLayout = function(config, renderTo){
+Roo.layout.Reader = function(config, renderTo){
     var c = config || {size:{}};
-    Roo.ReaderLayout.superclass.constructor.call(this, renderTo || document.body, {
+    Roo.layout.Reader.superclass.constructor.call(this, renderTo || document.body, {
         north: c.north !== false ? Roo.apply({
             split:false,
             initialSize: 32,
@@ -81,7 +81,7 @@ Roo.ReaderLayout = function(config, renderTo){
 
     this.beginUpdate();
 
-    var inner = new Roo.BorderLayout(Roo.get(document.body).createChild(), {
+    var inner = new Roo.layout.Border(Roo.get(document.body).createChild(), {
         south: c.preview !== false ? Roo.apply({
             split:true,
             initialSize: 200,
@@ -106,4 +106,4 @@ Roo.ReaderLayout = function(config, renderTo){
     this.regions.listView = inner.getRegion('center');
 };
 
-Roo.extend(Roo.ReaderLayout, Roo.BorderLayout);
+Roo.extend(Roo.layout.Reader, Roo.layout.Border);

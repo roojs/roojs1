@@ -1,0 +1,480 @@
+<html><head><title>Roo/panel/Content.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+/**
+ * @class Roo.panel.Content
+ * @extends Roo.util.Observable
+ * @children Roo.form.Form Roo.JsonView Roo.View
+ * @parent Roo.layout.Border Roo.LayoutDialog builder
+ * A basic Content Panel element.
+ * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
+ * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
+ * @cfg {Boolean|Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
+ * @cfg {Boolean}   closable      True if the panel can be closed/removed
+ * @cfg {Boolean}   background    True if the panel should not be activated when it is added (defaults to false)
+ * @cfg {String|HTMLElement|Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
+ * @cfg {Roo.Toolbar}   toolbar       A toolbar for this panel
+ * @cfg {Boolean} autoScroll    True to scroll overflow in this panel (use with {@link #fitToFrame})
+ * @cfg {String} title          The title for this panel
+ * @cfg {Array} adjustments     Values to &lt;b&gt;add&lt;/b&gt; to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
+ * @cfg {String} url            Calls {@link #setUrl} with this value
+ * @cfg {String} region (center|north|south|east|west) [required] which region to put this panel on (when used with xtype constructors)
+ * @cfg {String|Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
+ * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
+ * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
+ * @cfg {String}    style  Extra style to add to the content panel
+ * @cfg {Roo.menu.Menu} menu  popup menu
+
+ * @constructor
+ * Create a new Content Panel.
+ * @param {String/HTMLElement/Roo.Element} el The container element for this panel
+ * @param {String/Object} config A string to set only the title or a config object
+ * @param {String} content (optional) Set the HTML content for this panel
+ * @param {String} region (optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)
+ */
+</span><span class="jsdoc-var">Roo.panel.Content </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">){
+
+    </span><span class="jsdoc-comment">/*
+    if(el.autoCreate || el.xtype){ // xtype is available if this is called from factory
+        config = el;
+        el = Roo.id();
+    }
+    if (config &amp;&amp; config.parentLayout) { 
+        el = config.parentLayout.el.createChild(); 
+    }
+    */
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.autoCreate</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// xtype is available if this is called from factory
+        </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
+    }
+    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.autoCreate</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">config.autoCreate </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;object&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">config.autoCreate.id</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">config.autoCreate.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.id</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">config.autoCreate</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">,
+                        {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-layout-inactive-content&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">config.id</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        }
+    }
+
+
+    </span><span class="jsdoc-var">this.closable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.loaded </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">;
+    }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    }
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.toolbar.el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.toolbar.xtype</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.wrapEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.toolbar.container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.insertSibling</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'before'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.toolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">);
+    }
+
+    </span><span class="jsdoc-comment">// xtype created footer. - not sure if will work as we normally have to render first..
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.footer.el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.footer.xtype</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.wrapEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.wrapEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">();
+        }
+
+        </span><span class="jsdoc-var">this.footer.container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.wrapEl.createChild</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">);
+
+    }
+
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeEl</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.resizeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-var">this.resizeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-comment">// handle view.xtype
+
+
+
+
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event activate
+         * Fires when this panel is activated. 
+         * @param {Roo.panel.Content} this
+         */
+        </span><span class="jsdoc-string">&quot;activate&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event deactivate
+         * Fires when this panel is activated. 
+         * @param {Roo.panel.Content} this
+         */
+        </span><span class="jsdoc-string">&quot;deactivate&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-comment">/**
+         * @event resize
+         * Fires when this panel is resized if fitToFrame is true.
+         * @param {Roo.panel.Content} this
+         * @param {Number} width The width after any component adjustments
+         * @param {Number} height The height after any component adjustments
+         */
+        </span><span class="jsdoc-string">&quot;resize&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+         </span><span class="jsdoc-comment">/**
+         * @event render
+         * Fires when this tab is created
+         * @param {Roo.panel.Content} this
+         */
+        </span><span class="jsdoc-string">&quot;render&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+
+
+    </span><span class="jsdoc-syntax">});
+
+
+
+
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoScroll</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.resizeEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;auto&quot;</span><span class="jsdoc-syntax">);
+    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-comment">// fix randome scrolling
+        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fix random scolling'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.scrollTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,0);
+        });
+    }
+    </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.content</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.setContent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.url</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.setUrl</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.url</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.params</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.loadOnce</span><span class="jsdoc-syntax">);
+    }
+
+
+
+    </span><span class="jsdoc-var">Roo.panel.Content.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view.xtype</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.view.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.view.render  </span><span class="jsdoc-syntax">&amp;&amp;  </span><span class="jsdoc-var">this.view.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+    }
+
+
+    </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'render'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.panel.Content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">tabTip</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">setRegion </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-var">this.el.replaceClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-layout-inactive-content&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;x-layout-active-content&quot;</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+           </span><span class="jsdoc-var">this.el.replaceClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-layout-active-content&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;x-layout-inactive-content&quot;</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the toolbar for this Panel if one was configured. 
+     * @return {Roo.Toolbar} 
+     */
+    </span><span class="jsdoc-var">getToolbar </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">setActiveState </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;deactivate&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;activate&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+    },
+    </span><span class="jsdoc-comment">/**
+     * Updates this panel's element
+     * @param {String} content The new content
+     * @param {Boolean} loadScripts (optional) true to look for and process scripts
+    */
+    </span><span class="jsdoc-var">setContent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadScripts</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadScripts</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">ignoreResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastSize </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.lastSize.width </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.lastSize.height </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.lastSize </span><span class="jsdoc-syntax">= {</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">};
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+    },
+    </span><span class="jsdoc-comment">/**
+     * Get the {@link Roo.UpdateManager} for this panel. Enables you to perform Ajax updates.
+     * @return {Roo.UpdateManager} The UpdateManager
+     */
+    </span><span class="jsdoc-var">getUpdateManager </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.getUpdateManager</span><span class="jsdoc-syntax">();
+    },
+     </span><span class="jsdoc-comment">/**
+     * Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.
+     * @param {Object/String/Function} url The url for this request or a function to call to get the url or a config object containing any of the following options:
+&lt;pre&gt;&lt;code&gt;
+panel.load({
+    url: &quot;your-url.php&quot;,
+    params: {param1: &quot;foo&quot;, param2: &quot;bar&quot;}, // or a URL encoded string
+    callback: yourFunction,
+    scope: yourObject, //(optional scope)
+    discardUrl: false,
+    nocache: false,
+    text: &quot;Loading...&quot;,
+    timeout: 30,
+    scripts: false
+});
+&lt;/code&gt;&lt;/pre&gt;
+     * The only required property is &lt;i&gt;url&lt;/i&gt;. The optional properties &lt;i&gt;nocache&lt;/i&gt;, &lt;i&gt;text&lt;/i&gt; and &lt;i&gt;scripts&lt;/i&gt;
+     * are shorthand for &lt;i&gt;disableCaching&lt;/i&gt;, &lt;i&gt;indicatorText&lt;/i&gt; and &lt;i&gt;loadScripts&lt;/i&gt; and are used to set their associated property on this panel UpdateManager instance.
+     * @param {String/Object} params (optional) The parameters to pass as either a URL encoded string &quot;param1=1&amp;amp;param2=2&quot; or an object {param1: 1, param2: 2}
+     * @param {Function} callback (optional) Callback when transaction is complete -- called with signature (oElement, bSuccess, oResponse)
+     * @param {Boolean} discardUrl (optional) By default when you execute an update the defaultUrl is changed to the last used URL. If true, it will not store the URL.
+     * @return {Roo.panel.Content} this
+     */
+    </span><span class="jsdoc-var">load </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">um </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getUpdateManager</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">um.update.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">um</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+
+    </span><span class="jsdoc-comment">/**
+     * Set a URL to be used to load the content for this panel. When this panel is activated, the content will be loaded from that URL.
+     * @param {String/Function} url The URL to load the content from or a function to call to get the URL
+     * @param {String/Object} params (optional) The string params for the update call or an object of the params. See {@link Roo.UpdateManager#update} for more details. (Defaults to null)
+     * @param {Boolean} loadOnce (optional) Whether to only load the content once. If this is false it makes the Ajax call every time this panel is activated. (Defaults to false)
+     * @return {Roo.UpdateManager} The UpdateManager
+     */
+    </span><span class="jsdoc-var">setUrl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadOnce</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.refreshDelegate</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.removeListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;activate&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.refreshDelegate</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.refreshDelegate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this._handleRefresh.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadOnce</span><span class="jsdoc-syntax">]);
+        </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;activate&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.refreshDelegate</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.getUpdateManager</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">_handleRefresh </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadOnce</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">loadOnce </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.loaded</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">updater </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getUpdateManager</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">updater.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this._setLoaded.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
+        }
+    },
+
+    </span><span class="jsdoc-var">_setLoaded </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.loaded </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns this panel's id
+     * @return {String} 
+     */
+    </span><span class="jsdoc-var">getId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.id</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/** 
+     * Returns this panel's element - used by regiosn to add.
+     * @return {Roo.Element} 
+     */
+    </span><span class="jsdoc-var">getEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.wrapEl </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">adjustForComponents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">//Roo.log('adjustForComponents ');
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeEl </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">this.el.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">this.el.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">te </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toolbar.getEl</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">te.getHeight</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">te.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">te </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.footer.getEl</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-comment">//Roo.log(&quot;footer:&quot; + te.getHeight());
+
+            </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">te.getHeight</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">te.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
+        }
+
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.adjustments</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.adjustments</span><span class="jsdoc-syntax">[0];
+            </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.adjustments</span><span class="jsdoc-syntax">[1];
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{</span><span class="jsdoc-string">&quot;width&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;height&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">};
+    },
+
+    </span><span class="jsdoc-var">setSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fitToFrame </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.ignoreResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fitContainer </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.resizeEl </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.el.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.adjustForComponents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.resizeEl.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoWidth </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;auto&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.autoHeight </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;auto&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">size.height</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'resize'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size.height</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns this panel's title
+     * @return {String} 
+     */
+    </span><span class="jsdoc-var">getTitle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.title</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Set this panel's title
+     * @param {String} title
+     */
+    </span><span class="jsdoc-var">setTitle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.region</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.region.updatePanelTitle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns true is this panel was configured to be closable
+     * @return {Boolean} 
+     */
+    </span><span class="jsdoc-var">isClosable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.closable</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">beforeSlide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.el.clip</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.resizeEl.clip</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">afterSlide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.el.unclip</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.resizeEl.unclip</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     *   Force a content refresh from the URL specified in the {@link #setUrl} method.
+     *   Will fail silently if the {@link #setUrl} method has not been called.
+     *   This does not activate the panel, just updates its content.
+     */
+    </span><span class="jsdoc-var">refresh </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.refreshDelegate</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-var">this.loaded </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+           </span><span class="jsdoc-var">this.refreshDelegate</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Destroys this panel
+     */
+    </span><span class="jsdoc-var">destroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.el.removeAllListeners</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tempEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;span&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">tempEl.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">tempEl.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.el.remove</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * form - if the content panel contains a form - this is a reference to it.
+     * @type {Roo.form.Form}
+     */
+    </span><span class="jsdoc-var">form </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * view - if the content panel contains a view (Roo.DatePicker / Roo.View / Roo.JsonView)
+     *    This contains a reference to it.
+     * @type {Roo.View}
+     */
+    </span><span class="jsdoc-var">view </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+      </span><span class="jsdoc-comment">/**
+     * Adds a xtype elements to the panel - currently only supports Forms, View, JsonView.
+     * &lt;pre&gt;&lt;code&gt;
+
+layout.addxtype({
+       xtype : 'Form',
+       items: [ .... ]
+   }
+);
+
+&lt;/code&gt;&lt;/pre&gt;
+     * @param {Object} cfg Xtype definition of item to add.
+     */
+
+    </span><span class="jsdoc-var">addxtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.xtype.match</span><span class="jsdoc-syntax">(/^Cropbox$/)) {
+
+            </span><span class="jsdoc-var">this.cropbox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-var">this.cropbox.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.cropbox</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// add form..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.xtype.match</span><span class="jsdoc-syntax">(/^Form$/)) {
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">//if (this.footer) {
+            //    el = this.footer.container.insertSibling(false, 'before');
+            //} else {
+                </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-comment">//}
+
+            </span><span class="jsdoc-var">this.form </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new  </span><span class="jsdoc-var">Roo.form.Form</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.form.allItems.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.form.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.dom</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.form</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// should only have one of theses..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([ </span><span class="jsdoc-string">'View'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'JsonView'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'DatePicker'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">) &gt; -1) {
+            </span><span class="jsdoc-comment">// views.. should not be just added - used named prop 'view''
+
+            </span><span class="jsdoc-var">cfg.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-comment">// factory?
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+
+             </span><span class="jsdoc-var">ret.render </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ret.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// render blank..
+            </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+</span></code></body></html>

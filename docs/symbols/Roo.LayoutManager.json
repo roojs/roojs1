@@ -3,14 +3,7 @@
   "augments" : [
     "Roo.util.Observable"
   ],
-  "childClasses" : {
-    "Roo.BorderLayout" : [
-      "Roo.ReaderLayout"
-    ],
-    "Roo.LayoutManager" : [
-      "Roo.BorderLayout"
-    ]
-  },
+  "childClasses" : {  },
   "tree_children" : [],
   "tree_parent" : [],
   "desc" : "Base class for layout managers.",

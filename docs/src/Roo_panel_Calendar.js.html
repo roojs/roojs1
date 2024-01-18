@@ -1,0 +1,176 @@
+<html><head><title>Roo/panel/Calendar.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * based on jquery fullcalendar
+ * 
+ */
+
+
+/**
+ * @class Roo.Calendar
+ * @extends Roo.Component
+ * Bootstrap Calendar class
+    
+ * @constructor
+ * Create a new Container
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.panel.Calendar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+
+    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;cal panel ctr&quot;</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.wrapper </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// wrapper for IE7 strict &amp; safari scroll issue
+        </span><span class="jsdoc-syntax">{</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-layout-grid-wrapper x-layout-inactive-content&quot;</span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-comment">//this.wrapper.dom.appendChild(grid.getGridEl().dom);
+
+    </span><span class="jsdoc-var">Roo.panel.Calendar.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.wrapper</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbar</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.toolbar.el.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrapper.dom.firstChild</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-comment">// xtype created footer. - not sure if will work as we normally have to render first..
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.footer.el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.footer.xtype</span><span class="jsdoc-syntax">) {
+
+        </span><span class="jsdoc-comment">//this.footer.container = this.grid.getView().getFooterPanel(true);
+        //this.footer.dataSource = this.grid.dataSource;
+        //this.footer = Roo.factory(this.footer, Roo);
+
+    </span><span class="jsdoc-syntax">}
+    </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.calendar.View</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-var">skipNavHeader </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">skipMonthHeader </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
+
+    </span><span class="jsdoc-syntax">},</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">));
+
+
+    </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'activate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'activate'</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">//console.log('render tree');
+        </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">();
+    },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+	     * @event select
+	     * Fires when a date is selected
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected date
+	     */
+        </span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event monthchange
+	     * Fires when the displayed month changes 
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected month
+	     */
+        </span><span class="jsdoc-string">'monthchange'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event evententer
+	     * Fires when mouse over an event
+	     * @param {Calendar} this
+	     * @param {event} Event
+	     */
+        </span><span class="jsdoc-string">'evententer'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event eventleave
+	     * Fires when the mouse leaves an
+	     * @param {Calendar} this
+	     * @param {event}
+	     */
+        </span><span class="jsdoc-string">'eventleave'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event eventclick
+	     * Fires when the mouse click an
+	     * @param {Calendar} this
+	     * @param {event}
+	     */
+        </span><span class="jsdoc-string">'eventclick'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event rendered
+	     * Fires when the grid is rendered
+	     * @param {Calendar} this
+	    
+	     */
+        </span><span class="jsdoc-string">'rendered'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+
+
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">this.relayEvents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;select&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;monthchange&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;evententer&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;eventleave&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;rendered&quot;</span><span class="jsdoc-syntax">]);
+
+    </span><span class="jsdoc-comment">//this.grid = grid;
+    //this.grid.getGridEl().replaceClass(&quot;x-layout-inactive-content&quot;, &quot;x-layout-component-panel&quot;);
+</span><span class="jsdoc-syntax">};
+
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.panel.Calendar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.panel.Content</span><span class="jsdoc-syntax">, {
+
+
+    </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ct </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">)
+    },
+
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.rendered </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;render calendar&quot;</span><span class="jsdoc-syntax">);
+
+
+        </span><span class="jsdoc-comment">//Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({},  </span><span class="jsdoc-var">this.view.getAutoCreate</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-var">cfg.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-comment">// fill in the extra attributes 
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.xattr </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.xattr</span><span class="jsdoc-syntax">) ==</span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.xattr</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.xattr</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            }
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dataId</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.dataId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dataId</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.cls</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.style</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// fixme needs to support more complex style data.
+            </span><span class="jsdoc-var">cfg.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.style</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">this.view.el </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">ct.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">//if(this.tabIndex !== undefined){
+        //    this.el.dom.setAttribute('tabIndex', this.tabIndex);
+        //}
+
+
+        </span><span class="jsdoc-var">this.view.initEvents</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rendered'</span><span class="jsdoc-syntax">);
+    }
+
+
+
+
+});
+
+
+</span></code></body></html>

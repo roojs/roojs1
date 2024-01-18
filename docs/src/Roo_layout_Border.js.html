@@ -1,0 +1,704 @@
+<html><head><title>Roo/layout/Border.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+/**
+ * @class Roo.layout.Border
+ * @extends Roo.layout.Manager
+ * @children Roo.panel.Content
+ * This class represents a common layout manager used in desktop applications. For screenshots and more details,
+ * please see: &lt;br&gt;&lt;br&gt;
+ * &lt;a href=&quot;http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/&quot;&gt;Cross Browser Layouts - Part 1&lt;/a&gt;&lt;br&gt;
+ * &lt;a href=&quot;http://www.jackslocum.com/yui/2006/10/28/cross-browser-web-20-layouts-part-2-ajax-feed-viewer-20/&quot;&gt;Cross Browser Layouts - Part 2&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+ * Example:
+ &lt;pre&gt;&lt;code&gt;
+ var layout = new Roo.layout.Border(document.body, {
+    north: {
+        initialSize: 25,
+        titlebar: false
+    },
+    west: {
+        split:true,
+        initialSize: 200,
+        minSize: 175,
+        maxSize: 400,
+        titlebar: true,
+        collapsible: true
+    },
+    east: {
+        split:true,
+        initialSize: 202,
+        minSize: 175,
+        maxSize: 400,
+        titlebar: true,
+        collapsible: true
+    },
+    south: {
+        split:true,
+        initialSize: 100,
+        minSize: 100,
+        maxSize: 200,
+        titlebar: true,
+        collapsible: true
+    },
+    center: {
+        titlebar: true,
+        autoScroll:true,
+        resizeTabs: true,
+        minTabWidth: 50,
+        preferredTabWidth: 150
+    }
+});
+
+// shorthand
+var CP = Roo.panel.Content;
+
+layout.beginUpdate();
+layout.add(&quot;north&quot;, new CP(&quot;north&quot;, &quot;North&quot;));
+layout.add(&quot;south&quot;, new CP(&quot;south&quot;, {title: &quot;South&quot;, closable: true}));
+layout.add(&quot;west&quot;, new CP(&quot;west&quot;, {title: &quot;West&quot;}));
+layout.add(&quot;east&quot;, new CP(&quot;autoTabs&quot;, {title: &quot;Auto Tabs&quot;, closable: true}));
+layout.add(&quot;center&quot;, new CP(&quot;center1&quot;, {title: &quot;Close Me&quot;, closable: true}));
+layout.add(&quot;center&quot;, new CP(&quot;center2&quot;, {title: &quot;Center Panel&quot;, closable: false}));
+layout.getRegion(&quot;center&quot;).showPanel(&quot;center1&quot;);
+layout.endUpdate();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;b&gt;The container the layout is rendered into can be either the body element or any other element.
+If it is not the body element, the container needs to either be an absolute positioned element,
+or you will need to add &quot;position:relative&quot; to the css of the container.  You will also need to specify
+the container size if it is not the body element.&lt;/b&gt;
+
+* @constructor
+* Create a new BorderLayout
+* @param {String/HTMLElement/Element} container The container this layout is bound to
+* @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.layout.Border </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">|| {};
+    </span><span class="jsdoc-var">Roo.layout.Border.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.factory </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.factory </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.layout.Border.RegionFactory</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.factory.validRegions.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+    	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.factory.validRegions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+    	</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">]){
+    	    </span><span class="jsdoc-var">this.addRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">]);
+    	}
+    }
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.layout.Border</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.layout.Manager</span><span class="jsdoc-syntax">, {
+
+	</span><span class="jsdoc-comment">/**
+	 * @cfg {Roo.layout.Region} east
+	 */
+	/**
+	 * @cfg {Roo.layout.Region} west
+	 */
+	/**
+	 * @cfg {Roo.layout.Region} north
+	 */
+	/**
+	 * @cfg {Roo.layout.Region} south
+	 */
+	/**
+	 * @cfg {Roo.layout.Region} center
+	 */
+    /**
+     * Creates and adds a new region if it doesn't already exist.
+     * @param {String} target The target region key (north, south, east, west or center).
+     * @param {Object} config The regions config object
+     * @return {BorderLayoutRegion} The new region
+     */
+    </span><span class="jsdoc-var">addRegion </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.regions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">]){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.factory.create</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    	    </span><span class="jsdoc-var">this.bindRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.regions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">];
+    },
+
+    </span><span class="jsdoc-comment">// private (kinda)
+    </span><span class="jsdoc-var">bindRegion </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.regions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">r.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;visibilitychange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">r.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;paneladded&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">r.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;panelremoved&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">r.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;invalidated&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">r.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;resized&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRegionResized</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">r.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;collapsed&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRegionCollapsed</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">r.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;expanded&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRegionExpanded</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Performs a layout update.
+     */
+    </span><span class="jsdoc-var">layout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.updating</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getViewSize</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">size.height</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">centerW </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">centerH </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">centerY </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">centerX </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-comment">//var x = 0, y = 0;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.regions</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">north </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">&quot;north&quot;</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">south </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">&quot;south&quot;</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">west </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">&quot;west&quot;</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">east </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">&quot;east&quot;</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">center </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">&quot;center&quot;</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-comment">//if(this.hideOnLayout){ // not supported anymore
+            //c.el.setStyle(&quot;display&quot;, &quot;none&quot;);
+        //}
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">north </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">north.isVisible</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">north.getBox</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">north.getMargins</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">b.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">m.left</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">m.right</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">b.x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m.left</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">b.y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m.top</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">centerY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">b.height </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">b.y </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">m.bottom</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">centerH </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">centerY</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">north.updateBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.safeBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">));
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">south </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">south.isVisible</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">south.getBox</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">south.getMargins</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">b.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">m.left</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">m.right</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">b.x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m.left</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">totalHeight </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">b.height </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">m.top </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">m.bottom</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">b.y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">totalHeight </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">m.top</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">centerH </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">totalHeight</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">south.updateBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.safeBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">));
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">west </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">west.isVisible</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">west.getBox</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">west.getMargins</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">b.height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">centerH </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">m.top</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">m.bottom</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">b.x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m.left</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">b.y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">centerY </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">m.top</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">totalWidth </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">b.width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">m.left </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">m.right</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">centerX </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">totalWidth</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">centerW </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">totalWidth</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">west.updateBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.safeBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">));
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">east </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">east.isVisible</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">east.getBox</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">east.getMargins</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">b.height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">centerH </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">m.top</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">m.bottom</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">totalWidth </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">b.width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">m.left </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">m.right</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">b.x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">totalWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">m.left</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">b.y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">centerY </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">m.top</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">centerW </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">totalWidth</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">east.updateBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.safeBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">));
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">center</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">center.getMargins</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">centerBox </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">centerX </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">m.left</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">centerY </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">m.top</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">centerW </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">m.left</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">m.right</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">centerH </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">m.top</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">m.bottom</span><span class="jsdoc-syntax">)
+            };
+            </span><span class="jsdoc-comment">//if(this.hideOnLayout){
+                //center.el.setStyle(&quot;display&quot;, &quot;block&quot;);
+            //}
+            </span><span class="jsdoc-var">center.updateBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.safeBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">centerBox</span><span class="jsdoc-syntax">));
+        }
+        </span><span class="jsdoc-var">this.el.repaint</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;layout&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">safeBox </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">box.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">box.width</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">box.height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">box.height</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Adds a ContentPanel (or subclass) to this layout.
+     * @param {String} target The target region key (north, south, east, west or center).
+     * @param {Roo.panel.Content} panel The panel to add
+     * @return {Roo.panel.Content} The added panel
+     */
+    </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">){
+
+        </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.toLowerCase</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.regions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Remove a ContentPanel (or subclass) to this layout.
+     * @param {String} target The target region key (north, south, east, west or center).
+     * @param {Number/String/Roo.panel.Content} panel The index, id or panel to remove
+     * @return {Roo.panel.Content} The removed panel
+     */
+    </span><span class="jsdoc-var">remove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.toLowerCase</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.regions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panel</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Searches all regions for a panel with the specified id
+     * @param {String} panelId
+     * @return {Roo.panel.Content} The panel or null if it wasn't found
+     */
+    </span><span class="jsdoc-var">findPanel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panelId</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.regions</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">] != </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.getPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panelId</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">;
+                }
+            }
+        }
+        </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Searches all regions for a panel with the specified id and activates (shows) it.
+     * @param {String/panel.Content} panelId The panels id or the panel itself
+     * @return {Roo.panel.Content} The shown panel or null
+     */
+    </span><span class="jsdoc-var">showPanel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panelId</span><span class="jsdoc-syntax">) {
+      </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.regions</span><span class="jsdoc-syntax">;
+      </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">){
+         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">];
+         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.hasPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panelId</span><span class="jsdoc-syntax">)){
+               </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r.showPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">panelId</span><span class="jsdoc-syntax">);
+            }
+         }
+      }
+      </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+   },
+
+   </span><span class="jsdoc-comment">/**
+     * Restores this layout's state using Roo.state.Manager or the state provided by the passed provider.
+     * @param {Roo.state.Provider} provider (optional) An alternate state provider
+     */
+    </span><span class="jsdoc-var">restoreState </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">provider</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">provider</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">provider </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.state.Manager</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.layout.StateManager</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">sm.init</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">provider</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Adds a batch of multiple ContentPanels dynamically by passing a special regions config object.  This config
+     * object should contain properties for each region to add ContentPanels to, and each property's value should be
+     * a valid ContentPanel config object.  Example:
+     * &lt;pre&gt;&lt;code&gt;
+// Create the main layout
+var layout = new Roo.layout.Border('main-ct', {
+    west: {
+        split:true,
+        minSize: 175,
+        titlebar: true
+    },
+    center: {
+        title:'Components'
+    }
+}, 'main-ct');
+
+// Create and add multiple ContentPanels at once via configs
+layout.batchAdd({
+   west: {
+       id: 'source-files',
+       autoCreate:true,
+       title:'Ext Source Files',
+       autoScroll:true,
+       fitToFrame:true
+   },
+   center : {
+       el: cview,
+       autoScroll:true,
+       fitToFrame:true,
+       toolbar: tb,
+       resizeEl:'cbody'
+   }
+});
+&lt;/code&gt;&lt;/pre&gt;
+     * @param {Object} regions An object containing ContentPanel configs by region name
+     */
+    </span><span class="jsdoc-var">batchAdd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">regions</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.beginUpdate</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rname </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">regions</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.regions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rname</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lr</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.addTypedPanels</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">regions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rname</span><span class="jsdoc-syntax">]);
+            }
+        }
+        </span><span class="jsdoc-var">this.endUpdate</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">addTypedPanels </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">ps </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">lr.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.panel.Content</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">));
+        }
+        </span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ps </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ps.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                </span><span class="jsdoc-var">this.addTypedPanels</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            }
+        }
+        </span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ps.events</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// raw config?
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ps.el</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">ps.el</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// prevent conflict
+            </span><span class="jsdoc-var">lr.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.panel.Content</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">));
+        }
+        </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{  </span><span class="jsdoc-comment">// panel object assumed!
+            </span><span class="jsdoc-var">lr.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">);
+        }
+    },
+    </span><span class="jsdoc-comment">/**
+     * Adds a xtype elements to the layout.
+     * &lt;pre&gt;&lt;code&gt;
+
+layout.addxtype({
+       xtype : 'ContentPanel',
+       region: 'west',
+       items: [ .... ]
+   }
+);
+
+layout.addxtype({
+        xtype : 'NestedLayoutPanel',
+        region: 'west',
+        layout: {
+           center: { },
+           west: { }   
+        },
+        items : [ ... list of content panels or nested layout panels.. ]
+   }
+);
+&lt;/code&gt;&lt;/pre&gt;
+     * @param {Object} cfg Xtype definition of item to add.
+     */
+    </span><span class="jsdoc-var">addxtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// basically accepts a pannel...
+        // can accept a layout region..!?!?
+        //Roo.log('Roo.layout.Border add ' + cfg.xtype)
+
+        // if (!cfg.xtype.match(/Panel$/)) {
+        //     return false;
+        // }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.region</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Failed to add Panel, region was not set&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.region</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">cfg.region</span><span class="jsdoc-syntax">;
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xitems </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.items</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">xitems </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.items</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">cfg.items</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'Content'</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.autoCreate</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.panel</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// new panel!!!!!
+                </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.panel</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// new panel!!!!!
+                </span><span class="jsdoc-syntax">}
+
+                </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'Grid'</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-comment">// needs grid and region
+
+                //var el = this.getRegion(region).el.createChild();
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-comment">// create the grid first...
+
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.grid</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.grid.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg.grid</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">cfg.grid</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">cfg.background </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.panel</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// new panel!!!!!
+
+                </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.background</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">ret.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'activate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">gp</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">gp.grid.rendered</span><span class="jsdoc-syntax">) {
+                            </span><span class="jsdoc-var">gp.grid.render</span><span class="jsdoc-syntax">();
+                        }
+                    });
+                } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">grid.render</span><span class="jsdoc-syntax">();
+                }
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'NestedLayout'</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-comment">// create a new Layout (which is  a Border Layout...
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">clayout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.layout</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">cfg.layout</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">clayout.items   </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">clayout.items  </span><span class="jsdoc-syntax">|| [];
+                </span><span class="jsdoc-comment">// replace this exitems with the clayout ones..
+                </span><span class="jsdoc-var">xitems </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">clayout.items</span><span class="jsdoc-syntax">;
+
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.getRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.panels.length </span><span class="jsdoc-syntax">&lt; 1) {
+                    </span><span class="jsdoc-var">cfg.background </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">layout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.layout.Border</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">clayout</span><span class="jsdoc-syntax">);
+
+                </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.panel</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">layout</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// new panel!!!!!
+                //console.log('adding nested layout panel '  + cfg.toSource());
+                </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">nb </span><span class="jsdoc-syntax">= {}; </span><span class="jsdoc-comment">/// find first...
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'Calendar'</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.panel</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// new panel!!!!!
+                </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'Tree'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-comment">// our new panel!
+                </span><span class="jsdoc-var">cfg.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.panel</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// new panel!!!!!
+                </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'ContentPanel'</span><span class="jsdoc-syntax">:
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'ScrollPanel'</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-comment">// ContentPanel (el, cfg)
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'ViewPanel'</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.autoCreate</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// new panel!!!!!
+                </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// new panel!!!!!
+                </span><span class="jsdoc-syntax">}
+
+                </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+
+
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'TreePanel'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-comment">// our new panel!
+                </span><span class="jsdoc-var">cfg.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// new panel!!!!!
+                </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'NestedLayoutPanel'</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-comment">// create a new Layout (which is  a Border Layout...
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">clayout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.layout</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">cfg.layout</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">clayout.items   </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">clayout.items  </span><span class="jsdoc-syntax">|| [];
+                </span><span class="jsdoc-comment">// replace this exitems with the clayout ones..
+                </span><span class="jsdoc-var">xitems </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">clayout.items</span><span class="jsdoc-syntax">;
+
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.getRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.panels.length </span><span class="jsdoc-syntax">&lt; 1) {
+                    </span><span class="jsdoc-var">cfg.background </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">layout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.layout.Border</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">clayout</span><span class="jsdoc-syntax">);
+
+                </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">layout</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// new panel!!!!!
+                //console.log('adding nested layout panel '  + cfg.toSource());
+                </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">nb </span><span class="jsdoc-syntax">= {}; </span><span class="jsdoc-comment">/// find first...
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'GridPanel'</span><span class="jsdoc-syntax">:
+
+                </span><span class="jsdoc-comment">// needs grid and region
+
+                //var el = this.getRegion(region).el.createChild();
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-comment">// create the grid first...
+
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.grid</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.grid.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg.grid</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">cfg.grid</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">cfg.background </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// new panel!!!!!
+
+                </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.background</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">ret.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'activate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">gp</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">gp.grid.rendered</span><span class="jsdoc-syntax">) {
+                            </span><span class="jsdoc-var">gp.grid.render</span><span class="jsdoc-syntax">();
+                        }
+                    });
+                } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">grid.render</span><span class="jsdoc-syntax">();
+                }
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+
+
+
+
+
+
+            </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+
+                    </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// new panel!!!!!
+                    </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">);
+                } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+
+                    </span><span class="jsdoc-var">alert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Can not add '&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cfg.xtype </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;' to BorderLayout&quot;</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+                }
+
+             </span><span class="jsdoc-comment">// GridPanel (grid, cfg)
+
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-var">this.beginUpdate</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">// add children..
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">abn </span><span class="jsdoc-syntax">= {};
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xitems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)  {
+            </span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nb </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">i.region </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">i.region </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ret.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">nb</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">nb</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">] == </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? 0 : </span><span class="jsdoc-var">nb</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">]+1;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">i.background</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">abn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">nb</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">] ;
+                }
+            }
+
+        });
+        </span><span class="jsdoc-var">this.endUpdate</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-comment">// make the last non-background panel active..
+        //if (nb) { Roo.log(abn); }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nb</span><span class="jsdoc-syntax">) {
+
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">abn</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-comment">// tried using nb[r], but it does not work..
+
+                    </span><span class="jsdoc-var">region.showPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">abn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">]);
+
+                }
+            }
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+
+    }
+});
+
+</span><span class="jsdoc-comment">/**
+ * Shortcut for creating a new BorderLayout object and adding one or more ContentPanels to it in a single step, handling
+ * the beginUpdate and endUpdate calls internally.  The key to this method is the &lt;b&gt;panels&lt;/b&gt; property that can be
+ * provided with each region config, which allows you to add ContentPanel configs in addition to the region configs
+ * during creation.  The following code is equivalent to the constructor-based example at the beginning of this class:
+ * &lt;pre&gt;&lt;code&gt;
+// shorthand
+var CP = Roo.ContentPanel;
+
+var layout = Roo.layout.Border.create({
+    north: {
+        initialSize: 25,
+        titlebar: false,
+        panels: [new CP(&quot;north&quot;, &quot;North&quot;)]
+    },
+    west: {
+        split:true,
+        initialSize: 200,
+        minSize: 175,
+        maxSize: 400,
+        titlebar: true,
+        collapsible: true,
+        panels: [new CP(&quot;west&quot;, {title: &quot;West&quot;})]
+    },
+    east: {
+        split:true,
+        initialSize: 202,
+        minSize: 175,
+        maxSize: 400,
+        titlebar: true,
+        collapsible: true,
+        panels: [new CP(&quot;autoTabs&quot;, {title: &quot;Auto Tabs&quot;, closable: true})]
+    },
+    south: {
+        split:true,
+        initialSize: 100,
+        minSize: 100,
+        maxSize: 200,
+        titlebar: true,
+        collapsible: true,
+        panels: [new CP(&quot;south&quot;, {title: &quot;South&quot;, closable: true})]
+    },
+    center: {
+        titlebar: true,
+        autoScroll:true,
+        resizeTabs: true,
+        minTabWidth: 50,
+        preferredTabWidth: 150,
+        panels: [
+            new CP(&quot;center1&quot;, {title: &quot;Close Me&quot;, closable: true}),
+            new CP(&quot;center2&quot;, {title: &quot;Center Panel&quot;, closable: false})
+        ]
+    }
+}, document.body);
+
+layout.getRegion(&quot;center&quot;).showPanel(&quot;center1&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+ * @param config
+ * @param targetEl
+ */
+</span><span class="jsdoc-var">Roo.layout.Border.create </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">targetEl</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">layout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.layout.Border</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">targetEl </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">layout.beginUpdate</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">regions </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.layout.Border.RegionFactory.validRegions</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">jlen </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">regions.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">jlen</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">regions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">layout.regions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">lr</span><span class="jsdoc-syntax">] &amp;&amp; </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">lr</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.panels</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">layout.regions</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">lr</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ps </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">lr</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.panels</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">layout.addTypedPanels</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ps</span><span class="jsdoc-syntax">);
+        }
+    }
+    </span><span class="jsdoc-var">layout.endUpdate</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">layout</span><span class="jsdoc-syntax">;
+};
+
+</span><span class="jsdoc-comment">// private
+</span><span class="jsdoc-var">Roo.layout.Border.RegionFactory </span><span class="jsdoc-syntax">= {
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">validRegions </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">&quot;north&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;south&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;east&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;west&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;center&quot;</span><span class="jsdoc-syntax">],
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">create </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mgr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.toLowerCase</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.lightweight </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">config.basic</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Roo.layout.BasicRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mgr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">);
+        }
+		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.charAt</span><span class="jsdoc-syntax">(0)</span><span class="jsdoc-var">.toUpperCase</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">target.slice</span><span class="jsdoc-syntax">(1);
+		</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.layout</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+			</span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">'Layout region &quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot; not supported.'</span><span class="jsdoc-syntax">;
+		}
+		</span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Roo.layout</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">mgr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+
+    }
+};</span></code></body></html>

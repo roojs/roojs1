@@ -1,0 +1,62 @@
+<html><head><title>Roo/panel/Scroll.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-var">Roo.panel.Scroll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">|| {};
+    </span><span class="jsdoc-var">config.fitToFrame </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">Roo.panel.Scroll.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.el.dom.style.overflow </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;hidden&quot;</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">wrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-scroller x-layout-inactive-content&quot;</span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-layout-inactive-content&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mousewheel&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onWheel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">up </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">wrap.createChild</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-scroller-up&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#160;&quot;</span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">down </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">wrap.createChild</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-scroller-down&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#160;&quot;</span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">up.unselectable</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-var">down.unselectable</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-var">up.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.scrollUp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">down.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.scrollDown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">up.addClassOnOver</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-scroller-btn-over&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">down.addClassOnOver</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-scroller-btn-over&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">up.addClassOnClick</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-scroller-btn-click&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">down.addClassOnClick</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-scroller-btn-click&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.adjustments </span><span class="jsdoc-syntax">= [0, -(</span><span class="jsdoc-var">up.getHeight</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">down.getHeight</span><span class="jsdoc-syntax">())];
+
+    </span><span class="jsdoc-var">this.resizeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">wrap</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">this.up </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">up</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">this.down </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">down</span><span class="jsdoc-syntax">;
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.panel.Scroll</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.panel.Content</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">increment </span><span class="jsdoc-syntax">: 100,
+    </span><span class="jsdoc-var">wheelIncrement </span><span class="jsdoc-syntax">: 5,
+    </span><span class="jsdoc-var">scrollUp </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.resizeEl.scroll</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;up&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.increment</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.afterScroll</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">});
+    },
+
+    </span><span class="jsdoc-var">scrollDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.resizeEl.scroll</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;down&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.increment</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.afterScroll</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">});
+    },
+
+    </span><span class="jsdoc-var">afterScroll </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.resizeEl</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.dom.scrollTop</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.dom.scrollHeight</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ch </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.dom.clientHeight</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.up</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">== 0 ? </span><span class="jsdoc-string">&quot;addClass&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;removeClass&quot;</span><span class="jsdoc-syntax">](</span><span class="jsdoc-string">&quot;x-scroller-btn-disabled&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.down</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">ch </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;addClass&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;removeClass&quot;</span><span class="jsdoc-syntax">](</span><span class="jsdoc-string">&quot;x-scroller-btn-disabled&quot;</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">setSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.panel.Scroll.superclass.setSize.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.afterScroll</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">onWheel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getWheelDelta</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.resizeEl.dom.scrollTop </span><span class="jsdoc-syntax">-= (</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">*</span><span class="jsdoc-var">this.wheelIncrement</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.afterScroll</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">setContent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadScripts</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.resizeEl.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadScripts</span><span class="jsdoc-syntax">);
+    }
+
+});
+</span></code></body></html>

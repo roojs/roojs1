@@ -3,15 +3,15 @@
 /**
  * @class Roo.panel.NestedLayout
  * @extends Roo.panel.Content
- * @parent Roo.BorderLayout Roo.LayoutDialog builder
- * @cfg {Roo.BorderLayout} layout   [required] The layout for this panel
+ * @parent Roo.layout.Border Roo.LayoutDialog builder
+ * @cfg {Roo.layout.Border} layout   [required] The layout for this panel
  *
  * 
  * @constructor
  * Create a new NestedLayoutPanel.
  * 
  * 
- * @param {Roo.BorderLayout} layout [required] The layout for this panel
+ * @param {Roo.layout.Border} layout [required] The layout for this panel
  * @param {String/Object} config A string to set only the title or a config object
  */
 Roo.panel.NestedLayout = function(layout, config)
@@ -95,7 +95,7 @@ Roo.extend(Roo.panel.NestedLayout, Roo.panel.Content, {
     
     /**
      * Returns the nested BorderLayout for this panel
-     * @return {Roo.BorderLayout}
+     * @return {Roo.layout.Border}
      */
     getLayout : function(){
         return this.layout;

@@ -13,7 +13,7 @@
 /*
  * Private internal class for reading and applying state
  */
-Roo.LayoutStateManager = function(layout){
+Roo.layout.StateManager = function(layout){
      // default empty state
      this.state = {
         north: {},
@@ -23,7 +23,7 @@ Roo.LayoutStateManager = function(layout){
     };
 };
 
-Roo.LayoutStateManager.prototype = {
+Roo.layout.StateManager.prototype = {
     init : function(layout, provider){
         this.provider = provider;
         var state = provider.get(layout.id+"-layout-state");

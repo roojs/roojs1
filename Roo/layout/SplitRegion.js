@@ -12,22 +12,22 @@
 
 
 /**
- * @class Roo.SplitLayoutRegion
- * @extends Roo.LayoutRegion
- * Adds a splitbar and other (private) useful functionality to a {@link Roo.LayoutRegion}.
+ * @class Roo.layout.SplitRegion
+ * @extends Roo.layout.Region
+ * Adds a splitbar and other (private) useful functionality to a {@link Roo.layout.Region}.
  */
-Roo.SplitLayoutRegion = function(mgr, config, pos, cursor){
+Roo.layout.SplitRegion = function(mgr, config, pos, cursor){
     this.cursor = cursor;
-    Roo.SplitLayoutRegion.superclass.constructor.call(this, mgr, config, pos);
+    Roo.layout.SplitRegion.superclass.constructor.call(this, mgr, config, pos);
 };
 
-Roo.extend(Roo.SplitLayoutRegion, Roo.LayoutRegion, {
+Roo.extend(Roo.layout.SplitRegion, Roo.layout.Region, {
     splitTip : "Drag to resize.",
     collapsibleSplitTip : "Drag to resize. Double click to hide.",
     useSplitTips : false,
 
     applyConfig : function(config){
-        Roo.SplitLayoutRegion.superclass.applyConfig.call(this, config);
+        Roo.layout.SplitRegion.superclass.applyConfig.call(this, config);
         if(config.split){
             if(!this.split){
                 var splitEl = Roo.DomHelper.append(this.mgr.el.dom, 
@@ -83,7 +83,7 @@ Roo.extend(Roo.SplitLayoutRegion, Roo.LayoutRegion, {
     
     hide : function(){
         this.hideSplitter();
-        Roo.SplitLayoutRegion.superclass.hide.call(this);
+        Roo.layout.SplitRegion.superclass.hide.call(this);
     },
 
     hideSplitter : function(){
@@ -97,7 +97,7 @@ Roo.extend(Roo.SplitLayoutRegion, Roo.LayoutRegion, {
         if(this.split){
             this.split.el.show();
         }
-        Roo.SplitLayoutRegion.superclass.show.call(this);
+        Roo.layout.SplitRegion.superclass.show.call(this);
     },
     
     beforeSlide: function(){

@@ -33,27 +33,12 @@
         "is_class" : true
       },
       {
-        "name" : "Roo.BasicLayoutRegion",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
-        "name" : "Roo.BorderLayout",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
         "name" : "Roo.BoxComponent",
         "cn" : [],
         "is_class" : true
       },
       {
         "name" : "Roo.Button",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
-        "name" : "Roo.CalendarPanel",
         "cn" : [],
         "is_class" : true
       },
@@ -79,11 +64,6 @@
       },
       {
         "name" : "Roo.CompositeElementLite",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
-        "name" : "Roo.ContentPanel",
         "cn" : [],
         "is_class" : true
       },
@@ -148,11 +128,6 @@
         "is_class" : true
       },
       {
-        "name" : "Roo.GridPanel",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
         "name" : "Roo.HtmlEditorCore",
         "cn" : [],
         "is_class" : true
@@ -183,16 +158,6 @@
         "is_class" : true
       },
       {
-        "name" : "Roo.LayoutManager",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
-        "name" : "Roo.LayoutRegion",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
         "name" : "Roo.LoadMask",
         "cn" : [],
         "is_class" : true
@@ -208,22 +173,12 @@
         "is_class" : true
       },
       {
-        "name" : "Roo.NestedLayoutPanel",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
         "name" : "Roo.PagingToolbar",
         "cn" : [],
         "is_class" : true
       },
       {
         "name" : "Roo.QuickTips",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
-        "name" : "Roo.ReaderLayout",
         "cn" : [],
         "is_class" : true
       },
@@ -255,21 +210,6 @@
       },
       {
         "name" : "Roo.SplitButton",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
-        "name" : "Roo.SplitLayoutRegion",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
-        "name" : "Roo.TabPanel",
-        "cn" : [],
-        "is_class" : true
-      },
-      {
-        "name" : "Roo.TabPanelItem",
         "cn" : [],
         "is_class" : true
       },
@@ -317,11 +257,6 @@
             "is_class" : true
           }
         ],
-        "is_class" : true
-      },
-      {
-        "name" : "Roo.TreePanel",
-        "cn" : [],
         "is_class" : true
       },
       {
@@ -1080,17 +1015,6 @@
         "is_class" : false
       },
       {
-        "name" : "Roo.dialog",
-        "cn" : [
-          {
-            "name" : "Roo.dialog.UploadCropbox",
-            "cn" : [],
-            "is_class" : true
-          }
-        ],
-        "is_class" : false
-      },
-      {
         "name" : "Roo.form",
         "cn" : [
           {
@@ -1441,6 +1365,42 @@
         "is_class" : false
       },
       {
+        "name" : "Roo.layout",
+        "cn" : [
+          {
+            "name" : "Roo.layout.BasicRegion",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.layout.Border",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.layout.Manager",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.layout.Reader",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.layout.Region",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.layout.SplitRegion",
+            "cn" : [],
+            "is_class" : true
+          }
+        ],
+        "is_class" : false
+      },
+      {
         "name" : "Roo.lib",
         "cn" : [
           {
@@ -1551,6 +1511,52 @@
           },
           {
             "name" : "Roo.menu.TextItem",
+            "cn" : [],
+            "is_class" : true
+          }
+        ],
+        "is_class" : false
+      },
+      {
+        "name" : "Roo.panel",
+        "cn" : [
+          {
+            "name" : "Roo.panel.Calendar",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.panel.Content",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.panel.Cropbox",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.panel.Grid",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.panel.NestedLayout",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.panel.Tab",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.panel.TabItem",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.panel.Tree",
             "cn" : [],
             "is_class" : true
           }

@@ -386,20 +386,38 @@ Widgets (Classic Roo)
         Roo.View
         Examples
             [examples/view/chooser.html]Image Chooser</a>  </li>
-    Layout / Tabs
-        Roo.BasicLayoutRegion
-        Roo.BorderRegion
-        Roo.ContentPanel
-        Roo.LayoutRegion
-        Roo.NestedLayoutPanel
-        Roo.ReaderLayout
+    
+    Regions / Layout
+        Roo.layout.Manager
+        Roo.layout.Border
+        Roo.layout.BasicRegion
+        Roo.layout.Region
+        Roo.layout.SplitRegion
+        Roo.layout.Center
+        Roo.layout.West
+        Roo.layout.East
+        Roo.layout.South
+        Roo.layout.North
+        Roo.layout.StateManager
         Roo.SplitBar
-        Roo.SplitLayoutRegion
-        Roo.TabPanel
-        Roo.TabPanelItem
         Examples
             [examples/layout/simple.html]Simple Layout
             [examples/layout/nested.html]Nested Layout
             [examples/layout/complex.html]Complex Layout ( Broken - needs converting to Roo JS)
             [examples/tabs/tabs.html]Basic Tabs  (borders broken on tab boxes)
             [examples/tabs/tabs-adv.html]Advanced Tabs(dynamic adding of tabs)
+             
+    Panels (that go into Regions)
+        Roo.panel.Content
+        Roo.panel.NestedLayout
+        Roo.panel.Calendar
+        Roo.panel.Grid
+        Roo.panel.Cropbox
+        Roo.panel.Tab
+        Roo.panel.TabItem
+        Roo.panel.Tree
+        Roo.panel.Scroll
+        Examples
+            [examples/panel/cropbox.html]Cropbox
+        
+         

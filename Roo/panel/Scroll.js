@@ -1,8 +1,8 @@
 
-Roo.ScrollPanel = function(el, config, content){
+Roo.panel.Scroll = function(el, config, content){
     config = config || {};
     config.fitToFrame = true;
-    Roo.ScrollPanel.superclass.constructor.call(this, el, config, content);
+    Roo.panel.Scroll.superclass.constructor.call(this, el, config, content);
     
     this.el.dom.style.overflow = "hidden";
     var wrap = this.el.wrap({cls: "x-scroller x-layout-inactive-content"});
@@ -24,7 +24,7 @@ Roo.ScrollPanel = function(el, config, content){
     this.el = wrap; this.up = up; this.down = down;
 };
 
-Roo.extend(Roo.ScrollPanel, Roo.panel.Content, {
+Roo.extend(Roo.panel.Scroll, Roo.panel.Content, {
     increment : 100,
     wheelIncrement : 5,
     scrollUp : function(){
@@ -43,7 +43,7 @@ Roo.extend(Roo.ScrollPanel, Roo.panel.Content, {
     },
 
     setSize : function(){
-        Roo.ScrollPanel.superclass.setSize.apply(this, arguments);
+        Roo.panel.Scroll.superclass.setSize.apply(this, arguments);
         this.afterScroll();
     },
 

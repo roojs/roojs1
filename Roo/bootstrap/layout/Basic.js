@@ -31,13 +31,13 @@ Roo.bootstrap.layout.Basic = function(config){
     
     this.events = {
         /**
-         * @scope Roo.BasicLayoutRegion
+         * @scope Roo.layout.BasicRegion
          */
         
         /**
          * @event beforeremove
          * Fires before a panel is removed (or closed). To cancel the removal set "e.cancel = true" on the event argument.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Roo.ContentPanel} panel The panel
          * @param {Object} e The cancel event object
          */
@@ -45,71 +45,71 @@ Roo.bootstrap.layout.Basic = function(config){
         /**
          * @event invalidated
          * Fires when the layout for this region is changed.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "invalidated" : true,
         /**
          * @event visibilitychange
          * Fires when this region is shown or hidden 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Boolean} visibility true or false
          */
         "visibilitychange" : true,
         /**
          * @event paneladded
          * Fires when a panel is added. 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Roo.ContentPanel} panel The panel
          */
         "paneladded" : true,
         /**
          * @event panelremoved
          * Fires when a panel is removed. 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Roo.ContentPanel} panel The panel
          */
         "panelremoved" : true,
         /**
          * @event beforecollapse
          * Fires when this region before collapse.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "beforecollapse" : true,
         /**
          * @event collapsed
          * Fires when this region is collapsed.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "collapsed" : true,
         /**
          * @event expanded
          * Fires when this region is expanded.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "expanded" : true,
         /**
          * @event slideshow
          * Fires when this region is slid into view.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "slideshow" : true,
         /**
          * @event slidehide
          * Fires when this region slides out of view. 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "slidehide" : true,
         /**
          * @event panelactivated
          * Fires when a panel is activated. 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Roo.ContentPanel} panel The activated panel
          */
         "panelactivated" : true,
         /**
          * @event resized
          * Fires when the user resizes this region. 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Number} newSize The new size (width for east/west, height for north/south)
          */
         "resized" : true

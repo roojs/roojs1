@@ -10,24 +10,24 @@
  */
  
 /**
- * @class Roo.BasicLayoutRegion
+ * @class Roo.layout.BasicRegion
  * @extends Roo.util.Observable
  * This class represents a lightweight region in a layout manager. This region does not move dom nodes
  * and does not have a titlebar, tabs or any other features. All it does is size and position 
  * panels. To create a BasicLayoutRegion, add lightweight:true or basic:true to your regions config.
  */
-Roo.BasicLayoutRegion = function(mgr, config, pos, skipConfig){
+Roo.layout.BasicRegion= function(mgr, config, pos, skipConfig){
     this.mgr = mgr;
     this.position  = pos;
     this.events = {
         /**
-         * @scope Roo.BasicLayoutRegion
+         * @scope Roo.layout.BasicRegion
          */
         
         /**
          * @event beforeremove
          * Fires before a panel is removed (or closed). To cancel the removal set "e.cancel = true" on the event argument.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Roo.panel.Content} panel The panel
          * @param {Object} e The cancel event object
          */
@@ -35,71 +35,71 @@ Roo.BasicLayoutRegion = function(mgr, config, pos, skipConfig){
         /**
          * @event invalidated
          * Fires when the layout for this region is changed.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "invalidated" : true,
         /**
          * @event visibilitychange
          * Fires when this region is shown or hidden 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Boolean} visibility true or false
          */
         "visibilitychange" : true,
         /**
          * @event paneladded
          * Fires when a panel is added. 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Roo.panel.Content} panel The panel
          */
         "paneladded" : true,
         /**
          * @event panelremoved
          * Fires when a panel is removed. 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Roo.panel.Content} panel The panel
          */
         "panelremoved" : true,
         /**
          * @event beforecollapse
          * Fires when this region before collapse.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "beforecollapse" : true,
         /**
          * @event collapsed
          * Fires when this region is collapsed.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "collapsed" : true,
         /**
          * @event expanded
          * Fires when this region is expanded.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "expanded" : true,
         /**
          * @event slideshow
          * Fires when this region is slid into view.
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "slideshow" : true,
         /**
          * @event slidehide
          * Fires when this region slides out of view. 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          */
         "slidehide" : true,
         /**
          * @event panelactivated
          * Fires when a panel is activated. 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Roo.panel.Content} panel The activated panel
          */
         "panelactivated" : true,
         /**
          * @event resized
          * Fires when the user resizes this region. 
-         * @param {Roo.LayoutRegion} this
+         * @param {Roo.layout.Region} this
          * @param {Number} newSize The new size (width for east/west, height for north/south)
          */
         "resized" : true
@@ -112,7 +112,7 @@ Roo.BasicLayoutRegion = function(mgr, config, pos, skipConfig){
     // ensure listeners are added...
     
     if (config.listeners || config.events) {
-        Roo.BasicLayoutRegion.superclass.constructor.call(this, {
+        Roo.layout.BasicRegion.superclass.constructor.call(this, {
             listeners : config.listeners || {},
             events : config.events || {}
         });
@@ -123,7 +123,7 @@ Roo.BasicLayoutRegion = function(mgr, config, pos, skipConfig){
     }
 };
 
-Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
+Roo.extend(Roo.layout.BasicRegion, Roo.util.Observable, {
     getPanelId : function(p){
         return p.getId();
     },

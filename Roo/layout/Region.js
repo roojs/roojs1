@@ -10,8 +10,8 @@
  */
  
 /**
- * @class Roo.LayoutRegion
- * @extends Roo.BasicLayoutRegion
+ * @class Roo.layout.Region
+ * @extends Roo.layout.BasicRegion
  * This class represents a region in a layout manager.
  * @cfg {Boolean}   collapsible     False to disable collapsing (defaults to true)
  * @cfg {Boolean}   collapsed       True to set the initial display to collapsed (defaults to false)
@@ -42,8 +42,8 @@
  * @cfg {Boolean}   split           To show the splitter
  * @cfg {Boolean}   toolbar         xtype configuration for a toolbar - shows on right of tabbar
  */
-Roo.LayoutRegion = function(mgr, config, pos){
-    Roo.LayoutRegion.superclass.constructor.call(this, mgr, config, pos, true);
+Roo.layout.Region = function(mgr, config, pos){
+    Roo.layout.Region.superclass.constructor.call(this, mgr, config, pos, true);
     var dh = Roo.DomHelper;
     /** This region's container element 
     * @type Roo.Element */
@@ -77,7 +77,7 @@ Roo.LayoutRegion = function(mgr, config, pos){
     this.applyConfig(config);
 };
 
-Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
+Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
 
     createBody : function(){
         /** This region's body element 

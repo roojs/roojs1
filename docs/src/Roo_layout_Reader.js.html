@@ -1,0 +1,109 @@
+<html><head><title>Roo/layout/Reader.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+
+/**
+ * @class Roo.layout.Reader
+ * @extends Roo.layout.Border
+ * This is a pre-built layout that represents a classic, 5-pane application.  It consists of a header, a primary
+ * center region containing two nested regions (a top one for a list view and one for item preview below),
+ * and regions on either side that can be used for navigation, application commands, informational displays, etc.
+ * The setup and configuration work exactly the same as it does for a {@link Roo.layout.Border} - this class simply
+ * expedites the setup of the overall layout and regions for this common application style.
+ * Example:
+ &lt;pre&gt;&lt;code&gt;
+var reader = new Roo.layout.Reader();
+var CP = Roo.panel.Content;  // shortcut for adding
+
+reader.beginUpdate();
+reader.add(&quot;north&quot;, new CP(&quot;north&quot;, &quot;North&quot;));
+reader.add(&quot;west&quot;, new CP(&quot;west&quot;, {title: &quot;West&quot;}));
+reader.add(&quot;east&quot;, new CP(&quot;east&quot;, {title: &quot;East&quot;}));
+
+reader.regions.listView.add(new CP(&quot;listView&quot;, &quot;List&quot;));
+reader.regions.preview.add(new CP(&quot;preview&quot;, &quot;Preview&quot;));
+reader.endUpdate();
+&lt;/code&gt;&lt;/pre&gt;
+* @constructor
+* Create a new ReaderLayout
+* @param {Object} config Configuration options
+* @param {String/HTMLElement/Element} container (optional) The container this layout is bound to (defaults to
+* document.body if omitted)
+*/
+</span><span class="jsdoc-var">Roo.layout.Reader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">renderTo</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">|| {</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">:{}};
+    </span><span class="jsdoc-var">Roo.layout.Reader.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">renderTo </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">, {
+        </span><span class="jsdoc-var">north</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">c.north </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">split</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">initialSize</span><span class="jsdoc-syntax">: 32,
+            </span><span class="jsdoc-var">titlebar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
+        </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">c.north</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">west</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">c.west </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">split</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">initialSize</span><span class="jsdoc-syntax">: 200,
+            </span><span class="jsdoc-var">minSize</span><span class="jsdoc-syntax">: 175,
+            </span><span class="jsdoc-var">maxSize</span><span class="jsdoc-syntax">: 400,
+            </span><span class="jsdoc-var">titlebar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">collapsible</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">animate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">margins</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">:5,</span><span class="jsdoc-var">right</span><span class="jsdoc-syntax">:0,</span><span class="jsdoc-var">bottom</span><span class="jsdoc-syntax">:5,</span><span class="jsdoc-var">top</span><span class="jsdoc-syntax">:5},
+            </span><span class="jsdoc-var">cmargins</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">:5,</span><span class="jsdoc-var">right</span><span class="jsdoc-syntax">:5,</span><span class="jsdoc-var">bottom</span><span class="jsdoc-syntax">:5,</span><span class="jsdoc-var">top</span><span class="jsdoc-syntax">:5}
+        }, </span><span class="jsdoc-var">c.west</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">east</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">c.east </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">split</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">initialSize</span><span class="jsdoc-syntax">: 200,
+            </span><span class="jsdoc-var">minSize</span><span class="jsdoc-syntax">: 175,
+            </span><span class="jsdoc-var">maxSize</span><span class="jsdoc-syntax">: 400,
+            </span><span class="jsdoc-var">titlebar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">collapsible</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">animate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">margins</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">:0,</span><span class="jsdoc-var">right</span><span class="jsdoc-syntax">:5,</span><span class="jsdoc-var">bottom</span><span class="jsdoc-syntax">:5,</span><span class="jsdoc-var">top</span><span class="jsdoc-syntax">:5},
+            </span><span class="jsdoc-var">cmargins</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">:5,</span><span class="jsdoc-var">right</span><span class="jsdoc-syntax">:5,</span><span class="jsdoc-var">bottom</span><span class="jsdoc-syntax">:5,</span><span class="jsdoc-var">top</span><span class="jsdoc-syntax">:5}
+        }, </span><span class="jsdoc-var">c.east</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">center</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">tabPosition</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">autoScroll</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">closeOnTab</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">titlebar</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">margins</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">c.west</span><span class="jsdoc-syntax">!==</span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">? 0 : 5,</span><span class="jsdoc-var">right</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">c.east</span><span class="jsdoc-syntax">!==</span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">? 0 : 5,</span><span class="jsdoc-var">bottom</span><span class="jsdoc-syntax">:5,</span><span class="jsdoc-var">top</span><span class="jsdoc-syntax">:2}
+        }, </span><span class="jsdoc-var">c.center</span><span class="jsdoc-syntax">)
+    });
+
+    </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'x-reader'</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.beginUpdate</span><span class="jsdoc-syntax">();
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">inner </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.layout.Border</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">(), {
+        </span><span class="jsdoc-var">south</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">c.preview </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">split</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">initialSize</span><span class="jsdoc-syntax">: 200,
+            </span><span class="jsdoc-var">minSize</span><span class="jsdoc-syntax">: 100,
+            </span><span class="jsdoc-var">autoScroll</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">collapsible</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">titlebar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cmargins</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">top</span><span class="jsdoc-syntax">:5,</span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">:0, </span><span class="jsdoc-var">right</span><span class="jsdoc-syntax">:0, </span><span class="jsdoc-var">bottom</span><span class="jsdoc-syntax">:0}
+        }, </span><span class="jsdoc-var">c.preview</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">center</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">autoScroll</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">titlebar</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">minHeight</span><span class="jsdoc-syntax">:200
+        }, </span><span class="jsdoc-var">c.listView</span><span class="jsdoc-syntax">)
+    });
+    </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.panel.NestedLayout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">inner</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">c.mainTitle </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">tabTip</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">},</span><span class="jsdoc-var">c.innerPanelCfg</span><span class="jsdoc-syntax">)));
+
+    </span><span class="jsdoc-var">this.endUpdate</span><span class="jsdoc-syntax">();
+
+    </span><span class="jsdoc-var">this.regions.preview </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">inner.getRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'south'</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.regions.listView </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">inner.getRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.layout.Reader</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.layout.Border</span><span class="jsdoc-syntax">);</span></code></body></html>

@@ -3,15 +3,7 @@
   "augments" : [
     "Roo.util.Observable"
   ],
-  "childClasses" : {
-    "Roo.LayoutRegion" : [
-      "Roo.SplitLayoutRegion",
-      "Roo.bootstrap.layout.Split"
-    ],
-    "Roo.BasicLayoutRegion" : [
-      "Roo.LayoutRegion"
-    ]
-  },
+  "childClasses" : {  },
   "tree_children" : [],
   "tree_parent" : [],
   "desc" : "This class represents a lightweight region in a layout manager. This region does not move dom nodes\nand does not have a titlebar, tabs or any other features. All it does is size and position \npanels. To create a BasicLayoutRegion, add lightweight:true or basic:true to your regions config.",
@@ -109,7 +101,7 @@
       "params" : [
         {
           "name" : "panel",
-          "type" : "Number/String/ContentPanel",
+          "type" : "Number/String/panel.Content",
           "desc" : "The panels index, id or the panel itself",
           "isOptional" : false
         }
@@ -142,7 +134,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The active panel or null"
         }
       ]
@@ -192,7 +184,7 @@
       "params" : [
         {
           "name" : "panelId",
-          "type" : "Number/String/ContentPanel",
+          "type" : "Number/String/panel.Content",
           "desc" : "The panels index, id or the panel itself",
           "isOptional" : false
         }
@@ -200,7 +192,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The shown panel or null"
         }
       ]
@@ -249,7 +241,7 @@
       "params" : [
         {
           "name" : "panel",
-          "type" : "ContentPanel...",
+          "type" : "panel.Content...",
           "desc" : "The ContentPanel(s) to add (you can pass more than one)",
           "isOptional" : false
         }
@@ -257,7 +249,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The panel added (if only one was added)"
         }
       ]
@@ -281,7 +273,7 @@
       "params" : [
         {
           "name" : "panel",
-          "type" : "Number/String/ContentPanel",
+          "type" : "Number/String/panel.Content",
           "desc" : "The panels index, id or the panel itself",
           "isOptional" : false
         },
@@ -295,7 +287,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The panel that was removed"
         }
       ]
@@ -319,7 +311,7 @@
       "params" : [
         {
           "name" : "panel",
-          "type" : "Number/String/ContentPanel",
+          "type" : "Number/String/panel.Content",
           "desc" : "The panels index, id or the panel itself",
           "isOptional" : false
         }
@@ -327,7 +319,7 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : ""
         }
       ]
@@ -696,7 +688,7 @@
         },
         {
           "name" : "panel",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The panel",
           "isOptional" : false
         }
@@ -762,7 +754,7 @@
         },
         {
           "name" : "panel",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The panel",
           "isOptional" : false
         },
@@ -814,7 +806,7 @@
         },
         {
           "name" : "panel",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The panel",
           "isOptional" : false
         }
@@ -926,7 +918,7 @@
         },
         {
           "name" : "panel",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.panel.Content",
           "desc" : "The activated panel",
           "isOptional" : false
         }
