@@ -24,8 +24,8 @@ ArrayGrid = new Roo.XComponent({
    var _this = this;
    var MODULE = this;
    return {
-   xtype : 'GridPanel',
-   xns : Roo,
+   xtype : 'Grid',
+   xns : Roo.panel,
    '|xns' : 'Roo',
    grid : {
     xtype : 'Grid',

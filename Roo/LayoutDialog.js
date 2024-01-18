@@ -2,7 +2,7 @@
 /**
  * @class Roo.LayoutDialog
  * @extends Roo.BasicDialog
- * @children Roo.ContentPanel
+ * @children Roo.panel.Content
  * @parent builder none
  * Dialog which provides adjustments for working with a layout in a Dialog.
  * Add your necessary layout config options to the dialog's config.<br>
@@ -40,15 +40,15 @@ if(!dialog){
         }
     });
     innerLayout.beginUpdate();
-    innerLayout.add("east", new Roo.ContentPanel("dl-details"));
-    innerLayout.add("center", new Roo.ContentPanel("selection-panel"));
+    innerLayout.add("east", new Roo.panel.Content("dl-details"));
+    innerLayout.add("center", new Roo.panel.Content("selection-panel"));
     innerLayout.endUpdate(true);
 
     var layout = dialog.getLayout();
     layout.beginUpdate();
-    layout.add("center", new Roo.ContentPanel("standard-panel",
+    layout.add("center", new Roo.panel.Content("standard-panel",
                         {title: "Download the Source", fitToFrame:true}));
-    layout.add("center", new Roo.NestedLayoutPanel(innerLayout,
+    layout.add("center", new Roo.panel.NestedLayout(innerLayout,
                {title: "Build your own roo.js"}));
     layout.getRegion("center").showPanel(sp);
     layout.endUpdate();

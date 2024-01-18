@@ -54,12 +54,12 @@ var ImageChooser = function(config){
 	
 	// add the panels to the layout
 	layout.beginUpdate();
-	var vp = layout.add('center', new Roo.ContentPanel(Roo.id(), {
+	var vp = layout.add('center', new Roo.panel.Content(Roo.id(), {
 		autoCreate : true,
 		toolbar: this.tb,
 		fitToFrame:true
 	}));
-	var dp = layout.add('east', new Roo.ContentPanel(Roo.id(), {
+	var dp = layout.add('east', new Roo.panel.Content(Roo.id(), {
 		autoCreate : true,
 		fitToFrame:true
 	}));

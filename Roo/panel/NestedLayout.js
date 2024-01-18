@@ -1,8 +1,8 @@
 
 
 /**
- * @class Roo.NestedLayoutPanel
- * @extends Roo.ContentPanel
+ * @class Roo.panel.NestedLayout
+ * @extends Roo.panel.Content
  * @parent Roo.BorderLayout Roo.LayoutDialog builder
  * @cfg {Roo.BorderLayout} layout   [required] The layout for this panel
  *
@@ -14,7 +14,7 @@
  * @param {Roo.BorderLayout} layout [required] The layout for this panel
  * @param {String/Object} config A string to set only the title or a config object
  */
-Roo.NestedLayoutPanel = function(layout, config)
+Roo.panel.NestedLayout = function(layout, config)
 {
     // construct with only one argument..
     /* FIXME - implement nicer consturctors
@@ -30,7 +30,7 @@ Roo.NestedLayoutPanel = function(layout, config)
     */
     
     
-    Roo.NestedLayoutPanel.superclass.constructor.call(this, layout.getEl(), config);
+    Roo.panel.NestedLayout.superclass.constructor.call(this, layout.getEl(), config);
     
     layout.monitorWindowResize = false; // turn off autosizing
     this.layout = layout;
@@ -41,7 +41,7 @@ Roo.NestedLayoutPanel = function(layout, config)
     
 };
 
-Roo.extend(Roo.NestedLayoutPanel, Roo.ContentPanel, {
+Roo.extend(Roo.panel.NestedLayout, Roo.panel.Content, {
 
     layout : false,
 
@@ -113,7 +113,7 @@ panel.addxtype({
 );
 
 panel.addxtype({
-        xtype : 'NestedLayoutPanel',
+        xtype : 'panel.NestedLayout',
         region: 'west',
         layout: {
            center: { },

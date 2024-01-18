@@ -2,8 +2,8 @@
 
 
 /**
- * @class Roo.TreePanel
- * @extends Roo.ContentPanel
+ * @class Roo.panel.Tree
+ * @extends Roo.panel.Content
  * @parent Roo.BorderLayout Roo.LayoutDialog builder
  * Treepanel component
  * 
@@ -11,7 +11,7 @@
  * Create a new TreePanel. - defaults to fit/scoll contents.
  * @param {String/Object} config A string to set only the panel's title, or a config object
  */
-Roo.TreePanel = function(config){
+Roo.panel.Tree = function(config){
     var el = config.el;
     var tree = config.tree;
     delete config.tree; 
@@ -24,7 +24,7 @@ Roo.TreePanel = function(config){
     
     
     
-    Roo.TreePanel.superclass.constructor.call(this, el, config);
+    Roo.panel.Tree.superclass.constructor.call(this, el, config);
  
  
     this.tree = new Roo.tree.TreePanel(treeEl , tree);
@@ -50,11 +50,11 @@ Roo.TreePanel = function(config){
     
 };
 
-Roo.extend(Roo.TreePanel, Roo.ContentPanel, {   
+Roo.extend(Roo.panel.Tree, Roo.panel.Content, {   
     fitToFrame : true,
     autoScroll : true,
     /*
-     * @cfg {Roo.tree.TreePanel} tree [required] The tree TreePanel, with config etc.
+     * @cfg {Roo.tree.panel.Tree} tree [required] The tree TreePanel, with config etc.
      */
     tree : false
 

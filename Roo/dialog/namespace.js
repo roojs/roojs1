@@ -1,1 +1,0 @@
-Roo.dialog = {};

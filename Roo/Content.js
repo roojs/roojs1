@@ -9,11 +9,11 @@
  * <script type="text/javascript">
  */
 /**
- * @class Roo.ContentPanel
+ * @class Roo.panel.Content
  * @extends Roo.util.Observable
  * @children Roo.form.Form Roo.JsonView Roo.View
  * @parent Roo.BorderLayout Roo.LayoutDialog builder
- * A basic ContentPanel element.
+ * A basic Content Panel element.
  * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
  * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
  * @cfg {Boolean|Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
@@ -33,13 +33,13 @@
  * @cfg {Roo.menu.Menu} menu  popup menu
 
  * @constructor
- * Create a new ContentPanel.
+ * Create a new Content Panel.
  * @param {String/HTMLElement/Roo.Element} el The container element for this panel
  * @param {String/Object} config A string to set only the title or a config object
  * @param {String} content (optional) Set the HTML content for this panel
  * @param {String} region (optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)
  */
-Roo.ContentPanel = function(el, config, content){
+Roo.panel.Content = function(el, config, content){
     
     /*
     if(el.autoCreate || el.xtype){ // xtype is available if this is called from factory
@@ -110,20 +110,20 @@ Roo.ContentPanel = function(el, config, content){
         /**
          * @event activate
          * Fires when this panel is activated. 
-         * @param {Roo.ContentPanel} this
+         * @param {Roo.panel.Content} this
          */
         "activate" : true,
         /**
          * @event deactivate
          * Fires when this panel is activated. 
-         * @param {Roo.ContentPanel} this
+         * @param {Roo.panel.Content} this
          */
         "deactivate" : true,
 
         /**
          * @event resize
          * Fires when this panel is resized if fitToFrame is true.
-         * @param {Roo.ContentPanel} this
+         * @param {Roo.panel.Content} this
          * @param {Number} width The width after any component adjustments
          * @param {Number} height The height after any component adjustments
          */
@@ -132,7 +132,7 @@ Roo.ContentPanel = function(el, config, content){
          /**
          * @event render
          * Fires when this tab is created
-         * @param {Roo.ContentPanel} this
+         * @param {Roo.panel.Content} this
          */
         "render" : true
          
@@ -161,7 +161,7 @@ Roo.ContentPanel = function(el, config, content){
     
     
     
-    Roo.ContentPanel.superclass.constructor.call(this);
+    Roo.panel.Content.superclass.constructor.call(this);
     
     if (this.view && typeof(this.view.xtype) != 'undefined') {
         this.view.el = this.el.appendChild(document.createElement("div"));
@@ -173,7 +173,7 @@ Roo.ContentPanel = function(el, config, content){
     this.fireEvent('render', this);
 };
 
-Roo.extend(Roo.ContentPanel, Roo.util.Observable, {
+Roo.extend(Roo.panel.Content, Roo.util.Observable, {
     tabTip:'',
     setRegion : function(region){
         this.region = region;
@@ -245,7 +245,7 @@ panel.load({
      * @param {String/Object} params (optional) The parameters to pass as either a URL encoded string "param1=1&amp;param2=2" or an object {param1: 1, param2: 2}
      * @param {Function} callback (optional) Callback when transaction is complete -- called with signature (oElement, bSuccess, oResponse)
      * @param {Boolean} discardUrl (optional) By default when you execute an update the defaultUrl is changed to the last used URL. If true, it will not store the URL.
-     * @return {Roo.ContentPanel} this
+     * @return {Roo.panel.Content} this
      */
     load : function(){
         var um = this.el.getUpdateManager();

@@ -1,13 +1,13 @@
 
 /**
- * @class Roo.GridPanel
- * @extends Roo.ContentPanel
+ * @class Roo.panel.Grid
+ * @extends Roo.panel.Content
  * @parent Roo.BorderLayout Roo.LayoutDialog builder
  * @constructor
  * Create a new GridPanel.
  * @cfg {Roo.grid.Grid} grid The grid for this panel
  */
-Roo.GridPanel = function(grid, config){
+Roo.panel.Grid = function(grid, config){
     
     // universal ctor...
     if (typeof(grid.grid) != 'undefined') {
@@ -19,7 +19,7 @@ Roo.GridPanel = function(grid, config){
         
     this.wrapper.dom.appendChild(grid.getGridEl().dom);
     
-    Roo.GridPanel.superclass.constructor.call(this, this.wrapper, config);
+    Roo.panel.Grid.superclass.constructor.call(this, this.wrapper, config);
     
     if(this.toolbar){
         this.toolbar.el.insertBefore(this.wrapper.dom.firstChild);
@@ -40,7 +40,7 @@ Roo.GridPanel = function(grid, config){
     this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
 };
 
-Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
+Roo.extend(Roo.panel.Grid, Roo.panel.Content, {
     getId : function(){
         return this.grid.id;
     },
@@ -73,6 +73,6 @@ Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
     destroy : function(){
         this.grid.destroy();
         delete this.grid;
-        Roo.GridPanel.superclass.destroy.call(this); 
+        Roo.panel.Grid.superclass.destroy.call(this); 
     }
 });

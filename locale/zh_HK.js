@@ -9,7 +9,7 @@ Roo.onReady(function(){
         Roo.grid.Grid.prototype.ddText   = "選擇了 {0} 行";
     }
 
-    if(Roo.TabPanelItem){
+    if(Roo.panel.TabItem){
         Roo.TabPanelItem.prototype.closeText = "關閉此標籤";
     }
 

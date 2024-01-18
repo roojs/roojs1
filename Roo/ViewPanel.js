@@ -10,10 +10,10 @@
  */
 
 /**
- * @class Roo.GridPanel
- * @extends Roo.ContentPanel
+ * @class Roo.ViewPanel
+ * @extends Roo.panel.Content
  * @constructor
- * Create a new GridPanel.
+ * Create a new ViewPanel.
  * @param {Roo.grid.Grid} grid The grid for this panel
  * @param {String/Object} config A string to set only the panel's title, or a config object
  */
@@ -46,7 +46,7 @@ Roo.ViewPanel = function(el, config){
     //this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
 };
 
-Roo.extend(Roo.ViewPanel, Roo.ContentPanel, {
+Roo.extend(Roo.ViewPanel, Roo.panel.Content, {
     
     autoCreate : true,
     getId : function(){
@@ -81,6 +81,6 @@ Roo.extend(Roo.ViewPanel, Roo.ContentPanel, {
     destroy : function(){
         this.grid.destroy();
         delete this.grid;
-        Roo.GridPanel.superclass.destroy.call(this); 
+        Roo.panel.Grid.superclass.destroy.call(this); 
     }
 });

@@ -21,7 +21,7 @@
  * Example:
  <pre><code>
 var reader = new Roo.ReaderLayout();
-var CP = Roo.ContentPanel;  // shortcut for adding
+var CP = Roo.panel.Content;  // shortcut for adding
 
 reader.beginUpdate();
 reader.add("north", new CP("north", "North"));
@@ -97,7 +97,7 @@ Roo.ReaderLayout = function(config, renderTo){
             minHeight:200
         }, c.listView)
     });
-    this.add('center', new Roo.NestedLayoutPanel(inner,
+    this.add('center', new Roo.panel.NestedLayout(inner,
             Roo.apply({title: c.mainTitle || '',tabTip:''},c.innerPanelCfg)));
 
     this.endUpdate();

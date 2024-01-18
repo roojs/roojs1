@@ -24,7 +24,7 @@ Roo.ScrollPanel = function(el, config, content){
     this.el = wrap; this.up = up; this.down = down;
 };
 
-Roo.extend(Roo.ScrollPanel, Roo.ContentPanel, {
+Roo.extend(Roo.ScrollPanel, Roo.panel.Content, {
     increment : 100,
     wheelIncrement : 5,
     scrollUp : function(){

@@ -1,4 +1,4 @@
-var uploadCropbox = {
+var cropboxDialog = {
     dialog : false,
     callback : false,
 
@@ -32,13 +32,13 @@ var uploadCropbox = {
             },
             items : [
                 {
-                    xtype: 'ContentPanel',
-                    xns: Roo,
+                    xtype: 'Content',
+                    xns: Roo.panel,
                     region : "center",
                     items : [
                         {
-                            xtype : 'UploadCropbox',
-                            xns : Roo.dialog,
+                            xtype : 'Cropbox',
+                            xns : Roo.panel,
                             minWidth : 720,
                             minHeight : 480,
                             outputMaxWidth : 1200,
@@ -148,11 +148,11 @@ var test = {
             },
             items : [
                 {
-                    xns : Roo,
-                    xtype: 'GridPanel',
+                    xns : Roo.panel,
+                    xtype: 'Grid',
                     region : "center",
                     grid : {
-                        xns : Roo.grid,
+                        xns : Roo.panel,
                         xtype : 'Grid',
                         cm : [
                             {
@@ -174,13 +174,13 @@ var test = {
                                     text : 'Add',
                                     listeners : {
                                         click : function () {
-                                            uploadCropbox.show();
+                                            cropboxDialog.show();
                                             document.body.onfocus = function(e) {
-                                                if(!uploadCropbox.cropbox.selectorEl.dom.files.length) {
-                                                    uploadCropbox.dialog.hide();
+                                                if(!cropboxDialog.cropbox.selectorEl.dom.files.length) {
+                                                    cropboxDialog.dialog.hide();
                                                 }
                                             }
-                                            uploadCropbox.cropbox.selectorEl.dom.click();
+                                            cropboxDialog.cropbox.selectorEl.dom.click();
                                         }
                                     }
                                 }

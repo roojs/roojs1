@@ -9,20 +9,20 @@
  * <script type="text/javascript">
  */
 /**
- * @class Roo.TabPanel
+ * @class Roo.panel.Tab
  * @extends Roo.util.Observable
  * A lightweight tab container.
  * <br><br>
  * Usage:
  * <pre><code>
 // basic tabs 1, built from existing content
-var tabs = new Roo.TabPanel("tabs1");
+var tabs = new Roo.panel.Tab("tabs1");
 tabs.addTab("script", "View Script");
 tabs.addTab("markup", "View Markup");
 tabs.activate("script");
 
 // more advanced tabs, built from javascript
-var jtabs = new Roo.TabPanel("jtabs");
+var jtabs = new Roo.panel.Tab("jtabs");
 jtabs.addTab("jtabs-1", "Normal Tab", "My content was added during construction.");
 
 // set up the UpdateManager
@@ -46,7 +46,7 @@ jtabs.activate("jtabs-1");
  * @param {String/HTMLElement/Roo.Element} container The id, DOM element or Roo.Element container where this TabPanel is to be rendered.
  * @param {Object/Boolean} config Config object to set any properties for this TabPanel, or true to render the tabs on the bottom.
  */
-Roo.TabPanel = function(container, config){
+Roo.panel.Tab = function(container, config){
     /**
     * The container element for this TabPanel.
     * @type Roo.Element
@@ -70,7 +70,7 @@ Roo.TabPanel = function(container, config){
         Roo.fly(this.stripWrap.dom.firstChild).setStyle("overflow-x", "hidden");
     }
     if(this.tabPosition != "bottom"){
-        /** The body element that contains {@link Roo.TabPanelItem} bodies. +
+        /** The body element that contains {@link Roo.panel.TabItem} bodies. +
          * @type Roo.Element
          */
         this.bodyEl = Roo.get(this.createBody(this.el.dom));
@@ -87,16 +87,16 @@ Roo.TabPanel = function(container, config){
         /**
          * @event tabchange
          * Fires when the active tab changes
-         * @param {Roo.TabPanel} this
-         * @param {Roo.TabPanelItem} activePanel The new active tab
+         * @param {Roo.panel.Tab} this
+         * @param {Roo.panel.TabItem} activePanel The new active tab
          */
         "tabchange": true,
         /**
          * @event beforetabchange
          * Fires before the active tab changes, set cancel to true on the "e" parameter to cancel the change
-         * @param {Roo.TabPanel} this
+         * @param {Roo.panel.Tab} this
          * @param {Object} e Set cancel to true on this object to cancel the tab change
-         * @param {Roo.TabPanelItem} tab The tab being changed to
+         * @param {Roo.panel.TabItem} tab The tab being changed to
          */
         "beforetabchange" : true
     });
@@ -120,10 +120,10 @@ Roo.TabPanel = function(container, config){
    
 
 
-    Roo.TabPanel.superclass.constructor.call(this);
+    Roo.panel.Tab.superclass.constructor.call(this);
 };
 
-Roo.extend(Roo.TabPanel, Roo.util.Observable, {
+Roo.extend(Roo.panel.Tab, Roo.util.Observable, {
     /*
      *@cfg {String} tabPosition "top" or "bottom" (defaults to "top")
      */
@@ -158,15 +158,15 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
     toolbar : false,
 
     /**
-     * Creates a new {@link Roo.TabPanelItem} by looking for an existing element with the provided id -- if it's not found it creates one.
+     * Creates a new {@link Roo.panel.TabItem} by looking for an existing element with the provided id -- if it's not found it creates one.
      * @param {String} id The id of the div to use <b>or create</b>
      * @param {String} text The text for the tab
      * @param {String} content (optional) Content to put in the TabPanelItem body
      * @param {Boolean} closable (optional) True to create a close icon on the tab
-     * @return {Roo.TabPanelItem} The created TabPanelItem
+     * @return {Roo.panel.TabItem} The created TabPanelItem
      */
     addTab : function(id, text, content, closable){
-        var item = new Roo.TabPanelItem(this, id, text, closable);
+        var item = new Roo.panel.TabItem(this, id, text, closable);
         this.addTabItem(item);
         if(content){
             item.setContent(content);
@@ -175,16 +175,16 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
     },
 
     /**
-     * Returns the {@link Roo.TabPanelItem} with the specified id/index
+     * Returns the {@link Roo.panel.TabItem} with the specified id/index
      * @param {String/Number} id The id or index of the TabPanelItem to fetch.
-     * @return {Roo.TabPanelItem}
+     * @return {Roo.panel.TabItem}
      */
     getTab : function(id){
         return this.items[id];
     },
 
     /**
-     * Hides the {@link Roo.TabPanelItem} with the specified id/index
+     * Hides the {@link Roo.panel.TabItem} with the specified id/index
      * @param {String/Number} id The id or index of the TabPanelItem to hide.
      */
     hideTab : function(id){
@@ -197,7 +197,7 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
     },
 
     /**
-     * "Unhides" the {@link Roo.TabPanelItem} with the specified id/index.
+     * "Unhides" the {@link Roo.panel.TabItem} with the specified id/index.
      * @param {String/Number} id The id or index of the TabPanelItem to unhide.
      */
     unhideTab : function(id){
@@ -210,8 +210,8 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
     },
 
     /**
-     * Adds an existing {@link Roo.TabPanelItem}.
-     * @param {Roo.TabPanelItem} item The TabPanelItem to add
+     * Adds an existing {@link Roo.panel.TabItem}.
+     * @param {Roo.panel.TabItem} item The TabPanelItem to add
      */
     addTabItem : function(item){
         this.items[item.id] = item;
@@ -225,7 +225,7 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
     },
 
     /**
-     * Removes a {@link Roo.TabPanelItem}.
+     * Removes a {@link Roo.panel.TabItem}.
      * @param {String/Number} id The id or index of the TabPanelItem to remove.
      */
     removeTab : function(id){
@@ -273,7 +273,7 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
     },
 
     /**
-     * Disables a {@link Roo.TabPanelItem}. It cannot be the active tab, if it is this call is ignored.
+     * Disables a {@link Roo.panel.TabItem}. It cannot be the active tab, if it is this call is ignored.
      * @param {String/Number} id The id or index of the TabPanelItem to disable.
      */
     disableTab : function(id){
@@ -284,7 +284,7 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
     },
 
     /**
-     * Enables a {@link Roo.TabPanelItem} that is disabled.
+     * Enables a {@link Roo.panel.TabItem} that is disabled.
      * @param {String/Number} id The id or index of the TabPanelItem to enable.
      */
     enableTab : function(id){
@@ -293,9 +293,9 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
     },
 
     /**
-     * Activates a {@link Roo.TabPanelItem}. The currently active one will be deactivated.
+     * Activates a {@link Roo.panel.TabItem}. The currently active one will be deactivated.
      * @param {String/Number} id The id or index of the TabPanelItem to activate.
-     * @return {Roo.TabPanelItem} The TabPanelItem.
+     * @return {Roo.panel.TabItem} The TabPanelItem.
      */
     activate : function(id){
         var tab = this.items[id];
@@ -319,8 +319,8 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
     },
 
     /**
-     * Gets the active {@link Roo.TabPanelItem}.
-     * @return {Roo.TabPanelItem} The active TabPanelItem or null if none are active.
+     * Gets the active {@link Roo.panel.TabItem}.
+     * @return {Roo.panel.TabItem} The active TabPanelItem or null if none are active.
      */
     getActiveTab : function(){
         return this.active;
@@ -426,332 +426,9 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
     }
 });
 
-/**
- * @class Roo.TabPanelItem
- * @extends Roo.util.Observable
- * Represents an individual item (tab plus body) in a TabPanel.
- * @param {Roo.TabPanel} tabPanel The {@link Roo.TabPanel} this TabPanelItem belongs to
- * @param {String} id The id of this TabPanelItem
- * @param {String} text The text for the tab of this TabPanelItem
- * @param {Boolean} closable True to allow this TabPanelItem to be closable (defaults to false)
- */
-Roo.TabPanelItem = function(tabPanel, id, text, closable){
-    /**
-     * The {@link Roo.TabPanel} this TabPanelItem belongs to
-     * @type Roo.TabPanel
-     */
-    this.tabPanel = tabPanel;
-    /**
-     * The id for this TabPanelItem
-     * @type String
-     */
-    this.id = id;
-    /** @private */
-    this.disabled = false;
-    /** @private */
-    this.text = text;
-    /** @private */
-    this.loaded = false;
-    this.closable = closable;
-
-    /**
-     * The body element for this TabPanelItem.
-     * @type Roo.Element
-     */
-    this.bodyEl = Roo.get(tabPanel.createItemBody(tabPanel.bodyEl.dom, id));
-    this.bodyEl.setVisibilityMode(Roo.Element.VISIBILITY);
-    this.bodyEl.setStyle("display", "block");
-    this.bodyEl.setStyle("zoom", "1");
-    this.hideAction();
-
-    var els = tabPanel.createStripElements(tabPanel.stripEl.dom, text, closable);
-    /** @private */
-    this.el = Roo.get(els.el, true);
-    this.inner = Roo.get(els.inner, true);
-    this.textEl = Roo.get(this.el.dom.firstChild.firstChild.firstChild, true);
-    this.pnode = Roo.get(els.el.parentNode, true);
-    this.el.on("mousedown", this.onTabMouseDown, this);
-    this.el.on("click", this.onTabClick, this);
-    /** @private */
-    if(closable){
-        var c = Roo.get(els.close, true);
-        c.dom.title = this.closeText;
-        c.addClassOnOver("close-over");
-        c.on("click", this.closeClick, this);
-     }
-
-    this.addEvents({
-         /**
-         * @event activate
-         * Fires when this tab becomes the active tab.
-         * @param {Roo.TabPanel} tabPanel The parent TabPanel
-         * @param {Roo.TabPanelItem} this
-         */
-        "activate": true,
-        /**
-         * @event beforeclose
-         * Fires before this tab is closed. To cancel the close, set cancel to true on e (e.cancel = true).
-         * @param {Roo.TabPanelItem} this
-         * @param {Object} e Set cancel to true on this object to cancel the close.
-         */
-        "beforeclose": true,
-        /**
-         * @event close
-         * Fires when this tab is closed.
-         * @param {Roo.TabPanelItem} this
-         */
-         "close": true,
-        /**
-         * @event deactivate
-         * Fires when this tab is no longer the active tab.
-         * @param {Roo.TabPanel} tabPanel The parent TabPanel
-         * @param {Roo.TabPanelItem} this
-         */
-         "deactivate" : true
-    });
-    this.hidden = false;
-
-    Roo.TabPanelItem.superclass.constructor.call(this);
-};
-
-Roo.extend(Roo.TabPanelItem, Roo.util.Observable, {
-    purgeListeners : function(){
-       Roo.util.Observable.prototype.purgeListeners.call(this);
-       this.el.removeAllListeners();
-    },
-    /**
-     * Shows this TabPanelItem -- this <b>does not</b> deactivate the currently active TabPanelItem.
-     */
-    show : function(){
-        this.pnode.addClass("on");
-        this.showAction();
-        if(Roo.isOpera){
-            this.tabPanel.stripWrap.repaint();
-        }
-        this.fireEvent("activate", this.tabPanel, this);
-    },
-
-    /**
-     * Returns true if this tab is the active tab.
-     * @return {Boolean}
-     */
-    isActive : function(){
-        return this.tabPanel.getActiveTab() == this;
-    },
-
-    /**
-     * Hides this TabPanelItem -- if you don't activate another TabPanelItem this could look odd.
-     */
-    hide : function(){
-        this.pnode.removeClass("on");
-        this.hideAction();
-        this.fireEvent("deactivate", this.tabPanel, this);
-    },
-
-    hideAction : function(){
-        this.bodyEl.hide();
-        this.bodyEl.setStyle("position", "absolute");
-        this.bodyEl.setLeft("-20000px");
-        this.bodyEl.setTop("-20000px");
-    },
-
-    showAction : function(){
-        this.bodyEl.setStyle("position", "relative");
-        this.bodyEl.setTop("");
-        this.bodyEl.setLeft("");
-        this.bodyEl.show();
-    },
-
-    /**
-     * Set the tooltip for the tab.
-     * @param {String} tooltip The tab's tooltip
-     */
-    setTooltip : function(text){
-        if(Roo.QuickTips && Roo.QuickTips.isEnabled()){
-            this.textEl.dom.qtip = text;
-            this.textEl.dom.removeAttribute('title');
-        }else{
-            this.textEl.dom.title = text;
-        }
-    },
-
-    onTabClick : function(e){
-        e.preventDefault();
-        this.tabPanel.activate(this.id);
-    },
-
-    onTabMouseDown : function(e){
-        e.preventDefault();
-        this.tabPanel.activate(this.id);
-    },
-
-    getWidth : function(){
-        return this.inner.getWidth();
-    },
-
-    setWidth : function(width){
-        var iwidth = width - this.pnode.getPadding("lr");
-        this.inner.setWidth(iwidth);
-        this.textEl.setWidth(iwidth-this.inner.getPadding("lr"));
-        this.pnode.setWidth(width);
-    },
-
-    /**
-     * Show or hide the tab
-     * @param {Boolean} hidden True to hide or false to show.
-     */
-    setHidden : function(hidden){
-        this.hidden = hidden;
-        this.pnode.setStyle("display", hidden ? "none" : "");
-    },
-
-    /**
-     * Returns true if this tab is "hidden"
-     * @return {Boolean}
-     */
-    isHidden : function(){
-        return this.hidden;
-    },
-
-    /**
-     * Returns the text for this tab
-     * @return {String}
-     */
-    getText : function(){
-        return this.text;
-    },
-
-    autoSize : function(){
-        //this.el.beginMeasure();
-        this.textEl.setWidth(1);
-        /*
-         *  #2804 [new] Tabs in Roojs
-         *  increase the width by 2-4 pixels to prevent the ellipssis showing in chrome
-         */
-        this.setWidth(this.textEl.dom.scrollWidth+this.pnode.getPadding("lr")+this.inner.getPadding("lr") + 2);
-        //this.el.endMeasure();
-    },
-
-    /**
-     * Sets the text for the tab (Note: this also sets the tooltip text)
-     * @param {String} text The tab's text and tooltip
-     */
-    setText : function(text){
-        this.text = text;
-        this.textEl.update(text);
-        this.setTooltip(text);
-        if(!this.tabPanel.resizeTabs){
-            this.autoSize();
-        }
-    },
-    /**
-     * Activates this TabPanelItem -- this <b>does</b> deactivate the currently active TabPanelItem.
-     */
-    activate : function(){
-        this.tabPanel.activate(this.id);
-    },
-
-    /**
-     * Disables this TabPanelItem -- this does nothing if this is the active TabPanelItem.
-     */
-    disable : function(){
-        if(this.tabPanel.active != this){
-            this.disabled = true;
-            this.pnode.addClass("disabled");
-        }
-    },
-
-    /**
-     * Enables this TabPanelItem if it was previously disabled.
-     */
-    enable : function(){
-        this.disabled = false;
-        this.pnode.removeClass("disabled");
-    },
-
-    /**
-     * Sets the content for this TabPanelItem.
-     * @param {String} content The content
-     * @param {Boolean} loadScripts true to look for and load scripts
-     */
-    setContent : function(content, loadScripts){
-        this.bodyEl.update(content, loadScripts);
-    },
-
-    /**
-     * Gets the {@link Roo.UpdateManager} for the body of this TabPanelItem. Enables you to perform Ajax updates.
-     * @return {Roo.UpdateManager} The UpdateManager
-     */
-    getUpdateManager : function(){
-        return this.bodyEl.getUpdateManager();
-    },
-
-    /**
-     * Set a URL to be used to load the content for this TabPanelItem.
-     * @param {String/Function} url The URL to load the content from, or a function to call to get the URL
-     * @param {String/Object} params (optional) The string params for the update call or an object of the params. See {@link Roo.UpdateManager#update} for more details. (Defaults to null)
-     * @param {Boolean} loadOnce (optional) Whether to only load the content once. If this is false it makes the Ajax call every time this TabPanelItem is activated. (Defaults to false)
-     * @return {Roo.UpdateManager} The UpdateManager
-     */
-    setUrl : function(url, params, loadOnce){
-        if(this.refreshDelegate){
-            this.un('activate', this.refreshDelegate);
-        }
-        this.refreshDelegate = this._handleRefresh.createDelegate(this, [url, params, loadOnce]);
-        this.on("activate", this.refreshDelegate);
-        return this.bodyEl.getUpdateManager();
-    },
-
-    /** @private */
-    _handleRefresh : function(url, params, loadOnce){
-        if(!loadOnce || !this.loaded){
-            var updater = this.bodyEl.getUpdateManager();
-            updater.update(url, params, this._setLoaded.createDelegate(this));
-        }
-    },
-
-    /**
-     *   Forces a content refresh from the URL specified in the {@link #setUrl} method.
-     *   Will fail silently if the setUrl method has not been called.
-     *   This does not activate the panel, just updates its content.
-     */
-    refresh : function(){
-        if(this.refreshDelegate){
-           this.loaded = false;
-           this.refreshDelegate();
-        }
-    },
-
-    /** @private */
-    _setLoaded : function(){
-        this.loaded = true;
-    },
-
-    /** @private */
-    closeClick : function(e){
-        var o = {};
-        e.stopEvent();
-        this.fireEvent("beforeclose", this, o);
-        if(o.cancel !== true){
-            this.tabPanel.removeTab(this.id);
-        }
-    },
-    /**
-     * The text displayed in the tooltip for the close icon.
-     * @type String
-     */
-    closeText : "Close this tab"
-});
 
 /** @private */
-Roo.TabPanel.prototype.createStrip = function(container){
-    var strip = document.createElement("div");
-    strip.className = "x-tabs-wrap";
-    container.appendChild(strip);
-    return strip;
-};
-/** @private */
-Roo.TabPanel.prototype.createStripList = function(strip){
+Roo.panel.Tab.prototype.createStripList = function(strip){
     // div wrapper for retard IE
     // returns the "tr" element.
     strip.innerHTML = '<div class="x-tabs-strip-wrap">'+
@@ -760,7 +437,7 @@ Roo.TabPanel.prototype.createStripList = function(strip){
     return strip.firstChild.firstChild.firstChild.firstChild;
 };
 /** @private */
-Roo.TabPanel.prototype.createBody = function(container){
+Roo.panel.Tab.prototype.createBody = function(container){
     var body = document.createElement("div");
     Roo.id(body, "tab-body");
     Roo.fly(body).addClass("x-tabs-body");
@@ -768,7 +445,7 @@ Roo.TabPanel.prototype.createBody = function(container){
     return body;
 };
 /** @private */
-Roo.TabPanel.prototype.createItemBody = function(bodyEl, id){
+Roo.panel.Tab.prototype.createItemBody = function(bodyEl, id){
     var body = Roo.getDom(id);
     if(!body){
         body = document.createElement("div");
@@ -779,7 +456,7 @@ Roo.TabPanel.prototype.createItemBody = function(bodyEl, id){
     return body;
 };
 /** @private */
-Roo.TabPanel.prototype.createStripElements = function(stripEl, text, closable){
+Roo.panel.Tab.prototype.createStripElements = function(stripEl, text, closable){
     var td = document.createElement("td");
     stripEl.insertBefore(td, stripEl.childNodes[stripEl.childNodes.length-1]);
     //stripEl.appendChild(td);

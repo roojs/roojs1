@@ -68,7 +68,7 @@ var Example = {
             }
         });
         
-        var gpanel = new Roo.GridPanel(this.grid);
+        var gpanel = new Roo.panel.Grid(this.grid);
         var layout = Roo.BorderLayout.create({
             center: {
                 margins:{left:3,top:3,right:3,bottom:3},

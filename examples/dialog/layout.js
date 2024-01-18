@@ -61,12 +61,12 @@ var LayoutExample = function(){
                 
                 var layout = dialog.getLayout();
                 layout.beginUpdate();
-                layout.add('west', new Roo.ContentPanel('west', {title: 'West'}));
-	            layout.add('center', new Roo.ContentPanel('center', {title: 'The First Tab'}));
+                layout.add('west', new Roo.panel.Content('west', {title: 'West'}));
+	            layout.add('center', new Roo.panel.Content('center', {title: 'The First Tab'}));
                 // generate some other tabs
-                layout.add('center', new Roo.ContentPanel(Roo.id(), {
+                layout.add('center', new Roo.panel.Content(Roo.id(), {
                                         autoCreate:true, title: 'Another Tab', background:true}));
-	            layout.add('center', new Roo.ContentPanel(Roo.id(), {
+	            layout.add('center', new Roo.panel.Content(Roo.id(), {
                                         autoCreate:true, title: 'Third Tab', closable:true, background:true}));
 	            layout.endUpdate();
             }

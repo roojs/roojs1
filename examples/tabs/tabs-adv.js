@@ -9,7 +9,7 @@
  * <script type="text/javascript">
  */
 Roo.onReady(function(){
-    var tabs = new Roo.TabPanel('tab-panel1', {
+    var tabs = new Roo.panel.Tab('tab-panel1', {
         resizeTabs:true, // turn on tab resizing
         minTabWidth: 20,
         preferredTabWidth:150

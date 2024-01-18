@@ -7,8 +7,8 @@
     "items": [
         {
             "region": "center",
-            "xtype": "NestedLayoutPanel",
-            "|xns": "Roo",
+            "xtype": "NestedLayout",
+            "|xns": "Roo.panel",
             "items": [
                 {
                     "|xns": "Roo",
@@ -26,9 +26,9 @@
                                 "render": "function (_self)\n{\n    _this.bodypanel = _self;\n    \n    Roo.log('render');\n}"
                             },
                             "region": "center",
-                            "xtype": "ContentPanel",
+                            "xtype": "Content",
                             "|autoCreate": "true",
-                            "|xns": "Roo",
+                            "|xns": "Roo.panel",
                             "items": [
                                 {
                                     "|xns": "Roo",

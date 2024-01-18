@@ -11,13 +11,13 @@
 var TabsExample = {
     init : function(){
         // basic tabs 1, built from existing content
-        var tabs = new Roo.TabPanel('tabs1');
+        var tabs = new Roo.panel.Tab('tabs1');
         tabs.addTab('script', "View Script");
         tabs.addTab('markup', "View Markup");
         tabs.activate('script');
     
         // second tabs built from JS
-        var jtabs = new Roo.TabPanel('jtabs');
+        var jtabs = new Roo.panel.Tab('jtabs');
         jtabs.addTab('jtabs-1', "Normal Tab", "My content was added during construction.");
     
         var tab2 = jtabs.addTab('jtabs-2', "Ajax Tab 1");

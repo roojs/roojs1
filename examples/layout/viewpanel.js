@@ -15,16 +15,16 @@ viewpanel = new Roo.XComponent({
         var _this = this;
         var MODULE = this;
         return {
-            xtype: 'NestedLayoutPanel',
-            xns: Roo,
+            xtype: 'NestedLayout',
+            xns: Roo.panel,
             region : 'center',
             layout : {
                 xtype: 'BorderLayout',
                 xns: Roo,
                 items : [
                     {
-                        xtype: 'ContentPanel',
-                        xns: Roo,
+                        xtype: 'Content',
+                        xns: Roo.panel,
                         listeners : {
                             activate : function (_self)
                             {

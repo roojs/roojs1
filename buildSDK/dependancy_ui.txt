@@ -36,7 +36,11 @@ Roo.ColorPalette
 //		*** Can be Optional ***
 Roo.DatePicker
 
-Roo.TabPanel
+Roo.panel.namespace
+Roo.panel.Cropbox
+
+Roo.panel.Tab
+Roo.panel.TabItem
 Roo.Button
 Roo.SplitButton
 
@@ -160,11 +164,11 @@ Roo.LayoutRegion
 Roo.SplitLayoutRegion
 Roo.CenterLayoutRegion
 Roo.LayoutStateManager
-Roo.ContentPanel
-Roo.GridPanel
-Roo.NestedLayoutPanel
+Roo.panel.Content
+Roo.panel.Grid
+Roo.panel.NestedLayout
 Roo.ScrollPanel
-Roo.TreePanel
+Roo.panel.Tree
 
 //		*** Can be Optional *** - only if you use it..
 Roo.ReaderLayout
@@ -200,5 +204,4 @@ Roo.XTemplate
 // is this ready yet? - is it used?
 // Roo.Login
 
-Roo.dialog.namespace
-Roo.dialog.UploadCropbox
+Roo.depreicated

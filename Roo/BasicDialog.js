@@ -335,7 +335,7 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
 
     /**
      * Reinitializes the tabs component, clearing out old tabs and finding new ones.
-     * @return {Roo.TabPanel} The tabs component
+     * @return {Roo.panel.Tab} The tabs component
      */
     initTabs : function(){
         var tabs = this.getTabs();
@@ -456,16 +456,16 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
     },
 
     /**
-     * Returns the TabPanel component (creates it if it doesn't exist).
+     * Returns the panel.Tab component (creates it if it doesn't exist).
      * Note: If you wish to simply check for the existence of tabs without creating them,
      * check for a null 'tabs' property.
-     * @return {Roo.TabPanel} The tabs component
+     * @return {Roo.panel.Tab} The tabs component
      */
     getTabs : function(){
         if(!this.tabs){
             this.el.addClass("x-dlg-auto-tabs");
             this.body.addClass(this.tabPosition == "bottom" ? "x-tabs-bottom" : "x-tabs-top");
-            this.tabs = new Roo.TabPanel(this.body.dom, this.tabPosition == "bottom");
+            this.tabs = new Roo.panel.Tab(this.body.dom, this.tabPosition == "bottom");
         }
         return this.tabs;
     },
