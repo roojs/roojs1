@@ -7,6 +7,8 @@ Roo.TabPanel = Roo.panel.Tab;
 Roo.TabPanelItem = Roo.panel.TabItem;
 Roo.TreePanel = Roo.panel.Tree;
 
+Roo.dialog = Roo.dialog || {};
+Roo.dialog.UploadCropbox = Roo.panel.Cropbox;
 
 // phase 2 update
 Roo.ScrollPanel = Roo.panel.Scroll;
