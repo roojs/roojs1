@@ -376,7 +376,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
            
             if (this.enableBlocks) {
-                Roo.htmleditor.Block.initAll(bd);
+                Array.from(bd.getElementsByTagName('img')).forEach(function(img) {
+                    if (img.closest('figure')) { // assume!! that it's aready
+                        return;
+                    }
+                    var fig  = new Roo.htmleditor.BlockFigure({
+                        image_src  : img.src
+                    });
+                    fig.updateElement(img); // replace it..
+                    
+                });
                 new Roo.htmleditor.FilterBlock({ node : div });
             }
             
