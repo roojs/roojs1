@@ -52371,6 +52371,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
            
             if (this.enableBlocks) {
+                Roo.htmleditor.Block.initAll(bd);
                 new Roo.htmleditor.FilterBlock({ node : div });
             }
             
