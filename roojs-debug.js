@@ -50565,8 +50565,11 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 maxWidth : iw + ' !important', // this is not getting rendered?
                 margin : m  
                 
-            }
+            },
+            width: this.align == 'center' ?  this.width : '100%' 
+
         };
+        
         /*
         '<div class="{0}" width="420" height="315" src="{1}" frameborder="0" allowfullscreen>' +
                     '<a href="{2}">' + 
