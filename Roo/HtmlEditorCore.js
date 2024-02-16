@@ -393,7 +393,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
             //?? tidy?
             if (this.autoClean) {
-                
+                new Roo.htmleditor.FilterBlack({ node : div, tag : this.black});
                 new Roo.htmleditor.FilterAttributes({
                     node : div,
                     attrib_white : [
