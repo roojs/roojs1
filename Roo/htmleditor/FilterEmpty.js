@@ -22,7 +22,7 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
     {
         Roo.log(node.tagName);
         Roo.log(node.innerHTML);
-        if (node.innerHTML.trim() != '') {
+        if (node.childNode.length != 0) {
             this.walk(node);
         }
         Roo.log('CHECK');
