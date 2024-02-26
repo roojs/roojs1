@@ -24,9 +24,6 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
         var ar = Array.from(node.childNodes);
         Roo.log(ar);
         for (var i = 0; i < ar.length; i++) {
-
-            Roo.log('WALK');
-            Roo.log(this);
             this.walk(ar[i]);
         }
 
