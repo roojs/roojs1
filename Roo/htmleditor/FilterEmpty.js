@@ -29,10 +29,10 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
         }
 
         if (node.innerHTML.trim() != '') {
-            return true;
+            return false;
         }
         if (node.attributes && node.attributes.length > 0) {
-            return true; // walk if there are any.
+            return false; // walk if there are any.
         }
         Roo.htmleditor.FilterBlack.prototype.replaceTag.call(this, node);
         return false;
