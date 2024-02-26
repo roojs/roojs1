@@ -23,7 +23,7 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
         if(!['B', 'I', 'U', 'S'].includes(node.tagName)) {
             return false;
         }
-        if (node.attributes && node.attributes.length > 0 && node.childNodes.length == 0) {
+        if (node.attributes && node.attributes.length > 0 || node.childNodes.length > 0) {
             return false; // walk if there are any.
         }
         Roo.htmleditor.FilterBlack.prototype.replaceTag.call(this, node);
