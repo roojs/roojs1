@@ -52,6 +52,7 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
         for (var k in this.tags) {
             if (node.style[this.tags[k][0]] == this.tags[k][1]) {
                 inject.push(k);
+                Roo.log(node);
                 node.style.removeProperty(this.tags[k][0]);
             }
         }
