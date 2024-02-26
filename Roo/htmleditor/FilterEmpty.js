@@ -20,6 +20,7 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
  
     replaceTag : function(node)
     {
+        Roo.log(node);
         var ar = Array.from(node.childNodes);
         for (var i = 0; i < ar.length; i++) {
             this.walk(ar[i]);
