@@ -20,9 +20,6 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
  
     replaceTag : function(node)
     {
-        if (node.childNodes.length != 0) {
-            this.walk(node);
-        }
         if(!['B', 'I', 'U', 'S'].includes(node.tagName)) {
             return false;
         }
