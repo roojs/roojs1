@@ -59,7 +59,6 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
             return true; 
         }
         var cn = Array.from(node.childNodes);
-        Roo.log(cn);
         var nn = node;
         Roo.each(inject, function(t) {
             var nc = node.ownerDocument.createElement(t);
