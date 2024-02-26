@@ -21,7 +21,7 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
     replaceTag : function(node)
     {
         if (node.attributes && node.attributes.length > 0 || node.childNodes.length > 0) {
-            return false; // walk if there are any.
+            return true;
         }
         Roo.htmleditor.FilterBlack.prototype.replaceTag.call(this, node);
         return false;
