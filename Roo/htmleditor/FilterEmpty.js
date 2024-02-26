@@ -24,8 +24,8 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
         for (var i = 0; i < ar.length; i++) {
             this.walk(ar[i]);
         }
-        if(in_array(node.tagName, ['B', 'I', 'U', 'S'])) {
-
+        if(!in_array(node.tagName, ['B', 'I', 'U', 'S'])) {
+            return true;
         }
 
         if (node.innerHTML.trim() != '') {
