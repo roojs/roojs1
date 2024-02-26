@@ -14,7 +14,7 @@ Roo.htmleditor.FilterStyleToTag = function(cfg)
 {
     
     this.tags = {
-        B  : [ 'font-weight' , 'bold'],
+        B  : [ 'fontWeight' , 'bold'],
         I :  [ 'fontStyle' , 'italic'],
         //pre :  [ 'font-style' , 'italic'],
         // h1.. h6 ?? font-size?
