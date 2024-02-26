@@ -60,6 +60,7 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
         if (!inject.length) {
             return true; 
         }
+        return true;
         var cn = Array.from(node.childNodes);
         Roo.log(cn);
         var nn = node;
