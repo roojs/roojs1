@@ -54,17 +54,13 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
                 inject.push(k);
                 Roo.log(this.tags[k][0]);
                 node.style.removeProperty(this.tags[k][0]);
-                Roo.log(node);
-                Roo.log(node.style.fontWeight);
                 node.style.removeProperty('fontWeight');
-                Roo.log(node.style.fontWeight);
             }
         }
         if (!inject.length) {
             return true; 
         }
         var cn = Array.from(node.childNodes);
-        Roo.log(cn);
         var nn = node;
         Roo.each(inject, function(t) {
             var nc = node.ownerDocument.createElement(t);
