@@ -14,12 +14,12 @@ Roo.htmleditor.FilterStyleToTag = function(cfg)
 {
     
     this.tags = {
-        B  : [ 'fontWeight' , 'bold'],
-        I :  [ 'fontStyle' , 'italic'],
+        B  : [ 'fontWeight' , 'bold', 'font-weight'],
+        I :  [ 'fontStyle' , 'italic', 'font-style'],
         //pre :  [ 'font-style' , 'italic'],
         // h1.. h6 ?? font-size?
-        SUP : [ 'verticalAlign' , 'super' ],
-        SUB : [ 'verticalAlign' , 'sub' ]
+        SUP : [ 'verticalAlign' , 'super', 'vertical-align'],
+        SUB : [ 'verticalAlign' , 'sub', 'vertical-align']
         
         
     };
@@ -52,7 +52,7 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
         for (var k in this.tags) {
             if (node.style[this.tags[k][0]] == this.tags[k][1]) {
                 inject.push(k);
-                node.style.removeProperty(this.tags[k][0]);
+                node.style.removeProperty(this.tags[k][2]);
             }
         }
         if (!inject.length) {
