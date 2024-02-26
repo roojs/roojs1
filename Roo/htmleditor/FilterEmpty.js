@@ -20,15 +20,12 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
  
     replaceTag : function(node)
     {
-        if(in_array(node.tagName, ['B', 'I', 'U', 'S'])) {
-
-        }
-        Roo.log(node);
-        Roo.log()
         var ar = Array.from(node.childNodes);
-        Roo.log(ar);
         for (var i = 0; i < ar.length; i++) {
             this.walk(ar[i]);
+        }
+        if(in_array(node.tagName, ['B', 'I', 'U', 'S'])) {
+
         }
 
         if (node.innerHTML.trim() != '') {
