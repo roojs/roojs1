@@ -22,12 +22,11 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
     {
         Roo.log(node.tagName);
         Roo.log(node.innerHTML);
-        this.walk(node);
-        if(!['B', 'I', 'U', 'S'].includes(node.tagName)) {
-            return false;
-        }
-
         if (node.innerHTML.trim() != '') {
+            this.walk(node);
+        }
+        Roo.log('CHECK');
+        if(!['B', 'I', 'U', 'S'].includes(node.tagName)) {
             return false;
         }
         if (node.attributes && node.attributes.length > 0) {
