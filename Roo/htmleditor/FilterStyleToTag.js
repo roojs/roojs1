@@ -56,6 +56,7 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
                 node.style.removeProperty(this.tags[k][0]);
                 Roo.log(node);
                 Roo.log(node.style);
+                node.style.removeProperty('fontWeight');
             }
         }
         if (!inject.length) {
