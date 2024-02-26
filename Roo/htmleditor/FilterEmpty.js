@@ -12,7 +12,7 @@ Roo.htmleditor.FilterEmpty = function(cfg)
     this.walk(cfg.node);
 }
 
-Roo.extend(Roo.htmleditor.FilterBlack,
+Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
 {
      
     tag : ['B', 'I', 'U', 'S'],
