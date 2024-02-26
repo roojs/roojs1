@@ -68,7 +68,6 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
             nn.appendChild(nc);
             nn = nc;
         });
-        return true;
         for(var i = 0;i < cn.length;cn++) {
             node.removeChild(cn[i]);
             nn.appendChild(cn[i]);
