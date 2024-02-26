@@ -15,12 +15,16 @@ Roo.htmleditor.FilterEmpty = function(cfg)
 Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
 {
      
-    tag : ['B', 'I', 'U', 'S'],
+    tag : true,
      
  
     replaceTag : function(node)
     {
+        if(in_array(node.tagName, ['B', 'I', 'U', 'S'])) {
+
+        }
         Roo.log(node);
+        Roo.log()
         var ar = Array.from(node.childNodes);
         Roo.log(ar);
         for (var i = 0; i < ar.length; i++) {
