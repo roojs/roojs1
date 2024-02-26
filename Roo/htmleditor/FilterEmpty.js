@@ -22,6 +22,7 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
     {
         Roo.log(node.tagName);
         Roo.log(node.innerHTML);
+        Roo.log(node.childNodes.length);
         if (node.childNodes.length != 0) {
             this.walk(node);
         }
