@@ -20,6 +20,9 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
  
     replaceTag : function(node)
     {
+        if(node.hasChildNodes()) {
+            node.walk();
+        }
         if (node.attributes && node.attributes.length > 0 || node.childNodes.length > 0) {
             return true;
         }
