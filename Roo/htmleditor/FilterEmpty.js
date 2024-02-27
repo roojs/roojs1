@@ -1,6 +1,6 @@
 /**
  * @class Roo.htmleditor.FilterEmpty
- * filter empty elements (normally <B> on paste)
+ * filter empty elements
  * @constructor
  * Run a new Empty Filter
  * @param {Object} config Configuration options
@@ -20,11 +20,15 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
  
     replaceTag : function(node)
     {
+        // start from child
         if(node.hasChildNodes()) {
             node.walk();
         }
 
-        if(['B', 'I', 'U', 'S'].indexOf(node.tagName) > -1))
+        //
+        if(['B', 'I', 'U', 'S'].indexOf(node.tagName) < 0) {
+            return;
+        }
         if (node.attributes && node.attributes.length > 0 || node.childNodes.length > 0) {
             return true;
         }
