@@ -38,6 +38,8 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
             return false; // don't walk
         }
 
+        Roo.log(node.tagName + ' : REMOVED');
+
         Roo.htmleditor.FilterBlack.prototype.replaceTag.call(this, node);
         return false; // don't walk
      
