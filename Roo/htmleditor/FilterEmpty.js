@@ -20,7 +20,7 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
  
     replaceTag : function(node)
     {
-        Roo.log(node.tagName + ' : ' + node.childNoes.length);
+        Roo.log(node.tagName + ' : ' + node.childNodes.length);
         Roo.log(node.innerHTML);
         // start from child
         if(node.hasChildNodes()) {
