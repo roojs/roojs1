@@ -25,9 +25,9 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
             node.walk();
         }
 
-        // only for certain tags
+        //
         if(['B', 'I', 'U', 'S'].indexOf(node.tagName) < 0) {
-            return;
+            return false; // dont walk
         }
         if (node.attributes && node.attributes.length > 0 || node.childNodes.length > 0) {
             return true;
