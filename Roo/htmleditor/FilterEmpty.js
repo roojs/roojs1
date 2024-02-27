@@ -20,7 +20,7 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
  
     replaceTag : function(node)
     {
-        // start from child
+        // start from leaf node
         if(node.hasChildNodes()) {
             this.walk(node);
         }
