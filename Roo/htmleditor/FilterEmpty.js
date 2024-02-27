@@ -25,7 +25,7 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
             node.walk();
         }
 
-        //
+        // only for certain elements
         if(['B', 'I', 'U', 'S'].indexOf(node.tagName) < 0) {
             return;
         }
