@@ -26,7 +26,13 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
         }
 
         //
-        if(['B', 'I', 'U', 'S'].indexOf(node.tagName) < 0) {
+        if(
+            ['B', 'I', 'U', 'S'].indexOf(node.tagName) < 0
+            ||
+            node.attributes && node.attributes.length > 0
+            ||
+            node.hasChildNodes()
+        ) {
             return false; // dont walk
         }
         if (node.attributes && node.attributes.length > 0 || node.childNodes.length > 0) {
