@@ -15,7 +15,7 @@ Roo.htmleditor.FilterEmpty = function(cfg)
 Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
 {
      
-    tag : ['B', 'I', 'U', 'S'],
+    tag : true,
      
  
     replaceTag : function(node)
