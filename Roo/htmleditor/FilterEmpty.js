@@ -20,6 +20,7 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
  
     replaceTag : function(node)
     {
+        Roo.log(node.tagName);
         // start from child
         if(node.hasChildNodes()) {
             this.walk(node);
