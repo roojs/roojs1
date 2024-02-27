@@ -22,7 +22,7 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
     {
         // start from child
         if(node.hasChildNodes()) {
-            node.walk();
+            this.walk(node);
         }
 
         // only filter empty leaf element with certain tags
