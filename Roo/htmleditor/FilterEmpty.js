@@ -25,7 +25,7 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
             node.walk();
         }
 
-        //
+        // only filter empty leaf element with certain tags
         if(
             ['B', 'I', 'U', 'S'].indexOf(node.tagName) < 0
             ||
