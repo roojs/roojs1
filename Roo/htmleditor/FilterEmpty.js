@@ -35,9 +35,7 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
         ) {
             return false; // dont walk
         }
-        if (node.attributes && node.attributes.length > 0 || node.childNodes.length > 0) {
-            return true;
-        }
+        
         Roo.htmleditor.FilterBlack.prototype.replaceTag.call(this, node);
         return false;
      
