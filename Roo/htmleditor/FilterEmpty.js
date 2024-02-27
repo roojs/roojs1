@@ -33,11 +33,11 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
             ||
             node.hasChildNodes()
         ) {
-            return false; // dont walk
+            return false; // don't walk
         }
-        
+
         Roo.htmleditor.FilterBlack.prototype.replaceTag.call(this, node);
-        return false;
+        return false; // don't walk
      
     }
     
