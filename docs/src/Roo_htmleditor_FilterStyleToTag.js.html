@@ -14,12 +14,12 @@
 {
 
     </span><span class="jsdoc-var">this.tags </span><span class="jsdoc-syntax">= {
-        </span><span class="jsdoc-var">B  </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'fontWeight' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'bold'</span><span class="jsdoc-syntax">],
-        </span><span class="jsdoc-var">I </span><span class="jsdoc-syntax">:  [ </span><span class="jsdoc-string">'fontStyle' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'italic'</span><span class="jsdoc-syntax">],
+        </span><span class="jsdoc-var">B  </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'fontWeight' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'bold'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'font-weight'</span><span class="jsdoc-syntax">],
+        </span><span class="jsdoc-var">I </span><span class="jsdoc-syntax">:  [ </span><span class="jsdoc-string">'fontStyle' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'italic'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'font-style'</span><span class="jsdoc-syntax">],
         </span><span class="jsdoc-comment">//pre :  [ 'font-style' , 'italic'],
         // h1.. h6 ?? font-size?
-        </span><span class="jsdoc-var">SUP </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'verticalAlign' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'super' </span><span class="jsdoc-syntax">],
-        </span><span class="jsdoc-var">SUB </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'verticalAlign' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'sub' </span><span class="jsdoc-syntax">]
+        </span><span class="jsdoc-var">SUP </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'verticalAlign' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'super'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'vertical-align'</span><span class="jsdoc-syntax">],
+        </span><span class="jsdoc-var">SUB </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'verticalAlign' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'sub'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'vertical-align'</span><span class="jsdoc-syntax">]
 
 
     };
@@ -52,7 +52,7 @@
         </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.tags</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.tags</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">][0]] == </span><span class="jsdoc-var">this.tags</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">][1]) {
                 </span><span class="jsdoc-var">inject.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">node.style.removeProperty</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tags</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">][0]);
+                </span><span class="jsdoc-var">node.style.removeProperty</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tags</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">][2]);
             }
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">inject.length</span><span class="jsdoc-syntax">) {
@@ -65,7 +65,7 @@
             </span><span class="jsdoc-var">nn.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nc</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">nn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nc</span><span class="jsdoc-syntax">;
         });
-        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0;</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">cn.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">++) {
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0;</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">cn.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
             </span><span class="jsdoc-var">node.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
             </span><span class="jsdoc-var">nn.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
         }

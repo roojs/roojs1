@@ -145,6 +145,7 @@ Roo.htmleditor.Filter
 Roo.htmleditor.FilterAttributes
 Roo.htmleditor.FilterBlack
 Roo.htmleditor.FilterComment
+Roo.htmleditor.FilterEmpty
 Roo.htmleditor.FilterKeepChildren
 Roo.htmleditor.FilterParagraph
 Roo.htmleditor.FilterHashLink

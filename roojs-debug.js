@@ -47921,6 +47921,49 @@ Roo.extend(Roo.htmleditor.FilterComment, Roo.htmleditor.Filter,
         n.parentNode.removeChild(n);
     }
 });/**
+ * @class Roo.htmleditor.FilterEmpty
+ * filter empty elements
+ * @constructor
+ * Run a new Empty Filter
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.FilterEmpty = function(cfg)
+{
+    // no need to apply config.
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
+{
+     
+    tag : true,
+     
+ 
+    replaceTag : function(node)
+    {
+        // start from leaf node
+        if(node.hasChildNodes()) {
+            this.walk(node);
+        }
+
+        // only filter empty leaf element with certain tags
+        if(
+            ['B', 'I', 'U', 'S'].indexOf(node.tagName) < 0
+            ||
+            node.attributes && node.attributes.length > 0
+            ||
+            node.hasChildNodes()
+        ) {
+            return false; // don't walk
+        }
+
+        Roo.htmleditor.FilterBlack.prototype.replaceTag.call(this, node);
+        return false; // don't walk
+     
+    }
+    
+});/**
  * @class Roo.htmleditor.FilterKeepChildren
  * remove tags but keep children
  * @constructor
@@ -48615,12 +48658,12 @@ Roo.htmleditor.FilterStyleToTag = function(cfg)
 {
     
     this.tags = {
-        B  : [ 'fontWeight' , 'bold'],
-        I :  [ 'fontStyle' , 'italic'],
+        B  : [ 'fontWeight' , 'bold', 'font-weight'],
+        I :  [ 'fontStyle' , 'italic', 'font-style'],
         //pre :  [ 'font-style' , 'italic'],
         // h1.. h6 ?? font-size?
-        SUP : [ 'verticalAlign' , 'super' ],
-        SUB : [ 'verticalAlign' , 'sub' ]
+        SUP : [ 'verticalAlign' , 'super', 'vertical-align'],
+        SUB : [ 'verticalAlign' , 'sub', 'vertical-align']
         
         
     };
@@ -48653,7 +48696,7 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
         for (var k in this.tags) {
             if (node.style[this.tags[k][0]] == this.tags[k][1]) {
                 inject.push(k);
-                node.style.removeProperty(this.tags[k][0]);
+                node.style.removeProperty(this.tags[k][2]);
             }
         }
         if (!inject.length) {
@@ -48666,7 +48709,7 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
             nn.appendChild(nc);
             nn = nc;
         });
-        for(var i = 0;i < cn.length;cn++) {
+        for(var i = 0;i < cn.length;i++) {
             node.removeChild(cn[i]);
             nn.appendChild(cn[i]);
         }
@@ -52417,6 +52460,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             ],
                     attrib_clean : ['href', 'src' ] 
                 });
+                new Roo.htmleditor.FilterEmpty({ node : div});
                 
                 var tidy = new Roo.htmleditor.TidySerializer({
                     inner:  true
@@ -52734,6 +52778,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
             new Roo.htmleditor.FilterComment({ node : d });
+            new Roo.htmleditor.FilterEmpty({ node : d});
             
             
         }

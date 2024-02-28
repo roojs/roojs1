@@ -419,6 +419,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             ],
                     attrib_clean : ['href', 'src' ] 
                 });
+                new Roo.htmleditor.FilterEmpty({ node : div});
                 
                 var tidy = new Roo.htmleditor.TidySerializer({
                     inner:  true
@@ -736,6 +737,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
             new Roo.htmleditor.FilterComment({ node : d });
+            new Roo.htmleditor.FilterEmpty({ node : d});
             
             
         }

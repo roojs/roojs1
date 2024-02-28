@@ -1,6 +1,6 @@
 /**
  * @class Roo.htmleditor.FilterEmpty
- * filter empty elements (normally <B> on paste)
+ * filter empty elements
  * @constructor
  * Run a new Empty Filter
  * @param {Object} config Configuration options
@@ -12,22 +12,32 @@ Roo.htmleditor.FilterEmpty = function(cfg)
     this.walk(cfg.node);
 }
 
-Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.FilterBlack,
+Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
 {
      
-    tag : 'B',
+    tag : true,
      
  
     replaceTag : function(node)
     {
-        if (node.innerHTML.trim() != '') {
-            return true;
+        // start from leaf node
+        if(node.hasChildNodes()) {
+            this.walk(node);
         }
-        if (node.attributes && node.attributes.length > 0) {
-            return true; // walk if there are any.
+
+        // only filter empty leaf element with certain tags
+        if(
+            ['B', 'I', 'U', 'S'].indexOf(node.tagName) < 0
+            ||
+            node.attributes && node.attributes.length > 0
+            ||
+            node.hasChildNodes()
+        ) {
+            return false; // don't walk
         }
+
         Roo.htmleditor.FilterBlack.prototype.replaceTag.call(this, node);
-        return false;
+        return false; // don't walk
      
     }
     
