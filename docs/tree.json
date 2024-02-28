@@ -1302,6 +1302,11 @@
             "is_class" : false
           },
           {
+            "name" : "Roo.htmleditor.FilterEmpty",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
             "name" : "Roo.htmleditor.FilterHashLink",
             "cn" : [],
             "is_class" : false
