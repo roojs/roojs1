@@ -31812,6 +31812,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
            
             if (this.enableBlocks) {
+                Array.from(bd.getElementsByTagName('img')).forEach(function(img) {
+                    var fig = img.closest('figure');
+                    if (fig) {
+                        var bf = new Roo.htmleditor.BlockFigure({
+                            node : fig
+                        });
+                        bf.updateElement();
+                    }
+                    
+                });
                 new Roo.htmleditor.FilterBlock({ node : div });
             }
             

@@ -376,6 +376,16 @@
 
 
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enableBlocks</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bd.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fig </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">img.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'figure'</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fig</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bf </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.BlockFigure</span><span class="jsdoc-syntax">({
+                            </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">fig
+                        </span><span class="jsdoc-syntax">});
+                        </span><span class="jsdoc-var">bf.updateElement</span><span class="jsdoc-syntax">();
+                    }
+
+                });
                 </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterBlock</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">div </span><span class="jsdoc-syntax">});
             }
 
@@ -383,7 +393,7 @@
 
             </span><span class="jsdoc-comment">//?? tidy?
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoClean</span><span class="jsdoc-syntax">) {
-
+                </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterBlack</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">div</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.black</span><span class="jsdoc-syntax">});
                 </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterAttributes</span><span class="jsdoc-syntax">({
                     </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">div</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">attrib_white </span><span class="jsdoc-syntax">: [
