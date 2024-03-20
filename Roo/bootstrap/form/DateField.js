@@ -563,7 +563,10 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     
     showPopup : function()
     {
-        this.picker().show();
+        if(this.readOnly) {
+			return;
+		}
+		this.picker().show();
         this.update();
         this.place();
         
