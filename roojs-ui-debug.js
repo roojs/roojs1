@@ -19825,7 +19825,7 @@ dateField.setValue('2006-5-4');
     // private
     // Implements the default empty TriggerField.onTriggerClick function to display the DatePicker
     onTriggerClick : function(){
-        if(this.disabled){
+        if(this.disabled || this.readOnly){
             return;
         }
         if(this.menu == null){
