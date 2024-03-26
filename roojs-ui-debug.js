@@ -19370,6 +19370,10 @@ Roo.extend(Roo.form.NumberField, Roo.form.TextField,  {
      */
     decimalSeparator : ".",
     /**
+     * @cfg {String} thousandSeparator Character(s) to allow as the thousand separator (defaults to '') - set to ',' for example
+     */
+    thousandSeparator : "",
+    /**
      * @cfg {Number} decimalPrecision The maximum precision to display after the decimal separator (defaults to 2)
      */
     decimalPrecision : 2,
@@ -19453,7 +19457,7 @@ Roo.extend(Roo.form.NumberField, Roo.form.TextField,  {
 
     // private
     parseValue : function(value){
-        value = parseFloat(String(value).replace(this.decimalSeparator, "."));
+        value = parseFloat(String(value).replace(this.decimalSeparator, ".").replace(this.thousandSeparator, ''));
         return isNaN(value) ? '' : value;
     },
 
@@ -19468,6 +19472,11 @@ Roo.extend(Roo.form.NumberField, Roo.form.TextField,  {
 
     setValue : function(v){
         v = this.fixPrecision(v);
+        if(!this.allowDecimals || this.decimalPrecision == -1 || nan || !value){
+            //noop 
+        } else {
+            v = Roo.util.Format.number(v, this.decimalPrecision, this.thousandSeparator);
+        }
         Roo.form.NumberField.superclass.setValue.call(this, String(v).replace(".", this.decimalSeparator));
     },
 
