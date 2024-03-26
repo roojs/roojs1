@@ -43912,6 +43912,7 @@ Roo.extend(Roo.form.NumberField, Roo.form.TextField,  {
         if(this.allowDecimals){
             allowed += this.decimalSeparator;
         }
+        allowed += this.thousandSeparator;
         if(this.allowNegative){
             allowed += "-";
         }
