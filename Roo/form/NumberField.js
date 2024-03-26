@@ -36,6 +36,10 @@ Roo.extend(Roo.form.NumberField, Roo.form.TextField,  {
      */
     decimalSeparator : ".",
     /**
+     * @cfg {String} thousandSeparator Character(s) to allow as the thousand separator (defaults to '') - set to ',' for example
+     */
+    thousandSeparator : "",
+    /**
      * @cfg {Number} decimalPrecision The maximum precision to display after the decimal separator (defaults to 2)
      */
     decimalPrecision : 2,

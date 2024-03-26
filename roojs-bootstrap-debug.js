@@ -23653,9 +23653,9 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     showPopup : function()
     {
         if(this.readOnly) {
-			return;
-		}
-		this.picker().show();
+            return;
+        }
+        this.picker().show();
         this.update();
         this.place();
         
