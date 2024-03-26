@@ -140,7 +140,7 @@ Roo.extend(Roo.form.NumberField, Roo.form.TextField,  {
     setValue : function(v){
         v = this.fixPrecision(v);
         if(this.thousandSeparator != ''){
-            v = Roo.util.Format.number(v, this.decimalPrecision, this.thousandSeparator);
+       //     v = Roo.util.Format.number(v, this.decimalPrecision, this.thousandSeparator);
         } 
         Roo.form.NumberField.superclass.setValue.call(this, String(v).replace(".", this.decimalSeparator));
     },
