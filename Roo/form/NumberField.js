@@ -68,10 +68,30 @@ Roo.extend(Roo.form.NumberField, Roo.form.TextField,  {
      * if a valid character like '.' or '-' is left in the field with no number (defaults to "{value} is not a valid number")
      */
     nanText : "{0} is not a valid number",
-
+    
+    hiddenField : false,
+     
+    onRender : function(ct, position)
+    {
+        Roo.form.DateField.superclass.onRender.call(this, ct, position);
+    
+            //this.el.dom.removeAttribute('name'); 
+        Roo.log("Changing name?");
+        if (this.thousandSeparator != '') {
+            this.el.dom.setAttribute('name', this.name + '____hidden___' ); 
+            this.hiddenField = this.el.insertSibling({ tag:'input', type:'hidden', name: this.name },
+                        'before', true);
+            this.hiddenField.value = this.value ? this.parseValue(this.value) : '';
+        }
+        
+            // prevent input submission
+        
+            
+            
+    },
     // private
     initEvents : function(){
-        Roo.form.NumberField.superclass.initEvents.call(this);
+          
         var allowed = "0123456789";
         if(this.allowDecimals){
             allowed += this.decimalSeparator;
@@ -143,6 +163,11 @@ Roo.extend(Roo.form.NumberField, Roo.form.TextField,  {
        //     v = Roo.util.Format.number(v, this.decimalPrecision, this.thousandSeparator);
         } 
         Roo.form.NumberField.superclass.setValue.call(this, String(v).replace(".", this.decimalSeparator));
+        if (this.hiddenField !== false) {
+            this.hiddenField.value = v ? this.parseValue(v) : '';
+        }
+        
+
     },
 
     // private

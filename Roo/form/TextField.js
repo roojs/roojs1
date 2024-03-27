@@ -132,9 +132,9 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         if(this.selectOnFocus){
             this.on("focus", this.preFocus, this);
         }
-	if (!this.allowLeadingSpace) {
-	    this.on('blur', this.cleanLeadingSpace, this);
-	}
+		if (!this.allowLeadingSpace) {
+			this.on('blur', this.cleanLeadingSpace, this);
+		}
 	
         if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Roo.form.VTypes[this.vtype+'Mask']))){
             this.el.on("keypress", this.filterKeys, this);
