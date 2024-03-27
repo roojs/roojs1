@@ -132,9 +132,9 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selectOnFocus</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;focus&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.preFocus</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
-	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.allowLeadingSpace</span><span class="jsdoc-syntax">) {
-	    </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'blur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cleanLeadingSpace</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-	}
+		</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.allowLeadingSpace</span><span class="jsdoc-syntax">) {
+			</span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'blur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cleanLeadingSpace</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+		}
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maskRe </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">this.vtype </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.disableKeyFilter </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">this.maskRe </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.VTypes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.vtype</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'Mask'</span><span class="jsdoc-syntax">]))){
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keypress&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.filterKeys</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);

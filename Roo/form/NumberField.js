@@ -68,10 +68,55 @@ Roo.extend(Roo.form.NumberField, Roo.form.TextField,  {
      * if a valid character like '.' or '-' is left in the field with no number (defaults to "{value} is not a valid number")
      */
     nanText : "{0} is not a valid number",
-
+    
+    hiddenField : false,
+     
+    onRender : function(ct, position)
+    {
+        Roo.form.TextField.superclass.onRender.call(this, ct, position);
+    
+            //this.el.dom.removeAttribute('name'); 
+        Roo.log("Changing name?");
+        if (this.thousandSeparator != '') {
+            this.el.dom.setAttribute('name', this.name + '____hidden___' ); 
+            this.hiddenField = this.el.insertSibling({ tag:'input', type:'hidden', name: this.name },
+                        'before', true);
+            this.hiddenField.value = this.value ? this.parseValue(this.value) : '';
+            this.el.on('blur', this.onBlur, this);
+        }
+        
+            // prevent input submission
+        
+            
+            
+    },
+     onBlur : function(){
+        this.beforeBlur();
+        if(!Roo.isOpera && this.focusClass){ // don't touch in Opera
+            this.el.removeClass(this.focusClass);
+        }
+        this.hasFocus = false;
+        if(this.validationEvent !== false && this.validateOnBlur && this.validationEvent != "blur"){
+            this.validate();
+        }
+        var v = this.getValue();
+        if(String(v) !== String(this.startValue)){
+            this.setValue( this.parseValue(v));
+            this.fireEvent('change', this, v, this.startValue);
+        }
+        this.fireEvent("blur", this);
+    },
+    
+    // override name, so that it works with hidden field.
+    getName: function(){
+        if (this.thousandSeparator != '') {
+            return this.name;
+        }
+        return Roo.form.TextField.superclass.getName.call(this);
+    },
     // private
     initEvents : function(){
-        Roo.form.NumberField.superclass.initEvents.call(this);
+          
         var allowed = "0123456789";
         if(this.allowDecimals){
             allowed += this.decimalSeparator;
@@ -124,7 +169,7 @@ Roo.extend(Roo.form.NumberField, Roo.form.TextField,  {
 
     // private
     parseValue : function(value){
-        value = parseFloat(String(value).replace(this.decimalSeparator, ".").replace(this.thousandSeparator, ''));
+        value = parseFloat(String(value).replace(this.decimalSeparator, ".").split(this.thousandSeparator).join(''));
         return isNaN(value) ? '' : value;
     },
 
@@ -140,9 +185,14 @@ Roo.extend(Roo.form.NumberField, Roo.form.TextField,  {
     setValue : function(v){
         v = this.fixPrecision(v);
         if(this.thousandSeparator != ''){
-       //     v = Roo.util.Format.number(v, this.decimalPrecision, this.thousandSeparator);
+            v = Roo.util.Format.number(v, this.decimalPrecision, this.thousandSeparator);
         } 
         Roo.form.NumberField.superclass.setValue.call(this, String(v).replace(".", this.decimalSeparator));
+        if (this.hiddenField !== false) {
+            this.hiddenField.value = v ? this.parseValue(v) : '';
+        }
+        
+
     },
 
     // private

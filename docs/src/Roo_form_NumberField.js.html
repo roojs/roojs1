@@ -69,9 +69,54 @@
      */
     </span><span class="jsdoc-var">nanText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;{0} is not a valid number&quot;</span><span class="jsdoc-syntax">,
 
+    </span><span class="jsdoc-var">hiddenField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.form.TextField.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-comment">//this.el.dom.removeAttribute('name'); 
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Changing name?&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.thousandSeparator </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.el.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.name </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'____hidden___' </span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.hiddenField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.insertSibling</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.name </span><span class="jsdoc-syntax">},
+                        </span><span class="jsdoc-string">'before'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.parseValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'blur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBlur</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+
+            </span><span class="jsdoc-comment">// prevent input submission
+
+
+
+    </span><span class="jsdoc-syntax">},
+     </span><span class="jsdoc-var">onBlur </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.beforeBlur</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.isOpera </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.focusClass</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// don't touch in Opera
+            </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.focusClass</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.hasFocus </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.validationEvent </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.validateOnBlur </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.validationEvent </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;blur&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.startValue</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.parseValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.startValue</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;blur&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// override name, so that it works with hidden field.
+    </span><span class="jsdoc-var">getName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.thousandSeparator </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.form.TextField.superclass.getName.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-var">Roo.form.NumberField.superclass.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">allowed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;0123456789&quot;</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowDecimals</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">allowed </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.decimalSeparator</span><span class="jsdoc-syntax">;
@@ -124,7 +169,7 @@
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">parseValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseFloat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.decimalSeparator</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;.&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.thousandSeparator</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseFloat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.decimalSeparator</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;.&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.thousandSeparator</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
     },
 
@@ -140,9 +185,14 @@
     </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.fixPrecision</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.thousandSeparator </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">){
-       </span><span class="jsdoc-comment">//     v = Roo.util.Format.number(v, this.decimalPrecision, this.thousandSeparator);
-        </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.util.Format.number</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.decimalPrecision</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.thousandSeparator</span><span class="jsdoc-syntax">);
+        }
         </span><span class="jsdoc-var">Roo.form.NumberField.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;.&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.decimalSeparator</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hiddenField </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.parseValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        }
+
+
     },
 
     </span><span class="jsdoc-comment">// private
