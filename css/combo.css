@@ -109,10 +109,11 @@
     display: inline-block; 
     background: #e0ecff none no-repeat scroll 0 0;
     float: left;
-    height: 18px;
+    height: auto;
     -moz-border-radius: 2px;
     margin: 2px;
-    float: left
+    float: left;
+    padding: 2px;
     
     font-family:arial,tahoma,helvetica,sans-serif;
     font-size:11px;
@@ -124,7 +125,7 @@
 }
 .x-cbarray-item div
 {
-    display: inline-block;
+    display: contents;
     float: left;
     margin: 2px;
     margin-left: 5px;
