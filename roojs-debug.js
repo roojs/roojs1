@@ -2705,7 +2705,10 @@ Roo.lib.Event = function() {
          * @param {DomForm} form element
          * @return {String} urlencode form output.
          */
-        serializeForm : function(form) {
+        serializeForm : function(form, include_disabled) {
+            
+            include_disabled = typeof(include_disabled) == 'undefined' ? false : include_disabled;
+
             if(typeof form == 'string') {
                 form = (document.getElementById(form) || document.forms[form]);
             }
@@ -2713,7 +2716,7 @@ Roo.lib.Event = function() {
             var el, name, val, disabled, data = '', hasSubmit = false;
             for (var i = 0; i < form.elements.length; i++) {
                 el = form.elements[i];
-                disabled = form.elements[i].disabled;
+                disabled = include_disabled ? false : form.elements[i].disabled;
                 name = form.elements[i].name;
                 val = form.elements[i].value;
 
