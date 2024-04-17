@@ -24142,6 +24142,9 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         }
         if(typeof this.validator == "function"){
             var msg = this.validator(value);
+            if (typeof(msg) == 'string') {
+                this.invalidText = msg;
+            }
             if(msg !== true){
                 return false;
             }
