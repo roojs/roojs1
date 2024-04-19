@@ -98,6 +98,11 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     singleMode : false,
 
     hiddenField : false,
+
+    /**
+     * @cfg {Boolean} editable False to prevent the user from typing text directly into the field (defaults to true)
+     */
+    editable: true,
     
     UTCDate: function()
     {
@@ -284,6 +289,10 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             true
         );
         this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
+
+        if(!this.editable) {
+            this.inputEl().dom.setAttribute('readOnly', true);
+        }
 
     },
     
