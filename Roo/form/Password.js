@@ -1,3 +1,12 @@
+/**
+ * @class Roo.form.Password
+ * @extends  Roo.form.TextField
+ * Passsword entry with show password button
+ * @constructor
+ * Creates a new Password field
+ * @param {Object} config Configuration options
+ */
+
 Roo.form.Password = function(config){
     Roo.form.Password.superclass.constructor.call(this, config);
 
