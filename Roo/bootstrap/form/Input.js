@@ -307,7 +307,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             input.style = (typeof(input.style) == 'undefined') ? ('text-align:' + this.align) : (input.style + 'text-align:' + this.align);
         }
         
-        if(this.maxLength && this.maxLength != Number.MAX_VALUE){
+        if(this.maxLength && this.maxLength != Number.MAX_VALUE && this.maxLengthText != ''){
             input.maxLength = this.maxLength;
         }
         
