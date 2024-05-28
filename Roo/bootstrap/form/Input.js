@@ -197,9 +197,9 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      */
     minLengthText : "The minimum length for this field is {0}",
     /**
-     * @cfg {String} maxLengthText Error text to display if the maximum length validation fails (defaults to "The maximum length for this field is {maxLength}")
+     * @cfg {String} maxLengthText Error text to display if the maximum length validation fails
      */
-    maxLengthText : "The maximum length for this field is {0}",
+    maxLengthText : "",
   
     
     /**
@@ -723,6 +723,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             return false;
         }
         if(value.length > this.maxLength){
+            this.invalidText = this.maxLengthText;
             return false;
         }
         if(this.vtype){
