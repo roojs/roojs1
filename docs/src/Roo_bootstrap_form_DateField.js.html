@@ -99,6 +99,11 @@
 
     </span><span class="jsdoc-var">hiddenField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} editable False to prevent the user from typing text directly into the field (defaults to true)
+     */
+    </span><span class="jsdoc-var">editable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
     </span><span class="jsdoc-var">UTCDate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.UTC.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">));
@@ -284,6 +289,10 @@
             </span><span class="jsdoc-keyword">true
         </span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.name </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'____hidden___'</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editable</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'readOnly'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        }
 
     },
 

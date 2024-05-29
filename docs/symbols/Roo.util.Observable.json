@@ -187,6 +187,7 @@
       "Roo.form.ComboBoxArray",
       "Roo.form.Hidden",
       "Roo.form.NumberField",
+      "Roo.form.Password",
       "Roo.form.TextArea",
       "Roo.form.TriggerField"
     ],

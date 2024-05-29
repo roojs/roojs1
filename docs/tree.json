@@ -1140,6 +1140,11 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.form.Password",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.form.Radio",
             "cn" : [],
             "is_class" : true

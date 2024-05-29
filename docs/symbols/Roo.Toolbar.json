@@ -29,6 +29,7 @@
     "Roo.form.HtmlEditor",
     "Roo.form.MonthField",
     "Roo.form.NumberField",
+    "Roo.form.Password",
     "Roo.form.Radio",
     "Roo.form.Select",
     "Roo.form.Signature",

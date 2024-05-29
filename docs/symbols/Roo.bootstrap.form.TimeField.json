@@ -240,7 +240,7 @@
     {
       "name" : "maxLengthText",
       "type" : "String",
-      "desc" : "Error text to display if the maximum length validation fails (defaults to \"The maximum length for this field is {maxLength}\")",
+      "desc" : "Error text to display if the maximum length validation fails",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
       "optvals" : []

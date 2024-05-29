@@ -144,6 +144,14 @@
       "optvals" : []
     },
     {
+      "name" : "editable",
+      "type" : "Boolean",
+      "desc" : "False to prevent the user from typing text directly into the field (defaults to true)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "labelAlign",
       "type" : "String",
       "desc" : "",
@@ -264,7 +272,7 @@
     {
       "name" : "maxLengthText",
       "type" : "String",
-      "desc" : "Error text to display if the maximum length validation fails (defaults to \"The maximum length for this field is {maxLength}\")",
+      "desc" : "Error text to display if the maximum length validation fails",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
       "optvals" : []
