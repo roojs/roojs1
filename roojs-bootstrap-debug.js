@@ -13111,14 +13111,14 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         this.setValue(this.originalValue);
         // this.validate();
         this.el.removeClass([this.invalidClass, this.validClass]);
-        this.inputEl().removeClass(['is-valid', 'is-invalid']);
+        this.inputEl().removeClass(['is-valid', 'is-invalid', this.warningClass]);
 
         if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
-                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass, this.warningClass]);
                 feedback.update('');
                 feedback.hide();
             }
@@ -13260,8 +13260,8 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.el.removeClass([this.invalidClass, this.validClass, this.warningClass]);
-        this.inputEl().removeClass(['is-valid', 'is-invalid']);
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.inputEl().removeClass(['is-valid', 'is-invalid', this.warningClass]);
 
         var feedback = this.el.select('.form-control-feedback', true).first();
             
