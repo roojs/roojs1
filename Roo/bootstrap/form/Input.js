@@ -702,26 +702,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         if(this.disabled || this.validateValue(this.getRawValue())){
             // check for warning
             if(this.getRawValue().length > this.maxLengthWarn) {
-                this.inputEl().addClass('alert');
-                this.inputEl().addClass('alert-warning');
-                if(this.hasFeedback && this.inputType != 'hidden'){
-            
-                    var feedback = this.el.select('.form-control-feedback', true).first();
-                    
-                    if(feedback){
-                        this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
-                        
-                        this.el.select('.form-control-feedback', true).first().addClass(['alert', 'alert-warning']);
-        
-                        feedback.update(this.maxLengthWarnText);
-        
-                        if(feedback.dom.innerHTML) {
-                            feedback.show();
-                        }
-                        
-                    }
-                    
-                }
             }
             else {
                 this.markValid();
