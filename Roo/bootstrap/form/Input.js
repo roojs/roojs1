@@ -704,8 +704,32 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             if(this.getRawValue() > this.maxLengthWarn) {
                 this.inputEl().addClass('alert');
                 this.inputEl().addClass('alert-warning');
+                if(this.hasFeedback && this.inputType != 'hidden'){
+            
+                    var feedback = this.el.select('.form-control-feedback', true).first();
+                    
+                    if(feedback){
+                        this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                        
+                        this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+        
+                        feedback.update(typeof(msg) == 'undefined' ? this.invalidText : msg);
+        
+                        if(!this.allowBlank && !this.getRawValue().length){
+                            feedback.update(this.blankText);
+                        }
+        
+                        if(feedback.dom.innerHTML) {
+                            feedback.show();
+                        }
+                        
+                    }
+                    
+                }
             }
-            this.markValid();
+            else {
+                this.markValid();
+            }
             return true;
         }
         
