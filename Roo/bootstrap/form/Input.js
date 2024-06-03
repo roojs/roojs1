@@ -1090,8 +1090,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     },
     markWarning : function(msg)
     {
-        this.inputEl().addClass('alert');
-        this.inputEl().addClass('alert-warning');
         if(this.hasFeedback && this.inputType != 'hidden'){
     
             var feedback = this.el.select('.form-control-feedback', true).first();
