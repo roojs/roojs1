@@ -1070,7 +1070,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
-                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass, this.warningClass]);
                 
                 this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
 
