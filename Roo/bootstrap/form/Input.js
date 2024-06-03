@@ -979,13 +979,13 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.el.removeClass([this.invalidClass, this.validClass, this.warningClass]);
         this.inputEl().removeClass(['is-valid', 'is-invalid']);
 
         var feedback = this.el.select('.form-control-feedback', true).first();
             
         if(feedback){
-            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass, this.warningClass]);
             feedback.update('');
             feedback.hide();
         }
@@ -1014,7 +1014,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
-                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass, this.warningClass]);
                 this.el.select('.form-control-feedback', true).first().addClass([this.validFeedbackClass]);
             }
             
