@@ -702,7 +702,8 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         if(this.disabled || this.validateValue(this.getRawValue())){
             // check for warning
             if(this.getRawValue() > this.maxLengthWarn) {
-
+                this.inputEl().addClass('alert');
+                this.inputEl().addClass('alert-warning');
             }
             this.markValid();
             return true;
