@@ -1055,11 +1055,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             this.indicator.removeClass(this.indicatorpos == 'right' ? 'hidden' : 'invisible');
             this.indicator.addClass('visible');
         }
-        if (Roo.bootstrap.version == 3) {
-            this.el.addClass(this.invalidClass);
-        } else {
-            this.inputEl().addClass('is-invalid');
-        }
+        this.inputEl().addClass('is-warned');
         
         
         
