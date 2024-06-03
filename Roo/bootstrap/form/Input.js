@@ -979,8 +979,8 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.el.removeClass([this.invalidClass, this.validClass, this.warningClass]);
-        this.inputEl().removeClass(['is-valid', 'is-invalid']);
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.inputEl().removeClass(['is-valid', 'is-invalid', this.warningClass]);
 
         var feedback = this.el.select('.form-control-feedback', true).first();
             
