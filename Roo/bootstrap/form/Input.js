@@ -1090,6 +1090,18 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     },
     markWarning : function(msg)
     {
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.inputEl().removeClass(['is-valid', 'is-invalid']);
+        
+        var feedback = this.el.select('.form-control-feedback', true).first();
+            
+        if(feedback){
+            this.el.select('.form-control-feedback', true).first().removeClass(
+                    [this.invalidFeedbackClass, this.validFeedbackClass]);
+            feedback.update('');
+            feedback.hide();
+        }
+
         if(this.hasFeedback && this.inputType != 'hidden'){
     
             var feedback = this.el.select('.form-control-feedback', true).first();
@@ -1097,7 +1109,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 
-                this.el.select('.form-control-feedback', true).first().addClass(['alert', 'alert-warning']);
+                this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
 
                 feedback.update(typeof(msg) == 'undefined' ? '' : msg);
 
