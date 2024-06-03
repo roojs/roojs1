@@ -700,6 +700,10 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     validate : function(){
         //if(this.disabled || this.validateValue(this.processValue(this.getRawValue()))){
         if(this.disabled || this.validateValue(this.getRawValue())){
+            // check for warning
+            if(this.getRawValue() > this.maxLengthWarn) {
+
+            }
             this.markValid();
             return true;
         }
