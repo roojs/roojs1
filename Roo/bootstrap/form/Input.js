@@ -830,7 +830,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         this.setValue(this.originalValue);
         // this.validate();
         this.el.removeClass([this.invalidClass, this.validClass]);
-        this.inputEl().removeClass(['is-valid', 'is-invalid']);
+        this.inputEl().removeClass(['is-valid', 'is-invalid', this.warningClass]);
 
         if(this.hasFeedback && this.inputType != 'hidden'){
             
