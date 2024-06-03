@@ -200,6 +200,11 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      * @cfg {String} maxLengthText Error text to display if the maximum length validation fails
      */
     maxLengthText : "",
+
+    maxLengthWarn : Number.MAX_VALUE,
+
+    maxLengthWarnText : "",
+    
   
     
     /**
