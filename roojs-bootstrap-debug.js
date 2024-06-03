@@ -12489,6 +12489,8 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      * @cfg {String} maxLengthWarnText Warning text to display if the input field length exceed 'maxLengthWarn'
      */
     maxLengthWarnText : "",
+
+    warningClass : "is-warned",
     
   
     
@@ -13258,13 +13260,13 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.el.removeClass([this.invalidClass, this.validClass, this.warningClass]);
         this.inputEl().removeClass(['is-valid', 'is-invalid']);
 
         var feedback = this.el.select('.form-control-feedback', true).first();
             
         if(feedback){
-            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass, this.warningClass]);
             feedback.update('');
             feedback.hide();
         }
@@ -13293,7 +13295,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
-                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass, this.warningClass]);
                 this.el.select('.form-control-feedback', true).first().addClass([this.validFeedbackClass]);
             }
             
@@ -13313,13 +13315,13 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         
         this.el.removeClass([this.invalidClass, this.validClass]);
-        this.inputEl().removeClass(['is-valid', 'is-invalid']);
+        this.inputEl().removeClass(['is-valid', 'is-invalid', this.warningClass]);
         
         var feedback = this.el.select('.form-control-feedback', true).first();
             
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass(
-                    [this.invalidFeedbackClass, this.validFeedbackClass]);
+                    [this.invalidFeedbackClass, this.validFeedbackClass, this.warningClass]);
             feedback.update('');
             feedback.hide();
         }
@@ -13349,7 +13351,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
-                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass, this.warningClass]);
                 
                 this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
 
@@ -13372,13 +13374,13 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     markWarning : function(msg)
     {
         this.el.removeClass([this.invalidClass, this.validClass]);
-        this.inputEl().removeClass(['is-valid', 'is-invalid']);
+        this.inputEl().removeClass(['is-valid', 'is-invalid', this.warningClass]);
         
         var feedback = this.el.select('.form-control-feedback', true).first();
             
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass(
-                    [this.invalidFeedbackClass, this.validFeedbackClass]);
+                    [this.invalidFeedbackClass, this.validFeedbackClass, this.warningClass]);
             feedback.update('');
             feedback.hide();
         }
@@ -13387,16 +13389,16 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             this.indicator.removeClass(this.indicatorpos == 'right' ? 'hidden' : 'invisible');
             this.indicator.addClass('visible');
         }
-        this.inputEl().addClass('is-warned');
+        this.inputEl().addClass(this.warningClass);
 
         if(this.hasFeedback && this.inputType != 'hidden'){
     
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
-                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass, this.warningClass]);
                 
-                this.el.select('.form-control-feedback', true).first().addClass(['is-warned']);
+                this.el.select('.form-control-feedback', true).first().addClass([this.warningClass]);
 
                 feedback.update(typeof(msg) == 'undefined' ? '' : msg);
 
