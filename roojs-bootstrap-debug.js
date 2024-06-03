@@ -13336,11 +13336,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             this.indicator.removeClass(this.indicatorpos == 'right' ? 'hidden' : 'invisible');
             this.indicator.addClass('visible');
         }
-        if (Roo.bootstrap.version == 3) {
-            this.el.addClass(this.invalidClass);
-        } else {
-            this.inputEl().addClass('is-invalid');
-        }
+        this.inputEl().addClass('is-warned');
         
         
         
@@ -13400,7 +13396,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 
-                this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass, 'is_warned']);
+                this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
 
                 feedback.update(typeof(msg) == 'undefined' ? '' : msg);
 
