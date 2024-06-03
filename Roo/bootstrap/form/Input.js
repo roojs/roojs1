@@ -1110,7 +1110,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             }
             
         }
-    }
+    },
     // private
     SafariOnKeyDown : function(event)
     {
