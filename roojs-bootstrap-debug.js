@@ -12481,6 +12481,15 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      * @cfg {String} maxLengthText Error text to display if the maximum length validation fails
      */
     maxLengthText : "",
+    /**
+     * @cfg {Number} maxLengthWarn Warning will be shown if the input field length exceed it
+     */
+    maxLengthWarn : Number.MAX_VALUE,
+    /**
+     * @cfg {String} maxLengthWarnText Warning text to display if the input field length exceed 'maxLengthWarn'
+     */
+    maxLengthWarnText : "",
+    
   
     
     /**
@@ -12972,7 +12981,32 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     validate : function(){
         //if(this.disabled || this.validateValue(this.processValue(this.getRawValue()))){
         if(this.disabled || this.validateValue(this.getRawValue())){
-            this.markValid();
+            // check for warning
+            if(this.getRawValue() > this.maxLengthWarn) {
+                this.inputEl().addClass('alert');
+                this.inputEl().addClass('alert-warning');
+                if(this.hasFeedback && this.inputType != 'hidden'){
+            
+                    var feedback = this.el.select('.form-control-feedback', true).first();
+                    
+                    if(feedback){
+                        this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                        
+                        this.el.select('.form-control-feedback', true).first().addClass(['alert', 'alert-warning']);
+        
+                        feedback.update(this.maxLengthWarnText);
+        
+                        if(feedback.dom.innerHTML) {
+                            feedback.show();
+                        }
+                        
+                    }
+                    
+                }
+            }
+            else {
+                this.markValid();
+            }
             return true;
         }
         
