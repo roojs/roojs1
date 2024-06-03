@@ -713,11 +713,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                         
                         this.el.select('.form-control-feedback', true).first().addClass(['alert', 'alert-warning']);
         
-                        feedback.update(typeof(msg) == 'undefined' ? this.invalidText : msg);
-        
-                        if(!this.allowBlank && !this.getRawValue().length){
-                            feedback.update(this.blankText);
-                        }
+                        feedback.update(this.maxLengthWarnText);
         
                         if(feedback.dom.innerHTML) {
                             feedback.show();
