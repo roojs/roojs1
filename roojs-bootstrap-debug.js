@@ -13371,6 +13371,28 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     },
     markWarning : function(msg)
     {
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.inputEl().removeClass(['is-valid', 'is-invalid']);
+        
+        var feedback = this.el.select('.form-control-feedback', true).first();
+            
+        if(feedback){
+            this.el.select('.form-control-feedback', true).first().removeClass(
+                    [this.invalidFeedbackClass, this.validFeedbackClass]);
+            feedback.update('');
+            feedback.hide();
+        }
+
+        if(this.indicator){
+            this.indicator.removeClass(this.indicatorpos == 'right' ? 'hidden' : 'invisible');
+            this.indicator.addClass('visible');
+        }
+        if (Roo.bootstrap.version == 3) {
+            this.el.addClass(this.invalidClass);
+        } else {
+            this.inputEl().addClass('is-invalid');
+        }
+
         if(this.hasFeedback && this.inputType != 'hidden'){
     
             var feedback = this.el.select('.form-control-feedback', true).first();
@@ -13378,7 +13400,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 
-                this.el.select('.form-control-feedback', true).first().addClass(['alert', 'alert-warning']);
+                this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
 
                 feedback.update(typeof(msg) == 'undefined' ? '' : msg);
 
