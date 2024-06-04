@@ -12481,6 +12481,17 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      * @cfg {String} maxLengthText Error text to display if the maximum length validation fails
      */
     maxLengthText : "",
+    /**
+     * @cfg {Number} maxLengthWarn Warning will be shown if the input field length exceed it
+     */
+    maxLengthWarn : Number.MAX_VALUE,
+    /**
+     * @cfg {String} maxLengthWarnText Warning text to display if the input field length exceed 'maxLengthWarn'
+     */
+    maxLengthWarnText : "",
+
+    warningClass : "is-warned",
+    
   
     
     /**
@@ -12972,7 +12983,13 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     validate : function(){
         //if(this.disabled || this.validateValue(this.processValue(this.getRawValue()))){
         if(this.disabled || this.validateValue(this.getRawValue())){
-            this.markValid();
+            // check for warning
+            if(this.getRawValue().length > this.maxLengthWarn) {
+                this.markWarning(this.maxLengthWarnText);
+            }
+            else {
+                this.markValid();
+            }
             return true;
         }
         
@@ -13094,14 +13111,14 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         this.setValue(this.originalValue);
         // this.validate();
         this.el.removeClass([this.invalidClass, this.validClass]);
-        this.inputEl().removeClass(['is-valid', 'is-invalid']);
+        this.inputEl().removeClass(['is-valid', 'is-invalid', this.warningClass]);
 
         if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
-                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass, this.warningClass]);
                 feedback.update('');
                 feedback.hide();
             }
@@ -13244,12 +13261,12 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         
         this.el.removeClass([this.invalidClass, this.validClass]);
-        this.inputEl().removeClass(['is-valid', 'is-invalid']);
+        this.inputEl().removeClass(['is-valid', 'is-invalid', this.warningClass]);
 
         var feedback = this.el.select('.form-control-feedback', true).first();
             
         if(feedback){
-            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass, this.warningClass]);
             feedback.update('');
             feedback.hide();
         }
@@ -13278,7 +13295,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
-                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass, this.warningClass]);
                 this.el.select('.form-control-feedback', true).first().addClass([this.validFeedbackClass]);
             }
             
@@ -13298,13 +13315,13 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         
         this.el.removeClass([this.invalidClass, this.validClass]);
-        this.inputEl().removeClass(['is-valid', 'is-invalid']);
+        this.inputEl().removeClass(['is-valid', 'is-invalid', this.warningClass]);
         
         var feedback = this.el.select('.form-control-feedback', true).first();
             
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass(
-                    [this.invalidFeedbackClass, this.validFeedbackClass]);
+                    [this.invalidFeedbackClass, this.validFeedbackClass, this.warningClass]);
             feedback.update('');
             feedback.hide();
         }
@@ -13334,7 +13351,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
-                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass, this.warningClass]);
                 
                 this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
 
@@ -13353,6 +13370,45 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         
         this.fireEvent('invalid', this, msg);
+    },
+    markWarning : function(msg)
+    {
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.inputEl().removeClass(['is-valid', 'is-invalid', this.warningClass]);
+        
+        var feedback = this.el.select('.form-control-feedback', true).first();
+            
+        if(feedback){
+            this.el.select('.form-control-feedback', true).first().removeClass(
+                    [this.invalidFeedbackClass, this.validFeedbackClass, this.warningClass]);
+            feedback.update('');
+            feedback.hide();
+        }
+
+        if(this.indicator){
+            this.indicator.removeClass(this.indicatorpos == 'right' ? 'hidden' : 'invisible');
+            this.indicator.addClass('visible');
+        }
+        this.inputEl().addClass(this.warningClass);
+
+        if(this.hasFeedback && this.inputType != 'hidden'){
+    
+            var feedback = this.el.select('.form-control-feedback', true).first();
+            
+            if(feedback){
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass, this.warningClass]);
+                
+                this.el.select('.form-control-feedback', true).first().addClass([this.warningClass]);
+
+                feedback.update(typeof(msg) == 'undefined' ? '' : msg);
+
+                if(feedback.dom.innerHTML) {
+                    feedback.show();
+                }
+                
+            }
+            
+        }
     },
     // private
     SafariOnKeyDown : function(event)
