@@ -1706,19 +1706,6 @@ textarea.form-control {
   border-color: #dc3545;
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25); }
 
-.was-validated .form-control:is-warned, .form-control.is-warned {
-  border-color: #fb6836;
-  padding-right: calc(1.5em + 0.75rem);
-  background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22currentColor%22%20class%3D%22bi%20bi-exclamation-triangle%22%20viewBox%3D%220%200%2016%2016%22%3E%0A%20%20%3Cpath%20fill%3D%22%23fb6836%22%20d%3D%22M7.938%202.016A.13.13%200%200%201%208.002%202a.13.13%200%200%201%20.063.016.15.15%200%200%201%20.054.057l6.857%2011.667c.036.06.035.124.002.183a.2.2%200%200%201-.054.06.1.1%200%200%201-.066.017H1.146a.1.1%200%200%201-.066-.017.2.2%200%200%201-.054-.06.18.18%200%200%201%20.002-.183L7.884%202.073a.15.15%200%200%201%20.054-.057m1.044-.45a1.13%201.13%200%200%200-1.96%200L.165%2013.233c-.457.778.091%201.767.98%201.767h13.713c.889%200%201.438-.99.98-1.767z%22%2F%3E%0A%20%20%3Cpath%20fill%3D%22%23fb6836%22%20d%3D%22M7.002%2012a1%201%200%201%201%202%200%201%201%200%200%201-2%200M7.1%205.995a.905.905%200%201%201%201.8%200l-.35%203.507a.552.552%200%200%201-1.1%200z%22%2F%3E%0A%3C%2Fsvg%3E');
-  background-repeat: no-repeat;
-  background-position: right calc(0.375em + 0.1875rem) center;
-  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
-}
-.was-validated .form-control:is-warned:focus, .form-control.is-warned:focus {
-  border-color: #fb6836;
-  box-shadow: 0 0 0 0.2rem rgba(251, 104, 54, 0.25);
-}
-
 .form-inline {
   display: flex;
   flex-flow: row wrap;
