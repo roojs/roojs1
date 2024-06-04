@@ -27,6 +27,14 @@
   "requires" : "",
   "config" : [
     {
+      "name" : "maxLengthWarn",
+      "type" : "Number",
+      "desc" : "Warning will be shown if the input field length exceed it",
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "validFeedbackIcon",
       "type" : "String",
       "desc" : "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
@@ -279,6 +287,14 @@
       ]
     },
     {
+      "name" : "maxLengthWarnText",
+      "type" : "String",
+      "desc" : "Warning text to display if the input field length exceed 'maxLengthWarn'",
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "wrap",
       "type" : "string",
       "desc" : "d)Specifies how the text in a text area is to be wrapped when submitted in a fo",
@@ -322,14 +338,6 @@
       "optvals" : []
     },
     {
-      "name" : "validateOnBlur",
-      "type" : "Boolean",
-      "desc" : "Whether the field should validate when it loses focus (defaults to true).",
-      "memberOf" : "Roo.bootstrap.form.Input",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
       "name" : "labelxs",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
@@ -342,6 +350,14 @@
       "type" : "Number",
       "desc" : "Specifies the visible number of lines in a text area",
       "memberOf" : "Roo.bootstrap.form.TextArea",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "validateOnBlur",
+      "type" : "Boolean",
+      "desc" : "Whether the field should validate when it loses focus (defaults to true).",
+      "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
       "optvals" : []
     },

@@ -33,6 +33,14 @@
   "requires" : "",
   "config" : [
     {
+      "name" : "maxLengthWarn",
+      "type" : "Number",
+      "desc" : "Warning will be shown if the input field length exceed it",
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "validFeedbackIcon",
       "type" : "String",
       "desc" : "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
@@ -285,18 +293,18 @@
       ]
     },
     {
-      "name" : "language",
+      "name" : "maxLengthWarnText",
       "type" : "String",
-      "desc" : "default en",
-      "memberOf" : "",
+      "desc" : "Warning text to display if the input field length exceed 'maxLengthWarn'",
+      "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
       "optvals" : []
     },
     {
-      "name" : "focusClass",
+      "name" : "language",
       "type" : "String",
-      "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
-      "memberOf" : "Roo.bootstrap.form.Input",
+      "desc" : "default en",
+      "memberOf" : "",
       "isOptional" : false,
       "optvals" : []
     },
@@ -312,6 +320,14 @@
       "name" : "labellg",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "focusClass",
+      "type" : "String",
+      "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
       "optvals" : []

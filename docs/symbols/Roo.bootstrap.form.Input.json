@@ -64,6 +64,14 @@
       "optvals" : []
     },
     {
+      "name" : "maxLengthWarn",
+      "type" : "Number",
+      "desc" : "Warning will be shown if the input field length exceed it",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "lg",
       "type" : "Number",
       "desc" : "colspan out of 12 for large computer-sized screens",
@@ -306,6 +314,14 @@
         "center",
         "right"
       ]
+    },
+    {
+      "name" : "maxLengthWarnText",
+      "type" : "String",
+      "desc" : "Warning text to display if the input field length exceed 'maxLengthWarn'",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
     },
     {
       "name" : "size",

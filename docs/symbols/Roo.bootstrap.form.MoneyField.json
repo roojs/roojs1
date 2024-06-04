@@ -51,6 +51,14 @@
       "optvals" : []
     },
     {
+      "name" : "maxLengthWarnText",
+      "type" : "String",
+      "desc" : "Warning text to display if the input field length exceed 'maxLengthWarn'",
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "md",
       "type" : "Number",
       "desc" : "colspan out of 12 for computer-sized screens",
@@ -502,6 +510,14 @@
       "name" : "minLengthText",
       "type" : "String",
       "desc" : "Error text to display if the minimum length validation fails (defaults to \"The minimum length for this field is {minLength}\")",
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "maxLengthWarn",
+      "type" : "Number",
+      "desc" : "Warning will be shown if the input field length exceed it",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
       "optvals" : []
