@@ -1716,7 +1716,7 @@ textarea.form-control {
 }
 .was-validated .form-control:is-warned:focus, .form-control.is-warned:focus {
   border-color: #fb6836;
-  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(251, 104, 54, 0.25);
 }
 
 .form-inline {
