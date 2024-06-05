@@ -242,12 +242,13 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     {
         var valueField = this.combo.valueField;
         var displayField = this.combo.displayField;
-	
+		
+		
         if (this.items.indexOfKey(rec[valueField]) > -1) {
             //console.log("GOT " + rec.data.id);
             return;
         }
-        
+        var old = this.getValue();
         var x = new Roo.form.ComboBoxArray.Item({
             //id : rec[this.idField],
             data : rec,
@@ -260,6 +261,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         // add it before the element..
         this.updateHiddenEl();
         x.render(this.outerWrap, this.wrap.dom);
+		this.fireEvent('change', this, old, this.getValue());
         // add the image handler..
     },
     
@@ -481,12 +483,15 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
         }
         
         if(false !== this.cb.fireEvent('beforeremove', this.cb, this)){
+			var old = this.cb.getValue();
             this.cb.items.remove(this);
             this.el.child('img').un('click', this.remove, this);
             this.el.remove();
             this.cb.updateHiddenEl();
-
+			
             this.cb.fireEvent('remove', this.cb, this);
+			this.cb.fireEvent('change', this.cb, old, this.cb.getValue());
+			
         }
         
     }
