@@ -261,7 +261,7 @@
         </span><span class="jsdoc-comment">// add it before the element..
         </span><span class="jsdoc-var">this.updateHiddenEl</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">x.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.outerWrap</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.wrap.dom</span><span class="jsdoc-syntax">);
-		</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">old</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">());
+		</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">old</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">// add the image handler..
     </span><span class="jsdoc-syntax">},
 
@@ -490,7 +490,7 @@
             </span><span class="jsdoc-var">this.cb.updateHiddenEl</span><span class="jsdoc-syntax">();
 
             </span><span class="jsdoc-var">this.cb.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'remove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-			</span><span class="jsdoc-var">this.cb.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">old</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cb.getValue</span><span class="jsdoc-syntax">());
+			</span><span class="jsdoc-var">this.cb.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cb.getValue</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">old</span><span class="jsdoc-syntax">);
 
         }
 
