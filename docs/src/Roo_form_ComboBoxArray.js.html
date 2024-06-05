@@ -243,11 +243,12 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">valueField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.combo.valueField</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">displayField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.combo.displayField</span><span class="jsdoc-syntax">;
 
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items.indexOfKey</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rec</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">valueField</span><span class="jsdoc-syntax">]) &gt; -1) {
             </span><span class="jsdoc-comment">//console.log(&quot;GOT &quot; + rec.data.id);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">old </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.form.ComboBoxArray.Item</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-comment">//id : rec[this.idField],
             </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rec</span><span class="jsdoc-syntax">,
@@ -260,6 +261,7 @@
         </span><span class="jsdoc-comment">// add it before the element..
         </span><span class="jsdoc-var">this.updateHiddenEl</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">x.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.outerWrap</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.wrap.dom</span><span class="jsdoc-syntax">);
+		</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">old</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">());
         </span><span class="jsdoc-comment">// add the image handler..
     </span><span class="jsdoc-syntax">},
 
@@ -481,12 +483,15 @@
         }
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">this.cb.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeremove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)){
+			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">old </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cb.getValue</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.cb.items.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.remove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.el.remove</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.cb.updateHiddenEl</span><span class="jsdoc-syntax">();
 
             </span><span class="jsdoc-var">this.cb.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'remove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+			</span><span class="jsdoc-var">this.cb.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">old</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cb.getValue</span><span class="jsdoc-syntax">());
+
         }
 
     }

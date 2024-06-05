@@ -21709,7 +21709,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         // add it before the element..
         this.updateHiddenEl();
         x.render(this.outerWrap, this.wrap.dom);
-		this.fireEvent('change', this, old, this.getValue());
+		this.fireEvent('change', this, this.getValue(), old);
         // add the image handler..
     },
     
@@ -21938,7 +21938,7 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
             this.cb.updateHiddenEl();
 			
             this.cb.fireEvent('remove', this.cb, this);
-			this.cb.fireEvent('change', this.cb, old, this.cb.getValue());
+			this.cb.fireEvent('change', this.cb, this.cb.getValue(), old);
 			
         }
         
