@@ -200,6 +200,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
 	    
     },
     
+	
     
     getName: function()
     {
@@ -339,6 +340,22 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         
         
     },
+	/**
+	 * Get the key/value data from the contents.
+	 * 
+	 * @returns Array of objects 
+	 */
+	
+	getItemsValue: function()
+	{
+		var ret  = [];
+		this.items.each(function(v) {
+			ret.push(v.data);
+		});
+		return ret;
+	},
+	
+	
     setFromData: function(v)
     {
         // this recieves an object, if setValues is called.
