@@ -456,6 +456,25 @@
       ]
     },
     {
+      "name" : "getItemsValue",
+      "type" : "function",
+      "desc" : "Get the key/value data from the contents.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
       "name" : "selectText",
       "type" : "function",
       "desc" : "Selects text in this field",
