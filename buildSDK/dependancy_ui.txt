@@ -118,7 +118,6 @@ Roo.htmleditor.FilterEmpty
 Roo.htmleditor.FilterKeepChildren
 Roo.htmleditor.FilterParagraph
 Roo.htmleditor.FilterHashLink
-Roo.htmleditor.FilterFigureLink
 Roo.htmleditor.FilterSpan
 Roo.htmleditor.FilterTableWidth
 Roo.htmleditor.FilterWord
