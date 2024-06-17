@@ -32258,6 +32258,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 fig.updateElement(img); // replace it..
                 
             });
+
+            Array.from(d.getElementsByTagName('img')).forEach(function(img) {
+                var fig = img.closest('figure');
+                if(fig) {
+                    var parent = fig.parentNode;
+
+                    if(parent.tagName == 'A') {
+                        parent.parentNode.insertBefore(fig, parent);
+                        parent.parentNode.removeChild(parent);
+                    }
+                }
+                
+            });
         }
         
         
