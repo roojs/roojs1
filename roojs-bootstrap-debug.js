@@ -27582,39 +27582,6 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
      }
      
  });/**
- * @class Roo.htmleditor.FilterFigureLink
- * remove figure link
- * @constructor
- * Run a new Figure Link Filter
- * @param {Object} config Configuration options
- */
-
- Roo.htmleditor.FilterFigureLink = function(cfg)
- {
-    this.searchTag(cfg.node);
- }
- 
- Roo.extend(Roo.htmleditor.FilterFigureLink, Roo.htmleditor.Filter,
- {
-      
-     tag : 'A',
-     
-      
-     replaceTag : function(node)
-     {
-        Roo.log('FILTER FIGURE LINK');
-        ar = Array.from(node.childNodes);
-        Roo.log(ar);
-
-        if(ar.length == 1 && ar[0].tagName == 'figure') {
-            Roo.log(ar[0]);
-        }
-         
-         return false;
- 
-     }
-     
- });/**
  * @class Roo.htmleditor.FilterSpan
  * filter span's with no attributes out..
  * @constructor
@@ -32272,7 +32239,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', ':' ]} );
             new Roo.htmleditor.FilterParagraph({ node : d });
             new Roo.htmleditor.FilterHashLink({node : d});
-            new Roo.htmleditor.FilterFigureLink({node : d});
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
             new Roo.htmleditor.FilterComment({ node : d });
