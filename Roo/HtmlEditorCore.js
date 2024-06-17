@@ -754,6 +754,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 
             });
 
+            /*
             Array.from(d.getElementsByTagName('img')).forEach(function(img) {
                 var fig = img.closest('figure');
                 if(fig) {
@@ -766,6 +767,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 }
                 
             });
+            */
         }
         
         
