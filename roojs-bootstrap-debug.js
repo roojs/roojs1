@@ -27604,6 +27604,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
      {
         Roo.log('FILTER FIGURE LINK');
         ar = Array.from(node.childNodes);
+        Roo.log(ar);
 
         if(ar.length == 1 && ar[0].tagName == 'figure') {
             Roo.log(ar[0]);
