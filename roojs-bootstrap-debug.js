@@ -27594,7 +27594,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
     this.searchTag(cfg.node);
  }
  
- Roo.extend(Roo.htmleditor.FilterHashLink, Roo.htmleditor.Filter,
+ Roo.extend(Roo.htmleditor.FilterFigureLink, Roo.htmleditor.Filter,
  {
       
      tag : 'A',
