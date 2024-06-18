@@ -752,6 +752,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 if (img.closest('figure')) { // assume!! that it's aready
                     return;
                 }
+                Roo.log('IMG SRC');
+                Roo.log(img.src);
                 var fig  = new Roo.htmleditor.BlockFigure({
                     image_src  : img.src
                 });
