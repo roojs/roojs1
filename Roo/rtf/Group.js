@@ -35,18 +35,8 @@ Roo.rtf.Group.prototype = {
             default :
                 return 'about:blank'; // ?? error?
         }
-        Roo.log(mimetype);
-        var start = performance.now();
-        
         
         var hexstring = this.content[this.content.length-1].value;
-
-        var ar = hexstring.match(/\w{2}/g);
-
-        Roo.log('TO DATA URL');
-        var now = performance.now();
-        Roo.log(now - start);
-        start = now;
         
         return 'data:' + mimetype + ';base64,' + btoa(hexstring.match(/\w{2}/g).map(function(a) {
             return String.fromCharCode(parseInt(a, 16));
