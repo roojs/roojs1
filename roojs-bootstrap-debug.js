@@ -32210,8 +32210,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         if (this.autoClean) {
             new Roo.htmleditor.FilterWord({ node : d });
+            Roo.log('AFTER WORD');
+            Roo.log(d.innerHTML);
             
             new Roo.htmleditor.FilterStyleToTag({ node : d });
+            Roo.log('AFTER STYLE TO TAG');
+            Roo.log(d.innerHTML);
             new Roo.htmleditor.FilterAttributes({
                 node : d,
                 attrib_white : [
@@ -32239,14 +32243,30 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     ],
                 attrib_clean : ['href', 'src' ] 
             });
+            Roo.log('AFTER ATTRIBUTES');
+            Roo.log(d.innerHTML);
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
+            Roo.log('AFTER BLACK');
+            Roo.log(d.innerHTML);
             // should be fonts..
             new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', ':' ]} );
+            Roo.log('KEEP CHILDREN');
+            Roo.log(d.innerHTML);
             new Roo.htmleditor.FilterParagraph({ node : d });
+            Roo.log('AFTER PARAGRAPH');
+            Roo.log(d.innerHTML);
             new Roo.htmleditor.FilterHashLink({node : d});
+            Roo.log('AFTER HASH LINK');
+            Roo.log(d.innerHTML);
             new Roo.htmleditor.FilterSpan({ node : d });
+            Roo.log('AFTER SPAN');
+            Roo.log(d.innerHTML);
             new Roo.htmleditor.FilterLongBr({ node : d });
+            Roo.log('AFTER LONG BR');
+            Roo.log(d.innerHTML);
             new Roo.htmleditor.FilterComment({ node : d });
+            Roo.log('AFTER COMMENT');
+            Roo.log(d.innerHTML);
             new Roo.htmleditor.FilterEmpty({ node : d});
             
             
