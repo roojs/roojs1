@@ -26644,6 +26644,7 @@ Roo.rtf.Group.prototype = {
             default :
                 return 'about:blank'; // ?? error?
         }
+        Roo.log(mimetype);
         
         
         var hexstring = this.content[this.content.length-1].value;

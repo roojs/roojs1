@@ -1157,7 +1157,7 @@ Roo.rtf.Paragraph=function(A){this.content=[];};
 Roo.rtf.Span=function(A){this.value=A.value;};
 // Roo/rtf/Group.js
 Roo.rtf.Group=function(A){this.content=[];this.cn=[];};Roo.rtf.Group.prototype={ignorable:false,content:false,cn:false,addContent:function(A){this.content.push(A);},addChild:function(cn){this.cn.push(cn);},toDataURL:function(){var A=false;switch(true){case this.content.filter(function(a){return a.value=='pngblip'}
-).length>0:A="image/png";break;case this.content.filter(function(a){return a.value=='jpegblip'}).length>0:A="image/jpeg";break;default:return 'about:blank';}var B=this.content[this.content.length-1].value;return 'data:'+A+';base64,'+btoa(B.match(/\w{2}/g).map(function(a){return String.fromCharCode(parseInt(a,16));
+).length>0:A="image/png";break;case this.content.filter(function(a){return a.value=='jpegblip'}).length>0:A="image/jpeg";break;default:return 'about:blank';}Roo.log(A);var B=this.content[this.content.length-1].value;return 'data:'+A+';base64,'+btoa(B.match(/\w{2}/g).map(function(a){return String.fromCharCode(parseInt(a,16));
 }).join(""));}};
 // Roo/rtf/Document.js
 Roo.rtf.Document=function(){this.rtlch=[];this.content=[];this.cn=[];};Roo.extend(Roo.rtf.Document,Roo.rtf.Group,{addChild:function(cn){this.cn.push(cn);switch(cn.type){case 'rtlch':case 'listtext':case 'shpinst':this.rtlch.push(cn);return;default:this[cn.type]=cn;
