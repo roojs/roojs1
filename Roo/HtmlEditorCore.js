@@ -744,7 +744,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
         }
 
-        Roo.log('BEFORE FIGURE CLEAN');
+        Roo.log('AFTER CLEAN');
         Roo.log(d.innerHTML);
         if (this.enableBlocks) {
                 
@@ -752,8 +752,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 if (img.closest('figure')) { // assume!! that it's aready
                     return;
                 }
-                Roo.log('IMG SRC');
-                Roo.log(img.src);
                 var fig  = new Roo.htmleditor.BlockFigure({
                     image_src  : img.src
                 });
@@ -776,9 +774,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             });
             */
         }
-
-        Roo.log('AFTER FIGURE');
-        Roo.log(d.innerHTML);
         
         
         this.insertAtCursor(d.innerHTML.replace(/&nbsp;/g,' '));
