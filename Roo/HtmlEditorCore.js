@@ -654,8 +654,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         var images = [];
         var html = cd.getData('text/html'); // clipboard event
-        Roo.log("ON PASTE");
-        Roo.log(html);
         if (cd.types.indexOf('text/rtf') > -1) {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
