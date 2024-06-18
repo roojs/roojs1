@@ -703,8 +703,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (this.autoClean) {
             new Roo.htmleditor.FilterWord({ node : d });
             new Roo.htmleditor.FilterStyleToTag({ node : d });
-            Roo.log('BEFORE ATTRIBUTES');
-            Roo.log(d.innerHTML);
             new Roo.htmleditor.FilterAttributes({
                 node : d,
                 attrib_white : [
@@ -732,8 +730,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     ],
                 attrib_clean : ['href', 'src' ] 
             });
-            Roo.log('AFTER ATTRIBUTES');
-            Roo.log(d.innerHTML);
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
             // should be fonts..
             new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', ':' ]} );
