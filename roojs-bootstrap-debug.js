@@ -32258,6 +32258,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
             
         }
+
+        Roo.log('AFTER CLEAN');
+        Roo.log(d.innerHTML);
         if (this.enableBlocks) {
                 
             Array.from(d.getElementsByTagName('img')).forEach(function(img) {
