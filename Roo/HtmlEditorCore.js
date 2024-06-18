@@ -669,6 +669,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
+
+        Roo.log('END PARSE RTF');
+        var now = performance.now();
+        Roo.log(now - start);
+        start = now;
         // Roo.log(images);
         // Roo.log(imgs);
         // fixme..
