@@ -677,6 +677,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         Roo.log('AFTER PARSE');
         Roo.log(d);
+        Roo.log(d.innerHTML);
         
         
         var sn = this.getParentElement();
