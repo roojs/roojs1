@@ -707,9 +707,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 img.setAttribute('src', images[i]);
             });
         }
-
-        Roo.log('BEFORE CLEAN');
-        Roo.log(d);
+        
         if (this.autoClean) {
             new Roo.htmleditor.FilterWord({ node : d });
             
