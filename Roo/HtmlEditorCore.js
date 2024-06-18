@@ -656,6 +656,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (cd.types.indexOf('text/html') < 0 ) {
             return false;
         }
+
+        Roo.log('READ IMAGE');
         var images = [];
         var html = cd.getData('text/html'); // clipboard event
         if (cd.types.indexOf('text/rtf') > -1) {
