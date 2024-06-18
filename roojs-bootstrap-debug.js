@@ -32117,9 +32117,14 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
+
+        Roo.log('ON PASTE');
+        Roo.log(cd);
+        var start = performance.now();
         
         // check what type of paste - if it's an image, then handle it differently.
         if (cd.files && cd.files.length > 0 && cd.types.indexOf('text/html') < 0) {
+            Roo.log('LOAD IMAGE');
             // pasting images? 
             var urlAPI = (window.createObjectURL && window) || 
                 (window.URL && URL.revokeObjectURL && URL) || 
@@ -32157,10 +32162,14 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (cd.types.indexOf('text/html') < 0 ) {
             return false;
         }
+
+        Roo.log('END LOAD IMAGE');
+        var now = performance.now();
+        Roo.log(now - start);
+        start = now;
+        
         var images = [];
         var html = cd.getData('text/html'); // clipboard event
-        Roo.log("ON PASTE");
-        Roo.log(html);
         if (cd.types.indexOf('text/rtf') > -1) {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
