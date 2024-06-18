@@ -32289,6 +32289,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             });
             */
         }
+
+        Roo.log('AFTER FIGURE');
+        Roo.log(d.innerHTML);
         
         
         this.insertAtCursor(d.innerHTML.replace(/&nbsp;/g,' '));
