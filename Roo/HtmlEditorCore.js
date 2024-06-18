@@ -707,6 +707,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             });
         }
 
+        Roo.log('BEFORE CLEAN');
+        Roo.log(d.innerHTML);
+
         if (this.autoClean) {
             new Roo.htmleditor.FilterWord({ node : d });
             
