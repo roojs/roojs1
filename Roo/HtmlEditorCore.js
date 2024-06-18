@@ -615,6 +615,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         Roo.log('ON PASTE');
         Roo.log(cd);
+        Roo.log(cd.files);
+        Roo.log(cd.types);
         var start = performance.now();
         
         // check what type of paste - if it's an image, then handle it differently.
