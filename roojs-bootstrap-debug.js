@@ -32181,7 +32181,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
 
         Roo.log('AFTER PARSE');
-        Roo.log(d);
         Roo.log(d.innerHTML);
         
         
@@ -32212,7 +32211,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 img.setAttribute('src', images[i]);
             });
         }
-        
+
+        Roo.log('BEFORE CLEAN');
+        Roo.log(d.innerHTML);
+
         if (this.autoClean) {
             new Roo.htmleditor.FilterWord({ node : d });
             
