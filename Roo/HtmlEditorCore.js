@@ -679,10 +679,18 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         // Roo.log(imgs);
         // fixme..
         images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl|listtable|footerf)/); }); // ignore headers/footers etc.
+        Roo.log('END FILTER PICT PATH');
+        var now = performance.now();
+        Roo.log(now - start);
+        start = now;
         images = images.map(function(g) { return g.toDataURL(); });
+        Roo.log('END MAP DATA URL');
+        var now = performance.now();
+        Roo.log(now - start);
+        start = now;
         images = images.filter(function(g) { return g != 'about:blank'; });
 
-        Roo.log('END FILTER PICT');
+        Roo.log('END FILTER ABOUT BLANK');
         var now = performance.now();
         Roo.log(now - start);
         start = now;
