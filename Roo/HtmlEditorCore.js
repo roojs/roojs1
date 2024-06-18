@@ -654,8 +654,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         var images = [];
         var html = cd.getData('text/html'); // clipboard event
-        Roo.log('ON PASTE HTML');
-        Roo.log(html);
         if (cd.types.indexOf('text/rtf') > -1) {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
@@ -670,13 +668,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         //Roo.log(html);
         html = this.cleanWordChars(html);
 
-        Roo.log('AFTER CLEAN CHARS');
-        Roo.log(html);
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
-
-        Roo.log('AFTER PARSE');
-        Roo.log(d.innerHTML);
         
         
         var sn = this.getParentElement();
@@ -706,9 +699,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 img.setAttribute('src', images[i]);
             });
         }
-
-        Roo.log('BEFORE CLEAN');
-        Roo.log(d.innerHTML);
 
         if (this.autoClean) {
             new Roo.htmleditor.FilterWord({ node : d });
@@ -754,7 +744,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
         }
 
-        Roo.log('AFTER CLEAN');
+        Roo.log('BEFORE FIGURE CLEAN');
         Roo.log(d.innerHTML);
         if (this.enableBlocks) {
                 
