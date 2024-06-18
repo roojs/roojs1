@@ -26722,8 +26722,6 @@ Roo.rtf.Ctrl = function(opts)
 
 
 Roo.rtf.Parser = function(text) {
-    Roo.log(text.length);
-    Roo.log(text);
     //super({objectMode: true})
     this.text = '';
     this.parserState = this.parseText;
