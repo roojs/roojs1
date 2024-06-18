@@ -669,6 +669,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         //Roo.log(html);
         html = this.cleanWordChars(html);
+
+        Roo.log('AFTER CLEAN CHARS');
+        Roo.log(html);
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
         
@@ -746,8 +749,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
             
         }
-        Roo.log('AFTER CLEAN');
-        Roo.log(d);
         if (this.enableBlocks) {
                 
             Array.from(d.getElementsByTagName('img')).forEach(function(img) {
@@ -776,9 +777,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             });
             */
         }
-
-        Roo.log('AFTER FIGURE');
-        Roo.log(d);
         
         
         this.insertAtCursor(d.innerHTML.replace(/&nbsp;/g,' '));
