@@ -676,6 +676,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var now = performance.now();
         Roo.log(now - start);
         start = now;
+        Roo.log(images);
         // Roo.log(images);
         // Roo.log(imgs);
         // fixme..
