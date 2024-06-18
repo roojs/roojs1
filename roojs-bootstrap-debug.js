@@ -32188,7 +32188,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var now = performance.now();
         Roo.log(now - start);
         start = now;
-        images = images.map(function(g) { return g.toDataURL(); });
+        images = images.map(function(g) { 
+            Roo.log(g);
+            return g.toDataURL(); 
+        });
         Roo.log('END MAP DATA URL');
         var now = performance.now();
         Roo.log(now - start);
