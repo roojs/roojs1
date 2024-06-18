@@ -680,12 +680,27 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl|listtable|footerf)/); }) // ignore headers/footers etc.
                        .map(function(g) { return g.toDataURL(); })
                        .filter(function(g) { return g != 'about:blank'; });
+
+        Roo.log('END FILTER PICT');
+        var now = performance.now();
+        Roo.log(now - start);
+        start = now;
         
         //Roo.log(html);
         html = this.cleanWordChars(html);
 
+        Roo.log('END CLEAN WORD CHARS');
+        var now = performance.now();
+        Roo.log(now - start);
+        start = now;
+
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
+
+        Roo.log('END PARSE HTML');
+        var now = performance.now();
+        Roo.log(now - start);
+        start = now;
         
         
         var sn = this.getParentElement();
@@ -794,6 +809,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         e.preventDefault();
         this.owner.fireEvent('paste', this);
+        Roo.log('END PASTE EVENT');
+        var now = performance.now();
+        Roo.log(now - start);
+        start = now;
         return false;
         // default behaveiour should be our local cleanup paste? (optional?)
         // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
