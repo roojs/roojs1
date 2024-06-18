@@ -32179,6 +32179,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             Roo.log('END PARSE RTF');
             var now = performance.now();
             Roo.log(now - start);
+            start = now;
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
 
