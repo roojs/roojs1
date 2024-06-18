@@ -32159,6 +32159,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         var images = [];
         var html = cd.getData('text/html'); // clipboard event
+        Roo.log('ON PASTE HTML');
+        Roo.log(html);
         if (cd.types.indexOf('text/rtf') > -1) {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
@@ -32203,6 +32205,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 img.setAttribute('src', images[i]);
             });
         }
+
+        Roo.log('BEFORE CLEAN');
+        Roo.log(d);
         if (this.autoClean) {
             new Roo.htmleditor.FilterWord({ node : d });
             
