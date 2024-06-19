@@ -26755,14 +26755,10 @@ Roo.rtf.Parser = function(text) {
             if(this.parenCount) {
                 if(text[ii] == '{') {
                     this.parenCount ++;
-                    Roo.log(this.parenCount);
                 }
                 else if(text[ii] == '}') {
                     this.parenCount --;
-                    Roo.log(this.parenCount);
-                    Roo.log(text[ii - 5] + text[ii - 4] + text[ii - 3] + text[ii - 2] + text[ii - 1]);
                     if(!this.parenCount) {
-                        Roo.log("SKIP PARSE END");
                         this.skipParse = false;
                     }
                 }
@@ -27038,12 +27034,11 @@ Roo.rtf.Parser.prototype = {
             // do we want to track this - it seems just to cause problems.
             //this.emitError('empty control word');
         } else {
-            if(this.controlWord === 'fonttbl' && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf') {
-                Roo.log("SKIP PARSE START");
+            var skipWords = ['fonttbl', 'colortbl', 'stylesheet'];
+            if(skipWords.includes(this.controlWord) && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf') {
                 this.group = this.groupStack.pop();
                 this.skipParse = true;
                 this.parenCount = 2;
-                Roo.log(this.parenCount);
             }
             else {
                 this.push({
