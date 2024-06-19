@@ -329,6 +329,7 @@ Roo.rtf.Parser.prototype = {
                 this.group = this.groupStack.pop();
                 this.skipParse = true;
                 this.parenCount = 1;
+                Roo.log(this.parenCount);
             }
             else {
                 this.push({
