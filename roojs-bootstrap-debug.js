@@ -26761,7 +26761,8 @@ Roo.rtf.Parser = function(text) {
                     this.parenCount --;
                     Roo.log(this.parenCount);
                     if(!this.parenCount) {
-                        this.skipParse == false;
+                        Roo.log("SKIP PARSE END");
+                        this.skipParse = false;
                     }
                 }
             }
@@ -27034,6 +27035,7 @@ Roo.rtf.Parser.prototype = {
             //this.emitError('empty control word');
         } else {
             if(this.controlWord === 'fonttbl' && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf') {
+                Roo.log("SKIP PARSE START");
                 this.group = this.groupStack.pop();
                 this.skipParse = true;
                 this.parenCount = 1;
