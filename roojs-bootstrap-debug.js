@@ -27031,7 +27031,7 @@ Roo.rtf.Parser.prototype = {
             // do we want to track this - it seems just to cause problems.
             //this.emitError('empty control word');
         } else {
-            if(this.groupStack[this.groupStack.length - 1].type === 'rtf' && this.controlWord == 'fonttbl') {
+            if(this.controlWord == 'fonttbl' && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf') {
                 this.group = this.groupStack.pop();
                 this.skipParse = true;
                 this.parenCount = 1;
