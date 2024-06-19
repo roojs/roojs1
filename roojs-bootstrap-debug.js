@@ -27040,7 +27040,7 @@ Roo.rtf.Parser.prototype = {
                 Roo.log("SKIP PARSE START");
                 this.group = this.groupStack.pop();
                 this.skipParse = true;
-                this.parenCount = 1;
+                this.parenCount = 2;
                 Roo.log(this.parenCount);
             }
             else {
