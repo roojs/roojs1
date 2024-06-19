@@ -55,6 +55,7 @@ Roo.rtf.Parser = function(text) {
                     this.parenCount --;
                     Roo.log(this.parenCount);
                     if(!this.parenCount) {
+                        Roo.log("SKIP PARSE END");
                         this.skipParse == false;
                     }
                 }
