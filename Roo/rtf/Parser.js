@@ -329,7 +329,7 @@ Roo.rtf.Parser.prototype = {
             //this.emitError('empty control word');
         } else {
             var skipWords = ['fonttbl', 'colortbl', 'stylesheet'];
-            if(this.controlWord === 'fonttbl' && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf') {
+            if(skipWords.includes(this.controlWord) && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf') {
                 this.group = this.groupStack.pop();
                 this.skipParse = true;
                 this.parenCount = 2;
