@@ -16,11 +16,15 @@
 
 
 Roo.rtf.Parser = function(text) {
+
+    var start = performance.now();
     for(var a = 0; a < text.length; a++) {
         if(text.substring(a, a + 10) == "\\*\\shppict") {
             Roo.log('HEY');
         }
     }
+    var end = performance.now();
+    
     //super({objectMode: true})
     this.text = '';
     this.parserState = this.parseText;
