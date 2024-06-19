@@ -17,14 +17,14 @@
 
 Roo.rtf.Parser = function(text) {
 
-    var start = performance.now();
-    for(var a = 0; a < text.length; a++) {
-        if(text.substring(a, a + 11) == "{\\*\\shppict") {
-            Roo.log('HEY');
-        }
-    }
-    var end = performance.now();
-    Roo.log(end - start);
+    // var start = performance.now();
+    // for(var a = 0; a < text.length; a++) {
+    //     if(text.substring(a, a + 11) == "{\\*\\shppict") {
+    //         Roo.log('HEY');
+    //     }
+    // }
+    // var end = performance.now();
+    // Roo.log(end - start);
 
     //super({objectMode: true})
     this.text = '';
