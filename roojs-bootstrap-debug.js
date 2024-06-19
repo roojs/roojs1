@@ -26734,6 +26734,9 @@ Roo.rtf.Parser = function(text) {
     this.doc = false;
     
     this.groups = []; // where we put the return.
+
+    this.skipParse = false;
+    this.parenCount = 0;
     
     for (var ii = 0; ii < text.length; ++ii) {
         ++this.cpos;
@@ -26744,7 +26747,23 @@ Roo.rtf.Parser = function(text) {
         } else {
             ++this.col;
         }
-        this.parserState(text[ii]);
+
+        if(!this.skipParse) {
+            this.parserState(text[ii]);
+        }
+        else {
+            if(this.parenCount) {
+                if(text[ii] == '{') {
+                    this.parenCount ++;
+                }
+                else if(text[ii] == '}') {
+                    this.parenCount --;
+                    if(!this.parenCount) {
+                        this.skipParse == false;
+                    }
+                }
+            }
+        }
     }
     
     
@@ -27008,24 +27027,25 @@ Roo.rtf.Parser.prototype = {
     emitControlWord : function ()
     {
         this.emitText();
-        if (
-            this.controlWord === '' 
-            // || 
-            // this.groupStack[this.groupStack.length - 1].type == 'rtf'
-            // && 
-            // ['fonttbl', 'colortbl', 'stylesheet'].includes(this.controlWord)
-        ) {
+        if (this.controlWord === '') {
             // do we want to track this - it seems just to cause problems.
             //this.emitError('empty control word');
         } else {
-            this.push({
-                  type: 'controlword',
-                  value: this.controlWord,
-                  param: this.controlWordParam !== '' && Number(this.controlWordParam),
-                  pos: this.cpos,
-                  row: this.row,
-                  col: this.col
-            });
+            if(this.groupStack[this.groupStack.length - 1].type === 'rtf' && this.controlWord == 'fonttbl') {
+                this.group = this.groupStack.pop();
+                this.skipParse = true;
+                this.parenCount = 1;
+            }
+            else {
+                this.push({
+                    type: 'controlword',
+                    value: this.controlWord,
+                    param: this.controlWordParam !== '' && Number(this.controlWordParam),
+                    pos: this.cpos,
+                    row: this.row,
+                    col: this.col
+              });
+            }
         }
         this.controlWord = '';
         this.controlWordParam = '';
