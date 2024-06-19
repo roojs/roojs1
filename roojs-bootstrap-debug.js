@@ -26748,7 +26748,22 @@ Roo.rtf.Parser = function(text) {
             ++this.col;
         }
 
-        this.parserState(text[ii]);
+        if(!this.skipParse) {
+            this.parserState(text[ii]);
+        }
+        else {
+            if(this.parenCount) {
+                if(text[ii] == '{') {
+                    this.parenCount ++;
+                }
+                else if(text[ii] == '}') {
+                    this.parenCount --;
+                    if(!this.parenCount) {
+                        this.skipParse = false;
+                    }
+                }
+            }
+        }
     }
     
     
@@ -26896,17 +26911,6 @@ Roo.rtf.Parser.prototype = {
       
     parseText : function(c)
     {
-        if(this.parenCount) {
-            if(c == '{') {
-                this.parenCount ++;
-            }
-            else if(c == '}') {
-                this.parenCount --;
-                if(!this.parenCount) {
-                    this.skipParse = false;
-                }
-            }
-        }
         if(this.skipParse) {
             return;
         }
@@ -27030,7 +27034,7 @@ Roo.rtf.Parser.prototype = {
             // do we want to track this - it seems just to cause problems.
             //this.emitError('empty control word');
         } else {
-            var skipWords = ['fonttbl', 'colortbl'];
+            var skipWords = ['colortbl'];
             if(skipWords.includes(this.controlWord) && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf') {
                 Roo.log(this.controlWord);
                 this.group = this.groupStack.pop();
