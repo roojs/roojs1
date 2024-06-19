@@ -26912,6 +26912,9 @@ Roo.rtf.Parser.prototype = {
     parseText : function(c)
     {
         if(this.skipParse) {
+            if(c == '{') {
+                this.parenCount ++;
+            }
             return;
         }
         if (c === '\\') {
