@@ -333,7 +333,7 @@ Roo.rtf.Parser.prototype = {
                 Roo.log(this.controlWord);
                 this.group = this.groupStack.pop();
                 this.skipParse = true;
-                this.parenCount = 2;
+                this.parenCount = 1;
             }
             else {
                 this.push({
