@@ -28,6 +28,8 @@ Roo.rtf.Parser = function(text) {
     this.doc = false;
     
     this.groups = []; // where we put the return.
+
+    this.skipParse = false;
     
     for (var ii = 0; ii < text.length; ++ii) {
         ++this.cpos;
