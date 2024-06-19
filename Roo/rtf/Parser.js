@@ -24,7 +24,8 @@ Roo.rtf.Parser = function(text) {
         }
     }
     var end = performance.now();
-    
+    Roo.log(end - start);
+
     //super({objectMode: true})
     this.text = '';
     this.parserState = this.parseText;
