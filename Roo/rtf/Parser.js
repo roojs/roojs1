@@ -190,18 +190,18 @@ Roo.rtf.Parser.prototype = {
       
     parseText : function(c)
     {
-        if(this.skipParse) {
-            if(this.parenCount) {
-                if(c == '{') {
-                    this.parenCount ++;
-                }
-                else if(c == '}') {
-                    this.parenCount --;
-                    if(!this.parenCount) {
-                        this.skipParse = false;
-                    }
+        if(this.parenCount) {
+            if(c == '{') {
+                this.parenCount ++;
+            }
+            else if(c == '}') {
+                this.parenCount --;
+                if(!this.parenCount) {
+                    this.skipParse = false;
                 }
             }
+        }
+        if(this.skipParse) {
             return;
         }
         if (c === '\\') {
