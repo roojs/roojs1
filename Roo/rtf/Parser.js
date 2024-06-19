@@ -177,6 +177,9 @@ Roo.rtf.Parser.prototype = {
             //this.group = this.doc
             return;  // we really don't care about stray text...
         }
+        if(!this.group.type == 'pict') {
+            return;
+        }
         this.group.addContent(new Roo.rtf.Span(cmd));
     },
     cmdcontrolword : function (cmd)
