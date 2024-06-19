@@ -332,7 +332,7 @@ Roo.rtf.Parser.prototype = {
             //this.emitError('empty control word');
         } else {
             var skipWords = ['fonttbl', 'colortbl', 'defchp', 'defpap', 
-                'stylesheet', 'listtable', 'listoverridetable', 'rsidtbl', 'mmaththPr', 
+                'stylesheet', 'listtable', 'listoverridetable', 'rsidtbl', 'mmathPr', 
                 'upr', 'wgrffmtfilter', 'pnseclvl'];
             if(skipWords.includes(this.controlWord) && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf') {
                 Roo.log(this.controlWord);
