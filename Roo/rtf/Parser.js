@@ -326,6 +326,7 @@ Roo.rtf.Parser.prototype = {
             //this.emitError('empty control word');
         } else {
             if(this.groupStack[this.groupStack.length - 1].type === 'rtf' && this.controlWord == 'fonttbl') {
+                this.group = this.groupStack.pop();
                 this.skipParse = true;
                 this.parenCount = 1;
             }
