@@ -41,17 +41,22 @@ Roo.rtf.Parser = function(text) {
         } else {
             ++this.col;
         }
-        if(this.parenCount) {
-            if(text[ii] == '{') {
-                this.parenCount ++;
-            }
-            else if(text[ii] == '}') {
-                this.parenCount --;
-            }
 
-        }
         if(!this.skipParse) {
             this.parserState(text[ii]);
+        }
+        else {
+            if(this.parenCount) {
+                if(text[ii] == '{') {
+                    this.parenCount ++;
+                }
+                else if(text[ii] == '}') {
+                    this.parenCount --;
+                    if(!this.parenCount) {
+                        this.skipParse == false;
+                    }
+                }
+            }
         }
     }
     
