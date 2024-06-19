@@ -49,6 +49,7 @@ Roo.rtf.Parser = function(text) {
             if(this.parenCount) {
                 if(text[ii] == '{') {
                     this.parenCount ++;
+                    Roo.log(this.parenCount);
                 }
                 else if(text[ii] == '}') {
                     this.parenCount --;
