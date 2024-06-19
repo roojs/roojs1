@@ -192,10 +192,10 @@ Roo.rtf.Parser.prototype = {
     {
         if(this.skipParse) {
             if(this.parenCount) {
-                if(text[ii] == '{') {
+                if(c == '{') {
                     this.parenCount ++;
                 }
-                else if(text[ii] == '}') {
+                else if(c == '}') {
                     this.parenCount --;
                     if(!this.parenCount) {
                         this.skipParse = false;

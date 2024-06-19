@@ -26748,22 +26748,7 @@ Roo.rtf.Parser = function(text) {
             ++this.col;
         }
 
-        if(!this.skipParse) {
-            this.parserState(text[ii]);
-        }
-        else {
-            if(this.parenCount) {
-                if(text[ii] == '{') {
-                    this.parenCount ++;
-                }
-                else if(text[ii] == '}') {
-                    this.parenCount --;
-                    if(!this.parenCount) {
-                        this.skipParse = false;
-                    }
-                }
-            }
-        }
+        this.parserState(text[ii]);
     }
     
     
@@ -26912,6 +26897,17 @@ Roo.rtf.Parser.prototype = {
     parseText : function(c)
     {
         if(this.skipParse) {
+            if(this.parenCount) {
+                if(c == '{') {
+                    this.parenCount ++;
+                }
+                else if(c == '}') {
+                    this.parenCount --;
+                    if(!this.parenCount) {
+                        this.skipParse = false;
+                    }
+                }
+            }
             return;
         }
         if (c === '\\') {
@@ -27039,7 +27035,7 @@ Roo.rtf.Parser.prototype = {
                 Roo.log(this.controlWord);
                 this.group = this.groupStack.pop();
                 this.skipParse = true;
-                this.parenCount = 2;
+                this.parenCount = 1;
             }
             else {
                 this.push({
