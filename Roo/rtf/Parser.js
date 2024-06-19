@@ -302,13 +302,7 @@ Roo.rtf.Parser.prototype = {
     emitControlWord : function ()
     {
         this.emitText();
-        if (
-            this.controlWord === '' 
-            || 
-            this.groupStack[this.groupStack.length - 1].type == 'rtf'
-            && 
-            ['fonttbl'].includes(this.controlWord)
-        ) {
+        if (this.controlWord === '') {
             // do we want to track this - it seems just to cause problems.
             //this.emitError('empty control word');
         } else {
