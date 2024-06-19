@@ -313,6 +313,7 @@ Roo.rtf.Parser.prototype = {
         } else {
             if(this.groupStack[this.groupStack.length - 1].type === 'rtf' && this.controlWord == 'fonttbl') {
                 this.skipParse = true;
+                this.parenStack.push['{'];
             }
             else {
                 this.push({
