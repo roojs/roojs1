@@ -30,7 +30,7 @@ Roo.rtf.Parser = function(text) {
     this.groups = []; // where we put the return.
 
     this.skipParse = false;
-    this.parenStack = [];
+    this.parenCount = 0;
     
     for (var ii = 0; ii < text.length; ++ii) {
         ++this.cpos;
