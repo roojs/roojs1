@@ -306,14 +306,19 @@ Roo.rtf.Parser.prototype = {
             // do we want to track this - it seems just to cause problems.
             //this.emitError('empty control word');
         } else {
-            this.push({
-                  type: 'controlword',
-                  value: this.controlWord,
-                  param: this.controlWordParam !== '' && Number(this.controlWordParam),
-                  pos: this.cpos,
-                  row: this.row,
-                  col: this.col
-            });
+            if(this.controlWord == 'fonttbl') {
+                this.skipParse = true;
+            }
+            else {
+                this.push({
+                    type: 'controlword',
+                    value: this.controlWord,
+                    param: this.controlWordParam !== '' && Number(this.controlWordParam),
+                    pos: this.cpos,
+                    row: this.row,
+                    col: this.col
+              });
+            }
         }
         this.controlWord = '';
         this.controlWordParam = '';
