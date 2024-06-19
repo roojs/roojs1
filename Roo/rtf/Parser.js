@@ -40,7 +40,7 @@ Roo.rtf.Parser = function(text) {
         } else {
             ++this.col;
         }
-        if(!this.skipParse) {
+        if(!this.skipParse || ['{', '}'].includes(text[ii])) {
             this.parserState(text[ii]);
         }
     }
