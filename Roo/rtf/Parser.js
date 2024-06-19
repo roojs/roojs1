@@ -330,6 +330,7 @@ Roo.rtf.Parser.prototype = {
         } else {
             var skipWords = ['fonttbl'];
             if(skipWords.includes(this.controlWord) && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf') {
+                Roo.log(this.controlWord);
                 this.group = this.groupStack.pop();
                 this.skipParse = true;
                 this.parenCount = 2;
