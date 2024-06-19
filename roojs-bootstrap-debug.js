@@ -26756,12 +26756,11 @@ Roo.rtf.Parser = function(text) {
                 if(text[ii] == '{') {
                     this.parenCount ++;
                     Roo.log(this.parenCount);
-                    Roo.log(text[ii - 1]);
                 }
                 else if(text[ii] == '}') {
                     this.parenCount --;
                     Roo.log(this.parenCount);
-                    Roo.log(text[ii - 1]);
+                    Roo.log(text[ii - 5] + text[ii - 4] + text[ii - 3] + text[ii - 2] + text[ii - 1]);
                     if(!this.parenCount) {
                         Roo.log("SKIP PARSE END");
                         this.skipParse = false;
@@ -26916,6 +26915,9 @@ Roo.rtf.Parser.prototype = {
       
     parseText : function(c)
     {
+        if(this.skipParse) {
+            return;
+        }
         if (c === '\\') {
             this.parserState = this.parseEscapes;
         } else if (c === '{') {
@@ -27039,7 +27041,6 @@ Roo.rtf.Parser.prototype = {
             if(this.controlWord === 'fonttbl' && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf') {
                 Roo.log("SKIP PARSE START");
                 this.group = this.groupStack.pop();
-                this.parserState = this.parseText;
                 this.skipParse = true;
                 this.parenCount = 2;
                 Roo.log(this.parenCount);
