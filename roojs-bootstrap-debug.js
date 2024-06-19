@@ -26755,9 +26755,11 @@ Roo.rtf.Parser = function(text) {
             if(this.parenCount) {
                 if(text[ii] == '{') {
                     this.parenCount ++;
+                    Roo.log(this.parenCount);
                 }
                 else if(text[ii] == '}') {
                     this.parenCount --;
+                    Roo.log(this.parenCount);
                     if(!this.parenCount) {
                         this.skipParse == false;
                     }
@@ -27031,10 +27033,11 @@ Roo.rtf.Parser.prototype = {
             // do we want to track this - it seems just to cause problems.
             //this.emitError('empty control word');
         } else {
-            if(this.controlWord == 'fonttbl' && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf') {
+            if(this.controlWord === 'fonttbl' && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf') {
                 this.group = this.groupStack.pop();
                 this.skipParse = true;
                 this.parenCount = 1;
+                Roo.log(this.parenCount);
             }
             else {
                 this.push({
