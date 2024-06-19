@@ -191,6 +191,17 @@ Roo.rtf.Parser.prototype = {
     parseText : function(c)
     {
         if(this.skipParse) {
+            if(this.parenCount) {
+                if(text[ii] == '{') {
+                    this.parenCount ++;
+                }
+                else if(text[ii] == '}') {
+                    this.parenCount --;
+                    if(!this.parenCount) {
+                        this.skipParse = false;
+                    }
+                }
+            }
             return;
         }
         if (c === '\\') {
