@@ -5,5 +5,6 @@ Roo.rtf.ParsePict = function(text) {
     console.log(index);
     console.log("END PARSE PICT");
     var end = performance.now();
-    Roo.log('TIME TAKEN : ' + (end - start) + 'ms');
+    Roo.log('TIME TAKEN');
+    Roo.log(end - start);
 }

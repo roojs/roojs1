@@ -1187,7 +1187,7 @@ this.push({type:'groupstart',pos:this.cpos,row:this.row,col:this.col});},emitEnd
 );},emitHexChar:function(){this.emitText();this.push({type:'hexchar',value:this.hexChar,pos:this.cpos,row:this.row,col:this.col});this.hexChar=''},emitError:function(A){this.emitText();this.push({type:'error',value:A,row:this.row,col:this.col,char:this.cpos}
 );},emitEndParagraph:function(){this.emitText();this.push({type:'endparagraph',pos:this.cpos,row:this.row,col:this.col});}};
 // Roo/rtf/ParsePict.js
-Roo.rtf.ParsePict=function(A){console.log("START PARSE PICT");var B=performance.now();var C=A.indexOf('{\\*\\shppict');console.log(C);console.log("END PARSE PICT");var D=performance.now();Roo.log('TIME TAKEN : '+(D-B)+'ms');}
+Roo.rtf.ParsePict=function(A){console.log("START PARSE PICT");var B=performance.now();var C=A.indexOf('{\\*\\shppict');console.log(C);console.log("END PARSE PICT");var D=performance.now();Roo.log('TIME TAKEN');Roo.log(D-B);}
 // Roo/htmleditor/Filter.js
 Roo.htmleditor.Filter=function(A){Roo.apply(this.cfg);};Roo.htmleditor.Filter.prototype={node:false,tag:false,replaceComment:false,replaceTag:false,walk:function(A){Roo.each(Array.from(A.childNodes),function(e){switch(true){case e.nodeType==8&&this.replaceComment!==false:this.replaceComment(e);
 return;case e.nodeType!=1:return;case this.tag===true:case e.tagName.indexOf(":")>-1&&typeof(this.tag)=='object'&&this.tag.indexOf(":")>-1:case e.tagName.indexOf(":")>-1&&typeof(this.tag)=='string'&&this.tag==":":case typeof(this.tag)=='object'&&this.tag.indexOf(e.tagName)>-1:case typeof(this.tag)=='string'&&this.tag==e.tagName:if(this.replaceTag&&false===this.replaceTag(e)){return;
