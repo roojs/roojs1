@@ -32,11 +32,11 @@ Roo.rtf.Parser = function(text) {
     this.groups = []; // where we put the return.
 
     // e.g. skip parsing groups of type 'pict' under groups of 'nonshppict'
-    this.skipWords = [
-        ['nonshppict'],
-        [['pict']]
-    ];
-    this.skipWords = [];
+    // this.skipWords = [
+    //     ['nonshppict'],
+    //     [['pict']]
+    // ];
+    this.skipWords = [[], []];
     this.skipParse = false;
     this.parenCount = 0;
     
