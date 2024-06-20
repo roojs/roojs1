@@ -1,5 +1,6 @@
 Roo.rtf.ParsePict = function(text) {
     console.log("START PARSE PICT");
+    var s = performance.now();
     var start = performance.now();
 
     var index = text.indexOf('{\\*\\shppict');
