@@ -337,7 +337,7 @@ Roo.rtf.Parser.prototype = {
             if(
                 this.groupStack.length > 1
                 &&
-                (skipWords[0].indexOf(this.groupStack[this.groupStack.length - 1].type) == i) > -1
+                (var i =skipWords[0].indexOf(this.groupStack[this.groupStack.length - 1].type)) > -1
             )
             skipWords[0].includes()
             if(
