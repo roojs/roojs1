@@ -32,7 +32,7 @@ Roo.rtf.Parser = function(text) {
     this.groups = []; // where we put the return.
 
     // e.g. skip parsing groups of type 'pict' under groups of 'nonshppict'
-    this.skipWord = [
+    this.skipWords = [
         ['nonshppict'],
         [['pict']]
     ];
@@ -336,9 +336,9 @@ Roo.rtf.Parser.prototype = {
         } else {
             var parentType = this.groupStack.length == 0 ? false : this.groupStack[this.groupStack.length - 1].type;
             if(
-                (index = skipWords[0]. indexOf(parentType) > -1)
+                (index = this.skipWords[0]. indexOf(parentType) > -1)
                 &&
-                (skipWOrds[1][index].includes(this.controlWord))
+                (this.skipWOrds[1][index].includes(this.controlWord))
             ) {
                 Roo.log(parentType + ' - ' + index + ' - ' + this.controlWord);
                 this.group = this.groupStack.pop();
