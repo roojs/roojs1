@@ -136,6 +136,8 @@ Roo.rtf.ParsePict.prototype = {
             return;
         }
 
+        this.group.addContent(new Roo.rtf.Span(cmd));
+
         this.text = '';
     },
 
