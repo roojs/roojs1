@@ -31,6 +31,10 @@ Roo.rtf.ParsePict.prototype = {
         }
     },
 
+    parseEscapes : function(c) {
+        
+    }
+
     emitStartGroup : function() {
         this.emitText();
 
