@@ -78,6 +78,7 @@ Roo.rtf.ParsePict.prototype = {
                 this.controlWord += c;
                 break;
             default :
+                Roo.log('CHECK 2');
                 this.emitControlWord();
                 this.parserState = this.parseText;
                 this.parseText(c);
