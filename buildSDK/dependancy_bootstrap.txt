@@ -140,6 +140,7 @@ Roo.rtf.Group
 Roo.rtf.Document
 Roo.rtf.Ctrl
 Roo.rtf.Parser
+Roo.rtf.ParsePict
 
 Roo.htmleditor.Filter
 Roo.htmleditor.FilterAttributes
