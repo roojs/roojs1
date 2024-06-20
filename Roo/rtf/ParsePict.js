@@ -73,7 +73,9 @@ Roo.rtf.ParsePict.prototype = {
                 break;
             default :
                 if(this.group.type == 'pict') {
-                    this.index = text.indexOf('}', this.index + 1);
+                    var startIndex = this.index;
+                    var endIndex = text.indexOf('}', startIndex + 1);
+
                 }
                 this.text += c;
         }
