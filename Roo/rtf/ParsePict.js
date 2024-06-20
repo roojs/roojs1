@@ -26,12 +26,7 @@ Roo.rtf.ParsePict.prototype = {
         if (this.group) {
             this.groupStack.push(this.group);
         }
-         // parent..
-        if (this.doc === false) {
-            this.group = this.doc = new Roo.rtf.Document();
-            return;
-            
-        }
+        
         this.group = new Roo.rtf.Group(this.group);
     },
 
