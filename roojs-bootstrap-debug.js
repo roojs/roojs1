@@ -27139,8 +27139,9 @@ Roo.rtf.Parser.prototype = {
 
     var index = text.indexOf('{\\*\\shppict');
     this.parserState = this.parseText;
-    this.parserState(text[index++]);
-    this.parserState(text[index++]);
+    this.parserState(text[index++]); // {
+    this.parserState(text[index++]); // \
+    this.parserState(text[index++]); // *
 
     Roo.log(this);
 
@@ -27161,11 +27162,12 @@ Roo.rtf.ParsePict.prototype = {
     {
         switch(c) {
             case '\\' :
-                this.parseState = this.parseEscapes;
+                this.parserState = this.parseEscapes;
                 break;
             case '{' :
                 this.parenCount++;
                 this.emitStartGroup();
+                break;
         }
     },
 
@@ -27182,7 +27184,12 @@ Roo.rtf.ParsePict.prototype = {
 
     parseControlSymbol : function(c)
     {
-
+        switch(c) {
+            case '*' :
+                this.emitIgnorable();
+                this.parserState = this.parseText;
+                break;
+        }
     },
 
     emitStartGroup : function() 
@@ -27201,6 +27208,12 @@ Roo.rtf.ParsePict.prototype = {
         if(this.text == '') {
             return;
         }
+    },
+
+    emitIgnorable : function ()
+    {
+        this.emitText();
+        this.group.ignorable = true;
     }
 } 
 /**
