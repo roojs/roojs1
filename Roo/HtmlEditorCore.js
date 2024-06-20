@@ -615,7 +615,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         // check what type of paste - if it's an image, then handle it differently.
         if (cd.files && cd.files.length > 0 && cd.types.indexOf('text/html') < 0) {
-            Roo.log('LOAD IMAGE');
             // pasting images? 
             var urlAPI = (window.createObjectURL && window) || 
                 (window.URL && URL.revokeObjectURL && URL) || 

@@ -26906,14 +26906,10 @@ Roo.rtf.Parser.prototype = {
             // cr/lf are noise chars
         } else {
             if(this.group.type == 'pict') {
-                var start = performance.now();
                 var startIndex = this.ii;
                 var endIndex = this.input.indexOf('}', startIndex + 1);
                 this.text = this.input.substring(startIndex, endIndex);
                 this.ii = endIndex - 1;
-                var end = performance.now();
-                Roo.log('TIME TAKEN');
-                Roo.log(end - start);
                 return;
             }
             this.text += c;
@@ -32131,12 +32127,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
-
-        var start = performance.now();
         
         // check what type of paste - if it's an image, then handle it differently.
         if (cd.files && cd.files.length > 0 && cd.types.indexOf('text/html') < 0) {
-            Roo.log('LOAD IMAGE');
             // pasting images? 
             var urlAPI = (window.createObjectURL && window) || 
                 (window.URL && URL.revokeObjectURL && URL) || 
@@ -32175,30 +32168,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
 
-        Roo.log('END LOAD IMAGE');
-        var now = performance.now();
-        Roo.log(now - start);
-        start = now;
-        
         var images = [];
         var html = cd.getData('text/html'); // clipboard event
-        Roo.log('END GET HTML');
-        var now = performance.now();
-        Roo.log(now - start);
         if (cd.types.indexOf('text/rtf') > -1) {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
-            Roo.log(parser);
-            Roo.log('END PARSE RTF');
-            var now = performance.now();
-            Roo.log(now - start);
-            start = now;
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
 
-        Roo.log('END GET IMAGES');
-        var now = performance.now();
-        Roo.log(now - start);
-        start = now;
         Roo.log(images);
         // Roo.log(images);
         // Roo.log(imgs);
@@ -32206,29 +32182,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl|listtable|footerf)/); }) // ignore headers/footers etc.
                        .map(function(g) { return g.toDataURL(); })
                        .filter(function(g) { return g != 'about:blank'; });
-
-        Roo.log('END FILTER PICT');
-        Roo.log(images);
-        var now = performance.now();
-        Roo.log(now - start);
-        start = now;
         
         //Roo.log(html);
         html = this.cleanWordChars(html);
 
-        Roo.log('END CLEAN WORD CHARS');
-        var now = performance.now();
-        Roo.log(now - start);
-        start = now;
-
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
-
-        Roo.log('END PARSE HTML');
-        var now = performance.now();
-        Roo.log(now - start);
-        start = now;
-        
         
         var sn = this.getParentElement();
         // check if d contains a table, and prevent nesting??
@@ -32336,10 +32295,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         e.preventDefault();
         this.owner.fireEvent('paste', this);
-        Roo.log('END PASTE EVENT');
-        var now = performance.now();
-        Roo.log(now - start);
-        start = now;
         return false;
         // default behaveiour should be our local cleanup paste? (optional?)
         // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
