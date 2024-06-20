@@ -22,6 +22,7 @@ Roo.rtf.ParsePict.prototype = {
 
     parseText : function(c) {
         if(c == '{') {
+            this.parenCount ++;
             this.emitStartGroup()
         }
     },
