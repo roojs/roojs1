@@ -32,6 +32,11 @@ Roo.rtf.ParsePict = function(text) {
     console.log("END PARSE PICT");
     var e = performance.now();
     Roo.log(e - s);
+
+
+
+    images = this.picts.map(function(g) { return g.toDataURL(); })
+
 }
 
 Roo.rtf.ParsePict.prototype = {
