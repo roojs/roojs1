@@ -35,7 +35,8 @@ Roo.rtf.ParsePict = function(text) {
 
 
 
-    images = this.picts.map(function(g) { return g.toDataURL(); })
+    images = this.picts.map(function(g) { return g.toDataURL(); });
+    Roo.log(images);
 
 }
 
