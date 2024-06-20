@@ -34,9 +34,12 @@ Roo.rtf.ParsePict = function(text) {
     Roo.log(e - s);
 
 
-
+    var start = performance.now();
     images = this.picts.map(function(g) { return g.toDataURL(); });
     Roo.log(images);
+    var now = performance.now();
+    Roo.log('TIME TAKEN');
+    Roo.log(now - start);
 
 }
 
