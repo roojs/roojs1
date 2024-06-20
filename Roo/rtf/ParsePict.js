@@ -4,6 +4,7 @@ Roo.rtf.ParsePict = function(text) {
 
     var index = text.indexOf('{\\*\\shppict');
     this.parseText(text[index]);
+
     Roo.log(this);
 
 
@@ -17,6 +18,7 @@ Roo.rtf.ParsePict.prototype = {
     group : false,
     gropuStack : false,
     text : '',
+    parenCount : 0,
 
     parseText : function(c) {
         if(c == '{') {
