@@ -27155,25 +27155,33 @@ Roo.rtf.Parser.prototype = {
         Roo.log(now - start);
         start = now;
 
-        this.shppicts.push(this.shppict);
+        this.picts.push(this.shppict.cn[0]);
         this.shppict = false;
     
         index = text.indexOf('{\\*\\shppict', index + 1)
     }
 
     Roo.log(this);
-    Roo.log(this.shppicts);
-
+    Roo.log(this.picts);
 
     console.log("END PARSE PICT");
     var e = performance.now();
     Roo.log(e - s);
+
+
+    var start = performance.now();
+    images = this.picts.map(function(g) { return g.toDataURL(); });
+    Roo.log(images);
+    var now = performance.now();
+    Roo.log('TIME TAKEN');
+    Roo.log(now - start);
+
 }
 
 Roo.rtf.ParsePict.prototype = {
     parenCount : 0,
     shppict : false,
-    shppicts : [],
+    picts : [],
     group : false,
     groupStack : [],
     text : '',
