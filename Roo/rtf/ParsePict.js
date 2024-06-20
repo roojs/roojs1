@@ -25,7 +25,7 @@ Roo.rtf.ParsePict.prototype = {
         if(c == '\\') {
             this.parseState = this.parseEscapes;
         }
-        if(c == '{') {
+        else if(c == '{') {
             this.parenCount ++;
             this.emitStartGroup()
         }
