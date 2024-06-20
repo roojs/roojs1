@@ -29,9 +29,9 @@ Roo.rtf.ParsePict = function(text) {
 
 
     console.log("END PARSE PICT");
-    var end = performance.now();
+    now = performance.now();
     Roo.log('TIME TAKEN');
-    Roo.log(end - start);
+    Roo.log(now - start);
 }
 
 Roo.rtf.ParsePict.prototype = {
