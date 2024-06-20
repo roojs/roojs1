@@ -65,7 +65,18 @@ Roo.rtf.ParsePict.prototype = {
 
     parseControlWord : function(c)
     {
-
+        if (c === ' ') {
+            this.emitControlWord();
+            this.parserState = this.parseText;
+        } else if (/^[-\d]$/.test(c)) {
+            this.parserState = this.parseControlWordParam;
+            this.controlWordParam += c;
+        } else if (/^[A-Za-z]$/.test(c)) {
+          this.controlWord += c;
+        } else {
+          this.emitControlWord();
+          this.parserState = this.parseText;
+          this.parseText(c);
     },
 
     emitStartGroup : function() 
