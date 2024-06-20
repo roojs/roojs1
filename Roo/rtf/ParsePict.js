@@ -36,6 +36,17 @@ Roo.rtf.ParsePict.prototype = {
 
     parseEscapes : function(c) 
     {
+        if (c === '\\' || c === '{' || c === '}') {
+            this.text += c;
+            this.parserState = this.parseText;
+        } else {
+            this.parserState = this.parseControlSymbol;
+            this.parseControlSymbol(c);
+        }
+    },
+
+    parseControlSymbol : function(c)
+    {
 
     },
 
