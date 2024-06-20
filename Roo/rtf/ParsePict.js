@@ -79,6 +79,9 @@ Roo.rtf.ParsePict.prototype = {
             case (/^[A-Za-z]$/.test(c)) :
                 this.controlWord += c;
                 break;
+            case (/^[-\d]$/.test(c)) :
+                this.parserState = this.parseControlWordParam;
+                this.controlWordParam += c;
             default :
                 this.emitControlWord();
                 this.parserState = this.parseText;
