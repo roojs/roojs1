@@ -112,7 +112,7 @@ Roo.rtf.ParsePict.prototype = {
                 param: this.controlWordParam !== '' && Number(this.controlWordParam),
             }
             if (!this.group.type) {
-                this.group.type = this.controlWord;
+                this.group.type = cmd.value;
             }
             else {
                 this.group.addContent(new Roo.rtf.Ctrl(cmd));
