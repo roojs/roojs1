@@ -1,4 +1,5 @@
 Roo.rtf.ParsePict = function(text) {
+    this.input = text;
     console.log("START PARSE PICT");
     var s = performance.now();
     var start = performance.now();
@@ -44,6 +45,7 @@ Roo.rtf.ParsePict = function(text) {
 }
 
 Roo.rtf.ParsePict.prototype = {
+    input : '',
     index: -1,
     parenCount : 0,
     shppict : false,
@@ -75,6 +77,7 @@ Roo.rtf.ParsePict.prototype = {
                 if(this.group.type == 'pict') {
                     var startIndex = this.index;
                     var endIndex = text.indexOf('}', startIndex + 1);
+                    this.text = text
 
                 }
                 this.text += c;
