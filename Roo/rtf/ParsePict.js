@@ -109,8 +109,8 @@ Roo.rtf.ParsePict.prototype = {
         if(this.controlWord !== '') {
             var cmd = {
                 value : this.controlWord,
-                param: this.controlWordParam !== '' && Number(this.controlWordParam),
-            }
+                param: this.controlWordParam !== '' && Number(this.controlWordParam)
+            };
             if (!this.group.type) {
                 this.group.type = cmd.value;
             }
