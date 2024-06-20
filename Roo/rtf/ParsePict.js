@@ -117,6 +117,19 @@ Roo.rtf.ParsePict.prototype = {
         this.group = new Roo.rtf.Group(this.group);
     },
 
+    emitEndGroup : function ()
+    {
+        this.emitText();
+
+        var endingGroup = this.group;
+        
+        
+        this.group = this.groupStack.pop();
+        if (this.group) {
+            this.group.addChild(endingGroup);
+        }
+    },
+
     emitText : function() 
     {
         if(this.text == '') {
