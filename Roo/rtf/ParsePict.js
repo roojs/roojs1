@@ -26,7 +26,7 @@ Roo.rtf.ParsePict.prototype = {
     {
         switch(c) {
             case '\\' :
-                this.parseState = this.parseEscapes;
+                this.parserState = this.parseEscapes;
                 break;
             case '{' :
                 this.parenCount++;
