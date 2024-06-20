@@ -25,6 +25,7 @@ Roo.rtf.ParsePict.prototype = {
     group : false,
     groupStack : false,
     text : '',
+    controlWord : '',
 
     parseText : function(c) 
     {
