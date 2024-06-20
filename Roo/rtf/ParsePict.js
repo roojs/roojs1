@@ -15,10 +15,10 @@ Roo.rtf.ParsePict = function(text) {
 }
 
 Roo.rtf.ParsePict.prototype = {
+    parenCount : 0,
     group : false,
     gropuStack : false,
     text : '',
-    parenCount : 0,
 
     parseText : function(c) {
         if(c == '{') {
