@@ -199,10 +199,10 @@ Roo.rtf.Parser.prototype = {
             // cr/lf are noise chars
         } else {
             if(this.group.type == 'pict') {
-                var startIndex = this.index;
+                var startIndex = this.ii;
                 var endIndex = this.input.indexOf('}', startIndex + 1);
                 this.text = this.input.substring(startIndex, endIndex);
-                this.index = endIndex;
+                this.ii = endIndex;
                 return;
             }
             this.text += c;
