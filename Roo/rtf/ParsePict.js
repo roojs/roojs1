@@ -43,6 +43,8 @@ Roo.rtf.ParsePict.prototype = {
             case '\x0D':
                 Roo.log('CASE 3');
                 break;
+            default :
+                this.text += c;
         }
     },
 
