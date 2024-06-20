@@ -27138,13 +27138,18 @@ Roo.rtf.Parser.prototype = {
     var start = performance.now();
 
     var index = text.indexOf('{\\*\\shppict');
-    this.parserState = this.parseText;
 
-    var i = index;
+    while(index > -1) {
+        this.parserState = this.parseText;
 
-    this.parserState(text[index++]);
-    while(this.parenCount) {
+        var i = index;
+    
         this.parserState(text[index++]);
+        while(this.parenCount) {
+            this.parserState(text[index++]);
+        }
+    
+        index = text.indexOf('{\\*\\shppict', index + 1)
     }
 
     Roo.log(this);
