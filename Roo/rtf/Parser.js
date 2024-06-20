@@ -32,8 +32,8 @@ Roo.rtf.Parser = function(text) {
     this.groups = []; // where we put the return.
 
     this.skipWord = [
-        ['rtf', []],
-        ['nonshppict', ['pict']] // skip parsing groups of type 'pict' under groups of 'nonshppict'
+        ['rtf', 'nonshppict'],
+        [[]], ['pict']] // skip parsing groups of type 'pict' under groups of 'nonshppict'
     ]
     this.skipParse = false;
     this.parenCount = 0;
@@ -333,7 +333,6 @@ Roo.rtf.Parser.prototype = {
             // do we want to track this - it seems just to cause problems.
             //this.emitError('empty control word');
         } else {
-            var skipWords = [];
             if(
                 (skipWords.includes(this.controlWord) && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf')
                 ||
