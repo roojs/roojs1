@@ -226,6 +226,13 @@ Roo.rtf.Parser.prototype = {
         } else if (c === '\x0A' || c === '\x0D') {
             // cr/lf are noise chars
         } else {
+            if(this.group.type == 'pict') {
+                var startIndex = this.index;
+                var endIndex = this.input.indexOf('}', startIndex + 1);
+                this.text = this.input.substring(startIndex, endIndex);
+                this.index = endIndex;
+                return;
+            }
             this.text += c;
         }
     },
