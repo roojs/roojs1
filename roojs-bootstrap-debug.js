@@ -27142,8 +27142,8 @@ Roo.rtf.Parser.prototype = {
 
     var i = index;
 
-    while(index < i + 60) {
-        console.log(text[index]);
+    this.parserState(text[index++]);
+    while(this.parenCount) {
         this.parserState(text[index++]);
     }
 
@@ -27175,6 +27175,7 @@ Roo.rtf.ParsePict.prototype = {
                 this.emitStartGroup();
                 break;
             case '}' :
+                this.parenCount--;
                 this.emitEndGroup();
                 break;
             case '\x0A':
