@@ -7,8 +7,8 @@ Roo.rtf.ParsePict = function(text) {
 
     var i = index;
 
-    while(index < i + 60) {
-        console.log(text[index]);
+    this.parserState(text[index++]);
+    while(this.parenCount) {
         this.parserState(text[index++]);
     }
 
