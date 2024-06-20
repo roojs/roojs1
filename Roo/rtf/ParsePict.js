@@ -10,8 +10,9 @@ Roo.rtf.ParsePict = function(text) {
 }
 
 Roo.rtf.ParsePict.prototype = {
+    group : [],
     text : '',
-    
+
     parseText : function(c) {
         if(c == '{') {
             this.emitStartGroup()
@@ -20,6 +21,17 @@ Roo.rtf.ParsePict.prototype = {
 
     emitStartGroup : function() {
         this.emitText();
+        this.flushHexStore();
+        if (this.group) {
+            this.groupStack.push(this.group);
+        }
+         // parent..
+        if (this.doc === false) {
+            this.group = this.doc = new Roo.rtf.Document();
+            return;
+            
+        }
+        this.group = new Roo.rtf.Group(this.group);
     },
 
     emitText : function() {
