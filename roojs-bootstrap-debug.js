@@ -27134,22 +27134,23 @@ Roo.rtf.Parser.prototype = {
     }
      
 } ;Roo.rtf.ParsePict = function(text) {
+    this.input = text;
     console.log("START PARSE PICT");
     var s = performance.now();
     var start = performance.now();
 
-    var index = text.indexOf('{\\*\\shppict');
+    this.index = text.indexOf('{\\*\\shppict');
     var i = 1;
 
-    while(index > -1) {
+    while(this.index > -1) {
         this.parserState = this.parseText;
     
-        this.parserState(text[index++]);
+        this.parserState(text[this.index++]);
         while(this.parenCount) {
-            this.parserState(text[index++]);
+            this.parserState(text[this.index++]);
         }
 
-        Roo.log('Image ' + (i++) + ' : ' + index);
+        Roo.log('Image ' + (i++) + ' : ' + this.index);
         var now = performance.now();
         Roo.log('TIME TAKEN');
         Roo.log(now - start);
@@ -27158,7 +27159,7 @@ Roo.rtf.Parser.prototype = {
         this.picts.push(this.shppict.cn[0]);
         this.shppict = false;
     
-        index = text.indexOf('{\\*\\shppict', index + 1)
+        this.index = text.indexOf('{\\*\\shppict', this.index + 1)
     }
 
     Roo.log(this);
@@ -27179,6 +27180,8 @@ Roo.rtf.Parser.prototype = {
 }
 
 Roo.rtf.ParsePict.prototype = {
+    input : '',
+    index: -1,
     parenCount : 0,
     shppict : false,
     picts : [],
@@ -27206,6 +27209,14 @@ Roo.rtf.ParsePict.prototype = {
             case '\x0D':
                 break;
             default :
+                if(this.group.type == 'pict') {
+                    var startIndex = this.index;
+                    var endIndex = this.input.indexOf('}', startIndex + 1);
+                    this.text = this.input.substring(startIndex, endIndex);
+                    this.index = endIndex;
+                    return;
+
+                }
                 this.text += c;
         }
     },
