@@ -667,8 +667,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var now = performance.now();
         Roo.log(now - start);
         if (cd.types.indexOf('text/rtf') > -1) {
-            var parsePict = new Roo.rtf.ParsePict(cd.getData('text/rtf'));
-            start = performance.now();
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             Roo.log(parser);
             Roo.log('END PARSE RTF');
