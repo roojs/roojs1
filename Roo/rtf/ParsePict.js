@@ -73,5 +73,10 @@ Roo.rtf.ParsePict.prototype = {
         if(this.text == '') {
             return;
         }
+    },
+
+    emitIgnorable : function ()
+    {
+        this.emitText();
     }
 }
