@@ -27148,6 +27148,11 @@ Roo.rtf.Parser.prototype = {
         while(this.parenCount) {
             this.parserState(text[index++]);
         }
+
+        Roo.log(index);
+
+        this.shppicts.push(this.shppict);
+        this.shppict = false;
     
         index = text.indexOf('{\\*\\shppict', index + 1)
     }
@@ -27164,6 +27169,7 @@ Roo.rtf.Parser.prototype = {
 Roo.rtf.ParsePict.prototype = {
     parenCount : 0,
     shppict : false,
+    shppicts : [],
     group : false,
     groupStack : [],
     text : '',
@@ -27258,7 +27264,7 @@ Roo.rtf.ParsePict.prototype = {
         }
 
         if (this.shppict === false) {
-            this.group = this.shppict = new Roo.rtf.Document(this.group);
+            this.group = this.shppict = new Roo.rtf.Group(this.group);
             return;
         }
 
