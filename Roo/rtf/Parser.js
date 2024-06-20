@@ -203,6 +203,7 @@ Roo.rtf.Parser.prototype = {
         } else {
             if(!this.loggg && this.group.type == 'pict') {
 
+                this.loggg = true;
                 var startIndex = this.ii;
                 var endIndex = this.input.indexOf('}', startIndex + 1);
                 var text = this.input.substring(startIndex, endIndex);
