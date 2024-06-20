@@ -35,7 +35,7 @@ Roo.rtf.Parser = function(text) {
     this.skipWord = [
         ['nonshppict'],
         [['pict']]
-    ]
+    ];
     this.skipParse = false;
     this.parenCount = 0;
     

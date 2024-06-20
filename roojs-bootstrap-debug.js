@@ -26737,6 +26737,11 @@ Roo.rtf.Parser = function(text) {
     
     this.groups = []; // where we put the return.
 
+    // e.g. skip parsing groups of type 'pict' under groups of 'nonshppict'
+    this.skipWord = [
+        ['nonshppict'],
+        [['pict']]
+    ];
     this.skipParse = false;
     this.parenCount = 0;
     
@@ -26753,16 +26758,15 @@ Roo.rtf.Parser = function(text) {
         if(!this.skipParse) {
             this.parserState(text[ii]);
         }
-        else {
-            if(this.parenCount) {
-                if(text[ii] == '{') {
-                    this.parenCount ++;
-                }
-                else if(text[ii] == '}') {
-                    this.parenCount --;
-                    if(!this.parenCount) {
-                        this.skipParse = false;
-                    }
+
+        if(this.parenCount) {
+            if(text[ii] == '{') {
+                this.parenCount ++;
+            }
+            else if(text[ii] == '}') {
+                this.parenCount --;
+                if(!this.parenCount) {
+                    this.skipParse = false;
                 }
             }
         }
@@ -26916,12 +26920,6 @@ Roo.rtf.Parser.prototype = {
       
     parseText : function(c)
     {
-        if(this.skipParse) {
-            if(c == '{') {
-                this.parenCount ++;
-            }
-            return;
-        }
         if (c === '\\') {
             this.parserState = this.parseEscapes;
         } else if (c === '{') {
@@ -27042,15 +27040,13 @@ Roo.rtf.Parser.prototype = {
             // do we want to track this - it seems just to cause problems.
             //this.emitError('empty control word');
         } else {
-            var skipWords = ['fonttbl', 'colortbl', 'defchp', 'defpap', 
-                'stylesheet', 'listtable', 'listoverridetable', 'rsidtbl', 'mmathPr', 
-                'upr', 'wgrffmtfilter', 'pnseclvl', 'xmlnstbl', 'themedata', 'colorschememapping'];
+            var parentType = this.groupStack.length == 0 ? false : this.groupStack[this.groupStack.length - 1].type;
             if(
-                (skipWords.includes(this.controlWord) && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf')
-                // ||
-                // (this.controlWord == 'pict' && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'nonshppict')
+                (index = skipWords[0]. indexOf(parentType) > -1)
+                &&
+                (skipWOrds[1][index].includes(this.controlWord))
             ) {
-                Roo.log(this.controlWord);
+                Roo.log(parentType + ' - ' + index + ' - ' + this.controlWord);
                 this.group = this.groupStack.pop();
                 this.skipParse = true;
                 this.parenCount = 1;
