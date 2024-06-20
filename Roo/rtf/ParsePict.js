@@ -22,12 +22,13 @@ Roo.rtf.ParsePict.prototype = {
     text : '',
 
     parseText : function(c) {
-        if(c == '\\') {
-            this.parseState = this.parseEscapes;
-        }
-        else if(c == '{') {
-            this.parenCount ++;
-            this.emitStartGroup()
+        switch(c) {
+            case '\\' :
+                this.parseState = this.parseEscapes;
+                break;
+            case '{' :
+                this.parenCount++;
+                this.emitStartGroup();
         }
     },
 
