@@ -14,6 +14,8 @@ Roo.rtf.ParsePict = function(text) {
             this.parserState(text[index++]);
         }
 
+        Roo.log(index);
+
         this.shppicts.push(this.shppict);
         this.shppict = false;
     
