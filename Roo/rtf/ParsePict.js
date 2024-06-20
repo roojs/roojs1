@@ -106,7 +106,7 @@ Roo.rtf.ParsePict.prototype = {
         this.emitText();
         if(this.controlWord !== '') {
             if (!this.group.type) {
-                this.group.type = cmd.value;
+                this.group.type = this.controlWord;
                 return;
             }
             this.group.addContent(new Roo.rtf.Ctrl(cmd));
