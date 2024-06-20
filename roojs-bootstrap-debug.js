@@ -27142,8 +27142,9 @@ Roo.rtf.Parser.prototype = {
 
     var i = index;
 
-    while(index < i + 5) {
-        this.parserState(text[index++]); // {\*\s
+    while(index < i + 12) {
+        console.log(text[index]);
+        this.parserState(text[index++]); // {\*\shppict{
     }
 
     Roo.log(this);
@@ -27161,6 +27162,7 @@ Roo.rtf.ParsePict.prototype = {
     groupStack : false,
     text : '',
     controlWord : '',
+    controlWordParam : '',
 
     parseText : function(c) 
     {
@@ -27205,6 +27207,10 @@ Roo.rtf.ParsePict.prototype = {
             case (/^[A-Za-z]$/.test(c)) :
                 this.controlWord += c;
                 break;
+            default :
+                this.emitControlWord();
+                this.parserState = this.parseText;
+                this.parseText(c);
         }
     },
 
@@ -27230,6 +27236,25 @@ Roo.rtf.ParsePict.prototype = {
     {
         this.emitText();
         this.group.ignorable = true;
+    },
+
+    emitControlWord : function(cmd)
+    {
+        this.emitText();
+        if(this.controlWord !== '') {
+            var cmd = {
+                value : this.controlWord,
+                param: this.controlWordParam !== '' && Number(this.controlWordParam)
+            };
+            if (!this.group.type) {
+                this.group.type = cmd.value;
+            }
+            else {
+                this.group.addContent(new Roo.rtf.Ctrl(cmd));
+            }
+        }
+        this.controlWord = '';
+        this.controlWordParam = '';
     }
 } 
 /**
