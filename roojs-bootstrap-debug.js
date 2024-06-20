@@ -27047,8 +27047,8 @@ Roo.rtf.Parser.prototype = {
                 'upr', 'wgrffmtfilter', 'pnseclvl', 'xmlnstbl', 'themedata', 'colorschememapping'];
             if(
                 (skipWords.includes(this.controlWord) && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf')
-                ||
-                (this.controlWord == 'pict' && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'nonshppict')
+                // ||
+                // (this.controlWord == 'pict' && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'nonshppict')
             ) {
                 Roo.log(this.controlWord);
                 this.group = this.groupStack.pop();
