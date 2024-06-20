@@ -21,7 +21,8 @@ Roo.rtf.ParsePict.prototype = {
     gropuStack : false,
     text : '',
 
-    parseText : function(c) {
+    parseText : function(c) 
+    {
         switch(c) {
             case '\\' :
                 this.parseState = this.parseEscapes;
@@ -32,11 +33,13 @@ Roo.rtf.ParsePict.prototype = {
         }
     },
 
-    parseEscapes : function(c) {
+    parseEscapes : function(c) 
+    {
 
     },
 
-    emitStartGroup : function() {
+    emitStartGroup : function() 
+    {
         this.emitText();
 
         if (this.group) {
@@ -46,7 +49,8 @@ Roo.rtf.ParsePict.prototype = {
         this.group = new Roo.rtf.Group(this.group);
     },
 
-    emitText : function() {
+    emitText : function() 
+    {
         if(this.text == '') {
             return;
         }
