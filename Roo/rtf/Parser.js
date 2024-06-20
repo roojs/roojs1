@@ -208,6 +208,7 @@ Roo.rtf.Parser.prototype = {
                 console.log(endIndex);
                 console.log(this.input.substring(startIndex, startIndex + 10));
                 console.log(this.input.substring(endIndex - 10, endIndex));
+                console.log(this.parserState);
                 return;
             }
             this.text += c;
