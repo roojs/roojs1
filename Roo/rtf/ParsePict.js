@@ -8,3 +8,15 @@ Roo.rtf.ParsePict = function(text) {
     Roo.log('TIME TAKEN');
     Roo.log(end - start);
 }
+
+Roo.rtf.ParsePict.prototype = {
+    parseText : function(c) {
+        if(c == '{') {
+            this.emitStartGroup()
+        }
+    },
+
+    emitStartGroup : function() {
+
+    }
+}
