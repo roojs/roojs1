@@ -27142,7 +27142,7 @@ Roo.rtf.Parser.prototype = {
 
     var i = index;
 
-    while(index < i + 55) {
+    while(index < i + 56) {
         console.log(text[index]);
         this.parserState(text[index++]); // {\*\shppict{
     }
@@ -27173,6 +27173,8 @@ Roo.rtf.ParsePict.prototype = {
             case '{' :
                 this.parenCount++;
                 this.emitStartGroup();
+            case '}' :
+                this.emitEndGroup();
                 break;
             case '\x0A':
             case '\x0D':
@@ -27250,11 +27252,32 @@ Roo.rtf.ParsePict.prototype = {
         this.group = new Roo.rtf.Group(this.group);
     },
 
+    emitEndGroup : function ()
+    {
+        this.emitText();
+
+        var endingGroup = this.group;
+        
+        
+        this.group = this.groupStack.pop();
+        if (this.group) {
+            this.group.addChild(endingGroup);
+        }
+    },
+
     emitText : function() 
     {
         if(this.text == '') {
             return;
         }
+
+        var cmd = {
+            value : this.text
+        };
+
+        this.group.addContent(new Roo.rtf.Span(cmd));
+
+        this.text = '';
     },
 
     emitIgnorable : function ()
@@ -27263,7 +27286,7 @@ Roo.rtf.ParsePict.prototype = {
         this.group.ignorable = true;
     },
 
-    emitControlWord : function(cmd)
+    emitControlWord : function()
     {
         this.emitText();
         if(this.controlWord !== '') {
