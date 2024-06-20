@@ -17,6 +17,10 @@ Roo.rtf.ParsePict.prototype = {
     },
 
     emitStartGroup : function() {
+        this.emitText();
+    },
+
+    emitText : function() {
 
     }
 }
