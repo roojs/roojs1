@@ -31,17 +31,17 @@ Roo.rtf.Parser = function(text) {
     
     this.groups = []; // where we put the return.
     
-    for (var ii = 0; ii < text.length; ++ii) {
+    for (this.ii = 0; this.ii < text.length; ++this.ii) {
         ++this.cpos;
         
-        if (text[ii] === '\n') {
+        if (text[this.ii] === '\n') {
             ++this.row;
             this.col = 1;
         } else {
             ++this.col;
         }
 
-        this.parserState(text[ii]);
+        this.parserState(text[this.ii]);
     }
     
     
