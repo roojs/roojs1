@@ -117,7 +117,7 @@ Roo.rtf.ParsePict.prototype = {
         }
 
         if (this.shppict === false) {
-            this.group = this.shppict = new Roo.rtf.Document();
+            this.group = this.shppict = new Roo.rtf.Group(this.group);
             return;
         }
 
