@@ -1,8 +1,12 @@
 Roo.rtf.ParsePict = function(text) {
     console.log("START PARSE PICT");
     var start = performance.now();
+
     var index = text.indexOf('{\\*\\shppict');
-    console.log(index);
+    this.parseText(index);
+    Roo.log(this);
+
+
     console.log("END PARSE PICT");
     var end = performance.now();
     Roo.log('TIME TAKEN');
@@ -26,7 +30,7 @@ Roo.rtf.ParsePict.prototype = {
         if (this.group) {
             this.groupStack.push(this.group);
         }
-        
+
         this.group = new Roo.rtf.Group(this.group);
     },
 
