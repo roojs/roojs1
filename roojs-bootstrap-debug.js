@@ -27161,12 +27161,10 @@ Roo.rtf.Parser.prototype = {
     }
 
     Roo.log(this);
+    Roo.log(this.shppricts);
 
 
     console.log("END PARSE PICT");
-    now = performance.now();
-    Roo.log('TIME TAKEN');
-    Roo.log(now - start);
 }
 
 Roo.rtf.ParsePict.prototype = {
