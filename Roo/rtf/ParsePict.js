@@ -63,6 +63,11 @@ Roo.rtf.ParsePict.prototype = {
         }
     },
 
+    parseControlWord : function(c)
+    {
+
+    },
+
     emitStartGroup : function() 
     {
         this.emitText();
