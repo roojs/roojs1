@@ -26722,11 +26722,8 @@ Roo.rtf.Ctrl = function(opts)
 
 
 Roo.rtf.Parser = function(text) {
-    for(var a = 0; a < text.length; a++) {
-        if(text.substring(a, a + 10) == "\\*\\shppict") {
-            Roo.log('HEY');
-        }
-    }
+
+
     //super({objectMode: true})
     this.text = '';
     this.parserState = this.parseText;
@@ -26877,6 +26874,9 @@ Roo.rtf.Parser.prototype = {
         if (!this.group) { // an RTF fragment, missing the {\rtf1 header
             //this.group = this.doc
             return;  // we really don't care about stray text...
+        }
+        if(!this.group.type == 'pict') {
+            return;
         }
         this.group.addContent(new Roo.rtf.Span(cmd));
     },
