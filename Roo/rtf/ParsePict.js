@@ -57,6 +57,9 @@ Roo.rtf.ParsePict.prototype = {
                 this.emitIgnorable();
                 this.parserState = this.parseText;
                 break;
+            default :
+                this.parserState = this.parseControlWord;
+                this.parseControlWord(c);
         }
     },
 
