@@ -21,6 +21,8 @@ Roo.rtf.ParsePict.prototype = {
     },
 
     emitText : function() {
-        if(this.text == '') return;
+        if(this.text == '') {
+            return;
+        }
     }
 }
