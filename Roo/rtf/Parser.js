@@ -339,29 +339,7 @@ Roo.rtf.Parser.prototype = {
                 (index = skipWords[0]. indexOf(parentType) > -1)
                 &&
                 (skipWOrds[1][index].includes(this.controlWord))
-            )
-            if(this.groupStack.length > 1) 
-            if(this.groupStack.length > 1) {
-                var index = skipWords[0].indexOf(this.groupStack[this.groupStack.length - 1].type);
-                if(index > -1 && skipWords[1][index].includes(this.controlWord)) {
-                    this.group = this.groupStack.pop();
-                    this.skipParse = true;
-                    this.parenCount = 1;
-                } 
-            }
-            if(
-                this.groupStack.length > 1
-                &&
-                (skipWords[0].indexOf(this.groupStack[this.groupStack.length - 1].type) == i) > -1
-            )
-            skipWords[0].includes()
-            if(
-                (skipWords.includes(this.controlWord) && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf')
-                ||
-                (this.controlWord == 'pict' && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'nonshppict')
-                
             ) {
-                Roo.log(this.controlWord);
                 this.group = this.groupStack.pop();
                 this.skipParse = true;
                 this.parenCount = 1;
