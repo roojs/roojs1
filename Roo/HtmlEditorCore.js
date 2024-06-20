@@ -612,7 +612,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
-        
+
         var start = performance.now();
         
         // check what type of paste - if it's an image, then handle it differently.
@@ -668,6 +668,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         Roo.log(now - start);
         start = now;
         if (cd.types.indexOf('text/rtf') > -1) {
+            var parsePict = new Roo.rtf.ParsePict(cd.getData('text/rtf'));
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             Roo.log(parser);
             Roo.log('END PARSE RTF');
