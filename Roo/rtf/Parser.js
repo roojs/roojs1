@@ -200,10 +200,14 @@ Roo.rtf.Parser.prototype = {
             // cr/lf are noise chars
         } else {
             if(this.group.type == 'pict') {
+                var start = performance.now();
                 var startIndex = this.ii;
                 var endIndex = this.input.indexOf('}', startIndex + 1);
                 this.text = this.input.substring(startIndex, endIndex);
                 this.ii = endIndex - 1;
+                var end = performance.now();
+                Roo.log('TIME TAKEN');
+                Roo.log(end - start);
                 return;
             }
             this.text += c;
