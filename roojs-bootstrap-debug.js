@@ -27139,9 +27139,12 @@ Roo.rtf.Parser.prototype = {
 
     var index = text.indexOf('{\\*\\shppict');
     this.parserState = this.parseText;
-    this.parserState(text[index++]); // {
-    this.parserState(text[index++]); // \
-    this.parserState(text[index++]); // *
+
+    var i = index;
+
+    while(index < i + 5) {
+        this.parserState(text[index++]); // {\*\s
+    }
 
     Roo.log(this);
 
@@ -27155,8 +27158,9 @@ Roo.rtf.Parser.prototype = {
 Roo.rtf.ParsePict.prototype = {
     parenCount : 0,
     group : false,
-    gropuStack : false,
+    groupStack : false,
     text : '',
+    controlWord : '',
 
     parseText : function(c) 
     {
@@ -27188,6 +27192,18 @@ Roo.rtf.ParsePict.prototype = {
             case '*' :
                 this.emitIgnorable();
                 this.parserState = this.parseText;
+                break;
+            default :
+                this.parserState = this.parseControlWord;
+                this.parseControlWord(c);
+        }
+    },
+
+    parseControlWord : function(c)
+    {
+        switch(true) {
+            case (/^[A-Za-z]$/.test(c)) :
+                this.controlWord += c;
                 break;
         }
     },
