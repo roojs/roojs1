@@ -107,10 +107,10 @@ Roo.rtf.ParsePict.prototype = {
         if(this.controlWord !== '') {
             if (!this.group.type) {
                 this.group.type = this.controlWord;
-                return;
             }
-            this.group.addContent(new Roo.rtf.Ctrl(cmd));
-            return ;
+            else {
+                this.group.addContent(new Roo.rtf.Ctrl(cmd));
+            }
         }
         this.controlWord = '';
         this.controlWordParam = '';
