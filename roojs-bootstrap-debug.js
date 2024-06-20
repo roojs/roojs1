@@ -26737,8 +26737,6 @@ Roo.rtf.Parser = function(text) {
     this.doc = false;
     
     this.groups = []; // where we put the return.
-
-    this.loggg = false;
     
     for (this.ii = 0; this.ii < text.length; ++this.ii) {
         ++this.cpos;
@@ -26907,16 +26905,16 @@ Roo.rtf.Parser.prototype = {
         } else if (c === '\x0A' || c === '\x0D') {
             // cr/lf are noise chars
         } else {
-            if(!this.loggg && this.group.type == 'pict') {
-
-                this.loggg = true;
+            if(this.group.type == 'pict') {
                 var startIndex = this.ii;
                 var endIndex = this.input.indexOf('}', startIndex + 1);
+                this.text = this.input.substring(startIndex, endIndex);
+                this.ii = endIndex;
                 console.log(startIndex);
                 console.log(endIndex);
-                var text = this.input.substring(startIndex, endIndex);
                 console.log(this.input.substring(startIndex, startIndex + 10));
                 console.log(this.input.substring(endIndex - 10, endIndex));
+                return;
             }
             this.text += c;
         }
