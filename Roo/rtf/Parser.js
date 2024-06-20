@@ -31,6 +31,8 @@ Roo.rtf.Parser = function(text) {
     this.doc = false;
     
     this.groups = []; // where we put the return.
+
+    this.loggg = false;
     
     for (this.ii = 0; this.ii < text.length; ++this.ii) {
         ++this.cpos;
@@ -202,7 +204,8 @@ Roo.rtf.Parser.prototype = {
             if(this.group.type == 'pict') {
                 var startIndex = this.ii;
                 var endIndex = this.input.indexOf('}', startIndex + 1);
-                this.text = this.input.substring(startIndex, endIndex);
+                var text = this.input.substring(startIndex, endIndex);
+
                 this.ii = endIndex;
                 return;
             }
