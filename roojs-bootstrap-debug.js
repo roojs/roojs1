@@ -27133,7 +27133,15 @@ Roo.rtf.Parser.prototype = {
         });
     }
      
-} ; 
+} ;Roo.rtf.ParsePict = function(text) {
+    console.log("START PARSE PICT");
+    var start = performance.now();
+    var index = text.indexOf('{\\*\\shppict');
+    console.log(index);
+    console.log("END PARSE PICT");
+    var end = performance.now();
+    Roo.log('TIME TAKEN : ' + (end - start) + 'ms');
+} 
 /**
  * @class Roo.htmleditor.Filter
  * Base Class for filtering htmleditor stuff. - do not use this directly - extend it.
@@ -32161,7 +32169,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
-        
+
         var start = performance.now();
         
         // check what type of paste - if it's an image, then handle it differently.
@@ -32215,8 +32223,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         Roo.log('END GET HTML');
         var now = performance.now();
         Roo.log(now - start);
-        start = now;
         if (cd.types.indexOf('text/rtf') > -1) {
+            var parsePict = new Roo.rtf.ParsePict(cd.getData('text/rtf'));
+            start = performance.now();
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             Roo.log(parser);
             Roo.log('END PARSE RTF');
