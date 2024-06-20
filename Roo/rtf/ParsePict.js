@@ -16,7 +16,8 @@ Roo.rtf.ParsePict = function(text) {
         Roo.log('Image ' + i + ' : ' + index);
         var now = performance.now();
         Roo.log('TIME TAKEN');
-        Roo.log(end - start);
+        Roo.log(now - start);
+        start = now;
 
         this.shppicts.push(this.shppict);
         this.shppict = false;
