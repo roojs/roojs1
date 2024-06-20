@@ -334,6 +334,8 @@ Roo.rtf.Parser.prototype = {
             // do we want to track this - it seems just to cause problems.
             //this.emitError('empty control word');
         } else {
+            if(this.groupStack.length > 1)
+            skipWords[0].includes()
             if(
                 (skipWords.includes(this.controlWord) && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf')
                 ||
