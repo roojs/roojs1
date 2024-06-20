@@ -20,7 +20,7 @@ Roo.rtf.ParsePict = function(text) {
         Roo.log(now - start);
         start = now;
 
-        this.shppicts.push(this.shppict);
+        this.picts.push(this.shppict.cn[0]);
         this.shppict = false;
     
         index = text.indexOf('{\\*\\shppict', index + 1)
@@ -38,7 +38,7 @@ Roo.rtf.ParsePict = function(text) {
 Roo.rtf.ParsePict.prototype = {
     parenCount : 0,
     shppict : false,
-    shppicts : [],
+    picts : [],
     group : false,
     groupStack : [],
     text : '',
