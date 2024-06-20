@@ -101,7 +101,7 @@ Roo.rtf.ParsePict.prototype = {
         this.group.ignorable = true;
     },
 
-    emitControlWord : function()
+    emitControlWord : function(cmd)
     {
         this.emitText();
         if(this.controlWord !== '') {
