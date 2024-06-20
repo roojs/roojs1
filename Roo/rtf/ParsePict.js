@@ -95,16 +95,10 @@ Roo.rtf.ParsePict.prototype = {
             case (/^\d$/.test(c)) :
                 this.controlWordParam += c;
                 break;
-        }
-        if (/^\d$/.test(c)) {
-          this.controlWordParam += c;
-        } else if (c === ' ') {
-          this.emitControlWord();
-          this.parserState = this.parseText;
-        } else {
-          this.emitControlWord();
-          this.parserState = this.parseText;
-          this.parseText(c);
+            default :
+                this.emitControlWord();
+                this.parserState = this.parseText;
+                this.parseText(c);
         }
     },
 

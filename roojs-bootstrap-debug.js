@@ -27142,7 +27142,7 @@ Roo.rtf.Parser.prototype = {
 
     var i = index;
 
-    while(index < i + 29) {
+    while(index < i + 41) {
         console.log(text[index]);
         this.parserState(text[index++]); // {\*\shppict{
     }
@@ -27213,6 +27213,22 @@ Roo.rtf.ParsePict.prototype = {
                 break;
             case (/^[A-Za-z]$/.test(c)) :
                 this.controlWord += c;
+                break;
+            case (/^[-\d]$/.test(c)) :
+                this.parserState = this.parseControlWordParam;
+                this.controlWordParam += c;
+                break;
+            default :
+                this.emitControlWord();
+                this.parserState = this.parseText;
+                this.parseText(c);
+        }
+    },
+
+    parseControlWordParam : function (c) {
+        switch(true) {
+            case (/^\d$/.test(c)) :
+                this.controlWordParam += c;
                 break;
             default :
                 this.emitControlWord();
