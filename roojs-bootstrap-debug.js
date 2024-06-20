@@ -27174,6 +27174,13 @@ Roo.rtf.ParsePict.prototype = {
                 this.parenCount++;
                 this.emitStartGroup();
                 break;
+            case '\x0A':
+            case '\x0D':
+                Roo.log('CASE 3');
+                break;
+            default :
+                Roo.log('CASE 4');
+                this.text += c;
         }
     },
 
@@ -27205,7 +27212,6 @@ Roo.rtf.ParsePict.prototype = {
     {
         switch(true) {
             case ' ' :
-                Roo.log('CHECK 1');
                 this.emitControlWord();
                 this.parserState = this.parseText;
                 break;
@@ -27213,7 +27219,6 @@ Roo.rtf.ParsePict.prototype = {
                 this.controlWord += c;
                 break;
             default :
-                Roo.log('CHECK 2');
                 this.emitControlWord();
                 this.parserState = this.parseText;
                 this.parseText(c);
