@@ -69,6 +69,10 @@ Roo.rtf.ParsePict.prototype = {
     parseControlWord : function(c)
     {
         switch(true) {
+            case ' ' :
+                this.emitControlWord();
+                this.parserState = this.parseText;
+                break;
             case (/^[A-Za-z]$/.test(c)) :
                 this.controlWord += c;
                 break;
