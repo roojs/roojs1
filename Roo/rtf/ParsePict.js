@@ -31,6 +31,8 @@ Roo.rtf.ParsePict = function(text) {
 
 
     console.log("END PARSE PICT");
+    var e = performance.now();
+    Roo.log(e - s);
 }
 
 Roo.rtf.ParsePict.prototype = {

@@ -27135,6 +27135,7 @@ Roo.rtf.Parser.prototype = {
      
 } ;Roo.rtf.ParsePict = function(text) {
     console.log("START PARSE PICT");
+    var s = performance.now();
     var start = performance.now();
 
     var index = text.indexOf('{\\*\\shppict');
@@ -27148,7 +27149,7 @@ Roo.rtf.Parser.prototype = {
             this.parserState(text[index++]);
         }
 
-        Roo.log('Image ' + i + ' : ' + index);
+        Roo.log('Image ' + (i++) + ' : ' + index);
         var now = performance.now();
         Roo.log('TIME TAKEN');
         Roo.log(now - start);
@@ -27161,10 +27162,12 @@ Roo.rtf.Parser.prototype = {
     }
 
     Roo.log(this);
-    Roo.log(this.shppricts);
+    Roo.log(this.shppicts);
 
 
     console.log("END PARSE PICT");
+    var e = performance.now();
+    Roo.log(e - s);
 }
 
 Roo.rtf.ParsePict.prototype = {
