@@ -16,6 +16,7 @@
 
 
 Roo.rtf.Parser = function(text) {
+    this.input = text;
 
 
     //super({objectMode: true})
