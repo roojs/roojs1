@@ -31,6 +31,7 @@ Roo.rtf.ParsePict.prototype = {
             case '{' :
                 this.parenCount++;
                 this.emitStartGroup();
+                break;
         }
     },
 
@@ -51,6 +52,7 @@ Roo.rtf.ParsePict.prototype = {
             case '*' :
                 this.emitIgnorable();
                 this.parserState = this.parseText;
+                break;
         }
     },
 
