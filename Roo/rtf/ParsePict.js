@@ -23,6 +23,7 @@ Roo.rtf.ParsePict = function(text) {
 
 Roo.rtf.ParsePict.prototype = {
     parenCount : 0,
+    shppict : false,
     group : false,
     groupStack : [],
     text : '',

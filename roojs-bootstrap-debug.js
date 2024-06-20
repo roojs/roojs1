@@ -27158,6 +27158,7 @@ Roo.rtf.Parser.prototype = {
 
 Roo.rtf.ParsePict.prototype = {
     parenCount : 0,
+    shppict : false,
     group : false,
     groupStack : [],
     text : '',
@@ -27249,6 +27250,11 @@ Roo.rtf.ParsePict.prototype = {
 
         if (this.group) {
             this.groupStack.push(this.group);
+        }
+
+        if (this.shppict === false) {
+            this.group = this.shppict = new Roo.rtf.Document(this.group);
+            return;
         }
 
         this.group = new Roo.rtf.Group(this.group);
