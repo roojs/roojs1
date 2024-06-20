@@ -3,7 +3,7 @@ Roo.rtf.ParsePict = function(text) {
     var s = performance.now();
     var start = performance.now();
 
-    var index = text.indexOf('{\\*\\shppict');
+    this.index = text.indexOf('{\\*\\shppict');
     var i = 1;
 
     while(index > -1) {
@@ -44,6 +44,7 @@ Roo.rtf.ParsePict = function(text) {
 }
 
 Roo.rtf.ParsePict.prototype = {
+    index: 0,
     parenCount : 0,
     shppict : false,
     picts : [],
@@ -71,6 +72,9 @@ Roo.rtf.ParsePict.prototype = {
             case '\x0D':
                 break;
             default :
+                if(this.group.type == 'pict') {
+
+                }
                 this.text += c;
         }
     },
