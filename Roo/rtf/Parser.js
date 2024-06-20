@@ -336,13 +336,12 @@ Roo.rtf.Parser.prototype = {
             // do we want to track this - it seems just to cause problems.
             //this.emitError('empty control word');
         } else {
-            var skipWords = ['fonttbl', 'colortbl', 'defchp', 'defpap', 
-                'stylesheet', 'listtable', 'listoverridetable', 'rsidtbl', 'mmathPr', 
-                'upr', 'wgrffmtfilter', 'pnseclvl', 'xmlnstbl', 'themedata', 'colorschememapping'];
+            var skipWords = [];
             if(
                 (skipWords.includes(this.controlWord) && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf')
-                // ||
-                // (this.controlWord == 'pict' && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'nonshppict')
+                ||
+                (this.controlWord == 'pict' && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'nonshppict')
+                
             ) {
                 Roo.log(this.controlWord);
                 this.group = this.groupStack.pop();
