@@ -47,7 +47,11 @@ Roo.rtf.ParsePict.prototype = {
 
     parseControlSymbol : function(c)
     {
-
+        switch(c) {
+            case '*' :
+                this.emitIgnorable();
+                this.parserState = this.parseText;
+        }
     },
 
     emitStartGroup : function() 
