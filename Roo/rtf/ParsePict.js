@@ -70,6 +70,7 @@ Roo.rtf.ParsePict.prototype = {
     {
         switch(true) {
             case ' ' :
+                Roo.log('CHECK 1');
                 this.emitControlWord();
                 this.parserState = this.parseText;
                 break;
