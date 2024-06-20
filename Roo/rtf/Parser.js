@@ -338,7 +338,7 @@ Roo.rtf.Parser.prototype = {
             if(
                 (index = this.skipWords[0]. indexOf(parentType) > -1)
                 &&
-                (this.skipWOrds[1][index].includes(this.controlWord))
+                (this.skipWords[1][index].includes(this.controlWord))
             ) {
                 Roo.log(parentType + ' - ' + index + ' - ' + this.controlWord);
                 this.group = this.groupStack.pop();
