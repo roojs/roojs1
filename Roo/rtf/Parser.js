@@ -31,6 +31,10 @@ Roo.rtf.Parser = function(text) {
     
     this.groups = []; // where we put the return.
 
+    this.skipWord = [
+        ['rtf', ['fonttbl']],
+        ['nonshppict', ['pict']]
+    ]
     this.skipParse = false;
     this.parenCount = 0;
     
