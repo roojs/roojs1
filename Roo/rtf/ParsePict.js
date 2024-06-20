@@ -9,12 +9,12 @@ Roo.rtf.ParsePict = function(text) {
     while(this.index > -1) {
         this.parserState = this.parseText;
     
-        this.parserState(text[index++]);
+        this.parserState(text[this.index++]);
         while(this.parenCount) {
-            this.parserState(text[index++]);
+            this.parserState(text[this.index++]);
         }
 
-        Roo.log('Image ' + (i++) + ' : ' + index);
+        Roo.log('Image ' + (i++) + ' : ' + this.index);
         var now = performance.now();
         Roo.log('TIME TAKEN');
         Roo.log(now - start);
