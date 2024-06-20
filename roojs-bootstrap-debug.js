@@ -27142,7 +27142,7 @@ Roo.rtf.Parser.prototype = {
 
     var i = index;
 
-    while(index < i + 12) {
+    while(index < i + 29) {
         console.log(text[index]);
         this.parserState(text[index++]); // {\*\shppict{
     }
@@ -27176,11 +27176,7 @@ Roo.rtf.ParsePict.prototype = {
                 break;
             case '\x0A':
             case '\x0D':
-                Roo.log('CASE 3');
                 break;
-            default :
-                Roo.log('CASE 4');
-                this.text += c;
         }
     },
 
