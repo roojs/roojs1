@@ -40,6 +40,7 @@ Roo.rtf.ParsePict.prototype = {
                 this.emitStartGroup();
                 break;
             case '}' :
+                this.parenCount--;
                 this.emitEndGroup();
                 break;
             case '\x0A':
