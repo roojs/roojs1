@@ -120,13 +120,18 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         // give fake names to child combo;
         this.combo.hiddenName = this.hiddenName ? (this.hiddenName+'-subcombo') : this.hiddenName;
         this.combo.name = this.name ? (this.name+'-subcombo') : this.name;
-        
+        if (this.readOnly) {
+			this.combo.readOnly = true;
+			this.combo.disabled = true;
+			
+		}
         this.combo = Roo.factory(this.combo, Roo.form);
         this.combo.onRender(ct, position);
         if (typeof(this.combo.width) != 'undefined') {
             this.combo.onResize(this.combo.width,0);
         }
         
+		
         this.combo.initEvents();
         
         // assigned so form know we need to do this..
@@ -356,12 +361,23 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
 	},
 	
 	
-    setFromData: function(v)
+    setFromData: function(v )
     {
-        // this recieves an object, if setValues is called.
+        
+		 
+		// this recieves an object, if setValues is called.
         this.reset();
         this.el.dom.value = v[this.displayField];
         this.hiddenEl.dom.value = v[this.valueField];
+		if (typeof(v[this.valueField]) == 'object' && v[this.valueField].length) {
+		   //value is an array of objects?
+		    for (var i = 0 ; i < v[this.valueField].length; i++) {
+				this.addItem(v[this.valueField][i]);
+			}
+			return;
+		}
+		
+		
         if (typeof(v[this.valueField]) != 'string' || !v[this.valueField].length) {
             return;
         }
@@ -488,14 +504,17 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
         this.el.child('div').dom.setAttribute('qtip',
                         String.format('{0}',this.data[this.tipField])
         );
+    	this.el.child('img').on('click', this.remove, this);
+		if (this.cb.readOnly) {
+			this.el.child('img').hide();
+		}
         
-        this.el.child('img').on('click', this.remove, this);
         
     },
    
     remove : function()
     {
-        if(this.cb.disabled){
+        if(this.cb.disabled || this.cb.readOnly){
             return;
         }
         
