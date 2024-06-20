@@ -30,14 +30,6 @@ Roo.rtf.Parser = function(text) {
     this.doc = false;
     
     this.groups = []; // where we put the return.
-
-    // e.g. skip parsing groups of type 'pict' under groups of 'nonshppict'
-    this.skipWords = [
-        ['nonshppict'],
-        [['pict']]
-    ];
-    this.skipParse = false;
-    this.parenCount = 0;
     
     for (var ii = 0; ii < text.length; ++ii) {
         ++this.cpos;
@@ -214,9 +206,6 @@ Roo.rtf.Parser.prototype = {
       
     parseText : function(c)
     {
-        if(this.skipParse) {
-            return;
-        }
         if (c === '\\') {
             this.parserState = this.parseEscapes;
         } else if (c === '{') {
