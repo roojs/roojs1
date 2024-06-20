@@ -335,7 +335,10 @@ Roo.rtf.Parser.prototype = {
             //this.emitError('empty control word');
         } else {
             if(this.groupStack.length > 1) {
-                var index = skipWords[0].indexOf(this.groupStack[this.groupStack.length - 1].type); 
+                var index = skipWords[0].indexOf(this.groupStack[this.groupStack.length - 1].type);
+                if(index > -1) {
+                    if(skipWords[1][i])
+                } 
             }
             if(
                 this.groupStack.length > 1
