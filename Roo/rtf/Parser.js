@@ -319,28 +319,14 @@ Roo.rtf.Parser.prototype = {
             // do we want to track this - it seems just to cause problems.
             //this.emitError('empty control word');
         } else {
-            var parentType = this.groupStack.length == 0 ? false : this.groupStack[this.groupStack.length - 1].type;
-            var index = this.skipWords[0].indexOf(parentType);
-            if(
-                index > -1
-                &&
-                (this.skipWords[1][index].includes(this.controlWord))
-            ) {
-                Roo.log(parentType + ' - ' + index + ' - ' + this.controlWord);
-                this.group = this.groupStack.pop();
-                this.skipParse = true;
-                this.parenCount = 1;
-            }
-            else {
-                this.push({
-                    type: 'controlword',
-                    value: this.controlWord,
-                    param: this.controlWordParam !== '' && Number(this.controlWordParam),
-                    pos: this.cpos,
-                    row: this.row,
-                    col: this.col
-              });
-            }
+            this.push({
+                type: 'controlword',
+                value: this.controlWord,
+                param: this.controlWordParam !== '' && Number(this.controlWordParam),
+                pos: this.cpos,
+                row: this.row,
+                col: this.col
+            });
         }
         this.controlWord = '';
         this.controlWordParam = '';
