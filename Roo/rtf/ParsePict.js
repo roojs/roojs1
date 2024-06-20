@@ -10,6 +10,8 @@ Roo.rtf.ParsePict = function(text) {
 }
 
 Roo.rtf.ParsePict.prototype = {
+    text : '',
+    
     parseText : function(c) {
         if(c == '{') {
             this.emitStartGroup()
