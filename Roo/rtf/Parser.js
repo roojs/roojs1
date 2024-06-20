@@ -336,8 +336,10 @@ Roo.rtf.Parser.prototype = {
         } else {
             if(this.groupStack.length > 1) {
                 var index = skipWords[0].indexOf(this.groupStack[this.groupStack.length - 1].type);
-                if(index > -1) {
-                    if(skipWords[1][i])
+                if(index > -1 && skipWords[1][index].includes(this.controlWord)) {
+                    this.group = this.groupStack.pop();
+                    this.skipParse = true;
+                    this.parenCount = 1;
                 } 
             }
             if(
