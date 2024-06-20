@@ -26,7 +26,7 @@ Roo.rtf.ParsePict = function(text) {
     }
 
     Roo.log(this);
-    Roo.log(this.shppricts);
+    Roo.log(this.shppicts);
 
 
     console.log("END PARSE PICT");
