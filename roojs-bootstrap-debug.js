@@ -27045,7 +27045,11 @@ Roo.rtf.Parser.prototype = {
             var skipWords = ['fonttbl', 'colortbl', 'defchp', 'defpap', 
                 'stylesheet', 'listtable', 'listoverridetable', 'rsidtbl', 'mmathPr', 
                 'upr', 'wgrffmtfilter', 'pnseclvl', 'xmlnstbl', 'themedata', 'colorschememapping'];
-            if(skipWords.includes(this.controlWord) && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf') {
+            if(
+                (skipWords.includes(this.controlWord) && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'rtf')
+                ||
+                (this.controlWord == 'pict' && this.groupStack.length > 0 && this.groupStack[this.groupStack.length - 1].type === 'nonshppict')
+            ) {
                 Roo.log(this.controlWord);
                 this.group = this.groupStack.pop();
                 this.skipParse = true;
@@ -32157,9 +32161,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
-
-        Roo.log('ON PASTE');
-        Roo.log(cd);
+        
         var start = performance.now();
         
         // check what type of paste - if it's an image, then handle it differently.
