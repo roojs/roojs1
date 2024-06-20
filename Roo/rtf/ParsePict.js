@@ -13,7 +13,7 @@ Roo.rtf.ParsePict = function(text) {
             this.parserState(text[index++]);
         }
 
-        Roo.log('Image ' + i + ' : ' + index);
+        Roo.log('Image ' + (i++) + ' : ' + index);
         var now = performance.now();
         Roo.log('TIME TAKEN');
         Roo.log(now - start);
