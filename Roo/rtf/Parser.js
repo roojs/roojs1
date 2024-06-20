@@ -31,8 +31,6 @@ Roo.rtf.Parser = function(text) {
     this.doc = false;
     
     this.groups = []; // where we put the return.
-
-    this.loggg = false;
     
     for (this.ii = 0; this.ii < text.length; ++this.ii) {
         ++this.cpos;
