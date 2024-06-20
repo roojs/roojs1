@@ -23,7 +23,7 @@ Roo.rtf.ParsePict = function(text) {
         this.picts.push(this.shppict.cn[0]);
         this.shppict = false;
     
-        index = text.indexOf('{\\*\\shppict', this.index + 1)
+        this.index = text.indexOf('{\\*\\shppict', this.index + 1)
     }
 
     Roo.log(this);
