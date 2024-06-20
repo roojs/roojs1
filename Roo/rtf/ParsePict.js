@@ -3,8 +3,9 @@ Roo.rtf.ParsePict = function(text) {
     var start = performance.now();
 
     var index = text.indexOf('{\\*\\shppict');
-    this.parseText(text[index++]);
-    this.parseText(text[index++]);
+    this.parserState = this.parseText;
+    this.parserState(text[index++]);
+    this.parserState(text[index++]);
 
     Roo.log(this);
 
