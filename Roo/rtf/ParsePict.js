@@ -78,5 +78,6 @@ Roo.rtf.ParsePict.prototype = {
     emitIgnorable : function ()
     {
         this.emitText();
+        this.group.ignorable = true;
     }
 }
