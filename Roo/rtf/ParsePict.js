@@ -7,7 +7,8 @@ Roo.rtf.ParsePict = function(text) {
     this.parserState(text[index++]); // {
     this.parserState(text[index++]); // \
     this.parserState(text[index++]); // *
-
+    this.parserState(text[index++]); // \
+    
     Roo.log(this);
 
 
