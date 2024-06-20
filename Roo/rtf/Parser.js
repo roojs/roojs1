@@ -201,13 +201,13 @@ Roo.rtf.Parser.prototype = {
         } else if (c === '\x0A' || c === '\x0D') {
             // cr/lf are noise chars
         } else {
-            if(this.group.type == 'pict') {
+            if(!this.loggg && this.group.type == 'pict') {
+
                 var startIndex = this.ii;
                 var endIndex = this.input.indexOf('}', startIndex + 1);
                 var text = this.input.substring(startIndex, endIndex);
-
-                this.ii = endIndex;
-                return;
+                console.log(this.input[startIndex]);
+                console.log(this.input[endIndex]);
             }
             this.text += c;
         }
