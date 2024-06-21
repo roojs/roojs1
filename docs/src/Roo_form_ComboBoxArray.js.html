@@ -131,9 +131,10 @@
             </span><span class="jsdoc-var">this.combo.onResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.combo.width</span><span class="jsdoc-syntax">,0);
         }
 
-
         </span><span class="jsdoc-var">this.combo.initEvents</span><span class="jsdoc-syntax">();
-
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.readOnly</span><span class="jsdoc-syntax">) {
+			</span><span class="jsdoc-var">this.combo.hide</span><span class="jsdoc-syntax">();
+		}
         </span><span class="jsdoc-comment">// assigned so form know we need to do this..
         </span><span class="jsdoc-var">this.store          </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.combo.store</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.valueField     </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.combo.valueField</span><span class="jsdoc-syntax">;

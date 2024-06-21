@@ -1545,7 +1545,7 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
      * Returns true if the dropdown list is expanded, else false.
      */
     isExpanded : function(){
-        return this.list.isVisible();
+        return this.list && this.list.isVisible();
     },
 
     /**
