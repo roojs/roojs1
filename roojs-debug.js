@@ -46084,9 +46084,10 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
             this.combo.onResize(this.combo.width,0);
         }
         
-		
         this.combo.initEvents();
-        
+        if (this.readOnly) {
+			this.combo.hide();
+		}
         // assigned so form know we need to do this..
         this.store          = this.combo.store;
         this.valueField     = this.combo.valueField;
