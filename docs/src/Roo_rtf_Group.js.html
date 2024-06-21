@@ -36,7 +36,6 @@
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'about:blank'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// ?? error?
         </span><span class="jsdoc-syntax">}
 
-
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hexstring </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.content</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.content.length</span><span class="jsdoc-syntax">-1]</span><span class="jsdoc-var">.value</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'data:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">mimetype </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">';base64,' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">btoa</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hexstring.match</span><span class="jsdoc-syntax">(/\w{2}/g)</span><span class="jsdoc-var">.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">) {

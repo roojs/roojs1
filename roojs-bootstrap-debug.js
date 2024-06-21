@@ -26768,7 +26768,7 @@ Roo.rtf.Parser.prototype = {
     cpos : 0, 
     row : 1, // reportin?
     col : 1, //
-
+    ii : 0,
      
     push : function (el)
     {
@@ -32175,7 +32175,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
 
-        Roo.log(images);
         // Roo.log(images);
         // Roo.log(imgs);
         // fixme..
@@ -33242,7 +33241,8 @@ Roo.HtmlEditorCore.cblack= [
 
 
 
-    /*
+    
+/*
  * - LGPL
  *
  * HtmlEditor
