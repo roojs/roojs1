@@ -652,12 +652,14 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (cd.types.indexOf('text/html') < 0 ) {
             return false;
         }
+
         var images = [];
         var html = cd.getData('text/html'); // clipboard event
         if (cd.types.indexOf('text/rtf') > -1) {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
+
         // Roo.log(images);
         // Roo.log(imgs);
         // fixme..
@@ -667,9 +669,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         //Roo.log(html);
         html = this.cleanWordChars(html);
+
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
-        
         
         var sn = this.getParentElement();
         // check if d contains a table, and prevent nesting??
@@ -698,9 +700,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 img.setAttribute('src', images[i]);
             });
         }
+
         if (this.autoClean) {
             new Roo.htmleditor.FilterWord({ node : d });
-            
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
                 node : d,
@@ -751,6 +753,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     image_src  : img.src
                 });
                 fig.updateElement(img); // replace it..
+                
+            });
+
+            Array.from(d.getElementsByTagName('img')).forEach(function(img) {
+                var fig = img.closest('figure');
+                if(fig) {
+                    var parent = fig.parentNode;
+
+                    if(parent.tagName == 'A') {
+                        parent.parentNode.insertBefore(fig, parent);
+                        parent.parentNode.removeChild(parent);
+                    }
+                }
                 
             });
         }

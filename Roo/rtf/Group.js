@@ -36,7 +36,6 @@ Roo.rtf.Group.prototype = {
                 return 'about:blank'; // ?? error?
         }
         
-        
         var hexstring = this.content[this.content.length-1].value;
         
         return 'data:' + mimetype + ';base64,' + btoa(hexstring.match(/\w{2}/g).map(function(a) {
