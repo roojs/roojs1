@@ -221,7 +221,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
              * Fires before the paste event occur
              * @param {Roo.HtmlEditorCore} this
              */
-                         beforepaste: true,
+            beforepaste: true,
             /**
             * @event paste
             * Fires when press user pastes into the editor
