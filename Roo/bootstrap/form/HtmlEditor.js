@@ -99,6 +99,12 @@ Roo.bootstrap.form.HtmlEditor = function(config){
             */
             stylesheetsclick: true,
             /**
+             * @event beforepaste
+             * Fires before the paste event occur
+             * @param {Roo.HtmlEditorCore} this
+             */
+            beforepaste: true,
+            /**
             * @event paste
             * Fires when press user pastes into the editor
             * @param {Roo.HtmlEditorCore} this
