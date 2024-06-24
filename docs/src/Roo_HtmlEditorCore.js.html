@@ -652,12 +652,14 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/html'</span><span class="jsdoc-syntax">) &lt; 0 ) {
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">images </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cd.getData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/html'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// clipboard event
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/rtf'</span><span class="jsdoc-syntax">) &gt; -1) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.rtf.Parser</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.getData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/rtf'</span><span class="jsdoc-syntax">));
             </span><span class="jsdoc-var">images </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parser.doc </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">parser.doc.getElementsByType</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'pict'</span><span class="jsdoc-syntax">) : [];
         }
+
         </span><span class="jsdoc-comment">// Roo.log(images);
         // Roo.log(imgs);
         // fixme..
@@ -668,8 +670,8 @@
         </span><span class="jsdoc-comment">//Roo.log(html);
         </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cleanWordChars</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">DOMParser</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.parseFromString</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'text/html'</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.body</span><span class="jsdoc-syntax">;
 
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">DOMParser</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.parseFromString</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'text/html'</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.body</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getParentElement</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-comment">// check if d contains a table, and prevent nesting??
@@ -698,9 +700,9 @@
                 </span><span class="jsdoc-var">img.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">images</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
             });
         }
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoClean</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterWord</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
-
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterStyleToTag</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterAttributes</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">,
@@ -753,6 +755,19 @@
                 </span><span class="jsdoc-var">fig.updateElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// replace it..
 
             </span><span class="jsdoc-syntax">});
+
+            </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fig </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">img.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'figure'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fig</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fig.parentNode</span><span class="jsdoc-syntax">;
+
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parent.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'A'</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">parent.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fig</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">parent.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">);
+                    }
+                }
+
+            });
         }
 
 
@@ -1711,4 +1726,5 @@
 
 
 
-    </span></code></body></html>
+
+</span></code></body></html>

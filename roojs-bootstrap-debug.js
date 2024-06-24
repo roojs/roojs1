@@ -26768,7 +26768,7 @@ Roo.rtf.Parser.prototype = {
     cpos : 0, 
     row : 1, // reportin?
     col : 1, //
-
+    ii : 0,
      
     push : function (el)
     {
@@ -26905,7 +26905,7 @@ Roo.rtf.Parser.prototype = {
         } else if (c === '\x0A' || c === '\x0D') {
             // cr/lf are noise chars
         } else {
-            if(this.group.type == 'pict') {
+            if(this.group && this.group.type == 'pict') {
                 var startIndex = this.ii;
                 var endIndex = this.input.indexOf('}', startIndex + 1);
                 this.text = this.input.substring(startIndex, endIndex);
@@ -32175,7 +32175,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
 
-        Roo.log(images);
         // Roo.log(images);
         // Roo.log(imgs);
         // fixme..
@@ -33242,7 +33241,8 @@ Roo.HtmlEditorCore.cblack= [
 
 
 
-    /*
+    
+/*
  * - LGPL
  *
  * HtmlEditor

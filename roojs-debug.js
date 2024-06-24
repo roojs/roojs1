@@ -47291,7 +47291,6 @@ Roo.rtf.Group.prototype = {
                 return 'about:blank'; // ?? error?
         }
         
-        
         var hexstring = this.content[this.content.length-1].value;
         
         return 'data:' + mimetype + ';base64,' + btoa(hexstring.match(/\w{2}/g).map(function(a) {
@@ -47369,6 +47368,9 @@ Roo.rtf.Ctrl = function(opts)
 
 
 Roo.rtf.Parser = function(text) {
+    this.input = text;
+
+
     //super({objectMode: true})
     this.text = '';
     this.parserState = this.parseText;
@@ -47382,16 +47384,17 @@ Roo.rtf.Parser = function(text) {
     
     this.groups = []; // where we put the return.
     
-    for (var ii = 0; ii < text.length; ++ii) {
+    for (this.ii = 0; this.ii < text.length; ++this.ii) {
         ++this.cpos;
         
-        if (text[ii] === '\n') {
+        if (text[this.ii] === '\n') {
             ++this.row;
             this.col = 1;
         } else {
             ++this.col;
         }
-        this.parserState(text[ii]);
+
+        this.parserState(text[this.ii]);
     }
     
     
@@ -47411,7 +47414,7 @@ Roo.rtf.Parser.prototype = {
     cpos : 0, 
     row : 1, // reportin?
     col : 1, //
-
+    ii : 0,
      
     push : function (el)
     {
@@ -47548,6 +47551,13 @@ Roo.rtf.Parser.prototype = {
         } else if (c === '\x0A' || c === '\x0D') {
             // cr/lf are noise chars
         } else {
+            if(this.group && this.group.type == 'pict') {
+                var startIndex = this.ii;
+                var endIndex = this.input.indexOf('}', startIndex + 1);
+                this.text = this.input.substring(startIndex, endIndex);
+                this.ii = endIndex - 1;
+                return;
+            }
             this.text += c;
         }
     },
@@ -47660,12 +47670,12 @@ Roo.rtf.Parser.prototype = {
             //this.emitError('empty control word');
         } else {
             this.push({
-                  type: 'controlword',
-                  value: this.controlWord,
-                  param: this.controlWordParam !== '' && Number(this.controlWordParam),
-                  pos: this.cpos,
-                  row: this.row,
-                  col: this.col
+                type: 'controlword',
+                value: this.controlWord,
+                param: this.controlWordParam !== '' && Number(this.controlWordParam),
+                pos: this.cpos,
+                row: this.row,
+                col: this.col
             });
         }
         this.controlWord = '';
@@ -52805,12 +52815,14 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (cd.types.indexOf('text/html') < 0 ) {
             return false;
         }
+
         var images = [];
         var html = cd.getData('text/html'); // clipboard event
         if (cd.types.indexOf('text/rtf') > -1) {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
+
         // Roo.log(images);
         // Roo.log(imgs);
         // fixme..
@@ -52820,9 +52832,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         //Roo.log(html);
         html = this.cleanWordChars(html);
+
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
-        
         
         var sn = this.getParentElement();
         // check if d contains a table, and prevent nesting??
@@ -52851,9 +52863,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 img.setAttribute('src', images[i]);
             });
         }
+
         if (this.autoClean) {
             new Roo.htmleditor.FilterWord({ node : d });
-            
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
                 node : d,
@@ -52904,6 +52916,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     image_src  : img.src
                 });
                 fig.updateElement(img); // replace it..
+                
+            });
+
+            Array.from(d.getElementsByTagName('img')).forEach(function(img) {
+                var fig = img.closest('figure');
+                if(fig) {
+                    var parent = fig.parentNode;
+
+                    if(parent.tagName == 'A') {
+                        parent.parentNode.insertBefore(fig, parent);
+                        parent.parentNode.removeChild(parent);
+                    }
+                }
                 
             });
         }
@@ -53864,7 +53889,8 @@ Roo.HtmlEditorCore.cblack= [
 
 
 
-    //<script type="text/javascript">
+    
+//<script type="text/javascript">
 
 /*
  * Ext JS Library 1.1.1

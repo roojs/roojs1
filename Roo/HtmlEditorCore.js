@@ -660,7 +660,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
 
-        Roo.log(images);
         // Roo.log(images);
         // Roo.log(imgs);
         // fixme..
