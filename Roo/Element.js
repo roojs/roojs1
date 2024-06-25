@@ -2179,8 +2179,11 @@ if(opt.anim.isAnimated()){
             if(this.getStyle("position") == "static" && this.dom.tagName !== 'BODY'){
                 this.setStyle("position", "relative");
             }
+            Roo.log(this);
             if(!this._mask){
                 this._mask = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask"}, true);
+                Roo.log('ADD MASK');
+                Roo.log(this._mask);
             }
             
             this.addClass("x-masked");
