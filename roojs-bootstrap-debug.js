@@ -32125,16 +32125,18 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         this.owner.fireEvent('beforepaste', this);
 
-        Roo.log(e);
-        setTimeout(this.processPaste.bind(this, e, v), 1000);
+        (function () {
+            var e = e;
+            Roo.log(e);
+            setTimeout(this.processPaste.bind(this, e, v), 1000);
+        })();
     },
 
     processPaste(e, v) 
     {
         Roo.log(e);
-        Roo.log(v);
         
-                // I think we better assume paste is going to be a dirty load of rubish from word..
+        // I think we better assume paste is going to be a dirty load of rubish from word..
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
