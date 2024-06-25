@@ -32124,6 +32124,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     onPasteEvent : function(e,v)
     {
         this.owner.fireEvent('beforepaste', this);
+        Roo.get(document.body).mask('TEST');
 
         // I think we better assume paste is going to be a dirty load of rubish from word..
         
