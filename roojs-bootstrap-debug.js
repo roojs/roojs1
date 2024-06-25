@@ -32125,10 +32125,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         this.owner.fireEvent('beforepaste', this);
 
-        setTimeout(this.processPasted, 1000, e, v);
+        setTimeout(this.processPaste, 0, e, v);
     },
 
-    processPasted(e, v) 
+    processPaste(e, v) 
     {
         // I think we better assume paste is going to be a dirty load of rubish from word..
         
