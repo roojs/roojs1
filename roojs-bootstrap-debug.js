@@ -32195,14 +32195,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var rtfData = cd.types.indexOf('text/rtf') > -1 ? cd.getData('text/rtf') : false;
 
         e.preventDefault();
-        Roo.log(rtfData);
-        setTimeout(this.filterPaste.bind(this, d, rtfData), 1000);
+        setTimeout(this.filterPaste.bind(this, d, rtfData), 0);
     },
 
     filterPaste : function(d, rtfData)
     {
-        Roo.log(d);
-        Roo.log(rtfData);
         var images = [];
         if (rtfData !== false) {
             var parser = new Roo.rtf.Parser(rtfData);
