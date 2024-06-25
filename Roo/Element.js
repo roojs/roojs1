@@ -2176,10 +2176,12 @@ if(opt.anim.isAnimated()){
          */
         mask : function(msg, msgCls)
         {
+            Roo.log('MASKKKKKK');
+            Roo.log(this);
             if(this.getStyle("position") == "static" && this.dom.tagName !== 'BODY'){
                 this.setStyle("position", "relative");
             }
-            Roo.log(this);
+
             if(!this._mask){
                 this._mask = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask"}, true);
                 Roo.log('ADD MASK');
@@ -2219,6 +2221,8 @@ if(opt.anim.isAnimated()){
                             }   
                         ]
                     }, true);
+                    Roo.log('ADD MASK MSG');
+                    Roo.log(this._maskMsg);
                 }
                 var mm = this._maskMsg;
                 mm.dom.className = msgCls ? "roo-el-mask-msg " + msgCls : "roo-el-mask-msg";
