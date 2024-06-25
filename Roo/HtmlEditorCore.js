@@ -608,7 +608,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
    
     onPasteEvent : function(e,v)
     {
-        this.owner.fireEvent('beforepaste', this);
         
         // I think we better assume paste is going to be a dirty load of rubish from word..
         
@@ -652,7 +651,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
         if (cd.types.indexOf('text/html') < 0 ) {
-            this.owner.fireEvent('paste', this);
             return false;
         }
 
@@ -673,18 +671,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             e.preventDefault();
             this.insertAtCursor("You can not nest tables");
             //Roo.log("prevent?"); // fixme - 
-            this.owner.fireEvent('paste', this);
             return false;
         }
 
         var rtfData = cd.types.indexOf('text/rtf') > -1 ? cd.getData('text/rtf') : false;
 
         e.preventDefault();
+        this.owner.fireEvent('beforepaste', this);
         setTimeout(this.filterPaste.bind(this, d, rtfData), 0);
     },
 
     filterPaste : function(d, rtfData)
     {
+        
         var images = [];
         if (rtfData !== false) {
             var parser = new Roo.rtf.Parser(rtfData);
