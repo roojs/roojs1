@@ -32170,18 +32170,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
 
-        Roo.log('START PARSE');
-
         var images = [];
         var html = cd.getData('text/html'); // clipboard event
         if (cd.types.indexOf('text/rtf') > -1) {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
-
-        Roo.log('END PARSE');
-
-        return;
 
         // Roo.log(images);
         // Roo.log(imgs);
