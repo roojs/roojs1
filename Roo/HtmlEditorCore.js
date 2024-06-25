@@ -619,6 +619,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     processPaste(cd) 
     {
         Roo.log(cd.types);
+        Roo.log(this);
         
         // I think we better assume paste is going to be a dirty load of rubish from word..
         
