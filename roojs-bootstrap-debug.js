@@ -32192,20 +32192,20 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
 
-        e.preventDefault();
+        var rtfData = cd.types.indexOf('text/rtf') > -1 ? cd.getData('text/rtf') : false;
 
-        Roo.log(d);
-        Roo.log(cd.types);
-        setTimeout(this.filterPaste.bind(this, d, cd.types), 1000);
+        e.preventDefault();
+        Roo.log(rtfData);
+        setTimeout(this.filterPaste.bind(this, d, rtfData), 1000);
     },
 
-    filterPaste : function(d, types)
+    filterPaste : function(d, rtfData)
     {
         Roo.log(d);
-        Roo.log(types);
+        Roo.log(rtfData);
         var images = [];
-        if (types.indexOf('text/rtf') > -1) {
-            var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
+        if (rtfData !== false) {
+            var parser = new Roo.rtf.Parser(rtfData);
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
 

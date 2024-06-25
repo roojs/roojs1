@@ -677,7 +677,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
 
-        var rtfData = cd.types.indexOf('text/rtf') > -1 ? cd.getData('text/rtf') : false
+        var rtfData = cd.types.indexOf('text/rtf') > -1 ? cd.getData('text/rtf') : false;
 
         e.preventDefault();
         Roo.log(rtfData);
