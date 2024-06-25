@@ -32125,11 +32125,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         this.owner.fireEvent('beforepaste', this);
 
-        (function () {
+        (function (_self) {
             var e = e;
             Roo.log(e);
-            setTimeout(this.processPaste.bind(this, e, v), 1000);
-        })();
+            setTimeout(this.processPaste.bind(_self, e, v), 1000);
+        })(this);
     },
 
     processPaste(e, v) 
