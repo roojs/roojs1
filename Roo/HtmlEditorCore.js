@@ -609,8 +609,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     onPasteEvent : function(e,v)
     {
         this.owner.fireEvent('beforepaste', this);
+    },
 
-        // I think we better assume paste is going to be a dirty load of rubish from word..
+    processPasted(e) 
+    {
+                // I think we better assume paste is going to be a dirty load of rubish from word..
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
@@ -786,6 +789,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
         //this.owner.fireEvent('paste', e, v);
     },
+
     // private
     onDestroy : function(){
         
