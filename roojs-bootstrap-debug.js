@@ -32125,11 +32125,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         this.owner.fireEvent('beforepaste', this);
 
-        setTimeout(this.processPaste.bind(this), 1000, e, v);
+        setTimeout(this.processPaste.bind(this, e, v), 1000);
     },
 
     processPaste(e, v) 
     {
+        
                 // I think we better assume paste is going to be a dirty load of rubish from word..
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
