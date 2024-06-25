@@ -32128,6 +32128,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         e.preventDefault();
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
 
+        Roo.log(cd);
+
         setTimeout(this.processPaste.bind(this), 1000, cd);
     },
 
