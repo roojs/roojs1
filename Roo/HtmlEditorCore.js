@@ -679,6 +679,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         e.preventDefault();
 
+        Roo.log(d);
+        setTimeout(this.filterPaste.bind(this, d), 1000);
+    },
+
+    filterPaste : function(d)
+    {
+        Roo.log(d);
         var images = [];
         if (cd.types.indexOf('text/rtf') > -1) {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
@@ -789,7 +796,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         // default behaveiour should be our local cleanup paste? (optional?)
         // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
         //this.owner.fireEvent('paste', e, v);
-    },
+    }
 
     // private
     onDestroy : function(){
