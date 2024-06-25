@@ -675,6 +675,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
 
+        e.preventDefault();
+
         var images = [];
         if (cd.types.indexOf('text/rtf') > -1) {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
@@ -780,7 +782,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
          
         
-        e.preventDefault();
         this.owner.fireEvent('paste', this);
         return false;
         // default behaveiour should be our local cleanup paste? (optional?)
