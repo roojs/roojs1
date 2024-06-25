@@ -28444,6 +28444,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
         //this.owner.fireEvent('paste', e, v);
     },
+
+    processPasted(e, v) {
+
+    },
+
     // private
     onDestroy : function(){
         
