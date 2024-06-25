@@ -680,10 +680,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         e.preventDefault();
 
         Roo.log(d);
-        setTimeout(this.filterPaste.bind(this, d), 1000);
+        Roo.log(cd.types);
+        setTimeout(this.filterPaste.bind(this, d, cd.types), 1000);
     },
 
-    filterPaste : function(d)
+    filterPaste : function(d, types)
     {
         Roo.log(d);
         var images = [];
