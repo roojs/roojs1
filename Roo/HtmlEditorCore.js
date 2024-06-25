@@ -610,7 +610,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         this.owner.fireEvent('beforepaste', this);
 
-        setTimeout.call(this, this.processPaste, 1000, e, v);
+        setTimeout(this.processPaste.bind(this), 1000, e, v);
     },
 
     processPaste(e, v) 
