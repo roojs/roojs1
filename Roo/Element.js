@@ -582,8 +582,6 @@ if(opt.anim.isAnimated()){
             if(typeof value == "boolean"){
                value = value ? this.originalDisplay : "none";
             }
-            Roo.log('SET DISPLAYED');
-            Roo.log(value);
             this.setStyle("display", value);
             return this;
         },
@@ -2178,16 +2176,11 @@ if(opt.anim.isAnimated()){
          */
         mask : function(msg, msgCls)
         {
-            Roo.log('MASKKKKKK');
-            Roo.log(this);
             if(this.getStyle("position") == "static" && this.dom.tagName !== 'BODY'){
                 this.setStyle("position", "relative");
             }
-
             if(!this._mask){
                 this._mask = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask"}, true);
-                Roo.log('ADD MASK');
-                Roo.log(this._mask);
             }
             
             this.addClass("x-masked");
@@ -2223,30 +2216,20 @@ if(opt.anim.isAnimated()){
                             }   
                         ]
                     }, true);
-                    Roo.log('ADD MASK MSG');
-                    Roo.log(this._maskMsg);
                 }
                 var mm = this._maskMsg;
                 mm.dom.className = msgCls ? "roo-el-mask-msg " + msgCls : "roo-el-mask-msg";
-                Roo.log('SET CLASS NAME');
-                Roo.log(mm);
                 if (mm.dom.lastChild) { // weird IE issue?
                     mm.dom.lastChild.innerHTML = msg;
                 }
-                Roo.log('SET INNERHTML');
-                Roo.log(mm);
                 mm.setDisplayed(true);
                 mm.center(this);
                 mm.setStyle('z-index', z + 102);
-                Roo.log('SET MASK MSGSTYLE');
-                Roo.log(mm);
             }
             if(Roo.isIE && !(Roo.isIE7 && Roo.isStrict) && this.getStyle('height') == 'auto'){ // ie will not expand full height automatically
                 this._mask.setHeight(this.getHeight());
             }
             this._mask.setStyle('z-index', z + 100);
-            Roo.log('SET MASK STYLE');
-            Roo.log(this._mask);
             
             return this._mask;
         },
