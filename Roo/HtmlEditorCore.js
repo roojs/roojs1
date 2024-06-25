@@ -652,6 +652,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
         if (cd.types.indexOf('text/html') < 0 ) {
+            this.owner.fireEvent('paste', this);
             return false;
         }
 
@@ -672,6 +673,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             e.preventDefault();
             this.insertAtCursor("You can not nest tables");
             //Roo.log("prevent?"); // fixme - 
+            this.owner.fireEvent('paste', this);
             return false;
         }
 
