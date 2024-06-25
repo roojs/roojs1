@@ -32170,7 +32170,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
 
-        return;
+        Roo.log('START PARSE');
 
         var images = [];
         var html = cd.getData('text/html'); // clipboard event
@@ -32178,6 +32178,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
+
+        Roo.log('END PARSE');
+
+        return;
 
         // Roo.log(images);
         // Roo.log(imgs);
