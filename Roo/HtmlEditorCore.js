@@ -609,7 +609,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     onPasteEvent : function(e,v)
     {
         this.owner.fireEvent('beforepaste', this);
-        
+
         // I think we better assume paste is going to be a dirty load of rubish from word..
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
@@ -654,6 +654,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (cd.types.indexOf('text/html') < 0 ) {
             return false;
         }
+
+        return;
 
         var images = [];
         var html = cd.getData('text/html'); // clipboard event
