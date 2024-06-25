@@ -32124,23 +32124,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     onPasteEvent : function(e,v)
     {
         this.owner.fireEvent('beforepaste', this);
-
-        e.preventDefault();
-        var cd = (e.browserEvent.clipboardData || window.clipboardData);
-
-        Roo.log(cd.types);
-
-        setTimeout(this.processPaste.bind(this), 1000, cd);
-    },
-
-    processPaste(cd) 
-    {
-        Roo.log(cd.types);
-        Roo.log(this);
         
         // I think we better assume paste is going to be a dirty load of rubish from word..
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
+        var cd = (e.browserEvent.clipboardData || window.clipboardData);
         
         // check what type of paste - if it's an image, then handle it differently.
         if (cd.files && cd.files.length > 0 && cd.types.indexOf('text/html') < 0) {
