@@ -8989,6 +8989,8 @@ if(opt.anim.isAnimated()){
             if(typeof value == "boolean"){
                value = value ? this.originalDisplay : "none";
             }
+            Roo.log('SET DISPLAYED');
+            Roo.log(value);
             this.setStyle("display", value);
             return this;
         },
