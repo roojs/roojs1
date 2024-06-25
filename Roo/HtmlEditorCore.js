@@ -688,7 +688,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         Roo.log(d);
         var images = [];
-        if (cd.types.indexOf('text/rtf') > -1) {
+        if (types.indexOf('text/rtf') > -1) {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
