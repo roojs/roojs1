@@ -2104,6 +2104,26 @@
       "returns" : []
     },
     {
+      "name" : "beforepaste",
+      "type" : "function",
+      "desc" : "Fires before the paste event occur",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.HtmlEditorCore",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "paste",
       "type" : "function",
       "desc" : "Fires when press user pastes into the editor",

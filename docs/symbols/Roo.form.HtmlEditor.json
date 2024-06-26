@@ -1720,6 +1720,26 @@
       "returns" : []
     },
     {
+      "name" : "beforepaste",
+      "type" : "function",
+      "desc" : "Fires before the paste event occur",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.HtmlEditorCore",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "firstfocus",
       "type" : "function",
       "desc" : "Fires when on first focus - needed by toolbars..",
