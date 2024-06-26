@@ -52771,6 +52771,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
    
     onPasteEvent : function(e,v)
     {
+        
         // I think we better assume paste is going to be a dirty load of rubish from word..
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
@@ -52816,19 +52817,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
 
-        var images = [];
         var html = cd.getData('text/html'); // clipboard event
-        if (cd.types.indexOf('text/rtf') > -1) {
-            var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
-            images = parser.doc ? parser.doc.getElementsByType('pict') : [];
-        }
-
-        // Roo.log(images);
-        // Roo.log(imgs);
-        // fixme..
-        images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl|listtable|footerf)/); }) // ignore headers/footers etc.
-                       .map(function(g) { return g.toDataURL(); })
-                       .filter(function(g) { return g != 'about:blank'; });
         
         //Roo.log(html);
         html = this.cleanWordChars(html);
@@ -52847,6 +52836,29 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             //Roo.log("prevent?"); // fixme - 
             return false;
         }
+
+        var rtfData = cd.types.indexOf('text/rtf') > -1 ? cd.getData('text/rtf') : false;
+
+        e.preventDefault();
+        this.owner.fireEvent('beforepaste', this);
+        setTimeout(this.filterPaste.bind(this, d, rtfData), 0);
+    },
+
+    filterPaste : function(d, rtfData)
+    {
+        
+        var images = [];
+        if (rtfData !== false) {
+            var parser = new Roo.rtf.Parser(rtfData);
+            images = parser.doc ? parser.doc.getElementsByType('pict') : [];
+        }
+
+        // Roo.log(images);
+        // Roo.log(imgs);
+        // fixme..
+        images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl|listtable|footerf)/); }) // ignore headers/footers etc.
+                       .map(function(g) { return g.toDataURL(); })
+                       .filter(function(g) { return g != 'about:blank'; });
         
         
         
@@ -52940,13 +52952,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
          
         
-        e.preventDefault();
         this.owner.fireEvent('paste', this);
         return false;
         // default behaveiour should be our local cleanup paste? (optional?)
         // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
         //this.owner.fireEvent('paste', e, v);
     },
+
     // private
     onDestroy : function(){
         
@@ -54108,6 +54120,12 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             * @param {Roo.HtmlEditorCore} this
             */
             stylesheetsclick: true,
+            /**
+             * @event beforepaste
+             * Fires before the paste event occur
+             * @param {Roo.HtmlEditorCore} this
+             */
+            beforepaste: true,
             /**
             * @event paste
             * Fires when press user pastes into the editor
