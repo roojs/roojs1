@@ -19425,9 +19425,9 @@ Roo.extend(Roo.form.NumberField, Roo.form.TextField,  {
             this.hiddenField = this.el.insertSibling({ tag:'input', type:'hidden', name: this.name },
                         'before', true);
             this.hiddenField.value = this.value ? this.parseValue(this.value) : '';
-            this.el.on('blur', this.onBlur, this);
+            
         }
-        
+        this.el.on('blur', this.onBlur, this);
             // prevent input submission
         
             
