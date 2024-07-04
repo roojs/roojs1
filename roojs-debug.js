@@ -43324,8 +43324,13 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
     // private
     SafariOnKeyDown : function(event)
     {
-        // this is a workaround for a password hang bug on chrome/ webkit.
-        
+        // ingore ctrl press
+		
+		 
+        if ([ 16, 17, ].indexOf(event.keyCode)) {
+			return;
+		}
+		// this is a workaround for a password hang bug on chrome/ webkit.		
         var isSelectAll = false;
         
         if(this.el.dom.selectionEnd > 0){
