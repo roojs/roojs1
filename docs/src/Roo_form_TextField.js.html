@@ -317,8 +317,13 @@
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">SafariOnKeyDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-comment">// this is a workaround for a password hang bug on chrome/ webkit.
+        </span><span class="jsdoc-comment">// ingore ctrl press
 
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([ 16, 17, ]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event.keyCode</span><span class="jsdoc-syntax">)) {
+			</span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+		}
+		</span><span class="jsdoc-comment">// this is a workaround for a password hang bug on chrome/ webkit.		
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">isSelectAll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom.selectionEnd </span><span class="jsdoc-syntax">&gt; 0){
