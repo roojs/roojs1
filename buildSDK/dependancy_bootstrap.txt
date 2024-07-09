@@ -251,4 +251,6 @@ Roo.bootstrap.form.deprecated
 Roo.bootstrap.nav.deprecated
 Roo.bootstrap.menu.deprecated
 
-Roo.LanguageDetect
+Roo.languagedetect.namespace
+Roo.languagedetect.LanguageDetect
+Roo.languagedetect.Parser

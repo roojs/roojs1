@@ -94,4 +94,6 @@ Roo.dd.DropTarget
 Roo.dd.DragZone
 Roo.dd.DropZone
 
-Roo.LanguageDetect
+Roo.languagedetect.namespace
+Roo.languagedetect.LanguageDetect
+Roo.languagedetect.Parser
