@@ -12489,6 +12489,15 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      * @cfg {String} maxLengthWarnText Warning text to display if the input field length exceed 'maxLengthWarn'
      */
     maxLengthWarnText : "",
+    /**
+     * @cfg {Function} warningIndicator A custom function to indicate whether a warning should be shown. The function will be called after
+     * the validator returns true and is expected to return false if no warning should be shown.
+     */
+    warningIndicator : null,
+    /**
+     * @cfg {String} warningText The warning text to display if {@link #warningIndicator} test fails during validation (defaults to "")
+     */
+    warningText : "",
 
     warningClass : "is-warned",
     
@@ -12984,8 +12993,8 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         //if(this.disabled || this.validateValue(this.processValue(this.getRawValue()))){
         if(this.disabled || this.validateValue(this.getRawValue())){
             // check for warning
-            if(this.getRawValue().length > this.maxLengthWarn) {
-                this.markWarning(this.maxLengthWarnText);
+            if(this.shouldWarn(this.getRawValue())) {
+                this.markWarning();
             }
             else {
                 this.markValid();
@@ -13045,6 +13054,25 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         
         return true;
+    },
+
+    shouldWarn : function(value)
+    {
+        if(value.length > this.maxLengthWarn) {
+            this.wanringText = this.maxLengthWarnText;
+            return true;
+        }
+
+        if(typeof this.warningIndicator == "function"){
+            var msg = this.warningIndicator(value);
+            if (typeof(msg) == 'string') {
+                this.warningText = msg;
+            }
+            if(msg !== false){
+                return true;
+            }
+        }
+        return false;
     },
     
      // private
@@ -13400,7 +13428,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 
                 this.el.select('.form-control-feedback', true).first().addClass([this.warningClass]);
 
-                feedback.update(typeof(msg) == 'undefined' ? '' : msg);
+                feedback.update(typeof(msg) == 'undefined' ? this.warningText : msg);
 
                 if(feedback.dom.innerHTML) {
                     feedback.show();
