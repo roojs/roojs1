@@ -29,6 +29,7 @@
  * </code>
  */
 
+console.log(window.location.pathname);
 fetch('./data/lang.json')
 .then((res) => res.json())
 .then((json) => {
