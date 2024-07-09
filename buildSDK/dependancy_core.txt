@@ -93,3 +93,5 @@ Roo.dd.DragSource
 Roo.dd.DropTarget
 Roo.dd.DragZone
 Roo.dd.DropZone
+
+Roo.LanguageDetect
