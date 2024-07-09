@@ -29,7 +29,7 @@
  * </code>
  */
 
-fetch('../data/lang.json')
+fetch('./data/lang.json')
 .then((res) => res.json())
 .then((json) => {
   console.log(json);
