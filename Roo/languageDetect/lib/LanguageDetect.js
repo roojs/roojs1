@@ -31,7 +31,9 @@
 
 fetch('../data/lang.json')
 .then((res) => res.json())
-.then((json) => console.log(json););
+.then((json) => {
+  console.log(json);
+});
 import Parserr from './Parser.js';
 import ISO6399 from './ISO639.js';
 
