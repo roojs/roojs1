@@ -51083,61 +51083,62 @@ Roo.bootstrap.Menu = Roo.bootstrap.menu.Menu;
 Roo.bootstrap.MenuItem =  Roo.bootstrap.menu.Item;
 Roo.bootstrap.MenuSeparator = Roo.bootstrap.menu.Separator
 
+
 var Parser = function (string) {
-  /**
-   * The size of the trigram data arrays
-   *
-   * @access   private
-   * @var      int
-   */
-  this.threshold = 300;
-
-  /**
-   * stores the trigram ranks of the sample
-   *
-   * @access  private
-   * @var     array
-   */
-  this.trigramRanks = {};
-
-  /**
-   * Whether the parser should compile trigrams
-   *
-   * @access  private
-   * @var     bool
-   */
-  this.compileTrigram = true;
-
-  this.compileUnicode = true;
-  this.unicodeSkipAscii = true;
-  this.unicodeBlocks = {};
-
-  /**
-   * Whether the trigram parser should pad the beginning of the string
-   *
-   * @access  private
-   * @var     bool
-   */
-  this.trigramPadStart = false;
-
-  this.trigram = {};
-
-  /**
-   * the piece of text being parsed
-   *
-   * @access  private
-   * @var     string
-   */
-
-  /**
-   * Constructor
-   *
-   * @access  private
-   * @param   string  string to be parsed
-   */
-  this.string = string ? string.replace(/[~!@#$%^&*()_|+\-=?;:",.<>\{\}\[\]\\\/]/g, ' ') : '';
-};
-
+    /**
+     * The size of the trigram data arrays
+     *
+     * @access   private
+     * @var      int
+     */
+    this.threshold = 300;
+  
+    /**
+     * stores the trigram ranks of the sample
+     *
+     * @access  private
+     * @var     array
+     */
+    this.trigramRanks = {};
+  
+    /**
+     * Whether the parser should compile trigrams
+     *
+     * @access  private
+     * @var     bool
+     */
+    this.compileTrigram = true;
+  
+    this.compileUnicode = true;
+    this.unicodeSkipAscii = true;
+    this.unicodeBlocks = {};
+  
+    /**
+     * Whether the trigram parser should pad the beginning of the string
+     *
+     * @access  private
+     * @var     bool
+     */
+    this.trigramPadStart = false;
+  
+    this.trigram = {};
+  
+    /**
+     * the piece of text being parsed
+     *
+     * @access  private
+     * @var     string
+     */
+  
+    /**
+     * Constructor
+     *
+     * @access  private
+     * @param   string  string to be parsed
+     */
+    this.string = string ? string.replace(/[~!@#$%^&*()_|+\-=?;:",.<>\{\}\[\]\\\/]/g, ' ') : '';
+  };
+  
 Parser.prototype = {
   /**
    * turn on/off padding the beginning of the sample string
