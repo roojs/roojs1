@@ -616,6 +616,18 @@ Roo.LanguageDetect.prototype = {
     return Object.keys(this.langDb);
   },
 
+  getLanguageCodes:function() {
+      var languages = this.getLanguages();
+      switch(this.languageType) {
+          case 'iso2' :
+            return languages.map((name) => ISO639.getCode2(name));
+          case 'iso3' :
+            return languages.map((name) => ISO639.getCode3(name));
+          default :
+            return languages;
+      }
+  }
+
   /**
    * Calculates a linear rank-order distance statistic between two sets of
    * ranked trigrams
