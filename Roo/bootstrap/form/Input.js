@@ -1147,7 +1147,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 
                 this.el.select('.form-control-feedback', true).first().addClass([this.warningClass]);
 
-                feedback.update(typeof(msg) == 'undefined' ? '' : msg);
+                feedback.update(typeof(msg) == 'undefined' ? this.warningText : msg);
 
                 if(feedback.dom.innerHTML) {
                     feedback.show();
