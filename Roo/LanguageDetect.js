@@ -626,7 +626,7 @@ Roo.LanguageDetect.prototype = {
           default :
             return languages;
       }
-  }
+  },
 
   /**
    * Calculates a linear rank-order distance statistic between two sets of
