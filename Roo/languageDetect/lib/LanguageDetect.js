@@ -29,7 +29,7 @@
  * </code>
  */
 
-import Parser from './Parser.js';
+import Parserr from './Parser.js';
 import ISO6399 from './ISO639.js';
 
 var dbLang = require('../data/lang.json')
