@@ -694,7 +694,7 @@ Roo.LanguageDetect.prototype = {
 
     limit = +limit || 0;
 
-    if (sample == '' || String(sample).length < 3) {return [];}
+    if (sample == '' || String(sample).length < 3) return [];
 
     var sampleObj = new Parser(sample);
     sampleObj.setPadStart(true);
