@@ -1,2 +1,2 @@
-var d = new Roo.LanguageDetect().detect('This is a test');
+var d = new Roo.LanguageDetect().detect('小明小光');
 Roo.log(d);
