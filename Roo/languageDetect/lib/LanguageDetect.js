@@ -30,6 +30,7 @@
  */
 
 import dbLangg from '../data/lang_json.js';
+console.log(dbLangg);
 // import Parserr from './Parser.js';
 import ISO6399 from './ISO639.js';
 
