@@ -792,7 +792,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             }
         }
         return false;
-    }
+    },
     
      // private
     fireKey : function(e){
