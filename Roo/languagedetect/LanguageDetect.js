@@ -194,38 +194,38 @@ Roo.languagedetect.LanguageDetect.prototype = {
     switch (me.languageType) {
       case 'iso2':
         for (i = scoresLength; i--;) {
-          scores[i][0] = ISO639.getCode2(scores[i][0]);
+          scores[i][0] = this.getCode2(scores[i][0]);
         }
         break;
       case 'iso3':
         for (i = scoresLength; i--;) {
-          scores[i][0] = ISO639.getCode3(scores[i][0]);
+          scores[i][0] = this.getCode3(scores[i][0]);
         }
         break;
     }
 
     // limit the number of returned scores
     return limit > 0 ? scores.slice(0, limit) : scores;
+  },
+
+  getCode2:function (lang) {
+    return Roo.languagedetect.LanguageDetect.nameToCode2[String(lang).toLowerCase()] || null;
+  },
+
+  getCode3: function(lang) {
+    return Roo.languagedetect.LanguageDetect.nameToCode3[String(lang).toLowerCase()] || null;
+  },
+
+  getName2: function(code) {
+    return Roo.languagedetect.LanguageDetect.code2ToName[String(code).toLowerCase()] || null;
+  },
+
+  getName3: function(code) {
+    return Roo.languagedetect.LanguageDetect.code3ToName[String(code).toLowerCase()] || null;
   }
 };
 
 Roo.apply(Roo.languagedetect.LanguageDetect, {
-    getCode2:function (lang) {
-    return Languages.nameToCode2[String(lang).toLowerCase()] || null;
-  },
-
-  getCode3: function(lang) {
-    return Languages.nameToCode3[String(lang).toLowerCase()] || null;
-  },
-
-  getName2: function(code) {
-    return Languages.code2ToName[String(code).toLowerCase()] || null;
-  },
-
-  getName3: function(code) {
-    return Languages.code3ToName[String(code).toLowerCase()] || null;
-  },
-
   nameToCode2:{
     'albanian':'sq',
     'arabic':'ar',
