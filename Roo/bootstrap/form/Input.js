@@ -210,7 +210,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     maxLengthWarnText : "",
     /**
      * @cfg {Function} warningIndicator A custom function to indicate whether a warning should be shown. The funnction will be called after
-     * the validator returns true and is expected to return true if a warning should be shown.
+     * the validator returns true and is expected to return false if no warning should be shown.
      */
     warningIndicator : null,
     /**
@@ -778,10 +778,22 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     shouldWarn : function(value)
     {
         if(value.length > this.maxLengthWarn) {
-            this.markWarning(this.maxLengthWarnText);
+            this.wanringText = this.maxLengthWarnText;
+            return true;
         }
 
+        if(typeof this.warningIndicator == "function"){
+            var msg = this.warningIndicator(value);
+            if (typeof(msg) == 'string') {
+                this.warningText = msg;
+            }
+            if(msg !== true){
+                return false;
+            }
+        }
         
+
+        return false;
     }
     
      // private
