@@ -553,7 +553,7 @@ var Languages = {
 
 var ISO639 = Languages;
 
-var LanguageDetect = function (languageType) {
+var Roo.LanguageDetect = function (languageType) {
 
   /**
    * The trigram data for comparison
@@ -590,7 +590,7 @@ var LanguageDetect = function (languageType) {
   this.languageType = languageType || null;
 };
 
-LanguageDetect.prototype = {
+Roo.LanguageDetect.prototype = {
 
   /**
    * Returns the number of languages that this object can detect
