@@ -704,7 +704,7 @@ Roo.LanguageDetect.prototype = {
     return limit > 0 ? scores.slice(0, limit) : scores;
   },
 
-  Parser : function (string) {
+  Parser:function (string) {
     /**
      * The size of the trigram data arrays
      *
