@@ -13059,7 +13059,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     shouldWarn : function(value)
     {
         if(value.length > this.maxLengthWarn) {
-            this.wanringText = this.maxLengthWarnText;
+            this.warningText = this.maxLengthWarnText;
             return true;
         }
 
