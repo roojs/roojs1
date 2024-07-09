@@ -787,12 +787,10 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             if (typeof(msg) == 'string') {
                 this.warningText = msg;
             }
-            if(msg !== true){
-                return false;
+            if(msg !== false){
+                return true;
             }
         }
-        
-
         return false;
     }
     
