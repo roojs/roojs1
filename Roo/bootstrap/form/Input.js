@@ -208,6 +208,15 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      * @cfg {String} maxLengthWarnText Warning text to display if the input field length exceed 'maxLengthWarn'
      */
     maxLengthWarnText : "",
+    /**
+     * @cfg {Function} warningValidator A custom validation function to be called after the validtor return true. return true
+     * if a warning should be shown.
+     */
+    warningIndicator : null,
+    /**
+     * @cfg {String} warningText The warning text to display if {@link #warningIndicator} test fails during validation (defaults to "")
+     */
+    warningText : "",
 
     warningClass : "is-warned",
     
@@ -765,6 +774,15 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         
         return true;
     },
+
+    shouldWarn : function(value)
+    {
+        if(value.length > this.maxLengthWarn) {
+            this.markWarning(this.maxLengthWarnText);
+        }
+
+        
+    }
     
      // private
     fireKey : function(e){
