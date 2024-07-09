@@ -29,6 +29,9 @@
  * </code>
  */
 
+import Parser from './Parser.js';
+import ISO6399 from './ISO639.js';
+
 var dbLang = require('../data/lang.json')
   , Parser = require('./Parser')
   , ISO639 = require('./ISO639');
@@ -231,3 +234,5 @@ LanguageDetect.prototype = {
     return limit > 0 ? scores.slice(0, limit) : scores;
   }
 };
+
+export default LanguageDetect;
