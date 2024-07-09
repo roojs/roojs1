@@ -551,7 +551,7 @@ var Languages = {
   }
 };
 
-// var ISO639 = Languages;
+var ISO639 = Languages;
 
 var LanguageDetect = function (languageType) {
 
