@@ -51610,7 +51610,7 @@ Roo.languagedetect.Parser.prototype = {
   },
 
   getBlockCount: function () {
-    return Roo.languageDetect.Parser.dbUnicodeBlocks.length;
+    return Roo.languagedetect.Parser.dbUnicodeBlocks.length;
   },
 
   getUnicodeBlocks: function () {
@@ -51635,7 +51635,7 @@ Roo.languagedetect.Parser.prototype = {
       , dropone, c;
 
     if (this.compileUnicode) {
-      var blocksCount = Roo.languageDetect.Parser.dbUnicodeBlocks.length;
+      var blocksCount = Roo.languagedetect.Parser.dbUnicodeBlocks.length;
     }
 
     // trigram startup
@@ -51824,23 +51824,23 @@ Roo.languagedetect.Parser.prototype = {
   },
 
   unicodeBlockName: function (unicode, blockCount) {
-    if (unicode <= Roo.languageDetect.Parser.dbUnicodeBlocks[0][1]) {
-      return Roo.languageDetect.Parser.dbUnicodeBlocks[0];
+    if (unicode <= Roo.languagedetect.Parser.dbUnicodeBlocks[0][1]) {
+      return Roo.languagedetect.Parser.dbUnicodeBlocks[0];
     }
 
-    var high = blockCount ? blockCount - 1 : Roo.languageDetect.Parser.dbUnicodeBlocks.length
+    var high = blockCount ? blockCount - 1 : Roo.languagedetect.Parser.dbUnicodeBlocks.length
       , low = 1
       , mid;
 
     while (low <= high) {
       mid = Math.floor((low + high) / 2);
 
-      if (unicode < Roo.languageDetect.Parser.dbUnicodeBlocks[mid][0]) {
+      if (unicode < Roo.languagedetect.Parser.dbUnicodeBlocks[mid][0]) {
         high = mid - 1;
-      } else if (unicode > Roo.languageDetect.Parser.dbUnicodeBlocks[mid][1]) {
+      } else if (unicode > Roo.languagedetect.Parser.dbUnicodeBlocks[mid][1]) {
         low = mid + 1;
       } else {
-        return Roo.languageDetect.Parser.dbUnicodeBlocks[mid];
+        return Roo.languagedetect.Parser.dbUnicodeBlocks[mid];
       }
     }
 
