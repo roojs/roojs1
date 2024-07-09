@@ -694,7 +694,7 @@ Roo.LanguageDetect.prototype = {
 
     limit = +limit || 0;
 
-    if (sample == '' || String(sample).length < 3) return [];
+    if (sample == '' || String(sample).length < 3) {return [];}
 
     var sampleObj = new Parser(sample);
     sampleObj.setPadStart(true);
@@ -703,7 +703,7 @@ Roo.LanguageDetect.prototype = {
     var trigramFreqs = sampleObj.getTrigramRanks()
       , trigramCount = Object.keys(trigramFreqs).length;
 
-    if (trigramCount == 0) return [];
+    if (trigramCount == 0) {return [];}
 
     var keys = [], i, lang;
 
@@ -715,7 +715,7 @@ Roo.LanguageDetect.prototype = {
       for (i = keysLength; i--;) {
         if (this.unicodeMap[languages[i]]) {
           for (lang in this.unicodeMap[languages[i]]) {
-            if (!~keys.indexOf(lang)) keys.push(lang);
+            if (!~keys.indexOf(lang)) {keys.push(lang);}
           }
         }
       }
@@ -725,14 +725,14 @@ Roo.LanguageDetect.prototype = {
 
     for (i = keys.length; i--;) {
       var score = me.normalizeScore(me.distance(me.langDb[keys[i]], trigramFreqs), trigramCount);
-      if (score) scores.push([keys[i], score]);
+      if (score) {scores.push([keys[i], score]);}
     }
 
     // Sort the array
     scores.sort(function (a, b) { return b[1] - a[1]; });
     var scoresLength = scores.length;
 
-    if (!scoresLength) return [];
+    if (!scoresLength) {return [];}
 
     switch (me.languageType) {
       case 'iso2':
