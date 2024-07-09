@@ -209,7 +209,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      */
     maxLengthWarnText : "",
     /**
-     * @cfg {Function} warningValidator A custom validation function to be called after the validtor return true. return true
+     * @cfg {Function} warningIndicator A custom validation function to be called after the validtor return true. return true
      * if a warning should be shown.
      */
     warningIndicator : null,
