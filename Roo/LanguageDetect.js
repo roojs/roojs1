@@ -553,7 +553,7 @@ var Languages = {
 
 var ISO639 = Languages;
 
-var Roo.LanguageDetect = function (languageType) {
+Roo.LanguageDetect = function (languageType) {
 
   /**
    * The trigram data for comparison
