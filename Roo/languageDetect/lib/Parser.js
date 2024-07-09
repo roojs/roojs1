@@ -325,3 +325,5 @@ Parser.prototype = {
     return -1;
   }
 };
+
+export default Parser;
