@@ -79,6 +79,7 @@ Roo.languagedetect.Detect.prototype = {
             }
         }
 
+        // find the language with most character
         var max = false;
         for (var code in count) {
             if(!max) {
