@@ -1,3 +1,5 @@
+// source : https://github.com/FGRibreau/node-language-detect/tree/master
+
 Roo.languagedetect.LanguageDetect = function (languageType) {
 
   /**
