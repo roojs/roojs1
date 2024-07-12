@@ -5,6 +5,12 @@ Roo.languagedetect.Detect = function() {
 Roo.languagedetect.Detect.prototype = {
     koRegex : /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,
     jaRegex : /[\u3040-\u30ff]|[\uff66-\uff9f]|[\u1aff0-\u1b16f]/,
+    codeToName : {
+        'ja':'japanese',
+        'ko':'korean',
+        'zh_HK':'traditional chinese',
+        'zh_CN':'simplified chinese'
+    },
 
     /**
      * 
