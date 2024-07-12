@@ -67,9 +67,9 @@ Roo.languagedetect.Detect.prototype = {
             return '';
         }
         return (
-            this.languageDetect.getName2(code) 
-            || this.nameToCode[String(lang).toLowerCase()] 
-            || null
+            this.languageDetect.getName2(code) || 
+            this.nameToCode[String(lang).toLowerCase()] || 
+            null
         );
     }
 };
