@@ -66,6 +66,10 @@ Roo.languagedetect.Detect.prototype = {
         if(!this.isSupported(code)) {
             return '';
         }
-        return this.languageDetect.getName2(code) || this.nameToCode[String(lang).toLowerCase()] || null;
+        return (
+            this.languageDetect.getName2(code) 
+            || this.nameToCode[String(lang).toLowerCase()] 
+            || null
+        );
     }
 };
