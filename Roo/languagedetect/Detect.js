@@ -28,6 +28,9 @@ Roo.languagedetect.Detect.prototype = {
         return ret;
     },
     getName : function(code) {
+        if(!this.isSupported(lang)) {
+            return false;
+        }
         return this.languageDetect.getName2(code);
     }
 }
