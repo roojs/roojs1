@@ -80919,8 +80919,12 @@ Roo.apply(Roo.languagedetect.Parser, {
 Roo.languagedetect.Detect.prototype = {
     koRegex : /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,
     jaRegex : /[\u3040-\u30ff]|[\uff66-\uff9f]|[\u1aff0-\u1b16f]/,
-    zh_HKRegex : '/' + Roo.languagedetect.zh_HK.join('|') + '/',
-    zh_CNRegex : '/' + Roo.languagedetect.zh_CN.join('|') + '/',
+    codeToName : {
+        'ja':'japanese',
+        'ko':'korean',
+        'zh_HK':'traditional chinese',
+        'zh_CN':'simplified chinese'
+    },
 
     /**
      * 
@@ -80929,6 +80933,9 @@ Roo.languagedetect.Detect.prototype = {
      */
     isSupported : function(lang) {
         var supportedLangs = this.languageDetect.getLanguageCodes();
+
+        supportedLangs.push(['ja', 'ko', 'zh_HK', 'zh_CN']);
+
         if(!supportedLangs.includes(lang)) {
             return false;
         }
@@ -80945,6 +80952,11 @@ Roo.languagedetect.Detect.prototype = {
         if(!this.isSupported(lang)) {
             return false;
         }
+
+        if(['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
+            return isCJK(input, lang);
+        }
+
         var scores = this.languageDetect.detect(input);
 
         var ret = false;
@@ -80956,6 +80968,9 @@ Roo.languagedetect.Detect.prototype = {
 
         return ret;
     },
+    isCJK : function(input, lang) {
+        return false;
+    },
     /**
      * 
      * @param {String} code iso 639 language code
@@ -80965,6 +80980,10 @@ Roo.languagedetect.Detect.prototype = {
         if(!this.isSupported(code)) {
             return '';
         }
-        return this.languageDetect.getName2(code);
+        return (
+            this.languageDetect.getName2(code) || // LanguageDetect
+            this.nameToCode[String(lang).toLowerCase()] || // CJK
+            null
+        );
     }
 };
