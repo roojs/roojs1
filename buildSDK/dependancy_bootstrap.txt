@@ -254,6 +254,6 @@ Roo.bootstrap.menu.deprecated
 Roo.languagedetect.namespace
 Roo.languagedetect.zh_HK
 Roo.languagedetect.zh_CN
-Roo.languagedetect.deLang
+Roo.languagedetect.dbLang
 Roo.languagedetect.LanguageDetect
 Roo.languagedetect.Parser
