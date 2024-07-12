@@ -100,3 +100,4 @@ Roo.languagedetect.zh_CN
 Roo.languagedetect.deLang
 Roo.languagedetect.LanguageDetect
 Roo.languagedetect.Parser
+Roo.languagedetect.Detect
