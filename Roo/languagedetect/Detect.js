@@ -1,6 +1,7 @@
 Roo.languagedetect.Detect = function() {
     this.languageDetect = new Roo.languagedetect.LanguageDetect('iso2');
 
+    this.zh_HKRegx = '/' + Roo.languagedetect.zh_HK.join('|') + '/'
 };
 
 Roo.languagedetect.Detect.prototype = {
