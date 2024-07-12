@@ -1,3 +1,4 @@
+// source : https://www.unicode.org/charts/unihan.html
 // array of characters that are only used in simplified chinese
 
 Roo.languagedetect.zh_CN = [
