@@ -15,7 +15,7 @@ Roo.languagedetect.Detect.prototype = {
         var supportedLangs = this.languageDetect.getLanguageCodes();
 
         supportedLangs.push(['ja', 'ko', 'zh_HK', 'zh_CN']);
-        
+
         if(!supportedLangs.includes(lang)) {
             return false;
         }
@@ -32,6 +32,11 @@ Roo.languagedetect.Detect.prototype = {
         if(!this.isSupported(lang)) {
             return false;
         }
+
+        if(['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
+            return isCJK(input, lang);
+        }
+
         var scores = this.languageDetect.detect(input);
 
         var ret = false;
@@ -42,6 +47,9 @@ Roo.languagedetect.Detect.prototype = {
         });
 
         return ret;
+    },
+    isCJK : function(input, lang) {
+        return false;
     },
     /**
      * 
