@@ -73,9 +73,9 @@ Roo.languagedetect.LanguageDetect.prototype = {
       var languages = this.getLanguages();
       switch(this.languageType) {
           case 'iso2' :
-            return languages.map((name) => this.getCode2(name));
+            return languages.map((name) => this.getCode2(name)).filter(code => code !== null);
           case 'iso3' :
-            return languages.map((name) => this.getCode3(name));
+            return languages.map((name) => this.getCode3(name)).filter(code => code !== null);
           default :
             return languages;
       }
