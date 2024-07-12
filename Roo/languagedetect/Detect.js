@@ -79,7 +79,23 @@ Roo.languagedetect.Detect.prototype = {
             }
         }
 
+        var max = false;
+        for (var code in count) {
+            if(!max) {
+                max = code;
+                continue;
+            }
+
+            if(count[code] > count[max]) {
+                max = code;
+            }
+        }
+
         Roo.log(count);
+
+        if(max == lang) {
+            return true;
+        }
 
         
         return false;
