@@ -5589,4 +5589,4 @@ Roo.languagedetect.zh_HK = [
 	"\u9FD3",
 	"\u9FE0",
 	"\u9FF3"
-]
+];
