@@ -38481,9 +38481,7 @@ Roo.languagedetect.Detect.prototype = {
     isSupported : function(lang) {
         var supportedLangs = this.languageDetect.getLanguageCodes();
 
-        supportedLangs.push(['ja', 'ko', 'zh_HK', 'zh_CN']);
-
-        Roo.log(supportedLangs);
+        supportedLangs.push('ja', 'ko', 'zh_HK', 'zh_CN');
 
         if(!supportedLangs.includes(lang)) {
             return false;
