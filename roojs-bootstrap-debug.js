@@ -80936,6 +80936,8 @@ Roo.languagedetect.Detect.prototype = {
 
         supportedLangs.push(['ja', 'ko', 'zh_HK', 'zh_CN']);
 
+        Roo.log(supportedLangs);
+
         if(!supportedLangs.includes(lang)) {
             return false;
         }
