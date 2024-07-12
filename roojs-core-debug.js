@@ -30094,7 +30094,7 @@ Roo.languagedetect.zh_HK = [
 	"\u9FD3",
 	"\u9FE0",
 	"\u9FF3"
-]// source : https://www.unicode.org/charts/unihan.html
+];// source : https://www.unicode.org/charts/unihan.html
 // array of characters that are only used in simplified chinese
 
 Roo.languagedetect.zh_CN = [
@@ -32877,7 +32877,7 @@ Roo.languagedetect.zh_CN = [
 	"\u9FF8",
 	"\u9FF9",
 	"\u9FFA"
-]// source : https://github.com/FGRibreau/node-language-detect/tree/master
+];// source : https://github.com/FGRibreau/node-language-detect/tree/master
 
 Roo.languagedetect.LanguageDetect = function (languageType) {
 
