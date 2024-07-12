@@ -31,8 +31,8 @@ Roo.languagedetect.LanguageDetect = function (languageType) {
    * Load the language database.
    *
    */
-  this.langDb = Roo.languagedetect.LanguageDetect.dbLang['trigram'];
-  this.unicodeMap = Roo.languagedetect.LanguageDetect.dbLang['trigram-unicodemap'];
+  this.langDb = Roo.languagedetect.dbLang['trigram'];
+  this.unicodeMap = Roo.languagedetect.dbLang['trigram-unicodemap'];
 
   this.languageType = languageType || null;
 };
