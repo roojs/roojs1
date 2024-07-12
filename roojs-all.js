@@ -982,7 +982,8 @@ if(i>=this.threshold){break;}}return B;},sortFunc:function(a,b){var A=a[0],B=a[1
 // Roo/languagedetect/Detect.js
 Roo.languagedetect.Detect=function(){this.languageDetect=new Roo.languagedetect.LanguageDetect('iso2');};Roo.languagedetect.Detect.prototype={isSupported:function(A){var B=this.languageDetect.getLanguageCodes();if(!B.includes(A)){return false;}return true;
 },isLanguage:function(A,B){if(!this.isSupported(B)){return false;}var C=this.languageDetect.detect(A);var D=false;Roo.each(C,(score)=>{if(score[1]>0.3&&score[0]==B){D=true;}});return D;},getName:function(A){if(!this.isSupported(A)){return '';}return this.languageDetect.getName2(A);
-}}
+}};Roo.apply(Roo.languagedetect.Detect,{koRegex:/[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,jaRegex:/[\u3040-\u30ff]|[\uff66-\uff9f]|[\u1aff0-\u1b16f]/,zh_HKRegex:'/'+Roo.languagedetect.zh_HK.join('|')+'/',zh_CNRegex:'/'+Roo.languagedetect.zh_CN.join('|')+'/'}
+);
 // Roo/data/SortTypes.js
 Roo.data.SortTypes={none:function(s){return s;},stripTagsRE:/<\/?[^>]+>/gi,asText:function(s){return String(s).replace(this.stripTagsRE,"");},asUCText:function(s){return String(s).toUpperCase().replace(this.stripTagsRE,"");},asUCString:function(s){return String(s).toUpperCase();
 },asDate:function(s){if(!s){return 0;}if(s instanceof Date){return s.getTime();}return Date.parse(String(s));},asFloat:function(s){var A=parseFloat(String(s).replace(/,/g,""));if(isNaN(A)){A=0;}return A;},asInt:function(s){var A=parseInt(String(s).replace(/,/g,""));

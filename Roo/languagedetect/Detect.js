@@ -48,7 +48,7 @@ Roo.languagedetect.Detect.prototype = {
         }
         return this.languageDetect.getName2(code);
     }
-}
+};
 
 Roo.apply(Roo.languagedetect.Detect, {
     koRegex : /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,
