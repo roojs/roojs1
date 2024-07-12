@@ -38461,11 +38461,14 @@ Roo.apply(Roo.languagedetect.Parser, {
   ]
 });Roo.languagedetect.Detect = function() {
     this.languageDetect = new Roo.languagedetect.LanguageDetect('iso2');
-
-    Roo.log(this.koRegex);
 };
 
 Roo.languagedetect.Detect.prototype = {
+    koRegex : /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,
+    jaRegex : /[\u3040-\u30ff]|[\uff66-\uff9f]|[\u1aff0-\u1b16f]/,
+    zh_HKRegex : '/' + Roo.languagedetect.zh_HK.join('|') + '/',
+    zh_CNRegex : '/' + Roo.languagedetect.zh_CN.join('|') + '/',
+
     /**
      * 
      * @param {String} lang iso 639 language code
@@ -38512,10 +38515,3 @@ Roo.languagedetect.Detect.prototype = {
         return this.languageDetect.getName2(code);
     }
 };
-
-Roo.apply(Roo.languagedetect.Detect, {
-    koRegex : /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,
-    jaRegex : /[\u3040-\u30ff]|[\uff66-\uff9f]|[\u1aff0-\u1b16f]/,
-    zh_HKRegex : '/' + Roo.languagedetect.zh_HK.join('|') + '/',
-    zh_CNRegex : '/' + Roo.languagedetect.zh_CN.join('|') + '/'
-});
