@@ -320,7 +320,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         // ingore ctrl press
 		
 		 
-        if ([ 16, 17, ].indexOf(event.keyCode)) {
+        if ([ 16, 17 ].indexOf(event.keyCode)) {
 			return;
 		}
 		// this is a workaround for a password hang bug on chrome/ webkit.		
