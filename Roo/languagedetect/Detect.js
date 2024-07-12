@@ -40,7 +40,7 @@ Roo.languagedetect.Detect.prototype = {
         }
 
         if(['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
-            return isCJK(input, lang);
+            return this.isCJK(input, lang);
         }
 
         var scores = this.languageDetect.detect(input);

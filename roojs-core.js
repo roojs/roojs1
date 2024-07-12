@@ -981,6 +981,6 @@ if(i>=this.threshold){break;}}return B;},sortFunc:function(a,b){var A=a[0],B=a[1
 );
 // Roo/languagedetect/Detect.js
 Roo.languagedetect.Detect=function(){this.languageDetect=new Roo.languagedetect.LanguageDetect('iso2');};Roo.languagedetect.Detect.prototype={koRegex:/[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,jaRegex:/[\u3040-\u30ff]|[\uff66-\uff9f]|[\u1aff0-\u1b16f]/,codeToName:{'ja':'japanese','ko':'korean','zh_HK':'traditional chinese','zh_CN':'simplified chinese'}
-,isSupported:function(A){var B=this.languageDetect.getLanguageCodes();B.push('ja','ko','zh_HK','zh_CN');if(!B.includes(A)){return false;}return true;},isLanguage:function(A,B){if(!this.isSupported(B)){return false;}if(['ja','ko','zh_HK','zh_CN'].includes(B)){return isCJK(A,B);
+,isSupported:function(A){var B=this.languageDetect.getLanguageCodes();B.push('ja','ko','zh_HK','zh_CN');if(!B.includes(A)){return false;}return true;},isLanguage:function(A,B){if(!this.isSupported(B)){return false;}if(['ja','ko','zh_HK','zh_CN'].includes(B)){return this.isCJK(A,B);
 }var C=this.languageDetect.detect(A);var D=false;Roo.each(C,(score)=>{if(score[1]>0.3&&score[0]==B){D=true;}});return D;},isCJK:function(A,B){return false;},getName:function(A){if(!this.isSupported(A)){return '';}return (this.languageDetect.getName2(A)||this.nameToCode[String(lang).toLowerCase()]||null);
 }};
