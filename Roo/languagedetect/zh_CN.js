@@ -2781,4 +2781,4 @@ Roo.languagedetect.zh_CN = [
 	"\u9FF8",
 	"\u9FF9",
 	"\u9FFA"
-]
+];
