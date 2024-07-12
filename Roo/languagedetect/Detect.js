@@ -4,6 +4,11 @@ Roo.languagedetect.Detect = function() {
 };
 
 Roo.languagedetect.Detect.prototype = {
+    /**
+     * 
+     * @param {String} lang iso 639 language code
+     * @returns {Boolean} indicate whether the language is detectable
+     */
     isSupported : function(lang) {
         var supportedLangs = this.languageDetect.getLanguageCodes();
         if(!supportedLangs.includes(lang)) {
@@ -12,6 +17,12 @@ Roo.languagedetect.Detect.prototype = {
 
         return true;
     },
+    /**
+     * 
+     * @param {String} input input text
+     * @param {String} lang iso 639 language code
+     * @returns {Boolean} indicate whether is the input text is written in input language
+     */
     isLanguage : function(input, lang) {
         if(!this.isSupported(lang)) {
             return false;
@@ -27,6 +38,11 @@ Roo.languagedetect.Detect.prototype = {
 
         return ret;
     },
+    /**
+     * 
+     * @param {String} code iso 639 language code
+     * @returns {String} name of the input language code
+     */
     getName : function(code) {
         if(!this.isSupported(code)) {
             return '';
