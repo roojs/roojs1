@@ -38459,4 +38459,33 @@ Roo.apply(Roo.languagedetect.Parser, {
       ["0xF0000", "0xFFFFF", "Supplementary Private Use Area-A"],
       ["0x100000", "0x10FFFF", "Supplementary Private Use Area-B"]
   ]
-});
+});Roo.languagedetect.Detect = function() {
+    this.languageDetect = new Roo.languagedetect.LanguageDetect('iso2');
+
+};
+
+Roo.languagedetect.Detect.prototype = {
+    isSupported : function(lang) {
+        var supportedLangs = this.languageDetect.getLanguageCodes();
+        if(!supportedLangs.includes(lang)) {
+            return false;
+        }
+
+        return true;
+    },
+    isLanguage : function(input, lang) {
+        if(!this.isSupported(lang)) {
+            return false;
+        }
+        var scores = this.languageDetect.detect(input);
+
+        var ret = false;
+        Roo.each(scores, (score) => {
+            if(score[1] > 0.3 && score[0] == lang) {
+                ret = true;
+            }
+        });
+
+        return ret;
+    }
+}
