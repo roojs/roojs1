@@ -38529,7 +38529,7 @@ Roo.languagedetect.Detect.prototype = {
         }
         return (
             this.languageDetect.getName2(code) || // LanguageDetect
-            this.nameToCode[String(code).toLowerCase()] || // CJK
+            this.codeToName[code] || // CJK
             null
         );
     }
