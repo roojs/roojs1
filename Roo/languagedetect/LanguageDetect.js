@@ -63,6 +63,12 @@ Roo.languagedetect.LanguageDetect.prototype = {
     return Object.keys(this.langDb);
   },
 
+  /**
+   * Returns the list of detectable languages in code
+   * 
+   * @returns object the code of the languages known to this object
+   * 
+   */
   getLanguageCodes:function() {
       var languages = this.getLanguages();
       switch(this.languageType) {
