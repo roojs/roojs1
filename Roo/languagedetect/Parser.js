@@ -1,3 +1,5 @@
+// source : https://github.com/FGRibreau/node-language-detect/tree/master
+
 Roo.languagedetect.Parser = function (string) {
     /**
      * The size of the trigram data arrays
