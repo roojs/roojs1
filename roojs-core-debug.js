@@ -38487,5 +38487,11 @@ Roo.languagedetect.Detect.prototype = {
         });
 
         return ret;
+    },
+    getName : function(code) {
+        if(!this.isSupported(code)) {
+            return '';
+        }
+        return this.languageDetect.getName2(code);
     }
 }
