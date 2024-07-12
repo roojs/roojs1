@@ -26,5 +26,8 @@ Roo.languagedetect.Detect.prototype = {
         });
 
         return ret;
+    },
+    getName : function(code) {
+        return this.languageDetect.getName2(code);
     }
 }
