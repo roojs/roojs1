@@ -91,8 +91,6 @@ Roo.languagedetect.Detect.prototype = {
             }
         }
 
-        Roo.log(count);
-
         if(max == lang) {
             return true;
         }
