@@ -11,7 +11,7 @@ Roo.languagedetect.Detect.prototype = {
         }
 
         return true;
-    }
+    },
     isLanguage : function(input, lang) {
         if(!this.isSupported(lang)) {
             return false;
