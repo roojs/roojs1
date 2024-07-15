@@ -142,7 +142,7 @@ Roo.languagedetect.Detect.prototype = {
 
         // chinese
         if(
-            count['cjk'] / input.length > 0.5 // > 50% chinese characters
+            count['cjk'] / input.length > 0.5 && // > 50% chinese characters
             (
                 count['zh_CN'] > count['zh_HK'] && lang == 'zh_CN' || // more simplified chinese characters than traditional chinese characters
                 count['zh_HK'] > count['zh_CN'] && lang == 'zh_HK' || // more traiditonal chinese characters than simplified chinese characters
