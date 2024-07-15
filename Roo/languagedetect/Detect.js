@@ -65,15 +65,9 @@ Roo.languagedetect.Detect.prototype = {
                 count['ko'] ++;
                 continue;
             }
-            if(this.jaRegex.test(input[i])) {
+            // if(this.jaRegex.test(input[i])) {
+            if(/[\u3040-\u30ff]/.test(input[i])) {
                 Roo.log(input[i]);
-                var code = input[i].charCodeAt(0);
-                var codeHex = code.toString(16).toUpperCase();
-                while (codeHex.length < 4) {
-                    codeHex = "0" + codeHex;
-                }
-                codeHex = '\\u' + codeHex;
-                Roo.log(codeHex);
                 count['ja'] ++;
                 continue;
             }
