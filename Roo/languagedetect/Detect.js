@@ -3,6 +3,17 @@ Roo.languagedetect.Detect = function() {
 };
 
 Roo.languagedetect.Detect.prototype = {
+    // 4e00-9fff : CJK Unified Ideographs
+    // 3400-4dbf : CJK Unified Ideographs Extension A
+    // 20000-2a6df : CJK Unified Ideographs Extension B
+    // 2a700-2b73f : CJK Unified Ideographs Extension C
+    // 2b740-2b81f : CJK Unified Ideographs Extension D
+    // 2b820-2ceaf : CJK Unified Ideographs Extension E
+    // 2ceb0-2ebef : CJK Unified Ideographs Extension F
+    // 30000-3134f : CJK Unified Ideographs Extension G
+    // 31350-323af : CJK Unified Ideographs Extension H
+    // 2ebf0-2ee5f : CJK Unified Ideographs Extension I
+    // f900-faff : CJK Compatibility Ideographs
     cjkRegex : /[\u4e00-\u9fff]|[\u3400-\u4dbf]/,
     koRegex : /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,
     jaRegex : /[\u3040-\u30ff]|[\uff66-\uff9f]/,
