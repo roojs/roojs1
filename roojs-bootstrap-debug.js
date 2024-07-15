@@ -80998,55 +80998,68 @@ Roo.languagedetect.Detect.prototype = {
             count[code] = 0;
         });
 
+        $cjk = 0;
+
         for(var i = 0; i < input.length; i++) {
-            if(this.koRegex.test(input[i])) {
-                count['ko'] ++;
-                continue;
+            // characters that appear in chinese, korean or japanese
+            if(this.cjkRegex.test(input[i])) {
+                $cjk ++;
             }
-            if(this.jaRegex.test(input[i])) {
-                count['ja'] ++;
-                continue;
-            }
+            // characters that only appear in simplified chinese
             if(Roo.languagedetect.zh_CN.includes(input[i])) {
                 count['zh_CN'] ++;
                 continue;
             }
+            // characters that only appear in traditional chinese
             if(Roo.languagedetect.zh_HK.includes(input[i])) {
                 count['zh_HK'] ++;
                 continue;
             }
-            // may overlay with zh_CN or zh_HK
-            if(this.cjkRegex.test(input[i])) {
-                count['cjk'] ++;
-            }
-        }
-
-        Roo.log(input.length);
-        Roo.log(count);
-
-        var common = count['cjk'];
-        delete count['cjk'];
-
-        // find the language with most character
-        var max = false;
-        for (var code in count) {
-            if(!max) {
-                max = code;
+            // characters that only appear in korean
+            if(this.koRegex.test(input[i])) {
+                count['ko'] ++;
                 continue;
             }
-
-            if(count[code] > count[max]) {
-                max = code;
+            // characters that only appear in japanese
+            if(this.jaRegex.test(input[i])) {
+                count['ja'] ++;
+                continue;
             }
         }
-        
 
-        Roo.log(max);
-        Roo.log(common + count[max]);
-        Roo.log((common + count[max]) / input.length);
-        Roo.log(((common + count[max]) / input.length) > 0.3);
+        Roo.log($cjk);
+        Roo.log(count);
 
-        if(max == lang && ((common + count[max]) / input.length) > 0.3) {
+        switch(lang) {
+            // korean
+            case 'ko' :
+                if(
+                    count['ko'] / input.length > 0.3 && // > 30% korean character
+                    (count['ko'] + $cjk) / input.length > 0.5 // > 50% (korean character + cjk)
+                ) {
+                    return true;
+                }
+                return false;
+            // japanese
+            case 'ja' :
+                if(
+                    count['ja'] / input.length > 0.3 && // > 30% japanese character
+                    (count['ja'] + $cjk) / input.length > 0.5  // > 50% (japanese character + cjk)
+                ) {
+                    return true;
+                }
+                return false;
+        }
+
+        // chinese
+        if(
+            $cjk / input.length > 0.5 // > 50% chinese characters
+            (
+                count['zh_CN'] > count['zh_HK'] && lang == 'zh_CN' || // more simplified chinese characters than traditional chinese characters
+                count['zh_HK'] > count['zh_CN'] && lang == 'zh_HK' || // more traiditonal chinese characters than simplified chinese characters
+                count['zh_CN'] == count['zh_HK'] // same number of characters
+            )
+        ) {
             return true;
         }
 

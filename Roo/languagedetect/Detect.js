@@ -116,8 +116,6 @@ Roo.languagedetect.Detect.prototype = {
         Roo.log($cjk);
         Roo.log(count);
 
-        var estimated = false;
-
         switch(lang) {
             // korean
             case 'ko' :
@@ -140,14 +138,13 @@ Roo.languagedetect.Detect.prototype = {
         }
 
         // chinese
-        if($cjk / input.length < 0.5) { // < 50% chinese characters
-            return false;
-        }
-
         if(
-            count['zh_CN'] > count['zh_HK'] && lang == 'zh_CN' || // more simplified chinese characters than traditional chinese characters
-            count['zh_HK'] > count['zh_CN'] && lang == 'zh_HK' || // more traiditonal chinese characters than simplified chinese characters
-            count['zh_CN'] == count['zh_HK'] // same number of characters
+            $cjk / input.length > 0.5 // > 50% chinese characters
+            (
+                count['zh_CN'] > count['zh_HK'] && lang == 'zh_CN' || // more simplified chinese characters than traditional chinese characters
+                count['zh_HK'] > count['zh_CN'] && lang == 'zh_HK' || // more traiditonal chinese characters than simplified chinese characters
+                count['zh_CN'] == count['zh_HK'] // same number of characters
+            )
         ) {
             return true;
         }
