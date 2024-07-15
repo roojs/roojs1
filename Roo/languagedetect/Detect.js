@@ -67,6 +67,8 @@ Roo.languagedetect.Detect.prototype = {
             }
             if(this.jaRegex.test(input[i])) {
                 Roo.log(input[i]);
+                var code = input[i].charChodeAt(0);
+                Roo.log(code);
                 count['ja'] ++;
                 continue;
             }
