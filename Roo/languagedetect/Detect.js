@@ -31,6 +31,8 @@ Roo.languagedetect.Detect.prototype = {
     // 1b100-1b12f : Kana Extended-A
     // 1b130-1b16f : Small kana Extension
     jaRegex : /[\u3040-\u30ff]|[\u31f0-\u31ff]/,
+    // 0e00-0e7f
+    thRegex : /[\u0e00-\u0e7f]/,
     codeToName : {
         'ja':'japanese',
         'ko':'korean',
@@ -157,6 +159,10 @@ Roo.languagedetect.Detect.prototype = {
 
         
         return false;
+    },
+    isThai : function(input) {
+        // remove all spaces
+        input = input.replaceAll(new RegExp(/\s+/, 'g'), '');
     },
     /**
      * 
