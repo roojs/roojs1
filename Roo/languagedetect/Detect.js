@@ -79,6 +79,11 @@ Roo.languagedetect.Detect.prototype = {
         return ret;
     },
     isCJK : function(input, lang) {
+        // only japanese, korean, traditional chinese and simplified are supported
+        if(!['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
+            return false;
+        }
+
         input = input.replaceAll(new RegExp(/\s+/, 'g'), '');
         var count = {};
         Roo.each(['cjk', 'ja', 'ko', 'zh_HK', 'zh_CN'], function(code) {
