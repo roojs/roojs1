@@ -66,7 +66,7 @@ Roo.languagedetect.Detect.prototype = {
                 continue;
             }
             // if(this.jaRegex.test(input[i])) {
-            if(/[\uff66-\uff9f]/.test(input[i])) {
+            if(/[\u1aff0-\u1b16f]/.test(input[i])) {
                 Roo.log(input[i]);
                 count['ja'] ++;
                 continue;
