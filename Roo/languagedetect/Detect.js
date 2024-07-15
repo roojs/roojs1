@@ -144,7 +144,13 @@ Roo.languagedetect.Detect.prototype = {
             return false;
         }
 
-        if()
+        if(
+            count['zh_CN'] > count['zh_HK'] && lang == 'zh_CN' ||
+            count['zh_HK'] > count['zh_CN'] && lang == 'zh_HK' ||
+            count['zh_CN'] == count['zh_HK']
+        ) {
+            return true;
+        }
 
         // find the language with most character
         var max = false;
