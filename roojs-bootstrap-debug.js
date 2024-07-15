@@ -80993,7 +80993,7 @@ Roo.languagedetect.Detect.prototype = {
         return ret;
     },
     isCJK : function(input, lang) {
-        input = input.replace(/\s/, '');
+        input = input.replace(/\s+/, '');
         var count = {};
         Roo.each(['cjk', 'ja', 'ko', 'zh_HK', 'zh_CN'], function(code) {
             count[code] = 0;
