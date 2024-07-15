@@ -3,7 +3,7 @@ Roo.languagedetect.Detect = function() {
 };
 
 Roo.languagedetect.Detect.prototype = {
-    // characters in supplementary planes are not detected.
+    // characters in supplementary planes (\u{xxxxx}) are not detected.
 
     // 4e00-9fff : CJK Unified Ideographs
     // 3400-4dbf : CJK Unified Ideographs Extension A
