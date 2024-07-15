@@ -118,6 +118,12 @@ Roo.languagedetect.Detect.prototype = {
                 if((count['ko'] / input.length < 0.3)) {
                     return false;
                 }
+                break;
+            case 'ja' :
+                if((count['ko'] / input.length < 0.3)) {
+                    return false;
+                }
+                break;
         }
 
         Roo.log(count);
