@@ -79,7 +79,7 @@ Roo.languagedetect.Detect.prototype = {
         }
 
         if(['th', 'he'].includes(lang)) {
-            return this.isLang(input);
+            return this.isLang(input, lang);
         }
 
         var scores = this.languageDetect.detect(input);
