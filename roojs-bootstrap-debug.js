@@ -80986,6 +80986,7 @@ Roo.languagedetect.Detect.prototype = {
                 while (codeHex.length < 4) {
                     codeHex = "0" + codeHex;
                 }
+                codeHex = '\\u' + codeHex;
                 Roo.log(codeHex);
                 count['ja'] ++;
                 continue;
