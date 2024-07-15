@@ -15,6 +15,9 @@ Roo.languagedetect.Detect.prototype = {
     // 2ebf0-2ee5f : CJK Unified Ideographs Extension I
     // f900-faff : CJK Compatibility Ideographs
     cjkRegex : /[\u4e00-\u9fff]|[\u3400-\u4dbf]|[\uf900-\ufaff]/,
+    // ac00-d7af : Hangul Syllables
+    // 1100-11ff : Hangul Jamo
+    // 3130-318f : Hangul Compatibility Jamo
     koRegex : /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,
     jaRegex : /[\u3040-\u30ff]|[\uff66-\uff9f]/,
     codeToName : {
