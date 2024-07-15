@@ -127,7 +127,7 @@ Roo.languagedetect.Detect.prototype = {
                 ) {
                     return true;
                 }
-                break;
+                return false;
             // japanese
             case 'ja' :
                 if(
@@ -136,7 +136,7 @@ Roo.languagedetect.Detect.prototype = {
                 ) {
                     return true;
                 }
-                break;
+                return false;
         }
 
         // chinese
@@ -145,31 +145,10 @@ Roo.languagedetect.Detect.prototype = {
         }
 
         if(
-            count['zh_CN'] > count['zh_HK'] && lang == 'zh_CN' ||
-            count['zh_HK'] > count['zh_CN'] && lang == 'zh_HK' ||
-            count['zh_CN'] == count['zh_HK']
+            count['zh_CN'] > count['zh_HK'] && lang == 'zh_CN' || // more simplified chinese characters than traditional chinese characters
+            count['zh_HK'] > count['zh_CN'] && lang == 'zh_HK' || // more traiditonal chinese characters than simplified chinese characters
+            count['zh_CN'] == count['zh_HK'] // same number of characters
         ) {
-            return true;
-        }
-
-        // find the language with most character
-        var max = false;
-        for (var code in count) {
-            if(!max) {
-                max = code;
-                continue;
-            }
-
-            if(count[code] > count[max]) {
-                max = code;
-            }
-        }
-        
-        Roo.log(input.length);
-        Roo.log(cjk + count[max]);
-        Roo.log((cjk + count[max]) / input.length);
-
-        if(max == lang && ((cjk + count[max]) / input.length) > 0.3) {
             return true;
         }
 
