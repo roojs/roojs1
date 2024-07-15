@@ -126,8 +126,8 @@ Roo.languagedetect.Detect.prototype = {
             // korean
             case 'ko' :
                 if(
-                    count['ko'] / input.length > 0.3 && // > 30% korean character
-                    (count['ko'] + count['cjk']) / input.length > 0.5 // > 50% (korean character + cjk)
+                    count['ko'] / input.length > 0.3 && // > 30% korean characters
+                    (count['ko'] + count['cjk']) / input.length > 0.5 // > 50% (korean characters + cjk)
                 ) {
                     return true;
                 }
@@ -135,8 +135,8 @@ Roo.languagedetect.Detect.prototype = {
             // japanese
             case 'ja' :
                 if(
-                    count['ja'] / input.length > 0.3 && // > 30% japanese character
-                    (count['ja'] + count['cjk']) / input.length > 0.5  // > 50% (japanese character + cjk)
+                    count['ja'] / input.length > 0.3 && // > 30% japanese characters
+                    (count['ja'] + count['cjk']) / input.length > 0.5  // > 50% (japanese characters + cjk)
                 ) {
                     return true;
                 }
