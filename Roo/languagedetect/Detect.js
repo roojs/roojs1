@@ -23,7 +23,8 @@ Roo.languagedetect.Detect.prototype = {
     koRegex : /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,
     // 3040-309f : Hiragana
     // 30a0-30ff : Katakana
-    jaRegex : /[\u3040-\u309f]|[\u30a0-\u30ff]|[\uff66-\uff9f]/,
+    // 31f0-31ff : Katakana Phonetic Extensions
+    jaRegex : /[\u3040-\u309f]|[\u30a0-\u30ff]|[\u31f0-\u31ff]|[\uff66-\uff9f]/,
     codeToName : {
         'ja':'japanese',
         'ko':'korean',
