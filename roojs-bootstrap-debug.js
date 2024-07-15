@@ -76334,8 +76334,10 @@ Roo.languagedetect.Detect.prototype = {
         if(!['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
             return false;
         }
-
+        
+        // remove all spaces
         input = input.replaceAll(new RegExp(/\s+/, 'g'), '');
+
         var count = {};
         Roo.each(['cjk', 'ja', 'ko', 'zh_HK', 'zh_CN'], function(code) {
             count[code] = 0;
@@ -76395,7 +76397,7 @@ Roo.languagedetect.Detect.prototype = {
             (
                 count['zh_CN'] > count['zh_HK'] && lang == 'zh_CN' || // more simplified chinese characters than traditional chinese characters
                 count['zh_HK'] > count['zh_CN'] && lang == 'zh_HK' || // more traiditonal chinese characters than simplified chinese characters
-                count['zh_CN'] == count['zh_HK'] // same number of characters
+                count['zh_CN'] == count['zh_HK'] // same number of simplified and traditional chinese characters
             )
         ) {
             return true;
