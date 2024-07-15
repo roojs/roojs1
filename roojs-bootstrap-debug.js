@@ -80998,12 +80998,10 @@ Roo.languagedetect.Detect.prototype = {
             count[code] = 0;
         });
 
-        $cjk = 0;
-
         for(var i = 0; i < input.length; i++) {
             // characters that appear in chinese, korean or japanese
             if(this.cjkRegex.test(input[i])) {
-                $cjk ++;
+                count['cjk'] ++;
             }
             // characters that only appear in simplified chinese
             if(Roo.languagedetect.zh_CN.includes(input[i])) {
@@ -81027,15 +81025,16 @@ Roo.languagedetect.Detect.prototype = {
             }
         }
 
-        Roo.log($cjk);
         Roo.log(count);
+
+        var estimated = false;
 
         switch(lang) {
             // korean
             case 'ko' :
                 if(
                     count['ko'] / input.length > 0.3 && // > 30% korean character
-                    (count['ko'] + $cjk) / input.length > 0.5 // > 50% (korean character + cjk)
+                    (count['ko'] + count['cjk']) / input.length > 0.5 // > 50% (korean character + cjk)
                 ) {
                     return true;
                 }
@@ -81044,7 +81043,7 @@ Roo.languagedetect.Detect.prototype = {
             case 'ja' :
                 if(
                     count['ja'] / input.length > 0.3 && // > 30% japanese character
-                    (count['ja'] + $cjk) / input.length > 0.5  // > 50% (japanese character + cjk)
+                    (count['ja'] + count['cjk']) / input.length > 0.5  // > 50% (japanese character + cjk)
                 ) {
                     return true;
                 }
@@ -81053,7 +81052,7 @@ Roo.languagedetect.Detect.prototype = {
 
         // chinese
         if(
-            $cjk / input.length > 0.5 // > 50% chinese characters
+            count['cjk'] / input.length > 0.5 // > 50% chinese characters
             (
                 count['zh_CN'] > count['zh_HK'] && lang == 'zh_CN' || // more simplified chinese characters than traditional chinese characters
                 count['zh_HK'] > count['zh_CN'] && lang == 'zh_HK' || // more traiditonal chinese characters than simplified chinese characters
