@@ -28,7 +28,7 @@ Roo.languagedetect.Detect.prototype = {
     // 1b000-1b0ff : Kana Supplement
     // 1b100-1b12f : Kana Extended-A
     // 1b130-1b16f : Small kana Extension
-    jaRegex : /[\u3040-\u309f]|[\u30a0-\u30ff]|[\u31f0-\u31ff]/,
+    jaRegex : /[\u3040-\u309f]|[\u30a0-\u30ff]|[\u31f0-\u31ff][\u{1aff0}-\u{1b16f}]/u,
     codeToName : {
         'ja':'japanese',
         'ko':'korean',
