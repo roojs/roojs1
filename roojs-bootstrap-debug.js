@@ -80917,6 +80917,18 @@ Roo.apply(Roo.languagedetect.Parser, {
 };
 
 Roo.languagedetect.Detect.prototype = {
+    // 4e00-9fff : CJK Unified Ideographs
+    // 3400-4dbf : CJK Unified Ideographs Extension A
+    // 20000-2a6df : CJK Unified Ideographs Extension B
+    // 2a700-2b73f : CJK Unified Ideographs Extension C
+    // 2b740-2b81f : CJK Unified Ideographs Extension D
+    // 2b820-2ceaf : CJK Unified Ideographs Extension E
+    // 2ceb0-2ebef : CJK Unified Ideographs Extension F
+    // 30000-3134f : CJK Unified Ideographs Extension G
+    // 31350-323af : CJK Unified Ideographs Extension H
+    // 2ebf0-2ee5f : CJK Unified Ideographs Extension I
+    // f900-faff : CJK Compatibility Ideographs
+    cjkRegex : /[\u4e00-\u9fff]|[\u3400-\u4dbf]|[\uf900-\ufaff]/,
     koRegex : /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,
     jaRegex : /[\u3040-\u30ff]|[\uff66-\uff9f]/,
     codeToName : {
@@ -80975,19 +80987,19 @@ Roo.languagedetect.Detect.prototype = {
         });
 
         for(var i = 0; i < input.length; i++) {
-            if(this.koRegex.test(input[i])) {
+            if(this.cjkRegex.test(input[i]) || this.koRegex.test(input[i])) {
                 count['ko'] ++;
                 continue;
             }
-            if(this.jaRegex.test(input[i])) {
+            if(this.cjkRegex.test(input[i]) || this.jaRegex.test(input[i])) {
                 count['ja'] ++;
                 continue;
             }
-            if(Roo.languagedetect.zh_CN.includes(input[i])) {
+            if(this.cjkRegex.test(input[i]) || Roo.languagedetect.zh_CN.includes(input[i])) {
                 count['zh_CN'] ++;
                 continue;
             }
-            if(Roo.languagedetect.zh_HK.includes(input[i])) {
+            if(this.cjkRegex.test(input[i]) || Roo.languagedetect.zh_HK.includes(input[i])) {
                 count['zh_HK'] ++;
                 continue;
             }
