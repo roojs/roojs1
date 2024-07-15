@@ -117,23 +117,22 @@ Roo.languagedetect.Detect.prototype = {
         Roo.log(count);
 
         // korean
-        if(
-            count['ko'] / input.length > 0.3 && // > 30% korean character
-            (count['ko'] + $cjk) / input.length > 0.5 // > 50% (korean character + cjk)
-        ) {
-            if(lang == 'ko') {
+        if(lang == 'ko') {
+            if(
+                count['ko'] / input.length > 0.3 && // > 30% korean character
+                (count['ko'] + $cjk) / input.length > 0.5 // > 50% (korean character + cjk)
+            ) {
                 return true;
             }
-
             return false;
         }
 
         // japanese
-        if(
-            count['ja'] / input.length > 0.3 && // > 30% japanese character
-            (count['ja'] + $cjk) / input.length > 0.5  // > 50% (japanese character + cjk)
-        ) {
-            if(lang == 'ja') {
+        if(lang == 'ja') {
+            if(
+                count['ja'] / input.length > 0.3 && // > 30% japanese character
+                (count['ja'] + $cjk) / input.length > 0.5  // > 50% (japanese character + cjk)
+            ) {
                 return true;
             }
             return false;
