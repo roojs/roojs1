@@ -94,7 +94,7 @@ Roo.languagedetect.Detect.prototype = {
         return ret;
     },
     isCJK : function(input, lang) {
-        // only japanese, korean, traditional chinese and simplified are detected
+        // only japanese, korean, traditional chinese and simplified chinese are detected
         if(!['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
             return false;
         }
@@ -170,7 +170,12 @@ Roo.languagedetect.Detect.prototype = {
         
         return false;
     },
-    isThai : function(input) {
+    isLang : function(input, lang) {
+        // only thai and hebrew are detected
+        if(!['th', 'he'].includes(lang)) {
+            return false;
+        }
+
         // remove all spaces
         input = input.replaceAll(new RegExp(/\s+/, 'g'), '');
 
