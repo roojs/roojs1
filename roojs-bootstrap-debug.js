@@ -80979,8 +80979,8 @@ Roo.languagedetect.Detect.prototype = {
                 count['ko'] ++;
                 continue;
             }
-            // if(this.jaRegex.test(input[i])) {
-            if(/[\u3040-\u30ff]/.test(input[i])) {
+            if(this.jaRegex.test(input[i])) {
+            // if(/[\u3040-\u30ff]|[\uff66-\uff9f]|[\u1aff0-\u1b16f]/.test(input[i])) {
                 Roo.log(input[i]);
                 count['ja'] ++;
                 continue;
