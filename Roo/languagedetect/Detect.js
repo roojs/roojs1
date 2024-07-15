@@ -80,16 +80,14 @@ Roo.languagedetect.Detect.prototype = {
     },
     isCJK : function(input, lang) {
         var count = {};
-        Roo.each(['ja', 'ko', 'zh_HK', 'zh_CN'], function(code) {
+        Roo.each(['cjk', 'ja', 'ko', 'zh_HK', 'zh_CN'], function(code) {
             count[code] = 0;
         });
-
-        $cjk = 0;
 
         for(var i = 0; i < input.length; i++) {
             // characters that appear in chinese, korean or japanese
             if(this.cjkRegex.test(input[i])) {
-                $cjk ++;
+                count['cjk'] ++;
             }
             // characters that only appear in simplified chinese
             if(Roo.languagedetect.zh_CN.includes(input[i])) {
@@ -113,8 +111,9 @@ Roo.languagedetect.Detect.prototype = {
             }
         }
 
-        Roo.log($cjk);
         Roo.log(count);
+
+        var estimated = false;
 
         switch(lang) {
             // korean
