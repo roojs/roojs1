@@ -119,8 +119,6 @@ Roo.languagedetect.Detect.prototype = {
             }
         }
 
-        var estimated = false;
-
         switch(lang) {
             // korean
             case 'ko' :

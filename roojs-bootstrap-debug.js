@@ -76252,6 +76252,8 @@ Roo.apply(Roo.languagedetect.Parser, {
 };
 
 Roo.languagedetect.Detect.prototype = {
+    // characters in supplementary planes (\u{xxxxx}) are not detected.
+
     // 4e00-9fff : CJK Unified Ideographs
     // 3400-4dbf : CJK Unified Ideographs Extension A
     // 20000-2a6df : CJK Unified Ideographs Extension B
@@ -76328,7 +76330,7 @@ Roo.languagedetect.Detect.prototype = {
         return ret;
     },
     isCJK : function(input, lang) {
-        // only japanese, korean, traditional chinese and simplified are supported
+        // only japanese, korean, traditional chinese and simplified are detected
         if(!['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
             return false;
         }
@@ -76365,8 +76367,6 @@ Roo.languagedetect.Detect.prototype = {
                 continue;
             }
         }
-
-        var estimated = false;
 
         switch(lang) {
             // korean
