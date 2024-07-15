@@ -68,21 +68,26 @@ Roo.languagedetect.Detect.prototype = {
     },
     isCJK : function(input, lang) {
         var count = {};
-        Roo.each(['ja', 'ko', 'zh_HK', 'zh_CN'], function(code) {
+        Roo.each(['cjk', 'ja', 'ko', 'zh_HK', 'zh_CN'], function(code) {
             count[code] = 0;
         });
 
         for(var i = 0; i < input.length; i++) {
-            if(this.cjkRegex.test(input[i]) || this.koRegex.test(input[i])) {
+            if(this.koRegex.test(input[i])) {
                 count['ko'] ++;
+                continue;
             }
-            if(this.cjkRegex.test(input[i]) || this.jaRegex.test(input[i])) {
+            if(this.jaRegex.test(input[i])) {
                 count['ja'] ++;
+                continue;
             }
-            if(this.cjkRegex.test(input[i]) || Roo.languagedetect.zh_CN.includes(input[i])) {
+            if(this.cjkRegex.test(input[i])) {
+                count['cjk'] ++;
+            }
+            if(Roo.languagedetect.zh_CN.includes(input[i])) {
                 count['zh_CN'] ++;
             }
-            if(this.cjkRegex.test(input[i]) || Roo.languagedetect.zh_HK.includes(input[i])) {
+            if(Roo.languagedetect.zh_HK.includes(input[i])) {
                 count['zh_HK'] ++;
             }
         }
