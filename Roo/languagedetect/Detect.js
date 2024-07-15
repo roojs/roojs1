@@ -87,30 +87,30 @@ Roo.languagedetect.Detect.prototype = {
         $cjk = 0;
 
         for(var i = 0; i < input.length; i++) {
+            // charactesr that may appear in chinese, korean or japanese
             if(this.cjkRegex.test(input[i])) {
                 $cjk ++;
             }
-            // characters that only apear in korean
-            if(this.koRegex.test(input[i])) {
-                count['ko'] ++;
-                continue;
-            }
-            // characters that only apear in japanese
-            if(this.jaRegex.test(input[i])) {
-                count['ja'] ++;
-                continue;
-            }
-            // characters that only apear in simplified chinese
+            // characters that only appear in simplified chinese
             if(Roo.languagedetect.zh_CN.includes(input[i])) {
                 count['zh_CN'] ++;
                 continue;
             }
-            // characters that only apear in traditional chinese
+            // characters that only appear in traditional chinese
             if(Roo.languagedetect.zh_HK.includes(input[i])) {
                 count['zh_HK'] ++;
                 continue;
             }
-            
+            // characters that only appear in korean
+            if(this.koRegex.test(input[i])) {
+                count['ko'] ++;
+                continue;
+            }
+            // characters that only appear in japanese
+            if(this.jaRegex.test(input[i])) {
+                count['ja'] ++;
+                continue;
+            }
         }
 
         switch(lang) {
