@@ -163,6 +163,23 @@ Roo.languagedetect.Detect.prototype = {
     isThai : function(input) {
         // remove all spaces
         input = input.replaceAll(new RegExp(/\s+/, 'g'), '');
+
+        var count = 0;
+
+        for(var i = 0; i < input.length; i++) {
+            // characters that appear in thai
+            if(this.thRegex.test(input[i])) {
+                count ++;
+            }
+        }
+
+        Roo.log(count);
+        Roo.log(input.length);
+        if(count / input.length > 0.5) {
+            return true;
+        }
+
+        return false;
     },
     /**
      * 
