@@ -109,7 +109,7 @@ Roo.languagedetect.Detect.prototype = {
 
         for(var i = 0; i < input.length; i++) {
             // characters that appear in chinese, korean or japanese
-            if(this.cjkRegex.test(input[i])) {
+            if(this.codeToRegex['cjk'].test(input[i])) {
                 count['cjk'] ++;
             }
             // characters that only appear in simplified chinese
@@ -123,12 +123,12 @@ Roo.languagedetect.Detect.prototype = {
                 continue;
             }
             // characters that only appear in korean
-            if(this.koRegex.test(input[i])) {
+            if(this.codeToRegex['ko'].test(input[i])) {
                 count['ko'] ++;
                 continue;
             }
             // characters that only appear in japanese
-            if(this.jaRegex.test(input[i])) {
+            if(this.codeToRegex['ja'].test(input[i])) {
                 count['ja'] ++;
                 continue;
             }
