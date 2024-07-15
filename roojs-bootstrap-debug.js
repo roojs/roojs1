@@ -80918,7 +80918,7 @@ Roo.apply(Roo.languagedetect.Parser, {
 
 Roo.languagedetect.Detect.prototype = {
     koRegex : /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,
-    jaRegex : /[\u3040-\u30ff]|[\uff66-\uff9f]|[\u1aff0-\u1b16f]/,
+    jaRegex : /[\u3040-\u30ff]|[\uff66-\uff9f]/,
     codeToName : {
         'ja':'japanese',
         'ko':'korean',
@@ -80979,9 +80979,7 @@ Roo.languagedetect.Detect.prototype = {
                 count['ko'] ++;
                 continue;
             }
-            // if(this.jaRegex.test(input[i])) {
-            if(/[\u1aff0-\u1b16f]/.test(input[i])) {
-                Roo.log(input[i]);
+            if(this.jaRegex.test(input[i])) {
                 count['ja'] ++;
                 continue;
             }
