@@ -81046,7 +81046,7 @@ Roo.languagedetect.Detect.prototype = {
         Roo.log((common + count[max]) / input.length);
         Roo.log(((common + count[max]) / input.length) > 0.3);
 
-        if(max == lang) {
+        if(max == lang && ((common + count[max]) / input.length) > 0.3) {
             return true;
         }
 
