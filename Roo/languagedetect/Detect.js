@@ -90,18 +90,22 @@ Roo.languagedetect.Detect.prototype = {
             if(this.cjkRegex.test(input[i])) {
                 $cjk ++;
             }
+            // characters that only apear in korean
             if(this.koRegex.test(input[i])) {
                 count['ko'] ++;
                 continue;
             }
+            // characters that only apear in japanese
             if(this.jaRegex.test(input[i])) {
                 count['ja'] ++;
                 continue;
             }
+            // characters that only apear in simplified chinese
             if(Roo.languagedetect.zh_CN.includes(input[i])) {
                 count['zh_CN'] ++;
                 continue;
             }
+            // characters that only apear in traditional chinese
             if(Roo.languagedetect.zh_HK.includes(input[i])) {
                 count['zh_HK'] ++;
                 continue;
@@ -109,8 +113,10 @@ Roo.languagedetect.Detect.prototype = {
             
         }
 
-        count['ko'] += $cjk;
-        count['ja'] += $cjk;
+        switch(lang) {
+            case 'ko' :
+                if(($cjk + count['ko'])
+        }
 
         Roo.log(count);
 
