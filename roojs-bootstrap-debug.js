@@ -80929,8 +80929,20 @@ Roo.languagedetect.Detect.prototype = {
     // 2ebf0-2ee5f : CJK Unified Ideographs Extension I
     // f900-faff : CJK Compatibility Ideographs
     cjkRegex : /[\u4e00-\u9fff]|[\u3400-\u4dbf]|[\uf900-\ufaff]/,
+    // ac00-d7af : Hangul Syllables
+    // 1100-11ff : Hangul Jamo
+    // 3130-318f : Hangul Compatibility Jamo
+    // a960-a97f : Hangul Jamo Extended-A
+    // d7b0-d7ff : Hangul Jamo Extended-B
     koRegex : /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,
-    jaRegex : /[\u3040-\u30ff]|[\uff66-\uff9f]/,
+    // 3040-309f : Hiragana
+    // 30a0-30ff : Katakana
+    // 31f0-31ff : Katakana Phonetic Extensions
+    // 1aff0-1afff : Kana Extended-B
+    // 1b000-1b0ff : Kana Supplement
+    // 1b100-1b12f : Kana Extended-A
+    // 1b130-1b16f : Small kana Extension
+    jaRegex : /[\u3040-\u309f]|[\u30a0-\u30ff]|[\u31f0-\u31ff]/,
     codeToName : {
         'ja':'japanese',
         'ko':'korean',
@@ -80987,20 +80999,24 @@ Roo.languagedetect.Detect.prototype = {
         });
 
         for(var i = 0; i < input.length; i++) {
-            if(this.cjkRegex.test(input[i])) {
-                count['cjk'] ++;
-            }
             if(this.koRegex.test(input[i])) {
                 count['ko'] ++;
+                continue;
             }
             if(this.jaRegex.test(input[i])) {
                 count['ja'] ++;
+                continue;
             }
             if(Roo.languagedetect.zh_CN.includes(input[i])) {
                 count['zh_CN'] ++;
+                continue;
             }
             if(Roo.languagedetect.zh_HK.includes(input[i])) {
                 count['zh_HK'] ++;
+                continue;
+            }
+            if(this.cjkRegex.test(input[i])) {
+                count['cjk'] ++;
             }
         }
 
