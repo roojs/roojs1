@@ -76280,11 +76280,14 @@ Roo.languagedetect.Detect.prototype = {
     // 1b100-1b12f : Kana Extended-A
     // 1b130-1b16f : Small kana Extension
     jaRegex : /[\u3040-\u30ff]|[\u31f0-\u31ff]/,
+    // 0e00-0e7f
+    thRegex : /[\u0e00-\u0e7f]/,
     codeToName : {
         'ja':'japanese',
         'ko':'korean',
         'zh_HK':'traditional chinese',
-        'zh_CN':'simplified chinese'
+        'zh_CN':'simplified chinese',
+        'th':'thai'
     },
 
     /**
@@ -76295,7 +76298,7 @@ Roo.languagedetect.Detect.prototype = {
     isSupported : function(lang) {
         var supportedLangs = this.languageDetect.getLanguageCodes();
 
-        supportedLangs.push('ja', 'ko', 'zh_HK', 'zh_CN');
+        supportedLangs.push('ja', 'ko', 'zh_HK', 'zh_CN', 'th');
 
         if(!supportedLangs.includes(lang)) {
             return false;
@@ -76316,6 +76319,10 @@ Roo.languagedetect.Detect.prototype = {
 
         if(['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
             return this.isCJK(input, lang);
+        }
+
+        if('th' == lang) {
+            return this.isThai(input);
         }
 
         var scores = this.languageDetect.detect(input);
@@ -76404,6 +76411,27 @@ Roo.languagedetect.Detect.prototype = {
         }
 
         
+        return false;
+    },
+    isThai : function(input) {
+        // remove all spaces
+        input = input.replaceAll(new RegExp(/\s+/, 'g'), '');
+
+        var count = 0;
+
+        for(var i = 0; i < input.length; i++) {
+            // characters that appear in thai
+            if(this.thRegex.test(input[i])) {
+                count ++;
+            }
+        }
+
+        Roo.log(count);
+        Roo.log(input.length);
+        if(count / input.length > 0.5) {
+            return true;
+        }
+
         return false;
     },
     /**
