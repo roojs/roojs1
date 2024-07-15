@@ -76340,8 +76340,6 @@ Roo.languagedetect.Detect.prototype = {
             }
         });
 
-        Roo.log(scores);
-
         return ret;
     },
     isCJK : function(input, lang) {
