@@ -57,6 +57,8 @@ Roo.languagedetect.Detect.prototype = {
 
         supportedLangs.push(...Object.keys(this.codeToName));
 
+        Roo.log(supportedLangs);
+
         if(!supportedLangs.includes(lang)) {
             return false;
         }
