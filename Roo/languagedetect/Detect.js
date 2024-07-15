@@ -35,7 +35,8 @@ Roo.languagedetect.Detect.prototype = {
         'ja':'japanese',
         'ko':'korean',
         'zh_HK':'traditional chinese',
-        'zh_CN':'simplified chinese'
+        'zh_CN':'simplified chinese',
+        'th':'thai'
     },
 
     /**
@@ -46,7 +47,7 @@ Roo.languagedetect.Detect.prototype = {
     isSupported : function(lang) {
         var supportedLangs = this.languageDetect.getLanguageCodes();
 
-        supportedLangs.push('ja', 'ko', 'zh_HK', 'zh_CN');
+        supportedLangs.push('ja', 'ko', 'zh_HK', 'zh_CN', 'th');
 
         if(!supportedLangs.includes(lang)) {
             return false;
