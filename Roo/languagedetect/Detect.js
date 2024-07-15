@@ -72,6 +72,10 @@ Roo.languagedetect.Detect.prototype = {
             return this.isCJK(input, lang);
         }
 
+        if('th' == lang) {
+            return this.isThai(input);
+        }
+
         var scores = this.languageDetect.detect(input);
 
         var ret = false;
