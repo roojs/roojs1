@@ -73,19 +73,19 @@ Roo.languagedetect.Detect.prototype = {
         });
 
         for(var i = 0; i < input.length; i++) {
-            if(this.koRegex.test(input[i])) {
+            if(this.cjkRegex.test(input[i]) || this.koRegex.test(input[i])) {
                 count['ko'] ++;
                 continue;
             }
-            if(this.jaRegex.test(input[i])) {
+            if(this.cjkRegex.test(input[i]) || this.jaRegex.test(input[i])) {
                 count['ja'] ++;
                 continue;
             }
-            if(Roo.languagedetect.zh_CN.includes(input[i])) {
+            if(this.cjkRegex.test(input[i]) || Roo.languagedetect.zh_CN.includes(input[i])) {
                 count['zh_CN'] ++;
                 continue;
             }
-            if(Roo.languagedetect.zh_HK.includes(input[i])) {
+            if(this.cjkRegex.test(input[i]) || Roo.languagedetect.zh_HK.includes(input[i])) {
                 count['zh_HK'] ++;
                 continue;
             }
