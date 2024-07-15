@@ -55,6 +55,8 @@ Roo.languagedetect.Detect.prototype = {
     isSupported : function(lang) {
         var supportedLangs = this.languageDetect.getLanguageCodes();
 
+        Roo.log(...this.codeToName.keys());
+
         supportedLangs.push(...this.codeToName.keys());
 
         if(!supportedLangs.includes(lang)) {
