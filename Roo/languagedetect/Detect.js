@@ -18,8 +18,12 @@ Roo.languagedetect.Detect.prototype = {
     // ac00-d7af : Hangul Syllables
     // 1100-11ff : Hangul Jamo
     // 3130-318f : Hangul Compatibility Jamo
+    // a960-a97f : Hangul Jamo Extended-A
+    // d7b0-d7ff : Hangul Jamo Extended-B
     koRegex : /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,
-    jaRegex : /[\u3040-\u30ff]|[\uff66-\uff9f]/,
+    // 3040-309f : Hiragana
+    // 30a0-30ff : Katakana
+    jaRegex : /[\u3040-\u309f]|[\u30a0-\u30ff]|[\uff66-\uff9f]/,
     codeToName : {
         'ja':'japanese',
         'ko':'korean',
