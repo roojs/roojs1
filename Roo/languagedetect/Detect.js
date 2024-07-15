@@ -183,7 +183,7 @@ Roo.languagedetect.Detect.prototype = {
 
         for(var i = 0; i < input.length; i++) {
             // characters that appear in thai
-            if(this.thRegex.test(input[i])) {
+            if(this.codeToRegex['lang'].test(input[i])) {
                 count ++;
             }
         }
