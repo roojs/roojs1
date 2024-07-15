@@ -72,7 +72,7 @@ Roo.languagedetect.Detect.prototype = {
                 while (codeHex.length < 4) {
                     codeHex = "0" + codeHex;
                 }
-                Roo.log(code);
+                Roo.log(codeHex);
                 count['ja'] ++;
                 continue;
             }

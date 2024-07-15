@@ -80982,7 +80982,11 @@ Roo.languagedetect.Detect.prototype = {
             if(this.jaRegex.test(input[i])) {
                 Roo.log(input[i]);
                 var code = input[i].charCodeAt(0);
-                Roo.log(code);
+                var codeHex = code.toString(16).toUpperCase();
+                while (codeHex.length < 4) {
+                    codeHex = "0" + codeHex;
+                }
+                Roo.log(codeHex);
                 count['ja'] ++;
                 continue;
             }
