@@ -31,14 +31,18 @@ Roo.languagedetect.Detect.prototype = {
     // 1b100-1b12f : Kana Extended-A
     // 1b130-1b16f : Small kana Extension
     jaRegex : /[\u3040-\u30ff]|[\u31f0-\u31ff]/,
-    // 0e00-0e7f
+    // 0e00-0e7f : Thai
     thRegex : /[\u0e00-\u0e7f]/,
+    // 0590-05ff : Hebrew
+    // fb1d-fb4f : Hebrew Presentation Forms
+    heRegex : /[\u0590-\u05ff]/,
     codeToName : {
         'ja':'japanese',
         'ko':'korean',
         'zh_HK':'traditional chinese',
         'zh_CN':'simplified chinese',
-        'th':'thai'
+        'th':'thai',
+        'he':'hebrew'
     },
 
     /**
