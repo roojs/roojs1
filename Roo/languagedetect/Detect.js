@@ -37,7 +37,7 @@ Roo.languagedetect.Detect.prototype = {
         // fb1d-fb4f : Hebrew Presentation Forms
         'he' : /[\u0590-\u05ff]|[\ufb1d-\ufb4f]/
     },
-    
+
     codeToName : {
         'ja':'japanese',
         'ko':'korean',
@@ -78,8 +78,8 @@ Roo.languagedetect.Detect.prototype = {
             return this.isCJK(input, lang);
         }
 
-        if('th' == lang) {
-            return this.isThai(input);
+        if(['th', 'he'].includes(lang)) {
+            return this.isLang(input);
         }
 
         var scores = this.languageDetect.detect(input);
