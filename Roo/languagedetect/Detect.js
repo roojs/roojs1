@@ -115,7 +115,9 @@ Roo.languagedetect.Detect.prototype = {
 
         switch(lang) {
             case 'ko' :
-                if(($cjk + count['ko'])
+                if((count['ko'] / input.length < 0.3)) {
+                    return false;
+                }
         }
 
         Roo.log(count);
