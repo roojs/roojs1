@@ -129,7 +129,7 @@ Roo.languagedetect.Detect.prototype = {
 
         Roo.log(max);
         Roo.log(common + count[max]);
-        Roo.log((common + count[max]) / max);
+        Roo.log((common + count[max]) / input.length);
 
         if(max == lang)
 
