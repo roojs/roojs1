@@ -101,6 +101,7 @@ Roo.languagedetect.Detect.prototype = {
                 count['zh_HK'] ++;
                 continue;
             }
+            // may overlay with zh_CN or zh_HK
             if(this.cjkRegex.test(input[i])) {
                 count['cjk'] ++;
             }
