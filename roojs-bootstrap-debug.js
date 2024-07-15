@@ -80980,6 +80980,7 @@ Roo.languagedetect.Detect.prototype = {
                 continue;
             }
             if(this.jaRegex.test(input[i])) {
+                Roo.log(input[i]);
                 count['ja'] ++;
                 continue;
             }
