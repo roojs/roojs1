@@ -116,29 +116,35 @@ Roo.languagedetect.Detect.prototype = {
         Roo.log($cjk);
         Roo.log(count);
 
-        // korean
-        if(lang == 'ko') {
-            if(
-                count['ko'] / input.length > 0.3 && // > 30% korean character
-                (count['ko'] + $cjk) / input.length > 0.5 // > 50% (korean character + cjk)
-            ) {
-                return true;
-            }
-            return false;
-        }
+        var estimated = false;
 
-        // japanese
-        if(lang == 'ja') {
-            if(
-                count['ja'] / input.length > 0.3 && // > 30% japanese character
-                (count['ja'] + $cjk) / input.length > 0.5  // > 50% (japanese character + cjk)
-            ) {
-                return true;
-            }
-            return false;
+        switch(lang) {
+            // korean
+            case 'ko' :
+                if(
+                    count['ko'] / input.length > 0.3 && // > 30% korean character
+                    (count['ko'] + $cjk) / input.length > 0.5 // > 50% (korean character + cjk)
+                ) {
+                    return true;
+                }
+                break;
+            // japanese
+            case 'ja' :
+                if(
+                    count['ja'] / input.length > 0.3 && // > 30% japanese character
+                    (count['ja'] + $cjk) / input.length > 0.5  // > 50% (japanese character + cjk)
+                ) {
+                    return true;
+                }
+                break;
         }
 
         // chinese
+        if($cjk / input.length < 0.5) { // < 50% chinese characters
+            return false;
+        }
+
+        if()
 
         // find the language with most character
         var max = false;
