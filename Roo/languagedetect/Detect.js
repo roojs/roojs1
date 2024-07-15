@@ -110,6 +110,9 @@ Roo.languagedetect.Detect.prototype = {
         Roo.log(input.length);
         Roo.log(count);
 
+        var common = count['cjk'];
+        unset(count['cjk']);
+
         // find the language with most character
         var max = false;
         for (var code in count) {
@@ -122,6 +125,8 @@ Roo.languagedetect.Detect.prototype = {
                 max = code;
             }
         }
+
+        Roo.log(max);
 
         if(max == lang) {
             return true;
