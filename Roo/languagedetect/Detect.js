@@ -80,7 +80,7 @@ Roo.languagedetect.Detect.prototype = {
     },
     isCJK : function(input, lang) {
         Roo.log(input);
-        input = input.replace(/\s+/, '');
+        input = input.replaceAll(/\s+/, '');
         Roo.log(input);
         var count = {};
         Roo.each(['cjk', 'ja', 'ko', 'zh_HK', 'zh_CN'], function(code) {
