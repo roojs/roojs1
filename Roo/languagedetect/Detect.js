@@ -90,7 +90,6 @@ Roo.languagedetect.Detect.prototype = {
             if(this.cjkRegex.test(input[i])) {
                 $cjk ++;
             }
-
             if(this.koRegex.test(input[i])) {
                 count['ko'] ++;
                 continue;
@@ -108,6 +107,9 @@ Roo.languagedetect.Detect.prototype = {
                 continue;
             }
         }
+
+        count['ko'] += $cjk;
+        count['ja'] += $cjk;
 
         Roo.log(count);
 
