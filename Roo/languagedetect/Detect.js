@@ -81,7 +81,7 @@ Roo.languagedetect.Detect.prototype = {
         return ret;
     },
     isCJK : function(input, lang) {
-        // only japanese, korean, traditional chinese and simplified are supported
+        // only japanese, korean, traditional chinese and simplified are detected
         if(!['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
             return false;
         }
