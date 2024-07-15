@@ -117,9 +117,6 @@ Roo.languagedetect.Detect.prototype = {
             }
         }
 
-        Roo.log(count);
-        Roo.log(input.length);
-
         var estimated = false;
 
         switch(lang) {
