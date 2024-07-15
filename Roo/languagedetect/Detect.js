@@ -84,7 +84,13 @@ Roo.languagedetect.Detect.prototype = {
             count[code] = 0;
         });
 
+        $cjk = 0;
+
         for(var i = 0; i < input.length; i++) {
+            if(this.cjkRegex.test(input[i])) {
+                $cjk ++;
+            }
+
             if(this.koRegex.test(input[i])) {
                 count['ko'] ++;
                 continue;
@@ -100,10 +106,6 @@ Roo.languagedetect.Detect.prototype = {
             if(Roo.languagedetect.zh_HK.includes(input[i])) {
                 count['zh_HK'] ++;
                 continue;
-            }
-            
-            if(this.cjkRegex.test(input[i])) {
-                count['cjk'] ++;
             }
         }
 
