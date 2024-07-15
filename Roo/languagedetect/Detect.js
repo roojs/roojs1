@@ -85,7 +85,6 @@ Roo.languagedetect.Detect.prototype = {
         });
 
         $cjk = 0;
-        $commonChinese = 0;
 
         for(var i = 0; i < input.length; i++) {
             if(this.cjkRegex.test(input[i])) {
