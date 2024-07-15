@@ -4,38 +4,40 @@ Roo.languagedetect.Detect = function() {
 
 Roo.languagedetect.Detect.prototype = {
     // characters in supplementary planes (\u{xxxxx}) are not detected.
-
-    // 4e00-9fff : CJK Unified Ideographs
-    // 3400-4dbf : CJK Unified Ideographs Extension A
-    // 20000-2a6df : CJK Unified Ideographs Extension B
-    // 2a700-2b73f : CJK Unified Ideographs Extension C
-    // 2b740-2b81f : CJK Unified Ideographs Extension D
-    // 2b820-2ceaf : CJK Unified Ideographs Extension E
-    // 2ceb0-2ebef : CJK Unified Ideographs Extension F
-    // 30000-3134f : CJK Unified Ideographs Extension G
-    // 31350-323af : CJK Unified Ideographs Extension H
-    // 2ebf0-2ee5f : CJK Unified Ideographs Extension I
-    // f900-faff : CJK Compatibility Ideographs
-    cjkRegex : /[\u4e00-\u9fff]|[\u3400-\u4dbf]|[\uf900-\ufaff]/,
-    // ac00-d7af : Hangul Syllables
-    // 1100-11ff : Hangul Jamo
-    // 3130-318f : Hangul Compatibility Jamo
-    // a960-a97f : Hangul Jamo Extended-A
-    // d7b0-d7ff : Hangul Jamo Extended-B
-    koRegex : /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,
-    // 3040-309f : Hiragana
-    // 30a0-30ff : Katakana
-    // 31f0-31ff : Katakana Phonetic Extensions
-    // 1aff0-1afff : Kana Extended-B
-    // 1b000-1b0ff : Kana Supplement
-    // 1b100-1b12f : Kana Extended-A
-    // 1b130-1b16f : Small kana Extension
-    jaRegex : /[\u3040-\u30ff]|[\u31f0-\u31ff]/,
-    // 0e00-0e7f : Thai
-    thRegex : /[\u0e00-\u0e7f]/,
-    // 0590-05ff : Hebrew
-    // fb1d-fb4f : Hebrew Presentation Forms
-    heRegex : /[\u0590-\u05ff]/,
+    codeToRegex : {
+        // 4e00-9fff : CJK Unified Ideographs
+        // 3400-4dbf : CJK Unified Ideographs Extension A
+        // 20000-2a6df : CJK Unified Ideographs Extension B
+        // 2a700-2b73f : CJK Unified Ideographs Extension C
+        // 2b740-2b81f : CJK Unified Ideographs Extension D
+        // 2b820-2ceaf : CJK Unified Ideographs Extension E
+        // 2ceb0-2ebef : CJK Unified Ideographs Extension F
+        // 30000-3134f : CJK Unified Ideographs Extension G
+        // 31350-323af : CJK Unified Ideographs Extension H
+        // 2ebf0-2ee5f : CJK Unified Ideographs Extension I
+        // f900-faff : CJK Compatibility Ideographs
+        'cjk' : /[\u4e00-\u9fff]|[\u3400-\u4dbf]|[\uf900-\ufaff]/,
+        // 3040-309f : Hiragana
+        // 30a0-30ff : Katakana
+        // 31f0-31ff : Katakana Phonetic Extensions
+        // 1aff0-1afff : Kana Extended-B
+        // 1b000-1b0ff : Kana Supplement
+        // 1b100-1b12f : Kana Extended-A
+        // 1b130-1b16f : Small kana Extension
+        'ja' : /[\u3040-\u30ff]|[\u31f0-\u31ff]/,
+        // ac00-d7af : Hangul Syllables
+        // 1100-11ff : Hangul Jamo
+        // 3130-318f : Hangul Compatibility Jamo
+        // a960-a97f : Hangul Jamo Extended-A
+        // d7b0-d7ff : Hangul Jamo Extended-B
+        'ko' : /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,
+        // 0e00-0e7f : Thai
+        'th' : /[\u0e00-\u0e7f]/,
+        // 0590-05ff : Hebrew
+        // fb1d-fb4f : Hebrew Presentation Forms
+        'he' : /[\u0590-\u05ff]|[\ufb1d-\ufb4f]/
+    },
+    
     codeToName : {
         'ja':'japanese',
         'ko':'korean',
