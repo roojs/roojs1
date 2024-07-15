@@ -119,8 +119,8 @@ Roo.languagedetect.Detect.prototype = {
         // korean
         if(lang == 'ko') {
             if(
-                count['ko'] / input.length > 0.3 &&
-                (count['ko'] + $cjk) / input.length > 0.5
+                count['ko'] / input.length > 0.3 && // > 30% korean character
+                (count['ko'] + $cjk) / input.length > 0.5 // > 50% (korean character + cjk)
             ) {
                 return true;
             }
@@ -130,8 +130,8 @@ Roo.languagedetect.Detect.prototype = {
         // japanese
         if(lang == 'ja') {
             if(
-                count['ja'] / input.length > 0.3 &&
-                (count['ja'] + $cjk) / input.length > 0.5
+                count['ja'] / input.length > 0.3 && // > 30% japanese character
+                (count['ja'] + $cjk) / input.length > 0.5  // > 50% (japanese character + cjk)
             ) {
                 return true;
             }
