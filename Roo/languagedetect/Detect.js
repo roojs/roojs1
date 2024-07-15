@@ -85,8 +85,10 @@ Roo.languagedetect.Detect.prototype = {
         if(!['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
             return false;
         }
-
+        
+        // remove all spaces
         input = input.replaceAll(new RegExp(/\s+/, 'g'), '');
+        
         var count = {};
         Roo.each(['cjk', 'ja', 'ko', 'zh_HK', 'zh_CN'], function(code) {
             count[code] = 0;
