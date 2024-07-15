@@ -76437,7 +76437,7 @@ Roo.languagedetect.Detect.prototype = {
 
         for(var i = 0; i < input.length; i++) {
             // characters that appear in that language
-            if(this.codeToRegex['lang'].test(input[i])) {
+            if(this.codeToRegex[lang].test(input[i])) {
                 count ++;
             }
         }
