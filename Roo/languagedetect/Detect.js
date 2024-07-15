@@ -87,7 +87,7 @@ Roo.languagedetect.Detect.prototype = {
         $cjk = 0;
 
         for(var i = 0; i < input.length; i++) {
-            // charactesr that may appear in chinese, korean or japanese
+            // characters that may appear in chinese, korean or japanese
             if(this.cjkRegex.test(input[i])) {
                 $cjk ++;
             }
