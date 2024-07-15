@@ -125,8 +125,10 @@ Roo.languagedetect.Detect.prototype = {
                 max = code;
             }
         }
+        
 
         Roo.log(max);
+        Roo.log(common + code[max]);
 
         if(max == lang) {
             return true;
