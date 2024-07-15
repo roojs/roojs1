@@ -76416,9 +76416,12 @@ Roo.languagedetect.Detect.prototype = {
             return '';
         }
         return (
+            null
+            /*
             this.languageDetect.getName2(code) || // LanguageDetect
             this.codeToName[code] || // CJK
             null
+            */
         );
     }
 };
