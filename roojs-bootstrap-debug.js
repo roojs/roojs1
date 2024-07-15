@@ -76306,8 +76306,6 @@ Roo.languagedetect.Detect.prototype = {
 
         supportedLangs.push(...Object.keys(this.codeToName));
 
-        Roo.log(supportedLangs);
-
         if(!supportedLangs.includes(lang)) {
             return false;
         }
@@ -76341,6 +76339,8 @@ Roo.languagedetect.Detect.prototype = {
                 ret = true;
             }
         });
+
+        Roo.log(scores);
 
         return ret;
     },
@@ -76384,9 +76384,6 @@ Roo.languagedetect.Detect.prototype = {
                 continue;
             }
         }
-
-        Roo.log(count);
-        Roo.log(input.length);
 
         switch(lang) {
             // korean
@@ -76441,9 +76438,6 @@ Roo.languagedetect.Detect.prototype = {
                 count ++;
             }
         }
-
-        Roo.log(count);
-        Roo.log(input.length);
 
         if(count / input.length > 0.5) {
             return true;
