@@ -80993,6 +80993,9 @@ Roo.languagedetect.Detect.prototype = {
             }
         }
 
+        Roo.log(count);
+
+        // find the language with most character
         var max = false;
         for (var code in count) {
             if(!max) {
@@ -81004,8 +81007,6 @@ Roo.languagedetect.Detect.prototype = {
                 max = code;
             }
         }
-
-        Roo.log(count);
 
         if(max == lang) {
             return true;
