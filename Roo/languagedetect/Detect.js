@@ -201,6 +201,9 @@ Roo.languagedetect.Detect.prototype = {
             }
         }
 
+        var_dumP(count);
+        var_dump(input.length);
+
         if(count / input.length > 0.5) {
             return true;
         }
