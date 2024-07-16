@@ -141,9 +141,6 @@ Roo.languagedetect.Detect.prototype = {
             }
         }
 
-        Roo.log(count);
-        Roo.log(input.length);
-
         switch(lang) {
             // korean
             case 'ko' :
@@ -203,9 +200,6 @@ Roo.languagedetect.Detect.prototype = {
                 count ++;
             }
         }
-
-        Roo.log(count);
-        Roo.log(input.length);
 
         if(count / input.length > 0.5) {
             return true;
