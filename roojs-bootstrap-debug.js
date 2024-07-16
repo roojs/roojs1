@@ -76342,6 +76342,13 @@ Roo.languagedetect.Detect.prototype = {
 
         return ret;
     },
+    /**
+     * Support Japanese, Korean, Traditional chinese and Simplified chinese
+     * 
+     * @param {String} input input text
+     * @param {String} lang iso 639 language code
+     * @returns {Boolean} indicate whether the input text is written in input langauge
+     */
     isCJK : function(input, lang) {
         // only japanese, korean, traditional chinese and simplified chinese are detected
         if(!['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
@@ -76419,6 +76426,12 @@ Roo.languagedetect.Detect.prototype = {
         
         return false;
     },
+    /**
+     * Support Thai and Hebrew
+     * @param {String} input input text
+     * @param {String} lang iso 639 language code
+     * @returns {Boolean} indicate whether the input text is written in input langauge
+     */
     isLang : function(input, lang) {
         // only thai and hebrew are detected
         if(!['th', 'he'].includes(lang)) {
