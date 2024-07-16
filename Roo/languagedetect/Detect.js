@@ -94,7 +94,7 @@ Roo.languagedetect.Detect.prototype = {
         return ret;
     },
     /**
-     * Support japanese, korean, traditional chinese and simplified chinese
+     * Support Japanese, Korean, Traditional chinese and Simplified chinese
      * 
      * @param {String} input input text
      * @param {String} lang iso 639 language code
