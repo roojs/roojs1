@@ -84,12 +84,13 @@ Roo.languagedetect.Detect.prototype = {
 
         var scores = this.languageDetect.detect(input);
 
+        Roo.log(scores);
+
         var ret = false;
-        Roo.each(scores, (score) => {
-            if(score[1] > 0.3 && score[0] == lang) {
-                ret = true;
-            }
-        });
+
+        if(typeof(scores[0]) !== 'undefined' && scores[0][0] == lang) {
+            ret = true;
+        }
 
         return ret;
     },
