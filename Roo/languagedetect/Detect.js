@@ -81,19 +81,16 @@ Roo.languagedetect.Detect.prototype = {
             return false;
         }
 
-        //var arr = this.detectLangByCount(input).concat(this.detectLangByScore(input));
-
         var ret = {...this.detectLangByCount(input), ...this.detectLangByScore(input)};
-        Roo.log(ret);
+
+        // positive testing
+        if(typeof(ret[lang]) === 'undefined' || ret[lang] !== true) {
+            return false;
+        }
 
         return true;
 
         /*
-                if(!$this->isSupported($lang)) {
-            return false;
-        }
-
-        $arr = array_merge($this->detectLangByCount($input), $this->detectLangByScore($input));
 
         // postive testing
         if(empty($arr[$lang])) {
