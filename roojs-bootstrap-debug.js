@@ -75392,6 +75392,7 @@ Roo.apply(Roo.languagedetect.Parser, {
     });
     regex.replace(/\|$/, '');
     regex += '/';
+    Roo.log(Roo.languagedetect.Detect);
     Roo.languagedetect.Detect.codeToRegex['zh_HK'] = regex;
     Roo.log(regex);
 
