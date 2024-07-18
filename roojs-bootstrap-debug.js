@@ -75403,7 +75403,7 @@ Roo.apply(Roo.languagedetect.Parser, {
     this.codeToRegex['zh_CN'] = regex;
 
     var ret = this.detectLangByScore('Hi, I am leon. How are you? I am fine.');
-    var_dump(ret);
+    Roo.log(ret);
 
 };
 
