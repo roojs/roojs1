@@ -127,7 +127,11 @@ Roo.languagedetect.Detect.prototype = {
 
     getCount : function(input) {
         input = input.replaceAll(/\s+|\d+|[\p{P}]/u, '');
-    }
+        Roo.each(Object.keys(this.codeToRegex), function(code) {
+            Roo.log(code);
+
+        });
+    },
 
     /*
         function getCount($input)
