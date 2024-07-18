@@ -127,9 +127,12 @@ Roo.languagedetect.Detect.prototype = {
     getCount : function(input) {
         var en = input.replaceAll(/[\s\d\p{P}]+/gu, ' ');
         en = en.replaceAll(/[^A-Za-z ]/g, '');
-        var enWords = en.trim().split(/\s+/);
+        var enWords = en.trim().split(/\s+/); // number of english words
 
         input = input.replaceAll(/\s+|\d+|[\p{P}]/gu, ''); // remove all spaces ,digits and punctuations
+        Roo.log(input.length);
+        $input = preg_replace('/[A-Za-z]/', '', $input); // remove all english alphabet
+        Roo.log(input.length);
 
         var count = {};
         Roo.each(Object.keys(this.codeToRegex), function(code) {
@@ -142,6 +145,8 @@ Roo.languagedetect.Detect.prototype = {
         }, this);
 
         count['total'] = input.length;
+
+        Roo.log(count);
 
         return count;
     },
