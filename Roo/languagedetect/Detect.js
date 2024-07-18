@@ -68,6 +68,9 @@ Roo.languagedetect.Detect.prototype = {
 
     isScoreSupported : function(lang) {
         var supportedLangs = this.languageDetect.getLanguageCodes();
+        Roo.log(supporedLangs);
+
+        return this.languageDetect.getLanguageCodes().includes(lang);
     }
 
     /**
