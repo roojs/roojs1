@@ -111,6 +111,7 @@ Roo.languagedetect.Detect.prototype = {
         if(!scores.length) {
             return [];
         }
+        Roo.log(scores[0]);
         return scores[0];
     },
     detectLangByScore : function (input) {
