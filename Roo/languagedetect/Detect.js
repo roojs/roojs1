@@ -7,7 +7,7 @@ Roo.languagedetect.Detect = function() {
     });
     regex.replace(/\|$/, '');
     regex += '/';
-    Roo.languagedetect.Detect.prototype.codeToRegex['zh_HK'] = regex;
+    this.codeToRegex['zh_HK'] = regex;
 
     var regex = '/';
     Roo.each(Roo.languagedetect.zh_CN, function(code) {
@@ -15,7 +15,9 @@ Roo.languagedetect.Detect = function() {
     });
     regex.replace(/\|$/, '');
     regex += '/';
-    Roo.languagedetect.Detect.prototype.codeToRegex['zh_CN'] = regex;
+    this.codeToRegex['zh_CN'] = regex;
+
+    this.isScoreSupported('en');
 
 };
 
@@ -63,6 +65,10 @@ Roo.languagedetect.Detect.prototype = {
         'th':'thai',
         'he':'hebrew'
     },
+
+    isScoreSupported : function(lang) {
+        var supportedLangs = this.languageDetect.getLanguageCodes();
+    }
 
     /**
      * 
