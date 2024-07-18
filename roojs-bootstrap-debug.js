@@ -75402,7 +75402,8 @@ Roo.apply(Roo.languagedetect.Parser, {
     regex += '/';
     this.codeToRegex['zh_CN'] = regex;
 
-    this.getHighestScore('Hi, I am leon. How are you? I am fine.');
+    var ret = this.detectLangByScore('Hi, I am leon. How are you? I am fine.');
+    var_dump(ret);
 
 };
 
@@ -75491,29 +75492,36 @@ Roo.languagedetect.Detect.prototype = {
         return true;
         */
     },
+
     getHighestScore : function(input) {
         var scores = this.languageDetect.detect(input);
-        Roo.log(scores);
+        if(!scores.length) {
+            return [];
+        }
+        return scores[0];
     },
+    detectLangByScore : function (input) {
+        var score = this.getHighestScore(input);
+        if(!score.length) {
+            return {};
+        }
+
+        return {
+            [score[0]] : score[1]
+        };
+    }
 
     /*
-        function getHighestScore($input)
+        function detectLangByScore($input)
     {
-        require_once 'pear/Text/LanguageDetect.php';
+        $score = $this->getHighestScore($input);
 
-        $ld = new Text_LanguageDetect();
-        $ld->setNameMode(2);
-        $scores = $ld->detect($input);
-
-        if(empty($scores)) {
+        if(empty($score)) {
             return array();
         }
 
-        $lang = array_key_first($scores);
-
         return array(
-            'lang' => $lang,
-            'score' => $scores[$lang]
+            $score['lang'] => $score['score'] > 0.2
         );
     }
     */
