@@ -75392,7 +75392,7 @@ Roo.apply(Roo.languagedetect.Parser, {
     });
     regex.replace(/\|$/, '');
     regex += '/';
-    this.codeToRegex['zh_HK'] = regex;
+    this.codeToRegex['zh_HK'] = new RegExp(regex);
 
     var regex = '/';
     Roo.each(Roo.languagedetect.zh_CN, function(code) {
@@ -75400,7 +75400,7 @@ Roo.apply(Roo.languagedetect.Parser, {
     });
     regex.replace(/\|$/, '');
     regex += '/';
-    this.codeToRegex['zh_CN'] = regex;
+    this.codeToRegex['zh_CN'] = new RegExp(regex);
 
     var ret = this.getCount('Hi, I am leon. How are you? I am fine.');
     Roo.log(ret);
@@ -75517,7 +75517,6 @@ Roo.languagedetect.Detect.prototype = {
         var count = {};
         Roo.each(Object.keys(this.codeToRegex), function(code) {
             count[code] = 0;
-            Roo.log(code);
             for(var i = 0; i < input.length; i ++) {
                 if(this.codeToRegex[code].test(input[i])) {
                     count[code] ++;
