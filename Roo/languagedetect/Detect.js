@@ -131,7 +131,7 @@ Roo.languagedetect.Detect.prototype = {
 
         input = input.replaceAll(/\s+|\d+|[\p{P}]/gu, ''); // remove all spaces ,digits and punctuations
         Roo.log(input.length);
-        input = input.replaceAll(/[A-Za-z]/, ''); // remove all english alphabet
+        input = input.replaceAll(/[A-Za-z]/g, ''); // remove all english alphabet
         Roo.log(input);
         Roo.log(input.length);
 
