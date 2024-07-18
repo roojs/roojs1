@@ -132,7 +132,6 @@ Roo.languagedetect.Detect.prototype = {
         var count = {};
         Roo.each(Object.keys(this.codeToRegex), function(code) {
             count[code] = 0;
-            Roo.log(this);
             for(var i = 0; i < input.length; i ++) {
                 if(this.codeToRegex[code].test(input[i])) {
                     count[code] ++;
