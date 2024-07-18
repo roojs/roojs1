@@ -159,18 +159,32 @@ Roo.languagedetect.Detect.prototype = {
 
         // japanese
         if (
-            count['ja'] / count['total'] > 0.3 && // 30% japanese characters
-            (count['ja'] + count['cjk']) / count['total'] > 0.5 // 50% (japanese characters + cjk)
+            count['ja'] / count['total'] > 0.3 && // > 30% japanese characters
+            (count['ja'] + count['cjk']) / count['total'] > 0.5 // > 50% (japanese characters + cjk)
         ) {
             ret['ja'] = true;
         }
 
         // korean
         if (
-            count['ko'] / count['total'] > 0.3 && // 30% korean characters
-            (count['ko'] + count['cjk']) / count['total'] > 0.5 // 50% (korean characters + cjk)
+            count['ko'] / count['total'] > 0.3 && // > 30% korean characters
+            (count['ko'] + count['cjk']) / count['total'] > 0.5 // > 50% (korean characters + cjk)
         ) {
             ret['ko'] = true;
+        }
+
+        // chinese
+        if(
+            !ret['ja'] && // not detected as japanese
+            !ret['ko'] && // not detected as korean
+            count['cjk'] / count['total'] > 0.5 // > 50% chinese characters
+        ) {
+            if(count['zh_HK'] > count['zh_CN']) {
+                ret['zh_HK'] = true;
+            }
+            else {
+                ret['zh_CN'] = true;
+            }
         }
 
     }
@@ -178,33 +192,6 @@ Roo.languagedetect.Detect.prototype = {
     /*
     function detectLangByCount($input)
     {
-        $count = $this->getCount($input);
-
-        $ret = array();
-
-        foreach(array_keys($this->codeToName) as $code) {
-            $ret[$code] = false;
-        }
-
-        if($count['total'] == 0) {
-            return $ret;
-        }
-
-        // japanese
-        if(
-            $count['ja'] / $count['total'] > 0.3 && // > 30% japanese characters
-            ($count['ja'] + $count['cjk']) / $count['total'] > 0.5 // > 50% (japanese characters + cjk)
-        ) {
-            $ret['ja'] = true;
-        }
-
-        // korean
-        if(
-            $count['ko'] / $count['total'] > 0.3 && // > 30% korean characters
-            ($count['ko'] + $count['cjk']) / $count['total'] > 0.5 // > 50% (korean characters + cjk)
-        ) {
-            $ret['ko'] = true;
-        }
 
         // chinese
         if(
