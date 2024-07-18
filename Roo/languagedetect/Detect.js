@@ -165,6 +165,14 @@ Roo.languagedetect.Detect.prototype = {
             ret['ja'] = true;
         }
 
+        // korean
+        if (
+            count['ko'] / count['total'] > 0.3 && // 30% korean characters
+            (count['ko'] + count['cjk']) / count['total'] > 0.5 // 50% (korean characters + cjk)
+        ) {
+            ret['ko'] = true;
+        }
+
     }
 
     /*
