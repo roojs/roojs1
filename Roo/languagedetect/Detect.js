@@ -127,7 +127,7 @@ Roo.languagedetect.Detect.prototype = {
     },
 
     getCount : function(input) {
-        input = input.replaceAll(/\s+|\d+|[\p{P}]/gu, '');
+        input = input.replaceAll(/\s+|\d+|[\p{P}]/gu, ''); // remove all spaces ,digits and punctuations
 
         var count = {};
         Roo.each(Object.keys(this.codeToRegex), function(code) {
@@ -139,27 +139,85 @@ Roo.languagedetect.Detect.prototype = {
             }
         }, this);
 
+        count['total'] = input.length;
+
         return count;
     },
 
-    /*
-        function getCount($input)
-    {
-        $input = preg_replace('/\s+|\d+|[\p{P}]/u', '', $input); // remove all spaces ,digits and punctuations
+    detectLangByCount : function(input) {
+        var count = this.getCount(input);
 
-        $count = array();
+        var ret = {};
 
-        foreach(array('cjk', 'ja', 'ko', 'zh_HK', 'zh_CN', 'th', 'he') as $code) {
-            $matches = array();
-            preg_match_all($this->codeToRegex[$code], $input, $matches);
-            $count[$code] = count($matches[0]);
+        Roo.each(Object.keys(this.codeToName), function(code) {
+            ret[code] = false;
+        });
+
+        if(count['total'] == 0) {
+            return false
         }
 
-        $count['total'] = mb_strlen($input);
+    }
 
-        return $count;
+    /*
+    function detectLangByCount($input)
+    {
+        $count = $this->getCount($input);
+
+        $ret = array();
+
+        foreach(array_keys($this->codeToName) as $code) {
+            $ret[$code] = false;
+        }
+
+        if($count['total'] == 0) {
+            return $ret;
+        }
+
+        // japanese
+        if(
+            $count['ja'] / $count['total'] > 0.3 && // > 30% japanese characters
+            ($count['ja'] + $count['cjk']) / $count['total'] > 0.5 // > 50% (japanese characters + cjk)
+        ) {
+            $ret['ja'] = true;
+        }
+
+        // korean
+        if(
+            $count['ko'] / $count['total'] > 0.3 && // > 30% korean characters
+            ($count['ko'] + $count['cjk']) / $count['total'] > 0.5 // > 50% (korean characters + cjk)
+        ) {
+            $ret['ko'] = true;
+        }
+
+        // chinese
+        if(
+            !$ret['ja'] &&  // not detected as japanese
+            !$ret['ko'] &&  // not detected as korean
+            $count['cjk'] / $count['total'] > 0.5 // > 50% chinese characters
+        ) {
+            // traditional chinese if there are more traiditonal chinese characters than simplified chinese characters
+            if($count['zh_HK'] > $count['zh_CN']) {
+                $ret['zh_HK'] = true;
+            }
+            // else simplified chinese
+            else {
+                $ret['zh_CN'] = true;
+            }
+        }
+
+        if($count['th'] / $count['total'] > 0.5) {
+            $ret['th'] = true;
+        }
+
+        if($count['he'] / $count['total'] > 0.5) {
+            $ret['he'] = true;
+        }
+
+        return $ret;
     }
     */
+
     isCJK : function(input, lang) {
         // only japanese, korean, traditional chinese and simplified chinese are detected
         if(!['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
