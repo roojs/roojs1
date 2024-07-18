@@ -130,10 +130,8 @@ Roo.languagedetect.Detect.prototype = {
         input = input.replaceAll(/\s+|\d+|[\p{P}]/gu, '');
 
         var count = {};
-        Roo.log(this.codeToRegex);
         Roo.each(Object.keys(this.codeToRegex), function(code) {
             count[code] = 0;
-            Roo.log(this.codeToRegex['cjk']);
             for(var i = 0; i < input.length; i ++) {
                 if(this.codeToRegex[code].test(input[i])) {
                     count[code] ++;
