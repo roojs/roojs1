@@ -32932,6 +32932,22 @@ Roo.apply(Roo.languagedetect.Parser, {
   ]
 });Roo.languagedetect.Detect = function() {
     this.languageDetect = new Roo.languagedetect.LanguageDetect('iso2');
+
+    var regex = '/';
+    Roo.each(Roo.languagedetect.zh_HK, function(code) {
+        regex = regex + code + '|';
+    });
+    regex.replace(/\|$/, '');
+    regex += '/';
+    this.codeToRegex['zh_HK'] = new RegExp(regex);
+
+    var regex = '/';
+    Roo.each(Roo.languagedetect.zh_CN, function(code) {
+        regex = regex + code + '|';
+    });
+    regex.replace(/\|$/, '');
+    regex += '/';
+    this.codeToRegex['zh_CN'] = new RegExp(regex);
 };
 
 Roo.languagedetect.Detect.prototype = {
@@ -32979,171 +32995,15 @@ Roo.languagedetect.Detect.prototype = {
         'he':'hebrew'
     },
 
-    /**
-     * 
-     * @param {String} lang iso 639 language code
-     * @returns {Boolean} indicate whether the language is detectable
-     */
+    isScoreSupported : function(lang) {
+        return this.languageDetect.getLanguageCodes().includes(lang);
+    },
+    isCountSupported : function(lang) {
+        return Object.keys(this.codeToName).includes(lang);
+    },
     isSupported : function(lang) {
-        var supportedLangs = this.languageDetect.getLanguageCodes();
-
-        supportedLangs.push(...Object.keys(this.codeToName));
-
-        if(!supportedLangs.includes(lang)) {
-            return false;
-        }
-
-        return true;
+        return this.isScoreSupported(lang) || this.isCountSupported(lang);
     },
-    /**
-     * 
-     * @param {String} input input text
-     * @param {String} lang iso 639 language code
-     * @returns {Boolean} indicate whether is the input text is written in input language
-     */
-    isLanguage : function(input, lang) {
-        if(!this.isSupported(lang)) {
-            return false;
-        }
-
-        if(['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
-            return this.isCJK(input, lang);
-        }
-
-        if(['th', 'he'].includes(lang)) {
-            return this.isLang(input, lang);
-        }
-
-        var scores = this.languageDetect.detect(input);
-
-        var ret = false;
-        Roo.each(scores, (score) => {
-            if(score[1] > 0.3 && score[0] == lang) {
-                ret = true;
-            }
-        });
-
-        return ret;
-    },
-    /**
-     * Support Japanese, Korean, Traditional chinese and Simplified chinese
-     * 
-     * @param {String} input input text
-     * @param {String} lang iso 639 language code
-     * @returns {Boolean} indicate whether the input text is written in input langauge
-     */
-    isCJK : function(input, lang) {
-        // only japanese, korean, traditional chinese and simplified chinese are detected
-        if(!['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
-            return false;
-        }
-        
-        // remove all spaces
-        input = input.replaceAll(new RegExp(/\s+/, 'g'), '');
-
-        var count = {};
-        Roo.each(['cjk', 'ja', 'ko', 'zh_HK', 'zh_CN'], function(code) {
-            count[code] = 0;
-        });
-
-        for(var i = 0; i < input.length; i++) {
-            // characters that appear in chinese, korean or japanese
-            if(this.codeToRegex['cjk'].test(input[i])) {
-                count['cjk'] ++;
-            }
-            // characters that only appear in simplified chinese
-            if(Roo.languagedetect.zh_CN.includes(input[i])) {
-                count['zh_CN'] ++;
-                continue;
-            }
-            // characters that only appear in traditional chinese
-            if(Roo.languagedetect.zh_HK.includes(input[i])) {
-                count['zh_HK'] ++;
-                continue;
-            }
-            // characters that only appear in korean
-            if(this.codeToRegex['ko'].test(input[i])) {
-                count['ko'] ++;
-                continue;
-            }
-            // characters that only appear in japanese
-            if(this.codeToRegex['ja'].test(input[i])) {
-                count['ja'] ++;
-                continue;
-            }
-        }
-
-        switch(lang) {
-            // korean
-            case 'ko' :
-                if(
-                    count['ko'] / input.length > 0.3 && // > 30% korean characters
-                    (count['ko'] + count['cjk']) / input.length > 0.5 // > 50% (korean characters + cjk)
-                ) {
-                    return true;
-                }
-                return false;
-            // japanese
-            case 'ja' :
-                if(
-                    count['ja'] / input.length > 0.3 && // > 30% japanese characters
-                    (count['ja'] + count['cjk']) / input.length > 0.5  // > 50% (japanese characters + cjk)
-                ) {
-                    return true;
-                }
-                return false;
-        }
-
-        // chinese
-        if(
-            count['cjk'] / input.length > 0.5 && // > 50% chinese characters
-            (
-                count['zh_CN'] > count['zh_HK'] && lang == 'zh_CN' || // more simplified chinese characters than traditional chinese characters
-                count['zh_HK'] > count['zh_CN'] && lang == 'zh_HK' || // more traiditonal chinese characters than simplified chinese characters
-                count['zh_CN'] == count['zh_HK'] // same number of simplified and traditional chinese characters
-            )
-        ) {
-            return true;
-        }
-
-        
-        return false;
-    },
-    /**
-     * Support Thai and Hebrew
-     * @param {String} input input text
-     * @param {String} lang iso 639 language code
-     * @returns {Boolean} indicate whether the input text is written in input langauge
-     */
-    isLang : function(input, lang) {
-        // only thai and hebrew are detected
-        if(!['th', 'he'].includes(lang)) {
-            return false;
-        }
-
-        // remove all spaces
-        input = input.replaceAll(new RegExp(/\s+/, 'g'), '');
-
-        var count = 0;
-
-        for(var i = 0; i < input.length; i++) {
-            // characters that appear in that language
-            if(this.codeToRegex[lang].test(input[i])) {
-                count ++;
-            }
-        }
-
-        if(count / input.length > 0.5) {
-            return true;
-        }
-
-        return false;
-    },
-    /**
-     * 
-     * @param {String} code iso 639 language code
-     * @returns {String} name of the input language code
-     */
     getName : function(code) {
         if(!this.isSupported(code)) {
             return '';
@@ -33153,5 +33013,126 @@ Roo.languagedetect.Detect.prototype = {
             this.codeToName[code] || // CJK
             ''
         );
+    },
+    isLanguage : function(input, lang) {
+        if(!this.isSupported(lang)) {
+            return false;
+        }
+
+        var isLang = {...this.detectLangByCount(input), ...this.detectLangByScore(input)};
+
+        // positive testing
+        if(typeof(isLang[lang]) === 'undefined' || isLang[lang] !== true) {
+            return false;
+        }
+
+        var ret = true;
+
+        Roo.each(Object.keys(isLang), function(code) {
+            // negative testing
+            if(code != lang && isLang[code] === true) {
+                ret = false;
+            }
+        });
+
+        return ret;
+    },
+
+    getHighestScore : function(input) {
+        var scores = this.languageDetect.detect(input);
+        if(!scores.length) {
+            return [];
+        }
+        return scores[0];
+    },
+    detectLangByScore : function (input) {
+        var score = this.getHighestScore(input);
+        if(!score.length) {
+            return {};
+        }
+
+        return {
+            [score[0]] : score[1] > 0.2
+        };
+    },
+
+    getCount : function(input) {
+        var en = input.replaceAll(/[\s\d\p{P}]+/gu, ' ');
+        en = en.replaceAll(/[^A-Za-z ]/g, '');
+        var enWords = en.trim().split(/\s+/); // number of english words
+
+        input = input.replaceAll(/\s+|\d+|[\p{P}]/gu, ''); // remove all spaces ,digits and punctuations
+        input = input.replaceAll(/[A-Za-z]/g, ''); // remove all english alphabet
+
+        var count = {};
+        Roo.each(Object.keys(this.codeToRegex), function(code) {
+            count[code] = 0;
+            for(var i = 0; i < input.length; i ++) {
+                if(this.codeToRegex[code].test(input[i])) {
+                    count[code] ++;
+                }
+            }
+        }, this);
+
+        count['total'] = input.length + enWords.length; // number of characters which are not english alphabet + number of english words
+
+        return count;
+    },
+
+    detectLangByCount : function(input) {
+        var count = this.getCount(input);
+
+        var ret = {};
+
+        Roo.each(Object.keys(this.codeToName), function(code) {
+            ret[code] = false;
+        });
+
+        if(count['total'] == 0) {
+            return ret;
+        }
+
+        // japanese
+        if (
+            count['ja'] / count['total'] > 0.3 && // > 30% japanese characters
+            (count['ja'] + count['cjk']) / count['total'] > 0.5 // > 50% (japanese characters + cjk)
+        ) {
+            ret['ja'] = true;
+        }
+
+        // korean
+        if (
+            count['ko'] / count['total'] > 0.3 && // > 30% korean characters
+            (count['ko'] + count['cjk']) / count['total'] > 0.5 // > 50% (korean characters + cjk)
+        ) {
+            ret['ko'] = true;
+        }
+
+        // chinese
+        if(
+            !ret['ja'] && // not detected as japanese
+            !ret['ko'] && // not detected as korean
+            count['cjk'] / count['total'] > 0.5 // > 50% chinese characters
+        ) {
+            // traditional chinese if there are more traiditonal chinese characters than simplified chinese characters
+            if(count['zh_HK'] > count['zh_CN']) {
+                ret['zh_HK'] = true;
+            }
+            // else simplified chinese
+            else {
+                ret['zh_CN'] = true;
+            }
+        }
+
+        if(count['th'] / count['total'] > 0.5) {
+            ret['th'] = true;
+        }
+
+        if(count['he'] / count['total'] > 0.5) {
+            ret['he'] = true;
+        }
+
+        return ret;
+
     }
 };
