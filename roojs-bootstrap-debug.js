@@ -75466,14 +75466,22 @@ Roo.languagedetect.Detect.prototype = {
             return false;
         }
 
-        var ret = {...this.detectLangByCount(input), ...this.detectLangByScore(input)};
+        var isLang = {...this.detectLangByCount(input), ...this.detectLangByScore(input)};
 
         // positive testing
-        if(typeof(ret[lang]) === 'undefined' || ret[lang] !== true) {
+        if(typeof(isLang[lang]) === 'undefined' || isLang[lang] !== true) {
             return false;
         }
 
-        return true;
+        var ret = true;
+
+        Roo.each(Object.keys(isLang), function(code) {
+            if(code != lang && isLang[code] === true) {
+                ret = false;
+            }
+        });
+
+        return ret;
 
         /*
 
