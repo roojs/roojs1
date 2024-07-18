@@ -74,7 +74,7 @@ Roo.languagedetect.Detect.prototype = {
         return Object.keys(this.codeToName).includes(lang);
     },
     isSupported : function(lang) {
-        return this.isScoreSupported() && this.isCountSupported();
+        return this.isScoreSupported() || this.isCountSupported();
     },
     isLanguage : function(input, lang) {
         if(!this.isSupported(lang)) {
