@@ -67,11 +67,11 @@ Roo.languagedetect.Detect.prototype = {
     },
 
     isScoreSupported : function(lang) {
-        var supportedLangs = this.languageDetect.getLanguageCodes();
-        Roo.log(supportedLangs);
-
         return this.languageDetect.getLanguageCodes().includes(lang);
     },
+    isCountSupported : function(lang) {
+        reutrn Object.keys(this.codeToName).includes(lang);
+    }
 
     /**
      * 
