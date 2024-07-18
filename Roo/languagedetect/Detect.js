@@ -137,7 +137,7 @@ Roo.languagedetect.Detect.prototype = {
                     count[code] ++;
                 }
             }
-        });
+        }, this);
 
         return count;
     },
