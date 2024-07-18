@@ -104,13 +104,32 @@ Roo.languagedetect.Detect.prototype = {
         return true;
         */
     },
-    /**
-     * Support Japanese, Korean, Traditional chinese and Simplified chinese
-     * 
-     * @param {String} input input text
-     * @param {String} lang iso 639 language code
-     * @returns {Boolean} indicate whether the input text is written in input langauge
-     */
+    getHighestScore : function(input) {
+        var scores = this.languageDetect.detect(input);
+        Roo.log(scores);
+    }
+
+    /*
+        function getHighestScore($input)
+    {
+        require_once 'pear/Text/LanguageDetect.php';
+
+        $ld = new Text_LanguageDetect();
+        $ld->setNameMode(2);
+        $scores = $ld->detect($input);
+
+        if(empty($scores)) {
+            return array();
+        }
+
+        $lang = array_key_first($scores);
+
+        return array(
+            'lang' => $lang,
+            'score' => $scores[$lang]
+        );
+    }
+    */
     isCJK : function(input, lang) {
         // only japanese, korean, traditional chinese and simplified chinese are detected
         if(!['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
