@@ -75463,6 +75463,7 @@ Roo.languagedetect.Detect.prototype = {
     },
     isLanguage : function(input, lang) {
         if(!this.isSupported(lang)) {
+            Roo.log('AA');
             return false;
         }
 
