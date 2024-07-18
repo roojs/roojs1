@@ -75529,8 +75529,6 @@ Roo.languagedetect.Detect.prototype = {
 
         count['total'] = input.length + enWords.length; // number of characters which are not english alphabet + number of english words
 
-        Roo.log(count);
-
         return count;
     },
 
