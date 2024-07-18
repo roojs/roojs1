@@ -83,6 +83,9 @@ Roo.languagedetect.Detect.prototype = {
 
         //var arr = this.detectLangByCount(input).concat(this.detectLangByScore(input));
 
+        var ret = {...this.detectLangByCount(input), ...this.detectLangByScore(input)};
+        Roo.log(ret);
+
         return true;
 
         /*
