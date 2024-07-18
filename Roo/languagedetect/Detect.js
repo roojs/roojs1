@@ -74,11 +74,10 @@ Roo.languagedetect.Detect.prototype = {
         return Object.keys(this.codeToName).includes(lang);
     },
     isSupported : function(lang) {
-        return this.isScoreSupported() || this.isCountSupported();
+        return this.isScoreSupported(lang) || this.isCountSupported(lang);
     },
     isLanguage : function(input, lang) {
         if(!this.isSupported(lang)) {
-            Roo.log('AA');
             return false;
         }
 
