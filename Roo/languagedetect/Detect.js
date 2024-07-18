@@ -18,6 +18,7 @@ Roo.languagedetect.Detect = function() {
     this.codeToRegex['zh_CN'] = regex;
 
     var ret = this.getCount('Hi, I am leon. How are you? I am fine.');
+    Roo.log(ret);
 
 };
 

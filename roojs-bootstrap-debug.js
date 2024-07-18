@@ -75403,6 +75403,7 @@ Roo.apply(Roo.languagedetect.Parser, {
     this.codeToRegex['zh_CN'] = regex;
 
     var ret = this.getCount('Hi, I am leon. How are you? I am fine.');
+    Roo.log(ret);
 
 };
 
@@ -75512,10 +75513,18 @@ Roo.languagedetect.Detect.prototype = {
 
     getCount : function(input) {
         input = input.replaceAll(/\s+|\d+|[\p{P}]/gu, '');
-        Roo.each(Object.keys(this.codeToRegex), function(code) {
-            Roo.log(code);
 
+        var count = {};
+        Roo.each(Object.keys(this.codeToRegex), function(code) {
+            count[code] = 0;
+            for(var i = 0; i < input.length; i ++) {
+                if(this.codeToRegex[code].test(input[i])) {
+                    count[code] ++;
+                }
+            }
         });
+
+        return count;
     },
 
     /*
