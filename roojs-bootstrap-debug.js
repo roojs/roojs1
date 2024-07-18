@@ -75402,7 +75402,7 @@ Roo.apply(Roo.languagedetect.Parser, {
     regex += '/';
     this.codeToRegex['zh_CN'] = new RegExp(regex);
 
-    var ret = this.getCount('這次蘇格蘭食品周剛好配合每年11月的聖安德魯日(St Andrew\'s Day)的慶祝活動。 數千年來，蘇格蘭人在每年 11 月的最後一周都會舉行盛宴以紀念蘇格蘭的聖人聖安德魯。今年，儘管未能親自飛往蘇格蘭參與聖安德魯日');
+    var ret = this.detectLangCount('這次蘇格蘭食品周剛好配合每年11月的聖安德魯日(St Andrew\'s Day)的慶祝活動。 數千年來，蘇格蘭人在每年 11 月的最後一周都會舉行盛宴以紀念蘇格蘭的聖人聖安德魯。今年，儘管未能親自飛往蘇格蘭參與聖安德魯日');
     Roo.log(ret);
 
 };
@@ -75512,7 +75512,7 @@ Roo.languagedetect.Detect.prototype = {
     },
 
     getCount : function(input) {
-        input = input.replaceAll(/\s+|\d+|[\p{P}]/gu, '');
+        input = input.replaceAll(/\s+|\d+|[\p{P}]/gu, ''); // remove all spaces ,digits and punctuations
 
         var count = {};
         Roo.each(Object.keys(this.codeToRegex), function(code) {
@@ -75524,109 +75524,68 @@ Roo.languagedetect.Detect.prototype = {
             }
         }, this);
 
+        count['total'] = input.length;
+
         return count;
     },
 
-    /*
-        function getCount($input)
-    {
-        $input = preg_replace('/\s+|\d+|[\p{P}]/u', '', $input); // remove all spaces ,digits and punctuations
+    detectLangByCount : function(input) {
+        var count = this.getCount(input);
 
-        $count = array();
+        var ret = {};
 
-        foreach(array('cjk', 'ja', 'ko', 'zh_HK', 'zh_CN', 'th', 'he') as $code) {
-            $matches = array();
-            preg_match_all($this->codeToRegex[$code], $input, $matches);
-            $count[$code] = count($matches[0]);
-        }
-
-        $count['total'] = mb_strlen($input);
-
-        return $count;
-    }
-    */
-    isCJK : function(input, lang) {
-        // only japanese, korean, traditional chinese and simplified chinese are detected
-        if(!['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
-            return false;
-        }
-        
-        // remove all spaces
-        input = input.replaceAll(new RegExp(/\s+/, 'g'), '');
-
-        var count = {};
-        Roo.each(['cjk', 'ja', 'ko', 'zh_HK', 'zh_CN'], function(code) {
-            count[code] = 0;
+        Roo.each(Object.keys(this.codeToName), function(code) {
+            ret[code] = false;
         });
 
-        for(var i = 0; i < input.length; i++) {
-            // characters that appear in chinese, korean or japanese
-            if(this.codeToRegex['cjk'].test(input[i])) {
-                count['cjk'] ++;
-            }
-            // characters that only appear in simplified chinese
-            if(Roo.languagedetect.zh_CN.includes(input[i])) {
-                count['zh_CN'] ++;
-                continue;
-            }
-            // characters that only appear in traditional chinese
-            if(Roo.languagedetect.zh_HK.includes(input[i])) {
-                count['zh_HK'] ++;
-                continue;
-            }
-            // characters that only appear in korean
-            if(this.codeToRegex['ko'].test(input[i])) {
-                count['ko'] ++;
-                continue;
-            }
-            // characters that only appear in japanese
-            if(this.codeToRegex['ja'].test(input[i])) {
-                count['ja'] ++;
-                continue;
-            }
+        if(count['total'] == 0) {
+            return ret;
         }
 
-        switch(lang) {
-            // korean
-            case 'ko' :
-                if(
-                    count['ko'] / input.length > 0.3 && // > 30% korean characters
-                    (count['ko'] + count['cjk']) / input.length > 0.5 // > 50% (korean characters + cjk)
-                ) {
-                    return true;
-                }
-                return false;
-            // japanese
-            case 'ja' :
-                if(
-                    count['ja'] / input.length > 0.3 && // > 30% japanese characters
-                    (count['ja'] + count['cjk']) / input.length > 0.5  // > 50% (japanese characters + cjk)
-                ) {
-                    return true;
-                }
-                return false;
+        // japanese
+        if (
+            count['ja'] / count['total'] > 0.3 && // > 30% japanese characters
+            (count['ja'] + count['cjk']) / count['total'] > 0.5 // > 50% (japanese characters + cjk)
+        ) {
+            ret['ja'] = true;
+        }
+
+        // korean
+        if (
+            count['ko'] / count['total'] > 0.3 && // > 30% korean characters
+            (count['ko'] + count['cjk']) / count['total'] > 0.5 // > 50% (korean characters + cjk)
+        ) {
+            ret['ko'] = true;
         }
 
         // chinese
         if(
-            count['cjk'] / input.length > 0.5 && // > 50% chinese characters
-            (
-                count['zh_CN'] > count['zh_HK'] && lang == 'zh_CN' || // more simplified chinese characters than traditional chinese characters
-                count['zh_HK'] > count['zh_CN'] && lang == 'zh_HK' || // more traiditonal chinese characters than simplified chinese characters
-                count['zh_CN'] == count['zh_HK'] // same number of simplified and traditional chinese characters
-            )
+            !ret['ja'] && // not detected as japanese
+            !ret['ko'] && // not detected as korean
+            count['cjk'] / count['total'] > 0.5 // > 50% chinese characters
         ) {
-            return true;
+            // traditional chinese if there are more traiditonal chinese characters than simplified chinese characters
+            if(count['zh_HK'] > count['zh_CN']) {
+                ret['zh_HK'] = true;
+            }
+            // else simplified chinese
+            else {
+                ret['zh_CN'] = true;
+            }
         }
 
-        
-        return false;
+        if(count['th'] / count['total'] > 0.5) {
+            ret['th'] = true;
+        }
+
+        if(count['he'] / count['total'] > 0.5) {
+            ret['he'] = true;
+        }
+
+        return ret;
+
     },
-    /**
-     * 
-     * @param {String} code iso 639 language code
-     * @returns {String} name of the input language code
-     */
+
     getName : function(code) {
         if(!this.isSupported(code)) {
             return '';
