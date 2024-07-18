@@ -200,11 +200,7 @@ Roo.languagedetect.Detect.prototype = {
         return ret;
 
     },
-    /**
-     * 
-     * @param {String} code iso 639 language code
-     * @returns {String} name of the input language code
-     */
+    
     getName : function(code) {
         if(!this.isSupported(code)) {
             return '';
