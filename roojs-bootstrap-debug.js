@@ -75402,8 +75402,7 @@ Roo.apply(Roo.languagedetect.Parser, {
     regex += '/';
     this.codeToRegex['zh_CN'] = regex;
 
-    var ret = this.detectLangByScore('Hi, I am leon. How are you? I am fine.');
-    Roo.log(ret);
+    var ret = this.getCount('Hi, I am leon. How are you? I am fine.');
 
 };
 
@@ -75511,18 +75510,30 @@ Roo.languagedetect.Detect.prototype = {
         };
     },
 
-    /*
-        function detectLangByScore($input)
-    {
-        $score = $this->getHighestScore($input);
+    getCount : function(input) {
+        input = input.replaceAll(/\s+|\d+|[\p{P}]/u, '');
+        Roo.each(Object.keys(this.codeToRegex), function(code) {
+            Roo.log(code);
 
-        if(empty($score)) {
-            return array();
+        });
+    },
+
+    /*
+        function getCount($input)
+    {
+        $input = preg_replace('/\s+|\d+|[\p{P}]/u', '', $input); // remove all spaces ,digits and punctuations
+
+        $count = array();
+
+        foreach(array('cjk', 'ja', 'ko', 'zh_HK', 'zh_CN', 'th', 'he') as $code) {
+            $matches = array();
+            preg_match_all($this->codeToRegex[$code], $input, $matches);
+            $count[$code] = count($matches[0]);
         }
 
-        return array(
-            $score['lang'] => $score['score'] > 0.2
-        );
+        $count['total'] = mb_strlen($input);
+
+        return $count;
     }
     */
     isCJK : function(input, lang) {
@@ -75600,36 +75611,6 @@ Roo.languagedetect.Detect.prototype = {
         }
 
         
-        return false;
-    },
-    /**
-     * Support Thai and Hebrew
-     * @param {String} input input text
-     * @param {String} lang iso 639 language code
-     * @returns {Boolean} indicate whether the input text is written in input langauge
-     */
-    isLang : function(input, lang) {
-        // only thai and hebrew are detected
-        if(!['th', 'he'].includes(lang)) {
-            return false;
-        }
-
-        // remove all spaces
-        input = input.replaceAll(new RegExp(/\s+/, 'g'), '');
-
-        var count = 0;
-
-        for(var i = 0; i < input.length; i++) {
-            // characters that appear in that language
-            if(this.codeToRegex[lang].test(input[i])) {
-                count ++;
-            }
-        }
-
-        if(count / input.length > 0.5) {
-            return true;
-        }
-
         return false;
     },
     /**
