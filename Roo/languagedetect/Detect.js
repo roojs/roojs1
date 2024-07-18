@@ -179,12 +179,22 @@ Roo.languagedetect.Detect.prototype = {
             !ret['ko'] && // not detected as korean
             count['cjk'] / count['total'] > 0.5 // > 50% chinese characters
         ) {
+            // traditional chinese if there are more traiditonal chinese characters than simplified chinese characters
             if(count['zh_HK'] > count['zh_CN']) {
                 ret['zh_HK'] = true;
             }
+            // else simplified chinese
             else {
                 ret['zh_CN'] = true;
             }
+        }
+
+        if(count['th'] / count['total'] > 0.5) {
+            ret['th'] = true;
+        }
+
+        if(count['he'] / count['total'] > 0.5) {
+            ret['he'] = true;
         }
 
     }
