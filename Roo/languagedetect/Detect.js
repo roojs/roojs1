@@ -140,8 +140,6 @@ Roo.languagedetect.Detect.prototype = {
 
         count['total'] = input.length;
 
-        Roo.log(count);
-
         return count;
     },
 
