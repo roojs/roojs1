@@ -72,12 +72,12 @@ Roo.languagedetect.Detect.prototype = {
     isSupported : function(lang) {
         return this.isScoreSupported(lang) || this.isCountSupported(lang);
     },
-    getName : function(lang) {
-        if(!this.isSupported(lang)) {
+    getName : function(code) {
+        if(!this.isSupported(code)) {
             return '';
         }
         return (
-            this.languageDetect.getName2(lang) || // LanguageDetect
+            this.languageDetect.getName2(code) || // LanguageDetect
             this.codeToName[code] || // CJK
             ''
         );
