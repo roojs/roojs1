@@ -75402,7 +75402,7 @@ Roo.apply(Roo.languagedetect.Parser, {
     regex += '/';
     this.codeToRegex['zh_CN'] = new RegExp(regex);
 
-    var ret = this.detectLangByCount('這次蘇格蘭食品周剛好配合每年11月的聖安德魯日(St Andrew\'s Day)的慶祝活動。 數千年來，蘇格蘭人在每年 11 月的最後一周都會舉行盛宴以紀念蘇格蘭的聖人聖安德魯。今年，儘管未能親自飛往蘇格蘭參與聖安德魯日');
+    var ret = this.isLanguage('這次蘇格蘭食品周剛好配合每年11月的聖安德魯日(St Andrew\'s Day)的慶祝活動。 數千年來，蘇格蘭人在每年 11 月的最後一周都會舉行盛宴以紀念蘇格蘭的聖人聖安德魯。今年，儘管未能親自飛往蘇格蘭參與聖安德魯日', 'en');
     Roo.log(ret);
 
 };
@@ -75467,6 +75467,9 @@ Roo.languagedetect.Detect.prototype = {
         }
 
         //var arr = this.detectLangByCount(input).concat(this.detectLangByScore(input));
+
+        var ret = {...this.detectLangByCount(input), ...this.detectLangByScore(input)};
+        Roo.log(ret);
 
         return true;
 
