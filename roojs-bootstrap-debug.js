@@ -75493,10 +75493,10 @@ Roo.languagedetect.Detect.prototype = {
 
     getHighestScore : function(input) {
         var scores = this.languageDetect.detect(input);
+        Roo.log(input);
         if(!scores.length) {
             return [];
         }
-        Roo.log(scores[0]);
         return scores[0];
     },
     detectLangByScore : function (input) {
@@ -75513,6 +75513,8 @@ Roo.languagedetect.Detect.prototype = {
     getCount : function(input) {
         input = input.replaceAll(/\s+|\d+|[\p{P}]/gu, ''); // remove all spaces ,digits and punctuations
 
+        Roo.log(input);
+
         var count = {};
         Roo.each(Object.keys(this.codeToRegex), function(code) {
             count[code] = 0;
@@ -75524,8 +75526,6 @@ Roo.languagedetect.Detect.prototype = {
         }, this);
 
         count['total'] = input.length;
-
-        Roo.log(count);
 
         return count;
     },
