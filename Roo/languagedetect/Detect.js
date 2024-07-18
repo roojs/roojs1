@@ -7,9 +7,15 @@ Roo.languagedetect.Detect = function() {
     });
     regex.replace(/\|$/, '');
     regex += '/';
-    Roo.log(Roo.languagedetect.Detect);
     Roo.languagedetect.Detect.prototype.codeToRegex['zh_HK'] = regex;
-    Roo.log(regex);
+
+    var regex = '/';
+    Roo.each(Roo.languagedetect.zh_CN, function(code) {
+        regex = regex + code + '|';
+    });
+    regex.replace(/\|$/, '');
+    regex += '/';
+    Roo.languagedetect.Detect.prototype.codeToRegex['zh_CN'] = regex;
 
 };
 
