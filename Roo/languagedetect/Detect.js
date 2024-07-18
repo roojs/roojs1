@@ -145,7 +145,7 @@ Roo.languagedetect.Detect.prototype = {
             }
         }, this);
 
-        count['total'] = input.length;
+        count['total'] = input.length + enWords.length;
 
         Roo.log(count);
 

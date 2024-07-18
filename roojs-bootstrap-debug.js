@@ -75516,8 +75516,9 @@ Roo.languagedetect.Detect.prototype = {
 
         input = input.replaceAll(/\s+|\d+|[\p{P}]/gu, ''); // remove all spaces ,digits and punctuations
         Roo.log(input.length);
-        //$input = preg_replace('/[A-Za-z]/', '', $input); // remove all english alphabet
-        //Roo.log(input.length);
+        input = input.replaceAll(/[A-Za-z]/, ''); // remove all english alphabet
+        Roo.log(input);
+        Roo.log(input.length);
 
         var count = {};
         Roo.each(Object.keys(this.codeToRegex), function(code) {
@@ -75529,7 +75530,7 @@ Roo.languagedetect.Detect.prototype = {
             }
         }, this);
 
-        count['total'] = input.length;
+        count['total'] = input.length + enWords.length;
 
         Roo.log(count);
 
