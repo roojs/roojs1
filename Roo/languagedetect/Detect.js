@@ -108,7 +108,6 @@ Roo.languagedetect.Detect.prototype = {
 
     getHighestScore : function(input) {
         var scores = this.languageDetect.detect(input);
-        Roo.log(input);
         if(!scores.length) {
             return [];
         }
@@ -127,8 +126,6 @@ Roo.languagedetect.Detect.prototype = {
 
     getCount : function(input) {
         input = input.replaceAll(/\s+|\d+|[\p{P}]/gu, ''); // remove all spaces ,digits and punctuations
-
-        Roo.log(input);
 
         var count = {};
         Roo.each(Object.keys(this.codeToRegex), function(code) {
