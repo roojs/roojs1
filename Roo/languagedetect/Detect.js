@@ -131,8 +131,8 @@ Roo.languagedetect.Detect.prototype = {
 
         input = input.replaceAll(/\s+|\d+|[\p{P}]/gu, ''); // remove all spaces ,digits and punctuations
         Roo.log(input.length);
-        $input = preg_replace('/[A-Za-z]/', '', $input); // remove all english alphabet
-        Roo.log(input.length);
+        //$input = preg_replace('/[A-Za-z]/', '', $input); // remove all english alphabet
+        //Roo.log(input.length);
 
         var count = {};
         Roo.each(Object.keys(this.codeToRegex), function(code) {
