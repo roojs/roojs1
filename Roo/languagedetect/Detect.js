@@ -124,7 +124,7 @@ Roo.languagedetect.Detect.prototype = {
         return {
             [score[0]] : score[1]
         };
-    }
+    },
 
     /*
         function detectLangByScore($input)
