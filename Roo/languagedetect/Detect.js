@@ -125,6 +125,11 @@ Roo.languagedetect.Detect.prototype = {
     },
 
     getCount : function(input) {
+        var en = input.replaceAll(/[\s\d\p{P}]+/gu, ' ');
+        var en = preg_replace('/[\s\d\p{P}]+/u', ' ', $input);
+        en = preg_replace('/[^A-Za-z ]/', '', $en);
+        var enWords = preg_split('/\s+/', trim($en)); // number of english words
+
         input = input.replaceAll(/\s+|\d+|[\p{P}]/gu, ''); // remove all spaces ,digits and punctuations
 
         var count = {};
