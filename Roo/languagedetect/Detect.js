@@ -128,6 +128,8 @@ Roo.languagedetect.Detect.prototype = {
     getCount : function(input) {
         input = input.replaceAll(/\s+|\d+|[\p{P}]/gu, ''); // remove all spaces ,digits and punctuations
 
+        Roo.log(input);
+
         var count = {};
         Roo.each(Object.keys(this.codeToRegex), function(code) {
             count[code] = 0;
