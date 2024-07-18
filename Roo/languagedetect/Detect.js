@@ -124,21 +124,6 @@ Roo.languagedetect.Detect.prototype = {
             [score[0]] : score[1]
         };
     },
-
-    /*
-        function detectLangByScore($input)
-    {
-        $score = $this->getHighestScore($input);
-
-        if(empty($score)) {
-            return array();
-        }
-
-        return array(
-            $score['lang'] => $score['score'] > 0.2
-        );
-    }
-    */
     isCJK : function(input, lang) {
         // only japanese, korean, traditional chinese and simplified chinese are detected
         if(!['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
