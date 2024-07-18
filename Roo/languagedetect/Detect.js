@@ -2,7 +2,7 @@ Roo.languagedetect.Detect = function() {
     this.languageDetect = new Roo.languagedetect.LanguageDetect('iso2');
 
     Roo.each(Roo.languagedetect.zh_HK, function(code) {
-        $regex = $regex + $code + '|';
+        regex = regex + code + '|';
     });
     regex.replace(/\|$/, '');
     regex += '/';
