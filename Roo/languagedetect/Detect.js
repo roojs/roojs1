@@ -154,7 +154,15 @@ Roo.languagedetect.Detect.prototype = {
         });
 
         if(count['total'] == 0) {
-            return false
+            return ret;
+        }
+
+        // japanese
+        if (
+            count['ja'] / count['total'] > 0.3 && // 30% japanese characters
+            (count['ja'] + count['cjk']) / count['total'] > 0.5 // 50% (japanese characters + cjk)
+        ) {
+            ret['ja'] = true;
         }
 
     }
