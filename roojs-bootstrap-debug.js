@@ -75510,7 +75510,7 @@ Roo.languagedetect.Detect.prototype = {
         }
 
         return {
-            [score[0]] : score[1]
+            [score[0]] : score[1] > 0.2
         };
     },
 
