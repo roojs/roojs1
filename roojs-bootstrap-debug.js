@@ -75385,6 +75385,15 @@ Roo.apply(Roo.languagedetect.Parser, {
   ]
 });Roo.languagedetect.Detect = function() {
     this.languageDetect = new Roo.languagedetect.LanguageDetect('iso2');
+
+    Roo.each(Roo.languagedetect.zh_HK, function(code) {
+        $regex = $regex + $code + '|';
+    });
+    regex.replace(/\|$/, '');
+    regex += '/';
+    Roo.languagedetect.Detect.codeToRegex['zh_HK'] = regex;
+    Roo.log(regex);
+
 };
 
 Roo.languagedetect.Detect.prototype = {
