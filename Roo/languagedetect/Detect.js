@@ -78,25 +78,31 @@ Roo.languagedetect.Detect.prototype = {
             return false;
         }
 
-        if(['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
-            return this.isCJK(input, lang);
+        //var arr = this.detectLangByCount(input).concat(this.detectLangByScore(input));
+
+        return true;
+
+        /*
+                if(!$this->isSupported($lang)) {
+            return false;
         }
 
-        if(['th', 'he'].includes(lang)) {
-            return this.isLang(input, lang);
+        $arr = array_merge($this->detectLangByCount($input), $this->detectLangByScore($input));
+
+        // postive testing
+        if(empty($arr[$lang])) {
+            return false;
         }
 
-        var scores = this.languageDetect.detect(input);
-
-        Roo.log(scores);
-
-        var ret = false;
-
-        if(typeof(scores[0]) !== 'undefined' && scores[0][0] == lang) {
-            ret = true;
+        foreach($arr as $code => $isLang) {
+            // negative testing
+            if($code != $lang && $isLang) {
+                return false;
+            }
         }
 
-        return ret;
+        return true;
+        */
     },
     /**
      * Support Japanese, Korean, Traditional chinese and Simplified chinese
