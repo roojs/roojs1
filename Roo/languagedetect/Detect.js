@@ -72,6 +72,16 @@ Roo.languagedetect.Detect.prototype = {
     isSupported : function(lang) {
         return this.isScoreSupported(lang) || this.isCountSupported(lang);
     },
+    getName : function(lang) {
+        if(!this.isSupported(lang)) {
+            return '';
+        }
+        return (
+            this.languageDetect.getName2(lang) || // LanguageDetect
+            this.codeToName[code] || // CJK
+            ''
+        );
+    },
     isLanguage : function(input, lang) {
         if(!this.isSupported(lang)) {
             return false;
@@ -87,29 +97,13 @@ Roo.languagedetect.Detect.prototype = {
         var ret = true;
 
         Roo.each(Object.keys(isLang), function(code) {
+            // negative testing
             if(code != lang && isLang[code] === true) {
                 ret = false;
             }
         });
 
         return ret;
-
-        /*
-
-        // postive testing
-        if(empty($arr[$lang])) {
-            return false;
-        }
-
-        foreach($arr as $code => $isLang) {
-            // negative testing
-            if($code != $lang && $isLang) {
-                return false;
-            }
-        }
-
-        return true;
-        */
     },
 
     getHighestScore : function(input) {
