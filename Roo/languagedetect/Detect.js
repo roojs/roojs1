@@ -17,6 +17,8 @@ Roo.languagedetect.Detect = function() {
     regex += '/';
     this.codeToRegex['zh_CN'] = regex;
 
+    this.getHighestScore('Hi, I am leon. How are you? I am fine.');
+
 };
 
 Roo.languagedetect.Detect.prototype = {

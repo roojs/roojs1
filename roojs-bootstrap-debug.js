@@ -75402,8 +75402,7 @@ Roo.apply(Roo.languagedetect.Parser, {
     regex += '/';
     this.codeToRegex['zh_CN'] = regex;
 
-    this.isScoreSupported('en');
-    this.isCountSupported('en');
+    this.getHighestScore('Hi, I am leon. How are you? I am fine.');
 
 };
 
@@ -75456,50 +75455,68 @@ Roo.languagedetect.Detect.prototype = {
         return this.languageDetect.getLanguageCodes().includes(lang);
     },
     isCountSupported : function(lang) {
-        Roo.log(Object.keys(this.codeToName));
         return Object.keys(this.codeToName).includes(lang);
     },
     isSupported : function(lang) {
         return this.isScoreSupported() && this.isCountSupported();
     },
-    /**
-     * 
-     * @param {String} input input text
-     * @param {String} lang iso 639 language code
-     * @returns {Boolean} indicate whether is the input text is written in input language
-     */
     isLanguage : function(input, lang) {
         if(!this.isSupported(lang)) {
             return false;
         }
 
-        if(['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
-            return this.isCJK(input, lang);
+        //var arr = this.detectLangByCount(input).concat(this.detectLangByScore(input));
+
+        return true;
+
+        /*
+                if(!$this->isSupported($lang)) {
+            return false;
         }
 
-        if(['th', 'he'].includes(lang)) {
-            return this.isLang(input, lang);
+        $arr = array_merge($this->detectLangByCount($input), $this->detectLangByScore($input));
+
+        // postive testing
+        if(empty($arr[$lang])) {
+            return false;
         }
 
-        var scores = this.languageDetect.detect(input);
-
-        Roo.log(scores);
-
-        var ret = false;
-
-        if(typeof(scores[0]) !== 'undefined' && scores[0][0] == lang) {
-            ret = true;
+        foreach($arr as $code => $isLang) {
+            // negative testing
+            if($code != $lang && $isLang) {
+                return false;
+            }
         }
 
-        return ret;
+        return true;
+        */
     },
-    /**
-     * Support Japanese, Korean, Traditional chinese and Simplified chinese
-     * 
-     * @param {String} input input text
-     * @param {String} lang iso 639 language code
-     * @returns {Boolean} indicate whether the input text is written in input langauge
-     */
+    getHighestScore : function(input) {
+        var scores = this.languageDetect.detect(input);
+        Roo.log(scores);
+    }
+
+    /*
+        function getHighestScore($input)
+    {
+        require_once 'pear/Text/LanguageDetect.php';
+
+        $ld = new Text_LanguageDetect();
+        $ld->setNameMode(2);
+        $scores = $ld->detect($input);
+
+        if(empty($scores)) {
+            return array();
+        }
+
+        $lang = array_key_first($scores);
+
+        return array(
+            'lang' => $lang,
+            'score' => $scores[$lang]
+        );
+    }
+    */
     isCJK : function(input, lang) {
         // only japanese, korean, traditional chinese and simplified chinese are detected
         if(!['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
