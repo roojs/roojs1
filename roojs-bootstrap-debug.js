@@ -75513,7 +75513,7 @@ Roo.languagedetect.Detect.prototype = {
         var en = input.replaceAll(/[\s\d\p{P}]+/gu, ' ');
         en = en.replaceAll(/[^A-Za-z ]/g, '');
         Roo.log(en);
-        var enWords = trim(en).split(/\s+/);
+        var enWords = en.trim().split(/\s+/);
         Roo.log(enWords);
         // var enWords = preg_split('/\s+/', trim($en)); // number of english words
 
