@@ -2286,7 +2286,7 @@ if(i>=this.threshold){break;}}return B;},sortFunc:function(a,b){var A=a[0],B=a[1
 );
 // Roo/languagedetect/Detect.js
 Roo.languagedetect.Detect=function(){this.languageDetect=new Roo.languagedetect.LanguageDetect('iso2');var A='/';Roo.each(Roo.languagedetect.zh_HK,function(C){A=A+C+'|';});A.replace(/\|$/,'');A+='/';this.codeToRegex['zh_HK']=new RegExp(A);var A='/';Roo.each(Roo.languagedetect.zh_CN,function(C){A=A+C+'|';
-});A.replace(/\|$/,'');A+='/';this.codeToRegex['zh_CN']=new RegExp(A);var B=this.isLanguage('這次蘇格蘭食品周剛好配合每年11月的聖安德魯日(St Andrew\'s Day)的慶祝活動。 數千年來，蘇格蘭人在每年 11 月的最後一周都會舉行盛宴以紀念蘇格蘭的聖人聖安德魯。今年，儘管未能親自飛往蘇格蘭參與聖安德魯日','en');
+});A.replace(/\|$/,'');A+='/';this.codeToRegex['zh_CN']=new RegExp(A);var B=this.isLanguage('這次蘇格蘭食品周剛好配合每年11月的聖安德魯日(St Andrew\'s Day)的慶祝活動。 數千年來，蘇格蘭人在每年 11 月的最後一周都會舉行盛宴以紀念蘇格蘭的聖人聖安德魯。今年，儘管未能親自飛往蘇格蘭參與聖安德魯日','zh_HK');
 Roo.log(B);};Roo.languagedetect.Detect.prototype={codeToRegex:{'cjk':/[\u4e00-\u9fff]|[\u3400-\u4dbf]|[\uf900-\ufaff]/,'ja':/[\u3040-\u30ff]|[\u31f0-\u31ff]/,'ko':/[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,'th':/[\u0e00-\u0e7f]/,'he':/[\u0590-\u05ff]|[\ufb1d-\ufb4f]/}
 ,codeToName:{'ja':'japanese','ko':'korean','zh_HK':'traditional chinese','zh_CN':'simplified chinese','th':'thai','he':'hebrew'},isScoreSupported:function(A){return this.languageDetect.getLanguageCodes().includes(A);},isCountSupported:function(A){return Object.keys(this.codeToName).includes(A);
 },isSupported:function(A){return this.isScoreSupported(A)||this.isCountSupported(A);},isLanguage:function(A,B){if(!this.isSupported(B)){return false;}var C={...this.detectLangByCount(A),...this.detectLangByScore(A)};if(typeof(C[B])==='undefined'||C[B]!==true){return false;
