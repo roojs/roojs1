@@ -70,24 +70,11 @@ Roo.languagedetect.Detect.prototype = {
         return this.languageDetect.getLanguageCodes().includes(lang);
     },
     isCountSupported : function(lang) {
-        reutrn Object.keys(this.codeToName).includes(lang);
-    }
-
-    /**
-     * 
-     * @param {String} lang iso 639 language code
-     * @returns {Boolean} indicate whether the language is detectable
-     */
+        Roo.log(Object.keys(this.codeToName));
+        return Object.keys(this.codeToName).includes(lang);
+    },
     isSupported : function(lang) {
-        var supportedLangs = this.languageDetect.getLanguageCodes();
-
-        supportedLangs.push(...Object.keys(this.codeToName));
-
-        if(!supportedLangs.includes(lang)) {
-            return false;
-        }
-
-        return true;
+        return this.isScoreSupported() && this.isCountSupported();
     },
     /**
      * 
