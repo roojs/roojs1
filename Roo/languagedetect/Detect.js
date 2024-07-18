@@ -17,9 +17,6 @@ Roo.languagedetect.Detect = function() {
     regex += '/';
     this.codeToRegex['zh_CN'] = regex;
 
-    this.isScoreSupported('en');
-    this.isCountSupported('en');
-
 };
 
 Roo.languagedetect.Detect.prototype = {
@@ -71,18 +68,11 @@ Roo.languagedetect.Detect.prototype = {
         return this.languageDetect.getLanguageCodes().includes(lang);
     },
     isCountSupported : function(lang) {
-        Roo.log(Object.keys(this.codeToName));
         return Object.keys(this.codeToName).includes(lang);
     },
     isSupported : function(lang) {
         return this.isScoreSupported() && this.isCountSupported();
     },
-    /**
-     * 
-     * @param {String} input input text
-     * @param {String} lang iso 639 language code
-     * @returns {Boolean} indicate whether is the input text is written in input language
-     */
     isLanguage : function(input, lang) {
         if(!this.isSupported(lang)) {
             return false;
