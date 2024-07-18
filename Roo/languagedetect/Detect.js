@@ -18,6 +18,7 @@ Roo.languagedetect.Detect = function() {
     this.codeToRegex['zh_CN'] = regex;
 
     this.isScoreSupported('en');
+    this.isCodeSupported('en');
 
 };
 

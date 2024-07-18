@@ -75403,6 +75403,7 @@ Roo.apply(Roo.languagedetect.Parser, {
     this.codeToRegex['zh_CN'] = regex;
 
     this.isScoreSupported('en');
+    this.isCodeSupported('en');
 
 };
 
@@ -75452,27 +75453,14 @@ Roo.languagedetect.Detect.prototype = {
     },
 
     isScoreSupported : function(lang) {
-        var supportedLangs = this.languageDetect.getLanguageCodes();
-        Roo.log(supportedLangs);
-
         return this.languageDetect.getLanguageCodes().includes(lang);
     },
-
-    /**
-     * 
-     * @param {String} lang iso 639 language code
-     * @returns {Boolean} indicate whether the language is detectable
-     */
+    isCountSupported : function(lang) {
+        Roo.log(Object.keys(this.codeToName));
+        return Object.keys(this.codeToName).includes(lang);
+    },
     isSupported : function(lang) {
-        var supportedLangs = this.languageDetect.getLanguageCodes();
-
-        supportedLangs.push(...Object.keys(this.codeToName));
-
-        if(!supportedLangs.includes(lang)) {
-            return false;
-        }
-
-        return true;
+        return this.isScoreSupported() && this.isCountSupported();
     },
     /**
      * 
