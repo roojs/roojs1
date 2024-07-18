@@ -108,30 +108,12 @@ Roo.languagedetect.Detect.prototype = {
     },
     getHighestScore : function(input) {
         var scores = this.languageDetect.detect(input);
-        Roo.log(scores);
-    },
-
-    /*
-        function getHighestScore($input)
-    {
-        require_once 'pear/Text/LanguageDetect.php';
-
-        $ld = new Text_LanguageDetect();
-        $ld->setNameMode(2);
-        $scores = $ld->detect($input);
-
-        if(empty($scores)) {
-            return array();
+        if(!scores.length) {
+            return [];
         }
-
-        $lang = array_key_first($scores);
-
-        return array(
-            'lang' => $lang,
-            'score' => $scores[$lang]
-        );
-    }
-    */
+        return scores[0];
+    },
+    
     isCJK : function(input, lang) {
         // only japanese, korean, traditional chinese and simplified chinese are detected
         if(!['ja', 'ko', 'zh_HK', 'zh_CN'].includes(lang)) {
