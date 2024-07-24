@@ -1,0 +1,325 @@
+<html><head><title>Roo/EventObject.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/**
+ * @class Roo.EventObject
+ * EventObject exposes the Yahoo! UI Event functionality directly on the object
+ * passed to your event handler. It exists mostly for convenience. It also fixes the annoying null checks automatically to cleanup your code 
+ * Example:
+ * &lt;pre&gt;&lt;code&gt;
+ function handleClick(e){ // e is not a standard event object, it is a Roo.EventObject
+    e.preventDefault();
+    var target = e.getTarget();
+    ...
+ }
+ var myDiv = Roo.get(&quot;myDiv&quot;);
+ myDiv.on(&quot;click&quot;, handleClick);
+ //or
+ Roo.EventManager.on(&quot;myDiv&quot;, 'click', handleClick);
+ Roo.EventManager.addListener(&quot;myDiv&quot;, 'click', handleClick);
+ &lt;/code&gt;&lt;/pre&gt;
+ * @static
+ */
+</span><span class="jsdoc-var">Roo.EventObject </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">E </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Event</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-comment">// safari keypress events for special keys return bad keycodes
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">safariKeys </span><span class="jsdoc-syntax">= {
+        63234 : 37, </span><span class="jsdoc-comment">// left
+        </span><span class="jsdoc-syntax">63235 : 39, </span><span class="jsdoc-comment">// right
+        </span><span class="jsdoc-syntax">63232 : 38, </span><span class="jsdoc-comment">// up
+        </span><span class="jsdoc-syntax">63233 : 40, </span><span class="jsdoc-comment">// down
+        </span><span class="jsdoc-syntax">63276 : 33, </span><span class="jsdoc-comment">// page up
+        </span><span class="jsdoc-syntax">63277 : 34, </span><span class="jsdoc-comment">// page down
+        </span><span class="jsdoc-syntax">63272 : 46, </span><span class="jsdoc-comment">// delete
+        </span><span class="jsdoc-syntax">63273 : 36, </span><span class="jsdoc-comment">// home
+        </span><span class="jsdoc-syntax">63275 : 35  </span><span class="jsdoc-comment">// end
+    </span><span class="jsdoc-syntax">};
+
+    </span><span class="jsdoc-comment">// normalize button clicks
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">btnMap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">? {1:0,4:1,2:2} :
+                (</span><span class="jsdoc-var">Roo.isSafari </span><span class="jsdoc-syntax">? {1:0,2:1,3:2} : {0:0,1:1,2:2});
+
+    </span><span class="jsdoc-var">Roo.EventObjectImpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.browserEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        }
+    };
+    </span><span class="jsdoc-var">Roo.EventObjectImpl.prototype </span><span class="jsdoc-syntax">= {
+        </span><span class="jsdoc-comment">/**
+         * Used to fix doc tools.
+         * @scope Roo.EventObject.prototype
+         */
+
+
+
+
+        /** The normal browser event */
+        </span><span class="jsdoc-var">browserEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/** The button pressed in a mouse event */
+        </span><span class="jsdoc-var">button </span><span class="jsdoc-syntax">: -1,
+        </span><span class="jsdoc-comment">/** True if the shift key was down during the event */
+        </span><span class="jsdoc-var">shiftKey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/** True if the control key was down during the event */
+        </span><span class="jsdoc-var">ctrlKey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/** True if the alt key was down during the event */
+        </span><span class="jsdoc-var">altKey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">BACKSPACE </span><span class="jsdoc-syntax">: 8,
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">TAB </span><span class="jsdoc-syntax">: 9,
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">RETURN </span><span class="jsdoc-syntax">: 13,
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">ENTER </span><span class="jsdoc-syntax">: 13,
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">SHIFT </span><span class="jsdoc-syntax">: 16,
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">CONTROL </span><span class="jsdoc-syntax">: 17,
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">ESC </span><span class="jsdoc-syntax">: 27,
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">SPACE </span><span class="jsdoc-syntax">: 32,
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">PAGEUP </span><span class="jsdoc-syntax">: 33,
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">PAGEDOWN </span><span class="jsdoc-syntax">: 34,
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">END </span><span class="jsdoc-syntax">: 35,
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">HOME </span><span class="jsdoc-syntax">: 36,
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">LEFT </span><span class="jsdoc-syntax">: 37,
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">UP </span><span class="jsdoc-syntax">: 38,
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">RIGHT </span><span class="jsdoc-syntax">: 39,
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">DOWN </span><span class="jsdoc-syntax">: 40,
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">DELETE </span><span class="jsdoc-syntax">: 46,
+        </span><span class="jsdoc-comment">/** Key constant 
+        * @type Number */
+        </span><span class="jsdoc-var">F5 </span><span class="jsdoc-syntax">: 116,
+
+           </span><span class="jsdoc-comment">/** @private */
+        </span><span class="jsdoc-var">setEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.browserEvent</span><span class="jsdoc-syntax">)){ </span><span class="jsdoc-comment">// already wrapped
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">this.browserEvent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-comment">// normalize buttons
+                </span><span class="jsdoc-var">this.button </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.button </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">btnMap</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">e.button</span><span class="jsdoc-syntax">] : (</span><span class="jsdoc-var">e.which </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">e.which</span><span class="jsdoc-syntax">-1 : -1);
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'click' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.button </span><span class="jsdoc-syntax">== -1){
+                    </span><span class="jsdoc-var">this.button </span><span class="jsdoc-syntax">= 0;
+                }
+                </span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.type</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.shiftKey </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.shiftKey</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-comment">// mac metaKey behaves like ctrlKey
+                </span><span class="jsdoc-var">this.ctrlKey </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.ctrlKey </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">e.metaKey</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.altKey </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.altKey</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-comment">// in getKey these will be normalized for the mac
+                </span><span class="jsdoc-var">this.keyCode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.keyCode</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-comment">// keyup warnings on firefox.
+                </span><span class="jsdoc-var">this.charCode </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">e.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'keyup' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">e.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'keydown'</span><span class="jsdoc-syntax">) ? 0 : </span><span class="jsdoc-var">e.charCode</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-comment">// cache the target for the delayed and or buffered events
+                </span><span class="jsdoc-var">this.target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">E.getTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-comment">// same for XY
+                </span><span class="jsdoc-var">this.xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">E.getXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">this.button </span><span class="jsdoc-syntax">= -1;
+                </span><span class="jsdoc-var">this.shiftKey </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.ctrlKey </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.altKey </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.keyCode </span><span class="jsdoc-syntax">= 0;
+                </span><span class="jsdoc-var">this.charCode </span><span class="jsdoc-syntax">=0;
+                </span><span class="jsdoc-var">this.target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.xy </span><span class="jsdoc-syntax">= [0, 0];
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Stop the event (preventDefault and stopPropagation)
+         */
+        </span><span class="jsdoc-var">stopEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.browserEvent</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.browserEvent.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">Roo.EventManager.stoppedMouseDownEvent.fire</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-var">E.stopEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.browserEvent</span><span class="jsdoc-syntax">);
+            }
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Prevents the browsers default handling of the event.
+         */
+        </span><span class="jsdoc-var">preventDefault </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.browserEvent</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">E.preventDefault</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.browserEvent</span><span class="jsdoc-syntax">);
+            }
+        },
+
+        </span><span class="jsdoc-comment">/** @private */
+        </span><span class="jsdoc-var">isNavKeyPress </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.keyCode</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.isSafari </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">safariKeys</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">&gt;= 33 &amp;&amp; </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">&lt;= 40) || </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.RETURN </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.TAB </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.ESC</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-var">isSpecialKey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.keyCode</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'keypress' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.ctrlKey</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== 9 || </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== 13  || </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== 40 || </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== 27 ||
+            (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== 16) || (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== 17) ||
+            (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">&gt;= 18 &amp;&amp; </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">&lt;= 20) ||
+            (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">&gt;= 33 &amp;&amp; </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">&lt;= 35) ||
+            (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">&gt;= 36 &amp;&amp; </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">&lt;= 39) ||
+            (</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">&gt;= 44 &amp;&amp; </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">&lt;= 45);
+        },
+        </span><span class="jsdoc-comment">/**
+         * Cancels bubbling of the event.
+         */
+        </span><span class="jsdoc-var">stopPropagation </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.browserEvent</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">Roo.EventManager.stoppedMouseDownEvent.fire</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-var">E.stopPropagation</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.browserEvent</span><span class="jsdoc-syntax">);
+            }
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Gets the key code for the event.
+         * @return {Number}
+         */
+        </span><span class="jsdoc-var">getCharCode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.charCode </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.keyCode</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Returns a normalized keyCode for the event.
+         * @return {Number} The key code
+         */
+        </span><span class="jsdoc-var">getKey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.keyCode </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.charCode</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.isSafari </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">safariKeys</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Gets the x coordinate of the event.
+         * @return {Number}
+         */
+        </span><span class="jsdoc-var">getPageX </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.xy</span><span class="jsdoc-syntax">[0];
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Gets the y coordinate of the event.
+         * @return {Number}
+         */
+        </span><span class="jsdoc-var">getPageY </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.xy</span><span class="jsdoc-syntax">[1];
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Gets the time of the event.
+         * @return {Number}
+         */
+        </span><span class="jsdoc-var">getTime </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.browserEvent</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">E.getTime</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.browserEvent</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Gets the page coordinates of the event.
+         * @return {Array} The xy values like [x, y]
+         */
+        </span><span class="jsdoc-var">getXY </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.xy</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Gets the target for the event.
+         * @param {String} selector (optional) A simple selector to filter the target or look for an ancestor of the target
+         * @param {Number/String/HTMLElement/Element} maxDepth (optional) The max depth to
+                search as a number or element (defaults to 10 || document.body)
+         * @param {Boolean} returnEl (optional) True to return a Roo.Element object instead of DOM node
+         * @return {HTMLelement}
+         */
+        </span><span class="jsdoc-var">getTarget </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">maxDepth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnEl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">selector </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.target</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">maxDepth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnEl</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">this.target</span><span class="jsdoc-syntax">;
+        },
+        </span><span class="jsdoc-comment">/**
+         * Gets the related target.
+         * @return {HTMLElement}
+         */
+        </span><span class="jsdoc-var">getRelatedTarget </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.browserEvent</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">E.getRelatedTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.browserEvent</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Normalizes mouse wheel delta across browsers
+         * @return {Number} The delta
+         */
+        </span><span class="jsdoc-var">getWheelDelta </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.browserEvent</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">delta </span><span class="jsdoc-syntax">= 0;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.wheelDelta</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">/* IE/Opera. */
+                </span><span class="jsdoc-var">delta </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.wheelDelta</span><span class="jsdoc-syntax">/120;
+            }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.detail</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">/* Mozilla case. */
+                </span><span class="jsdoc-var">delta </span><span class="jsdoc-syntax">= -</span><span class="jsdoc-var">e.detail</span><span class="jsdoc-syntax">/3;
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">delta</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Returns true if the control, meta, shift or alt key was pressed during this event.
+         * @return {Boolean}
+         */
+        </span><span class="jsdoc-var">hasModifier </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!!((</span><span class="jsdoc-var">this.ctrlKey </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.altKey</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">this.shiftKey</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Returns true if the target of this event equals el or is a child of el
+         * @param {String/HTMLElement/Element} el
+         * @param {Boolean} related (optional) true to test if the related target is within el instead of the target
+         * @return {Boolean}
+         */
+        </span><span class="jsdoc-var">within </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">related</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">related </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;getRelatedTarget&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;getTarget&quot;</span><span class="jsdoc-syntax">]();
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.contains</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-var">getPoint </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Roo.lib.Point</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.xy</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">this.xy</span><span class="jsdoc-syntax">[1]);
+        }
+    };
+
+    </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Roo.EventObjectImpl</span><span class="jsdoc-syntax">();
+}();
+
+    </span></code></body></html>
