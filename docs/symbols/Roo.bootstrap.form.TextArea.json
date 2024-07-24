@@ -176,6 +176,14 @@
       "optvals" : []
     },
     {
+      "name" : "warningText",
+      "type" : "String",
+      "desc" : "The warning text to display if {@link #warningIndicator} test fails during validation (defaults to \"\")",
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
@@ -255,6 +263,14 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "warningIndicator",
+      "type" : "Function",
+      "desc" : "A custom function to indicate whether a warning should be shown. The function will be called after\nthe validator returns true and is expected to return false if no warning should be shown.",
+      "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
       "optvals" : []
     },
@@ -341,10 +357,10 @@
       "optvals" : []
     },
     {
-      "name" : "validateOnBlur",
-      "type" : "Boolean",
-      "desc" : "Whether the field should validate when it loses focus (defaults to true).",
-      "memberOf" : "Roo.bootstrap.form.Input",
+      "name" : "rows",
+      "type" : "Number",
+      "desc" : "Specifies the visible number of lines in a text area",
+      "memberOf" : "",
       "isOptional" : false,
       "optvals" : []
     },
@@ -357,10 +373,10 @@
       "optvals" : []
     },
     {
-      "name" : "rows",
-      "type" : "Number",
-      "desc" : "Specifies the visible number of lines in a text area",
-      "memberOf" : "",
+      "name" : "validateOnBlur",
+      "type" : "Boolean",
+      "desc" : "Whether the field should validate when it loses focus (defaults to true).",
+      "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
       "optvals" : []
     },

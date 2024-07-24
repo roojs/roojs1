@@ -1,0 +1,206 @@
+<html><head><title>Roo/languagedetect/Detect.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-var">Roo.languagedetect.Detect </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+    </span><span class="jsdoc-var">this.languageDetect </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.languagedetect.LanguageDetect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'iso2'</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'/'</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.languagedetect.zh_HK</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">code </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'|'</span><span class="jsdoc-syntax">;
+    });
+    </span><span class="jsdoc-var">regex.replace</span><span class="jsdoc-syntax">(/\|$/, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'/'</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.codeToRegex</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'zh_HK'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">RegExp</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">regex</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'/'</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.languagedetect.zh_CN</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">code </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'|'</span><span class="jsdoc-syntax">;
+    });
+    </span><span class="jsdoc-var">regex.replace</span><span class="jsdoc-syntax">(/\|$/, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'/'</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.codeToRegex</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'zh_CN'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">RegExp</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">regex</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.languagedetect.Detect.prototype </span><span class="jsdoc-syntax">= {
+    </span><span class="jsdoc-comment">// characters in supplementary planes (\u{xxxxx}) are not detected.
+    </span><span class="jsdoc-var">codeToRegex </span><span class="jsdoc-syntax">: {
+        </span><span class="jsdoc-comment">// 4e00-9fff : CJK Unified Ideographs
+        // 3400-4dbf : CJK Unified Ideographs Extension A
+        // 20000-2a6df : CJK Unified Ideographs Extension B
+        // 2a700-2b73f : CJK Unified Ideographs Extension C
+        // 2b740-2b81f : CJK Unified Ideographs Extension D
+        // 2b820-2ceaf : CJK Unified Ideographs Extension E
+        // 2ceb0-2ebef : CJK Unified Ideographs Extension F
+        // 30000-3134f : CJK Unified Ideographs Extension G
+        // 31350-323af : CJK Unified Ideographs Extension H
+        // 2ebf0-2ee5f : CJK Unified Ideographs Extension I
+        // f900-faff : CJK Compatibility Ideographs
+        </span><span class="jsdoc-string">'cjk' </span><span class="jsdoc-syntax">: /[\u4e00-\u9fff]|[\u3400-\u4dbf]|[\uf900-\ufaff]/,
+        </span><span class="jsdoc-comment">// 3040-309f : Hiragana
+        // 30a0-30ff : Katakana
+        // 31f0-31ff : Katakana Phonetic Extensions
+        // 1aff0-1afff : Kana Extended-B
+        // 1b000-1b0ff : Kana Supplement
+        // 1b100-1b12f : Kana Extended-A
+        // 1b130-1b16f : Small kana Extension
+        </span><span class="jsdoc-string">'ja' </span><span class="jsdoc-syntax">: /[\u3040-\u30ff]|[\u31f0-\u31ff]/,
+        </span><span class="jsdoc-comment">// ac00-d7af : Hangul Syllables
+        // 1100-11ff : Hangul Jamo
+        // 3130-318f : Hangul Compatibility Jamo
+        // a960-a97f : Hangul Jamo Extended-A
+        // d7b0-d7ff : Hangul Jamo Extended-B
+        </span><span class="jsdoc-string">'ko' </span><span class="jsdoc-syntax">: /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,
+        </span><span class="jsdoc-comment">// 0e00-0e7f : Thai
+        </span><span class="jsdoc-string">'th' </span><span class="jsdoc-syntax">: /[\u0e00-\u0e7f]/,
+        </span><span class="jsdoc-comment">// 0590-05ff : Hebrew
+        // fb1d-fb4f : Hebrew Presentation Forms
+        </span><span class="jsdoc-string">'he' </span><span class="jsdoc-syntax">: /[\u0590-\u05ff]|[\ufb1d-\ufb4f]/
+    },
+
+    </span><span class="jsdoc-var">codeToName </span><span class="jsdoc-syntax">: {
+        </span><span class="jsdoc-string">'ja'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'japanese'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ko'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'korean'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'zh_HK'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'traditional chinese'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'zh_CN'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'simplified chinese'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'th'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'thai'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'he'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hebrew'
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-var">isScoreSupported </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.languageDetect.getLanguageCodes</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.includes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-var">isCountSupported </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Object.keys</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.codeToName</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.includes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-var">isSupported </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.isScoreSupported</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">this.isCountSupported</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-var">getName </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isSupported</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(
+            </span><span class="jsdoc-var">this.languageDetect.getName2</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-comment">// LanguageDetect
+            </span><span class="jsdoc-var">this.codeToName</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-comment">// CJK
+            </span><span class="jsdoc-string">''
+        </span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-var">isLanguage </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isSupported</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">isLang </span><span class="jsdoc-syntax">= {</span><span class="jsdoc-var">...this.detectLangByCount</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">...this.detectLangByScore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">)};
+
+        </span><span class="jsdoc-comment">// positive testing
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isLang</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">]) === </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">isLang</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">] !== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Object.keys</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isLang</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// negative testing
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">lang </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">isLang</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">] === </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            }
+        });
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getHighestScore </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scores </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.languageDetect.detect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">scores.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[];
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">scores</span><span class="jsdoc-syntax">[0];
+    },
+    </span><span class="jsdoc-var">detectLangByScore </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">score </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getHighestScore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">score.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{};
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+            [</span><span class="jsdoc-var">score</span><span class="jsdoc-syntax">[0]] : </span><span class="jsdoc-var">score</span><span class="jsdoc-syntax">[1] &gt; 0.2
+        };
+    },
+
+    </span><span class="jsdoc-var">getCount </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">en </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">input.replaceAll</span><span class="jsdoc-syntax">(/[\s\d\p{P}]+/g</span><span class="jsdoc-var">u</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">en </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">en.replaceAll</span><span class="jsdoc-syntax">(/[^A-Za-z ]/g, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">enWords </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">en.trim</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(/\s+/); </span><span class="jsdoc-comment">// number of english words
+
+        </span><span class="jsdoc-var">input </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">input.replaceAll</span><span class="jsdoc-syntax">(/\s+|\d+|[\p{P}]/g</span><span class="jsdoc-var">u</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// remove all spaces ,digits and punctuations
+        </span><span class="jsdoc-var">input </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">input.replaceAll</span><span class="jsdoc-syntax">(/[A-Za-z]/g, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// remove all english alphabet
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">count </span><span class="jsdoc-syntax">= {};
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Object.keys</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.codeToRegex</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">] = 0;
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">input.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.codeToRegex</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])) {
+                    </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">] ++;
+                }
+            }
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'total'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">input.length </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">enWords.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// number of characters which are not english alphabet + number of english words
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">detectLangByCount </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">count </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getCount</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= {};
+
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Object.keys</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.codeToName</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        });
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'total'</span><span class="jsdoc-syntax">] == 0) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-comment">// japanese
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(
+            </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'ja'</span><span class="jsdoc-syntax">] / </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'total'</span><span class="jsdoc-syntax">] &gt; 0.3 &amp;&amp; </span><span class="jsdoc-comment">// &gt; 30% japanese characters
+            </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'ja'</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'cjk'</span><span class="jsdoc-syntax">]) / </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'total'</span><span class="jsdoc-syntax">] &gt; 0.5 </span><span class="jsdoc-comment">// &gt; 50% (japanese characters + cjk)
+        </span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'ja'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-comment">// korean
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(
+            </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'ko'</span><span class="jsdoc-syntax">] / </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'total'</span><span class="jsdoc-syntax">] &gt; 0.3 &amp;&amp; </span><span class="jsdoc-comment">// &gt; 30% korean characters
+            </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'ko'</span><span class="jsdoc-syntax">] + </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'cjk'</span><span class="jsdoc-syntax">]) / </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'total'</span><span class="jsdoc-syntax">] &gt; 0.5 </span><span class="jsdoc-comment">// &gt; 50% (korean characters + cjk)
+        </span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'ko'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-comment">// chinese
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
+            !</span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'ja'</span><span class="jsdoc-syntax">] &amp;&amp; </span><span class="jsdoc-comment">// not detected as japanese
+            </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'ko'</span><span class="jsdoc-syntax">] &amp;&amp; </span><span class="jsdoc-comment">// not detected as korean
+            </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'cjk'</span><span class="jsdoc-syntax">] / </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'total'</span><span class="jsdoc-syntax">] &gt; 0.5 </span><span class="jsdoc-comment">// &gt; 50% chinese characters
+        </span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// traditional chinese if there are more traiditonal chinese characters than simplified chinese characters
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'zh_HK'</span><span class="jsdoc-syntax">] &gt; </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'zh_CN'</span><span class="jsdoc-syntax">]) {
+                </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'zh_HK'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-comment">// else simplified chinese
+            </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'zh_CN'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            }
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'th'</span><span class="jsdoc-syntax">] / </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'total'</span><span class="jsdoc-syntax">] &gt; 0.5) {
+            </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'th'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'he'</span><span class="jsdoc-syntax">] / </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'total'</span><span class="jsdoc-syntax">] &gt; 0.5) {
+            </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'he'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+
+    }
+};</span></code></body></html>

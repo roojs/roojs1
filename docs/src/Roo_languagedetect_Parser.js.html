@@ -1,0 +1,467 @@
+<html><head><title>Roo/languagedetect/Parser.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">// source : https://github.com/FGRibreau/node-language-detect/tree/master
+
+</span><span class="jsdoc-var">Roo.languagedetect.Parser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">string</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-comment">/**
+     * The size of the trigram data arrays
+     *
+     * @access   private
+     * @var      int
+     */
+    </span><span class="jsdoc-var">this.threshold </span><span class="jsdoc-syntax">= 300;
+
+    </span><span class="jsdoc-comment">/**
+     * stores the trigram ranks of the sample
+     *
+     * @access  private
+     * @var     array
+     */
+    </span><span class="jsdoc-var">this.trigramRanks </span><span class="jsdoc-syntax">= {};
+
+    </span><span class="jsdoc-comment">/**
+     * Whether the parser should compile trigrams
+     *
+     * @access  private
+     * @var     bool
+     */
+    </span><span class="jsdoc-var">this.compileTrigram </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-var">this.compileUnicode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.unicodeSkipAscii </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.unicodeBlocks </span><span class="jsdoc-syntax">= {};
+
+    </span><span class="jsdoc-comment">/**
+     * Whether the trigram parser should pad the beginning of the string
+     *
+     * @access  private
+     * @var     bool
+     */
+    </span><span class="jsdoc-var">this.trigramPadStart </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-var">this.trigram </span><span class="jsdoc-syntax">= {};
+
+    </span><span class="jsdoc-comment">/**
+     * the piece of text being parsed
+     *
+     * @access  private
+     * @var     string
+     */
+
+    /**
+     * Constructor
+     *
+     * @access  private
+     * @param   string  string to be parsed
+     */
+    </span><span class="jsdoc-var">this.string </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">string </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">string.replace</span><span class="jsdoc-syntax">(/[~!@#$%^&amp;*()_|+\-=?;:&quot;,.&lt;&gt;\{\}\[\]\\\/]/g, </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+};
+
+
+</span><span class="jsdoc-var">Roo.languagedetect.Parser.prototype </span><span class="jsdoc-syntax">= {
+  </span><span class="jsdoc-comment">/**
+   * turn on/off padding the beginning of the sample string
+   *
+   * @access  public
+   * @param   bool   true for on, false for off
+   */
+  </span><span class="jsdoc-var">setPadStart</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bool</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-var">this.trigramPadStart </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">bool </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+  },
+
+  </span><span class="jsdoc-comment">/**
+   * Returns the trigram ranks for the text sample
+   *
+   * @access  public
+   * @return  array   trigram ranks in the text sample
+   */
+  </span><span class="jsdoc-var">getTrigramRanks</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.trigramRanks</span><span class="jsdoc-syntax">;
+  },
+
+  </span><span class="jsdoc-var">getBlockCount</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.languagedetect.Parser.dbUnicodeBlocks.length</span><span class="jsdoc-syntax">;
+  },
+
+  </span><span class="jsdoc-var">getUnicodeBlocks</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.unicodeBlocks</span><span class="jsdoc-syntax">;
+  },
+
+  </span><span class="jsdoc-comment">/**
+   * Executes the parsing operation
+   *
+   * Be sure to call the set*() functions to set options and the
+   * prepare*() functions first to tell it what kind of data to compute
+   *
+   * Afterwards the get*() functions can be used to access the compiled
+   * information.
+   *
+   * @access public
+   */
+  </span><span class="jsdoc-var">analyze</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.string.length
+      </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">byteCounter </span><span class="jsdoc-syntax">= 0
+      , </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' '
+      </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dropone</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.compileUnicode</span><span class="jsdoc-syntax">) {
+      </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">blocksCount </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.languagedetect.Parser.dbUnicodeBlocks.length</span><span class="jsdoc-syntax">;
+    }
+
+    </span><span class="jsdoc-comment">// trigram startup
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.compileTrigram</span><span class="jsdoc-syntax">) {
+      </span><span class="jsdoc-comment">// initialize them as blank so the parser will skip the first two
+      // (since it skips trigrams with more than  2 contiguous spaces)
+      </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">;
+      </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">;
+
+      </span><span class="jsdoc-comment">// kludge
+      // if it finds a valid trigram to start and the start pad option is
+      // off, then set a variable that will be used to reduce this
+      // trigram after parsing has finished
+      </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.trigramPadStart</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.string.charAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">byteCounter</span><span class="jsdoc-syntax">++)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">) {
+          </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.string.charAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">byteCounter</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">();
+          </span><span class="jsdoc-var">dropone </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">byteCounter </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">;
+      }
+    }
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">skippedCount </span><span class="jsdoc-syntax">= 0;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">unicodeChars </span><span class="jsdoc-syntax">= {};
+
+    </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">byteCounter </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">) {
+      </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.string.charAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">byteCounter</span><span class="jsdoc-syntax">++)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">();
+
+      </span><span class="jsdoc-comment">// language trigram detection
+      </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.compileTrigram</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!(</span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">))) {
+          </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">abc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+          </span><span class="jsdoc-var">this.trigram</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">abc</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.trigram</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">abc</span><span class="jsdoc-syntax">] ? </span><span class="jsdoc-var">this.trigram</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">abc</span><span class="jsdoc-syntax">] += 1 : 1;
+        }
+
+        </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+      }
+
+      </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.compileUnicode</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">charCode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.charCodeAt</span><span class="jsdoc-syntax">(0);
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.unicodeSkipAscii
+          </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">c.match</span><span class="jsdoc-syntax">(/[a-z ]/i)
+          &amp;&amp; (</span><span class="jsdoc-var">charCode </span><span class="jsdoc-syntax">&lt; 65 || </span><span class="jsdoc-var">charCode </span><span class="jsdoc-syntax">&gt; 122 || (</span><span class="jsdoc-var">charCode </span><span class="jsdoc-syntax">&gt; 90 &amp;&amp; </span><span class="jsdoc-var">charCode </span><span class="jsdoc-syntax">&lt; 97))
+          &amp;&amp; </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">) {
+
+          </span><span class="jsdoc-var">skippedCount</span><span class="jsdoc-syntax">++;
+          </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">unicodeChars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">unicodeChars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">] ? </span><span class="jsdoc-var">unicodeChars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">] += 1 : 1;
+      }
+    }
+
+    </span><span class="jsdoc-var">this.unicodeBlocks </span><span class="jsdoc-syntax">= {};
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.compileUnicode</span><span class="jsdoc-syntax">) {
+      </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">keys </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Object.keys</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">unicodeChars</span><span class="jsdoc-syntax">)
+        , </span><span class="jsdoc-var">keysLength </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">keys.length</span><span class="jsdoc-syntax">;
+
+      </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">keysLength</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">--;) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">unicode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">keys</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.charCodeAt</span><span class="jsdoc-syntax">(0)
+          , </span><span class="jsdoc-var">count </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">unicodeChars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">keys</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]]
+          , </span><span class="jsdoc-var">search </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.unicodeBlockName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">unicode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">blocksCount</span><span class="jsdoc-syntax">)
+          , </span><span class="jsdoc-var">blockName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">search </span><span class="jsdoc-syntax">!= -1 ? </span><span class="jsdoc-var">search</span><span class="jsdoc-syntax">[2] : </span><span class="jsdoc-string">'[Malformatted]'</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.unicodeBlocks</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">blockName</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.unicodeBlocks</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">blockName</span><span class="jsdoc-syntax">] ? </span><span class="jsdoc-var">this.unicodeBlocks</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">blockName</span><span class="jsdoc-syntax">] += </span><span class="jsdoc-var">count </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">;
+      }
+    }
+
+    </span><span class="jsdoc-comment">// trigram cleanup
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.compileTrigram</span><span class="jsdoc-syntax">) {
+      </span><span class="jsdoc-comment">// pad the end
+      </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ab </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.trigram</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">ab</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.trigram</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">ab</span><span class="jsdoc-syntax">] ? </span><span class="jsdoc-var">this.trigram</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">ab</span><span class="jsdoc-syntax">] += 1 : 1;
+      }
+
+      </span><span class="jsdoc-comment">// perl compatibility; Language::Guess does not pad the beginning
+      // kludge
+      </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">dropone </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.trigram</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">dropone</span><span class="jsdoc-syntax">] == 1) {
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.trigram</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">dropone</span><span class="jsdoc-syntax">];
+      }
+
+      </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.trigram </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Object.keys</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.trigram</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">&gt; 0) {
+        </span><span class="jsdoc-var">this.trigramRanks </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.arrRank</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.trigram</span><span class="jsdoc-syntax">);
+      } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-var">this.trigramRanks </span><span class="jsdoc-syntax">= {};
+      }
+    }
+  },
+
+  </span><span class="jsdoc-comment">/**
+   * Sorts an array by value breaking ties alphabetically
+   *
+   * @access private
+   * @param arr the array to sort
+   */
+  </span><span class="jsdoc-var">bubleSort</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arr</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-comment">// should do the same as this perl statement:
+    // sort { $trigrams{$b} == $trigrams{$a} ?  $a cmp $b : $trigrams{$b} &lt;=&gt; $trigrams{$a} }
+
+    // needs to sort by both key and value at once
+    // using the key to break ties for the value
+
+    // converts array into an array of arrays of each key and value
+    // may be a better way of doing this
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">combined </span><span class="jsdoc-syntax">= [];
+
+    </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">key </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">arr</span><span class="jsdoc-syntax">) {
+      </span><span class="jsdoc-var">combined.push</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arr</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">]]);
+    }
+
+    </span><span class="jsdoc-var">combined </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">combined.sort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sortFunc</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">replacement </span><span class="jsdoc-syntax">= {};
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">length </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">combined.length</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+      </span><span class="jsdoc-var">replacement</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">combined</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][0]] = </span><span class="jsdoc-var">combined</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][1];
+    }
+
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">replacement</span><span class="jsdoc-syntax">;
+  },
+
+  </span><span class="jsdoc-comment">/**
+   * Converts a set of trigrams from frequencies to ranks
+   *
+   * Thresholds (cuts off) the list at $this-&gt;_threshold
+   *
+   * @access  protected
+   * @param   arr     array of trgram
+   * @return  object  ranks of trigrams
+   */
+  </span><span class="jsdoc-var">arrRank</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arr</span><span class="jsdoc-syntax">) {
+
+    </span><span class="jsdoc-comment">// sorts alphabetically first as a standard way of breaking rank ties
+    </span><span class="jsdoc-var">arr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bubleSort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arr</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rank </span><span class="jsdoc-syntax">= {}, </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0;
+
+    </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">key </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">arr</span><span class="jsdoc-syntax">) {
+      </span><span class="jsdoc-var">rank</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++;
+
+      </span><span class="jsdoc-comment">// cut off at a standard threshold
+      </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">this.threshold</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+      }
+    }
+
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">rank</span><span class="jsdoc-syntax">;
+  },
+
+  </span><span class="jsdoc-comment">/**
+   * Sort function used by bubble sort
+   *
+   * Callback function for usort().
+   *
+   * @access   private
+   * @param    a    first param passed by usort()
+   * @param    b    second param passed by usort()
+   * @return   int  1 if $a is greater, -1 if not
+   *
+   * @see      bubleSort()
+   */
+  </span><span class="jsdoc-var">sortFunc</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-comment">// each is actually a key/value pair, so that it can compare using both
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">aKey </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">[0]
+      , </span><span class="jsdoc-var">aValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">[1]
+      , </span><span class="jsdoc-var">bKey </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">[0]
+      , </span><span class="jsdoc-var">bValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">[1];
+
+    </span><span class="jsdoc-comment">// if the values are the same, break ties using the key
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">aValue </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">bValue</span><span class="jsdoc-syntax">) {
+      </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">aKey.localeCompare</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bKey</span><span class="jsdoc-syntax">);
+    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+      </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">aValue </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">bValue </span><span class="jsdoc-syntax">? -1 : 1;
+    }
+  },
+
+  </span><span class="jsdoc-var">unicodeBlockName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">unicode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">blockCount</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">unicode </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">Roo.languagedetect.Parser.dbUnicodeBlocks</span><span class="jsdoc-syntax">[0][1]) {
+      </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.languagedetect.Parser.dbUnicodeBlocks</span><span class="jsdoc-syntax">[0];
+    }
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">high </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">blockCount </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">blockCount </span><span class="jsdoc-syntax">- 1 : </span><span class="jsdoc-var">Roo.languagedetect.Parser.dbUnicodeBlocks.length
+      </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">low </span><span class="jsdoc-syntax">= 1
+      , </span><span class="jsdoc-var">mid</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">low </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">high</span><span class="jsdoc-syntax">) {
+      </span><span class="jsdoc-var">mid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">low </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">high</span><span class="jsdoc-syntax">) / 2);
+
+      </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">unicode </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">Roo.languagedetect.Parser.dbUnicodeBlocks</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">mid</span><span class="jsdoc-syntax">][0]) {
+        </span><span class="jsdoc-var">high </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">mid </span><span class="jsdoc-syntax">- 1;
+      } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">unicode </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">Roo.languagedetect.Parser.dbUnicodeBlocks</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">mid</span><span class="jsdoc-syntax">][1]) {
+        </span><span class="jsdoc-var">low </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">mid </span><span class="jsdoc-syntax">+ 1;
+      } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.languagedetect.Parser.dbUnicodeBlocks</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">mid</span><span class="jsdoc-syntax">];
+      }
+    }
+
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">-1;
+  }
+};
+
+</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.languagedetect.Parser</span><span class="jsdoc-syntax">, {
+  </span><span class="jsdoc-var">dbUnicodeBlocks</span><span class="jsdoc-syntax">: [
+      [</span><span class="jsdoc-string">&quot;0x0000&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x007F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Basic Latin&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0080&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x00FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Latin-1 Supplement&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0100&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x017F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Latin Extended-A&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0180&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x024F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Latin Extended-B&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0250&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x02AF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;IPA Extensions&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x02B0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x02FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Spacing Modifier Letters&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0300&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x036F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Combining Diacritical Marks&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0370&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x03FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Greek and Coptic&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0400&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x04FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Cyrillic&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0500&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x052F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Cyrillic Supplement&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0530&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x058F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Armenian&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0590&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x05FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Hebrew&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0600&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x06FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Arabic&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0700&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x074F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Syriac&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0750&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x077F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Arabic Supplement&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0780&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x07BF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Thaana&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0900&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x097F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Devanagari&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0980&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x09FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Bengali&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0A00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x0A7F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Gurmukhi&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0A80&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x0AFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Gujarati&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0B00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x0B7F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Oriya&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0B80&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x0BFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Tamil&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0C00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x0C7F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Telugu&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0C80&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x0CFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Kannada&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0D00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x0D7F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Malayalam&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0D80&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x0DFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Sinhala&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0E00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x0E7F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Thai&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0E80&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x0EFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Lao&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x0F00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x0FFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Tibetan&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1000&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x109F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Myanmar&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x10A0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x10FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Georgian&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1100&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x11FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Hangul Jamo&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1200&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x137F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Ethiopic&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1380&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x139F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Ethiopic Supplement&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x13A0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x13FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Cherokee&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1400&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x167F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Unified Canadian Aboriginal Syllabics&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1680&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x169F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Ogham&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x16A0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x16FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Runic&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1700&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x171F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Tagalog&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1720&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x173F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Hanunoo&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1740&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x175F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Buhid&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1760&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x177F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Tagbanwa&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1780&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x17FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Khmer&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1800&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x18AF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Mongolian&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1900&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x194F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Limbu&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1950&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x197F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Tai Le&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1980&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x19DF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;New Tai Lue&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x19E0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x19FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Khmer Symbols&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1A00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1A1F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Buginese&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1D00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1D7F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Phonetic Extensions&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1D80&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1DBF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Phonetic Extensions Supplement&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1DC0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1DFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Combining Diacritical Marks Supplement&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1E00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1EFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Latin Extended Additional&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1F00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1FFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Greek Extended&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2000&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x206F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;General Punctuation&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2070&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x209F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Superscripts and Subscripts&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x20A0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x20CF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Currency Symbols&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x20D0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x20FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Combining Diacritical Marks for Symbols&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2100&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x214F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Letterlike Symbols&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2150&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x218F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Number Forms&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2190&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x21FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Arrows&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2200&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x22FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Mathematical Operators&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2300&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x23FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Miscellaneous Technical&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2400&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x243F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Control Pictures&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2440&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x245F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Optical Character Recognition&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2460&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x24FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Enclosed Alphanumerics&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2500&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x257F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Box Drawing&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2580&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x259F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Block Elements&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x25A0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x25FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Geometric Shapes&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2600&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x26FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Miscellaneous Symbols&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2700&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x27BF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Dingbats&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x27C0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x27EF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Miscellaneous Mathematical Symbols-A&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x27F0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x27FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Supplemental Arrows-A&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2800&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x28FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Braille Patterns&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2900&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x297F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Supplemental Arrows-B&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2980&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x29FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Miscellaneous Mathematical Symbols-B&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2A00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x2AFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Supplemental Mathematical Operators&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2B00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x2BFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Miscellaneous Symbols and Arrows&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2C00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x2C5F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Glagolitic&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2C80&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x2CFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Coptic&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2D00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x2D2F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Georgian Supplement&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2D30&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x2D7F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Tifinagh&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2D80&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x2DDF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Ethiopic Extended&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2E00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x2E7F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Supplemental Punctuation&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2E80&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x2EFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;CJK Radicals Supplement&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2F00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x2FDF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Kangxi Radicals&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2FF0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x2FFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Ideographic Description Characters&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x3000&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x303F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;CJK Symbols and Punctuation&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x3040&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x309F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Hiragana&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x30A0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x30FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Katakana&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x3100&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x312F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Bopomofo&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x3130&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x318F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Hangul Compatibility Jamo&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x3190&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x319F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Kanbun&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x31A0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x31BF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Bopomofo Extended&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x31C0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x31EF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;CJK Strokes&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x31F0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x31FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Katakana Phonetic Extensions&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x3200&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x32FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Enclosed CJK Letters and Months&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x3300&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x33FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;CJK Compatibility&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x3400&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x4DBF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;CJK Unified Ideographs Extension A&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x4DC0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x4DFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Yijing Hexagram Symbols&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x4E00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x9FFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;CJK Unified Ideographs&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xA000&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xA48F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Yi Syllables&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xA490&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xA4CF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Yi Radicals&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xA700&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xA71F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Modifier Tone Letters&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xA800&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xA82F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Syloti Nagri&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xAC00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xD7AF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Hangul Syllables&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xD800&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xDB7F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;High Surrogates&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xDB80&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xDBFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;High Private Use Surrogates&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xDC00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xDFFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Low Surrogates&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xE000&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xF8FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Private Use Area&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xF900&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xFAFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;CJK Compatibility Ideographs&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xFB00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xFB4F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Alphabetic Presentation Forms&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xFB50&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xFDFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Arabic Presentation Forms-A&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xFE00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xFE0F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Variation Selectors&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xFE10&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xFE1F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Vertical Forms&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xFE20&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xFE2F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Combining Half Marks&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xFE30&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xFE4F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;CJK Compatibility Forms&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xFE50&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xFE6F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Small Form Variants&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xFE70&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xFEFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Arabic Presentation Forms-B&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xFF00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xFFEF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Halfwidth and Fullwidth Forms&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xFFF0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xFFFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Specials&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x10000&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1007F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Linear B Syllabary&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x10080&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x100FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Linear B Ideograms&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x10100&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1013F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Aegean Numbers&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x10140&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1018F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Ancient Greek Numbers&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x10300&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1032F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Old Italic&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x10330&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1034F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Gothic&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x10380&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1039F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Ugaritic&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x103A0&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x103DF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Old Persian&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x10400&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1044F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Deseret&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x10450&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1047F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Shavian&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x10480&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x104AF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Osmanya&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x10800&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1083F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Cypriot Syllabary&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x10A00&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x10A5F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Kharoshthi&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1D000&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1D0FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Byzantine Musical Symbols&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1D100&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1D1FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Musical Symbols&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1D200&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1D24F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Ancient Greek Musical Notation&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1D300&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1D35F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Tai Xuan Jing Symbols&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x1D400&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x1D7FF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Mathematical Alphanumeric Symbols&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x20000&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x2A6DF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;CJK Unified Ideographs Extension B&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x2F800&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x2FA1F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;CJK Compatibility Ideographs Supplement&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xE0000&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xE007F&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Tags&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xE0100&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xE01EF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Variation Selectors Supplement&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0xF0000&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0xFFFFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Supplementary Private Use Area-A&quot;</span><span class="jsdoc-syntax">],
+      [</span><span class="jsdoc-string">&quot;0x100000&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;0x10FFFF&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Supplementary Private Use Area-B&quot;</span><span class="jsdoc-syntax">]
+  ]
+});</span></code></body></html>

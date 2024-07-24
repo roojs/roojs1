@@ -1,0 +1,452 @@
+<html><head><title>Roo/languagedetect/LanguageDetect.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">// source : https://github.com/FGRibreau/node-language-detect/tree/master
+
+</span><span class="jsdoc-var">Roo.languagedetect.LanguageDetect </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">languageType</span><span class="jsdoc-syntax">) {
+
+  </span><span class="jsdoc-comment">/**
+   * The trigram data for comparison
+   *
+   * Will be loaded on start from $this-&gt;_db_filename
+   *
+   * May be set to a PEAR_Error object if there is an error during its
+   * initialization
+   *
+   * @var      array
+   * @access   private
+   */
+  </span><span class="jsdoc-var">this.langDb </span><span class="jsdoc-syntax">= {};
+
+  </span><span class="jsdoc-comment">/**
+   * The size of the trigram data arrays
+   *
+   * @var     int
+   * @access  private
+   */
+  </span><span class="jsdoc-var">this.threshold </span><span class="jsdoc-syntax">= 300;
+
+  </span><span class="jsdoc-var">this.useUnicodeNarrowing </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+
+  </span><span class="jsdoc-comment">/**
+   * Constructor
+   *
+   * Load the language database.
+   *
+   */
+  </span><span class="jsdoc-var">this.langDb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.languagedetect.dbLang</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'trigram'</span><span class="jsdoc-syntax">];
+  </span><span class="jsdoc-var">this.unicodeMap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.languagedetect.dbLang</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'trigram-unicodemap'</span><span class="jsdoc-syntax">];
+
+  </span><span class="jsdoc-var">this.languageType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">languageType </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+};
+
+</span><span class="jsdoc-var">Roo.languagedetect.LanguageDetect.prototype </span><span class="jsdoc-syntax">= {
+
+  </span><span class="jsdoc-comment">/**
+   * Returns the number of languages that this object can detect
+   *
+   * @access public
+   * @return int the number of languages
+   */
+  </span><span class="jsdoc-var">getLanguageCount</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getLanguages</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">;
+  },
+
+  </span><span class="jsdoc-var">setLanguageType</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.languageType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">;
+  },
+
+  </span><span class="jsdoc-comment">/**
+   * Returns the list of detectable languages
+   *
+   * @access public
+   * @return object the names of the languages known to this object
+   */
+  </span><span class="jsdoc-var">getLanguages</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Object.keys</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.langDb</span><span class="jsdoc-syntax">);
+  },
+
+  </span><span class="jsdoc-comment">/**
+   * Returns the list of detectable languages in code
+   * 
+   * @returns object the code of the languages known to this object
+   * 
+   */
+  </span><span class="jsdoc-var">getLanguageCodes</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+      </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">languages </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getLanguages</span><span class="jsdoc-syntax">();
+      </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.languageType</span><span class="jsdoc-syntax">) {
+          </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'iso2' </span><span class="jsdoc-syntax">:
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">languages.map</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) =&gt; </span><span class="jsdoc-var">this.getCode2</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code </span><span class="jsdoc-syntax">=&gt; </span><span class="jsdoc-var">code </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+          </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'iso3' </span><span class="jsdoc-syntax">:
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">languages.map</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) =&gt; </span><span class="jsdoc-var">this.getCode3</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code </span><span class="jsdoc-syntax">=&gt; </span><span class="jsdoc-var">code </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+          </span><span class="jsdoc-keyword">default </span><span class="jsdoc-syntax">:
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">languages</span><span class="jsdoc-syntax">;
+      }
+  },
+
+  </span><span class="jsdoc-comment">/**
+   * Calculates a linear rank-order distance statistic between two sets of
+   * ranked trigrams
+   *
+   * Sums the differences in rank for each trigram. If the trigram does not
+   * appear in both, consider it a difference of $this-&gt;_threshold.
+   *
+   * This distance measure was proposed by Cavnar &amp; Trenkle (1994). Despite
+   * its simplicity it has been shown to be highly accurate for language
+   * identification tasks.
+   *
+   * @access  private
+   * @param   arr1  the reference set of trigram ranks
+   * @param   arr2  the target set of trigram ranks
+   * @return  int   the sum of the differences between the ranks of
+   *                the two trigram sets
+   */
+  </span><span class="jsdoc-var">distance</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arr1</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arr2</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">me </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this
+      </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sumdist </span><span class="jsdoc-syntax">= 0
+      , </span><span class="jsdoc-var">keys </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Object.keys</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arr2</span><span class="jsdoc-syntax">)
+      , </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">keys.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">--;) {
+      </span><span class="jsdoc-var">sumdist </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">arr1</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">keys</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]] ? </span><span class="jsdoc-var">Math.abs</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arr2</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">keys</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]] - </span><span class="jsdoc-var">arr1</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">keys</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]]) : </span><span class="jsdoc-var">me.threshold</span><span class="jsdoc-syntax">;
+    }
+
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">sumdist</span><span class="jsdoc-syntax">;
+  },
+
+  </span><span class="jsdoc-comment">/**
+   * Normalizes the score returned by _distance()
+   *
+   * Different if perl compatible or not
+   *
+   * @access  private
+   * @param   score       the score from _distance()
+   * @param   baseCount   the number of trigrams being considered
+   * @return  number      the normalized score
+   *
+   * @see     distance()
+   */
+  </span><span class="jsdoc-var">normalizeScore</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">score</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">baseCount</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">1 - (</span><span class="jsdoc-var">score </span><span class="jsdoc-syntax">/ (</span><span class="jsdoc-var">baseCount </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.threshold</span><span class="jsdoc-syntax">) / </span><span class="jsdoc-var">this.threshold</span><span class="jsdoc-syntax">);
+  },
+
+  </span><span class="jsdoc-comment">/**
+   * Detects the closeness of a sample of text to the known languages
+   *
+   * Calculates the statistical difference between the text and
+   * the trigrams for each language, normalizes the score then
+   * returns results for all languages in sorted order
+   *
+   * If perl compatible, the score is 300-0, 0 being most similar.
+   * Otherwise, it's 0-1 with 1 being most similar.
+   *
+   * The $sample text should be at least a few sentences in length;
+   * should be ascii-7 or utf8 encoded, if another and the mbstring extension
+   * is present it will try to detect and convert. However, experience has
+   * shown that mb_detect_encoding() *does not work very well* with at least
+   * some types of encoding.
+   *
+   * @access  public
+   * @param   sample  a sample of text to compare.
+   * @param   limit  if specified, return an array of the most likely
+   *                  $limit languages and their scores.
+   * @return  Array   sorted array of language scores, blank array if no
+   *                  useable text was found, or PEAR_Error if error
+   *                  with the object setup
+   *
+   * @see     distance()
+   */
+  </span><span class="jsdoc-var">detect</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sample</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">limit</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">me </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this
+      </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scores </span><span class="jsdoc-syntax">= [];
+
+    </span><span class="jsdoc-var">limit </span><span class="jsdoc-syntax">= +</span><span class="jsdoc-var">limit </span><span class="jsdoc-syntax">|| 0;
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sample </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sample</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">&lt; 3) {</span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[];}
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sampleObj </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.languagedetect.Parser</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sample</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">sampleObj.setPadStart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">sampleObj.analyze</span><span class="jsdoc-syntax">();
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">trigramFreqs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sampleObj.getTrigramRanks</span><span class="jsdoc-syntax">()
+      , </span><span class="jsdoc-var">trigramCount </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Object.keys</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">trigramFreqs</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">trigramCount </span><span class="jsdoc-syntax">== 0) {</span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[];}
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">keys </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.useUnicodeNarrowing</span><span class="jsdoc-syntax">) {
+      </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">blocks </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sampleObj.getUnicodeBlocks</span><span class="jsdoc-syntax">()
+        , </span><span class="jsdoc-var">languages </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Object.keys</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">blocks</span><span class="jsdoc-syntax">)
+        , </span><span class="jsdoc-var">keysLength </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">languages.length</span><span class="jsdoc-syntax">;
+
+      </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">keysLength</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">--;) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.unicodeMap</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">languages</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]]) {
+          </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lang </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.unicodeMap</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">languages</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]]) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!~</span><span class="jsdoc-var">keys.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">)) {</span><span class="jsdoc-var">keys.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">);}
+          }
+        }
+      }
+    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+      </span><span class="jsdoc-var">keys </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">me.getLanguages</span><span class="jsdoc-syntax">();
+    }
+
+    </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">keys.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">--;) {
+      </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">score </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">me.normalizeScore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">me.distance</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">me.langDb</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">keys</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]], </span><span class="jsdoc-var">trigramFreqs</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">trigramCount</span><span class="jsdoc-syntax">);
+      </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">score</span><span class="jsdoc-syntax">) {</span><span class="jsdoc-var">scores.push</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">keys</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">score</span><span class="jsdoc-syntax">]);}
+    }
+
+    </span><span class="jsdoc-comment">// Sort the array
+    </span><span class="jsdoc-var">scores.sort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">[1] - </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">[1]; });
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scoresLength </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">scores.length</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">scoresLength</span><span class="jsdoc-syntax">) {</span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[];}
+
+    </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">me.languageType</span><span class="jsdoc-syntax">) {
+      </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'iso2'</span><span class="jsdoc-syntax">:
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">scoresLength</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">--;) {
+          </span><span class="jsdoc-var">scores</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][0] = </span><span class="jsdoc-var">this.getCode2</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scores</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][0]);
+        }
+        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+      </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'iso3'</span><span class="jsdoc-syntax">:
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">scoresLength</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">--;) {
+          </span><span class="jsdoc-var">scores</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][0] = </span><span class="jsdoc-var">this.getCode3</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scores</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][0]);
+        }
+        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+    }
+
+    </span><span class="jsdoc-comment">// limit the number of returned scores
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">limit </span><span class="jsdoc-syntax">&gt; 0 ? </span><span class="jsdoc-var">scores.slice</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">limit</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">scores</span><span class="jsdoc-syntax">;
+  },
+
+  </span><span class="jsdoc-var">getCode2</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.languagedetect.LanguageDetect.nameToCode2</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">()] || </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+  },
+
+  </span><span class="jsdoc-var">getCode3</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.languagedetect.LanguageDetect.nameToCode3</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">()] || </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+  },
+
+  </span><span class="jsdoc-var">getName2</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.languagedetect.LanguageDetect.code2ToName</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">()] || </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+  },
+
+  </span><span class="jsdoc-var">getName3</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.languagedetect.LanguageDetect.code3ToName</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">()] || </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+  }
+};
+
+</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.languagedetect.LanguageDetect</span><span class="jsdoc-syntax">, {
+  </span><span class="jsdoc-var">nameToCode2</span><span class="jsdoc-syntax">:{
+    </span><span class="jsdoc-string">'albanian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'sq'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'arabic'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ar'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'azeri'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'az'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'bengali'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'bn'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'bulgarian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'bg'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'cebuano'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'croatian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hr'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'czech'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'cs'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'danish'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'da'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'dutch'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'nl'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'english'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'en'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'estonian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'et'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'farsi'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'fa'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'finnish'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'fi'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'french'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'fr'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'german'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'de'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'hausa'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ha'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'hawaiian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'hindi'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hi'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'hungarian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hu'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'icelandic'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'is'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'indonesian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'id'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'italian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'it'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'kazakh'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'kk'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'kyrgyz'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ky'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'latin'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'la'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'latvian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'lv'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'lithuanian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'lt'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'macedonian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'mk'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'mongolian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'mn'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'nepali'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ne'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'norwegian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'no'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'pashto'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ps'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'pidgin'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'polish'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'pl'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'portuguese'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'pt'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'romanian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ro'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'russian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ru'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'serbian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'sr'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'slovak'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'sk'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'slovene'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'sl'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'somali'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'so'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'spanish'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'es'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'swahili'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'sw'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'swedish'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'sv'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'tagalog'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'tl'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'turkish'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'ukrainian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'uk'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'urdu'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ur'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'uzbek'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'uz'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'vietnamese'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'vi'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'welsh'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'cy'
+  </span><span class="jsdoc-syntax">},
+
+  </span><span class="jsdoc-var">nameToCode3</span><span class="jsdoc-syntax">:{
+    </span><span class="jsdoc-string">'albanian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'sqi'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'arabic'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ara'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'azeri'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'aze'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'bengali'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ben'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'bulgarian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'bul'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'cebuano'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ceb'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'croatian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hrv'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'czech'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ces'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'danish'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'dan'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'dutch'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'nld'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'english'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'eng'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'estonian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'est'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'farsi'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'fas'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'finnish'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'fin'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'french'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'fra'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'german'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'deu'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'hausa'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hau'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'hawaiian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'haw'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'hindi'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hin'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'hungarian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hun'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'icelandic'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'isl'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'indonesian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ind'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'italian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ita'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'kazakh'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'kaz'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'kyrgyz'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'kir'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'latin'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'lat'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'latvian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'lav'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'lithuanian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'lit'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'macedonian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'mkd'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'mongolian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'mon'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'nepali'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'nep'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'norwegian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'nor'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'pashto'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'pus'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'pidgin'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'crp'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'polish'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'pol'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'portuguese'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'por'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'romanian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ron'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'russian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'rus'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'serbian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'srp'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'slovak'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'slk'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'slovene'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'slv'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'somali'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'som'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'spanish'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'spa'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'swahili'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'swa'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'swedish'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'swe'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'tagalog'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'tgl'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'turkish'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'tur'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'ukrainian'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ukr'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'urdu'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'urd'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'uzbek'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'uzb'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'vietnamese'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'vie'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'welsh'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'cym'
+  </span><span class="jsdoc-syntax">},
+  </span><span class="jsdoc-var">code2ToName</span><span class="jsdoc-syntax">:{
+    </span><span class="jsdoc-string">'ar'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'arabic'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'az'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'azeri'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'bg'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'bulgarian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'bn'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'bengali'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'cs'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'czech'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'cy'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'welsh'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'da'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'danish'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'de'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'german'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'en'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'english'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'es'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'spanish'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'et'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'estonian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'fa'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'farsi'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'fi'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'finnish'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'fr'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'french'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'ha'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hausa'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'hi'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hindi'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'hr'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'croatian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'hu'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hungarian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'id'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'indonesian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'is'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'icelandic'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'it'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'italian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'kk'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'kazakh'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'ky'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'kyrgyz'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'la'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'latin'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'lt'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'lithuanian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'lv'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'latvian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'mk'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'macedonian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'mn'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'mongolian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'ne'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'nepali'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'nl'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'dutch'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'no'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'norwegian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'pl'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'polish'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'ps'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'pashto'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'pt'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'portuguese'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'ro'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'romanian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'ru'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'russian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'sk'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'slovak'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'sl'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'slovene'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'so'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'somali'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'sq'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'albanian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'sr'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'serbian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'sv'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'swedish'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'sw'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'swahili'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'tl'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'tagalog'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'turkish'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'uk'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ukrainian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'ur'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'urdu'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'uz'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'uzbek'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'vi'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'vietnamese'
+  </span><span class="jsdoc-syntax">},
+
+  </span><span class="jsdoc-var">code3ToName</span><span class="jsdoc-syntax">:{
+    </span><span class="jsdoc-string">'ara'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'arabic'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'aze'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'azeri'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'ben'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'bengali'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'bul'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'bulgarian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'ceb'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'cebuano'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'ces'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'czech'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'crp'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'pidgin'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'cym'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'welsh'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'dan'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'danish'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'deu'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'german'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'eng'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'english'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'est'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'estonian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'fas'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'farsi'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'fin'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'finnish'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'fra'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'french'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'hau'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hausa'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'haw'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hawaiian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'hin'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hindi'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'hrv'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'croatian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'hun'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hungarian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'ind'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'indonesian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'isl'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'icelandic'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'ita'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'italian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'kaz'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'kazakh'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'kir'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'kyrgyz'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'lat'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'latin'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'lav'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'latvian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'lit'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'lithuanian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'mkd'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'macedonian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'mon'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'mongolian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'nep'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'nepali'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'nld'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'dutch'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'nor'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'norwegian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'pol'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'polish'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'por'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'portuguese'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'pus'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'pashto'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'rom'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'romanian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'rus'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'russian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'slk'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'slovak'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'slv'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'slovene'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'som'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'somali'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'spa'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'spanish'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'sqi'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'albanian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'srp'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'serbian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'swa'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'swahili'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'swe'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'swedish'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'tgl'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'tagalog'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'tur'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'turkish'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'ukr'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'ukrainian'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'urd'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'urdu'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'uzb'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'uzbek'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'vie'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'vietnamese'
+  </span><span class="jsdoc-syntax">}
+});</span></code></body></html>

@@ -1375,6 +1375,22 @@
         "is_class" : false
       },
       {
+        "name" : "Roo.languagedetect",
+        "cn" : [
+          {
+            "name" : "Roo.languagedetect.LanguageDetect",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.languagedetect.Parser",
+            "cn" : [],
+            "is_class" : false
+          }
+        ],
+        "is_class" : false
+      },
+      {
         "name" : "Roo.layout",
         "cn" : [
           {

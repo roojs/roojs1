@@ -843,7 +843,7 @@ return false;}if(this.vtype){var vt=Roo.form.VTypes;if(A.trim()!=A){A=A.trim();t
 if(B!==true){this.markInvalid(B);return false;}}if(this.regex&&!this.regex.test(A)){this.markInvalid(this.regexText);return false;}return true;},selectText:function(A,B){var v=this.getRawValue();if(v.length>0){A=A===undefined?0:A;B=B===undefined?v.length:B;
 var d=this.el.dom;if(d.setSelectionRange){d.setSelectionRange(A,B);}else if(d.createTextRange){var C=d.createTextRange();C.moveStart("character",A);C.moveEnd("character",v.length-B);C.select();}}},autoSize:function(){if(!this.grow||!this.rendered){return;
 }if(!this.metrics){this.metrics=Roo.util.TextMetrics.createInstance(this.el);}var el=this.el;var v=el.dom.value;var d=document.createElement('div');d.appendChild(document.createTextNode(v));v=d.innerHTML;d=null;v+="&#160;";var w=Math.min(this.growMax,Math.max(this.metrics.getWidth(v)+10,this.growMin));
-this.el.setWidth(w);this.fireEvent("autosize",this,w);},SafariOnKeyDown:function(A){if([16,17,].indexOf(A.keyCode)){return;}var B=false;if(this.el.dom.selectionEnd>0){B=(this.el.dom.selectionEnd-this.el.dom.selectionStart-this.getValue().length==0)?true:false;
+this.el.setWidth(w);this.fireEvent("autosize",this,w);},SafariOnKeyDown:function(A){if([16,17].indexOf(A.keyCode)){return;}var B=false;if(this.el.dom.selectionEnd>0){B=(this.el.dom.selectionEnd-this.el.dom.selectionStart-this.getValue().length==0)?true:false;
 }if(((A.getKey()==8||A.getKey()==46)&&this.getValue().length==1)){A.preventDefault();this.setValue('');return;}if(B&&A.getCharCode()>31&&!(A.ctrlKey&&A.getCharCode()==86)){A.preventDefault();var cc=String.fromCharCode(A.getCharCode());this.setValue(A.shiftKey?cc:cc.toLowerCase());
 }}});
 // Roo/form/Password.js

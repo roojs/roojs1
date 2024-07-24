@@ -165,6 +165,14 @@
       "optvals" : []
     },
     {
+      "name" : "warningText",
+      "type" : "String",
+      "desc" : "The warning text to display if {@link #warningIndicator} test fails during validation (defaults to \"\")",
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
@@ -248,6 +256,14 @@
       "optvals" : []
     },
     {
+      "name" : "warningIndicator",
+      "type" : "Function",
+      "desc" : "A custom function to indicate whether a warning should be shown. The function will be called after\nthe validator returns true and is expected to return false if no warning should be shown.",
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
@@ -314,14 +330,6 @@
       "optvals" : []
     },
     {
-      "name" : "focusClass",
-      "type" : "String",
-      "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
-      "memberOf" : "Roo.bootstrap.form.Input",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
       "name" : "size",
       "type" : "string",
       "desc" : "- (lg|sm) or leave empty..",
@@ -338,9 +346,9 @@
       "optvals" : []
     },
     {
-      "name" : "labelxs",
-      "type" : "Number",
-      "desc" : "set the width of label (1-12)",
+      "name" : "focusClass",
+      "type" : "String",
+      "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
       "optvals" : []
@@ -350,6 +358,14 @@
       "type" : "Number",
       "desc" : "Specifies the visible number of lines in a text area",
       "memberOf" : "Roo.bootstrap.form.TextArea",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "labelxs",
+      "type" : "Number",
+      "desc" : "set the width of label (1-12)",
+      "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
       "optvals" : []
     },

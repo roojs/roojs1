@@ -187,6 +187,14 @@
       "optvals" : []
     },
     {
+      "name" : "warningText",
+      "type" : "String",
+      "desc" : "The warning text to display if {@link #warningIndicator} test fails during validation (defaults to \"\")",
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "viewMode",
       "type" : "String",
       "desc" : "default empty, (months|years)",
@@ -270,17 +278,17 @@
       "optvals" : []
     },
     {
-      "name" : "minLengthText",
+      "name" : "maxLengthText",
       "type" : "String",
-      "desc" : "Error text to display if the minimum length validation fails (defaults to \"The minimum length for this field is {minLength}\")",
+      "desc" : "Error text to display if the maximum length validation fails",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
       "optvals" : []
     },
     {
-      "name" : "maxLengthText",
+      "name" : "minLengthText",
       "type" : "String",
-      "desc" : "Error text to display if the maximum length validation fails",
+      "desc" : "Error text to display if the minimum length validation fails (defaults to \"The minimum length for this field is {minLength}\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
       "optvals" : []
@@ -298,6 +306,14 @@
       "type" : "Number",
       "desc" : "default Infinity",
       "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "warningIndicator",
+      "type" : "Function",
+      "desc" : "A custom function to indicate whether a warning should be shown. The function will be called after\nthe validator returns true and is expected to return false if no warning should be shown.",
+      "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
       "optvals" : []
     },

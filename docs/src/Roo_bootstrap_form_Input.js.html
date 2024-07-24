@@ -208,6 +208,15 @@
      * @cfg {String} maxLengthWarnText Warning text to display if the input field length exceed 'maxLengthWarn'
      */
     </span><span class="jsdoc-var">maxLengthWarnText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Function} warningIndicator A custom function to indicate whether a warning should be shown. The function will be called after
+     * the validator returns true and is expected to return false if no warning should be shown.
+     */
+    </span><span class="jsdoc-var">warningIndicator </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} warningText The warning text to display if {@link #warningIndicator} test fails during validation (defaults to &quot;&quot;)
+     */
+    </span><span class="jsdoc-var">warningText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">warningClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;is-warned&quot;</span><span class="jsdoc-syntax">,
 
@@ -703,8 +712,8 @@
         </span><span class="jsdoc-comment">//if(this.disabled || this.validateValue(this.processValue(this.getRawValue()))){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.validateValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getRawValue</span><span class="jsdoc-syntax">())){
             </span><span class="jsdoc-comment">// check for warning
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getRawValue</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.maxLengthWarn</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">this.markWarning</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxLengthWarnText</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.shouldWarn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getRawValue</span><span class="jsdoc-syntax">())) {
+                </span><span class="jsdoc-var">this.markWarning</span><span class="jsdoc-syntax">();
             }
             </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
                 </span><span class="jsdoc-var">this.markValid</span><span class="jsdoc-syntax">();
@@ -764,6 +773,25 @@
         }
 
         </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">shouldWarn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value.length </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.maxLengthWarn</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.warningText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.maxLengthWarnText</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.warningIndicator </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.warningIndicator</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.warningText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
     },
 
      </span><span class="jsdoc-comment">// private
@@ -1119,7 +1147,7 @@
 
                 </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.warningClass</span><span class="jsdoc-syntax">]);
 
-                </span><span class="jsdoc-var">feedback.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">feedback.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.warningText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">);
 
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">feedback.dom.innerHTML</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">feedback.show</span><span class="jsdoc-syntax">();
