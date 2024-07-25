@@ -13,6 +13,7 @@ lock();
 trigger_action('build_docs', array('Roo.js', 'Roo/', 'Array.js', 'Function.js', 'Date.js', 'String.js', 'Number.js'));
 
 $core = trigger_action_file('compile_core', 'dependancy_core.txt');
+$core_nd = trigger_action_file('compile_core', 'dependancy_bootstrap_nodoc.txt');
 $ui = trigger_action_file('compile_ui',  'dependancy_ui.txt');
 trigger_action_file('compile_bootstrap',  'dependancy_bootstrap.txt');
 trigger_action_file('compile_mailer',  'dependancy_mailer.txt');
@@ -21,7 +22,7 @@ trigger_action_file('compile_calendar',  'dependancy_calendar.txt');
 trigger_action('compile_less', array('less/'));
 trigger_action('compile_scss', array('scss/'));
 
-if ($core || $ui) {
+if ($core || $ui | $core_nd) {
     merge_files();
 }
 
@@ -81,18 +82,23 @@ function trigger_action_file($fn, $filename)
 
 function trigger_action($fn, $files)
 {
-    
+    static $done = array();
+    if (in_array($fn, $done)) {
+        return;
+    }
     foreach(changed_files() as $cg) {
         foreach($files as $f) {
             $f = trim($f);
             if ($f == $cg) {
                 echo "RUNNING : $fn\n";
                 $fn();
+                $done[] = $fn;
                 return true;
             }
             if (substr($f, -1,1) == '/' && substr($cg,0, strlen($f)) == $f) {
                 echo "RUNNING : $fn\n";
                 $fn();
+                $done[] = $fn;
                 return true;    
             }
         }
@@ -109,7 +115,7 @@ function build_docs()
 }
 function compile_core()
 {
-    exec("roojspacker -t roojs-core.js -T roojs-core-debug.js -i buildSDK/dependancy_core.txt ");
+    exec("roojspacker -t roojs-core.js -T roojs-core-debug.js -i buildSDK/dependancy_core.txt  -i buildSDK/dependancy_bootstrap_nodoc.txt");
 }
 
 function compile_ui()
@@ -126,7 +132,7 @@ function merge_files()
  
 function compile_bootstrap()
 {
-    exec("roojspacker -t roojs-bootstrap.js -T roojs-bootstrap-debug.js -i buildSDK/dependancy_bootstrap.txt");
+    exec("roojspacker -t roojs-bootstrap.js -T roojs-bootstrap-debug.js -i buildSDK/dependancy_bootstrap.txt -i buildSDK/dependancy_bootstrap_nodoc.txt");
 }
  
 function compile_calendar()

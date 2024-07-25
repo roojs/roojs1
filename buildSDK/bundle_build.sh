@@ -1,6 +1,9 @@
 #!/bin/sh
 # run at top leve!!!!
 
+## !!! important - if you change this - dont forget to chagne pre-commit..
+
+
 # core and classic UI 
 roojspacker -t roojs-core.js -T roojs-core-debug.js -i buildSDK/dependancy_core.txt -i buildSDK/dependancy_core_nodoc.txt
 roojspacker -t roojs-ui.js -T roojs-ui-debug.js -i buildSDK/dependancy_ui.txt
