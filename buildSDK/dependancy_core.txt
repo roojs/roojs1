@@ -96,9 +96,6 @@ Roo.dd.DragZone
 Roo.dd.DropZone
 
 Roo.languagedetect.namespace
-Roo.languagedetect.zh_HK
-Roo.languagedetect.zh_CN
-Roo.languagedetect.dbLang
 Roo.languagedetect.LanguageDetect
 Roo.languagedetect.Parser
 Roo.languagedetect.Detect
