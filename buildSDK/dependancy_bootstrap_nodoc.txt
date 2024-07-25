@@ -1,0 +1,3 @@
+Roo.languagedetect.zh_HK
+Roo.languagedetect.zh_CN
+Roo.languagedetect.dbLang
