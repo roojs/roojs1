@@ -2,7 +2,7 @@
 # run at top leve!!!!
 
 # core and classic UI 
-roojspacker -t roojs-core.js -T roojs-core-debug.js -i buildSDK/dependancy_core.txt
+roojspacker -t roojs-core.js -T roojs-core-debug.js -i buildSDK/dependancy_core.txt -i buildSDK/dependancy_core_nodoc.txt
 roojspacker -t roojs-ui.js -T roojs-ui-debug.js -i buildSDK/dependancy_ui.txt
 
 cat roojs-core.js  roojs-ui.js >  roojs-all.js
@@ -10,7 +10,7 @@ cat roojs-core-debug.js  roojs-ui-debug.js > roojs-debug.js
 
  
 #bootstrap
-roojspacker -t roojs-bootstrap.js -T roojs-bootstrap-debug.js -i buildSDK/dependancy_bootstrap.txt
+roojspacker -t roojs-bootstrap.js -T roojs-bootstrap-debug.js -i buildSDK/dependancy_bootstrap.txt -i buildSDK/dependancy_bootstrap_nodoc.txt
  
 # mostly not needed?
 #calendar
@@ -33,7 +33,7 @@ roojspacker -i buildSDK/dependancy_core.txt  -i buildSDK/dependancy_ui.txt  \
    --doc-target=docs -D
 
 #build old ROOJS css 
-seed buildSDK/cssmini.js 
+seed buildSDK/cssmini.js
 
 
 # SCSS (really uses the C scss)
