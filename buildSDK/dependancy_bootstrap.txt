@@ -250,11 +250,3 @@ Roo.bootstrap.BezierSignature
 Roo.bootstrap.form.deprecated
 Roo.bootstrap.nav.deprecated
 Roo.bootstrap.menu.deprecated
-
-Roo.languagedetect.namespace
-Roo.languagedetect.zh_HK
-Roo.languagedetect.zh_CN
-Roo.languagedetect.dbLang
-Roo.languagedetect.LanguageDetect
-Roo.languagedetect.Parser
-Roo.languagedetect.Detect
