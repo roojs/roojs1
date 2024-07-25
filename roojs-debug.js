@@ -24503,7 +24503,1129 @@ Roo.extend(Roo.dd.DropZone, Roo.dd.DropTarget, {
     triggerCacheRefresh : function(){
         Roo.dd.DDM.refreshCache(this.groups);
     }  
-});Roo.languagedetect = {};// source : https://www.unicode.org/charts/unihan.html
+});Roo.languagedetect = {};// source : https://github.com/FGRibreau/node-language-detect/tree/master
+
+Roo.languagedetect.LanguageDetect = function (languageType) {
+
+  /**
+   * The trigram data for comparison
+   *
+   * Will be loaded on start from $this->_db_filename
+   *
+   * May be set to a PEAR_Error object if there is an error during its
+   * initialization
+   *
+   * @var      array
+   * @access   private
+   */
+  this.langDb = {};
+
+  /**
+   * The size of the trigram data arrays
+   *
+   * @var     int
+   * @access  private
+   */
+  this.threshold = 300;
+
+  this.useUnicodeNarrowing = true;
+
+  /**
+   * Constructor
+   *
+   * Load the language database.
+   *
+   */
+  this.langDb = Roo.languagedetect.dbLang['trigram'];
+  this.unicodeMap = Roo.languagedetect.dbLang['trigram-unicodemap'];
+
+  this.languageType = languageType || null;
+};
+
+Roo.languagedetect.LanguageDetect.prototype = {
+
+  /**
+   * Returns the number of languages that this object can detect
+   *
+   * @access public
+   * @return int the number of languages
+   */
+  getLanguageCount:function () {
+    return this.getLanguages().length;
+  },
+
+  setLanguageType:function (type) {
+    return this.languageType = type;
+  },
+
+  /**
+   * Returns the list of detectable languages
+   *
+   * @access public
+   * @return object the names of the languages known to this object
+   */
+  getLanguages:function () {
+    return Object.keys(this.langDb);
+  },
+
+  /**
+   * Returns the list of detectable languages in code
+   * 
+   * @returns object the code of the languages known to this object
+   * 
+   */
+  getLanguageCodes:function() {
+      var languages = this.getLanguages();
+      switch(this.languageType) {
+          case 'iso2' :
+            return languages.map((name) => this.getCode2(name)).filter(code => code !== null);
+          case 'iso3' :
+            return languages.map((name) => this.getCode3(name)).filter(code => code !== null);
+          default :
+            return languages;
+      }
+  },
+
+  /**
+   * Calculates a linear rank-order distance statistic between two sets of
+   * ranked trigrams
+   *
+   * Sums the differences in rank for each trigram. If the trigram does not
+   * appear in both, consider it a difference of $this->_threshold.
+   *
+   * This distance measure was proposed by Cavnar & Trenkle (1994). Despite
+   * its simplicity it has been shown to be highly accurate for language
+   * identification tasks.
+   *
+   * @access  private
+   * @param   arr1  the reference set of trigram ranks
+   * @param   arr2  the target set of trigram ranks
+   * @return  int   the sum of the differences between the ranks of
+   *                the two trigram sets
+   */
+  distance:function (arr1, arr2) {
+    var me = this
+      , sumdist = 0
+      , keys = Object.keys(arr2)
+      , i;
+
+    for (i = keys.length; i--;) {
+      sumdist += arr1[keys[i]] ? Math.abs(arr2[keys[i]] - arr1[keys[i]]) : me.threshold;
+    }
+
+    return sumdist;
+  },
+
+  /**
+   * Normalizes the score returned by _distance()
+   *
+   * Different if perl compatible or not
+   *
+   * @access  private
+   * @param   score       the score from _distance()
+   * @param   baseCount   the number of trigrams being considered
+   * @return  number      the normalized score
+   *
+   * @see     distance()
+   */
+  normalizeScore:function (score, baseCount) {
+    return 1 - (score / (baseCount || this.threshold) / this.threshold);
+  },
+
+  /**
+   * Detects the closeness of a sample of text to the known languages
+   *
+   * Calculates the statistical difference between the text and
+   * the trigrams for each language, normalizes the score then
+   * returns results for all languages in sorted order
+   *
+   * If perl compatible, the score is 300-0, 0 being most similar.
+   * Otherwise, it's 0-1 with 1 being most similar.
+   *
+   * The $sample text should be at least a few sentences in length;
+   * should be ascii-7 or utf8 encoded, if another and the mbstring extension
+   * is present it will try to detect and convert. However, experience has
+   * shown that mb_detect_encoding() *does not work very well* with at least
+   * some types of encoding.
+   *
+   * @access  public
+   * @param   sample  a sample of text to compare.
+   * @param   limit  if specified, return an array of the most likely
+   *                  $limit languages and their scores.
+   * @return  Array   sorted array of language scores, blank array if no
+   *                  useable text was found, or PEAR_Error if error
+   *                  with the object setup
+   *
+   * @see     distance()
+   */
+  detect:function (sample, limit) {
+    var me = this
+      , scores = [];
+
+    limit = +limit || 0;
+
+    if (sample == '' || String(sample).length < 3) {return [];}
+
+    var sampleObj = new Roo.languagedetect.Parser(sample);
+    sampleObj.setPadStart(true);
+    sampleObj.analyze();
+
+    var trigramFreqs = sampleObj.getTrigramRanks()
+      , trigramCount = Object.keys(trigramFreqs).length;
+
+    if (trigramCount == 0) {return [];}
+
+    var keys = [], i, lang;
+
+    if (this.useUnicodeNarrowing) {
+      var blocks = sampleObj.getUnicodeBlocks()
+        , languages = Object.keys(blocks)
+        , keysLength = languages.length;
+
+      for (i = keysLength; i--;) {
+        if (this.unicodeMap[languages[i]]) {
+          for (lang in this.unicodeMap[languages[i]]) {
+            if (!~keys.indexOf(lang)) {keys.push(lang);}
+          }
+        }
+      }
+    } else {
+      keys = me.getLanguages();
+    }
+
+    for (i = keys.length; i--;) {
+      var score = me.normalizeScore(me.distance(me.langDb[keys[i]], trigramFreqs), trigramCount);
+      if (score) {scores.push([keys[i], score]);}
+    }
+
+    // Sort the array
+    scores.sort(function (a, b) { return b[1] - a[1]; });
+    var scoresLength = scores.length;
+
+    if (!scoresLength) {return [];}
+
+    switch (me.languageType) {
+      case 'iso2':
+        for (i = scoresLength; i--;) {
+          scores[i][0] = this.getCode2(scores[i][0]);
+        }
+        break;
+      case 'iso3':
+        for (i = scoresLength; i--;) {
+          scores[i][0] = this.getCode3(scores[i][0]);
+        }
+        break;
+    }
+
+    // limit the number of returned scores
+    return limit > 0 ? scores.slice(0, limit) : scores;
+  },
+
+  getCode2:function (lang) {
+    return Roo.languagedetect.LanguageDetect.nameToCode2[String(lang).toLowerCase()] || null;
+  },
+
+  getCode3: function(lang) {
+    return Roo.languagedetect.LanguageDetect.nameToCode3[String(lang).toLowerCase()] || null;
+  },
+
+  getName2: function(code) {
+    return Roo.languagedetect.LanguageDetect.code2ToName[String(code).toLowerCase()] || null;
+  },
+
+  getName3: function(code) {
+    return Roo.languagedetect.LanguageDetect.code3ToName[String(code).toLowerCase()] || null;
+  }
+};
+
+Roo.apply(Roo.languagedetect.LanguageDetect, {
+  nameToCode2:{
+    'albanian':'sq',
+    'arabic':'ar',
+    'azeri':'az',
+    'bengali':'bn',
+    'bulgarian':'bg',
+    'cebuano':null,
+    'croatian':'hr',
+    'czech':'cs',
+    'danish':'da',
+    'dutch':'nl',
+    'english':'en',
+    'estonian':'et',
+    'farsi':'fa',
+    'finnish':'fi',
+    'french':'fr',
+    'german':'de',
+    'hausa':'ha',
+    'hawaiian':null,
+    'hindi':'hi',
+    'hungarian':'hu',
+    'icelandic':'is',
+    'indonesian':'id',
+    'italian':'it',
+    'kazakh':'kk',
+    'kyrgyz':'ky',
+    'latin':'la',
+    'latvian':'lv',
+    'lithuanian':'lt',
+    'macedonian':'mk',
+    'mongolian':'mn',
+    'nepali':'ne',
+    'norwegian':'no',
+    'pashto':'ps',
+    'pidgin':null,
+    'polish':'pl',
+    'portuguese':'pt',
+    'romanian':'ro',
+    'russian':'ru',
+    'serbian':'sr',
+    'slovak':'sk',
+    'slovene':'sl',
+    'somali':'so',
+    'spanish':'es',
+    'swahili':'sw',
+    'swedish':'sv',
+    'tagalog':'tl',
+    'turkish':'tr',
+    'ukrainian':'uk',
+    'urdu':'ur',
+    'uzbek':'uz',
+    'vietnamese':'vi',
+    'welsh':'cy'
+  },
+
+  nameToCode3:{
+    'albanian':'sqi',
+    'arabic':'ara',
+    'azeri':'aze',
+    'bengali':'ben',
+    'bulgarian':'bul',
+    'cebuano':'ceb',
+    'croatian':'hrv',
+    'czech':'ces',
+    'danish':'dan',
+    'dutch':'nld',
+    'english':'eng',
+    'estonian':'est',
+    'farsi':'fas',
+    'finnish':'fin',
+    'french':'fra',
+    'german':'deu',
+    'hausa':'hau',
+    'hawaiian':'haw',
+    'hindi':'hin',
+    'hungarian':'hun',
+    'icelandic':'isl',
+    'indonesian':'ind',
+    'italian':'ita',
+    'kazakh':'kaz',
+    'kyrgyz':'kir',
+    'latin':'lat',
+    'latvian':'lav',
+    'lithuanian':'lit',
+    'macedonian':'mkd',
+    'mongolian':'mon',
+    'nepali':'nep',
+    'norwegian':'nor',
+    'pashto':'pus',
+    'pidgin':'crp',
+    'polish':'pol',
+    'portuguese':'por',
+    'romanian':'ron',
+    'russian':'rus',
+    'serbian':'srp',
+    'slovak':'slk',
+    'slovene':'slv',
+    'somali':'som',
+    'spanish':'spa',
+    'swahili':'swa',
+    'swedish':'swe',
+    'tagalog':'tgl',
+    'turkish':'tur',
+    'ukrainian':'ukr',
+    'urdu':'urd',
+    'uzbek':'uzb',
+    'vietnamese':'vie',
+    'welsh':'cym'
+  },
+  code2ToName:{
+    'ar':'arabic',
+    'az':'azeri',
+    'bg':'bulgarian',
+    'bn':'bengali',
+    'cs':'czech',
+    'cy':'welsh',
+    'da':'danish',
+    'de':'german',
+    'en':'english',
+    'es':'spanish',
+    'et':'estonian',
+    'fa':'farsi',
+    'fi':'finnish',
+    'fr':'french',
+    'ha':'hausa',
+    'hi':'hindi',
+    'hr':'croatian',
+    'hu':'hungarian',
+    'id':'indonesian',
+    'is':'icelandic',
+    'it':'italian',
+    'kk':'kazakh',
+    'ky':'kyrgyz',
+    'la':'latin',
+    'lt':'lithuanian',
+    'lv':'latvian',
+    'mk':'macedonian',
+    'mn':'mongolian',
+    'ne':'nepali',
+    'nl':'dutch',
+    'no':'norwegian',
+    'pl':'polish',
+    'ps':'pashto',
+    'pt':'portuguese',
+    'ro':'romanian',
+    'ru':'russian',
+    'sk':'slovak',
+    'sl':'slovene',
+    'so':'somali',
+    'sq':'albanian',
+    'sr':'serbian',
+    'sv':'swedish',
+    'sw':'swahili',
+    'tl':'tagalog',
+    'tr':'turkish',
+    'uk':'ukrainian',
+    'ur':'urdu',
+    'uz':'uzbek',
+    'vi':'vietnamese'
+  },
+
+  code3ToName:{
+    'ara':'arabic',
+    'aze':'azeri',
+    'ben':'bengali',
+    'bul':'bulgarian',
+    'ceb':'cebuano',
+    'ces':'czech',
+    'crp':'pidgin',
+    'cym':'welsh',
+    'dan':'danish',
+    'deu':'german',
+    'eng':'english',
+    'est':'estonian',
+    'fas':'farsi',
+    'fin':'finnish',
+    'fra':'french',
+    'hau':'hausa',
+    'haw':'hawaiian',
+    'hin':'hindi',
+    'hrv':'croatian',
+    'hun':'hungarian',
+    'ind':'indonesian',
+    'isl':'icelandic',
+    'ita':'italian',
+    'kaz':'kazakh',
+    'kir':'kyrgyz',
+    'lat':'latin',
+    'lav':'latvian',
+    'lit':'lithuanian',
+    'mkd':'macedonian',
+    'mon':'mongolian',
+    'nep':'nepali',
+    'nld':'dutch',
+    'nor':'norwegian',
+    'pol':'polish',
+    'por':'portuguese',
+    'pus':'pashto',
+    'rom':'romanian',
+    'rus':'russian',
+    'slk':'slovak',
+    'slv':'slovene',
+    'som':'somali',
+    'spa':'spanish',
+    'sqi':'albanian',
+    'srp':'serbian',
+    'swa':'swahili',
+    'swe':'swedish',
+    'tgl':'tagalog',
+    'tur':'turkish',
+    'ukr':'ukrainian',
+    'urd':'urdu',
+    'uzb':'uzbek',
+    'vie':'vietnamese'
+  }
+});// source : https://github.com/FGRibreau/node-language-detect/tree/master
+
+Roo.languagedetect.Parser = function (string) {
+    /**
+     * The size of the trigram data arrays
+     *
+     * @access   private
+     * @var      int
+     */
+    this.threshold = 300;
+  
+    /**
+     * stores the trigram ranks of the sample
+     *
+     * @access  private
+     * @var     array
+     */
+    this.trigramRanks = {};
+  
+    /**
+     * Whether the parser should compile trigrams
+     *
+     * @access  private
+     * @var     bool
+     */
+    this.compileTrigram = true;
+  
+    this.compileUnicode = true;
+    this.unicodeSkipAscii = true;
+    this.unicodeBlocks = {};
+  
+    /**
+     * Whether the trigram parser should pad the beginning of the string
+     *
+     * @access  private
+     * @var     bool
+     */
+    this.trigramPadStart = false;
+  
+    this.trigram = {};
+  
+    /**
+     * the piece of text being parsed
+     *
+     * @access  private
+     * @var     string
+     */
+  
+    /**
+     * Constructor
+     *
+     * @access  private
+     * @param   string  string to be parsed
+     */
+    this.string = string ? string.replace(/[~!@#$%^&*()_|+\-=?;:",.<>\{\}\[\]\\\/]/g, ' ') : '';
+};
+
+  
+Roo.languagedetect.Parser.prototype = {
+  /**
+   * turn on/off padding the beginning of the sample string
+   *
+   * @access  public
+   * @param   bool   true for on, false for off
+   */
+  setPadStart: function (bool) {
+    this.trigramPadStart = bool || true;
+  },
+
+  /**
+   * Returns the trigram ranks for the text sample
+   *
+   * @access  public
+   * @return  array   trigram ranks in the text sample
+   */
+  getTrigramRanks: function () {
+    return this.trigramRanks;
+  },
+
+  getBlockCount: function () {
+    return Roo.languagedetect.Parser.dbUnicodeBlocks.length;
+  },
+
+  getUnicodeBlocks: function () {
+    return this.unicodeBlocks;
+  },
+
+  /**
+   * Executes the parsing operation
+   *
+   * Be sure to call the set*() functions to set options and the
+   * prepare*() functions first to tell it what kind of data to compute
+   *
+   * Afterwards the get*() functions can be used to access the compiled
+   * information.
+   *
+   * @access public
+   */
+  analyze: function () {
+    var len = this.string.length
+      , byteCounter = 0
+      , a = ' ', b = ' '
+      , dropone, c;
+
+    if (this.compileUnicode) {
+      var blocksCount = Roo.languagedetect.Parser.dbUnicodeBlocks.length;
+    }
+
+    // trigram startup
+    if (this.compileTrigram) {
+      // initialize them as blank so the parser will skip the first two
+      // (since it skips trigrams with more than  2 contiguous spaces)
+      a = ' ';
+      b = ' ';
+
+      // kludge
+      // if it finds a valid trigram to start and the start pad option is
+      // off, then set a variable that will be used to reduce this
+      // trigram after parsing has finished
+      if (!this.trigramPadStart) {
+        a = this.string.charAt(byteCounter++).toLowerCase();
+
+        if (a != ' ') {
+          b = this.string.charAt(byteCounter).toLowerCase();
+          dropone = ' ' + a + b;
+        }
+
+        byteCounter = 0;
+        a = ' ';
+        b = ' ';
+      }
+    }
+
+    var skippedCount = 0;
+    var unicodeChars = {};
+
+    while (byteCounter < len) {
+      c = this.string.charAt(byteCounter++).toLowerCase();
+
+      // language trigram detection
+      if (this.compileTrigram) {
+        if (!(b == ' ' && (a == ' ' || c == ' '))) {
+          var abc = a + b + c;
+          this.trigram[abc] = this.trigram[abc] ? this.trigram[abc] += 1 : 1;
+        }
+
+        a = b;
+        b = c;
+      }
+
+      if (this.compileUnicode) {
+        var charCode = c.charCodeAt(0);
+
+        if (this.unicodeSkipAscii
+          && c.match(/[a-z ]/i)
+          && (charCode < 65 || charCode > 122 || (charCode > 90 && charCode < 97))
+          && c != "'") {
+
+          skippedCount++;
+          continue;
+        }
+
+        unicodeChars[c] = unicodeChars[c] ? unicodeChars[c] += 1 : 1;
+      }
+    }
+
+    this.unicodeBlocks = {};
+
+    if (this.compileUnicode) {
+      var keys = Object.keys(unicodeChars)
+        , keysLength = keys.length;
+
+      for (var i = keysLength; i--;) {
+        var unicode = keys[i].charCodeAt(0)
+          , count = unicodeChars[keys[i]]
+          , search = this.unicodeBlockName(unicode, blocksCount)
+          , blockName = search != -1 ? search[2] : '[Malformatted]';
+
+        this.unicodeBlocks[blockName] = this.unicodeBlocks[blockName] ? this.unicodeBlocks[blockName] += count : count;
+      }
+    }
+
+    // trigram cleanup
+    if (this.compileTrigram) {
+      // pad the end
+      if (b != ' ') {
+        var ab = a + b + ' ';
+        this.trigram[ab] = this.trigram[ab] ? this.trigram[ab] += 1 : 1;
+      }
+
+      // perl compatibility; Language::Guess does not pad the beginning
+      // kludge
+      if (typeof dropone != 'undefined' && this.trigram[dropone] == 1) {
+        delete this.trigram[dropone];
+      }
+
+      if (this.trigram && Object.keys(this.trigram).length > 0) {
+        this.trigramRanks = this.arrRank(this.trigram);
+      } else {
+        this.trigramRanks = {};
+      }
+    }
+  },
+
+  /**
+   * Sorts an array by value breaking ties alphabetically
+   *
+   * @access private
+   * @param arr the array to sort
+   */
+  bubleSort: function (arr) {
+    // should do the same as this perl statement:
+    // sort { $trigrams{$b} == $trigrams{$a} ?  $a cmp $b : $trigrams{$b} <=> $trigrams{$a} }
+
+    // needs to sort by both key and value at once
+    // using the key to break ties for the value
+
+    // converts array into an array of arrays of each key and value
+    // may be a better way of doing this
+    var combined = [];
+
+    for (var key in arr) {
+      combined.push([key, arr[key]]);
+    }
+
+    combined = combined.sort(this.sortFunc);
+
+    var replacement = {};
+
+    var length = combined.length;
+
+    for (var i = 0; i < length; i++) {
+      replacement[combined[i][0]] = combined[i][1];
+    }
+
+    return replacement;
+  },
+
+  /**
+   * Converts a set of trigrams from frequencies to ranks
+   *
+   * Thresholds (cuts off) the list at $this->_threshold
+   *
+   * @access  protected
+   * @param   arr     array of trgram
+   * @return  object  ranks of trigrams
+   */
+  arrRank: function (arr) {
+
+    // sorts alphabetically first as a standard way of breaking rank ties
+    arr = this.bubleSort(arr);
+
+    var rank = {}, i = 0;
+
+    for (var key in arr) {
+      rank[key] = i++;
+
+      // cut off at a standard threshold
+      if (i >= this.threshold) {
+        break;
+      }
+    }
+
+    return rank;
+  },
+
+  /**
+   * Sort function used by bubble sort
+   *
+   * Callback function for usort().
+   *
+   * @access   private
+   * @param    a    first param passed by usort()
+   * @param    b    second param passed by usort()
+   * @return   int  1 if $a is greater, -1 if not
+   *
+   * @see      bubleSort()
+   */
+  sortFunc: function (a, b) {
+    // each is actually a key/value pair, so that it can compare using both
+    var aKey = a[0]
+      , aValue = a[1]
+      , bKey = b[0]
+      , bValue = b[1];
+
+    // if the values are the same, break ties using the key
+    if (aValue == bValue) {
+      return aKey.localeCompare(bKey);
+    } else {
+      return aValue > bValue ? -1 : 1;
+    }
+  },
+
+  unicodeBlockName: function (unicode, blockCount) {
+    if (unicode <= Roo.languagedetect.Parser.dbUnicodeBlocks[0][1]) {
+      return Roo.languagedetect.Parser.dbUnicodeBlocks[0];
+    }
+
+    var high = blockCount ? blockCount - 1 : Roo.languagedetect.Parser.dbUnicodeBlocks.length
+      , low = 1
+      , mid;
+
+    while (low <= high) {
+      mid = Math.floor((low + high) / 2);
+
+      if (unicode < Roo.languagedetect.Parser.dbUnicodeBlocks[mid][0]) {
+        high = mid - 1;
+      } else if (unicode > Roo.languagedetect.Parser.dbUnicodeBlocks[mid][1]) {
+        low = mid + 1;
+      } else {
+        return Roo.languagedetect.Parser.dbUnicodeBlocks[mid];
+      }
+    }
+
+    return -1;
+  }
+};
+
+Roo.apply(Roo.languagedetect.Parser, {
+  dbUnicodeBlocks: [
+      ["0x0000", "0x007F", "Basic Latin"],
+      ["0x0080", "0x00FF", "Latin-1 Supplement"],
+      ["0x0100", "0x017F", "Latin Extended-A"],
+      ["0x0180", "0x024F", "Latin Extended-B"],
+      ["0x0250", "0x02AF", "IPA Extensions"],
+      ["0x02B0", "0x02FF", "Spacing Modifier Letters"],
+      ["0x0300", "0x036F", "Combining Diacritical Marks"],
+      ["0x0370", "0x03FF", "Greek and Coptic"],
+      ["0x0400", "0x04FF", "Cyrillic"],
+      ["0x0500", "0x052F", "Cyrillic Supplement"],
+      ["0x0530", "0x058F", "Armenian"],
+      ["0x0590", "0x05FF", "Hebrew"],
+      ["0x0600", "0x06FF", "Arabic"],
+      ["0x0700", "0x074F", "Syriac"],
+      ["0x0750", "0x077F", "Arabic Supplement"],
+      ["0x0780", "0x07BF", "Thaana"],
+      ["0x0900", "0x097F", "Devanagari"],
+      ["0x0980", "0x09FF", "Bengali"],
+      ["0x0A00", "0x0A7F", "Gurmukhi"],
+      ["0x0A80", "0x0AFF", "Gujarati"],
+      ["0x0B00", "0x0B7F", "Oriya"],
+      ["0x0B80", "0x0BFF", "Tamil"],
+      ["0x0C00", "0x0C7F", "Telugu"],
+      ["0x0C80", "0x0CFF", "Kannada"],
+      ["0x0D00", "0x0D7F", "Malayalam"],
+      ["0x0D80", "0x0DFF", "Sinhala"],
+      ["0x0E00", "0x0E7F", "Thai"],
+      ["0x0E80", "0x0EFF", "Lao"],
+      ["0x0F00", "0x0FFF", "Tibetan"],
+      ["0x1000", "0x109F", "Myanmar"],
+      ["0x10A0", "0x10FF", "Georgian"],
+      ["0x1100", "0x11FF", "Hangul Jamo"],
+      ["0x1200", "0x137F", "Ethiopic"],
+      ["0x1380", "0x139F", "Ethiopic Supplement"],
+      ["0x13A0", "0x13FF", "Cherokee"],
+      ["0x1400", "0x167F", "Unified Canadian Aboriginal Syllabics"],
+      ["0x1680", "0x169F", "Ogham"],
+      ["0x16A0", "0x16FF", "Runic"],
+      ["0x1700", "0x171F", "Tagalog"],
+      ["0x1720", "0x173F", "Hanunoo"],
+      ["0x1740", "0x175F", "Buhid"],
+      ["0x1760", "0x177F", "Tagbanwa"],
+      ["0x1780", "0x17FF", "Khmer"],
+      ["0x1800", "0x18AF", "Mongolian"],
+      ["0x1900", "0x194F", "Limbu"],
+      ["0x1950", "0x197F", "Tai Le"],
+      ["0x1980", "0x19DF", "New Tai Lue"],
+      ["0x19E0", "0x19FF", "Khmer Symbols"],
+      ["0x1A00", "0x1A1F", "Buginese"],
+      ["0x1D00", "0x1D7F", "Phonetic Extensions"],
+      ["0x1D80", "0x1DBF", "Phonetic Extensions Supplement"],
+      ["0x1DC0", "0x1DFF", "Combining Diacritical Marks Supplement"],
+      ["0x1E00", "0x1EFF", "Latin Extended Additional"],
+      ["0x1F00", "0x1FFF", "Greek Extended"],
+      ["0x2000", "0x206F", "General Punctuation"],
+      ["0x2070", "0x209F", "Superscripts and Subscripts"],
+      ["0x20A0", "0x20CF", "Currency Symbols"],
+      ["0x20D0", "0x20FF", "Combining Diacritical Marks for Symbols"],
+      ["0x2100", "0x214F", "Letterlike Symbols"],
+      ["0x2150", "0x218F", "Number Forms"],
+      ["0x2190", "0x21FF", "Arrows"],
+      ["0x2200", "0x22FF", "Mathematical Operators"],
+      ["0x2300", "0x23FF", "Miscellaneous Technical"],
+      ["0x2400", "0x243F", "Control Pictures"],
+      ["0x2440", "0x245F", "Optical Character Recognition"],
+      ["0x2460", "0x24FF", "Enclosed Alphanumerics"],
+      ["0x2500", "0x257F", "Box Drawing"],
+      ["0x2580", "0x259F", "Block Elements"],
+      ["0x25A0", "0x25FF", "Geometric Shapes"],
+      ["0x2600", "0x26FF", "Miscellaneous Symbols"],
+      ["0x2700", "0x27BF", "Dingbats"],
+      ["0x27C0", "0x27EF", "Miscellaneous Mathematical Symbols-A"],
+      ["0x27F0", "0x27FF", "Supplemental Arrows-A"],
+      ["0x2800", "0x28FF", "Braille Patterns"],
+      ["0x2900", "0x297F", "Supplemental Arrows-B"],
+      ["0x2980", "0x29FF", "Miscellaneous Mathematical Symbols-B"],
+      ["0x2A00", "0x2AFF", "Supplemental Mathematical Operators"],
+      ["0x2B00", "0x2BFF", "Miscellaneous Symbols and Arrows"],
+      ["0x2C00", "0x2C5F", "Glagolitic"],
+      ["0x2C80", "0x2CFF", "Coptic"],
+      ["0x2D00", "0x2D2F", "Georgian Supplement"],
+      ["0x2D30", "0x2D7F", "Tifinagh"],
+      ["0x2D80", "0x2DDF", "Ethiopic Extended"],
+      ["0x2E00", "0x2E7F", "Supplemental Punctuation"],
+      ["0x2E80", "0x2EFF", "CJK Radicals Supplement"],
+      ["0x2F00", "0x2FDF", "Kangxi Radicals"],
+      ["0x2FF0", "0x2FFF", "Ideographic Description Characters"],
+      ["0x3000", "0x303F", "CJK Symbols and Punctuation"],
+      ["0x3040", "0x309F", "Hiragana"],
+      ["0x30A0", "0x30FF", "Katakana"],
+      ["0x3100", "0x312F", "Bopomofo"],
+      ["0x3130", "0x318F", "Hangul Compatibility Jamo"],
+      ["0x3190", "0x319F", "Kanbun"],
+      ["0x31A0", "0x31BF", "Bopomofo Extended"],
+      ["0x31C0", "0x31EF", "CJK Strokes"],
+      ["0x31F0", "0x31FF", "Katakana Phonetic Extensions"],
+      ["0x3200", "0x32FF", "Enclosed CJK Letters and Months"],
+      ["0x3300", "0x33FF", "CJK Compatibility"],
+      ["0x3400", "0x4DBF", "CJK Unified Ideographs Extension A"],
+      ["0x4DC0", "0x4DFF", "Yijing Hexagram Symbols"],
+      ["0x4E00", "0x9FFF", "CJK Unified Ideographs"],
+      ["0xA000", "0xA48F", "Yi Syllables"],
+      ["0xA490", "0xA4CF", "Yi Radicals"],
+      ["0xA700", "0xA71F", "Modifier Tone Letters"],
+      ["0xA800", "0xA82F", "Syloti Nagri"],
+      ["0xAC00", "0xD7AF", "Hangul Syllables"],
+      ["0xD800", "0xDB7F", "High Surrogates"],
+      ["0xDB80", "0xDBFF", "High Private Use Surrogates"],
+      ["0xDC00", "0xDFFF", "Low Surrogates"],
+      ["0xE000", "0xF8FF", "Private Use Area"],
+      ["0xF900", "0xFAFF", "CJK Compatibility Ideographs"],
+      ["0xFB00", "0xFB4F", "Alphabetic Presentation Forms"],
+      ["0xFB50", "0xFDFF", "Arabic Presentation Forms-A"],
+      ["0xFE00", "0xFE0F", "Variation Selectors"],
+      ["0xFE10", "0xFE1F", "Vertical Forms"],
+      ["0xFE20", "0xFE2F", "Combining Half Marks"],
+      ["0xFE30", "0xFE4F", "CJK Compatibility Forms"],
+      ["0xFE50", "0xFE6F", "Small Form Variants"],
+      ["0xFE70", "0xFEFF", "Arabic Presentation Forms-B"],
+      ["0xFF00", "0xFFEF", "Halfwidth and Fullwidth Forms"],
+      ["0xFFF0", "0xFFFF", "Specials"],
+      ["0x10000", "0x1007F", "Linear B Syllabary"],
+      ["0x10080", "0x100FF", "Linear B Ideograms"],
+      ["0x10100", "0x1013F", "Aegean Numbers"],
+      ["0x10140", "0x1018F", "Ancient Greek Numbers"],
+      ["0x10300", "0x1032F", "Old Italic"],
+      ["0x10330", "0x1034F", "Gothic"],
+      ["0x10380", "0x1039F", "Ugaritic"],
+      ["0x103A0", "0x103DF", "Old Persian"],
+      ["0x10400", "0x1044F", "Deseret"],
+      ["0x10450", "0x1047F", "Shavian"],
+      ["0x10480", "0x104AF", "Osmanya"],
+      ["0x10800", "0x1083F", "Cypriot Syllabary"],
+      ["0x10A00", "0x10A5F", "Kharoshthi"],
+      ["0x1D000", "0x1D0FF", "Byzantine Musical Symbols"],
+      ["0x1D100", "0x1D1FF", "Musical Symbols"],
+      ["0x1D200", "0x1D24F", "Ancient Greek Musical Notation"],
+      ["0x1D300", "0x1D35F", "Tai Xuan Jing Symbols"],
+      ["0x1D400", "0x1D7FF", "Mathematical Alphanumeric Symbols"],
+      ["0x20000", "0x2A6DF", "CJK Unified Ideographs Extension B"],
+      ["0x2F800", "0x2FA1F", "CJK Compatibility Ideographs Supplement"],
+      ["0xE0000", "0xE007F", "Tags"],
+      ["0xE0100", "0xE01EF", "Variation Selectors Supplement"],
+      ["0xF0000", "0xFFFFF", "Supplementary Private Use Area-A"],
+      ["0x100000", "0x10FFFF", "Supplementary Private Use Area-B"]
+  ]
+});Roo.languagedetect.Detect = function() {
+    this.languageDetect = new Roo.languagedetect.LanguageDetect('iso2');
+
+    var regex = '/';
+    Roo.each(Roo.languagedetect.zh_HK, function(code) {
+        regex = regex + code + '|';
+    });
+    regex.replace(/\|$/, '');
+    regex += '/';
+    this.codeToRegex['zh_HK'] = new RegExp(regex);
+
+    var regex = '/';
+    Roo.each(Roo.languagedetect.zh_CN, function(code) {
+        regex = regex + code + '|';
+    });
+    regex.replace(/\|$/, '');
+    regex += '/';
+    this.codeToRegex['zh_CN'] = new RegExp(regex);
+};
+
+Roo.languagedetect.Detect.prototype = {
+    // characters in supplementary planes (\u{xxxxx}) are not detected.
+    codeToRegex : {
+        // 4e00-9fff : CJK Unified Ideographs
+        // 3400-4dbf : CJK Unified Ideographs Extension A
+        // 20000-2a6df : CJK Unified Ideographs Extension B
+        // 2a700-2b73f : CJK Unified Ideographs Extension C
+        // 2b740-2b81f : CJK Unified Ideographs Extension D
+        // 2b820-2ceaf : CJK Unified Ideographs Extension E
+        // 2ceb0-2ebef : CJK Unified Ideographs Extension F
+        // 30000-3134f : CJK Unified Ideographs Extension G
+        // 31350-323af : CJK Unified Ideographs Extension H
+        // 2ebf0-2ee5f : CJK Unified Ideographs Extension I
+        // f900-faff : CJK Compatibility Ideographs
+        'cjk' : /[\u4e00-\u9fff]|[\u3400-\u4dbf]|[\uf900-\ufaff]/,
+        // 3040-309f : Hiragana
+        // 30a0-30ff : Katakana
+        // 31f0-31ff : Katakana Phonetic Extensions
+        // 1aff0-1afff : Kana Extended-B
+        // 1b000-1b0ff : Kana Supplement
+        // 1b100-1b12f : Kana Extended-A
+        // 1b130-1b16f : Small kana Extension
+        'ja' : /[\u3040-\u30ff]|[\u31f0-\u31ff]/,
+        // ac00-d7af : Hangul Syllables
+        // 1100-11ff : Hangul Jamo
+        // 3130-318f : Hangul Compatibility Jamo
+        // a960-a97f : Hangul Jamo Extended-A
+        // d7b0-d7ff : Hangul Jamo Extended-B
+        'ko' : /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,
+        // 0e00-0e7f : Thai
+        'th' : /[\u0e00-\u0e7f]/,
+        // 0590-05ff : Hebrew
+        // fb1d-fb4f : Hebrew Presentation Forms
+        'he' : /[\u0590-\u05ff]|[\ufb1d-\ufb4f]/
+    },
+
+    codeToName : {
+        'ja':'japanese',
+        'ko':'korean',
+        'zh_HK':'traditional chinese',
+        'zh_CN':'simplified chinese',
+        'th':'thai',
+        'he':'hebrew'
+    },
+
+    isScoreSupported : function(lang) {
+        return this.languageDetect.getLanguageCodes().includes(lang);
+    },
+    isCountSupported : function(lang) {
+        return Object.keys(this.codeToName).includes(lang);
+    },
+    isSupported : function(lang) {
+        return this.isScoreSupported(lang) || this.isCountSupported(lang);
+    },
+    getName : function(code) {
+        if(!this.isSupported(code)) {
+            return '';
+        }
+        return (
+            this.languageDetect.getName2(code) || // LanguageDetect
+            this.codeToName[code] || // CJK
+            ''
+        );
+    },
+    isLanguage : function(input, lang) {
+        if(!this.isSupported(lang)) {
+            return false;
+        }
+
+        var isLang = {...this.detectLangByCount(input), ...this.detectLangByScore(input)};
+
+        // positive testing
+        if(typeof(isLang[lang]) === 'undefined' || isLang[lang] !== true) {
+            return false;
+        }
+
+        var ret = true;
+
+        Roo.each(Object.keys(isLang), function(code) {
+            // negative testing
+            if(code != lang && isLang[code] === true) {
+                ret = false;
+            }
+        });
+
+        return ret;
+    },
+
+    getHighestScore : function(input) {
+        var scores = this.languageDetect.detect(input);
+        if(!scores.length) {
+            return [];
+        }
+        return scores[0];
+    },
+    detectLangByScore : function (input) {
+        var score = this.getHighestScore(input);
+        if(!score.length) {
+            return {};
+        }
+
+        return {
+            [score[0]] : score[1] > 0.2
+        };
+    },
+
+    getCount : function(input) {
+        var en = input.replaceAll(/[\s\d\p{P}]+/gu, ' ');
+        en = en.replaceAll(/[^A-Za-z ]/g, '');
+        var enWords = en.trim().split(/\s+/); // number of english words
+
+        input = input.replaceAll(/\s+|\d+|[\p{P}]/gu, ''); // remove all spaces ,digits and punctuations
+        input = input.replaceAll(/[A-Za-z]/g, ''); // remove all english alphabet
+
+        var count = {};
+        Roo.each(Object.keys(this.codeToRegex), function(code) {
+            count[code] = 0;
+            for(var i = 0; i < input.length; i ++) {
+                if(this.codeToRegex[code].test(input[i])) {
+                    count[code] ++;
+                }
+            }
+        }, this);
+
+        count['total'] = input.length + enWords.length; // number of characters which are not english alphabet + number of english words
+
+        return count;
+    },
+
+    detectLangByCount : function(input) {
+        var count = this.getCount(input);
+
+        var ret = {};
+
+        Roo.each(Object.keys(this.codeToName), function(code) {
+            ret[code] = false;
+        });
+
+        if(count['total'] == 0) {
+            return ret;
+        }
+
+        // japanese
+        if (
+            count['ja'] / count['total'] > 0.3 && // > 30% japanese characters
+            (count['ja'] + count['cjk']) / count['total'] > 0.5 // > 50% (japanese characters + cjk)
+        ) {
+            ret['ja'] = true;
+        }
+
+        // korean
+        if (
+            count['ko'] / count['total'] > 0.3 && // > 30% korean characters
+            (count['ko'] + count['cjk']) / count['total'] > 0.5 // > 50% (korean characters + cjk)
+        ) {
+            ret['ko'] = true;
+        }
+
+        // chinese
+        if(
+            !ret['ja'] && // not detected as japanese
+            !ret['ko'] && // not detected as korean
+            count['cjk'] / count['total'] > 0.5 // > 50% chinese characters
+        ) {
+            // traditional chinese if there are more traiditonal chinese characters than simplified chinese characters
+            if(count['zh_HK'] > count['zh_CN']) {
+                ret['zh_HK'] = true;
+            }
+            // else simplified chinese
+            else {
+                ret['zh_CN'] = true;
+            }
+        }
+
+        if(count['th'] / count['total'] > 0.5) {
+            ret['th'] = true;
+        }
+
+        if(count['he'] / count['total'] > 0.5) {
+            ret['he'] = true;
+        }
+
+        return ret;
+
+    }
+};// source : https://www.unicode.org/charts/unihan.html
 // array of characters that are only used in traditional chinese
 
 Roo.languagedetect.zh_HK = [
@@ -47885,1128 +49007,6 @@ Roo.languagedetect.dbLang = {
         "Latin Extended Additional": {
             "vietnamese": 97
         }
-    }
-};// source : https://github.com/FGRibreau/node-language-detect/tree/master
-
-Roo.languagedetect.LanguageDetect = function (languageType) {
-
-  /**
-   * The trigram data for comparison
-   *
-   * Will be loaded on start from $this->_db_filename
-   *
-   * May be set to a PEAR_Error object if there is an error during its
-   * initialization
-   *
-   * @var      array
-   * @access   private
-   */
-  this.langDb = {};
-
-  /**
-   * The size of the trigram data arrays
-   *
-   * @var     int
-   * @access  private
-   */
-  this.threshold = 300;
-
-  this.useUnicodeNarrowing = true;
-
-  /**
-   * Constructor
-   *
-   * Load the language database.
-   *
-   */
-  this.langDb = Roo.languagedetect.dbLang['trigram'];
-  this.unicodeMap = Roo.languagedetect.dbLang['trigram-unicodemap'];
-
-  this.languageType = languageType || null;
-};
-
-Roo.languagedetect.LanguageDetect.prototype = {
-
-  /**
-   * Returns the number of languages that this object can detect
-   *
-   * @access public
-   * @return int the number of languages
-   */
-  getLanguageCount:function () {
-    return this.getLanguages().length;
-  },
-
-  setLanguageType:function (type) {
-    return this.languageType = type;
-  },
-
-  /**
-   * Returns the list of detectable languages
-   *
-   * @access public
-   * @return object the names of the languages known to this object
-   */
-  getLanguages:function () {
-    return Object.keys(this.langDb);
-  },
-
-  /**
-   * Returns the list of detectable languages in code
-   * 
-   * @returns object the code of the languages known to this object
-   * 
-   */
-  getLanguageCodes:function() {
-      var languages = this.getLanguages();
-      switch(this.languageType) {
-          case 'iso2' :
-            return languages.map((name) => this.getCode2(name)).filter(code => code !== null);
-          case 'iso3' :
-            return languages.map((name) => this.getCode3(name)).filter(code => code !== null);
-          default :
-            return languages;
-      }
-  },
-
-  /**
-   * Calculates a linear rank-order distance statistic between two sets of
-   * ranked trigrams
-   *
-   * Sums the differences in rank for each trigram. If the trigram does not
-   * appear in both, consider it a difference of $this->_threshold.
-   *
-   * This distance measure was proposed by Cavnar & Trenkle (1994). Despite
-   * its simplicity it has been shown to be highly accurate for language
-   * identification tasks.
-   *
-   * @access  private
-   * @param   arr1  the reference set of trigram ranks
-   * @param   arr2  the target set of trigram ranks
-   * @return  int   the sum of the differences between the ranks of
-   *                the two trigram sets
-   */
-  distance:function (arr1, arr2) {
-    var me = this
-      , sumdist = 0
-      , keys = Object.keys(arr2)
-      , i;
-
-    for (i = keys.length; i--;) {
-      sumdist += arr1[keys[i]] ? Math.abs(arr2[keys[i]] - arr1[keys[i]]) : me.threshold;
-    }
-
-    return sumdist;
-  },
-
-  /**
-   * Normalizes the score returned by _distance()
-   *
-   * Different if perl compatible or not
-   *
-   * @access  private
-   * @param   score       the score from _distance()
-   * @param   baseCount   the number of trigrams being considered
-   * @return  number      the normalized score
-   *
-   * @see     distance()
-   */
-  normalizeScore:function (score, baseCount) {
-    return 1 - (score / (baseCount || this.threshold) / this.threshold);
-  },
-
-  /**
-   * Detects the closeness of a sample of text to the known languages
-   *
-   * Calculates the statistical difference between the text and
-   * the trigrams for each language, normalizes the score then
-   * returns results for all languages in sorted order
-   *
-   * If perl compatible, the score is 300-0, 0 being most similar.
-   * Otherwise, it's 0-1 with 1 being most similar.
-   *
-   * The $sample text should be at least a few sentences in length;
-   * should be ascii-7 or utf8 encoded, if another and the mbstring extension
-   * is present it will try to detect and convert. However, experience has
-   * shown that mb_detect_encoding() *does not work very well* with at least
-   * some types of encoding.
-   *
-   * @access  public
-   * @param   sample  a sample of text to compare.
-   * @param   limit  if specified, return an array of the most likely
-   *                  $limit languages and their scores.
-   * @return  Array   sorted array of language scores, blank array if no
-   *                  useable text was found, or PEAR_Error if error
-   *                  with the object setup
-   *
-   * @see     distance()
-   */
-  detect:function (sample, limit) {
-    var me = this
-      , scores = [];
-
-    limit = +limit || 0;
-
-    if (sample == '' || String(sample).length < 3) {return [];}
-
-    var sampleObj = new Roo.languagedetect.Parser(sample);
-    sampleObj.setPadStart(true);
-    sampleObj.analyze();
-
-    var trigramFreqs = sampleObj.getTrigramRanks()
-      , trigramCount = Object.keys(trigramFreqs).length;
-
-    if (trigramCount == 0) {return [];}
-
-    var keys = [], i, lang;
-
-    if (this.useUnicodeNarrowing) {
-      var blocks = sampleObj.getUnicodeBlocks()
-        , languages = Object.keys(blocks)
-        , keysLength = languages.length;
-
-      for (i = keysLength; i--;) {
-        if (this.unicodeMap[languages[i]]) {
-          for (lang in this.unicodeMap[languages[i]]) {
-            if (!~keys.indexOf(lang)) {keys.push(lang);}
-          }
-        }
-      }
-    } else {
-      keys = me.getLanguages();
-    }
-
-    for (i = keys.length; i--;) {
-      var score = me.normalizeScore(me.distance(me.langDb[keys[i]], trigramFreqs), trigramCount);
-      if (score) {scores.push([keys[i], score]);}
-    }
-
-    // Sort the array
-    scores.sort(function (a, b) { return b[1] - a[1]; });
-    var scoresLength = scores.length;
-
-    if (!scoresLength) {return [];}
-
-    switch (me.languageType) {
-      case 'iso2':
-        for (i = scoresLength; i--;) {
-          scores[i][0] = this.getCode2(scores[i][0]);
-        }
-        break;
-      case 'iso3':
-        for (i = scoresLength; i--;) {
-          scores[i][0] = this.getCode3(scores[i][0]);
-        }
-        break;
-    }
-
-    // limit the number of returned scores
-    return limit > 0 ? scores.slice(0, limit) : scores;
-  },
-
-  getCode2:function (lang) {
-    return Roo.languagedetect.LanguageDetect.nameToCode2[String(lang).toLowerCase()] || null;
-  },
-
-  getCode3: function(lang) {
-    return Roo.languagedetect.LanguageDetect.nameToCode3[String(lang).toLowerCase()] || null;
-  },
-
-  getName2: function(code) {
-    return Roo.languagedetect.LanguageDetect.code2ToName[String(code).toLowerCase()] || null;
-  },
-
-  getName3: function(code) {
-    return Roo.languagedetect.LanguageDetect.code3ToName[String(code).toLowerCase()] || null;
-  }
-};
-
-Roo.apply(Roo.languagedetect.LanguageDetect, {
-  nameToCode2:{
-    'albanian':'sq',
-    'arabic':'ar',
-    'azeri':'az',
-    'bengali':'bn',
-    'bulgarian':'bg',
-    'cebuano':null,
-    'croatian':'hr',
-    'czech':'cs',
-    'danish':'da',
-    'dutch':'nl',
-    'english':'en',
-    'estonian':'et',
-    'farsi':'fa',
-    'finnish':'fi',
-    'french':'fr',
-    'german':'de',
-    'hausa':'ha',
-    'hawaiian':null,
-    'hindi':'hi',
-    'hungarian':'hu',
-    'icelandic':'is',
-    'indonesian':'id',
-    'italian':'it',
-    'kazakh':'kk',
-    'kyrgyz':'ky',
-    'latin':'la',
-    'latvian':'lv',
-    'lithuanian':'lt',
-    'macedonian':'mk',
-    'mongolian':'mn',
-    'nepali':'ne',
-    'norwegian':'no',
-    'pashto':'ps',
-    'pidgin':null,
-    'polish':'pl',
-    'portuguese':'pt',
-    'romanian':'ro',
-    'russian':'ru',
-    'serbian':'sr',
-    'slovak':'sk',
-    'slovene':'sl',
-    'somali':'so',
-    'spanish':'es',
-    'swahili':'sw',
-    'swedish':'sv',
-    'tagalog':'tl',
-    'turkish':'tr',
-    'ukrainian':'uk',
-    'urdu':'ur',
-    'uzbek':'uz',
-    'vietnamese':'vi',
-    'welsh':'cy'
-  },
-
-  nameToCode3:{
-    'albanian':'sqi',
-    'arabic':'ara',
-    'azeri':'aze',
-    'bengali':'ben',
-    'bulgarian':'bul',
-    'cebuano':'ceb',
-    'croatian':'hrv',
-    'czech':'ces',
-    'danish':'dan',
-    'dutch':'nld',
-    'english':'eng',
-    'estonian':'est',
-    'farsi':'fas',
-    'finnish':'fin',
-    'french':'fra',
-    'german':'deu',
-    'hausa':'hau',
-    'hawaiian':'haw',
-    'hindi':'hin',
-    'hungarian':'hun',
-    'icelandic':'isl',
-    'indonesian':'ind',
-    'italian':'ita',
-    'kazakh':'kaz',
-    'kyrgyz':'kir',
-    'latin':'lat',
-    'latvian':'lav',
-    'lithuanian':'lit',
-    'macedonian':'mkd',
-    'mongolian':'mon',
-    'nepali':'nep',
-    'norwegian':'nor',
-    'pashto':'pus',
-    'pidgin':'crp',
-    'polish':'pol',
-    'portuguese':'por',
-    'romanian':'ron',
-    'russian':'rus',
-    'serbian':'srp',
-    'slovak':'slk',
-    'slovene':'slv',
-    'somali':'som',
-    'spanish':'spa',
-    'swahili':'swa',
-    'swedish':'swe',
-    'tagalog':'tgl',
-    'turkish':'tur',
-    'ukrainian':'ukr',
-    'urdu':'urd',
-    'uzbek':'uzb',
-    'vietnamese':'vie',
-    'welsh':'cym'
-  },
-  code2ToName:{
-    'ar':'arabic',
-    'az':'azeri',
-    'bg':'bulgarian',
-    'bn':'bengali',
-    'cs':'czech',
-    'cy':'welsh',
-    'da':'danish',
-    'de':'german',
-    'en':'english',
-    'es':'spanish',
-    'et':'estonian',
-    'fa':'farsi',
-    'fi':'finnish',
-    'fr':'french',
-    'ha':'hausa',
-    'hi':'hindi',
-    'hr':'croatian',
-    'hu':'hungarian',
-    'id':'indonesian',
-    'is':'icelandic',
-    'it':'italian',
-    'kk':'kazakh',
-    'ky':'kyrgyz',
-    'la':'latin',
-    'lt':'lithuanian',
-    'lv':'latvian',
-    'mk':'macedonian',
-    'mn':'mongolian',
-    'ne':'nepali',
-    'nl':'dutch',
-    'no':'norwegian',
-    'pl':'polish',
-    'ps':'pashto',
-    'pt':'portuguese',
-    'ro':'romanian',
-    'ru':'russian',
-    'sk':'slovak',
-    'sl':'slovene',
-    'so':'somali',
-    'sq':'albanian',
-    'sr':'serbian',
-    'sv':'swedish',
-    'sw':'swahili',
-    'tl':'tagalog',
-    'tr':'turkish',
-    'uk':'ukrainian',
-    'ur':'urdu',
-    'uz':'uzbek',
-    'vi':'vietnamese'
-  },
-
-  code3ToName:{
-    'ara':'arabic',
-    'aze':'azeri',
-    'ben':'bengali',
-    'bul':'bulgarian',
-    'ceb':'cebuano',
-    'ces':'czech',
-    'crp':'pidgin',
-    'cym':'welsh',
-    'dan':'danish',
-    'deu':'german',
-    'eng':'english',
-    'est':'estonian',
-    'fas':'farsi',
-    'fin':'finnish',
-    'fra':'french',
-    'hau':'hausa',
-    'haw':'hawaiian',
-    'hin':'hindi',
-    'hrv':'croatian',
-    'hun':'hungarian',
-    'ind':'indonesian',
-    'isl':'icelandic',
-    'ita':'italian',
-    'kaz':'kazakh',
-    'kir':'kyrgyz',
-    'lat':'latin',
-    'lav':'latvian',
-    'lit':'lithuanian',
-    'mkd':'macedonian',
-    'mon':'mongolian',
-    'nep':'nepali',
-    'nld':'dutch',
-    'nor':'norwegian',
-    'pol':'polish',
-    'por':'portuguese',
-    'pus':'pashto',
-    'rom':'romanian',
-    'rus':'russian',
-    'slk':'slovak',
-    'slv':'slovene',
-    'som':'somali',
-    'spa':'spanish',
-    'sqi':'albanian',
-    'srp':'serbian',
-    'swa':'swahili',
-    'swe':'swedish',
-    'tgl':'tagalog',
-    'tur':'turkish',
-    'ukr':'ukrainian',
-    'urd':'urdu',
-    'uzb':'uzbek',
-    'vie':'vietnamese'
-  }
-});// source : https://github.com/FGRibreau/node-language-detect/tree/master
-
-Roo.languagedetect.Parser = function (string) {
-    /**
-     * The size of the trigram data arrays
-     *
-     * @access   private
-     * @var      int
-     */
-    this.threshold = 300;
-  
-    /**
-     * stores the trigram ranks of the sample
-     *
-     * @access  private
-     * @var     array
-     */
-    this.trigramRanks = {};
-  
-    /**
-     * Whether the parser should compile trigrams
-     *
-     * @access  private
-     * @var     bool
-     */
-    this.compileTrigram = true;
-  
-    this.compileUnicode = true;
-    this.unicodeSkipAscii = true;
-    this.unicodeBlocks = {};
-  
-    /**
-     * Whether the trigram parser should pad the beginning of the string
-     *
-     * @access  private
-     * @var     bool
-     */
-    this.trigramPadStart = false;
-  
-    this.trigram = {};
-  
-    /**
-     * the piece of text being parsed
-     *
-     * @access  private
-     * @var     string
-     */
-  
-    /**
-     * Constructor
-     *
-     * @access  private
-     * @param   string  string to be parsed
-     */
-    this.string = string ? string.replace(/[~!@#$%^&*()_|+\-=?;:",.<>\{\}\[\]\\\/]/g, ' ') : '';
-};
-
-  
-Roo.languagedetect.Parser.prototype = {
-  /**
-   * turn on/off padding the beginning of the sample string
-   *
-   * @access  public
-   * @param   bool   true for on, false for off
-   */
-  setPadStart: function (bool) {
-    this.trigramPadStart = bool || true;
-  },
-
-  /**
-   * Returns the trigram ranks for the text sample
-   *
-   * @access  public
-   * @return  array   trigram ranks in the text sample
-   */
-  getTrigramRanks: function () {
-    return this.trigramRanks;
-  },
-
-  getBlockCount: function () {
-    return Roo.languagedetect.Parser.dbUnicodeBlocks.length;
-  },
-
-  getUnicodeBlocks: function () {
-    return this.unicodeBlocks;
-  },
-
-  /**
-   * Executes the parsing operation
-   *
-   * Be sure to call the set*() functions to set options and the
-   * prepare*() functions first to tell it what kind of data to compute
-   *
-   * Afterwards the get*() functions can be used to access the compiled
-   * information.
-   *
-   * @access public
-   */
-  analyze: function () {
-    var len = this.string.length
-      , byteCounter = 0
-      , a = ' ', b = ' '
-      , dropone, c;
-
-    if (this.compileUnicode) {
-      var blocksCount = Roo.languagedetect.Parser.dbUnicodeBlocks.length;
-    }
-
-    // trigram startup
-    if (this.compileTrigram) {
-      // initialize them as blank so the parser will skip the first two
-      // (since it skips trigrams with more than  2 contiguous spaces)
-      a = ' ';
-      b = ' ';
-
-      // kludge
-      // if it finds a valid trigram to start and the start pad option is
-      // off, then set a variable that will be used to reduce this
-      // trigram after parsing has finished
-      if (!this.trigramPadStart) {
-        a = this.string.charAt(byteCounter++).toLowerCase();
-
-        if (a != ' ') {
-          b = this.string.charAt(byteCounter).toLowerCase();
-          dropone = ' ' + a + b;
-        }
-
-        byteCounter = 0;
-        a = ' ';
-        b = ' ';
-      }
-    }
-
-    var skippedCount = 0;
-    var unicodeChars = {};
-
-    while (byteCounter < len) {
-      c = this.string.charAt(byteCounter++).toLowerCase();
-
-      // language trigram detection
-      if (this.compileTrigram) {
-        if (!(b == ' ' && (a == ' ' || c == ' '))) {
-          var abc = a + b + c;
-          this.trigram[abc] = this.trigram[abc] ? this.trigram[abc] += 1 : 1;
-        }
-
-        a = b;
-        b = c;
-      }
-
-      if (this.compileUnicode) {
-        var charCode = c.charCodeAt(0);
-
-        if (this.unicodeSkipAscii
-          && c.match(/[a-z ]/i)
-          && (charCode < 65 || charCode > 122 || (charCode > 90 && charCode < 97))
-          && c != "'") {
-
-          skippedCount++;
-          continue;
-        }
-
-        unicodeChars[c] = unicodeChars[c] ? unicodeChars[c] += 1 : 1;
-      }
-    }
-
-    this.unicodeBlocks = {};
-
-    if (this.compileUnicode) {
-      var keys = Object.keys(unicodeChars)
-        , keysLength = keys.length;
-
-      for (var i = keysLength; i--;) {
-        var unicode = keys[i].charCodeAt(0)
-          , count = unicodeChars[keys[i]]
-          , search = this.unicodeBlockName(unicode, blocksCount)
-          , blockName = search != -1 ? search[2] : '[Malformatted]';
-
-        this.unicodeBlocks[blockName] = this.unicodeBlocks[blockName] ? this.unicodeBlocks[blockName] += count : count;
-      }
-    }
-
-    // trigram cleanup
-    if (this.compileTrigram) {
-      // pad the end
-      if (b != ' ') {
-        var ab = a + b + ' ';
-        this.trigram[ab] = this.trigram[ab] ? this.trigram[ab] += 1 : 1;
-      }
-
-      // perl compatibility; Language::Guess does not pad the beginning
-      // kludge
-      if (typeof dropone != 'undefined' && this.trigram[dropone] == 1) {
-        delete this.trigram[dropone];
-      }
-
-      if (this.trigram && Object.keys(this.trigram).length > 0) {
-        this.trigramRanks = this.arrRank(this.trigram);
-      } else {
-        this.trigramRanks = {};
-      }
-    }
-  },
-
-  /**
-   * Sorts an array by value breaking ties alphabetically
-   *
-   * @access private
-   * @param arr the array to sort
-   */
-  bubleSort: function (arr) {
-    // should do the same as this perl statement:
-    // sort { $trigrams{$b} == $trigrams{$a} ?  $a cmp $b : $trigrams{$b} <=> $trigrams{$a} }
-
-    // needs to sort by both key and value at once
-    // using the key to break ties for the value
-
-    // converts array into an array of arrays of each key and value
-    // may be a better way of doing this
-    var combined = [];
-
-    for (var key in arr) {
-      combined.push([key, arr[key]]);
-    }
-
-    combined = combined.sort(this.sortFunc);
-
-    var replacement = {};
-
-    var length = combined.length;
-
-    for (var i = 0; i < length; i++) {
-      replacement[combined[i][0]] = combined[i][1];
-    }
-
-    return replacement;
-  },
-
-  /**
-   * Converts a set of trigrams from frequencies to ranks
-   *
-   * Thresholds (cuts off) the list at $this->_threshold
-   *
-   * @access  protected
-   * @param   arr     array of trgram
-   * @return  object  ranks of trigrams
-   */
-  arrRank: function (arr) {
-
-    // sorts alphabetically first as a standard way of breaking rank ties
-    arr = this.bubleSort(arr);
-
-    var rank = {}, i = 0;
-
-    for (var key in arr) {
-      rank[key] = i++;
-
-      // cut off at a standard threshold
-      if (i >= this.threshold) {
-        break;
-      }
-    }
-
-    return rank;
-  },
-
-  /**
-   * Sort function used by bubble sort
-   *
-   * Callback function for usort().
-   *
-   * @access   private
-   * @param    a    first param passed by usort()
-   * @param    b    second param passed by usort()
-   * @return   int  1 if $a is greater, -1 if not
-   *
-   * @see      bubleSort()
-   */
-  sortFunc: function (a, b) {
-    // each is actually a key/value pair, so that it can compare using both
-    var aKey = a[0]
-      , aValue = a[1]
-      , bKey = b[0]
-      , bValue = b[1];
-
-    // if the values are the same, break ties using the key
-    if (aValue == bValue) {
-      return aKey.localeCompare(bKey);
-    } else {
-      return aValue > bValue ? -1 : 1;
-    }
-  },
-
-  unicodeBlockName: function (unicode, blockCount) {
-    if (unicode <= Roo.languagedetect.Parser.dbUnicodeBlocks[0][1]) {
-      return Roo.languagedetect.Parser.dbUnicodeBlocks[0];
-    }
-
-    var high = blockCount ? blockCount - 1 : Roo.languagedetect.Parser.dbUnicodeBlocks.length
-      , low = 1
-      , mid;
-
-    while (low <= high) {
-      mid = Math.floor((low + high) / 2);
-
-      if (unicode < Roo.languagedetect.Parser.dbUnicodeBlocks[mid][0]) {
-        high = mid - 1;
-      } else if (unicode > Roo.languagedetect.Parser.dbUnicodeBlocks[mid][1]) {
-        low = mid + 1;
-      } else {
-        return Roo.languagedetect.Parser.dbUnicodeBlocks[mid];
-      }
-    }
-
-    return -1;
-  }
-};
-
-Roo.apply(Roo.languagedetect.Parser, {
-  dbUnicodeBlocks: [
-      ["0x0000", "0x007F", "Basic Latin"],
-      ["0x0080", "0x00FF", "Latin-1 Supplement"],
-      ["0x0100", "0x017F", "Latin Extended-A"],
-      ["0x0180", "0x024F", "Latin Extended-B"],
-      ["0x0250", "0x02AF", "IPA Extensions"],
-      ["0x02B0", "0x02FF", "Spacing Modifier Letters"],
-      ["0x0300", "0x036F", "Combining Diacritical Marks"],
-      ["0x0370", "0x03FF", "Greek and Coptic"],
-      ["0x0400", "0x04FF", "Cyrillic"],
-      ["0x0500", "0x052F", "Cyrillic Supplement"],
-      ["0x0530", "0x058F", "Armenian"],
-      ["0x0590", "0x05FF", "Hebrew"],
-      ["0x0600", "0x06FF", "Arabic"],
-      ["0x0700", "0x074F", "Syriac"],
-      ["0x0750", "0x077F", "Arabic Supplement"],
-      ["0x0780", "0x07BF", "Thaana"],
-      ["0x0900", "0x097F", "Devanagari"],
-      ["0x0980", "0x09FF", "Bengali"],
-      ["0x0A00", "0x0A7F", "Gurmukhi"],
-      ["0x0A80", "0x0AFF", "Gujarati"],
-      ["0x0B00", "0x0B7F", "Oriya"],
-      ["0x0B80", "0x0BFF", "Tamil"],
-      ["0x0C00", "0x0C7F", "Telugu"],
-      ["0x0C80", "0x0CFF", "Kannada"],
-      ["0x0D00", "0x0D7F", "Malayalam"],
-      ["0x0D80", "0x0DFF", "Sinhala"],
-      ["0x0E00", "0x0E7F", "Thai"],
-      ["0x0E80", "0x0EFF", "Lao"],
-      ["0x0F00", "0x0FFF", "Tibetan"],
-      ["0x1000", "0x109F", "Myanmar"],
-      ["0x10A0", "0x10FF", "Georgian"],
-      ["0x1100", "0x11FF", "Hangul Jamo"],
-      ["0x1200", "0x137F", "Ethiopic"],
-      ["0x1380", "0x139F", "Ethiopic Supplement"],
-      ["0x13A0", "0x13FF", "Cherokee"],
-      ["0x1400", "0x167F", "Unified Canadian Aboriginal Syllabics"],
-      ["0x1680", "0x169F", "Ogham"],
-      ["0x16A0", "0x16FF", "Runic"],
-      ["0x1700", "0x171F", "Tagalog"],
-      ["0x1720", "0x173F", "Hanunoo"],
-      ["0x1740", "0x175F", "Buhid"],
-      ["0x1760", "0x177F", "Tagbanwa"],
-      ["0x1780", "0x17FF", "Khmer"],
-      ["0x1800", "0x18AF", "Mongolian"],
-      ["0x1900", "0x194F", "Limbu"],
-      ["0x1950", "0x197F", "Tai Le"],
-      ["0x1980", "0x19DF", "New Tai Lue"],
-      ["0x19E0", "0x19FF", "Khmer Symbols"],
-      ["0x1A00", "0x1A1F", "Buginese"],
-      ["0x1D00", "0x1D7F", "Phonetic Extensions"],
-      ["0x1D80", "0x1DBF", "Phonetic Extensions Supplement"],
-      ["0x1DC0", "0x1DFF", "Combining Diacritical Marks Supplement"],
-      ["0x1E00", "0x1EFF", "Latin Extended Additional"],
-      ["0x1F00", "0x1FFF", "Greek Extended"],
-      ["0x2000", "0x206F", "General Punctuation"],
-      ["0x2070", "0x209F", "Superscripts and Subscripts"],
-      ["0x20A0", "0x20CF", "Currency Symbols"],
-      ["0x20D0", "0x20FF", "Combining Diacritical Marks for Symbols"],
-      ["0x2100", "0x214F", "Letterlike Symbols"],
-      ["0x2150", "0x218F", "Number Forms"],
-      ["0x2190", "0x21FF", "Arrows"],
-      ["0x2200", "0x22FF", "Mathematical Operators"],
-      ["0x2300", "0x23FF", "Miscellaneous Technical"],
-      ["0x2400", "0x243F", "Control Pictures"],
-      ["0x2440", "0x245F", "Optical Character Recognition"],
-      ["0x2460", "0x24FF", "Enclosed Alphanumerics"],
-      ["0x2500", "0x257F", "Box Drawing"],
-      ["0x2580", "0x259F", "Block Elements"],
-      ["0x25A0", "0x25FF", "Geometric Shapes"],
-      ["0x2600", "0x26FF", "Miscellaneous Symbols"],
-      ["0x2700", "0x27BF", "Dingbats"],
-      ["0x27C0", "0x27EF", "Miscellaneous Mathematical Symbols-A"],
-      ["0x27F0", "0x27FF", "Supplemental Arrows-A"],
-      ["0x2800", "0x28FF", "Braille Patterns"],
-      ["0x2900", "0x297F", "Supplemental Arrows-B"],
-      ["0x2980", "0x29FF", "Miscellaneous Mathematical Symbols-B"],
-      ["0x2A00", "0x2AFF", "Supplemental Mathematical Operators"],
-      ["0x2B00", "0x2BFF", "Miscellaneous Symbols and Arrows"],
-      ["0x2C00", "0x2C5F", "Glagolitic"],
-      ["0x2C80", "0x2CFF", "Coptic"],
-      ["0x2D00", "0x2D2F", "Georgian Supplement"],
-      ["0x2D30", "0x2D7F", "Tifinagh"],
-      ["0x2D80", "0x2DDF", "Ethiopic Extended"],
-      ["0x2E00", "0x2E7F", "Supplemental Punctuation"],
-      ["0x2E80", "0x2EFF", "CJK Radicals Supplement"],
-      ["0x2F00", "0x2FDF", "Kangxi Radicals"],
-      ["0x2FF0", "0x2FFF", "Ideographic Description Characters"],
-      ["0x3000", "0x303F", "CJK Symbols and Punctuation"],
-      ["0x3040", "0x309F", "Hiragana"],
-      ["0x30A0", "0x30FF", "Katakana"],
-      ["0x3100", "0x312F", "Bopomofo"],
-      ["0x3130", "0x318F", "Hangul Compatibility Jamo"],
-      ["0x3190", "0x319F", "Kanbun"],
-      ["0x31A0", "0x31BF", "Bopomofo Extended"],
-      ["0x31C0", "0x31EF", "CJK Strokes"],
-      ["0x31F0", "0x31FF", "Katakana Phonetic Extensions"],
-      ["0x3200", "0x32FF", "Enclosed CJK Letters and Months"],
-      ["0x3300", "0x33FF", "CJK Compatibility"],
-      ["0x3400", "0x4DBF", "CJK Unified Ideographs Extension A"],
-      ["0x4DC0", "0x4DFF", "Yijing Hexagram Symbols"],
-      ["0x4E00", "0x9FFF", "CJK Unified Ideographs"],
-      ["0xA000", "0xA48F", "Yi Syllables"],
-      ["0xA490", "0xA4CF", "Yi Radicals"],
-      ["0xA700", "0xA71F", "Modifier Tone Letters"],
-      ["0xA800", "0xA82F", "Syloti Nagri"],
-      ["0xAC00", "0xD7AF", "Hangul Syllables"],
-      ["0xD800", "0xDB7F", "High Surrogates"],
-      ["0xDB80", "0xDBFF", "High Private Use Surrogates"],
-      ["0xDC00", "0xDFFF", "Low Surrogates"],
-      ["0xE000", "0xF8FF", "Private Use Area"],
-      ["0xF900", "0xFAFF", "CJK Compatibility Ideographs"],
-      ["0xFB00", "0xFB4F", "Alphabetic Presentation Forms"],
-      ["0xFB50", "0xFDFF", "Arabic Presentation Forms-A"],
-      ["0xFE00", "0xFE0F", "Variation Selectors"],
-      ["0xFE10", "0xFE1F", "Vertical Forms"],
-      ["0xFE20", "0xFE2F", "Combining Half Marks"],
-      ["0xFE30", "0xFE4F", "CJK Compatibility Forms"],
-      ["0xFE50", "0xFE6F", "Small Form Variants"],
-      ["0xFE70", "0xFEFF", "Arabic Presentation Forms-B"],
-      ["0xFF00", "0xFFEF", "Halfwidth and Fullwidth Forms"],
-      ["0xFFF0", "0xFFFF", "Specials"],
-      ["0x10000", "0x1007F", "Linear B Syllabary"],
-      ["0x10080", "0x100FF", "Linear B Ideograms"],
-      ["0x10100", "0x1013F", "Aegean Numbers"],
-      ["0x10140", "0x1018F", "Ancient Greek Numbers"],
-      ["0x10300", "0x1032F", "Old Italic"],
-      ["0x10330", "0x1034F", "Gothic"],
-      ["0x10380", "0x1039F", "Ugaritic"],
-      ["0x103A0", "0x103DF", "Old Persian"],
-      ["0x10400", "0x1044F", "Deseret"],
-      ["0x10450", "0x1047F", "Shavian"],
-      ["0x10480", "0x104AF", "Osmanya"],
-      ["0x10800", "0x1083F", "Cypriot Syllabary"],
-      ["0x10A00", "0x10A5F", "Kharoshthi"],
-      ["0x1D000", "0x1D0FF", "Byzantine Musical Symbols"],
-      ["0x1D100", "0x1D1FF", "Musical Symbols"],
-      ["0x1D200", "0x1D24F", "Ancient Greek Musical Notation"],
-      ["0x1D300", "0x1D35F", "Tai Xuan Jing Symbols"],
-      ["0x1D400", "0x1D7FF", "Mathematical Alphanumeric Symbols"],
-      ["0x20000", "0x2A6DF", "CJK Unified Ideographs Extension B"],
-      ["0x2F800", "0x2FA1F", "CJK Compatibility Ideographs Supplement"],
-      ["0xE0000", "0xE007F", "Tags"],
-      ["0xE0100", "0xE01EF", "Variation Selectors Supplement"],
-      ["0xF0000", "0xFFFFF", "Supplementary Private Use Area-A"],
-      ["0x100000", "0x10FFFF", "Supplementary Private Use Area-B"]
-  ]
-});Roo.languagedetect.Detect = function() {
-    this.languageDetect = new Roo.languagedetect.LanguageDetect('iso2');
-
-    var regex = '/';
-    Roo.each(Roo.languagedetect.zh_HK, function(code) {
-        regex = regex + code + '|';
-    });
-    regex.replace(/\|$/, '');
-    regex += '/';
-    this.codeToRegex['zh_HK'] = new RegExp(regex);
-
-    var regex = '/';
-    Roo.each(Roo.languagedetect.zh_CN, function(code) {
-        regex = regex + code + '|';
-    });
-    regex.replace(/\|$/, '');
-    regex += '/';
-    this.codeToRegex['zh_CN'] = new RegExp(regex);
-};
-
-Roo.languagedetect.Detect.prototype = {
-    // characters in supplementary planes (\u{xxxxx}) are not detected.
-    codeToRegex : {
-        // 4e00-9fff : CJK Unified Ideographs
-        // 3400-4dbf : CJK Unified Ideographs Extension A
-        // 20000-2a6df : CJK Unified Ideographs Extension B
-        // 2a700-2b73f : CJK Unified Ideographs Extension C
-        // 2b740-2b81f : CJK Unified Ideographs Extension D
-        // 2b820-2ceaf : CJK Unified Ideographs Extension E
-        // 2ceb0-2ebef : CJK Unified Ideographs Extension F
-        // 30000-3134f : CJK Unified Ideographs Extension G
-        // 31350-323af : CJK Unified Ideographs Extension H
-        // 2ebf0-2ee5f : CJK Unified Ideographs Extension I
-        // f900-faff : CJK Compatibility Ideographs
-        'cjk' : /[\u4e00-\u9fff]|[\u3400-\u4dbf]|[\uf900-\ufaff]/,
-        // 3040-309f : Hiragana
-        // 30a0-30ff : Katakana
-        // 31f0-31ff : Katakana Phonetic Extensions
-        // 1aff0-1afff : Kana Extended-B
-        // 1b000-1b0ff : Kana Supplement
-        // 1b100-1b12f : Kana Extended-A
-        // 1b130-1b16f : Small kana Extension
-        'ja' : /[\u3040-\u30ff]|[\u31f0-\u31ff]/,
-        // ac00-d7af : Hangul Syllables
-        // 1100-11ff : Hangul Jamo
-        // 3130-318f : Hangul Compatibility Jamo
-        // a960-a97f : Hangul Jamo Extended-A
-        // d7b0-d7ff : Hangul Jamo Extended-B
-        'ko' : /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/,
-        // 0e00-0e7f : Thai
-        'th' : /[\u0e00-\u0e7f]/,
-        // 0590-05ff : Hebrew
-        // fb1d-fb4f : Hebrew Presentation Forms
-        'he' : /[\u0590-\u05ff]|[\ufb1d-\ufb4f]/
-    },
-
-    codeToName : {
-        'ja':'japanese',
-        'ko':'korean',
-        'zh_HK':'traditional chinese',
-        'zh_CN':'simplified chinese',
-        'th':'thai',
-        'he':'hebrew'
-    },
-
-    isScoreSupported : function(lang) {
-        return this.languageDetect.getLanguageCodes().includes(lang);
-    },
-    isCountSupported : function(lang) {
-        return Object.keys(this.codeToName).includes(lang);
-    },
-    isSupported : function(lang) {
-        return this.isScoreSupported(lang) || this.isCountSupported(lang);
-    },
-    getName : function(code) {
-        if(!this.isSupported(code)) {
-            return '';
-        }
-        return (
-            this.languageDetect.getName2(code) || // LanguageDetect
-            this.codeToName[code] || // CJK
-            ''
-        );
-    },
-    isLanguage : function(input, lang) {
-        if(!this.isSupported(lang)) {
-            return false;
-        }
-
-        var isLang = {...this.detectLangByCount(input), ...this.detectLangByScore(input)};
-
-        // positive testing
-        if(typeof(isLang[lang]) === 'undefined' || isLang[lang] !== true) {
-            return false;
-        }
-
-        var ret = true;
-
-        Roo.each(Object.keys(isLang), function(code) {
-            // negative testing
-            if(code != lang && isLang[code] === true) {
-                ret = false;
-            }
-        });
-
-        return ret;
-    },
-
-    getHighestScore : function(input) {
-        var scores = this.languageDetect.detect(input);
-        if(!scores.length) {
-            return [];
-        }
-        return scores[0];
-    },
-    detectLangByScore : function (input) {
-        var score = this.getHighestScore(input);
-        if(!score.length) {
-            return {};
-        }
-
-        return {
-            [score[0]] : score[1] > 0.2
-        };
-    },
-
-    getCount : function(input) {
-        var en = input.replaceAll(/[\s\d\p{P}]+/gu, ' ');
-        en = en.replaceAll(/[^A-Za-z ]/g, '');
-        var enWords = en.trim().split(/\s+/); // number of english words
-
-        input = input.replaceAll(/\s+|\d+|[\p{P}]/gu, ''); // remove all spaces ,digits and punctuations
-        input = input.replaceAll(/[A-Za-z]/g, ''); // remove all english alphabet
-
-        var count = {};
-        Roo.each(Object.keys(this.codeToRegex), function(code) {
-            count[code] = 0;
-            for(var i = 0; i < input.length; i ++) {
-                if(this.codeToRegex[code].test(input[i])) {
-                    count[code] ++;
-                }
-            }
-        }, this);
-
-        count['total'] = input.length + enWords.length; // number of characters which are not english alphabet + number of english words
-
-        return count;
-    },
-
-    detectLangByCount : function(input) {
-        var count = this.getCount(input);
-
-        var ret = {};
-
-        Roo.each(Object.keys(this.codeToName), function(code) {
-            ret[code] = false;
-        });
-
-        if(count['total'] == 0) {
-            return ret;
-        }
-
-        // japanese
-        if (
-            count['ja'] / count['total'] > 0.3 && // > 30% japanese characters
-            (count['ja'] + count['cjk']) / count['total'] > 0.5 // > 50% (japanese characters + cjk)
-        ) {
-            ret['ja'] = true;
-        }
-
-        // korean
-        if (
-            count['ko'] / count['total'] > 0.3 && // > 30% korean characters
-            (count['ko'] + count['cjk']) / count['total'] > 0.5 // > 50% (korean characters + cjk)
-        ) {
-            ret['ko'] = true;
-        }
-
-        // chinese
-        if(
-            !ret['ja'] && // not detected as japanese
-            !ret['ko'] && // not detected as korean
-            count['cjk'] / count['total'] > 0.5 // > 50% chinese characters
-        ) {
-            // traditional chinese if there are more traiditonal chinese characters than simplified chinese characters
-            if(count['zh_HK'] > count['zh_CN']) {
-                ret['zh_HK'] = true;
-            }
-            // else simplified chinese
-            else {
-                ret['zh_CN'] = true;
-            }
-        }
-
-        if(count['th'] / count['total'] > 0.5) {
-            ret['th'] = true;
-        }
-
-        if(count['he'] / count['total'] > 0.5) {
-            ret['he'] = true;
-        }
-
-        return ret;
-
     }
 };/*
  * Based on:
