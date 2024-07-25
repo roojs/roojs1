@@ -10,7 +10,7 @@ cat roojs-core-debug.js  roojs-ui-debug.js > roojs-debug.js
 
  
 #bootstrap
-roojspacker -t roojs-bootstrap.js -T roojs-bootstrap-debug.js -i buildSDK/dependancy_bootstrap.txt
+roojspacker -t roojs-bootstrap.js -T roojs-bootstrap-debug.js -i buildSDK/dependancy_bootstrap.txt -i buildSDK/dependancy_bootstrap2.txt
  
 # mostly not needed?
 #calendar
