@@ -37,7 +37,9 @@
 	 visibility:hidden;
 }
 
-
+.roo-el-mask-msg.no-spinner .fa-spinner {
+	display: none;
+}
 
 
 
