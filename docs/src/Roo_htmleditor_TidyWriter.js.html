@@ -202,10 +202,13 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.in_inline</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/\s+/g,</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// all white space inc line breaks to a slingle' '
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/\s+/,</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">);  </span><span class="jsdoc-comment">// all white space to single white space
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'&amp;emsp;'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// we allow &lt;span&gt;&amp;emsp&lt;/span&gt; - as a special space char.
+                    </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/\s+/,</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">);  </span><span class="jsdoc-comment">// all white space to single white space
+                </span><span class="jsdoc-syntax">}
 
 
-                // if next tag is '&lt;BR&gt;', then we can trim right..
+
+                </span><span class="jsdoc-comment">// if next tag is '&lt;BR&gt;', then we can trim right..
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nextSibling </span><span class="jsdoc-syntax">&amp;&amp;
                     </span><span class="jsdoc-var">node.nextSibling.nodeType </span><span class="jsdoc-syntax">== 1 &amp;&amp;
                     </span><span class="jsdoc-var">node.nextSibling.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'BR' </span><span class="jsdoc-syntax">)
