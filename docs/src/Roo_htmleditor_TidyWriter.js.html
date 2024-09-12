@@ -151,7 +151,7 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value.match</span><span class="jsdoc-syntax">(/\s+$/);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;　&quot; </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">value.match</span><span class="jsdoc-syntax">(/\s+$/);
 
     },
 
@@ -200,9 +200,11 @@
         }
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.in_inline</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/\s+/g,</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// all white space inc line breaks to a slingle' '
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;　&quot;</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/\s+/g,</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// all white space inc line breaks to a slingle' '
+            </span><span class="jsdoc-syntax">}
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'&amp;emsp;'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// we allow &lt;span&gt;&amp;emsp&lt;/span&gt; - as a special space char.
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;　&quot;</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// we allow &lt;span&gt;&amp;emsp&lt;/span&gt; - as a special space char.
                     </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/\s+/,</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">);  </span><span class="jsdoc-comment">// all white space to single white space
                 </span><span class="jsdoc-syntax">}
 
@@ -238,10 +240,11 @@
         }
         </span><span class="jsdoc-comment">// see if previous element was a inline element.
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">indentstr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indentstr</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;　&quot;</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/\s+/g,</span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// all whitespace into single white space.
+        </span><span class="jsdoc-syntax">}
 
-        </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/\s+/g,</span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// all whitespace into single white space.
-
-        // should trim left?
+        </span><span class="jsdoc-comment">// should trim left?
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.previousSibling </span><span class="jsdoc-syntax">&amp;&amp;
             </span><span class="jsdoc-var">node.previousSibling.nodeType </span><span class="jsdoc-syntax">== 1 &amp;&amp;
             </span><span class="jsdoc-var">Roo.htmleditor.TidyWriter.inline_elements.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.previousSibling.nodeName</span><span class="jsdoc-syntax">) &gt; -1)
@@ -250,9 +253,11 @@
 
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">this.addLine</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/^\s+/,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// trim left
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;　&quot;</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/^\s+/,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// trim left
+            </span><span class="jsdoc-syntax">}
 
-        </span><span class="jsdoc-syntax">}
+        }
         </span><span class="jsdoc-comment">// should trim right?
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nextSibling </span><span class="jsdoc-syntax">&amp;&amp;
             </span><span class="jsdoc-var">node.nextSibling.nodeType </span><span class="jsdoc-syntax">== 1 &amp;&amp;
@@ -261,14 +266,16 @@
           </span><span class="jsdoc-comment">// noop
 
         </span><span class="jsdoc-syntax">}  </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/\s+$/,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// trim right
-        </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;　&quot;</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/\s+$/,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// trim right
+            </span><span class="jsdoc-syntax">}
+        }
 
 
 
 
 
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text.length </span><span class="jsdoc-syntax">&lt; 1) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text.length </span><span class="jsdoc-syntax">&lt; 1 ||   </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;　&quot;</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">text.match</span><span class="jsdoc-syntax">(/\n/)) {
