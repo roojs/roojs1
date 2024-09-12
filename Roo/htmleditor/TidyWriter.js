@@ -202,7 +202,10 @@ Roo.htmleditor.TidyWriter.prototype = {
         if (this.in_inline) {
             text = text.replace(/\s+/g,' '); // all white space inc line breaks to a slingle' '
             if (text != ' ') {
-                text = text.replace(/\s+/,' ');  // all white space to single white space
+                if (text != '&emsp;') { // we allow <span>&emsp</span> - as a special space char.
+                    text = text.replace(/\s+/,' ');  // all white space to single white space
+                }
+                
                 
                     
                 // if next tag is '<BR>', then we can trim right..
