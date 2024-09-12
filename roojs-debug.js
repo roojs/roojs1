@@ -73724,7 +73724,7 @@ Roo.htmleditor.TidyWriter.prototype = {
         if (value === false) {
             return true;
         }
-        return value.match(/\s+$/);
+        return value != "　" && value.match(/\s+$/);
         
     },
     
@@ -73773,9 +73773,11 @@ Roo.htmleditor.TidyWriter.prototype = {
         }
         
         if (this.in_inline) {
-            text = text.replace(/\s+/g,' '); // all white space inc line breaks to a slingle' '
+            if (text != "　") {
+                text = text.replace(/\s+/g,' '); // all white space inc line breaks to a slingle' '
+            }
             if (text != ' ') {
-                if (text != '&emsp;') { // we allow <span>&emsp</span> - as a special space char.
+                if (text != "　") { // we allow <span>&emsp</span> - as a special space char.
                     text = text.replace(/\s+/,' ');  // all white space to single white space
                 }
                 
@@ -73811,8 +73813,9 @@ Roo.htmleditor.TidyWriter.prototype = {
         }
         // see if previous element was a inline element.
         var indentstr = this.indentstr;
-   
-        text = text.replace(/\s+/g," "); // all whitespace into single white space.
+        if (text != "　") { 
+            text = text.replace(/\s+/g," "); // all whitespace into single white space.
+        }
         
         // should trim left?
         if (node.previousSibling &&
@@ -73823,7 +73826,9 @@ Roo.htmleditor.TidyWriter.prototype = {
             
         } else {
             this.addLine();
-            text = text.replace(/^\s+/,''); // trim left
+            if (text != "　") { 
+                text = text.replace(/^\s+/,''); // trim left
+            }
           
         }
         // should trim right?
@@ -73834,14 +73839,16 @@ Roo.htmleditor.TidyWriter.prototype = {
           // noop
             
         }  else {
-            text = text.replace(/\s+$/,''); // trim right
+            if (text != "　") { 
+                text = text.replace(/\s+$/,''); // trim right
+            }
         }
          
               
         
         
         
-        if (text.length < 1) {
+        if (text.length < 1 ||   text == "　") {
             return;
         }
         if (!text.match(/\n/)) {
