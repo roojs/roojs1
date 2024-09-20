@@ -28002,7 +28002,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
 
-        var list = doc.createElement(listItems[0]['level']); // what about number lists...
+        var list = doc.createElement(listItems[0]['type']); // what about number lists...
         parent.insertBefore(item, list);
         var level = 0;
         var stack = [list];
