@@ -232,6 +232,13 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 break;
             }
 
+            var spans = item.getElementsByTagName('span');
+
+            if (!spans.length) {
+                continue;
+            }
+
+
             var listItem = {
                 'node' : item,
                 'type' : 'ul'
@@ -240,12 +247,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if (item.hasAttribute('style') && item.getAttribute('style').match(/mso-list/)) {
 
                 // get the type of list
-                var spans = item.getElementsByTagName('span');
-
-                if (!spans.length) {
-                    continue;
-                }
-
                 var fontFamily = false;
                 for(var i = 0; i < spans.length; i ++) {
                     if(span[i].hasAttribute('style') && span[i].style.fontFamily != '') {
