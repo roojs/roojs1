@@ -237,6 +237,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             var spans = item.getElementsByTagName('span');
 
             if (!spans.length) {
+                parent.remove(item);
                 continue;
             }
 
