@@ -223,9 +223,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var maxListLevel = 0;
         var marginToLevel = {};
 
-        Roo.log('SPLIT');
-        Roo.log(''.split(';'));
-
         while(item) {
             if(item.nodeType != 1) {
                 item = item.nextSibling;
