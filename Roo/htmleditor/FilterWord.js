@@ -272,7 +272,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 }
 
                 // get the level of list
-                var style = this.styleToObject(item); // mo-list is from the parent node
                 var margin = style['margin-left'];
                 if (typeof(marginToLevel[margin]) == 'undefined') {
                     marginToLevel[margin] = maxListLevel;
