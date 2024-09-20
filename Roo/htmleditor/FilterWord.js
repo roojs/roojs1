@@ -229,6 +229,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 break;
             }
 
+            var style = this.styleToObject(item);
+
             var listItem = {
                 'node' : item,
                 'type' : 'ul'
@@ -254,6 +256,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) ) {
                     listItem['type'] = 'ol';
                 }
+
+                var style = this.styleToObject(item);
 
                 // check the level of the list item
                 var style = {};
