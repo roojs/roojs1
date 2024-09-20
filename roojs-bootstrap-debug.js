@@ -27964,6 +27964,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     Roo.log('ol');
                     listItem['type'] = 'ol';
                 }
+                Roo.log('ul');
 
                 listItems.push(listItem);
                 item = item.nextSibling;
