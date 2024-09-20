@@ -234,7 +234,18 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 'type' : 'ul'
             };
 
+            // see if list type is ordered list
             var spans = ns.getElementsByTagName('span');
+            var span = spans[0];
+            var fontFamily = '';
+            for(var i = 0; i < spans.length; i ++) {
+                span = spans[i];
+                if(spans[i].hasAttribute('style') && spans[i].style.fontFamily != '') {
+                    fontFamily = spans[i].style.fontFamily;
+                }
+            }
+
+            if(!ff.match(/(Symbol|Wingdings)/) && "·o".indexOf(se.innerText.trim()) < 0)
 
 
         }
