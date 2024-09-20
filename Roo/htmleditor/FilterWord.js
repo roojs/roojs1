@@ -218,6 +218,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     replaceDocListItem: function(item)
     {
         var parent = item.parentNode;
+        var doc = parent.ownerDocument;
 
         var listItems = [];
         var maxListLevel = 0;
@@ -298,7 +299,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         listItems.forEach(function(listItem) {
             var spans = listItem['node'].getElementsByTagName('span');
 
-            var num = 1;
+            // var num = 1;
             var style = {};
             for(var i = 0; i < spans.length; i++) {
             
@@ -307,7 +308,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     continue;
                 }
                 if (listItem['type'] == 'ol') {
-                   num = spans[i].innerText.replace(/[^0-9]+]/g,'')  * 1;
+                //    num = spans[i].innerText.replace(/[^0-9]+]/g,'')  * 1;
                 }
                 spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
                 break;
@@ -328,14 +329,14 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             //     stack[nlvl] = nul;
                 
             // }
-            level = listLevel;
+            // level = listLevel;
             
             // not starting at 1..
-            if (!stack[listLevel].hasAttribute("start") && listItem['type'] == 'ol') {
-                stack[listLevel].setAttribute("start", num);
-            }
+            // if (!stack[listLevel].hasAttribute("start") && listItem['type'] == 'ol') {
+            //     stack[listLevel].setAttribute("start", num);
+            // }
             
-            var nli = stack[nlvl].appendChild(doc.createElement('li'));
+            var nli = stack[listLevel].appendChild(doc.createElement('li'));
             last_li = nli;
             nli.innerHTML = n.innerHTML;
             //Roo.log("innerHTML = " + n.innerHTML);
