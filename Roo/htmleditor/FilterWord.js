@@ -238,20 +238,37 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
                 // see if list type is ordered list
                 var spans = item.getElementsByTagName('span');
+
+                if (!spans.length) {
+                    continue;
+                }
+                
                 var fontFamily = false;
                 for(var i = 0; i < spans.length; i ++) {
                     if(span[i].hasAttribute('style') && span[i].style.fontFamily != '') {
                         fontFamily = span.style.fontFamily;
                         break;
                     }
-                    
                 }
-
-
 
                 if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) ) {
                     listItem['type'] = 'ol';
                 }
+
+                // check the level of the list item
+                var style = {};
+                for(var i = 0; i < spans.length; i++) {
+                    style = this.styleToObject(spans[i]);
+                    if (typeof(style['mso-list']) == 'undefined') {
+                        continue;
+                    }
+                    if (listtype == 'ol') {
+                       num = spans[i].innerText.replace(/[^0-9]+]/g,'')  * 1;
+                    }
+                    spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
+                    break;
+                }
+
 
                 listItems.push(listItem);
                 item = item.nextSibling;
