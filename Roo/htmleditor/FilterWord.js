@@ -289,6 +289,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
 
+        var ul = parent.ownerDocument.createElement(listItems[0]['level']); // what about number lists...
+        parent.insertBefore(ul, p);
+        var lvl = 0;
         // var stack = [ ul ];
         // var last_li = false;
 
@@ -311,25 +314,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
 
             Roo.log(num);
-
-            /*
-
-            //Roo.log("NOW GOT innertHMLT=" + n.innerHTML);
-            style = this.styleToObject(n); // mo-list is from the parent node.
-            if (typeof(style['mso-list']) == 'undefined') {
-                //Roo.log("parent is missing level");
-                  
-                parent.removeChild(n);
-                 
-                return;
-            }
-            
-            var margin = style['margin-left'];
-            if (typeof(margin_to_depth[margin]) == 'undefined') {
-                max_margins++;
-                margin_to_depth[margin] = max_margins;
-            }
-            nlvl = margin_to_depth[margin] ;
              
             if (nlvl > lvl) {
                 //new indent
@@ -343,6 +327,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 
             }
             lvl = nlvl;
+
+            /*
             
             // not starting at 1..
             if (!stack[nlvl].hasAttribute("start") && listtype == "ol") {
