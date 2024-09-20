@@ -243,7 +243,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             
             if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
                 items.push(ns);
-                listItem['DOM'] = ns;
+                listItem['node'] = ns;
                 ns = ns.nextSibling;
                 has_list = true;
                 if (!spans.length) {
