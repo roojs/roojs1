@@ -222,8 +222,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             parent = p.parentNode,
             doc = parent.ownerDocument,
             items = [];
-         
-        //Roo.log("Parsing: " + p.innerText)    ;
+        
         var listtype = 'ul';   
         while (ns) {
             if (ns.nodeType != 1) {
