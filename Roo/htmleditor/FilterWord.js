@@ -221,10 +221,13 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var ns = p,
             parent = p.parentNode,
             doc = parent.ownerDocument,
-            items = [];
+            items = [],
+            listItems = [];
         
         var listtype = 'ul';   
         while (ns) {
+            var listItem = {};
+            
             if (ns.nodeType != 1) {
                 ns = ns.nextSibling;
                 continue;
