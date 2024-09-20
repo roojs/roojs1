@@ -27965,6 +27965,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
                 continue;
             }
+
+            break;
         }
 
         Roo.log('LIST ITEMS');
