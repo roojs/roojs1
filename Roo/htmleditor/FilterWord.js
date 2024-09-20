@@ -285,7 +285,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         Roo.log(listItems);
 
         if (!listItems.length) {
-            item.className = "";
             return;
         }
     },
