@@ -256,37 +256,32 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 'level' : 0
             };
 
-            if (item.hasAttribute('style') && item.getAttribute('style').match(/mso-list/)) {
-
-                // get the type of list
-                var fontFamily = false;
-                for(var i = 0; i < spans.length; i ++) {
-                    if(spans[i].hasAttribute('style') && spans[i].style.fontFamily != '') {
-                        fontFamily = spans[i].style.fontFamily;
-                        break;
-                    }
+            // get the type of list
+            var fontFamily = false;
+            for(var i = 0; i < spans.length; i ++) {
+                if(spans[i].hasAttribute('style') && spans[i].style.fontFamily != '') {
+                    fontFamily = spans[i].style.fontFamily;
+                    break;
                 }
-
-                if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) ) {
-                    listItem['type'] = 'ol';
-                }
-
-                // get the level of list
-                var margin = style['margin-left'];
-                if (typeof(marginToLevel[margin]) == 'undefined') {
-                    marginToLevel[margin] = maxListLevel;
-                    maxListLevel ++;
-
-                }
-                listItem['level'] = marginToLevel[margin];
-
-                listItems.push(listItem);
-
-                item = item.nextSibling;
-                continue;
             }
 
-            break;
+            if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) ) {
+                listItem['type'] = 'ol';
+            }
+
+            // get the level of list
+            var margin = style['margin-left'];
+            if (typeof(marginToLevel[margin]) == 'undefined') {
+                marginToLevel[margin] = maxListLevel;
+                maxListLevel ++;
+
+            }
+            listItem['level'] = marginToLevel[margin];
+
+            listItems.push(listItem);
+
+            item = item.nextSibling;
+            continue;
         }
 
         Roo.log('LIST ITEMS');
