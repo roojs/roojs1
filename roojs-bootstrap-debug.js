@@ -27929,6 +27929,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
     replaceDocListItem: function(item)
     {
+        var currentItem = item;
         var parent = item.parentNode;
         var doc = parent.ownerDocument;
 
@@ -27936,32 +27937,32 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var maxListLevel = 0;
         var marginToLevel = {};
 
-        while(item) {
-            if(item.nodeType != 1) {
-                item = item.nextSibling;
+        while(currentItem) {
+            if(currentItem.nodeType != 1) {
+                currentItem = currentItem.nextSibling;
                 continue;
             }
 
             // list end
-            if (!item.className.match(/(MsoListParagraph)/i)) {
+            if (!currentItem.className.match(/(MsoListParagraph)/i)) {
                 break;
             }
 
-            var style = this.styleToObject(item);
-            var spans = item.getElementsByTagName('span');
+            var style = this.styleToObject(currentItem);
+            var spans = currentItem.getElementsByTagName('span');
             if(
                 typeof(style['mso-list']) == 'undefined' // no mso-list in style
                 ||
                 !spans.length // no span
             ) {
-                item = item.nextSibling;
-                parent.remove(item.previousSibling); // removed
+                currentItem = currentItem.nextSibling;
+                parent.remove(currentItem.previousSibling); // removed
                 continue;
             }
 
 
             var listItem = {
-                'node' : item,
+                'node' : currentItem,
                 'type' : 'ul',
                 'level' : 0
             };
@@ -27990,7 +27991,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             listItems.push(listItem);
 
-            item = item.nextSibling;
+            currentItem = currentItem.nextSibling;
             continue;
         }
 
