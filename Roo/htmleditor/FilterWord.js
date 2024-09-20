@@ -217,7 +217,18 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
     replaceDocListItem: function(item)
     {
-        listItems = [];
+        var listItems = [];
+
+        while(item) {
+            if(item.nodeType != 1) {
+                item = item.nextSibling;
+                continue;
+            }
+
+            if (!ns.className.match(/(MsoListParagraph|ql-indent-1)/i)) {
+                break;
+            }
+        }
     },
     
      
