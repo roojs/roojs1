@@ -27958,15 +27958,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     }
                 }
 
-                Roo.log(fontFamily);
-                Roo.log(!fontFamily.match(/(Symbol|Wingdings)/));
-                Roo.log(span.innerText.trim());
-
-                if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/)) {
-                    Roo.log('ol');
+                if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) ) {
                     listItem['type'] = 'ol';
                 }
-                Roo.log('ul');
 
                 listItems.push(listItem);
                 item = item.nextSibling;
