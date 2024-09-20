@@ -317,21 +317,19 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
 
             var listLevel = listItem['level'];
-
-            Roo.log(num);
              
-            // if (listLevel > lvl) {
-            //     //new indent
-            //     var nul = doc.createElement(listtype); // what about number lists...
-            //     if (!last_li) {
-            //         last_li = doc.createElement('li');
-            //         stack[lvl].appendChild(last_li);
-            //     }
-            //     last_li.appendChild(nul);
-            //     stack[nlvl] = nul;
+            if (listLevel > level) {
+                //new indent
+                var nul = doc.createElement(listtype); // what about number lists...
+                if (!last_li) {
+                    last_li = doc.createElement('li');
+                    stack[lvl].appendChild(last_li);
+                }
+                last_li.appendChild(nul);
+                stack[nlvl] = nul;
                 
-            // }
-            // level = listLevel;
+            }
+            level = listLevel;
             
             // not starting at 1..
             // if (!stack[listLevel].hasAttribute("start") && listItem['type'] == 'ol') {
