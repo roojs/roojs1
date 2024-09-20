@@ -219,6 +219,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
     replaceDocListItem: function(item)
     {
+        var newItem = item;
         var parent = item.parentNode;
         var doc = parent.ownerDocument;
 
