@@ -217,7 +217,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
     replaceDocListItem: function(item)
     {
-
+        listItems = [];
     },
     
      
@@ -229,7 +229,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             parent = p.parentNode,
             doc = parent.ownerDocument,
             items = [],
-            listItems = [];
         
         var listtype = 'ul';   
         while (ns) {
@@ -242,15 +241,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 break;
             }
 
-            var listItem = {
-                'type' : 'ul'
-            };
-
             var spans = ns.getElementsByTagName('span');
             
             if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
                 items.push(ns);
-                listItem['node'] = ns;
                 ns = ns.nextSibling;
                 has_list = true;
                 if (!spans.length) {
@@ -270,10 +264,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 //Roo.log("got font family: " + ff);
                 if (typeof(ff) != 'undefined' && !ff.match(/(Symbol|Wingdings)/) && "·o".indexOf(se.innerText.trim()) < 0) {
                     listtype = 'ol';
-                    listItem['type'] = 'ol';
                 }
-
-                listItems.push(listItem);
                 
                 continue;
             }
@@ -298,7 +289,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             
             
         }
-        Roo.log(listItems);
+
         if (!items.length) {
             ns.className = "";
             return;
