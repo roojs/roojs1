@@ -229,8 +229,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 break;
             }
 
-            var style = this.styleToObject(item);
-
             var listItem = {
                 'node' : item,
                 'type' : 'ul'
