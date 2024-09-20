@@ -27927,7 +27927,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
     replaceDocListItem: function(item)
     {
+        var parent = item.parentNode;
+
         var listItems = [];
+        var maxListLevel = 0;
+        var marginToLevel = {};
 
         while(item) {
             if(item.nodeType != 1) {
@@ -27935,24 +27939,32 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 continue;
             }
 
+            // list end
             if (!item.className.match(/(MsoListParagraph)/i)) {
                 break;
             }
 
+            var spans = item.getElementsByTagName('span');
+
+            if (!spans.length) {
+                item = item.nextSibling;
+                parent.remove(item.previousSibling);
+                continue;
+            }
+
+
             var listItem = {
                 'node' : item,
-                'type' : 'ul'
+                'type' : 'ul',
+                'level' : 0
             };
 
             if (item.hasAttribute('style') && item.getAttribute('style').match(/mso-list/)) {
 
-                // see if list type is ordered list
-                var spans = item.getElementsByTagName('span');
-                var span = false;
+                // get the type of list
                 var fontFamily = false;
                 for(var i = 0; i < spans.length; i ++) {
-                    span = spans[i];
-                    if(span.hasAttribute('style') && span.style.fontFamily != '') {
+                    if(span[i].hasAttribute('style') && span[i].style.fontFamily != '') {
                         fontFamily = span.style.fontFamily;
                         break;
                     }
@@ -27962,9 +27974,19 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     listItem['type'] = 'ol';
                 }
 
-                listItems.push(listItem);
-                item = item.nextSibling;
+                // get the level of list
+                var style = this.styleToObject(n); // mo-list is from the parent node
+                var margin = style['margin-left'];
+                if (typeof(marginToLevel[margin]) == 'undefined') {
+                    marginToLevel[margin] = maxListLevel;
+                    maxListLevel ++;
 
+                }
+                listItem['level'] = marginToLevel[margin];
+
+                listItems.push(listItem);
+
+                item = item.nextSibling;
                 continue;
             }
 
@@ -27974,8 +27996,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         Roo.log('LIST ITEMS');
         Roo.log(listItems);
     },
-    
-     
     
     replaceDocBullet : function(p)
     {
