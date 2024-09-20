@@ -236,7 +236,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
 
             var listItem = {
-                'type' : 'ol'
+                'type' : 'ul'
             };
 
             var spans = ns.getElementsByTagName('span');
