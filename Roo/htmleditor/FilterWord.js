@@ -245,7 +245,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 !spans.length
             ) {
                 item = item.nextSibling;
-                parent.remove(item.previousSibling);
+                parent.remove(item.previousSibling); // removed
                 continue;
             }
 
