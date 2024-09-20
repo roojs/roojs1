@@ -264,6 +264,39 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         Roo.log('LIST ITEMS');
         Roo.log(listItems);
     },
+
+    /*
+            var margin = style['margin-left'];
+            if (typeof(margin_to_depth[margin]) == 'undefined') {
+                max_margins++;
+                margin_to_depth[margin] = max_margins;
+            }
+            nlvl = margin_to_depth[margin] ;
+             
+            if (nlvl > lvl) {
+                //new indent
+                var nul = doc.createElement(listtype); // what about number lists...
+                if (!last_li) {
+                    last_li = doc.createElement('li');
+                    stack[lvl].appendChild(last_li);
+                }
+                last_li.appendChild(nul);
+                stack[nlvl] = nul;
+                
+            }
+            lvl = nlvl;
+            
+            // not starting at 1..
+            if (!stack[nlvl].hasAttribute("start") && listtype == "ol") {
+                stack[nlvl].setAttribute("start", num);
+            }
+            
+            var nli = stack[nlvl].appendChild(doc.createElement('li'));
+            last_li = nli;
+            nli.innerHTML = n.innerHTML;
+            //Roo.log("innerHTML = " + n.innerHTML);
+            parent.removeChild(n);
+        */
     
      
     
