@@ -27962,7 +27962,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 Roo.log(!fontFamily.match(/(Symbol|Wingdings)/));
                 Roo.log(span.innerText.trim());
 
-                if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) && "·o".indexOf(span.innerText.trim()) < 0) {
+                if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/)) {
                     Roo.log('ol');
                     listItem['type'] = 'ol';
                 }
