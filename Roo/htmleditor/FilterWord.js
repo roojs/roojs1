@@ -230,8 +230,13 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
 
             var listItem = {
-                'node' : item
+                'node' : item,
+                'type' : 'ul'
             };
+
+            var spans = ns.getElementsByTagName('span');
+
+
         }
     },
     
