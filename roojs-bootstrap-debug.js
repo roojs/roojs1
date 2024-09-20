@@ -27933,6 +27933,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var maxListLevel = 0;
         var marginToLevel = {};
 
+        Roo.log('SPLIT');
+        Roo.log(''.split(';'));
+
         while(item) {
             if(item.nodeType != 1) {
                 item = item.nextSibling;
@@ -27944,11 +27947,15 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 break;
             }
 
+            var style = this.styleToObject(item);
             var spans = item.getElementsByTagName('span');
-
-            if (!spans.length) {
+            if(
+                typeof(style['mso-list']) == 'undefined' // no mso-list in style
+                ||
+                !spans.length // no span
+            ) {
                 item = item.nextSibling;
-                parent.remove(item.previousSibling);
+                parent.remove(item.previousSibling); // removed
                 continue;
             }
 
@@ -27959,38 +27966,32 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 'level' : 0
             };
 
-            if (item.hasAttribute('style') && item.getAttribute('style').match(/mso-list/)) {
-
-                // get the type of list
-                var fontFamily = false;
-                for(var i = 0; i < spans.length; i ++) {
-                    if(spans[i].hasAttribute('style') && spans[i].style.fontFamily != '') {
-                        fontFamily = spans[i].style.fontFamily;
-                        break;
-                    }
+            // get the type of list
+            var fontFamily = false;
+            for(var i = 0; i < spans.length; i ++) {
+                if(spans[i].hasAttribute('style') && spans[i].style.fontFamily != '') {
+                    fontFamily = spans[i].style.fontFamily;
+                    break;
                 }
-
-                if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) ) {
-                    listItem['type'] = 'ol';
-                }
-
-                // get the level of list
-                var style = this.styleToObject(item); // mo-list is from the parent node
-                var margin = style['margin-left'];
-                if (typeof(marginToLevel[margin]) == 'undefined') {
-                    marginToLevel[margin] = maxListLevel;
-                    maxListLevel ++;
-
-                }
-                listItem['level'] = marginToLevel[margin];
-
-                listItems.push(listItem);
-
-                item = item.nextSibling;
-                continue;
             }
 
-            break;
+            if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) ) {
+                listItem['type'] = 'ol';
+            }
+
+            // get the level of list
+            var margin = style['margin-left'];
+            if (typeof(marginToLevel[margin]) == 'undefined') {
+                marginToLevel[margin] = maxListLevel;
+                maxListLevel ++;
+
+            }
+            listItem['level'] = marginToLevel[margin];
+
+            listItems.push(listItem);
+
+            item = item.nextSibling;
+            continue;
         }
 
         Roo.log('LIST ITEMS');
