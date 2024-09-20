@@ -331,7 +331,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             level = listLevel;
             
             // not starting at 1..
-            if (!stack[listLevel].hasAttribute("start") && listtype == "ol") {
+            if (!stack[listLevel].hasAttribute("start") && listItem['type']) {
                 stack[listLevel].setAttribute("start", num);
             }
             
