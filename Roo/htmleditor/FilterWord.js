@@ -248,6 +248,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     }
                 }
 
+                Roo.log(fontFamily);
+
                 if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) && "·o".indexOf(span.innerText.trim()) < 0) {
                     listItem['type'] = 'ol';
                 }
