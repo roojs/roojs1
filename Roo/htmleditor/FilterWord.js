@@ -225,7 +225,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
         Roo.log('SPLIT');
         Roo.log(''.split(';'));
-        
+
         while(item) {
             if(item.nodeType != 1) {
                 item = item.nextSibling;
@@ -237,16 +237,13 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 break;
             }
 
-            if(!item.hasAttribute('style')) {
-
-            }
-
             var style = this.styleToObject(item);
-            if(typeof(style['mso-list']) == 'undefined' || style['mso'])
-
             var spans = item.getElementsByTagName('span');
-
-            if (!spans.length) {
+            if(
+                typeof(style['mso-list']) == 'undefined'
+                ||
+                !spans.length
+            ) {
                 item = item.nextSibling;
                 parent.remove(item.previousSibling);
                 continue;
