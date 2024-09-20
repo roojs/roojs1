@@ -238,11 +238,12 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             var listItem = {
                 'listtype' : 'ul'
             };
-            
+
             var spans = ns.getElementsByTagName('span');
             
             if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
                 items.push(ns);
+                listItem['DOM'] = ns;
                 ns = ns.nextSibling;
                 has_list = true;
                 if (!spans.length) {
