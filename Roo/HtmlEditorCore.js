@@ -613,7 +613,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
-        
+
         // check what type of paste - if it's an image, then handle it differently.
         if (cd.files && cd.files.length > 0 && cd.types.indexOf('text/html') < 0) {
             // pasting images? 
@@ -655,13 +655,21 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
 
         var html = cd.getData('text/html'); // clipboard event
-        
-        Roo.log('HTMLLLL');
+
+        Roo.log('GET DATA');
         Roo.log(html);
+
+        
         html = this.cleanWordChars(html);
+
+        Roo.log('CLEAN WORD CHARS');
+        Roo.log(html);
 
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
+
+        Roo.log('PARSE FROM STRING');
+        Roo.log(d.outerHTML);
         
         var sn = this.getParentElement();
         // check if d contains a table, and prevent nesting??
@@ -716,6 +724,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         if (this.autoClean) {
             new Roo.htmleditor.FilterWord({ node : d });
+            Roo.log('FILTER WORD');
+            Roo.log(d.outerHTML);
+
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
                 node : d,

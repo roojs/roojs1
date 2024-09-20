@@ -251,6 +251,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     listItem['type'] = 'ol';
                 }
 
+                listItems.push(listItem);
+
                 continue;
             }
         }
