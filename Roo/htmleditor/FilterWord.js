@@ -239,7 +239,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             if (item.hasAttribute('style') && item.getAttribute('style').match(/mso-list/)) {
 
-                // get the type of lsit
+                // get the type of list
                 var spans = item.getElementsByTagName('span');
 
                 if (!spans.length) {
