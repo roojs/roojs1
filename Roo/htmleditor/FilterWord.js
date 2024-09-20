@@ -219,7 +219,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     {
         var listItems = [];
 
-        var listLevel = 0;
+        var maxListLevel = 0;
         var marginToLevel = {};
 
         while(item) {
@@ -264,7 +264,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 var style = this.styleToObject(n); // mo-list is from the parent node
                 var margin = style['margin-left'];
                 if (typeof(marginToLevel[margin]) == 'undefined') {
-                    margin_to_depth[margin] = max_margins;
+                    marginToLevel[margin] = listLevel;
+                    listLevel ++;
+
                 }
                 nlvl = margin_to_depth[margin] ;
 
