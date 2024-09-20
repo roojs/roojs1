@@ -247,7 +247,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     }
                 }
 
-                if(fontFamily !== false && !ff.match(/(Symbol|Wingdings)/) && "·o".indexOf(span.innerText.trim()) < 0) {
+                if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) && "·o".indexOf(span.innerText.trim()) < 0) {
                     listItem['type'] = 'ol';
                 }
 
