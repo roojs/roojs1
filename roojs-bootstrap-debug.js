@@ -27947,7 +27947,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if (item.hasAttribute('style') && item.getAttribute('style').match(/mso-list/)) {
 
                 // see if list type is ordered list
-                var spans = ns.getElementsByTagName('span');
+                var spans = item.getElementsByTagName('span');
                 var span = false;
                 var fontFamily = false;
                 for(var i = 0; i < spans.length; i ++) {
