@@ -249,10 +249,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 }
 
                 if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) ) {
-                    Roo.log('ol');
                     listItem['type'] = 'ol';
                 }
-                Roo.log('ul');
 
                 listItems.push(listItem);
                 item = item.nextSibling;
