@@ -264,7 +264,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 var style = this.styleToObject(n); // mo-list is from the parent node
                 var margin = style['margin-left'];
                 if (typeof(marginToLevel[margin]) == 'undefined') {
-                    max_margins++;
                     margin_to_depth[margin] = max_margins;
                 }
                 nlvl = margin_to_depth[margin] ;
