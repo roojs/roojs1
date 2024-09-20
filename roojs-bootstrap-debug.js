@@ -27981,7 +27981,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var ns = p,
             parent = p.parentNode,
             doc = parent.ownerDocument,
-            items = [],
+            items = [];
         
         var listtype = 'ul';   
         while (ns) {
