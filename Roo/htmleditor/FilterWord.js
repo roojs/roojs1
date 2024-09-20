@@ -225,7 +225,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 continue;
             }
 
-            if (!ns.className.match(/(MsoListParagraph|ql-indent-1)/i)) {
+            if (!ns.className.match(/(MsoListParagraph)/i)) {
                 break;
             }
         }
