@@ -27965,7 +27965,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 var fontFamily = false;
                 for(var i = 0; i < spans.length; i ++) {
                     if(span[i].hasAttribute('style') && span[i].style.fontFamily != '') {
-                        fontFamily = span.style.fontFamily;
+                        fontFamily = span[i].style.fontFamily;
                         break;
                     }
                 }
