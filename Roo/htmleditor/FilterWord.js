@@ -311,8 +311,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
 
             var listLevel = listItems[0]['level'];
-
-            Roo.log(num);
              
             // if (listLevel > lvl) {
             //     //new indent
