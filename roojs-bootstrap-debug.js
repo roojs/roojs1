@@ -27945,6 +27945,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             // list end
             if (!currentItem.className.match(/(MsoListParagraph)/i)) {
+                Roo.log('list end');
+                Roo.log(currentItem.tagName);
                 break;
             }
 
@@ -27994,9 +27996,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             currentItem = currentItem.nextSibling;
             continue;
         }
-
-        Roo.log('MARGIN TO LEVEL');
-        Roo.log(marginToLevel);
 
         Roo.log('LIST ITEMS');
         Roo.log(listItems);

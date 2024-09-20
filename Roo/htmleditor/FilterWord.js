@@ -235,6 +235,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             // list end
             if (!currentItem.className.match(/(MsoListParagraph)/i)) {
+                Roo.log('list end');
+                Roo.log(currentItem.tagName);
                 break;
             }
 
