@@ -283,6 +283,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
         Roo.log('LIST ITEMS');
         Roo.log(listItems);
+
+        if (!listItems.length) {
+            return;
+        }
     },
     
     replaceDocBullet : function(p)
