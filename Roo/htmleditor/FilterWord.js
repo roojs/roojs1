@@ -266,6 +266,30 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     },
 
     /*
+            var num = 1;
+            var style = {};
+            for(var i = 0; i < spans.length; i++) {
+            
+                style = this.styleToObject(spans[i]);
+                if (typeof(style['mso-list']) == 'undefined') {
+                    continue;
+                }
+                if (listtype == 'ol') {
+                   num = spans[i].innerText.replace(/[^0-9]+]/g,'')  * 1;
+                }
+                spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
+                break;
+            }
+            //Roo.log("NOW GOT innertHMLT=" + n.innerHTML);
+            style = this.styleToObject(n); // mo-list is from the parent node.
+            if (typeof(style['mso-list']) == 'undefined') {
+                //Roo.log("parent is missing level");
+                  
+                parent.removeChild(n);
+                 
+                return;
+            }
+
             var margin = style['margin-left'];
             if (typeof(margin_to_depth[margin]) == 'undefined') {
                 max_margins++;
