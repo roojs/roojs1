@@ -294,7 +294,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         parent.insertBefore(item, list);
         var level = 0;
         var stack = [list];
-        // var last_li = false;
+        var last_li = false;
 
         listItems.forEach(function(listItem) {
             var spans = listItem['node'].getElementsByTagName('span');
@@ -338,7 +338,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             
             var nli = stack[listLevel].appendChild(doc.createElement('li'));
             last_li = nli;
-            nli.innerHTML = n.innerHTML;
+            nli.innerHTML = listItem.innerHTML;
             //Roo.log("innerHTML = " + n.innerHTML);
             parent.removeChild(n);
             
