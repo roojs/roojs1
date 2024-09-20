@@ -207,8 +207,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         listpara = doc.getElementsByClassName('MsoListParagraph');
         // Roo.log(doc.innerHTML);
         
-        
-        
         while(listpara.length) {
             
             this.replaceDocBullet(listpara.item(0));
