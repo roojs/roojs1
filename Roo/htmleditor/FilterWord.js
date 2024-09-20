@@ -234,7 +234,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 'type' : 'ul'
             };
 
-            if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
+            if (item.hasAttribute('style') && item.getAttribute('style').match(/mso-list/)) {
 
                 // see if list type is ordered list
                 var spans = ns.getElementsByTagName('span');
