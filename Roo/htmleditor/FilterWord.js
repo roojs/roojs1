@@ -274,10 +274,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 }
                 listItem['level'] = marginToLevel[margin];
 
-
                 listItems.push(listItem);
-                item = item.nextSibling;
 
+                item = item.nextSibling;
                 continue;
             }
 
