@@ -238,8 +238,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
                 // see if list type is ordered list
                 var spans = ns.getElementsByTagName('span');
-                var span = spans[0];
-                var fontFamily = '';
+                var span = false;
+                var fontFamily = false;
                 for(var i = 0; i < spans.length; i ++) {
                     span = spans[i];
                     if(span.hasAttribute('style') && span.style.fontFamily != '') {
