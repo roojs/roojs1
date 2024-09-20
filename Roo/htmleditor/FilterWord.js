@@ -298,7 +298,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         listItems.forEach(function(listItem) {
             var spans = listItem['node'].getElementsByTagName('span');
 
-            var num = 1;
+            // remove the fake bullet
             var style = {};
             for(var i = 0; i < spans.length; i++) {
             
@@ -306,29 +306,26 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 if (typeof(style['mso-list']) == 'undefined') {
                     continue;
                 }
-                if (listItem['type'] == 'ol') {
-                   num = spans[i].innerText.replace(/[^0-9]+]/g,'')  * 1;
-                }
-                spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
+                spans[i].parentNode.removeChild(spans[i]);
                 break;
             }
 
+            var listLevel = listItems[0]['level'];
+
             Roo.log(num);
              
-            if (nlvl > lvl) {
-                //new indent
-                var nul = doc.createElement(listtype); // what about number lists...
-                if (!last_li) {
-                    last_li = doc.createElement('li');
-                    stack[lvl].appendChild(last_li);
-                }
-                last_li.appendChild(nul);
-                stack[nlvl] = nul;
+            // if (listLevel > lvl) {
+            //     //new indent
+            //     var nul = doc.createElement(listtype); // what about number lists...
+            //     if (!last_li) {
+            //         last_li = doc.createElement('li');
+            //         stack[lvl].appendChild(last_li);
+            //     }
+            //     last_li.appendChild(nul);
+            //     stack[nlvl] = nul;
                 
-            }
-            lvl = nlvl;
-
-            /*
+            // }
+            level = listLevel;
             
             // not starting at 1..
             if (!stack[nlvl].hasAttribute("start") && listtype == "ol") {
@@ -340,11 +337,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             nli.innerHTML = n.innerHTML;
             //Roo.log("innerHTML = " + n.innerHTML);
             parent.removeChild(n);
-
-            */
-            
-             
-             
             
         },this);
     },
