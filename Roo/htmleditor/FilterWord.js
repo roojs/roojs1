@@ -329,7 +329,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 stack[nlvl] = nul;
                 
             }
-            level = listLevel;
             
             // not starting at 1..
             // if (!stack[listLevel].hasAttribute("start") && listItem['type'] == 'ol') {
@@ -340,6 +339,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             last_li = nli;
             nli.innerHTML = node.innerHTML;
             parent.removeChild(node);
+
+            level = listLevel;
             
         },this);
     },
