@@ -238,15 +238,16 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
                 // see if list type is ordered list
                 var spans = item.getElementsByTagName('span');
-                var span = false;
                 var fontFamily = false;
                 for(var i = 0; i < spans.length; i ++) {
-                    span = spans[i];
-                    if(span.hasAttribute('style') && span.style.fontFamily != '') {
+                    if(span[i].hasAttribute('style') && span[i].style.fontFamily != '') {
                         fontFamily = span.style.fontFamily;
                         break;
                     }
+                    
                 }
+
+
 
                 if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) ) {
                     listItem['type'] = 'ol';
