@@ -291,8 +291,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
         var list = parent.ownerDocument.createElement(listItems[0]['level']); // what about number lists...
         parent.insertBefore(item, list);
-        var lvl = 0;
-        // var stack = [ ul ];
+        var level = 0;
+        var stack = [ ul ];
         // var last_li = false;
 
         listItems.forEach(function(listItem) {
