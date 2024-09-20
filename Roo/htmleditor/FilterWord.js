@@ -320,7 +320,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
              
             if (listLevel > level) {
                 //new indent
-                var nul = doc.createElement(listtype); // what about number lists...
+                var nul = doc.createElement(listItem['type']); // what about number lists...
                 if (!last_li) {
                     last_li = doc.createElement('li');
                     stack[lvl].appendChild(last_li);
@@ -337,9 +337,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             //     stack[listLevel].setAttribute("start", num);
             // }
             
-            var nli = stack[listLevel].appendChild(doc.createElement('li'));
-            last_li = nli;
-            nli.innerHTML = node.innerHTML;
+            var newListItem = stack[listLevel].appendChild(doc.createElement('li'));
+            last_li = newListItem;
+            newListItem.innerHTML = node.innerHTML;
             parent.removeChild(node);
             
         },this);
