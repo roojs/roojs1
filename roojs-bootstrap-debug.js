@@ -28013,7 +28013,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 if (typeof(style['mso-list']) == 'undefined') {
                     continue;
                 }
-                if (listtype == 'ol') {
+                if (listItem['type'] == 'ol') {
                    num = spans[i].innerText.replace(/[^0-9]+]/g,'')  * 1;
                 }
                 spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
