@@ -240,9 +240,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             var style = this.styleToObject(item);
             var spans = item.getElementsByTagName('span');
             if(
-                typeof(style['mso-list']) == 'undefined'
+                typeof(style['mso-list']) == 'undefined' // no mso-list in style
                 ||
-                !spans.length
+                !spans.length // no span
             ) {
                 item = item.nextSibling;
                 parent.remove(item.previousSibling); // removed
