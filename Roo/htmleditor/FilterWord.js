@@ -219,6 +219,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     {
         var listItems = [];
 
+        var listLevel = 0;
+
         while(item) {
             if(item.nodeType != 1) {
                 item = item.nextSibling;
@@ -235,8 +237,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             };
 
             if (item.hasAttribute('style') && item.getAttribute('style').match(/mso-list/)) {
-
-                var style = this.styleToObject(item);
 
                 // see if list type is ordered list
                 var spans = item.getElementsByTagName('span');
@@ -257,21 +257,16 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     listItem['type'] = 'ol';
                 }
 
-                var style = this.styleToObject(item);
-
                 // check the level of the list item
-                var style = {};
-                for(var i = 0; i < spans.length; i++) {
-                    style = this.styleToObject(spans[i]);
-                    if (typeof(style['mso-list']) == 'undefined') {
-                        continue;
-                    }
-                    if (listtype == 'ol') {
-                       num = spans[i].innerText.replace(/[^0-9]+]/g,'')  * 1;
-                    }
-                    spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
-                    break;
+
+
+                var style = this.styleToObject(n); // mo-list is from the parent node
+                var margin = style['margin-left'];
+                if (typeof(margin_to_depth[margin]) == 'undefined') {
+                    max_margins++;
+                    margin_to_depth[margin] = max_margins;
                 }
+                nlvl = margin_to_depth[margin] ;
 
 
                 listItems.push(listItem);
