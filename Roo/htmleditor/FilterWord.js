@@ -223,6 +223,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var maxListLevel = 0;
         var marginToLevel = {};
 
+        Roo.log('SPLIT');
+        Roo.log(''.split(';'));
+        
         while(item) {
             if(item.nodeType != 1) {
                 item = item.nextSibling;
@@ -233,6 +236,13 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if (!item.className.match(/(MsoListParagraph)/i)) {
                 break;
             }
+
+            if(!item.hasAttribute('style')) {
+
+            }
+
+            var style = this.styleToObject(item);
+            if(typeof(style['mso-list']) == 'undefined' || style['mso'])
 
             var spans = item.getElementsByTagName('span');
 
