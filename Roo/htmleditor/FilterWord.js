@@ -217,6 +217,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
     replaceDocListItem: function(item)
     {
+        var parent = p.parentNode;
         var listItems = [];
 
         var maxListLevel = 0;
@@ -228,6 +229,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 continue;
             }
 
+            // list end
             if (!item.className.match(/(MsoListParagraph)/i)) {
                 break;
             }
