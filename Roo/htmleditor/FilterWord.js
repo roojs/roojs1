@@ -244,6 +244,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     span = spans[i];
                     if(span.hasAttribute('style') && span.style.fontFamily != '') {
                         fontFamily = span.style.fontFamily;
+                        break;
                     }
                 }
 
