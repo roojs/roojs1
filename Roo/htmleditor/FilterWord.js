@@ -220,6 +220,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var listItems = [];
 
         var listLevel = 0;
+        var marginToLevel = {};
 
         while(item) {
             if(item.nodeType != 1) {
