@@ -27916,18 +27916,21 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
        
         listpara = doc.getElementsByClassName('MsoListParagraph');
 
-        this.replaceDocListItem(listpara.item(0));
-        
         while(listpara.length) {
-            
-            this.replaceDocBullet(listpara.item(0));
+            this.replaceDocListItem(listpara.item(0));
         }
+        
+        // while(listpara.length) {
+            
+        //     this.replaceDocBullet(listpara.item(0));
+        // }
       
     },
 
     replaceDocListItem: function(item)
     {
         var parent = item.parentNode;
+        var doc = parent.ownerDocument;
 
         var listItems = [];
         var maxListLevel = 0;
@@ -27999,13 +28002,18 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
 
-        // var stack = [ ul ];
-        // var last_li = false;
+        var list = doc.createElement(listItems[0]['level']); // what about number lists...
+        parent.insertBefore(item, list);
+        var level = 0;
+        var stack = [list];
+        var last_li = false;
 
         listItems.forEach(function(listItem) {
-            var spans = listItem['node'].getElementsByTagName('span');
+            var node = listItem['node'];
 
-            var num = 1;
+            var spans = node.getElementsByTagName('span');
+
+            // var num = 1;
             var style = {};
             for(var i = 0; i < spans.length; i++) {
             
@@ -28014,61 +28022,37 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     continue;
                 }
                 if (listItem['type'] == 'ol') {
-                   num = spans[i].innerText.replace(/[^0-9]+]/g,'')  * 1;
+                //    num = spans[i].innerText.replace(/[^0-9]+]/g,'')  * 1;
                 }
                 spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
                 break;
             }
 
-            Roo.log(num);
-
-            /*
-
-            //Roo.log("NOW GOT innertHMLT=" + n.innerHTML);
-            style = this.styleToObject(n); // mo-list is from the parent node.
-            if (typeof(style['mso-list']) == 'undefined') {
-                //Roo.log("parent is missing level");
-                  
-                parent.removeChild(n);
-                 
-                return;
-            }
-            
-            var margin = style['margin-left'];
-            if (typeof(margin_to_depth[margin]) == 'undefined') {
-                max_margins++;
-                margin_to_depth[margin] = max_margins;
-            }
-            nlvl = margin_to_depth[margin] ;
+            var listLevel = listItem['level'];
              
-            if (nlvl > lvl) {
+            if (listLevel > level) {
                 //new indent
-                var nul = doc.createElement(listtype); // what about number lists...
+                var newList = doc.createElement(listItem['type']); // what about number lists...
                 if (!last_li) {
                     last_li = doc.createElement('li');
-                    stack[lvl].appendChild(last_li);
+                    stack[level].appendChild(last_li);
                 }
-                last_li.appendChild(nul);
-                stack[nlvl] = nul;
+                last_li.appendChild(newList);
+                stack[listLevel] = newList;
                 
             }
-            lvl = nlvl;
+
+            level = listLevel;
             
             // not starting at 1..
-            if (!stack[nlvl].hasAttribute("start") && listtype == "ol") {
-                stack[nlvl].setAttribute("start", num);
-            }
+            // if (!stack[listLevel].hasAttribute("start") && listItem['type'] == 'ol') {
+            //     stack[listLevel].setAttribute("start", num);
+            // }
             
-            var nli = stack[nlvl].appendChild(doc.createElement('li'));
-            last_li = nli;
-            nli.innerHTML = n.innerHTML;
-            //Roo.log("innerHTML = " + n.innerHTML);
-            parent.removeChild(n);
-
-            */
-            
-             
-             
+            var newListItem = stack[listLevel].appendChild(doc.createElement('li'));
+            last_li = newListItem;
+            newListItem.innerHTML = node.innerHTML;
+            parent.removeChild(node);
             
         },this);
     },
