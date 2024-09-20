@@ -323,7 +323,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 var newList = doc.createElement(listItem['type']); // what about number lists...
                 if (!last_li) {
                     last_li = doc.createElement('li');
-                    stack[lvl].appendChild(last_li);
+                    stack[level].appendChild(last_li);
                 }
                 last_li.appendChild(newList);
                 stack[listLevel] = newList;
