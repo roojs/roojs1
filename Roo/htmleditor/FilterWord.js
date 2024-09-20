@@ -308,6 +308,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 break;
             }
 
+            Roo.log(num);
+
+            /*
+
             //Roo.log("NOW GOT innertHMLT=" + n.innerHTML);
             style = this.styleToObject(n); // mo-list is from the parent node.
             if (typeof(style['mso-list']) == 'undefined') {
@@ -348,6 +352,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             nli.innerHTML = n.innerHTML;
             //Roo.log("innerHTML = " + n.innerHTML);
             parent.removeChild(n);
+
+            */
             
              
              
