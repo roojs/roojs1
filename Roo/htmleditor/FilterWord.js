@@ -298,7 +298,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         listItems.forEach(function(listItem) {
             var spans = listItem['node'].getElementsByTagName('span');
 
-            // remove the fake bullet
+            var num = 1;
             var style = {};
             for(var i = 0; i < spans.length; i++) {
             
@@ -306,11 +306,16 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 if (typeof(style['mso-list']) == 'undefined') {
                     continue;
                 }
-                spans[i].parentNode.removeChild(spans[i]);
+                if (listItem['type'] == 'ol') {
+                   num = spans[i].innerText.replace(/[^0-9]+]/g,'')  * 1;
+                }
+                spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
                 break;
             }
 
             var listLevel = listItems[0]['level'];
+
+            Roo.log(num);
              
             // if (listLevel > lvl) {
             //     //new indent
