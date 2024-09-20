@@ -240,8 +240,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             var fontFamily = '';
             for(var i = 0; i < spans.length; i ++) {
                 span = spans[i];
-                if(spans[i].hasAttribute('style') && spans[i].style.fontFamily != '') {
-                    fontFamily = spans[i].style.fontFamily;
+                if(span.hasAttribute('style') && span.style.fontFamily != '') {
+                    fontFamily = span.style.fontFamily;
                 }
             }
 
