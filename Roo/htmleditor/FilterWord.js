@@ -225,9 +225,13 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 continue;
             }
 
-            if (!ns.className.match(/(MsoListParagraph)/i)) {
+            if (!item.className.match(/(MsoListParagraph)/i)) {
                 break;
             }
+
+            var listItem = {
+                'node' : item
+            };
         }
     },
     
