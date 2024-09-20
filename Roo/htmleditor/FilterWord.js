@@ -236,6 +236,13 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             var spans = item.getElementsByTagName('span');
 
+            if (!spans.length) {
+                item = item.nextSibling;
+                parent.remove(item.previousSibling);
+                continue;
+            }
+
+
             var listItem = {
                 'node' : item,
                 'type' : 'ul'
