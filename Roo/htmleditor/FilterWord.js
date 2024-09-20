@@ -265,6 +265,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     listtype = 'ol';
                     listItem['type'] = 'ol';
                 }
+
+                Roo.log(listItem);
                 
                 continue;
             }
