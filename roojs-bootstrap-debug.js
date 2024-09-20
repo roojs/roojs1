@@ -27959,6 +27959,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 }
 
                 Roo.log(fontFamily);
+                Roo.log(!fontFamily.match(/(Symbol|Wingdings)/));
+                Roo.log("·o".indexOf(span.innerText.trim()) < 0);
 
                 if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) && "·o".indexOf(span.innerText.trim()) < 0) {
                     Roo.log('ol');
