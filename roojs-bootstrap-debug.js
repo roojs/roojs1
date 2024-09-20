@@ -27962,6 +27962,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 }
 
                 listItems.push(listItem);
+                item = item.nextSibling;
 
                 continue;
             }
