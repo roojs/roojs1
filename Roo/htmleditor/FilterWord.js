@@ -245,7 +245,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             var listItem = {
                 'node' : item,
-                'type' : 'ul'
+                'type' : 'ul',
+                'level' : 0
             };
 
             if (item.hasAttribute('style') && item.getAttribute('style').match(/mso-list/)) {
