@@ -234,22 +234,25 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 'type' : 'ul'
             };
 
-            // see if list type is ordered list
-            var spans = ns.getElementsByTagName('span');
-            var span = spans[0];
-            var fontFamily = '';
-            for(var i = 0; i < spans.length; i ++) {
-                span = spans[i];
-                if(span.hasAttribute('style') && span.style.fontFamily != '') {
-                    fontFamily = span.style.fontFamily;
+            if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
+
+                // see if list type is ordered list
+                var spans = ns.getElementsByTagName('span');
+                var span = spans[0];
+                var fontFamily = '';
+                for(var i = 0; i < spans.length; i ++) {
+                    span = spans[i];
+                    if(span.hasAttribute('style') && span.style.fontFamily != '') {
+                        fontFamily = span.style.fontFamily;
+                    }
                 }
-            }
 
-            if(fontFamily != '' && !ff.match(/(Symbol|Wingdings)/) && "·o".indexOf(se.innerText.trim()) < 0) {
-                listItem['type'] = 'ol';
-            }
+                if(fontFamily != '' && !ff.match(/(Symbol|Wingdings)/) && "·o".indexOf(se.innerText.trim()) < 0) {
+                    listItem['type'] = 'ol';
+                }
 
-            continue;
+                continue;
+            }
         }
     },
     
