@@ -234,6 +234,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 //Roo.log("Missing para r q1indent - got:" + ns.className);
                 break;
             }
+
+            var listItem = {
+                'listtype' : 'ul'
+            };
+            
             var spans = ns.getElementsByTagName('span');
             
             if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
