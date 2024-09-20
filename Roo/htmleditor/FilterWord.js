@@ -293,6 +293,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var last_li = false;
 
         listItems.forEach(function(listItem) {
+            var spans = listItem.getElementsByTagName('span');
+            
             var num = 1;
             var style = {};
             for(var i = 0; i < spans.length; i++) {
