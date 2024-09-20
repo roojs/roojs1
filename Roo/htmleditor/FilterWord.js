@@ -263,7 +263,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 //Roo.log("got font family: " + ff);
                 if (typeof(ff) != 'undefined' && !ff.match(/(Symbol|Wingdings)/) && "·o".indexOf(se.innerText.trim()) < 0) {
                     listtype = 'ol';
-                    listItme['type'] = 'ol';
+                    listItem['type'] = 'ol';
                 }
                 
                 continue;
