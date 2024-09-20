@@ -226,8 +226,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         
         var listtype = 'ul';   
         while (ns) {
-            var listItem = {};
-            
+            var listItem = {
+                'listtype' : 'ul'
+            };
+
             if (ns.nodeType != 1) {
                 ns = ns.nextSibling;
                 continue;
