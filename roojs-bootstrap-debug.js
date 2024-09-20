@@ -27915,12 +27915,60 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
        
         listpara = doc.getElementsByClassName('MsoListParagraph');
+
+        this.replaceDocListItem(listpara.item(0));
         
         while(listpara.length) {
             
             this.replaceDocBullet(listpara.item(0));
         }
       
+    },
+
+    replaceDocListItem: function(item)
+    {
+        var listItems = [];
+
+        while(item) {
+            if(item.nodeType != 1) {
+                item = item.nextSibling;
+                continue;
+            }
+
+            if (!item.className.match(/(MsoListParagraph)/i)) {
+                break;
+            }
+
+            var listItem = {
+                'node' : item,
+                'type' : 'ul'
+            };
+
+            if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
+
+                // see if list type is ordered list
+                var spans = ns.getElementsByTagName('span');
+                var span = false;
+                var fontFamily = false;
+                for(var i = 0; i < spans.length; i ++) {
+                    span = spans[i];
+                    if(span.hasAttribute('style') && span.style.fontFamily != '') {
+                        fontFamily = span.style.fontFamily;
+                    }
+                }
+
+                if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) && "·o".indexOf(span.innerText.trim()) < 0) {
+                    listItem['type'] = 'ol';
+                }
+
+                listItems.push(listItem);
+
+                continue;
+            }
+        }
+
+        Roo.log('LIST ITEMS');
+        Roo.log(listItems);
     },
     
      
@@ -27932,7 +27980,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             parent = p.parentNode,
             doc = parent.ownerDocument,
             items = [],
-            listItems = [];
         
         var listtype = 'ul';   
         while (ns) {
@@ -27945,15 +27992,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 break;
             }
 
-            var listItem = {
-                'type' : 'ul'
-            };
-
             var spans = ns.getElementsByTagName('span');
             
             if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
                 items.push(ns);
-                listItem['node'] = ns;
                 ns = ns.nextSibling;
                 has_list = true;
                 if (!spans.length) {
@@ -27973,7 +28015,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 //Roo.log("got font family: " + ff);
                 if (typeof(ff) != 'undefined' && !ff.match(/(Symbol|Wingdings)/) && "·o".indexOf(se.innerText.trim()) < 0) {
                     listtype = 'ol';
-                    listItem['type'] = 'ol';
                 }
                 
                 continue;
@@ -27999,7 +28040,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             
             
         }
-        Roo.log(listItem);
+
         if (!items.length) {
             ns.className = "";
             return;
