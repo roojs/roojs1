@@ -313,7 +313,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 break;
             }
 
-            var listLevel = listItems[0]['level'];
+            var listLevel = listItem['level'];
 
             Roo.log(num);
              
@@ -331,8 +331,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             level = listLevel;
             
             // not starting at 1..
-            if (!stack[nlvl].hasAttribute("start") && listtype == "ol") {
-                stack[nlvl].setAttribute("start", num);
+            if (!stack[listLevel].hasAttribute("start") && listtype == "ol") {
+                stack[listLevel].setAttribute("start", num);
             }
             
             var nli = stack[nlvl].appendChild(doc.createElement('li'));
