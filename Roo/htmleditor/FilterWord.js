@@ -239,7 +239,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             if (item.hasAttribute('style') && item.getAttribute('style').match(/mso-list/)) {
 
-                // see if list type is ordered list
+                // get the type of lsit
                 var spans = item.getElementsByTagName('span');
 
                 if (!spans.length) {
@@ -258,9 +258,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     listItem['type'] = 'ol';
                 }
 
-                // check the level of the list item
-
-
+                // get the level of list
                 var style = this.styleToObject(n); // mo-list is from the parent node
                 var margin = style['margin-left'];
                 if (typeof(marginToLevel[margin]) == 'undefined') {
