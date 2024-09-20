@@ -242,7 +242,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 if (!spans.length) {
                     continue;
                 }
-                
+
                 var fontFamily = false;
                 for(var i = 0; i < spans.length; i ++) {
                     if(span[i].hasAttribute('style') && span[i].style.fontFamily != '') {
@@ -282,65 +282,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         Roo.log('LIST ITEMS');
         Roo.log(listItems);
     },
-
-    /*
-            var num = 1;
-            var style = {};
-            for(var i = 0; i < spans.length; i++) {
-            
-                style = this.styleToObject(spans[i]);
-                if (typeof(style['mso-list']) == 'undefined') {
-                    continue;
-                }
-                if (listtype == 'ol') {
-                   num = spans[i].innerText.replace(/[^0-9]+]/g,'')  * 1;
-                }
-                spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
-                break;
-            }
-            //Roo.log("NOW GOT innertHMLT=" + n.innerHTML);
-            style = this.styleToObject(n); // mo-list is from the parent node.
-            if (typeof(style['mso-list']) == 'undefined') {
-                //Roo.log("parent is missing level");
-                  
-                parent.removeChild(n);
-                 
-                return;
-            }
-
-            var margin = style['margin-left'];
-            if (typeof(margin_to_depth[margin]) == 'undefined') {
-                max_margins++;
-                margin_to_depth[margin] = max_margins;
-            }
-            nlvl = margin_to_depth[margin] ;
-             
-            if (nlvl > lvl) {
-                //new indent
-                var nul = doc.createElement(listtype); // what about number lists...
-                if (!last_li) {
-                    last_li = doc.createElement('li');
-                    stack[lvl].appendChild(last_li);
-                }
-                last_li.appendChild(nul);
-                stack[nlvl] = nul;
-                
-            }
-            lvl = nlvl;
-            
-            // not starting at 1..
-            if (!stack[nlvl].hasAttribute("start") && listtype == "ol") {
-                stack[nlvl].setAttribute("start", num);
-            }
-            
-            var nli = stack[nlvl].appendChild(doc.createElement('li'));
-            last_li = nli;
-            nli.innerHTML = n.innerHTML;
-            //Roo.log("innerHTML = " + n.innerHTML);
-            parent.removeChild(n);
-        */
-    
-     
     
     replaceDocBullet : function(p)
     {
