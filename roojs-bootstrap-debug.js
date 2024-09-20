@@ -27995,6 +27995,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             continue;
         }
 
+        Roo.log('MARGIN TO LEVEL');
+        Roo.log(marginToLevel);
+
         Roo.log('LIST ITEMS');
         Roo.log(listItems);
 
