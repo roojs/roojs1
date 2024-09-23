@@ -335,6 +335,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
         var listParent = item.parentNode;
+        if(item.tagName == 'LI' && ['OL', 'LI'].includes(listParent.tagName)) { // special case : item is li inside ol / ul
+            listParent = listParent.parentNode;
+        }
         var doc = parent.ownerDocument;
 
         var list = doc.createElement(listItems[0]['type']);
