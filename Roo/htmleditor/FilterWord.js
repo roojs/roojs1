@@ -241,7 +241,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
     replaceDocListItem: function(item)
     {
-        var previousItem = false;
         var currentItem = item;
         var listItems = [];
         var levelToMargin = [];
