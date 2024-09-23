@@ -253,6 +253,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var listItems = [];
         var maxListLevel = 0;
         var marginToLevel = {};
+        var levelToMargin = {};
 
         while(currentItem) {
             var style = this.styleToObject(currentItem);
@@ -291,7 +292,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             var margin = style['margin-left'];
 
             if(typeof(margin) == 'undefined') {
-                Roo.log('UNDEFINED');
+                
             }
             if (typeof(marginToLevel[margin]) == 'undefined') {
                 marginToLevel[margin] = maxListLevel;
