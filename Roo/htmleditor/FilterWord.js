@@ -236,7 +236,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             currentItem = parent;
         }
 
-        currentItem = getElementNode(currentItem);
+        currentItem = getNextElementNode(currentItem);
 
         if(!currentItem) {
             return false;
