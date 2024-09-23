@@ -286,7 +286,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             listItem['type'] = type;
 
             // get the level of list
-            var level = levelToMargin.length;
+            var level = 0;
             var margin = style['margin-left'];
             if(typeof(margin) == 'undefined') {
                 margin = 'undefined';
