@@ -28015,6 +28015,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 }
             }
             else {
+                Roo.log(margin.substr(0, margin.length - 4));
                 // current margin is defined and the margin of previous level is undefined
                 if(margin.substr(0, margin.length - 4) != 'undefined' && level > 0 && levelToMargin[level - 1].substr(0, margin.length - 4) == 'undefined') {
                     // set current level to previous level
