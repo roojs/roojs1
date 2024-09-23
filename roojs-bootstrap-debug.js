@@ -27938,7 +27938,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
         currentItem = currentItem.nextSibling;
         while(currentItem && currentItem.nodeType != 1) {
-            currentItem = currentItem.nextnextSibling;
+            currentItem = currentItem.nextSibling;
         }
 
         if(!currentItem) {
