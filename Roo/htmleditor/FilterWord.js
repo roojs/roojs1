@@ -305,14 +305,14 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
             else {
                 // current margin is defined and the margin of previous level is undefined
-                if(typeof(margin) != 'undefined' && level > 0 && typeof(levelToMargin[level - 1]) == 'undefined') {
+                if(margin != 'undefined' && level > 0 && typeof(levelToMargin[level - 1]) == 'undefined') {
                     // set current level to previous level
                     // replace undefined by the current margin
                     level--;
                 }
 
                 // current margin is undefined and the margin of preivous level is defined
-                if(typeof(margin) == 'undefined' && level > 0 && typeof(levelToMargin[level - 1]) != 'undefined') {
+                if(margin == 'undefined' && level > 0 && typeof(levelToMargin[level - 1]) != 'undefined') {
                     // set current level to previous level
                     level --;
                     // replace undefined by the margin of of previous level
