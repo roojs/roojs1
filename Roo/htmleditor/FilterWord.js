@@ -221,7 +221,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     {
         var parent = currentItem.parentNode;
 
-        Roo.log(parentItem.tagName);
+        Roo.log(parent.tagName);
         Roo.log(currentItem.tagName);
     },
 
