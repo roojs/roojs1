@@ -27951,6 +27951,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
     replaceDocListItem: function(item)
     {
+        var previousItem = false;
         var currentItem = item;
         var listItems = [];
         var levelToMargin = [];
@@ -27995,7 +27996,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             listItem['type'] = type;
 
             // get the level of list
-            var level = levelToMargin.length;
+            var level = previousItem ? previousItem['level'] + 1 : levelToMargin.length;
             var margin = style['margin-left'];
             if(typeof(margin) == 'undefined') {
                 margin = 'undefined';
@@ -28051,6 +28052,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             listItem['level'] = level;
 
             listItems.push(listItem);
+            
+            previousItem = currentItem;
 
             currentItem = this.getNextListItem(currentItem);
         }
@@ -28077,7 +28080,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var stack = [list];
         var li = false;
 
-        listItems.forEach(function(listItem, index) {
+        listItems.forEach(function(listItem) {
             var node = listItem['node'];
 
             var spans = node.getElementsByTagName('span');
