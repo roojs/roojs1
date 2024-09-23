@@ -27961,8 +27961,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var doc = parent.ownerDocument;
 
         var listItems = [];
-        var maxListLevel = 0;
-        var marginToLevel = {};
         var levelToMargin = [];
 
         while(currentItem) {
@@ -27980,12 +27978,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
 
             var listItem = {
-                'node' : currentItem,
-                'type' : 'ul',
-                'level' : 0
+                'node' : currentItem
             };
 
             // get the type of list
+            var type = 'ul';
             var fontFamily = false;
             for(var i = 0; i < spans.length; i ++) {
                 if(spans[i].hasAttribute('style') && spans[i].style.fontFamily != '') {
@@ -27995,22 +27992,24 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
 
             if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) ) {
-                listItem['type'] = 'ol';
+                type = 'ol';
             }
+            listItem['type'] = type;
 
             // get the level of list
+            var level = levelToMargin.length;
             var margin = style['margin-left'];
 
-            if(typeof(margin) == 'undefined') {
-                
+            if(levelToMargin.includes(margin)) {
+                for(var i = 0; i < levelToMargin.length; i ++) {
+                    if(levelToMargin[i] == margin) {
+                        level = i;
+                    }
+                }
             }
-            if (typeof(marginToLevel[margin]) == 'undefined') {
-                marginToLevel[margin] = maxListLevel;
-                levelToMargin[maxListLevel] = margin;
-                maxListLevel ++;
+            levelToMargin[level] = margin;
 
-            }
-            listItem['level'] = marginToLevel[margin];
+            listItem['level'] = level;
 
             listItems.push(listItem);
 
