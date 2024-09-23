@@ -295,7 +295,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if(typeof(margin) == 'undefined') {
                 margin = 'undefined';
             }
-            margin = margin + '::' + type;
+            margin = margin + type;
 
             if(levelToMargin.includes(margin)) {
                 for(var i = 0; i < levelToMargin.length; i ++) {
@@ -311,6 +311,19 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     // replace undefined by the current margin
                     level--;
                 }
+                if(level > 0) {
+                    previousMargin = levelToMargin[level - 1];
+                    if(
+                        margin.substr(margin.length - 2) == previousMargin.substr(previousMargin.length - 2) // same type
+                        &&
+                        margin.substr(0, margin.length - 2) != 'undefined' // current margin is defined
+                        &&
+                        previousMargin
+                    )
+                }
+                if(
+                    margin.substr(margin.length - 2) == 
+                )
 
                 // current margin is undefined and the margin of preivous level is defined
                 if(typeof(margin) == 'undefined' && level > 0 && typeof(levelToMargin[level - 1]) != 'undefined') {
