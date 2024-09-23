@@ -295,6 +295,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if(typeof(margin) == 'undefined') {
                 margin = 'undefined';
             }
+            margin = margin + '::' + type;
 
             if(levelToMargin.includes(margin)) {
                 for(var i = 0; i < levelToMargin.length; i ++) {
