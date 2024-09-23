@@ -27942,9 +27942,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var parent = currentItem.parentNode;
 
         // special case : last li inside ol
-        Roo.log(parent.tagName);
-        Roo.log(currentItem.tagName);
-        Roo.log(this.getNextElementNode(currentItem));
         if(parent.tagName == 'OL' && currentItem.tagName == 'LI' && !this.getNextElementNode(currentItem)) {
             currentItem = parent;
         }
@@ -27985,7 +27982,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             ) {
                 var oldItem = currentItem;
                 currentItem = this.getNextListItem(currentItem);
-                parent.remove(oldItem); // removed
+                oldItem.parentNode.remove(oldItem); // removed
                 continue;
             }
 
@@ -28082,7 +28079,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             var newListItem = stack[listLevel].appendChild(doc.createElement('li'));
             last_li = newListItem;
             newListItem.innerHTML = node.innerHTML;
-            parent.removeChild(node);
+            node.parentItem.removeChild(node);
             
         },this);
     },
