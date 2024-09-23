@@ -28005,6 +28005,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if(typeof(margin) == 'undefined') {
                 margin = 'undefined';
             }
+            margin = margin + '::' + type;
 
             if(levelToMargin.includes(margin)) {
                 for(var i = 0; i < levelToMargin.length; i ++) {
@@ -28015,14 +28016,14 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
             else {
                 // current margin is defined and the margin of previous level is undefined
-                if(margin != 'undefined' && level > 0 && levelToMargin[level - 1] == 'undefined') {
+                if(margin.substr(0, margin.length - 4) != 'undefined' && level > 0 && levelToMargin[level - 1].substr(0, margin.length - 4) == 'undefined') {
                     // set current level to previous level
                     // replace undefined by the current margin
                     level--;
                 }
 
                 // current margin is undefined and the margin of preivous level is defined
-                if(margin == 'undefined' && level > 0 && levelToMargin[level - 1] != 'undefined') {
+                if(margin.substr(0, margin.length - 4) == 'undefined' && level > 0 && levelToMargin[level - 1].substr(0, margin.length - 4) != 'undefined') {
                     // set current level to previous level
                     level --;
                     // replace undefined by the margin of of previous level
