@@ -334,6 +334,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             return;
         }
 
+        if(item.tagName == 'LI' && ['OL', 'UL'].includes(item.parentNode.tagName)) {
+            item = item.parentNode;
+        }
         var parent = item.parentNode;
         var doc = parent.ownerDocument;
 
