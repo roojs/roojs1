@@ -353,16 +353,12 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             var spans = node.getElementsByTagName('span');
 
-            // var num = 1;
             var style = {};
             for(var i = 0; i < spans.length; i++) {
             
                 style = this.styleToObject(spans[i]);
                 if (typeof(style['mso-list']) == 'undefined') {
                     continue;
-                }
-                if (listItem['type'] == 'ol') {
-                //    num = spans[i].innerText.replace(/[^0-9]+]/g,'')  * 1;
                 }
                 spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
                 break;
@@ -383,11 +379,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
 
             level = listLevel;
-            
-            // not starting at 1..
-            // if (!stack[listLevel].hasAttribute("start") && listItem['type'] == 'ol') {
-            //     stack[listLevel].setAttribute("start", num);
-            // }
             
             var newListItem = stack[listLevel].appendChild(doc.createElement('li'));
             last_li = newListItem;
