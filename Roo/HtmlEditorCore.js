@@ -656,20 +656,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         var html = cd.getData('text/html'); // clipboard event
 
-        Roo.log('GET DATA');
-        Roo.log(html);
-
         
         html = this.cleanWordChars(html);
 
-        Roo.log('CLEAN WORD CHARS');
-        Roo.log(html);
-
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
-
-        Roo.log('PARSE FROM STRING');
-        Roo.log(d.outerHTML);
         
         var sn = this.getParentElement();
         // check if d contains a table, and prevent nesting??
@@ -724,8 +715,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         if (this.autoClean) {
             new Roo.htmleditor.FilterWord({ node : d });
-            Roo.log('FILTER WORD');
-            Roo.log(d.outerHTML);
 
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
