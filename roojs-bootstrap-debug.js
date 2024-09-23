@@ -28045,10 +28045,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
 
-        var parent = item.parentNode;
-        if(item.tagName == 'LI' && ['OL', 'UL'].includes(parent.tagName)) {
-            parent = parent.parentNode;
+        if(item.tagName == 'LI' && ['OL', 'UL'].includes(item.parentNode.tagName)) {
+            item = item.parentNode;
         }
+        var parent = item.parentNode;
         var doc = parent.ownerDocument;
 
         var list = doc.createElement(listItems[0]['type']);
