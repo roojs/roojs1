@@ -231,6 +231,15 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             currentItem = currentItem.nextnextSibling;
         }
 
+        if(!currentItem) {
+            return false;
+        }
+
+        if(!currentItem.className.match(/(MsoListParagraph)/i)) {
+            return false;
+        }
+
+        return currentItem;
     },
 
     replaceDocListItem: function(item)
