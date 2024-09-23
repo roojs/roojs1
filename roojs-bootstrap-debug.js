@@ -27957,9 +27957,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     replaceDocListItem: function(item)
     {
         var currentItem = item;
-        var parent = item.parentNode;
-        var doc = parent.ownerDocument;
-
         var listItems = [];
         var levelToMargin = [];
 
@@ -28047,32 +28044,26 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             return;
         }
 
+        var parent = item.parentNode;
+        var doc = parent.ownerDocument;
+
         var list = doc.createElement(listItems[0]['type']);
-        if(item.tagName == 'LI' && ['OL', 'LI'].includes(parent.tagName)) { // special case : item is li inside ol / ul
-            parent.parentNode.insertBefore(list, item);
-        }
-        else {
-            parent.insertBefore(list, item);
-        }
+        parent.insertBefore(list, item);
         var level = 0;
         var stack = [list];
-        var last_li = false;
+        var li = false;
 
-        listItems.forEach(function(listItem) {
+        listItems.forEach(function(listItem, index) {
             var node = listItem['node'];
 
             var spans = node.getElementsByTagName('span');
 
-            // var num = 1;
             var style = {};
             for(var i = 0; i < spans.length; i++) {
             
                 style = this.styleToObject(spans[i]);
                 if (typeof(style['mso-list']) == 'undefined') {
                     continue;
-                }
-                if (listItem['type'] == 'ol') {
-                //    num = spans[i].innerText.replace(/[^0-9]+]/g,'')  * 1;
                 }
                 spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
                 break;
@@ -28081,27 +28072,19 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             var listLevel = listItem['level'];
              
             if (listLevel > level) {
-                //new indent
-                var newList = doc.createElement(listItem['type']); // what about number lists...
-                if (!last_li) {
-                    last_li = doc.createElement('li');
-                    stack[level].appendChild(last_li);
-                }
-                last_li.appendChild(newList);
+                var newList = doc.createElement(listItem['type']);
+                li.appendChild(newList);
                 stack[listLevel] = newList;
                 
             }
 
             level = listLevel;
-            
-            // not starting at 1..
-            // if (!stack[listLevel].hasAttribute("start") && listItem['type'] == 'ol') {
-            //     stack[listLevel].setAttribute("start", num);
-            // }
-            
-            var newListItem = stack[listLevel].appendChild(doc.createElement('li'));
-            last_li = newListItem;
-            newListItem.innerHTML = node.innerHTML;
+
+            var li = stack[level].appendChild(doc.createElement('li'));
+            li.innerHTML = node.innerHTML;
+            if(node.tagName == 'LI' && ['OL', 'UL'].includes(node.parentNode.tagName)) {
+                node = node.parentNode;
+            }
             node.parentNode.removeChild(node);
             
         },this);
