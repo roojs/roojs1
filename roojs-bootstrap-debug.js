@@ -27931,18 +27931,18 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     {
         var parent = currentItem.parentNode;
 
+        // last li inside ol
+        if(parent.tagName == 'OL' && currentItem.tagName == 'LI' && !currentItem.nextSibling) {
+            currentItem = parent;
+        }
+
         currentItem = currentItem.nextSibling;
         while(currentItem && currentItem.nodeType != 1) {
             currentItem = currentItem.nextSibling;
         }
 
         if(!currentItem) {
-            if(parent.tagName == 'OL' && currentItem.tagName == 'LI') {
-                currentItem = this.getNextListItem(parent);
-            }
-            else {
-                return false;
-            }
+            return false;
         }
 
         if(!currentItem.className.match(/(MsoListParagraph)/i)) {
