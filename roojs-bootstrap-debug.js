@@ -27939,21 +27939,23 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
     getNextListItem: function (currentItem)
     {
-        var parent = currentItem.parentNode;
 
-        // special case : last li inside ol
-        if(parent.tagName == 'OL' && currentItem.tagName == 'LI' && !this.getNextElementNode(currentItem)) {
-            currentItem = parent;
+        // special case : current item is last li inside ol
+        if(currentItem.parentNode.tagName == 'OL' && currentItem.tagName == 'LI' && !this.getNextElementNode(currentItem)) {
+            currentItem = currentItem.parentNode;
         }
 
-        currentItem = currentItem.nextSibling;
-        while(currentItem && currentItem.nodeType != 1) {
-            currentItem = currentItem.nextSibling;
-        }
+        currentItem = getNextElementNode(currentItem);
 
         if(!currentItem) {
             return false;
         }
+
+        // special case : next item is first li inside ol
+        if(currentItem.tagName == 'OL' && currentItem.firstChild.tagName == 'LI') {
+            currentItem = currentItem.firstChild;
+        }
+
 
         if(!currentItem.className.match(/(MsoListParagraph)/i)) {
             return false;
