@@ -27963,6 +27963,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var listItems = [];
         var maxListLevel = 0;
         var marginToLevel = {};
+        var levelToMargin = [];
 
         while(currentItem) {
             var style = this.styleToObject(currentItem);
@@ -28001,10 +28002,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             var margin = style['margin-left'];
 
             if(typeof(margin) == 'undefined') {
-                Roo.log('UNDEFINED');
+                
             }
             if (typeof(marginToLevel[margin]) == 'undefined') {
                 marginToLevel[margin] = maxListLevel;
+                levelToMargin[maxListLevel] = margin;
                 maxListLevel ++;
 
             }
@@ -28015,6 +28017,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             currentItem = this.getNextListItem(currentItem);
         }
 
+        Roo.log('LEVEL TO MARGIN');
+        Roo.log(levelToMargin);
         Roo.log('MARGIN TO LEVEL');
         Roo.log(marginToLevel);
         Roo.log('LIST ITEMS');

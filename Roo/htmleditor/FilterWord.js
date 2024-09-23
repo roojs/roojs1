@@ -307,6 +307,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             currentItem = this.getNextListItem(currentItem);
         }
 
+        Roo.log('LEVEL TO MARGIN');
+        Roo.log(levelToMargin);
         Roo.log('MARGIN TO LEVEL');
         Roo.log(marginToLevel);
         Roo.log('LIST ITEMS');
