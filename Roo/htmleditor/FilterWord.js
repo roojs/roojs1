@@ -300,7 +300,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             else {
                 // margin of previous level is undefined and margin of current level is not undefined
                 if(level > 0 && typeof(levelToMargin[level]) != 'undefined' && typeof(levelToMargin[level - 1]) == 'undefined') {
-                    // replace the margin of the previous level by the margin of the current level
                     level--;
                 }
 
