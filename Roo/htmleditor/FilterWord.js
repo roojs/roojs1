@@ -298,11 +298,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 }
             }
             else {
-                if(level > 0) {
-                    Roo.log(levelToMargin[level - 1]);
-                }
+                // margin of previous level is undefined
                 if(level > 0 && typeof(levelToMargin[level - 1]) == 'undefined') {
-                    Roo.log('UNDEFINEDDD');
+                    //
+                    level--;
                 }
                 levelToMargin[level] = margin;
             }
