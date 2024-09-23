@@ -341,7 +341,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var doc = parent.ownerDocument;
 
         var list = doc.createElement(listItems[0]['type']);
-        listParent.insertBefore(list, item);
+        parent.insertBefore(list, item);
         var level = 0;
         var stack = [list];
         var last_li = false;
