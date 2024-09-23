@@ -27959,6 +27959,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var currentItem = item;
         var listItems = [];
         var levelToMargin = [];
+        var levelToType = [];
 
         while(currentItem) {
             var style = this.styleToObject(currentItem);
@@ -28026,6 +28027,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     margin = levelToMargin[level];
                 }
                 levelToMargin[level] = margin;
+                levelToType[level] = type;
             }
 
             listItem['level'] = level;
@@ -28035,6 +28037,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             currentItem = this.getNextListItem(currentItem);
         }
 
+        Roo.log('LEVEL TO TYPE');
+        Roo.log(levelToType);
         Roo.log('LEVEL TO MARGIN');
         Roo.log(levelToMargin);
         Roo.log('LIST ITEMS');
