@@ -234,8 +234,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         // special case : last li inside ol
         Roo.log(parent.tagName);
         Roo.log(currentItem.tagName);
-        Roo.log(currentItem.nextSibling);
-        if(parent.tagName == 'OL' && currentItem.tagName == 'LI' && !currentItem.nextSibling) {
+        Roo.log(this.getNextElementNode(currentItem));
+        if(parent.tagName == 'OL' && currentItem.tagName == 'LI' && !this.getNextElementNode(currentItem)) {
             currentItem = parent;
         }
 
