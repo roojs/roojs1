@@ -232,6 +232,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
         // special case : current item is last li inside ol
         if(currentItem.parentNode.tagName == 'OL' && currentItem.tagName == 'LI' && !this.getNextElementNode(currentItem)) {
+            Roo.log('LAST LI');
             currentItem = currentItem.parentNode;
         }
 
