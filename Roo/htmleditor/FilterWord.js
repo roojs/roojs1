@@ -221,20 +221,13 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     {
         var parent = currentItem.parentNode;
 
-        var previousItem = false;
         currentItem = currentItem.nextSibling;
         while(currentItem && currentItem.nodeType != 1) {
-            previousItem = currentItem;
             currentItem = currentItem.nextSibling;
         }
 
         if(!currentItem) {
-            if(parent.tagName == 'OL' && previousItem.tagName == 'LI') {
-                currentItem = this.getNextListItem(parent);
-            }
-            else {
-                return false;
-            }
+            return false;
         }
 
         if(!currentItem.className.match(/(MsoListParagraph)/i)) {
