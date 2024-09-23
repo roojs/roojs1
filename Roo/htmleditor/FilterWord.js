@@ -305,7 +305,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 }
 
                 // margin of current level is undefined and margin of previous level is not undefined
-                if(level > 0 ^^ typeof())
+                if(level > 0 && typeof(levelToMargin[level]) == 'undefined' && typeof(levelToMargin[level - 1]) != 'undefined') {
                 levelToMargin[level] = margin;
             }
 
