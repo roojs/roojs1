@@ -236,16 +236,16 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             currentItem = parent;
         }
 
-        currentItem = currentItem.nextSibling;
-        while(currentItem && currentItem.nodeType != 1) {
-            currentItem = currentItem.nextSibling;
-        }
+        currentItem = getElementNode(currentItem);
 
         if(!currentItem) {
             return false;
         }
 
         // special case : next item is first li inside ol
+        {
+
+        }
 
 
         if(!currentItem.className.match(/(MsoListParagraph)/i)) {
