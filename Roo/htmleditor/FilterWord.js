@@ -338,7 +338,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
 
-        if(item.tagName == 'LI' && ['OL', 'LI'].includes(item.parentNode.tagName)) { // special case : current item is li inside ol / ul
+        if(item.tagName == 'LI' && ['OL', 'LI'].includes(parent.tagName)) { // special case : item is li inside ol / ul
             type = 'ol';
         }
 
