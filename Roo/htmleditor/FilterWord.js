@@ -219,6 +219,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
     getNextListItem: function (currentItem)
     {
+        var parent = currentItem.parentNode;
+
+        Roo.log(parentItem.tagName);
+        Roo.log(currentItem.tagName);
     },
 
     replaceDocListItem: function(item)
