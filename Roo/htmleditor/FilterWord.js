@@ -227,7 +227,12 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
         if(!currentItem) {
-            return false;
+            if(parent.tagName == 'ol' && currentItem.tagName == 'li') {
+                currentItem = parent.nextSibling;
+            }
+            else {
+                return false;
+            }
         }
 
         if(!currentItem.className.match(/(MsoListParagraph)/i)) {
