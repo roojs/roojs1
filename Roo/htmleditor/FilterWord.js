@@ -236,6 +236,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         Roo.log(currentItem.tagName);
         Roo.log(currentItem.firstElementChild);
         if(currentItem.tagName == 'OL' && currentItem.firstElementChild.tagName == 'LI') {
+            Roo.log('IS FIRST LI');
             currentItem = currentItem.firstElementChild;
         }
 
