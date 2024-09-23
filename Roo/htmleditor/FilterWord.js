@@ -217,6 +217,16 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
       
     },
 
+    getNextElementNode: function(currentNode)
+    {
+        currentNode = currentNode.nextSibling;
+        while(currentNode && currentNode.nodeType != 1) {
+            currentNode = currentNode.nextSibling;
+        }
+
+        return currentNode;
+    }
+
     getNextListItem: function (currentItem)
     {
         var parent = currentItem.parentNode;
