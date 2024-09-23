@@ -216,7 +216,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         // }
       
     },
-    
+
     getNextListItem: function (currentItem)
     {
         var parent = currentItem.parentNode;
@@ -227,13 +227,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
         if(!currentItem) {
-            // a list item inside ol
-            if(parent.tagName == 'ol' && currentItem.tagName == 'li') {
-                currentItem = parent;
-            }
-            else {
-                return false;
-            }
+            return false;
         }
 
         if(!currentItem.className.match(/(MsoListParagraph)/i)) {
