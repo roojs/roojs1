@@ -229,11 +229,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
     getNextListItem: function (currentItem)
     {
-        var parent = currentItem.parentNode;
 
         // special case : current item is last li inside ol
-        if(parent.tagName == 'OL' && currentItem.tagName == 'LI' && !this.getNextElementNode(currentItem)) {
-            currentItem = parent;
+        if(currentItem.parentNode.tagName == 'OL' && currentItem.tagName == 'LI' && !this.getNextElementNode(currentItem)) {
+            currentItem = currentItem.parentNode;
         }
 
         currentItem = getNextElementNode(currentItem);
@@ -243,7 +242,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
         // special case : next item is first li inside ol
-        {
+        if({
 
         }
 
