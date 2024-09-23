@@ -216,7 +216,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         // }
       
     },
-
+    
     getNextListItem: function (currentItem)
     {
         var parent = currentItem.parentNode;
