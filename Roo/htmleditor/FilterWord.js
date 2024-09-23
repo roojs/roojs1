@@ -231,7 +231,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     {
         var parent = currentItem.parentNode;
 
-        // special case : last li inside ol
+        // special case : current item is last li inside ol
         if(parent.tagName == 'OL' && currentItem.tagName == 'LI' && !this.getNextElementNode(currentItem)) {
             currentItem = parent;
         }
@@ -244,6 +244,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         if(!currentItem) {
             return false;
         }
+
+        // special case : next item is first li inside ol
+
 
         if(!currentItem.className.match(/(MsoListParagraph)/i)) {
             return false;
