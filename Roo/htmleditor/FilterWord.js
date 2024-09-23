@@ -222,6 +222,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var parent = currentItem.parentNode;
 
         // special case : last li inside ol
+        Roo.log(parent.tagName);
+        Roo.log(currentItem.tagName);
+        Roo.log(current.nextSibling);
         if(parent.tagName == 'OL' && currentItem.tagName == 'LI' && !currentItem.nextSibling) {
             currentItem = parent;
         }
