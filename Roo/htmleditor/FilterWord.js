@@ -225,7 +225,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
         return currentNode;
-    }
+    },
 
     getNextListItem: function (currentItem)
     {
