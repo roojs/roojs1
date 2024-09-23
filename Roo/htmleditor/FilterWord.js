@@ -223,12 +223,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
         // last li inside ol
         if(parent.tagName == 'OL' && currentItem.tagName == 'LI' && !currentItem.nextSibling) {
-            currentItem = parent.nextSibling;
+            currentItem = parent;
         }
-        else {
-            currentItem = currentItem.nextSibling;
-        }
-        
+
+        currentItem = currentItem.nextSibling;
         while(currentItem && currentItem.nodeType != 1) {
             currentItem = currentItem.nextSibling;
         }
