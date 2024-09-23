@@ -290,7 +290,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             // get the level of list
             var margin = style['margin-left'];
 
-            if(margin == 'undefined') {
+            if(typeof(margin) == 'undefined') {
                 Roo.log('UNDEFINED');
             }
             if (typeof(marginToLevel[margin]) == 'undefined') {
