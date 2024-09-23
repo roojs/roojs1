@@ -28086,9 +28086,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             var li = stack[level].appendChild(doc.createElement('li'));
             li.innerHTML = node.innerHTML;
-            // if(node.tagName == 'LI' && ['OL', 'UL'].includes(node.parentNode.tagName)) {
-            //     node = node.parentNode;
-            // }
+            if(node.tagName == 'LI' && ['OL', 'UL'].includes(node.parentNode.tagName)) {
+                Roo.log('NODE');
+                Roo.log(node);
+                node = node.parentNode;
+            }
             node.parentNode.removeChild(node);
             
         },this);
