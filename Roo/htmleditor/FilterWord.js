@@ -296,6 +296,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
             if (typeof(marginToLevel[margin]) == 'undefined') {
                 marginToLevel[margin] = maxListLevel;
+                levelToMargin[maxListLevel] = margin;
                 maxListLevel ++;
 
             }
