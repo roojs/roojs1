@@ -334,11 +334,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             return;
         }
 
-
-        var item = listItems[0];
-        if(item.tagName == 'LI' && ['OL', 'LI'].includes(item.parentNode.tagName)) { // special case : item is li inside ol / ul
-            item = item.parentNode;
-        }
         var parent = item.parentNode;
         var doc = parent.ownerDocument;
 
@@ -379,7 +374,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
 
             level = listLevel;
-            
+
             var newListItem = stack[listLevel].appendChild(doc.createElement('li'));
             last_li = newListItem;
             newListItem.innerHTML = node.innerHTML;
