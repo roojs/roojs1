@@ -27930,8 +27930,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     getNextListItem: function (currentItem)
     {
 
-        // special case : current item is last li inside ol
-        if(currentItem.parentNode.tagName == 'OL' && currentItem.parentNode.lastElementChild == currentItem && currentItem.tagName == 'LI') {
+        // special case : current item is last li inside ol or ul
+        if(['OL', 'UL'].includes(currentItem.parentNode.tagName) && currentItem.parentNode.lastElementChild == currentItem && currentItem.tagName == 'LI') {
             currentItem = currentItem.parentNode;
         }
 
@@ -27941,8 +27941,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             return false;
         }
 
-        // special case : next item is first li inside ol
-        if(currentItem.tagName == 'OL' && currentItem.firstElementChild.tagName == 'LI') {
+        // special case : next item is first li inside ol or ul
+        if(['OL', 'UL'].includes(currentItem.tagName) && currentItem.firstElementChild.tagName == 'LI') {
             currentItem = currentItem.firstElementChild;
         }
 
