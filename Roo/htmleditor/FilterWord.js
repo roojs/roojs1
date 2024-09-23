@@ -338,15 +338,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         if(item.tagName == 'LI' && ['OL', 'LI'].includes(listParent.tagName)) { // special case : item is li inside ol / ul
             listParent = listParent.parentNode;
         }
-        var doc = parent.ownerDocument;
+        var doc = listParent.ownerDocument;
 
         var list = doc.createElement(listItems[0]['type']);
-        if(item.tagName == 'LI' && ['OL', 'LI'].includes(parent.tagName)) { // special case : item is li inside ol / ul
-            parent.parentNode.insertBefore(list, item);
-        }
-        else {
-            parent.insertBefore(list, item);
-        }
+        listParent.insertBefore(list, item);
         var level = 0;
         var stack = [list];
         var last_li = false;
