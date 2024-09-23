@@ -334,6 +334,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             return;
         }
 
+        if(item.tagName == 'LI' && ['OL', 'LI'].includes(item.parentNode.tagName)) { // special case : item is li inside ol / ul
+            item = item.parentNode;
+        }
+
         var listParent = item.parentNode;
         if(item.tagName == 'LI' && ['OL', 'LI'].includes(listParent.tagName)) { // special case : item is li inside ol / ul
             listParent = listParent.parentNode;
