@@ -27959,7 +27959,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var currentItem = item;
         var listItems = [];
         var levelToMargin = [];
-        var levelToType = [];
 
         while(currentItem) {
             var style = this.styleToObject(currentItem);
@@ -28003,6 +28002,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             // get the level of list
             var level = levelToMargin.length;
             var margin = style['margin-left'];
+            if(typeof(margin) == 'undefined') {
+                margin = 'undefined';
+            }
 
             if(levelToMargin.includes(margin)) {
                 for(var i = 0; i < levelToMargin.length; i ++) {
@@ -28013,14 +28015,14 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
             else {
                 // current margin is defined and the margin of previous level is undefined
-                if(typeof(margin) != 'undefined' && level > 0 && typeof(levelToMargin[level - 1]) == 'undefined') {
+                if(margin != 'undefined' && level > 0 && levelToMargin[level - 1] == 'undefined') {
                     // set current level to previous level
                     // replace undefined by the current margin
                     level--;
                 }
 
                 // current margin is undefined and the margin of preivous level is defined
-                if(typeof(margin) == 'undefined' && level > 0 && typeof(levelToMargin[level - 1]) != 'undefined') {
+                if(margin == 'undefined' && level > 0 && levelToMargin[level - 1] != 'undefined') {
                     // set current level to previous level
                     level --;
                     // replace undefined by the margin of of previous level
@@ -28029,8 +28031,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 levelToMargin[level] = margin;
             }
 
-            levelToType[level] = type;
-
             listItem['level'] = level;
 
             listItems.push(listItem);
@@ -28038,8 +28038,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             currentItem = this.getNextListItem(currentItem);
         }
 
-        Roo.log('LEVEL TO TYPE');
-        Roo.log(levelToType);
         Roo.log('LEVEL TO MARGIN');
         Roo.log(levelToMargin);
         Roo.log('LIST ITEMS');
