@@ -297,12 +297,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     }
                 }
             }
+            levelToMargin[level] = margin;
 
-            if (typeof(marginToLevel[margin]) == 'undefined') {
-                levelToMargin[maxListLevel] = margin;
-                maxListLevel ++;
-
-            }
             listItem['level'] = level;
 
             listItems.push(listItem);
