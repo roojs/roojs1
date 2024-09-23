@@ -27994,11 +27994,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if(
                 fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/)
                 ||
-                currentItem.tagName == 'LI' && currentItem.parentNode.tagName == 'OL'
+                currentItem.tagName == 'LI' && currentItem.parentNode.tagName == 'OL' // special case : current item is li inside ol
             ) {
                 type = 'ol';
             }
-            
+
             listItem['type'] = type;
 
             // get the level of list
