@@ -363,7 +363,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
              
             if (listLevel > level) {
                 //new indent
-                var newList = doc.createElement(listItem['type']); // what about number lists...
+                var newList = doc.createElement(listItem['type']);
                 if (!li) {
                     li = doc.createElement('li');
                     stack[level].appendChild(li);
