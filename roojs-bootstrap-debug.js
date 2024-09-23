@@ -27982,7 +27982,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             };
 
             // get the type of list
-            var type = 'ul';
             var fontFamily = false;
             for(var i = 0; i < spans.length; i ++) {
                 if(spans[i].hasAttribute('style') && spans[i].style.fontFamily != '') {
@@ -27991,14 +27990,16 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 }
             }
 
-            if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) ) {
+            var type = (fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/)) ? 'ol' : 'ul';
+
+            if(currentItem.tagName == 'LI' && currentItem.parentNode.tagName == 'OL') { // special case : current item is li inside ol
                 type = 'ol';
             }
 
             if(currentItem.tagName == 'LI' && currentItem.parentNode.tagName == 'UL') { // special case : current item is li inside ul
                 type = 'ul';   
             }
-            
+
             listItem['type'] = type;
 
             // get the level of list
