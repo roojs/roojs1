@@ -27945,7 +27945,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             currentItem = currentItem.parentNode;
         }
 
-        currentItem = getNextElementNode(currentItem);
+        currentItem = this.getNextElementNode(currentItem);
 
         if(!currentItem) {
             return false;
