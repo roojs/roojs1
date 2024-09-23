@@ -27919,11 +27919,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         while(listpara.length) {
             this.replaceDocListItem(listpara.item(0));
         }
-        
-        // while(listpara.length) {
-            
-        //     this.replaceDocBullet(listpara.item(0));
-        // }
       
     },
 
@@ -28119,167 +28114,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
             
         },this);
-    },
-    
-    replaceDocBullet : function(p)
-    {
-        // gather all the siblings.
-        var ns = p,
-            parent = p.parentNode,
-            doc = parent.ownerDocument,
-            items = [];
-        
-        var listtype = 'ul';   
-        while (ns) {
-            if (ns.nodeType != 1) {
-                ns = ns.nextSibling;
-                continue;
-            }
-            if (!ns.className.match(/(MsoListParagraph|ql-indent-1)/i)) {
-                //Roo.log("Missing para r q1indent - got:" + ns.className);
-                break;
-            }
-
-            var spans = ns.getElementsByTagName('span');
-            
-            if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
-                items.push(ns);
-                ns = ns.nextSibling;
-                has_list = true;
-                if (!spans.length) {
-                    continue;
-                }
-                var ff = '';
-                var se = spans[0];
-                for (var i = 0; i < spans.length;i++) {
-                    se = spans[i];
-                    if (se.hasAttribute('style')  && se.hasAttribute('style') && se.style.fontFamily != '') {
-                        ff = se.style.fontFamily;
-                        break;
-                    }
-                }
-                 
-                    
-                //Roo.log("got font family: " + ff);
-                if (typeof(ff) != 'undefined' && !ff.match(/(Symbol|Wingdings)/) && "·o".indexOf(se.innerText.trim()) < 0) {
-                    listtype = 'ol';
-                }
-                
-                continue;
-            }
-            //Roo.log("no mso-list?");
-            
-            var spans = ns.getElementsByTagName('span');
-            if (!spans.length) {
-                break;
-            }
-            var has_list  = false;
-            for(var i = 0; i < spans.length; i++) {
-                if (spans[i].hasAttribute('style') && spans[i].getAttribute('style').match(/mso-list/)) {
-                    has_list = true;
-                    break;
-                }
-            }
-            if (!has_list) {
-                break;
-            }
-            items.push(ns);
-            ns = ns.nextSibling;
-            
-            
-        }
-
-        if (!items.length) {
-            ns.className = "";
-            return;
-        }
-        
-        var ul = parent.ownerDocument.createElement(listtype); // what about number lists...
-        parent.insertBefore(ul, p);
-        var lvl = 0;
-        var stack = [ ul ];
-        var last_li = false;
-        
-        var margin_to_depth = {};
-        max_margins = -1;
-        
-        items.forEach(function(n, ipos) {
-            //Roo.log("got innertHMLT=" + n.innerHTML);
-            
-            var spans = n.getElementsByTagName('span');
-            if (!spans.length) {
-                //Roo.log("No spans found");
-                 
-                parent.removeChild(n);
-                
-                
-                return; // skip it...
-            }
-           
-                
-            var num = 1;
-            var style = {};
-            for(var i = 0; i < spans.length; i++) {
-            
-                style = this.styleToObject(spans[i]);
-                if (typeof(style['mso-list']) == 'undefined') {
-                    continue;
-                }
-                if (listtype == 'ol') {
-                   num = spans[i].innerText.replace(/[^0-9]+]/g,'')  * 1;
-                }
-                spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
-                break;
-            }
-            //Roo.log("NOW GOT innertHMLT=" + n.innerHTML);
-            style = this.styleToObject(n); // mo-list is from the parent node.
-            if (typeof(style['mso-list']) == 'undefined') {
-                //Roo.log("parent is missing level");
-                  
-                parent.removeChild(n);
-                 
-                return;
-            }
-            
-            var margin = style['margin-left'];
-            if (typeof(margin_to_depth[margin]) == 'undefined') {
-                max_margins++;
-                margin_to_depth[margin] = max_margins;
-            }
-            nlvl = margin_to_depth[margin] ;
-             
-            if (nlvl > lvl) {
-                //new indent
-                var nul = doc.createElement(listtype); // what about number lists...
-                if (!last_li) {
-                    last_li = doc.createElement('li');
-                    stack[lvl].appendChild(last_li);
-                }
-                last_li.appendChild(nul);
-                stack[nlvl] = nul;
-                
-            }
-            lvl = nlvl;
-            
-            // not starting at 1..
-            if (!stack[nlvl].hasAttribute("start") && listtype == "ol") {
-                stack[nlvl].setAttribute("start", num);
-            }
-            
-            var nli = stack[nlvl].appendChild(doc.createElement('li'));
-            last_li = nli;
-            nli.innerHTML = n.innerHTML;
-            //Roo.log("innerHTML = " + n.innerHTML);
-            parent.removeChild(n);
-            
-             
-             
-            
-        },this);
-        
-        
-        
-        
     },
     
     replaceImageTable : function(doc)
@@ -32403,20 +32237,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         var html = cd.getData('text/html'); // clipboard event
 
-        Roo.log('GET DATA');
-        Roo.log(html);
-
         
         html = this.cleanWordChars(html);
 
-        Roo.log('CLEAN WORD CHARS');
-        Roo.log(html);
-
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
-
-        Roo.log('PARSE FROM STRING');
-        Roo.log(d.outerHTML);
         
         var sn = this.getParentElement();
         // check if d contains a table, and prevent nesting??
@@ -32471,8 +32296,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         if (this.autoClean) {
             new Roo.htmleditor.FilterWord({ node : d });
-            Roo.log('FILTER WORD');
-            Roo.log(d.outerHTML);
 
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
