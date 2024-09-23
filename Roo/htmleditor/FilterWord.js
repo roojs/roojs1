@@ -269,8 +269,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             var listItem = {
                 'node' : currentItem,
-                'type' : 'ul',
-                'level' : levelToMargin.length
+                'type' : 'ul'
             };
 
             // get the type of list
