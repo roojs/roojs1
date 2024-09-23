@@ -289,9 +289,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             // get the level of list
             var margin = style['margin-left'];
 
-            if(typeof(margin) == 'undefined') {
-                
-            }
             if (typeof(marginToLevel[margin]) == 'undefined') {
                 levelToMargin[maxListLevel] = margin;
                 maxListLevel ++;
