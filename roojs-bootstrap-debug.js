@@ -27929,12 +27929,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
     getNextListItem: function (currentItem)
     {
-        // var parent = currentItem.parentNode;
-
-
-
-        // Roo.log(parent.tagName);
-        // Roo.log(currentItem.tagName);
+        var parent = currentItem.parentNode;
 
         currentItem = currentItem.nextSibling;
         while(currentItem && currentItem.nodeType != 1) {
@@ -27942,7 +27937,12 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
         if(!currentItem) {
-            return false;
+            if(parent.tagName == 'ol' && currentItem.tagName == 'li') {
+                currentItem = this.getNextListItem(parent);
+            }
+            else {
+                return false;
+            }
         }
 
         if(!currentItem.className.match(/(MsoListParagraph)/i)) {
@@ -27970,11 +27970,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 ||
                 !spans.length // no span
             ) {
-                currentItem = currentItem.nextSibling;
-                parent.remove(currentItem.previousSibling); // removed
+                var oldItem = currentItem;
+                currentItem = this.getNextListItem(currentItem);
+                parent.remove(oldItem); // removed
                 continue;
             }
-
 
             var listItem = {
                 'node' : currentItem,
