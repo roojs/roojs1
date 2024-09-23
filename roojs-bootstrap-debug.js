@@ -28027,8 +28027,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     margin = levelToMargin[level];
                 }
                 levelToMargin[level] = margin;
-                levelToType[level] = type;
             }
+
+            levelToType[level] = type;
 
             listItem['level'] = level;
 
