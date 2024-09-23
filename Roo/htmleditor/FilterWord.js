@@ -303,7 +303,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 maxListLevel ++;
 
             }
-            listItem['level'] = marginToLevel[margin];
+            listItem['level'] = level;
 
             listItems.push(listItem);
 
