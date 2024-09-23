@@ -295,7 +295,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
 
-        var list = doc.createElement(listItems[0]['type']); // what about number lists...
+        var list = doc.createElement(listItems[0]['type']);
         parent.insertBefore(list, item);
         var level = 0;
         var stack = [list];
