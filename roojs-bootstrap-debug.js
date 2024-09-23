@@ -27927,35 +27927,28 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
       
     },
 
-    getNextElementNode: function(currentNode)
-    {
-        currentNode = currentNode.nextSibling;
-        while(currentNode && currentNode.nodeType != 1) {
-            currentNode = currentNode.nextSibling;
-        }
-
-        return currentNode;
-    },
-
     getNextListItem: function (currentItem)
     {
 
         // special case : current item is last li inside ol
-        if(currentItem.parentNode.tagName == 'OL' && currentItem.tagName == 'LI' && !this.getNextElementNode(currentItem)) {
+        Roo.log('CHECK LAST LI');
+        Roo.log(currentItem.parentNode.lastElementChild);
+        if(currentItem.parentNode.tagName == 'OL' && currentItem.parentNode.lastElementChild == currentItem && currentItem.tagName == 'LI') {
             currentItem = currentItem.parentNode;
         }
 
-        currentItem = this.getNextElementNode(currentItem);
+        currentItem = currentItem.nextElementSibling;
 
         if(!currentItem) {
             return false;
         }
 
         // special case : next item is first li inside ol
-        Roo.log(currentItem.tagName);
-        Roo.log(currentItem.firstChild);
-        if(currentItem.tagName == 'OL' && currentItem.firstChild.tagName == 'LI') {
-            currentItem = currentItem.firstChild;
+        Roo.log('CHECK FIRST LI');
+        Roo.log(currentItem.firstElementChild);
+        if(currentItem.tagName == 'OL' && currentItem.firstElementChild.tagName == 'LI') {
+            Roo.log('IS FIRST LI');
+            currentItem = currentItem.firstElementChild;
         }
 
 
