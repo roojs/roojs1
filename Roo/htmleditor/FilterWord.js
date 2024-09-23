@@ -221,9 +221,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     {
 
         // special case : current item is last li inside ol
-        Roo.log('CHECK LAST LI');
-        Roo.log(currentItem.parentNode.tagName);
-        Roo.log(currentItem.parentNode.lastElementChild);
         if(currentItem.parentNode.tagName == 'OL' && currentItem.parentNode.lastElementChild == currentItem && currentItem.tagName == 'LI') {
             currentItem = currentItem.parentNode;
         }
@@ -235,11 +232,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
         // special case : next item is first li inside ol
-        Roo.log('CHECK FIRST LI');
-        Roo.log(currentItem.tagName);
-        Roo.log(currentItem.firstElementChild);
         if(currentItem.tagName == 'OL' && currentItem.firstElementChild.tagName == 'LI') {
-            Roo.log('IS FIRST LI');
             currentItem = currentItem.firstElementChild;
         }
 
