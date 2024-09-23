@@ -348,7 +348,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var stack = [list];
         var last_li = false;
 
-        listItems.forEach(function(listItem) {
+        listItems.forEach(function(listItem, index) {
             var node = listItem['node'];
 
             var spans = node.getElementsByTagName('span');
