@@ -225,8 +225,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         if(parent.tagName == 'OL' && currentItem.tagName == 'LI' && !currentItem.nextSibling) {
             currentItem = parent.nextSibling;
         }
-
-        currentItem = currentItem.nextSibling;
+        else {
+            currentItem = currentItem.nextSibling;
+        }
+        
         while(currentItem && currentItem.nodeType != 1) {
             currentItem = currentItem.nextSibling;
         }
