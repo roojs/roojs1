@@ -318,20 +318,28 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                         &&
                         margin.substr(0, margin.length - 2) != 'undefined' // current margin is defined
                         &&
-                        previousMargin
-                    )
-                }
-                if(
-                    margin.substr(margin.length - 2) == 
-                )
+                        previousMargin.substr(0, previousMargin.length - 2) == 'undefined' // previous margin is undefined
+                    ) {
+                        // set current level to previous level
+                        level --;
+                        // replace undefined by the current margin
+                        levelToMargin[level] = margin;
+                    }
 
-                // current margin is undefined and the margin of preivous level is defined
-                if(typeof(margin) == 'undefined' && level > 0 && typeof(levelToMargin[level - 1]) != 'undefined') {
-                    // set current level to previous level
-                    level --;
+                    if(
+                        margin.substr(margin.length - 2) == previousMargin.substr(previousMargin.length - 2) // same type
+                        &&
+                        margin.substr(0, margin.length - 2) == 'undefined' // current margin is undefined
+                        &&
+                        previousMargin.substr(0, previousMargin.length - 2) != 'undefined' // previous margin is defined
+                    ) {
+                        // set current level to previous level
+                        level --;
                     // replace undefined by the margin of of previous level
                     margin = levelToMargin[level];
+                    }
                 }
+                
                 levelToMargin[level] = margin;
             }
 
