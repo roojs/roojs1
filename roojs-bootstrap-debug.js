@@ -28044,7 +28044,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             return;
         }
 
+
         var parent = item.parentNode;
+        if(item.tagName == 'LI' && ['OL', 'UL'].includes(parent.tagName)) {
+            parent = parent.parentNode;
+        }
         var doc = parent.ownerDocument;
 
         var list = doc.createElement(listItems[0]['type']);
