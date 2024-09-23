@@ -375,9 +375,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             level = listLevel;
 
-            var newListItem = stack[level].appendChild(doc.createElement('li'));
-            last_li = newListItem;
-            newListItem.innerHTML = node.innerHTML;
+            var li = stack[level].appendChild(doc.createElement('li'));
+            last_li = li;
+            li.innerHTML = node.innerHTML;
             node.parentNode.removeChild(node);
             
         },this);
