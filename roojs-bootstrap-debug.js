@@ -28002,6 +28002,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             // get the level of list
             var level = levelToMargin.length;
             var margin = style['margin-left'];
+            if(typeof(margin) == 'undefined') {
+                margin = 'undefined';
+            }
+            margin = margin + type;
 
             if(levelToMargin.includes(margin)) {
                 for(var i = 0; i < levelToMargin.length; i ++) {
@@ -28017,14 +28021,35 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     // replace undefined by the current margin
                     level--;
                 }
+                if(level > 0) {
+                    previousMargin = levelToMargin[level - 1];
+                    if(
+                        margin.substr(margin.length - 2) == previousMargin.substr(previousMargin.length - 2) // same type
+                        &&
+                        margin.substr(0, margin.length - 2) != 'undefined' // current margin is defined
+                        &&
+                        previousMargin.substr(0, previousMargin.length - 2) == 'undefined' // previous margin is undefined
+                    ) {
+                        // set current level to previous level
+                        level --;
+                        // replace undefined by the current margin
+                        levelToMargin[level] = margin;
+                    }
 
-                // current margin is undefined and the margin of preivous level is defined
-                if(typeof(margin) == 'undefined' && level > 0 && typeof(levelToMargin[level - 1]) != 'undefined') {
-                    // set current level to previous level
-                    level --;
-                    // replace undefined by the margin of of previous level
-                    margin = levelToMargin[level];
+                    if(
+                        margin.substr(margin.length - 2) == previousMargin.substr(previousMargin.length - 2) // same type
+                        &&
+                        margin.substr(0, margin.length - 2) == 'undefined' // current margin is undefined
+                        &&
+                        previousMargin.substr(0, previousMargin.length - 2) != 'undefined' // previous margin is defined
+                    ) {
+                        // set current level to previous level
+                        level --;
+                        // replace undefined by the margin of of previous level
+                        margin = levelToMargin[level];
+                    }
                 }
+
                 levelToMargin[level] = margin;
             }
 
