@@ -334,7 +334,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             return;
         }
 
-        var parent = item.parentNode;
+        var listParent = item.parentNode;
         var doc = parent.ownerDocument;
 
         var list = doc.createElement(listItems[0]['type']);
