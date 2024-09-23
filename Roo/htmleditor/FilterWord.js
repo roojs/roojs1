@@ -338,6 +338,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
 
+        if(currentItem.tagName == 'LI' && ['OL', 'LI'].includes(currentItem.parentNode.tagName)) { // special case : current item is li inside ol / ul
+            type = 'ol';
+        }
+        
         var list = doc.createElement(listItems[0]['type']);
         parent.insertBefore(list, item);
         var level = 0;
