@@ -343,7 +343,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             listItems.push(listItem);
             
-            var previousItem = currentItem;
+            previousItem = currentItem;
 
             currentItem = this.getNextListItem(currentItem);
         }
