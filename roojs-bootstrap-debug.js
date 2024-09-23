@@ -27929,10 +27929,27 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
     getNextListItem: function (currentItem)
     {
-        var parent = currentItem.parentNode;
+        // var parent = currentItem.parentNode;
 
-        Roo.log(parent.tagName);
-        Roo.log(currentItem.tagName);
+
+
+        // Roo.log(parent.tagName);
+        // Roo.log(currentItem.tagName);
+
+        currentItem = currentItem.nextSibling;
+        while(currentItem && currentItem.nodeType != 1) {
+            currentItem = currentItem.nextnextSibling;
+        }
+
+        if(!currentItem) {
+            return false;
+        }
+
+        if(!currentItem.className.match(/(MsoListParagraph)/i)) {
+            return false;
+        }
+
+        return currentItem;
     },
 
     replaceDocListItem: function(item)
@@ -27946,16 +27963,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var marginToLevel = {};
 
         while(currentItem) {
-            if(currentItem.nodeType != 1) {
-                currentItem = currentItem.nextSibling;
-                continue;
-            }
-
-            // list end
-            if (!currentItem.className.match(/(MsoListParagraph)/i)) {
-                break;
-            }
-
             var style = this.styleToObject(currentItem);
             var spans = currentItem.getElementsByTagName('span');
             if(
@@ -27999,9 +28006,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             listItems.push(listItem);
 
-            this.getNextListItem(currentItem);
-            currentItem = currentItem.nextSibling;
-            continue;
+            currentItem = this.getNextListItem(currentItem);
         }
 
         Roo.log('MARGIN TO LEVEL');
