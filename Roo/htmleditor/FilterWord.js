@@ -227,7 +227,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
         if(!currentItem) {
-            if(parent.tagName == 'ol' && currentItem.tagName == 'li') {
+            if(parent.tagName == 'OL' && currentItem.tagName == 'LI') {
                 currentItem = this.getNextListItem(parent);
             }
             else {
