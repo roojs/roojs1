@@ -289,6 +289,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             listItems.push(listItem);
 
+            this.getNextListItem(currentItem);
             currentItem = currentItem.nextSibling;
             continue;
         }
