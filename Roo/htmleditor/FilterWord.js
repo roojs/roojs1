@@ -255,11 +255,12 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 ||
                 !spans.length // no span
             ) {
-                currentItem = currentItem.nextSibling;
-                parent.remove(currentItem.previousSibling); // removed
+                var oldItem = currentItem;
+                currentItem = this.getNextListItem(currentItem);
+                parent.remove(oldItem); // removed
                 continue;
             }
-            
+
             var listItem = {
                 'node' : currentItem,
                 'type' : 'ul',
