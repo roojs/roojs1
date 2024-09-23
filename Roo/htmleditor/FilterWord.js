@@ -249,7 +249,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var currentItem = item;
         var listItems = [];
         var levelToMargin = [];
-        var levelToType = [];
 
         while(currentItem) {
             var style = this.styleToObject(currentItem);
