@@ -232,9 +232,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
         // special case : next item is first li inside ol
+        Roo.log
         Roo.log(currentItem.tagName);
-        Roo.log(currentItem.firstChild);
-        if(currentItem.tagName == 'OL' && currentItem.firstElementChild == 'LI') {
+        Roo.log(currentItem.firstElementChild);
+        if(currentItem.tagName == 'OL' && currentItem.firstElementChild.tagName == 'LI') {
             currentItem = currentItem.firstElementChild;
         }
 
