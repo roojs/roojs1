@@ -227,6 +227,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
         if(!currentItem) {
+            // a list item embedded in ol
             if(parent.tagName == 'ol' && currentItem.tagName == 'li') {
                 currentItem = parent;
             }
