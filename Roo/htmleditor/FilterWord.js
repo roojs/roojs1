@@ -221,6 +221,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     {
         var parent = currentItem.parentNode;
 
+        if(parent.tagName == 'ol' && currentItem.tagName == 'li') {
+
+        }
+
         
 
 
