@@ -297,7 +297,12 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     }
                 }
             }
-            levelToMargin[level] = margin;
+            else {
+                if(level > 0 && levelToMargin[level - 1] == 'undefined') {
+                    Roo.log('UNDEFINEDDD');
+                }
+                levelToMargin[level] = margin;
+            }
 
             listItem['level'] = level;
 
