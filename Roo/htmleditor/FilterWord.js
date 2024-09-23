@@ -247,9 +247,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     replaceDocListItem: function(item)
     {
         var currentItem = item;
-        var parent = item.parentNode;
-        var doc = parent.ownerDocument;
-
         var listItems = [];
         var levelToMargin = [];
 
