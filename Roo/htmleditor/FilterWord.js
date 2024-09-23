@@ -217,6 +217,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
       
     },
 
+    getNextListItem: function (currentItem)
+    {
+    },
+
     replaceDocListItem: function(item)
     {
         var currentItem = item;
