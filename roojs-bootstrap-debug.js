@@ -27927,6 +27927,14 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
       
     },
 
+    getNextListItem: function (currentItem)
+    {
+        var parent = currentItem.parentNode;
+
+        Roo.log(parentItem.tagName);
+        Roo.log(currentItem.tagName);
+    },
+
     replaceDocListItem: function(item)
     {
         var currentItem = item;
@@ -27991,6 +27999,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             listItems.push(listItem);
 
+            this.getNextListItem(currentItem);
             currentItem = currentItem.nextSibling;
             continue;
         }
