@@ -268,8 +268,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
 
             var listItem = {
-                'node' : currentItem,
-                'type' : 'ul'
+                'node' : currentItem
             };
 
             // get the type of list
@@ -283,8 +282,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
 
             if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) ) {
-                listItem['type'] = 'ol';
+                type = 'ol';
             }
+            listItem['type'] = type;
 
             // get the level of list
             var level = levelToMargin.length;
