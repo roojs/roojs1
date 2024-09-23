@@ -370,7 +370,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var stack = [list];
         var li = false;
 
-        listItems.forEach(function(listItem, index) {
+        listItems.forEach(function(listItem) {
             var node = listItem['node'];
 
             var spans = node.getElementsByTagName('span');
