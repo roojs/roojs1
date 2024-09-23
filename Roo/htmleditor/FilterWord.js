@@ -379,7 +379,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if(node.tagName == 'LI' && ['OL', 'UL'].includes(node.parentNode.tagName)) {
                 node = node.parentNode;
             }
-            node.parentNode.removeChild(node);
+            if(node.parentNode) {
+                node.parentNode.removeChild(node);
+            }
             
         },this);
     },
