@@ -28047,9 +28047,13 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             return;
         }
 
-
         var list = doc.createElement(listItems[0]['type']);
-        parent.insertBefore(list, item);
+        if(item.tagName == 'LI' && ['OL', 'LI'].includes(parent.tagName)) { // special case : item is li inside ol / ul
+            parent.parentNode.insertBefore(list, item);
+        }
+        else {
+            parent.insertBefore(list, item);
+        }
         var level = 0;
         var stack = [list];
         var last_li = false;
