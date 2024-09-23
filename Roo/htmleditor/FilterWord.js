@@ -298,7 +298,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 }
             }
             else {
-                // margin of previous level is undefined and margin of current level is not undefined
+                // current margin is not undefined and the margin of previous level is undefined
                 if(level > 0 && typeof(levelToMargin[level]) != 'undefined' && typeof(levelToMargin[level - 1]) == 'undefined') {
                     level--;
                 }
