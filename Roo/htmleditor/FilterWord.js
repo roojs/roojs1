@@ -281,14 +281,13 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 }
             }
 
-            if(
-                fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/)
-                ||
-                currentItem.tagName == 'LI' && currentItem.parentNode.tagName == 'OL' // special case : current item is li inside ol
-            ) {
+            if(fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) ) {
                 type = 'ol';
             }
 
+            if(currentItem.tagName == 'LI' && currentItem.parentNode.tagName == 'UL') { // special case : current item is li inside ul
+                type = 'ul';   
+            }
             listItem['type'] = type;
 
             // get the level of list
