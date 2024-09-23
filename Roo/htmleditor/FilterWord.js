@@ -374,7 +374,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             level = listLevel;
 
-            var li = stack[level].appendChild(doc.createElement('li'));
+            li = stack[level].appendChild(doc.createElement('li'));
             li.innerHTML = node.innerHTML;
             if(node.tagName == 'LI' && ['OL', 'UL'].includes(node.parentNode.tagName)) {
                 node = node.parentNode;
