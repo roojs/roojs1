@@ -1,12 +1,13 @@
 Roo.htmleditor.FilterList = function(cfg)
 {
-    this.replaceList();   
+    this.replaceList(cfg.node);   
 }
 
 Roo.extend(Roo.htmleditor.FilterList, Roo.htmleditor.Filter,
 {
-    replaceList : function(n)
+    replaceList : function(doc)
     {
-        n.parentNode.removeChild(n);
+        var ol = Array.from(doc.getElementsByTagName('ol'));
+        
     }
 });
