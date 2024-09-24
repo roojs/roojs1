@@ -690,6 +690,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
 
+        Roo.log(rtfData);
+
         // Roo.log(images);
         // Roo.log(imgs);
         // fixme..
@@ -714,7 +716,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
 
         if (this.autoClean) {
-            Roo.log(d.innerHTML);
+            Roo.log(d.innerHTML); 
             new Roo.htmleditor.FilterWord({ node : d });
 
             new Roo.htmleditor.FilterStyleToTag({ node : d });
