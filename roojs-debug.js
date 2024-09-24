@@ -77354,6 +77354,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
 
+        var text = cd.getData('text');
+        console.log(text);
+
         var html = cd.getData('text/html'); // clipboard event
 
         
@@ -77414,6 +77417,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
 
         if (this.autoClean) {
+            Roo.log(d.innerHTML); 
             new Roo.htmleditor.FilterWord({ node : d });
 
             new Roo.htmleditor.FilterStyleToTag({ node : d });

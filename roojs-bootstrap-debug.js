@@ -32224,6 +32224,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
 
+        var text = cd.getData('text');
+        console.log(text);
+
         var html = cd.getData('text/html'); // clipboard event
 
         
@@ -32259,8 +32262,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var parser = new Roo.rtf.Parser(rtfData);
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
-
-        Roo.log(rtfData);
 
         // Roo.log(images);
         // Roo.log(imgs);
