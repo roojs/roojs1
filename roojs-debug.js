@@ -77416,7 +77416,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (this.autoClean) {
             Roo.log(d.innerHTML); 
             new Roo.htmleditor.FilterWord({ node : d });
-
+            new Roo.htmleditor.FilterList({ node : d});
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
                 node : d,
@@ -77426,13 +77426,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'name',
                     'align',
                     'colspan',
-                    'rowspan' 
+                    'rowspan',
+                    'start'
                 /*  THESE ARE NOT ALLWOED FOR PASTE
                  *    'data-display',
                     'data-caption-display',
                     'data-width',
                     'data-caption',
-                    'start' ,
                     'style',
                     // youtube embed.
                     'class',

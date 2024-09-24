@@ -726,13 +726,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'name',
                     'align',
                     'colspan',
-                    'rowspan' 
+                    'rowspan',
+                    'start'
                 /*  THESE ARE NOT ALLWOED FOR PASTE
                  *    'data-display',
                     'data-caption-display',
                     'data-width',
                     'data-caption',
-                    'start' ,
                     'style',
                     // youtube embed.
                     'class',
