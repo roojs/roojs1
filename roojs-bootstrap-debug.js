@@ -28055,11 +28055,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             currentItem = this.getNextListItem(currentItem);
         }
 
-        Roo.log('LEVEL TO MARGIN');
-        Roo.log(levelToMargin);
-        Roo.log('LIST ITEMS');
-        Roo.log(listItems);
-
         if (!listItems.length) {
             return;
         }
