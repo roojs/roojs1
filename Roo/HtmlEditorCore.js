@@ -654,9 +654,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
 
-        var text = cd.getData('text');
-        console.log(text);
-
         var html = cd.getData('text/html'); // clipboard event
 
         
