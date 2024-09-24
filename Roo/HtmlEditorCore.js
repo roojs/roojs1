@@ -714,7 +714,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
 
         if (this.autoClean) {
-            Roo.log(d);
+            Roo.log(d.innerHTML);
             new Roo.htmleditor.FilterWord({ node : d });
 
             new Roo.htmleditor.FilterStyleToTag({ node : d });
