@@ -205,115 +205,162 @@
         }
 
         </span><span class="jsdoc-var">listpara </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.getElementsByClassName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'MsoListParagraph'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-comment">// Roo.log(doc.innerHTML);
-
-
 
         </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">listpara.length</span><span class="jsdoc-syntax">) {
-
-            </span><span class="jsdoc-var">this.replaceDocBullet</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">listpara.item</span><span class="jsdoc-syntax">(0));
+            </span><span class="jsdoc-var">this.replaceDocListItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">listpara.item</span><span class="jsdoc-syntax">(0));
         }
 
     },
 
-
-
-    </span><span class="jsdoc-var">replaceDocBullet </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">getNextListItem</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentItem</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-comment">// gather all the siblings.
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">p.parentNode</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parent.ownerDocument</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= [];
 
-        </span><span class="jsdoc-comment">//Roo.log(&quot;Parsing: &quot; + p.innerText)    ;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">listtype </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns.nodeType </span><span class="jsdoc-syntax">!= 1) {
-                </span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns.nextSibling</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">// special case : current item is last li inside ol or ul
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'OL'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'UL'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.includes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentItem.parentNode.tagName</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">currentItem.parentNode.lastElementChild </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">currentItem </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">currentItem.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'LI'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">currentItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">currentItem.parentNode</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">currentItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">currentItem.nextElementSibling</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">currentItem</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-comment">// special case : next item is first li inside ol or ul
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'OL'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'UL'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.includes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentItem.tagName</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">currentItem.firstElementChild.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'LI'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">currentItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">currentItem.firstElementChild</span><span class="jsdoc-syntax">;
+        }
+
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">currentItem.className.match</span><span class="jsdoc-syntax">(/(MsoListParagraph)/i)) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">currentItem</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">replaceDocListItem</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">currentItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">listItems </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">levelToMargin </span><span class="jsdoc-syntax">= [];
+
+        </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentItem</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.styleToObject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentItem</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">spans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">currentItem.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'mso-list'</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-comment">// no mso-list in style
+                </span><span class="jsdoc-syntax">||
+                !</span><span class="jsdoc-var">spans.length </span><span class="jsdoc-comment">// no span
+            </span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oldItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">currentItem</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">currentItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getNextListItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentItem</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">oldItem.parentNode.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oldItem</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// removed
                 </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
             }
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ns.className.match</span><span class="jsdoc-syntax">(/(MsoListParagraph|ql-indent-1)/i)) {
-                </span><span class="jsdoc-comment">//Roo.log(&quot;Missing para r q1indent - got:&quot; + ns.className);
-                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
-            }
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">spans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">);
 
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">ns.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/mso-list/)) {
-                </span><span class="jsdoc-var">items.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns.nextSibling</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">has_list </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">spans.length</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
-                }
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">se </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[0];
-                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">spans.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-                    </span><span class="jsdoc-var">se </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
-                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">se.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">)  &amp;&amp; </span><span class="jsdoc-var">se.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">se.style.fontFamily </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">ff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">se.style.fontFamily</span><span class="jsdoc-syntax">;
-                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
-                    }
-                }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">listItem </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-string">'node' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">currentItem
+            </span><span class="jsdoc-syntax">};
 
-
-                </span><span class="jsdoc-comment">//Roo.log(&quot;got font family: &quot; + ff);
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ff</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">ff.match</span><span class="jsdoc-syntax">(/(Symbol|Wingdings)/) &amp;&amp; </span><span class="jsdoc-string">&quot;·o&quot;</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">se.innerText.trim</span><span class="jsdoc-syntax">()) &lt; 0) {
-                    </span><span class="jsdoc-var">listtype </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'ol'</span><span class="jsdoc-syntax">;
-                }
-
-                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
-            }
-            </span><span class="jsdoc-comment">//Roo.log(&quot;no mso-list?&quot;);
-
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">spans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">spans.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
-            }
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">has_list  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">spans.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/mso-list/)) {
-                    </span><span class="jsdoc-var">has_list </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">// get the type of list
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fontFamily </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">spans.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.style.fontFamily </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">fontFamily </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.style.fontFamily</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
                 }
             }
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">has_list</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">fontFamily </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">fontFamily.match</span><span class="jsdoc-syntax">(/(Symbol|Wingdings)/)) ? </span><span class="jsdoc-string">'ul' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ol'</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentItem.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'LI' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">currentItem.parentNode.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'OL'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// special case : current item is li inside ol
+                </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'ol'</span><span class="jsdoc-syntax">;
             }
-            </span><span class="jsdoc-var">items.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns.nextSibling</span><span class="jsdoc-syntax">;
 
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentItem.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'LI' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">currentItem.parentNode.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'UL'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// special case : current item is li inside ul
+                </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">;
+            }
 
+            </span><span class="jsdoc-var">listItem</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'type'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-comment">// get the level of list
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">level </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">listItems.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">listItems</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">listItems.length </span><span class="jsdoc-syntax">- 1][</span><span class="jsdoc-string">'level'</span><span class="jsdoc-syntax">] + 1 : </span><span class="jsdoc-var">levelToMargin.length</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">margin </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'margin-left'</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">margin</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">margin </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">margin </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">margin </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">levelToMargin.includes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">margin</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">levelToMargin.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">++) {
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">levelToMargin</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] == </span><span class="jsdoc-var">margin</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">level </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+                    }
+                }
+            }
+            </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">level </span><span class="jsdoc-syntax">&gt; 0) {
+                    </span><span class="jsdoc-var">previousMargin </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">levelToMargin</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">level </span><span class="jsdoc-syntax">- 1];
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
+                        </span><span class="jsdoc-var">margin.substr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">margin.length </span><span class="jsdoc-syntax">- 2) == </span><span class="jsdoc-var">previousMargin.substr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">previousMargin.length </span><span class="jsdoc-syntax">- 2) </span><span class="jsdoc-comment">// same type
+                        </span><span class="jsdoc-syntax">&amp;&amp;
+                        </span><span class="jsdoc-var">margin.substr</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">margin.length </span><span class="jsdoc-syntax">- 2) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-comment">// current margin is defined
+                        </span><span class="jsdoc-syntax">&amp;&amp;
+                        </span><span class="jsdoc-var">previousMargin.substr</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">previousMargin.length </span><span class="jsdoc-syntax">- 2) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-comment">// previous margin is undefined
+                    </span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-comment">// set current level to previous level
+                        </span><span class="jsdoc-var">level </span><span class="jsdoc-syntax">--;
+                        </span><span class="jsdoc-comment">// replace undefined by the current margin
+                        </span><span class="jsdoc-var">levelToMargin</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">level</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">margin</span><span class="jsdoc-syntax">;
+                    }
+
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
+                        </span><span class="jsdoc-var">margin.substr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">margin.length </span><span class="jsdoc-syntax">- 2) == </span><span class="jsdoc-var">previousMargin.substr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">previousMargin.length </span><span class="jsdoc-syntax">- 2) </span><span class="jsdoc-comment">// same type
+                        </span><span class="jsdoc-syntax">&amp;&amp;
+                        </span><span class="jsdoc-var">margin.substr</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">margin.length </span><span class="jsdoc-syntax">- 2) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-comment">// current margin is undefined
+                        </span><span class="jsdoc-syntax">&amp;&amp;
+                        </span><span class="jsdoc-var">previousMargin.substr</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">previousMargin.length </span><span class="jsdoc-syntax">- 2) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-comment">// previous margin is defined
+                    </span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-comment">// set current level to previous level
+                        </span><span class="jsdoc-var">level </span><span class="jsdoc-syntax">--;
+                        </span><span class="jsdoc-comment">// replace undefined by the margin of of previous level
+                        </span><span class="jsdoc-var">margin </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">levelToMargin</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">level</span><span class="jsdoc-syntax">];
+                    }
+                }
+
+                </span><span class="jsdoc-var">levelToMargin</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">level</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">margin</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">listItem</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'level'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">level</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-var">listItems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">listItem</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-var">currentItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getNextListItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentItem</span><span class="jsdoc-syntax">);
         }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">items.length</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">ns.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">listItems.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ul </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parent.ownerDocument.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">listtype</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// what about number lists...
-        </span><span class="jsdoc-var">parent.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ul</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lvl </span><span class="jsdoc-syntax">= 0;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">stack </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-var">ul </span><span class="jsdoc-syntax">];
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">last_li </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">margin_to_depth </span><span class="jsdoc-syntax">= {};
-        </span><span class="jsdoc-var">max_margins </span><span class="jsdoc-syntax">= -1;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'LI' </span><span class="jsdoc-syntax">&amp;&amp; [</span><span class="jsdoc-string">'OL'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'UL'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.includes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.parentNode.tagName</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">item.parentNode</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">item.parentNode</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parent.ownerDocument</span><span class="jsdoc-syntax">;
 
-        </span><span class="jsdoc-var">items.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ipos</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-comment">//Roo.log(&quot;got innertHMLT=&quot; + n.innerHTML);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">list </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">listItems</span><span class="jsdoc-syntax">[0][</span><span class="jsdoc-string">'type'</span><span class="jsdoc-syntax">]);
+        </span><span class="jsdoc-var">parent.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">list</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">level </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">stack </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">list</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">li </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">spans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">spans.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-comment">//Roo.log(&quot;No spans found&quot;);
+        </span><span class="jsdoc-var">listItems.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">listItem</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">listItem</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'node'</span><span class="jsdoc-syntax">];
 
-                </span><span class="jsdoc-var">parent.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">spans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">);
 
-
-                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// skip it...
-            </span><span class="jsdoc-syntax">}
-
-
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">num </span><span class="jsdoc-syntax">= 1;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">= {};
             </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">spans.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
 
@@ -321,61 +368,31 @@
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'mso-list'</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
                 }
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">listtype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'ol'</span><span class="jsdoc-syntax">) {
-                   </span><span class="jsdoc-var">num </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.innerText.replace</span><span class="jsdoc-syntax">(/[^0-9]+]/g,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)  * 1;
-                }
                 </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]); </span><span class="jsdoc-comment">// remove the fake bullet.
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             }
-            </span><span class="jsdoc-comment">//Roo.log(&quot;NOW GOT innertHMLT=&quot; + n.innerHTML);
-            </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.styleToObject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// mo-list is from the parent node.
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'mso-list'</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-comment">//Roo.log(&quot;parent is missing level&quot;);
 
-                </span><span class="jsdoc-var">parent.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">listLevel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">listItem</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'level'</span><span class="jsdoc-syntax">];
 
-                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-            }
-
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">margin </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'margin-left'</span><span class="jsdoc-syntax">];
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">margin_to_depth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">margin</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">max_margins</span><span class="jsdoc-syntax">++;
-                </span><span class="jsdoc-var">margin_to_depth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">margin</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">max_margins</span><span class="jsdoc-syntax">;
-            }
-            </span><span class="jsdoc-var">nlvl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">margin_to_depth</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">margin</span><span class="jsdoc-syntax">] ;
-
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nlvl </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">lvl</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-comment">//new indent
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nul </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">listtype</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// what about number lists...
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">last_li</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">last_li </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">lvl</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">last_li</span><span class="jsdoc-syntax">);
-                }
-                </span><span class="jsdoc-var">last_li.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nul</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">nlvl</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">nul</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">listLevel </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">level</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newList </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">listItem</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'type'</span><span class="jsdoc-syntax">]);
+                </span><span class="jsdoc-var">li.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newList</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">listLevel</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">newList</span><span class="jsdoc-syntax">;
 
             }
-            </span><span class="jsdoc-var">lvl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nlvl</span><span class="jsdoc-syntax">;
 
-            </span><span class="jsdoc-comment">// not starting at 1..
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">nlvl</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;start&quot;</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">listtype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;ol&quot;</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">nlvl</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;start&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">num</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">level </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">listLevel</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-var">li </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">level</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-var">li.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.innerHTML</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'LI' </span><span class="jsdoc-syntax">&amp;&amp; [</span><span class="jsdoc-string">'OL'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'UL'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.includes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.parentNode.tagName</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.parentNode</span><span class="jsdoc-syntax">;
             }
-
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nli </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">nlvl</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">));
-            </span><span class="jsdoc-var">last_li </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nli</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">nli.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.innerHTML</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-comment">//Roo.log(&quot;innerHTML = &quot; + n.innerHTML);
-            </span><span class="jsdoc-var">parent.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
-
-
-
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.parentNode</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">node.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+            }
 
         },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-
-
-
-
     },
 
     </span><span class="jsdoc-var">replaceImageTable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc</span><span class="jsdoc-syntax">)
