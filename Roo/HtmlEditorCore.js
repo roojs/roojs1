@@ -613,7 +613,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
-        
+
         // check what type of paste - if it's an image, then handle it differently.
         if (cd.files && cd.files.length > 0 && cd.types.indexOf('text/html') < 0) {
             // pasting images? 
@@ -655,8 +655,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
 
         var html = cd.getData('text/html'); // clipboard event
+
         
-        //Roo.log(html);
         html = this.cleanWordChars(html);
 
         
@@ -724,13 +724,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'name',
                     'align',
                     'colspan',
-                    'rowspan' 
+                    'rowspan',
+                    'start'
                 /*  THESE ARE NOT ALLWOED FOR PASTE
                  *    'data-display',
                     'data-caption-display',
                     'data-width',
                     'data-caption',
-                    'start' ,
                     'style',
                     // youtube embed.
                     'class',

@@ -73045,115 +73045,162 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
        
         listpara = doc.getElementsByClassName('MsoListParagraph');
-        // Roo.log(doc.innerHTML);
-        
-        
-        
+
         while(listpara.length) {
-            
-            this.replaceDocBullet(listpara.item(0));
+            this.replaceDocListItem(listpara.item(0));
         }
       
     },
-    
-     
-    
-    replaceDocBullet : function(p)
+
+    getNextListItem: function (currentItem)
     {
-        // gather all the siblings.
-        var ns = p,
-            parent = p.parentNode,
-            doc = parent.ownerDocument,
-            items = [];
-         
-        //Roo.log("Parsing: " + p.innerText)    ;
-        var listtype = 'ul';   
-        while (ns) {
-            if (ns.nodeType != 1) {
-                ns = ns.nextSibling;
+
+        // special case : current item is last li inside ol or ul
+        if(['OL', 'UL'].includes(currentItem.parentNode.tagName) && currentItem.parentNode.lastElementChild == currentItem && currentItem.tagName == 'LI') {
+            currentItem = currentItem.parentNode;
+        }
+
+        currentItem = currentItem.nextElementSibling;
+
+        if(!currentItem) {
+            return false;
+        }
+
+        // special case : next item is first li inside ol or ul
+        if(['OL', 'UL'].includes(currentItem.tagName) && currentItem.firstElementChild.tagName == 'LI') {
+            currentItem = currentItem.firstElementChild;
+        }
+
+
+        if(!currentItem.className.match(/(MsoListParagraph)/i)) {
+            return false;
+        }
+
+        return currentItem;
+    },
+
+    replaceDocListItem: function(item)
+    {
+        var currentItem = item;
+        var listItems = [];
+        var levelToMargin = [];
+
+        while(currentItem) {
+            var style = this.styleToObject(currentItem);
+            var spans = currentItem.getElementsByTagName('span');
+            if(
+                typeof(style['mso-list']) == 'undefined' // no mso-list in style
+                ||
+                !spans.length // no span
+            ) {
+                var oldItem = currentItem;
+                currentItem = this.getNextListItem(currentItem);
+                oldItem.parentNode.remove(oldItem); // removed
                 continue;
             }
-            if (!ns.className.match(/(MsoListParagraph|ql-indent-1)/i)) {
-                //Roo.log("Missing para r q1indent - got:" + ns.className);
-                break;
-            }
-            var spans = ns.getElementsByTagName('span');
-            
-            if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
-                items.push(ns);
-                ns = ns.nextSibling;
-                has_list = true;
-                if (!spans.length) {
-                    continue;
-                }
-                var ff = '';
-                var se = spans[0];
-                for (var i = 0; i < spans.length;i++) {
-                    se = spans[i];
-                    if (se.hasAttribute('style')  && se.hasAttribute('style') && se.style.fontFamily != '') {
-                        ff = se.style.fontFamily;
-                        break;
-                    }
-                }
-                 
-                    
-                //Roo.log("got font family: " + ff);
-                if (typeof(ff) != 'undefined' && !ff.match(/(Symbol|Wingdings)/) && "·o".indexOf(se.innerText.trim()) < 0) {
-                    listtype = 'ol';
-                }
-                
-                continue;
-            }
-            //Roo.log("no mso-list?");
-            
-            var spans = ns.getElementsByTagName('span');
-            if (!spans.length) {
-                break;
-            }
-            var has_list  = false;
-            for(var i = 0; i < spans.length; i++) {
-                if (spans[i].hasAttribute('style') && spans[i].getAttribute('style').match(/mso-list/)) {
-                    has_list = true;
+
+            var listItem = {
+                'node' : currentItem
+            };
+
+            // get the type of list
+            var fontFamily = false;
+            for(var i = 0; i < spans.length; i ++) {
+                if(spans[i].hasAttribute('style') && spans[i].style.fontFamily != '') {
+                    fontFamily = spans[i].style.fontFamily;
                     break;
                 }
             }
-            if (!has_list) {
-                break;
+
+            var type = (fontFamily !== false && fontFamily.match(/(Symbol|Wingdings)/)) ? 'ul' : 'ol';
+
+            if(currentItem.tagName == 'LI' && currentItem.parentNode.tagName == 'OL') { // special case : current item is li inside ol
+                type = 'ol';
             }
-            items.push(ns);
-            ns = ns.nextSibling;
-            
-            
+
+            if(currentItem.tagName == 'LI' && currentItem.parentNode.tagName == 'UL') { // special case : current item is li inside ul
+                type = 'ul';   
+            }
+
+            listItem['type'] = type;
+
+            // get the level of list
+            var level = listItems.length ? listItems[listItems.length - 1]['level'] + 1 : levelToMargin.length;
+            var margin = style['margin-left'];
+            if(typeof(margin) == 'undefined') {
+                margin = 'undefined';
+            }
+            margin = margin + type;
+
+            if(levelToMargin.includes(margin)) {
+                for(var i = 0; i < levelToMargin.length; i ++) {
+                    if(levelToMargin[i] == margin) {
+                        level = i;
+                    }
+                }
+            }
+            else {
+                if(level > 0) {
+                    previousMargin = levelToMargin[level - 1];
+                    if(
+                        margin.substr(margin.length - 2) == previousMargin.substr(previousMargin.length - 2) // same type
+                        &&
+                        margin.substr(0, margin.length - 2) != 'undefined' // current margin is defined
+                        &&
+                        previousMargin.substr(0, previousMargin.length - 2) == 'undefined' // previous margin is undefined
+                    ) {
+                        // set current level to previous level
+                        level --;
+                        // replace undefined by the current margin
+                        levelToMargin[level] = margin;
+                    }
+
+                    if(
+                        margin.substr(margin.length - 2) == previousMargin.substr(previousMargin.length - 2) // same type
+                        &&
+                        margin.substr(0, margin.length - 2) == 'undefined' // current margin is undefined
+                        &&
+                        previousMargin.substr(0, previousMargin.length - 2) != 'undefined' // previous margin is defined
+                    ) {
+                        // set current level to previous level
+                        level --;
+                        // replace undefined by the margin of of previous level
+                        margin = levelToMargin[level];
+                    }
+                }
+
+                levelToMargin[level] = margin;
+            }
+
+            listItem['level'] = level;
+
+            listItems.push(listItem);
+
+            currentItem = this.getNextListItem(currentItem);
         }
-        if (!items.length) {
-            ns.className = "";
+
+        if (!listItems.length) {
             return;
         }
-        
-        var ul = parent.ownerDocument.createElement(listtype); // what about number lists...
-        parent.insertBefore(ul, p);
-        var lvl = 0;
-        var stack = [ ul ];
-        var last_li = false;
-        
-        var margin_to_depth = {};
-        max_margins = -1;
-        
-        items.forEach(function(n, ipos) {
-            //Roo.log("got innertHMLT=" + n.innerHTML);
-            
-            var spans = n.getElementsByTagName('span');
-            if (!spans.length) {
-                //Roo.log("No spans found");
-                 
-                parent.removeChild(n);
-                
-                
-                return; // skip it...
-            }
-           
-                
-            var num = 1;
+
+
+        if(item.tagName == 'LI' && ['OL', 'UL'].includes(item.parentNode.tagName)) {
+            item = item.parentNode;
+        }
+        var parent = item.parentNode;
+        var doc = parent.ownerDocument;
+
+        var list = doc.createElement(listItems[0]['type']);
+        parent.insertBefore(list, item);
+        var level = 0;
+        var stack = [list];
+        var li = false;
+
+        listItems.forEach(function(listItem) {
+            var node = listItem['node'];
+
+            var spans = node.getElementsByTagName('span');
+
             var style = {};
             for(var i = 0; i < spans.length; i++) {
             
@@ -73161,61 +73208,31 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 if (typeof(style['mso-list']) == 'undefined') {
                     continue;
                 }
-                if (listtype == 'ol') {
-                   num = spans[i].innerText.replace(/[^0-9]+]/g,'')  * 1;
-                }
                 spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
                 break;
             }
-            //Roo.log("NOW GOT innertHMLT=" + n.innerHTML);
-            style = this.styleToObject(n); // mo-list is from the parent node.
-            if (typeof(style['mso-list']) == 'undefined') {
-                //Roo.log("parent is missing level");
-                  
-                parent.removeChild(n);
-                 
-                return;
-            }
-            
-            var margin = style['margin-left'];
-            if (typeof(margin_to_depth[margin]) == 'undefined') {
-                max_margins++;
-                margin_to_depth[margin] = max_margins;
-            }
-            nlvl = margin_to_depth[margin] ;
+
+            var listLevel = listItem['level'];
              
-            if (nlvl > lvl) {
-                //new indent
-                var nul = doc.createElement(listtype); // what about number lists...
-                if (!last_li) {
-                    last_li = doc.createElement('li');
-                    stack[lvl].appendChild(last_li);
-                }
-                last_li.appendChild(nul);
-                stack[nlvl] = nul;
+            if (listLevel > level) {
+                var newList = doc.createElement(listItem['type']);
+                li.appendChild(newList);
+                stack[listLevel] = newList;
                 
             }
-            lvl = nlvl;
-            
-            // not starting at 1..
-            if (!stack[nlvl].hasAttribute("start") && listtype == "ol") {
-                stack[nlvl].setAttribute("start", num);
+
+            level = listLevel;
+
+            li = stack[level].appendChild(doc.createElement('li'));
+            li.innerHTML = node.innerHTML;
+            if(node.tagName == 'LI' && ['OL', 'UL'].includes(node.parentNode.tagName)) {
+                node = node.parentNode;
+            }
+            if(node.parentNode) {
+                node.parentNode.removeChild(node);
             }
             
-            var nli = stack[nlvl].appendChild(doc.createElement('li'));
-            last_li = nli;
-            nli.innerHTML = n.innerHTML;
-            //Roo.log("innerHTML = " + n.innerHTML);
-            parent.removeChild(n);
-            
-             
-             
-            
         },this);
-        
-        
-        
-        
     },
     
     replaceImageTable : function(doc)
@@ -77296,7 +77313,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
-        
+
         // check what type of paste - if it's an image, then handle it differently.
         if (cd.files && cd.files.length > 0 && cd.types.indexOf('text/html') < 0) {
             // pasting images? 
@@ -77338,8 +77355,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
 
         var html = cd.getData('text/html'); // clipboard event
+
         
-        //Roo.log(html);
         html = this.cleanWordChars(html);
 
         
@@ -77407,13 +77424,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'name',
                     'align',
                     'colspan',
-                    'rowspan' 
+                    'rowspan',
+                    'start'
                 /*  THESE ARE NOT ALLWOED FOR PASTE
                  *    'data-display',
                     'data-caption-display',
                     'data-width',
                     'data-caption',
-                    'start' ,
                     'style',
                     // youtube embed.
                     'class',
