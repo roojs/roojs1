@@ -18348,10 +18348,7 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
         if(!this.hasFocus){
             return;
         }
-        Roo.log('onBeforeLoad');
-        Roo.log(opts);
          if (!opts.add) {
-             Roo.log(this);
             this.expand();
             this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
          }
