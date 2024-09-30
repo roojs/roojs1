@@ -1745,11 +1745,9 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
      * Hides the dropdown list if it is currently expanded. Fires the 'collapse' event on completion.
      */
     collapse : function(){
-        Roo.log("COLLAPSE 1");
         if(!this.isExpanded()){
             return;
         }
-        Roo.log("COLLAPSE 2");
         
         this.list.hide();
         
