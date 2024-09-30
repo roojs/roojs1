@@ -1716,7 +1716,7 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
                      *  we should expand the list on onLoad
                      *  so command out it
                      */
-//                    this.expand();
+                   this.expand();
                 }
             }else{
                 this.selectedIndex = -1;
