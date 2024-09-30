@@ -1537,7 +1537,6 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
             this.restrictHeight();
             return;
         }
-        Roo.log('COLLPASE 111');
         this.collapse();
     },
 
