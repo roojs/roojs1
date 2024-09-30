@@ -1145,7 +1145,7 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
             return;
         }
          if (!opts.add) {
-            this.setLoading(this.loadingText);
+            this.setLoading();
          }
         this.restrictHeight();
         this.selectedIndex = -1;
