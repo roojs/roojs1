@@ -1152,7 +1152,7 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
     },
 
     setLoading : function() {
-        this.list.dom.innerHTML = '<li class="loading-indicator"><i class="fa fa-spinner fa-spin"></i>'+(this.loadingText||'loading')+'</li>' ;
+        this.list.dom.innerHTML = '<li class="loading-indicator"><i class="fa fa-spinner fa-spin" style="margin-right:15px;"></i>'+(this.loadingText||'loading')+'</li>' ;
     },
 
     // private
