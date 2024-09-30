@@ -1145,10 +1145,14 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
             return;
         }
          if (!opts.add) {
-            this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
+            this.setLoading();
          }
         this.restrictHeight();
         this.selectedIndex = -1;
+    },
+
+    setLoading : function() {
+        this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
     },
 
     // private
