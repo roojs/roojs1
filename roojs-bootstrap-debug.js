@@ -18349,6 +18349,7 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
             return;
         }
          if (!opts.add) {
+            this.expand();
             this.setLoading(this.loadingText);
          }
         this.restrictHeight();
