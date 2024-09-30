@@ -18349,10 +18349,14 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
             return;
         }
          if (!opts.add) {
-            this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
+            this.setLoading();
          }
         this.restrictHeight();
         this.selectedIndex = -1;
+    },
+
+    setLoading : function() {
+        this.list.dom.innerHTML = '<li class="loading-indicator"><i class="fa fa-spinner fa-spin"></i>'+(this.loadingText||'loading')+'</li>' ;
     },
 
     // private
@@ -18998,12 +19002,9 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
      * Expands the dropdown list if it is currently hidden. Fires the 'expand' event on completion.
      */
     expand : function(){
-        Roo.log('EXPAND');
-        Roo.log(this.hasFocus);
         if(this.isExpanded() || !this.hasFocus){
             return;
         }
-        Roo.log('EXPANDed');
         
         var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
         this.list.setWidth(lw);
