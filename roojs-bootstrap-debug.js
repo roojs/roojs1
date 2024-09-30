@@ -18349,7 +18349,6 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
             return;
         }
          if (!opts.add) {
-            this.expand();
             this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
          }
         this.restrictHeight();
@@ -18920,7 +18919,7 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
                      *  we should expand the list on onLoad
                      *  so command out it
                      */
-//                    this.expand();
+                   this.expand();
                 }
             }else{
                 this.selectedIndex = -1;
