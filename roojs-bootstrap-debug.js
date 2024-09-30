@@ -18999,6 +18999,7 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
      */
     expand : function(){
         Roo.log('EXPAND');
+        Roo.log(this.hasFocus);
         if(this.isExpanded() || !this.hasFocus){
             return;
         }
