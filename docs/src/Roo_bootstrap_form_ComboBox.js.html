@@ -1145,10 +1145,14 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
          </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">opts.add</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.list.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;li class=&quot;loading-indicator&quot;&gt;'</span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">this.loadingText</span><span class="jsdoc-syntax">||</span><span class="jsdoc-string">'loading'</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-string">'&lt;/li&gt;' </span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.setLoading</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadingText</span><span class="jsdoc-syntax">);
          }
         </span><span class="jsdoc-var">this.restrictHeight</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.selectedIndex </span><span class="jsdoc-syntax">= -1;
+    },
+
+    </span><span class="jsdoc-var">setLoading </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">loadingText</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.list.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;li class=&quot;loading-indicator&quot;&gt;&lt;i class=&quot;fa fa-spinner fa-spin&quot; style=&quot;margin-right:15px;&quot;&gt;&lt;/i&gt;'</span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">loadingText</span><span class="jsdoc-syntax">||</span><span class="jsdoc-string">'loading'</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-string">'&lt;/li&gt;' </span><span class="jsdoc-syntax">;
     },
 
     </span><span class="jsdoc-comment">// private
@@ -1537,7 +1541,6 @@
             </span><span class="jsdoc-var">this.restrictHeight</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-
         </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
     },
 
@@ -1715,8 +1718,8 @@
                      *  we should expand the list on onLoad
                      *  so command out it
                      */
-//                    this.expand();
-                </span><span class="jsdoc-syntax">}
+                   </span><span class="jsdoc-var">this.expand</span><span class="jsdoc-syntax">();
+                }
             }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
                 </span><span class="jsdoc-var">this.selectedIndex </span><span class="jsdoc-syntax">= -1;
                 </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">();
@@ -1795,7 +1798,6 @@
      * Expands the dropdown list if it is currently hidden. Fires the 'expand' event on completion.
      */
     </span><span class="jsdoc-var">expand </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isExpanded</span><span class="jsdoc-syntax">() || !</span><span class="jsdoc-var">this.hasFocus</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
