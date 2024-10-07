@@ -230,7 +230,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         if(['OL', 'UL'].includes(currentItem.tagName) && currentItem.firstElementChild.tagName == 'LI') {
             currentItem = currentItem.firstElementChild;
         }
-
+        Roo.log(currentItem.className);
 
         if(!currentItem.className.match(/(MsoListParagraph)/i)) {
             return false;
