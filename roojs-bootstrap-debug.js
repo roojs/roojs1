@@ -27986,11 +27986,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 }
             }
 
-            var type = (fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/)) ? 'ol' : 'ul';
-            Roo.log(fontFamily);
-            Roo.log(type);
-            Roo.log(span.innerText.trim());
-            Roo.log("●○".indexOf(span.innerText.trim()) < 0);
+            var type = (fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) && "●○■".indexOf(span.innerText.trim()) < 0) ? 'ol' : 'ul';
 
             if(currentItem.tagName == 'LI' && currentItem.parentNode.tagName == 'OL') { // special case : current item is li inside ol
                 type = 'ol';
