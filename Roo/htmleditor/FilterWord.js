@@ -265,9 +265,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             // get the type of list
             var fontFamily = false;
+            var span = false;
             for(var i = 0; i < spans.length; i ++) {
                 if(spans[i].hasAttribute('style') && spans[i].style.fontFamily != '') {
                     fontFamily = spans[i].style.fontFamily;
+                    span = spans[i];
                     break;
                 }
             }
