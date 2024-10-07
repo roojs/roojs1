@@ -278,7 +278,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             Roo.log(fontFamily);
             Roo.log(type);
             Roo.log(span.innerText.trim());
-            Roo.log("●○".indexOf(span.innerText.trim()) < 0);
+            Roo.log("●○■".indexOf(span.innerText.trim()) < 0);
 
             if(currentItem.tagName == 'LI' && currentItem.parentNode.tagName == 'OL') { // special case : current item is li inside ol
                 type = 'ol';
