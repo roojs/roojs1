@@ -224,6 +224,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         Roo.log(currentItem);
 
         if(!currentItem) {
+            Roo.log('NO CURRENT ITEM');
             return false;
         }
         Roo.log('CLASSNAME: ' + currentItem.className);

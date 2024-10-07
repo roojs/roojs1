@@ -27933,11 +27933,13 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
         currentItem = currentItem.nextElementSibling;
-        Roo.log('CLASSNAME: ' + currentItem.className);
+        Roo.log(currentItem);
 
         if(!currentItem) {
+            Roo.log('NO CURRENT ITEM');
             return false;
         }
+        Roo.log('CLASSNAME: ' + currentItem.className);
 
         // special case : next item is first li inside ol or ul
         if(['OL', 'UL'].includes(currentItem.tagName) && currentItem.firstElementChild.tagName == 'LI') {
