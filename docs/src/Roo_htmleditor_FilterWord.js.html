@@ -231,7 +231,6 @@
             </span><span class="jsdoc-var">currentItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">currentItem.firstElementChild</span><span class="jsdoc-syntax">;
         }
 
-
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">currentItem.className.match</span><span class="jsdoc-syntax">(/(MsoListParagraph)/i)) {
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
@@ -255,7 +254,7 @@
             </span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oldItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">currentItem</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">currentItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getNextListItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentItem</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">oldItem.parentNode.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oldItem</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// removed
+                </span><span class="jsdoc-var">oldItem.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oldItem</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// removed
                 </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
             }
 
@@ -265,14 +264,16 @@
 
             </span><span class="jsdoc-comment">// get the type of list
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fontFamily </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">span </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">spans.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">++) {
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.style.fontFamily </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">fontFamily </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.style.fontFamily</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">span </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
                     </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
                 }
             }
 
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">fontFamily </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">fontFamily.match</span><span class="jsdoc-syntax">(/(Symbol|Wingdings)/)) ? </span><span class="jsdoc-string">'ul' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ol'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">fontFamily </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">fontFamily.match</span><span class="jsdoc-syntax">(/(Symbol|Wingdings)/) &amp;&amp; </span><span class="jsdoc-string">&quot;●○■&quot;</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">span.innerText.trim</span><span class="jsdoc-syntax">()) &lt; 0) ? </span><span class="jsdoc-string">'ol' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">;
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentItem.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'LI' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">currentItem.parentNode.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'OL'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// special case : current item is li inside ol
                 </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'ol'</span><span class="jsdoc-syntax">;
