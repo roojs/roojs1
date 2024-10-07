@@ -27942,7 +27942,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         if(['OL', 'UL'].includes(currentItem.tagName) && currentItem.firstElementChild.tagName == 'LI') {
             currentItem = currentItem.firstElementChild;
         }
-
+        Roo.log(currentItem.className);
 
         if(!currentItem.className.match(/(MsoListParagraph)/i)) {
             return false;
@@ -27956,6 +27956,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var currentItem = item;
         var listItems = [];
         var levelToMargin = [];
+        var skip = 0;
 
         while(currentItem) {
             var style = this.styleToObject(currentItem);
@@ -27965,6 +27966,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 ||
                 !spans.length // no span
             ) {
+                if(skip >= 100) {
+                    break;
+                }
+                skip ++;
                 Roo.log('SKIP');
                 Roo.log(currentItem);
                 var oldItem = currentItem;
