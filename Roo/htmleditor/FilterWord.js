@@ -254,6 +254,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 !spans.length // no span
             ) {
                 Roo.log('SKIP');
+                Roo.log(currentItem);
                 var oldItem = currentItem;
                 currentItem = this.getNextListItem(currentItem);
                 oldItem.parentNode.remove(oldItem); // removed
