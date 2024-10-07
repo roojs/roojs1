@@ -258,7 +258,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     break;
                 }
                 skip ++;
-                Roo.log('SKIP');
+                Roo.log('SKIP: ' + skip);
                 Roo.log(currentItem);
                 var oldItem = currentItem;
                 currentItem = this.getNextListItem(currentItem);
