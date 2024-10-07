@@ -251,14 +251,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var currentItem = item;
         var listItems = [];
         var levelToMargin = [];
-        var loop = 0;
 
         while(currentItem) {
-            if(loop >= 20) {
-                break;
-            }
-            loop ++;
-            Roo.log('LOOP: ' + loop);
             var style = this.styleToObject(currentItem);
             var spans = currentItem.getElementsByTagName('span');
             if(
