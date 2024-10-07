@@ -254,6 +254,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 ||
                 !spans.length // no span
             ) {
+                skip ++;
+                if(skip >= 100) {
+                    break;
+                }
                 Roo.log('SKIP');
                 Roo.log(currentItem);
                 var oldItem = currentItem;
