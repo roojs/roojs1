@@ -254,15 +254,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 ||
                 !spans.length // no span
             ) {
-                Roo.log('SKIP');
                 var oldItem = currentItem;
                 currentItem = this.getNextListItem(currentItem);
-                Roo.log(oldItem.outerHTML);
-                Roo.log(oldItem.parentNode.outerHTML);
                 oldItem.parentNode.removeChild(oldItem); // removed
                 continue;
             }
-            Roo.log('OK');
 
             var listItem = {
                 'node' : currentItem
@@ -340,9 +336,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
 
             listItem['level'] = level;
-
-            Roo.log('type: ' + type);
-            Roo.log('level: ' + level);
 
             listItems.push(listItem);
 
