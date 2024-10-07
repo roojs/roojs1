@@ -27977,9 +27977,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             // get the type of list
             var fontFamily = false;
+            var span = false;
             for(var i = 0; i < spans.length; i ++) {
                 if(spans[i].hasAttribute('style') && spans[i].style.fontFamily != '') {
                     fontFamily = spans[i].style.fontFamily;
+                    span = spans[i];
                     break;
                 }
             }
@@ -27987,8 +27989,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             var type = (fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/)) ? 'ol' : 'ul';
             Roo.log(fontFamily);
             Roo.log(type);
-            Roo.log(spans[i].innerText.trim());
-            Roo.log("·o".indexOf(spans[i].innerText.trim()) < 0);
+            Roo.log(span.innerText.trim());
+            Roo.log("●○".indexOf(span.innerText.trim()) < 0);
 
             if(currentItem.tagName == 'LI' && currentItem.parentNode.tagName == 'OL') { // special case : current item is li inside ol
                 type = 'ol';
