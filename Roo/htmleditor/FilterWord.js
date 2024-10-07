@@ -336,6 +336,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             listItem['level'] = level;
 
+            Roo.log('type: ' + type);
+            Roo.log('level: ' + level);
+
             listItems.push(listItem);
 
             currentItem = this.getNextListItem(currentItem);
