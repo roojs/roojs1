@@ -275,6 +275,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             var type = (fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/)) ? 'ol' : 'ul';
             Roo.log(fontFamily);
             Roo.log(type);
+            Roo.log(spans[i].innerText.trim());
+            Roo.log("·o".indexOf(spans[i].innerText.trim()) < 0);
 
             if(currentItem.tagName == 'LI' && currentItem.parentNode.tagName == 'OL') { // special case : current item is li inside ol
                 type = 'ol';
