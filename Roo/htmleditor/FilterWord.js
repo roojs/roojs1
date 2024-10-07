@@ -221,7 +221,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
         currentItem = currentItem.nextElementSibling;
-        Roo.log(currentItem);
 
         if(!currentItem) {
             Roo.log('NO CURRENT ITEM');
