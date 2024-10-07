@@ -27985,6 +27985,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
 
             var type = (fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/)) ? 'ol' : 'ul';
+            Roo.log(fontFamily);
+            Roo.log(type);
 
             if(currentItem.tagName == 'LI' && currentItem.parentNode.tagName == 'OL') { // special case : current item is li inside ol
                 type = 'ol';
