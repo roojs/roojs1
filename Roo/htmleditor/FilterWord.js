@@ -263,8 +263,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 Roo.log('SKIP');
                 var oldItem = currentItem;
                 currentItem = this.getNextListItem(currentItem);
-                Roo.log(currentItem);
-                Roo.log(currentItem ? 'TRUE' : 'FALSE');
+                Roo.log(oldItem);
                 oldItem.parentNode.remove(oldItem); // removed
                 continue;
             }
