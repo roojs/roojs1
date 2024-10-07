@@ -27933,6 +27933,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
         currentItem = currentItem.nextElementSibling;
+        Roo.log('CLASSNAME: ' + currentItem.className);
 
         if(!currentItem) {
             return false;
@@ -27942,7 +27943,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         if(['OL', 'UL'].includes(currentItem.tagName) && currentItem.firstElementChild.tagName == 'LI') {
             currentItem = currentItem.firstElementChild;
         }
-        Roo.log(currentItem.className);
 
         if(!currentItem.className.match(/(MsoListParagraph)/i)) {
             return false;
@@ -27970,10 +27970,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     break;
                 }
                 skip ++;
-                Roo.log('SKIP');
-                Roo.log(currentItem);
+                Roo.log('SKIP: ' + skip);
                 var oldItem = currentItem;
                 currentItem = this.getNextListItem(currentItem);
+                Roo.log(currentItem);
                 oldItem.parentNode.remove(oldItem); // removed
                 continue;
             }

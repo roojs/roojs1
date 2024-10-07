@@ -221,7 +221,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
         currentItem = currentItem.nextElementSibling;
-        Roo.log(currentItem.className);
+        Roo.log('CLASSNAME: ' + currentItem.className);
 
         if(!currentItem) {
             return false;
