@@ -261,14 +261,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 ||
                 !spans.length // no span
             ) {
-                if(skip >= 100) {
-                    break;
-                }
-                skip ++;
                 Roo.log('SKIP: ' + skip);
                 var oldItem = currentItem;
                 currentItem = this.getNextListItem(currentItem);
                 Roo.log(currentItem);
+                Roo.log(currentItem ? 'TRUE' : 'FALSE');
                 oldItem.parentNode.remove(oldItem); // removed
                 continue;
             }

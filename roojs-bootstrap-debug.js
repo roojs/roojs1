@@ -27958,9 +27958,14 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var currentItem = item;
         var listItems = [];
         var levelToMargin = [];
-        var skip = 0;
+        var loop = 0;
 
         while(currentItem) {
+            if(loop >= 20) {
+                break;
+            }
+            loop ++;
+            Roo.log('LOOP: ' + loop);
             var style = this.styleToObject(currentItem);
             var spans = currentItem.getElementsByTagName('span');
             if(
@@ -27968,14 +27973,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 ||
                 !spans.length // no span
             ) {
-                if(skip >= 100) {
-                    break;
-                }
-                skip ++;
                 Roo.log('SKIP: ' + skip);
                 var oldItem = currentItem;
                 currentItem = this.getNextListItem(currentItem);
                 Roo.log(currentItem);
+                Roo.log(currentItem ? 'TRUE' : 'FALSE');
                 oldItem.parentNode.remove(oldItem); // removed
                 continue;
             }
