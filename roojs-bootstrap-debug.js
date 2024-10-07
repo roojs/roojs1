@@ -27918,13 +27918,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
        
         listpara = doc.getElementsByClassName('MsoListParagraph');
 
-        var loop = 0;
         while(listpara.length) {
-            if(loop >= 10) {
-                break;
-            }
-            loop ++;
-            Roo.log('OUTER LOOP: ' + loop);
             this.replaceDocListItem(listpara.item(0));
         }
       
@@ -27941,10 +27935,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         currentItem = currentItem.nextElementSibling;
 
         if(!currentItem) {
-            Roo.log('NO CURRENT ITEM');
             return false;
         }
-        Roo.log('CLASSNAME: ' + currentItem.className);
 
         // special case : next item is first li inside ol or ul
         if(['OL', 'UL'].includes(currentItem.tagName) && currentItem.firstElementChild.tagName == 'LI') {
@@ -27972,15 +27964,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 ||
                 !spans.length // no span
             ) {
-                Roo.log('SKIP');
                 var oldItem = currentItem;
                 currentItem = this.getNextListItem(currentItem);
-                Roo.log(oldItem.outerHTML);
-                Roo.log(oldItem.parentNode.outerHTML);
                 oldItem.parentNode.removeChild(oldItem); // removed
                 continue;
             }
-            Roo.log('OK');
 
             var listItem = {
                 'node' : currentItem
@@ -28058,9 +28046,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
 
             listItem['level'] = level;
-
-            Roo.log('type: ' + type);
-            Roo.log('level: ' + level);
 
             listItems.push(listItem);
 
@@ -32302,8 +32287,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
 
         if (this.autoClean) {
-            Roo.log('BEFORE FILTER WORD');
-            Roo.log(d.innerHTML);
             new Roo.htmleditor.FilterWord({ node : d });
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
