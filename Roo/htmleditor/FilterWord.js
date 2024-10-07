@@ -206,7 +206,13 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
        
         listpara = doc.getElementsByClassName('MsoListParagraph');
 
+        var loop = 0;
         while(listpara.length) {
+            if(loop >= 10) {
+                break;
+            }
+            loop ++;
+            Roo.log('OUTER LOOP: ' + loop);
             this.replaceDocListItem(listpara.item(0));
         }
       
