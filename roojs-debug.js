@@ -86568,8 +86568,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
         //}
         this.duration = c.duration || .30;
         this.slideDuration = c.slideDuration || .45;
-        this.autoHide = true;
-        this.autoHide = c.autoHide;
+        this.autoHide = c.autoHide === false ? false : true;
         this.config = c;
         if(c.collapsed){
             this.collapse(true);
