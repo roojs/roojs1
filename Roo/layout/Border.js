@@ -254,7 +254,7 @@ Roo.extend(Roo.layout.Border, Roo.layout.Manager, {
      * @return {Roo.panel.Content} The panel or null if it wasn't found
      */
     findPanel : function(panelId){
-        var rs = this.regions;
+        var rs = thiss;
         for(var target in rs){
             if(typeof rs[target] != "function"){
                 var p = rs[target].getPanel(panelId);
