@@ -273,7 +273,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             tag : 'img',
             contenteditable : 'false',
             src : this.image_src,
-            alt : d.innerText.replace(/\n/g, " ").replace(/\s+/g, ' ').trim(), // removeHTML and reduce spaces..
+            alt : d.innerText.replace(/\n/g, " ").replace(/\s+/g, ' ').replaceAll(/"/g, "&quot;").trim(), // removeHTML and reduce spaces..
             style: {
                 width : iw,
                 maxWidth : iw + ' !important', // this is not getting rendered?
