@@ -26393,7 +26393,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var figcaption = this.getVal(node, 'figcaption', false);
 
         if (figcaption !== '') {
-            this.caption = this.getVal(figcaption, 'i', 'html').replaceAll(/"/g, "&quot;");
+            this.caption = this.getVal(figcaption, 'i', 'html');
         }
                 
 
@@ -26403,6 +26403,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         if(this.caption_display == 'none' && dc && dc.length){
             this.caption = dc;
         }
+
+        this.caption = this.caption.replaceAll(/"/g, "&quot;");
 
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, true, 'data-width');
