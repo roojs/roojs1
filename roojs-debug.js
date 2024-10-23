@@ -75403,7 +75403,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var figcaption = this.getVal(node, 'figcaption', false);
 
         if (figcaption !== '') {
-            this.caption = this.getVal(figcaption, 'i', 'html').replace(/"/g, "&quot;");
+            this.caption = this.getVal(figcaption, 'i', 'html').replaceAll(/"/g, "&quot;");
         }
                 
 
