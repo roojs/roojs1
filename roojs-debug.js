@@ -61562,6 +61562,7 @@ Roo.Msg.show({
             progressEl.setDisplayed(opt.progress === true);
             this.updateProgress(0);
             activeTextEl.dom.value = opt.value || "";
+            activeTextEl.dom.scrollTop = 0; // scroll to top
             if(opt.prompt){
                 dlg.setDefaultButton(activeTextEl);
             }else{
