@@ -61562,6 +61562,9 @@ Roo.Msg.show({
             progressEl.setDisplayed(opt.progress === true);
             this.updateProgress(0);
             activeTextEl.dom.value = opt.value || "";
+            (function() { 
+                activeTextEl.dom.scrollTop = 0; // scroll to top
+            }).defer(100);
             if(opt.prompt){
                 dlg.setDefaultButton(activeTextEl);
             }else{
@@ -73071,7 +73074,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             currentItem = currentItem.firstElementChild;
         }
 
-
         if(!currentItem.className.match(/(MsoListParagraph)/i)) {
             return false;
         }
@@ -73095,7 +73097,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             ) {
                 var oldItem = currentItem;
                 currentItem = this.getNextListItem(currentItem);
-                oldItem.parentNode.remove(oldItem); // removed
+                oldItem.parentNode.removeChild(oldItem); // removed
                 continue;
             }
 
@@ -73105,14 +73107,16 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             // get the type of list
             var fontFamily = false;
+            var span = false;
             for(var i = 0; i < spans.length; i ++) {
                 if(spans[i].hasAttribute('style') && spans[i].style.fontFamily != '') {
                     fontFamily = spans[i].style.fontFamily;
+                    span = spans[i];
                     break;
                 }
             }
 
-            var type = (fontFamily !== false && fontFamily.match(/(Symbol|Wingdings)/)) ? 'ul' : 'ol';
+            var type = (fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) && "●○■".indexOf(span.innerText.trim()) < 0) ? 'ol' : 'ul';
 
             if(currentItem.tagName == 'LI' && currentItem.parentNode.tagName == 'OL') { // special case : current item is li inside ol
                 type = 'ol';
@@ -75261,7 +75265,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             tag : 'img',
             contenteditable : 'false',
             src : this.image_src,
-            alt : d.innerText.replace(/\n/g, " ").replace(/\s+/g, ' ').trim(), // removeHTML and reduce spaces..
+            // removeHTML and reduce spaces and show double quotation marks
+            alt : d.innerText.replace(/\n/g, " ").replace(/\s+/g, ' ').replaceAll(/"/g, "&quot;").trim(),
             style: {
                 width : iw,
                 maxWidth : iw + ' !important', // this is not getting rendered?
@@ -75412,6 +75417,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         if(this.caption_display == 'none' && dc && dc.length){
             this.caption = dc;
         }
+
+        this.caption = this.caption.replaceAll(/"/g, "&quot;");
 
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, true, 'data-width');
@@ -86567,6 +86574,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
         //}
         this.duration = c.duration || .30;
         this.slideDuration = c.slideDuration || .45;
+        this.autoHide = c.autoHide === false ? false : true;
         this.config = c;
         if(c.collapsed){
             this.collapse(true);

@@ -339,6 +339,9 @@ Roo.Msg.show({
             </span><span class="jsdoc-var">progressEl.setDisplayed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">opt.progress </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.updateProgress</span><span class="jsdoc-syntax">(0);
             </span><span class="jsdoc-var">activeTextEl.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">opt.value </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+            (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                </span><span class="jsdoc-var">activeTextEl.dom.scrollTop </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-comment">// scroll to top
+            </span><span class="jsdoc-syntax">})</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(100);
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">opt.prompt</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">dlg.setDefaultButton</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">activeTextEl</span><span class="jsdoc-syntax">);
             }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{

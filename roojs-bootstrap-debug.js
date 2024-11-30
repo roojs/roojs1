@@ -18349,10 +18349,14 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
             return;
         }
          if (!opts.add) {
-            this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
+            this.setLoading(this.loadingText);
          }
         this.restrictHeight();
         this.selectedIndex = -1;
+    },
+
+    setLoading : function(loadingText) {
+        this.list.dom.innerHTML = '<li class="loading-indicator"><i class="fa fa-spinner fa-spin" style="margin-right:15px;"></i>'+(loadingText||'loading')+'</li>' ;
     },
 
     // private
@@ -18741,7 +18745,6 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
             this.restrictHeight();
             return;
         }
-        
         this.collapse();
     },
 
@@ -18919,7 +18922,7 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
                      *  we should expand the list on onLoad
                      *  so command out it
                      */
-//                    this.expand();
+                   this.expand();
                 }
             }else{
                 this.selectedIndex = -1;
@@ -18999,7 +19002,6 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
      * Expands the dropdown list if it is currently hidden. Fires the 'expand' event on completion.
      */
     expand : function(){
-       
         if(this.isExpanded() || !this.hasFocus){
             return;
         }
@@ -27941,7 +27943,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             currentItem = currentItem.firstElementChild;
         }
 
-
         if(!currentItem.className.match(/(MsoListParagraph)/i)) {
             return false;
         }
@@ -27965,7 +27966,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             ) {
                 var oldItem = currentItem;
                 currentItem = this.getNextListItem(currentItem);
-                oldItem.parentNode.remove(oldItem); // removed
+                oldItem.parentNode.removeChild(oldItem); // removed
                 continue;
             }
 
@@ -27975,14 +27976,16 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             // get the type of list
             var fontFamily = false;
+            var span = false;
             for(var i = 0; i < spans.length; i ++) {
                 if(spans[i].hasAttribute('style') && spans[i].style.fontFamily != '') {
                     fontFamily = spans[i].style.fontFamily;
+                    span = spans[i];
                     break;
                 }
             }
 
-            var type = (fontFamily !== false && fontFamily.match(/(Symbol|Wingdings)/)) ? 'ul' : 'ol';
+            var type = (fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) && "●○■".indexOf(span.innerText.trim()) < 0) ? 'ol' : 'ul';
 
             if(currentItem.tagName == 'LI' && currentItem.parentNode.tagName == 'OL') { // special case : current item is li inside ol
                 type = 'ol';
@@ -30131,7 +30134,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             tag : 'img',
             contenteditable : 'false',
             src : this.image_src,
-            alt : d.innerText.replace(/\n/g, " ").replace(/\s+/g, ' ').trim(), // removeHTML and reduce spaces..
+            // removeHTML and reduce spaces and show double quotation marks
+            alt : d.innerText.replace(/\n/g, " ").replace(/\s+/g, ' ').replaceAll(/"/g, "&quot;").trim(),
             style: {
                 width : iw,
                 maxWidth : iw + ' !important', // this is not getting rendered?
@@ -30282,6 +30286,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         if(this.caption_display == 'none' && dc && dc.length){
             this.caption = dc;
         }
+
+        this.caption = this.caption.replaceAll(/"/g, "&quot;");
 
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, true, 'data-width');

@@ -231,7 +231,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             currentItem = currentItem.firstElementChild;
         }
 
-
         if(!currentItem.className.match(/(MsoListParagraph)/i)) {
             return false;
         }
@@ -255,7 +254,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             ) {
                 var oldItem = currentItem;
                 currentItem = this.getNextListItem(currentItem);
-                oldItem.parentNode.remove(oldItem); // removed
+                oldItem.parentNode.removeChild(oldItem); // removed
                 continue;
             }
 
@@ -265,14 +264,16 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
             // get the type of list
             var fontFamily = false;
+            var span = false;
             for(var i = 0; i < spans.length; i ++) {
                 if(spans[i].hasAttribute('style') && spans[i].style.fontFamily != '') {
                     fontFamily = spans[i].style.fontFamily;
+                    span = spans[i];
                     break;
                 }
             }
 
-            var type = (fontFamily !== false && fontFamily.match(/(Symbol|Wingdings)/)) ? 'ul' : 'ol';
+            var type = (fontFamily !== false && !fontFamily.match(/(Symbol|Wingdings)/) && "●○■".indexOf(span.innerText.trim()) < 0) ? 'ol' : 'ul';
 
             if(currentItem.tagName == 'LI' && currentItem.parentNode.tagName == 'OL') { // special case : current item is li inside ol
                 type = 'ol';

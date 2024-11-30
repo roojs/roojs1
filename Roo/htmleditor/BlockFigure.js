@@ -273,7 +273,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             tag : 'img',
             contenteditable : 'false',
             src : this.image_src,
-            alt : d.innerText.replace(/\n/g, " ").replace(/\s+/g, ' ').trim(), // removeHTML and reduce spaces..
+            // removeHTML and reduce spaces and show double quotation marks
+            alt : d.innerText.replace(/\n/g, " ").replace(/\s+/g, ' ').replaceAll(/"/g, "&quot;").trim(),
             style: {
                 width : iw,
                 maxWidth : iw + ' !important', // this is not getting rendered?
@@ -424,6 +425,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         if(this.caption_display == 'none' && dc && dc.length){
             this.caption = dc;
         }
+
+        this.caption = this.caption.replaceAll(/"/g, "&quot;");
 
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, true, 'data-width');

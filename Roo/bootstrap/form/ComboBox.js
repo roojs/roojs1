@@ -1145,10 +1145,14 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
             return;
         }
          if (!opts.add) {
-            this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
+            this.setLoading(this.loadingText);
          }
         this.restrictHeight();
         this.selectedIndex = -1;
+    },
+
+    setLoading : function(loadingText) {
+        this.list.dom.innerHTML = '<li class="loading-indicator"><i class="fa fa-spinner fa-spin" style="margin-right:15px;"></i>'+(loadingText||'loading')+'</li>' ;
     },
 
     // private
@@ -1537,7 +1541,6 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
             this.restrictHeight();
             return;
         }
-        
         this.collapse();
     },
 
@@ -1715,7 +1718,7 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
                      *  we should expand the list on onLoad
                      *  so command out it
                      */
-//                    this.expand();
+                   this.expand();
                 }
             }else{
                 this.selectedIndex = -1;
@@ -1795,7 +1798,6 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
      * Expands the dropdown list if it is currently hidden. Fires the 'expand' event on completion.
      */
     expand : function(){
-       
         if(this.isExpanded() || !this.hasFocus){
             return;
         }
