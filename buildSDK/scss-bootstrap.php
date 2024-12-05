@@ -27,6 +27,14 @@ $files = array(
         'sourceMapRootpath' => '../scss/bootstrap/',
         'variables' =>  ""
     ),
+     "bootstrap-wrapped.scss" => array(
+        "scssDir" => "{$rootDir}/roojs1/scss/bootstrap",
+        'baseDir' => "{$rootDir}/roojs1/css-bootstrap4",
+        'name' => 'bootstrap-wrapped.css',
+        'minify' => 'bootstrap-wrapped.min.css',
+        'sourceMapRootpath' => '../scss/bootstrap/',
+        'variables' =>  ""
+    ),
     
     "roojs-bootstrap.scss" => array(
         "scssDir" => "{$rootDir}/roojs1/scss/roojs-bootstrap",
