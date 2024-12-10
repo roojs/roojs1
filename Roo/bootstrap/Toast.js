@@ -47,7 +47,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
           
         return {
-            cls: 'toast',
+            cls: 'toast fade show',
             role : 'alert',
             cn : [
                 {
