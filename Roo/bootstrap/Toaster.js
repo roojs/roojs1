@@ -55,11 +55,16 @@ Roo.extend(Roo.bootstrap.Toaster, Roo.bootstrap.Component,  {
     {
         return this.containerEl;
     },
-    show : function (msg)
+    show : function ()
     {
         if (!this.el) {
             this.render(document.body);
         }
+        this.el.removeClass('d-none');
+    },
+    hide : function()
+    {
+        this.el.addClass('d-none');
     }
    
 });
