@@ -18,7 +18,7 @@
  * @cfg show_time {boolean} should a time stamp be show/updated? - default false?
  * @cfg timeout {number|boolean} number of seconds until it should be hidden false
  * @cfg progress {number|boolean} show progressBar - false to hide, to show 0-100
- * @cfg {String} weight (primary|warning|info|danger|secondary|success|light|dark)
+ * @cfg {String} weight (primary|warning|info|danger|secondary|success|light|dark) colour to make the square!
  * 
  * @param {Object} config The config object
  *
