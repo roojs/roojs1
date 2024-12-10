@@ -138,7 +138,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
             this.timerEl.removeClass('d-none');
             this.show_time = new Date();
             this.updateTimer();
-            this.show_time_interval = setInterval(this.updateTimer.createDelegate(this), 1000);
+             
         }
         
         
@@ -170,6 +170,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
                 s > 60 ? (m + " mins ago") : (s + " seconds ago")
             )
         );
+        this.updateTimer.defer(s < 60 ? 5 : 60, this);
     },
     updateProgress : function(n)
     {
