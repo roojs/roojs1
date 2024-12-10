@@ -31,6 +31,7 @@ Roo.bootstrap.Toast  = function(config){
     }
     
     Roo.bootstrap.Toast.superclass.constructor.call(this, config);
+    this.render(Roo.bootstrap.Toaster.page.getChildContainer());
     
 };
  
