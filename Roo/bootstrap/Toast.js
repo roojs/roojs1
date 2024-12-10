@@ -113,7 +113,13 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
                 this.bodyEl.addClass('d-none');
             }
         }
-        this.closeEl.on('click', this.hide, this)
+        this.closeEl.on('click', this.hide, this);
+        if (this.timeout > 0) {
+            this.hide.defer(this.timeout, this);
+        }
+        if (this.show_time > 0) {
+            this.show_time_interval = setInterval(this.updateTimer.createDelegate(this), 1000);
+        }
         
     },
     hide : function() // actually deletes the notification.
@@ -121,15 +127,23 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         if (!this.el) {
             return;
         }
+        if (this.show_time_interval !== false) {
+            clearInterval(this.show_time_interval);
+        }
         this.closeEl.un('click');
         this.el.dom.parentNode.removeChild(this.el.dom);
         this.el = false;
         
         
     },
-    destroy : function()
+    updateTimer : function()
     {
-        
+        if (!this.el) {
+            return;
+        }
+        var s = Math.floor(((new Date()) - this.show_time) / 1000);
+        var m = Math.floor(s/60);
+        this.timerEl.update( s > 60 ? (m + " mins ago") : (s + " seconds ago"));
     }
     
 });
