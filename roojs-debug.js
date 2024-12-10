@@ -95593,6 +95593,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
     bodyTextEl : null,
     closeEl : null,
     timerEl  : null,
+    timeout_id : false,
      
     initEvents : function()
     {
@@ -95612,9 +95613,8 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         this.updateProgress(this.progress);
         
         this.closeEl.on('click', this.hide, this);
-        if (this.timeout > 0) {
-            this.hide.defer(this.timeout * 1000, this);
-        }
+        this.setTimeout(this.timeout);
+        
         if (this.show_time > 0) {
             this.timerEl.removeClass('d-none');
             this.show_time = new Date();
@@ -95682,7 +95682,22 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         
         this.progressEl.addClass('d-none');
     },
-     /**
+    /**
+     * set / update timeout - time when the notification will autohide
+     * @param {string} timeout in seconds
+     */
+    setTimeout : function(n)
+    {
+        if (this.timeout_id !== false) {
+            clearTimeout(this.timeout_id);
+            this.timeout_id = false;
+        }
+        if (n > 0) {
+            this.timeout = n;
+            this.timeout_id = this.hide.defer(this.timeout * 1000, this);
+        }
+     },
+    /**
      * update body text
      * @param {string} text to put in body
      */
