@@ -64,7 +64,7 @@ Roo.extend(Roo.bootstrap.Toaster, Roo.bootstrap.Component,  {
     },
     hide : function()
     {
-        this.el.addClass('d-none');
+        this.el.addClass('d-none'); // not sure if this would ever be needed..
     }
    
 });
