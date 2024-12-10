@@ -1,0 +1,17 @@
+.toaster {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 10000;
+    min-width: 100%;
+}
+
+.toast-holder {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.toast-header img {
+    width: 20px;
+}
