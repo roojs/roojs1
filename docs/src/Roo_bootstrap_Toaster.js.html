@@ -1,0 +1,73 @@
+<html><head><title>Roo/bootstrap/Toaster.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * toaster  - collection of toasts  - notification popups.
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Toaster
+ * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Toast
+ * Bootstrap Toaster Class - a notification with toasts
+ * 
+ * @constructor
+ * Create a new Toaster - should really only be one on the page.?
+ * 
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.Toaster </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Toaster.page </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;toaster already initialized&quot;</span><span class="jsdoc-syntax">;
+    }
+
+    </span><span class="jsdoc-var">Roo.bootstrap.Toaster.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">Roo.bootstrap.Toaster.page </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+};
+</span><span class="jsdoc-var">Roo.bootstrap.Toaster.page </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Toaster</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">Roo.bootstrap.Column.superclass.getAutoCreate.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
+
+        </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'toaster bootstrap'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-comment">// add bootstrap so it can be used with roo classic
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'toast-holder'
+                </span><span class="jsdoc-syntax">}
+            ]
+
+
+        };
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+         </span><span class="jsdoc-var">this.containerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.toast-holder'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+    },
+    </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() </span><span class="jsdoc-comment">/// what children are added to.
+    </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.containerEl</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// not sure if this would ever be needed..
+    </span><span class="jsdoc-syntax">}
+
+});
+
+
+</span></code></body></html>

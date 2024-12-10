@@ -44,6 +44,8 @@
     "Roo.bootstrap.TabGroup",
     "Roo.bootstrap.TabPanel",
     "Roo.bootstrap.Table",
+    "Roo.bootstrap.Toast",
+    "Roo.bootstrap.Toaster",
     "Roo.bootstrap.UploadCropbox",
     "Roo.bootstrap.breadcrumb.Nav",
     "Roo.bootstrap.dash.NumberBox",
