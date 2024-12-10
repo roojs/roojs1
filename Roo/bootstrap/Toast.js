@@ -174,6 +174,10 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
                 s > 60 ? (m + " mins ago") : (s + " seconds ago")
             )
         );
+    },
+    updateProgress : function(n)
+    {
+        this.progressEl.setWidth(Math.floor(n) + '%');
     }
     
 });
