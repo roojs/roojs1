@@ -25,7 +25,8 @@
  * 
  */
 
-Roo.bootstrap.Toast  = function(config){
+Roo.bootstrap.Toast  = function(config)
+{
     if (Roo.bootstrap.Toaster.page === false) {
         (new Roo.bootstrap.Toaster()).show();
     }
