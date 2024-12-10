@@ -43,12 +43,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
     progress : false,
  
     getAutoCreate : function(){
-         
-       
-        
-    
-    
-    
+          
         return {
             cls: 'toast',
             role : 'alert',
@@ -177,7 +172,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
     },
     updateProgress : function(n)
     {
-        this.progressEl.setWidth(Math.floor(n) + '%');
+        this.progressBarEl.setWidth(Math.floor(n) + '%');
     }
     
 });
