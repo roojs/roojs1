@@ -38,14 +38,75 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
  
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
-        
+       
+       
+       
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="..." class="rounded mr-2" alt="...">
+        <strong class="mr-auto">Bootstrap</strong>
+        <small class="text-muted">just now</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        See? Just like this.
+      </div>
+    </div>
+    
+    
+    
         cfg = {
-            tag: 'div',
-            cls: 'toaster',
+            cls: 'toast',
+            role : 'alert',
             cn : [
                 {
-                    tag: 'div',
-                    cls : 'toast-holder'
+                    cls : 'toast-header',
+                    cn : [
+                        {
+                            tag : 'img',
+                            src : Roo.BLANK_IMAGE_URL,
+                            cls : 'rounded mr-2'
+                        },
+                        {
+                            tag : 'small'
+                            cls : 'mr-auto',
+                            html : this.title
+                        },
+                        {
+                            tag : 'small'
+                            cls : 'text-muted d-none',
+                            html : ''
+                        }
+                        {
+                            tag : 'button'
+                            cls : 'ml-2 mb-1 close',
+                            type : 'button',
+                            cn : [
+                                {
+                                    tag: 'span',
+                                    html : '&times;'
+                                }
+                            ]
+                        }
+                    ]
+                    
+                },
+                {
+                    cls : 'toast-body',
+                    cn : [
+                        {
+                            cls : 'progress d-none',
+                            cn : {
+                                cls : 'progress-bar'                                
+                            }
+                        },
+                        {
+                            cls: 'toast-body-text',
+                            html : this.body
+                        }
+                    ]
                 }
             ]
                 
