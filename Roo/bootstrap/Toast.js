@@ -154,14 +154,21 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         this.closeEl.un('click');
         this.el.dom.parentNode.removeChild(this.el.dom);
         this.el = false;
-        
+        this.fireEvent('close', this);
         
     },
+    
+    show_time : false,
+    
     updateTimer : function()
     {
         if (!this.el) {
             return;
         }
+        if (this.show_time === false) {
+            this.show_time = new Date();
+        }
+        
         var s = Math.floor(((new Date()) - this.show_time) / 1000);
         var m = Math.floor(s/60);
         this.timerEl.update(
