@@ -56,17 +56,17 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
                             cls : 'rounded mr-2'
                         },
                         {
-                            tag : 'small'
+                            tag : 'small',
                             cls : 'mr-auto',
                             html : this.title
                         },
                         {
-                            tag : 'small'
+                            tag : 'small',
                             cls : 'text-muted d-none',
                             html : ''
-                        }
+                        },
                         {
-                            tag : 'button'
+                            tag : 'button',
                             cls : 'ml-2 mb-1 close',
                             type : 'button',
                             cn : [
@@ -98,18 +98,40 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
                 
             
         };
-         
-        return cfg;
+        
     },
     initEvents : function()
     {
-         this.containerEl = this.el.select('.toast-holder', true).first();
+        this.progressEl = this.el.select('.progress-bar', true).first();
+        this.bodyEl = this.el.select('.toast-body', true).first();
+        this.bodyTextEl = this.el.select('.toast-body-text', true).first();
+        this.closeEl = this.el.select('.close', true).first();
+        
+        if (this.body == '') {
+            this.bodyTextEl.addClass('d-none');
+            if (!this.progress) {
+                this.bodyEl.addClass('d-none');
+            }
+        }
+        this.closeEl.on('click', this.hide, this)
+        
     },
-    getChildContainer : function() /// what children are added to.
+    hide : function() // actually deletes the notification.
     {
-        return this.containerEl;
+        if (!this.el) {
+            return;
+        }
+        this.closeEl.un('click');
+        this.el.dom.parentNode.removeChild(this.el.dom);
+        this.el = false;
+        
+        
+    },
+    destroy : function()
+    {
+        
     }
-   
+    
 });
 
 
