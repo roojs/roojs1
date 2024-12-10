@@ -235,6 +235,32 @@
       "returns" : []
     },
     {
+      "name" : "setTimeout",
+      "type" : "function",
+      "desc" : "set / update timeout - time when the notification will autohide",
+      "sig" : "(timeout)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "timeout",
+          "type" : "string",
+          "desc" : "in seconds",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "hide",
       "type" : "function",
       "desc" : "hide and destroy the toast",

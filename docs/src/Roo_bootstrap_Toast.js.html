@@ -131,6 +131,7 @@
     </span><span class="jsdoc-var">bodyTextEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">closeEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">timerEl  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">timeout_id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -150,9 +151,8 @@
         </span><span class="jsdoc-var">this.updateProgress</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.progress</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-var">this.closeEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timeout </span><span class="jsdoc-syntax">&gt; 0) {
-            </span><span class="jsdoc-var">this.hide.defer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timeout </span><span class="jsdoc-syntax">* 1000, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        }
+        </span><span class="jsdoc-var">this.setTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timeout</span><span class="jsdoc-syntax">);
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.show_time </span><span class="jsdoc-syntax">&gt; 0) {
             </span><span class="jsdoc-var">this.timerEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.show_time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">();
@@ -220,7 +220,22 @@
 
         </span><span class="jsdoc-var">this.progressEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
     },
-     </span><span class="jsdoc-comment">/**
+    </span><span class="jsdoc-comment">/**
+     * set / update timeout - time when the notification will autohide
+     * @param {string} timeout in seconds
+     */
+    </span><span class="jsdoc-var">setTimeout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timeout_id </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timeout_id</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.timeout_id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">&gt; 0) {
+            </span><span class="jsdoc-var">this.timeout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.timeout_id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.hide.defer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timeout </span><span class="jsdoc-syntax">* 1000, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+     },
+    </span><span class="jsdoc-comment">/**
      * update body text
      * @param {string} text to put in body
      */
