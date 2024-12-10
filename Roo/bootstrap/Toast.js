@@ -89,7 +89,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
                         {
                             cls : 'progress d-none',
                             cn : {
-                                cls : 'progress-bar'                                
+                                cls : 'progress-bar bg-' + this.weight
                             }
                         },
                         {
