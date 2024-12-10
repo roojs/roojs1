@@ -32,8 +32,27 @@ Roo.bootstrap.Toast  = function(config)
     }
     
     Roo.bootstrap.Toast.superclass.constructor.call(this, config);
-    this.render(Roo.bootstrap.Toaster.page.getChildContainer());
+      this.addEvents({
+        // raw events
+        /**
+         * @event close
+         * When a toast is closed (via button or timeout.)
+         * @param {Roo.bootstrap.Toast} toast
+         * @param {Roo.EventObject} e
+         */
+        "close" : true,
+         /**
+         * @event show
+         * When a toast is show() - usually on contruction..
+         * @param {Roo.bootstrap.Toast} toast
+         * @param {Roo.EventObject} e
+         */
+        "show" : true,
+    });
     
+    
+    this.render(Roo.bootstrap.Toaster.page.getChildContainer());
+    this.fireEvent('show', this);
 };
  
 Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
@@ -119,7 +138,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         this.bodyEl = this.el.select('.toast-body', true).first();
         this.bodyTextEl = this.el.select('.toast-body-text', true).first();
         this.closeEl = this.el.select('.close', true).first();
-        this.timerEl  = this.el.select('.toast-timer', true).first
+        this.timerEl  = this.el.select('.toast-timer', true).first();
         this.progressEl  = this.el.select('.progress', true).first();
         
         if (this.body == '') {
@@ -128,10 +147,8 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
                 this.bodyEl.addClass('d-none');
             }
         }
-        if (this.progress !== false) {
-            this.progressEl.removeClass("d-none");
-            this.progressBarEl.setWidth(this.progress + '%');
-        }
+        this.updateProgress(this.progress);
+        
         this.closeEl.on('click', this.hide, this);
         if (this.timeout > 0) {
             this.hide.defer(this.timeout * 1000, this);
@@ -145,7 +162,11 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         
         
     },
-    hide : function() // actually deletes the notification.
+    
+    /**
+     * hide and destroy the toast
+     */
+    hide : function() 
     {
         if (!this.el) {
             return;
@@ -175,17 +196,38 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         this.timerEl.update(
             s < 1 ? 'now' :
             (
-                s > 60 ? (m + " mins ago") : (s + " seconds ago")
+                s > 60 ? (m + " mins ago") : (s + " sec. ago")
             )
         );
         
         this.updateTimer.defer(s < 60 ? 5000 : 60000, this);
     },
+    
+    /**
+     * update the Progress Bar
+     * @param {Number|Boolean} false to hide, or number between 0-1
+     */
     updateProgress : function(n)
     {
-        this.progressBarEl.setWidth(Math.floor(n) + '%');
-    }
-    
+        this.progress = n
+        if (this.progress !== false) {
+            this.progress = Math.min(this.progress, 1.0);
+            this.progress = Math.max(this.progress, 0.0);
+            this.progressEl.removeClass("d-none");
+            this.progressBarEl.setWidth(Math.floor(100 * this.progress) + '%');
+            return;
+        }
+        
+        this.progressEl.addClass('d-none');
+    },
+     /**
+     * update body text
+     * @param {string} text to put in body
+     */
+     updateBody : function(str)
+     {
+        this.bodyTextEl.update(str);
+     }
 });
 
 
