@@ -62,7 +62,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
                         },
                         {
                             tag : 'small',
-                            cls : 'text-muted d-none',
+                            cls : 'toast-timer text-muted d-none',
                             html : ''
                         },
                         {
@@ -106,7 +106,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         this.bodyEl = this.el.select('.toast-body', true).first();
         this.bodyTextEl = this.el.select('.toast-body-text', true).first();
         this.closeEl = this.el.select('.close', true).first();
-        
+        this.timerEl  = this.el.select('.toast-timer', true).first();
         if (this.body == '') {
             this.bodyTextEl.addClass('d-none');
             if (!this.progress) {
@@ -115,9 +115,12 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         }
         this.closeEl.on('click', this.hide, this);
         if (this.timeout > 0) {
+            
             this.hide.defer(this.timeout, this);
         }
         if (this.show_time > 0) {
+            this.timerEl.removeClass('d-none');
+            this.updateTimer();
             this.show_time_interval = setInterval(this.updateTimer.createDelegate(this), 1000);
         }
         
