@@ -106,13 +106,24 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         };
         
     },
+    progressBarEl : null,
+
+    progressEl : null,
+    bodyEl : null,
+    
+    bodyTextEl : null,
+    closeEl : null,
+    timerEl  : null,
+     
     initEvents : function()
     {
-        this.progressEl = this.el.select('.progress-bar', true).first();
+        this.progressBarEl = this.el.select('.progress-bar', true).first();
         this.bodyEl = this.el.select('.toast-body', true).first();
         this.bodyTextEl = this.el.select('.toast-body-text', true).first();
         this.closeEl = this.el.select('.close', true).first();
-        this.timerEl  = this.el.select('.toast-timer', true).first();
+        this.timerEl  = this.el.select('.toast-timer', true).first
+        this.progressEl  = this.el.select('.progress', true).first();
+        
         if (this.body == '') {
             this.bodyTextEl.addClass('d-none');
             if (this.progress === false) {
