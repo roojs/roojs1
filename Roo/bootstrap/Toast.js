@@ -158,8 +158,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         
     },
     
-    show_time : false,
-    
+     
     updateTimer : function()
     {
         if (!this.el) {
