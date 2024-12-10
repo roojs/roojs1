@@ -152,7 +152,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         if (this.show_time_interval !== false) {
             clearInterval(this.show_time_interval);
         }
-        this.closeEl.un('click');
+        this.closeEl.un('click',this.hide);
         this.el.dom.parentNode.removeChild(this.el.dom);
         this.el = false;
         this.fireEvent('close', this);
