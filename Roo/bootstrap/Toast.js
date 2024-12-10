@@ -119,6 +119,9 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
                 this.bodyEl.addClass('d-none');
             }
         }
+        if (this.progress !== false) {
+            this.progressEl.removeClass("d-none")
+        }
         this.closeEl.on('click', this.hide, this);
         if (this.timeout > 0) {
             this.hide.defer(this.timeout, this);
@@ -129,9 +132,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
             this.updateTimer();
             this.show_time_interval = setInterval(this.updateTimer.createDelegate(this), 1000);
         }
-        if (this.progres !== false) {
-            
-        }
+        
         
     },
     hide : function() // actually deletes the notification.
