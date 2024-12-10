@@ -56,7 +56,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
                         {
                             tag : 'img',
                             src : Roo.BLANK_IMAGE_URL,
-                            cls : 'rounded mr-2'
+                            cls : 'rounded mr-2 btn-alert'
                         },
                         {
                             tag : 'small',
