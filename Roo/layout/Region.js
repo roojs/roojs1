@@ -88,6 +88,8 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
     applyConfig : function(c){
         if(c.collapsible && this.position != "center" && !this.collapsedEl){
             var dh = Roo.DomHelper;
+            Roo.log('TITLE BAR');
+            Roo.log(titlebar);
             if(c.titlebar !== false){
                 this.collapseBtn = this.createTool(this.tools.dom, "x-layout-collapse-"+this.position);
                 this.collapseBtn.on("click", this.collapse, this);
