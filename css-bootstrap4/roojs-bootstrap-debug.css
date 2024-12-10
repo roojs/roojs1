@@ -4847,4 +4847,16 @@ not sure why it was so small..
   border-color: #fb6836;
   box-shadow: 0 0 0 0.2rem rgba(251, 104, 54, 0.25); }
 
+.toaster {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 10000;
+  min-width: 100%; }
+
+.toast-holder {
+  position: absolute;
+  top: 0;
+  right: 0; }
+
 /*# sourceMappingURL=roojs-bootstrap-debug.css.map */
