@@ -170,7 +170,8 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
                 s > 60 ? (m + " mins ago") : (s + " seconds ago")
             )
         );
-        this.updateTimer.defer(s < 60 ? 5 : 60, this);
+        
+        this.updateTimer.defer(s < 60 ? 5000 : 60000, this);
     },
     updateProgress : function(n)
     {
