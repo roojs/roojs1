@@ -131,7 +131,8 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
             }
         }
         if (this.progress !== false) {
-            this.progressEl.removeClass("d-none")
+            this.progressEl.removeClass("d-none");
+            this.progresBar.el.setWidth(this.progress + '%');
         }
         this.closeEl.on('click', this.hide, this);
         if (this.timeout > 0) {
