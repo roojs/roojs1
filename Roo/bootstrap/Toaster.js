@@ -34,7 +34,7 @@ Roo.extend(Roo.bootstrap.Toaster, Roo.bootstrap.Component,  {
         
         cfg = {
             tag: 'div',
-            cls: 'toaster',
+            cls: 'toaster bootstrap',  // add bootstrap so it can be used with roo classic
             cn : [
                 {
                     tag: 'div',
