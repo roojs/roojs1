@@ -17,7 +17,7 @@
  * @cfg body {string} Body text of string
  * @cfg show_time {boolean} should a time stamp be show/updated? - default false?
  * @cfg timeout {number|boolean} how long until it should be hidden false
- * @cfg progress {boolean} show progressBar
+ * @cfg progress {number|boolean} show progressBar - false to hide, to show 0-100
  *
  * 
  * @param {Object} config The config object
