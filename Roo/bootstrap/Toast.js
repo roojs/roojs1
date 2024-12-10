@@ -16,7 +16,7 @@
  * @cfg title {string} Title of toast
  * @cfg body {string} Body text of string
  * @cfg show_time {boolean} should a time stamp be show/updated? - default false?
- * @cfg timeout {number|boolean} how long until it should be hidden false
+ * @cfg timeout {number|boolean} number of seconds until it should be hidden false
  * @cfg progress {number|boolean} show progressBar - false to hide, to show 0-100
  *
  * 
@@ -132,7 +132,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         }
         this.closeEl.on('click', this.hide, this);
         if (this.timeout > 0) {
-            this.hide.defer(this.timeout, this);
+            this.hide.defer(this.timeout * 1000, this);
         }
         if (this.show_time > 0) {
             this.timerEl.removeClass('d-none');
