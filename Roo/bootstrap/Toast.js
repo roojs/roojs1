@@ -130,7 +130,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         }
         if (this.progress !== false) {
             this.progressEl.removeClass("d-none");
-            this.progresBarEl.setWidth(this.progress + '%');
+            this.progressBarEl.setWidth(this.progress + '%');
         }
         this.closeEl.on('click', this.hide, this);
         if (this.timeout > 0) {
