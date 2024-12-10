@@ -16,7 +16,7 @@
  * @cfg title {string} Title of toast
  * @cfg body {string} Body text of string
  * @cfg show_time {boolean} should a time stamp be show/updated? - default false?
- * @cfg timeout {number} how long until it should be hidden - -1 = never
+ * @cfg timeout {number|boolean} how long until it should be hidden false
  * @cfg progress {boolean} show progressBar
  *
  * 
@@ -35,6 +35,12 @@ Roo.bootstrap.Toast  = function(config){
 };
  
 Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
+    
+    title : '',
+    body : '',
+    show_time : false,
+    timeout : false,
+    progress : false,
  
     getAutoCreate : function(){
          
@@ -109,19 +115,22 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         this.timerEl  = this.el.select('.toast-timer', true).first();
         if (this.body == '') {
             this.bodyTextEl.addClass('d-none');
-            if (!this.progress) {
+            if (this.progress === false) {
                 this.bodyEl.addClass('d-none');
             }
         }
         this.closeEl.on('click', this.hide, this);
         if (this.timeout > 0) {
-            
             this.hide.defer(this.timeout, this);
         }
         if (this.show_time > 0) {
             this.timerEl.removeClass('d-none');
+            this.show_time = new Date();
             this.updateTimer();
             this.show_time_interval = setInterval(this.updateTimer.createDelegate(this), 1000);
+        }
+        if (this.progres !== false) {
+            
         }
         
     },
@@ -146,7 +155,12 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         }
         var s = Math.floor(((new Date()) - this.show_time) / 1000);
         var m = Math.floor(s/60);
-        this.timerEl.update( s > 60 ? (m + " mins ago") : (s + " seconds ago"));
+        this.timerEl.update(
+            s < 1 ? 'now' :
+            (
+                s > 60 ? (m + " mins ago") : (s + " seconds ago")
+            )
+        );
     }
     
 });
