@@ -43,7 +43,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
     
     
     
-        cfg = {
+        return {
             cls: 'toast',
             role : 'alert',
             cn : [
