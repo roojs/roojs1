@@ -45,7 +45,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
     progress : false,
  
     getAutoCreate : function(){
-          
+          console.log(Roo.BLANK_IMAGE_URL);
         return {
             cls: 'toast fade show',
             role : 'alert',
