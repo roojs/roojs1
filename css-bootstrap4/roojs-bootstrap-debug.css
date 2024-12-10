@@ -4859,4 +4859,7 @@ not sure why it was so small..
   top: 0;
   right: 0; }
 
+.toast-header img {
+  width: 20px; }
+
 /*# sourceMappingURL=roojs-bootstrap-debug.css.map */
