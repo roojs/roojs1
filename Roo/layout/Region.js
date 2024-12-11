@@ -102,6 +102,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                     this.stickBtn.hide();
                 }
 
+                // slide in button on top left for east region
                 if(this.position == 'east') {
                     this.slideInBtn = this.createTool(this.leftTools.dom, "x-layout-slide-in-"+this.position);
                 }
