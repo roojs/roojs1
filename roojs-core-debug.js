@@ -8074,9 +8074,15 @@ Roo.onReady(function(){
         cls.push('roo-border-box');
     }
     if(Roo.isStrict){ // add to the parent to allow for selectors like ".ext-strict .ext-ie"
+        
         var p = bd.dom.parentNode;
         if(p){
             p.className += ' roo-strict';
+        }
+        if (Array.from(document.getElementsByTagName('link')).filter(
+                function(e) { return e.href.match(/\/bootstrap.css/); }
+        ).length > 0) {
+            p.className += ' bootstrap';   
         }
     }
     bd.addClass(cls.join(' '));
