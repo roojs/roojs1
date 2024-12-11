@@ -59,8 +59,8 @@ Roo.layout.Region = function(mgr, config, pos){
     this.titleEl.enableDisplayMode();
     /** This region's title text element 
     * @type HTMLElement */
-    this.titleTextEl = this.titleEl.dom.firstChild;
-    this.tools = Roo.get(this.titleEl.dom.childNodes[1], true);
+    this.titleTextEl = Roo.get(this.titleEl.dom.childNodes[1], true);
+    this.tools = Roo.get(this.titleEl.dom.childNodes[2], true);
     this.closeBtn = this.createTool(this.tools.dom, "x-layout-close");
     this.closeBtn.enableDisplayMode();
     this.closeBtn.on("click", this.closeClicked, this);
