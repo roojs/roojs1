@@ -86531,16 +86531,16 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                     this.stickBtn.hide();
                 }
 
-                if(this.position == 'east' || 'west') {
-                    if(this.position == 'east') {
-                        this.slideInBtn = this.createTool(this.leftTools.dom, "x-layout-slide-in-"+this.position);
-                    }
-                    else {
-                        this.slideInBtn = this.createTool(this.tools.dom, "x-layout-slide-in-"+this.position);
-                    }
-                    this.slideInBtn.on("click", this.slideIn, this);
-                    this.slideInBtn.enableDisplayMode();
+                // slide in button on top left for east region
+                if(this.position == 'east') {
+                    this.slideInBtn = this.createTool(this.leftTools.dom, "x-layout-slide-in-"+this.position);
                 }
+                // else on top right
+                else {
+                    this.slideInBtn = this.createTool(this.tools.dom, "x-layout-slide-in-"+this.position);
+                }
+                this.slideInBtn.on("click", this.slideIn, this);
+                this.slideInBtn.enableDisplayMode();
             }
             /** This region's collapsed element
             * @type Roo.Element */

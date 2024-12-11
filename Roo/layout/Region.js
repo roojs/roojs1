@@ -106,6 +106,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                 if(this.position == 'east') {
                     this.slideInBtn = this.createTool(this.leftTools.dom, "x-layout-slide-in-"+this.position);
                 }
+                // else on top right
                 else {
                     this.slideInBtn = this.createTool(this.tools.dom, "x-layout-slide-in-"+this.position);
                 }
