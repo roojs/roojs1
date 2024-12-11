@@ -86532,10 +86532,14 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                 this.slideInBtn = this.createTool(this.tools.dom, "x-layout-slide-in-"+this.position);
                 this.slideInBtn.on("click", this.slideIn, this);
                 this.slideInBtn.enableDisplayMode();
+                this.slideInBtn.hide();
 
-                // slide in button on top left for east region
+                // put buttons on top left for east region
                 if(this.position == 'east') {
                     this.tools.setStyle('right', 'initial');
+                    this.closeBtn.setStyle('float', 'left');
+                    this.collapseBtn.setStyle('float', 'left');
+                    this.stickBtn.setStyle('float', 'left');
                     this.slideInBtn.setStyle('float', 'left');
                     this.titleTextEl.style['marginLeft'] = '15px';
                 }
@@ -87232,6 +87236,9 @@ Roo.extend(Roo.layout.SplitRegion, Roo.layout.Region, {
         if(this.collapseBtn){
             this.collapseBtn.hide();
         }
+        if(this.slideInBtn) {
+            this.slideInBtn.show();
+        }
         this.closeBtnState = this.closeBtn.getStyle('display');
         this.closeBtn.hide();
         if(this.stickBtn){
@@ -87260,6 +87267,9 @@ Roo.extend(Roo.layout.SplitRegion, Roo.layout.Region, {
         this.el.setStyle("z-index", "");
         if(this.collapseBtn){
             this.collapseBtn.show();
+        }
+        if(this.slideInBtn) {
+            this.slideInBtn.hide();
         }
         this.closeBtn.setStyle('display', this.closeBtnState);
         if(this.stickBtn){
