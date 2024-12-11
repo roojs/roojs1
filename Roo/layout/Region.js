@@ -52,6 +52,7 @@ Roo.layout.Region = function(mgr, config, pos){
     * @type Roo.Element */
 
     this.titleEl = dh.append(this.el.dom, {tag: "div", unselectable: "on", cls: "x-unselectable x-layout-panel-hd x-layout-title-"+this.position, children:[
+        {tag: "div", cls: "x-unselectable x-layout-panel-hd-tools", unselectable: "on"}
         {tag: "span", cls: "x-unselectable x-layout-panel-hd-text", unselectable: "on", html: "&#160;"},
         {tag: "div", cls: "x-unselectable x-layout-panel-hd-tools", unselectable: "on"}
     ]}, true);
