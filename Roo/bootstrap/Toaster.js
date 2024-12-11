@@ -30,9 +30,8 @@ Roo.bootstrap.Toaster.page = false;
 Roo.extend(Roo.bootstrap.Toaster, Roo.bootstrap.Component,  {
  
     getAutoCreate : function(){
-        var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
-        
-        cfg = {
+         
+        return cfg = {
             tag: 'div',
             cls: 'toaster bootstrap',  // add bootstrap so it can be used with roo classic
             cn : [
@@ -43,9 +42,7 @@ Roo.extend(Roo.bootstrap.Toaster, Roo.bootstrap.Component,  {
             ]
                 
             
-        };
-         
-        return cfg;
+        }; 
     },
     initEvents : function()
     {
