@@ -46401,3 +46401,750 @@ Roo.CenterLayoutRegion = Roo.layout.Center;
 Roo.LayoutStateManager  = Roo.layout.StateManager;
 Roo.ReaderLayout = Roo.layout.Reader;
 
+Roo.bootstrap = {};/*
+ * - LGPL
+ *
+ * base class for bootstrap elements.
+ * 
+ */
+
+Roo.bootstrap = Roo.bootstrap || {};
+/**
+ * @class Roo.bootstrap.Component
+ * @extends Roo.Component
+ * @abstract
+ * @children Roo.bootstrap.Component
+ * Bootstrap Component base class
+ * @cfg {String} cls css class
+ * @cfg {String} style any extra css
+ * @cfg {Object} xattr extra attributes to add to 'element' (used by builder to store stuff.)
+ * @cfg {Boolean} can_build_overlaid  True if element can be rebuild from a HTML page
+ * @cfg {string} dataId cutomer id
+ * @cfg {string} name Specifies name attribute
+ * @cfg {string} tooltip  Text for the tooltip
+ * @cfg {string} container_method method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)
+ * @cfg {string|object} visibilityEl (el|parent) What element to use for visibility (@see getVisibilityEl())
+ 
+ * @constructor
+ * Do not use directly - it does not do anything..
+ * @param {Object} config The config object
+ */
+
+
+
+Roo.bootstrap.Component = function(config){
+    Roo.bootstrap.Component.superclass.constructor.call(this, config);
+       
+    this.addEvents({
+        /**
+         * @event childrenrendered
+         * Fires when the children have been rendered..
+         * @param {Roo.bootstrap.Component} this
+         */
+        "childrenrendered" : true
+        
+        
+        
+    });
+    
+    
+};
+
+Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
+    
+    
+    allowDomMove : false, // to stop relocations in parent onRender...
+    
+    cls : false,
+    
+    style : false,
+    
+    autoCreate : false,
+    
+    tooltip : null,
+    /**
+     * Initialize Events for the element
+     */
+    initEvents : function() { },
+    
+    xattr : false,
+    
+    parentId : false,
+    
+    can_build_overlaid : true,
+    
+    container_method : false,
+    
+    dataId : false,
+    
+    name : false,
+    
+    parent: function() {
+        // returns the parent component..
+        return Roo.ComponentMgr.get(this.parentId)
+        
+        
+    },
+    
+    // private
+    onRender : function(ct, position)
+    {
+       // Roo.log("Call onRender: " + this.xtype);
+        
+        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        
+        if(this.el){
+            if (this.el.attr('xtype')) {
+                this.el.attr('xtypex', this.el.attr('xtype'));
+                this.el.dom.removeAttribute('xtype');
+                
+                this.initEvents();
+            }
+            
+            return;
+        }
+        
+         
+        
+        var cfg = Roo.apply({},  this.getAutoCreate());
+        
+        cfg.id = this.id || Roo.id();
+        
+        // fill in the extra attributes 
+        if (this.xattr && typeof(this.xattr) =='object') {
+            for (var i in this.xattr) {
+                cfg[i] = this.xattr[i];
+            }
+        }
+        
+        if(this.dataId){
+            cfg.dataId = this.dataId;
+        }
+        
+        if (this.cls) {
+            cfg.cls = (typeof(cfg.cls) == 'undefined' ? this.cls : cfg.cls) + ' ' + this.cls;
+        }
+        
+        if (this.style) { // fixme needs to support more complex style data.
+            cfg.style = (typeof(cfg.style) == 'undefined' ? this.style : cfg.style) + '; ' + this.style;
+        }
+        
+        if(this.name){
+            cfg.name = this.name;
+        }
+        
+        this.el = ct.createChild(cfg, position);
+        
+        if (this.tooltip) {
+            this.tooltipEl().attr('tooltip', this.tooltip);
+        }
+        
+        if(this.tabIndex !== undefined){
+            this.el.dom.setAttribute('tabIndex', this.tabIndex);
+        }
+        
+        this.initEvents();
+	
+    },
+    /**
+     * Fetch the element to add children to
+     * @return {Roo.Element} defaults to this.el
+     */
+    getChildContainer : function()
+    {
+        return this.el;
+    },
+    getDocumentBody : function() // used by menus - as they are attached to the body so zIndexes work
+    {
+        return Roo.get(document.body);
+    },
+    
+    /**
+     * Fetch the element to display the tooltip on.
+     * @return {Roo.Element} defaults to this.el
+     */
+    tooltipEl : function()
+    {
+        return this.el;
+    },
+        
+    addxtype  : function(tree,cntr)
+    {
+        var cn = this;
+        
+        cn = Roo.factory(tree);
+        //Roo.log(['addxtype', cn]);
+           
+        cn.parentType = this.xtype; //??
+        cn.parentId = this.id;
+        
+        cntr = (typeof(cntr) == 'undefined' ) ? 'getChildContainer' : cntr;
+        if (typeof(cn.container_method) == 'string') {
+            cntr = cn.container_method;
+        }
+        
+        
+        var has_flexy_each =  (typeof(tree['flexy:foreach']) != 'undefined');
+        
+        var has_flexy_if =  (typeof(tree['flexy:if']) != 'undefined');
+        
+        var build_from_html =  Roo.XComponent.build_from_html;
+          
+        var is_body  = (tree.xtype == 'Body') ;
+          
+        var page_has_body = (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body');
+          
+        var self_cntr_el = Roo.get(this[cntr](false));
+        
+        // do not try and build conditional elements 
+        if ((has_flexy_each || has_flexy_if || this.can_build_overlaid == false ) && build_from_html) {
+            return false;
+        }
+        
+        if (!has_flexy_each || !build_from_html || is_body || !page_has_body) {
+            if(!has_flexy_if || typeof(tree.name) == 'undefined' || !build_from_html || is_body || !page_has_body){
+                return this.addxtypeChild(tree,cntr, is_body);
+            }
+            
+            var echild =self_cntr_el ? self_cntr_el.child('>*[name=' + tree.name + ']') : false;
+                
+            if(echild){
+                return this.addxtypeChild(Roo.apply({}, tree),cntr);
+            }
+            
+            Roo.log('skipping render');
+            return cn;
+            
+        }
+        
+        var ret = false;
+        if (!build_from_html) {
+            return false;
+        }
+        
+        // this i think handles overlaying multiple children of the same type
+        // with the sam eelement.. - which might be buggy..
+        while (true) {
+            var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
+            
+            if (!echild) {
+                break;
+            }
+            
+            if (echild && echild.attr('xtype').split('.').pop() != cn.xtype) {
+                break;
+            }
+            
+            ret = this.addxtypeChild(Roo.apply({}, tree),cntr);
+        }
+       
+        return ret;
+    },
+    
+    
+    addxtypeChild : function (tree, cntr, is_body)
+    {
+        Roo.debug && Roo.log('addxtypeChild:' + cntr);
+        var cn = this;
+        cntr = (typeof(cntr) == 'undefined' ) ? 'getChildContainer' : cntr;
+        
+        
+        var has_flexy = (typeof(tree['flexy:if']) != 'undefined') ||
+                    (typeof(tree['flexy:foreach']) != 'undefined');
+          
+    
+        
+        skip_children = false;
+        // render the element if it's not BODY.
+        if (!is_body) {
+            
+            // if parent was disabled, then do not try and create the children..
+            if(!this[cntr](true)){
+                tree.items = [];
+                return tree;
+            }
+           
+            cn = Roo.factory(tree);
+           
+            cn.parentType = this.xtype; //??
+            cn.parentId = this.id;
+            
+            var build_from_html =  Roo.XComponent.build_from_html;
+            
+            
+            // does the container contain child eleemnts with 'xtype' attributes.
+            // that match this xtype..
+            // note - when we render we create these as well..
+            // so we should check to see if body has xtype set.
+            if (build_from_html && Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body') {
+               
+                var self_cntr_el = Roo.get(this[cntr](false));
+                var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
+                if (echild) { 
+                    //Roo.log(Roo.XComponent.build_from_html);
+                    //Roo.log("got echild:");
+                    //Roo.log(echild);
+                }
+                // there is a scenario where some of the child elements are flexy:if (and all of the same type)
+                // and are not displayed -this causes this to use up the wrong element when matching.
+                // at present the only work around for this is to nest flexy:if elements in another element that is always rendered.
+                
+                
+                if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
+                  //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
+                  
+                  
+                  
+                    cn.el = echild;
+                  //  Roo.log("GOT");
+                    //echild.dom.removeAttribute('xtype');
+                } else {
+                    Roo.debug && Roo.log("MISSING " + cn.xtype + " on child of " + (this.el ? this.el.attr('xbuilderid') : 'no parent'));
+                    Roo.debug && Roo.log(self_cntr_el);
+                    Roo.debug && Roo.log(echild);
+                    Roo.debug && Roo.log(cn);
+                }
+            }
+           
+            
+           
+            // if object has flexy:if - then it may or may not be rendered.
+            if (build_from_html && has_flexy && !cn.el &&  cn.can_build_overlaid) {
+                // skip a flexy if element.
+                Roo.debug && Roo.log('skipping render');
+                Roo.debug && Roo.log(tree);
+                if (!cn.el) {
+                    Roo.debug && Roo.log('skipping all children');
+                    skip_children = true;
+                }
+                
+             } else {
+                 
+                // actually if flexy:foreach is found, we really want to create 
+                // multiple copies here...
+                //Roo.log('render');
+                //Roo.log(this[cntr]());
+                // some elements do not have render methods.. like the layouts...
+                /*
+                if(this[cntr](true) === false){
+                    cn.items = [];
+                    return cn;
+                }
+                */
+                cn.render && cn.render(this[cntr](true));
+                
+             }
+            // then add the element..
+        }
+         
+        // handle the kids..
+        
+        var nitems = [];
+        /*
+        if (typeof (tree.menu) != 'undefined') {
+            tree.menu.parentType = cn.xtype;
+            tree.menu.triggerEl = cn.el;
+            nitems.push(cn.addxtype(Roo.apply({}, tree.menu)));
+            
+        }
+        */
+        if (!tree.items || !tree.items.length) {
+            cn.items = nitems;
+            //Roo.log(["no children", this]);
+            
+            return cn;
+        }
+         
+        var items = tree.items;
+        delete tree.items;
+        
+        //Roo.log(items.length);
+            // add the items..
+        if (!skip_children) {    
+            for(var i =0;i < items.length;i++) {
+              //  Roo.log(['add child', items[i]]);
+                nitems.push(cn.addxtype(items[i].xns == false ? items[i] : Roo.apply({}, items[i])));
+            }
+        }
+        
+        cn.items = nitems;
+        
+        //Roo.log("fire childrenrendered");
+        
+        cn.fireEvent('childrenrendered', this);
+        
+        return cn;
+    },
+    
+    /**
+     * Set the element that will be used to show or hide
+     */
+    setVisibilityEl : function(el)
+    {
+	this.visibilityEl = el;
+    },
+    
+     /**
+     * Get the element that will be used to show or hide
+     */
+    getVisibilityEl : function()
+    {
+	if (typeof(this.visibilityEl) == 'object') {
+	    return this.visibilityEl;
+	}
+	
+	if (typeof(this.visibilityEl) == 'string') {
+	    return this.visibilityEl == 'parent' ? this.parent().getEl() : this.getEl();
+	}
+	
+	return this.getEl();
+    },
+    
+    /**
+     * Show a component - removes 'hidden' class
+     */
+    show : function()
+    {
+        if(!this.getVisibilityEl()){
+            return;
+        }
+         
+        this.getVisibilityEl().removeClass(['hidden','d-none']);
+        
+        this.fireEvent('show', this);
+        
+        
+    },
+    /**
+     * Hide a component - adds 'hidden' class
+     */
+    hide: function()
+    {
+        if(!this.getVisibilityEl()){
+            return;
+        }
+        
+        this.getVisibilityEl().addClass(['hidden','d-none']);
+        
+        this.fireEvent('hide', this);
+        
+    }
+});
+
+ /*
+ * - LGPL
+ *
+ * toaster  - collection of toasts  - notification popups.
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Toaster
+ * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Toast
+ * Bootstrap Toaster Class - a notification with toasts
+ * 
+ * @constructor
+ * Create a new Toaster - should really only be one on the page.?
+ * 
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Toaster = function(config){
+    if (Roo.bootstrap.Toaster.page !== false) {
+        throw "toaster already initialized";
+    }
+    
+    Roo.bootstrap.Toaster.superclass.constructor.call(this, config);
+    Roo.bootstrap.Toaster.page = this;
+};
+Roo.bootstrap.Toaster.page = false;
+
+Roo.extend(Roo.bootstrap.Toaster, Roo.bootstrap.Component,  {
+ 
+    getAutoCreate : function(){
+         
+        return cfg = {
+            tag: 'div',
+            cls: 'toaster bootstrap',  // add bootstrap so it can be used with roo classic
+            cn : [
+                {
+                    tag: 'div',
+                    cls : 'toast-holder'
+                }
+            ]
+                
+            
+        }; 
+    },
+    initEvents : function()
+    {
+         this.containerEl = this.el.select('.toast-holder', true).first();
+    },
+    getChildContainer : function() /// what children are added to.
+    {
+        return this.containerEl;
+    },
+    show : function ()
+    {
+        if (!this.el) {
+            this.render(document.body);
+        }
+        this.el.removeClass('d-none');
+    },
+    hide : function()
+    {
+        this.el.addClass('d-none'); // not sure if this would ever be needed..
+    }
+   
+});
+
+
+/*
+ * - LGPL
+ *
+ * toast - notification popup.
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Toast
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Toaster Class - a notification with toasts
+ * 
+ * @constructor
+ *
+ * Create a new Toast - will auto create a toaster if necessary.
+ * @cfg title {string} Title of toast
+ * @cfg body {string} Body text of string
+ * @cfg show_time {boolean} should a time stamp be show/updated? - default false?
+ * @cfg timeout {number|boolean} number of seconds until it should be hidden false
+ * @cfg progress {number|boolean} show progressBar - false to hide, to show 0-100
+ * @cfg {String} weight (primary|warning|info|danger|secondary|success|light|dark) colour to make the square!
+ * 
+ * @param {Object} config The config object
+ *
+ * 
+ */
+
+Roo.bootstrap.Toast  = function(config)
+{
+    if (Roo.bootstrap.Toaster.page === false) {
+        (new Roo.bootstrap.Toaster()).show();
+    }
+    
+    Roo.bootstrap.Toast.superclass.constructor.call(this, config);
+      this.addEvents({
+        // raw events
+        /**
+         * @event close
+         * When a toast is closed (via button or timeout.)
+         * @param {Roo.bootstrap.Toast} toast
+         * @param {Roo.EventObject} e
+         */
+        "close" : true,
+         /**
+         * @event show
+         * When a toast is show() - usually on contruction..
+         * @param {Roo.bootstrap.Toast} toast
+         * @param {Roo.EventObject} e
+         */
+        "show" : true,
+    });
+    
+    
+    this.render(Roo.bootstrap.Toaster.page.getChildContainer());
+    this.fireEvent('show', this);
+};
+ 
+Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
+    
+    title : '',
+    body : '',
+    show_time : false,
+    timeout : false,
+    progress : false,
+    weight : 'primary',
+ 
+    getAutoCreate : function(){
+          console.log(Roo.BLANK_IMAGE_URL);
+        return {
+            cls: 'toast fade show',
+            role : 'alert',
+            cn : [
+                {
+                    cls : 'toast-header',
+                    cn : [
+                        {
+                            tag : 'img',
+                            src : Roo.BLANK_IMAGE_URL,
+                            cls : 'rounded mr-2 bg-' + this.weight,
+                        },
+                        {
+                            tag : 'small',
+                            cls : 'mr-auto',
+                            html : this.title
+                        },
+                        {
+                            tag : 'small',
+                            cls : 'toast-timer text-muted d-none',
+                            html : ''
+                        },
+                        {
+                            tag : 'button',
+                            cls : 'ml-2 mb-1 close',
+                            type : 'button',
+                            cn : [
+                                {
+                                    tag: 'span',
+                                    html : '&times;'
+                                }
+                            ]
+                        }
+                    ]
+                    
+                },
+                {
+                    cls : 'toast-body',
+                    cn : [
+                        {
+                            cls : 'progress d-none',
+                            cn : {
+                                cls : 'progress-bar bg-' + this.weight
+                            }
+                        },
+                        {
+                            cls: 'toast-body-text',
+                            html : this.body
+                        }
+                    ]
+                }
+            ]
+                
+            
+        };
+        
+    },
+    progressBarEl : null,
+
+    progressEl : null,
+    bodyEl : null,
+    
+    bodyTextEl : null,
+    closeEl : null,
+    timerEl  : null,
+    timeout_id : false,
+     
+    initEvents : function()
+    {
+        this.progressBarEl = this.el.select('.progress-bar', true).first();
+        this.bodyEl = this.el.select('.toast-body', true).first();
+        this.bodyTextEl = this.el.select('.toast-body-text', true).first();
+        this.closeEl = this.el.select('.close', true).first();
+        this.timerEl  = this.el.select('.toast-timer', true).first();
+        this.progressEl  = this.el.select('.progress', true).first();
+        
+        if (this.body == '') {
+            this.bodyTextEl.addClass('d-none');
+            if (this.progress === false) {
+                this.bodyEl.addClass('d-none');
+            }
+        }
+        this.updateProgress(this.progress);
+        
+        this.closeEl.on('click', this.hide, this);
+        this.setTimeout(this.timeout);
+        
+        if (this.show_time > 0) {
+            this.timerEl.removeClass('d-none');
+            this.show_time = new Date();
+            this.updateTimer();
+             
+        }
+        
+        
+    },
+    
+    /**
+     * hide and destroy the toast
+     */
+    hide : function() 
+    {
+        if (!this.el) {
+            return;
+        }
+        if (this.show_time_interval !== false) {
+            clearInterval(this.show_time_interval);
+        }
+        this.closeEl.un('click',this.hide);
+        this.el.dom.parentNode.removeChild(this.el.dom);
+        this.el = false;
+        this.fireEvent('close', this);
+        
+    },
+    
+     
+    updateTimer : function()
+    {
+        if (!this.el) {
+            return;
+        }
+        if (this.show_time === false) {
+            this.show_time = new Date();
+        }
+        
+        var s = Math.floor(((new Date()) - this.show_time) / 1000);
+        var m = Math.floor(s/60);
+        this.timerEl.update(
+            s < 1 ? 'now' :
+            (
+                s > 60 ? (m + " mins ago") : (s + " sec. ago")
+            )
+        );
+        
+        this.updateTimer.defer(s < 60 ? 5000 : 60000, this);
+    },
+    
+    /**
+     * update the Progress Bar
+     * @param {Number|Boolean} false to hide, or number between 0-1
+     */
+    updateProgress : function(n)
+    {
+        this.progress = n
+        if (this.progress !== false) {
+            this.progress = Math.min(this.progress, 1.0);
+            this.progress = Math.max(this.progress, 0.0);
+            this.progressEl.removeClass("d-none");
+            this.progressBarEl.setWidth(Math.floor(100 * this.progress) + '%');
+            return;
+        }
+        
+        this.progressEl.addClass('d-none');
+    },
+    /**
+     * set / update timeout - time when the notification will autohide
+     * @param {string} timeout in seconds
+     */
+    setTimeout : function(n)
+    {
+        if (this.timeout_id !== false) {
+            clearTimeout(this.timeout_id);
+            this.timeout_id = false;
+        }
+        if (n > 0) {
+            this.timeout = n;
+            this.timeout_id = this.hide.defer(this.timeout * 1000, this);
+        }
+     },
+    /**
+     * update body text
+     * @param {string} text to put in body
+     */
+     updateBody : function(str)
+     {
+        this.bodyTextEl.update(str);
+     }
+});
+
+

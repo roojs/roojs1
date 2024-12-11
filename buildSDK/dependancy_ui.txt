@@ -215,3 +215,14 @@ Roo.XTemplate
 // Roo.Login
 
 Roo.deprecated
+
+
+// boostrap compatible ** needs boostrap4-wrapped.css + roo-bootstrap css included.
+Roo.bootstrap.namespace
+Roo.bootstrap.Component
+Roo.bootstrap.Toaster
+Roo.bootstrap.Toast
+
+
+
+
