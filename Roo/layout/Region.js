@@ -99,6 +99,10 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                     this.stickBtn.on("click", this.expand, this);
                     this.stickBtn.hide();
                 }
+
+                this.slideInBtn = this.createTool(this.tools.dom, "x-layout-slide-in-"+this.position);
+                this.slideInBtn.on("click", this.collapse, this);
+                this.slideInBtn.enableDisplayMode();
             }
             /** This region's collapsed element
             * @type Roo.Element */
