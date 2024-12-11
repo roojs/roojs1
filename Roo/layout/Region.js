@@ -102,7 +102,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                     this.stickBtn.hide();
                 }
 
-                this.leftCollapseBtn = this.createTool(this.tools.dom, "x-layout-collapse-"+this.position);
+                this.leftCollapseBtn = this.createTool(this.leftTools.dom, "x-layout-collapse-"+this.position);
                 this.leftCollapseBtn.on("click", this.collapse, this);
                 this.leftCollapseBtn.enableDisplayMode();
             }
