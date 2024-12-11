@@ -103,13 +103,14 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                 }
 
                 if(this.position == 'east' || 'west') {
-
-                }
-                this.slideInBtn = this.createTool(this.leftTools.dom, "x-layout-slide-in-"+this.position);
-                this.slideInBtn.on("click", this.slideIn, this);
-                this.slideInBtn.enableDisplayMode();
-                if(this.position == "east") {
-                    this.slideInBtn.setStyle('float', 'left');
+                    if(this.position == 'east') {
+                        this.slideInBtn = this.createTool(this.leftTools.dom, "x-layout-slide-in-"+this.position);
+                    }
+                    else {
+                        this.slideInBtn = this.createTool(this.tools.dom, "x-layout-slide-in-"+this.position);
+                    }
+                    this.slideInBtn.on("click", this.slideIn, this);
+                    this.slideInBtn.enableDisplayMode();
                 }
             }
             /** This region's collapsed element
