@@ -203,6 +203,9 @@ Roo.extend(Roo.layout.SplitRegion, Roo.layout.Region, {
         if(this.collapseBtn){
             this.collapseBtn.show();
         }
+        if(this.slideInBtn) {
+            this.slideInBtn.hide();
+        }
         this.closeBtn.setStyle('display', this.closeBtnState);
         if(this.stickBtn){
             this.stickBtn.hide();
