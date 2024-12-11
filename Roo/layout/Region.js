@@ -107,6 +107,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                 // slide in button on top left for east region
                 if(this.position == 'east') {
                     this.tools.setStyle('right', 'initial');
+                    this.collapseBtn.setStyle('float', 'left');
                     this.slideInBtn.setStyle('float', 'left');
                     this.titleTextEl.style['marginLeft'] = '15px';
                 }
