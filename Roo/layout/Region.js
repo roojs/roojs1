@@ -103,6 +103,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                 this.slideInBtn = this.createTool(this.tools.dom, "x-layout-slide-in-"+this.position);
                 this.slideInBtn.on("click", this.slideIn, this);
                 this.slideInBtn.enableDisplayMode();
+                this.slideInBtn.hide();
 
                 // put buttons on top left for east region
                 if(this.position == 'east') {
