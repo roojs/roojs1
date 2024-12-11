@@ -30,9 +30,8 @@
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Toaster</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
 
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">Roo.bootstrap.Column.superclass.getAutoCreate.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
 
-        </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'toaster bootstrap'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-comment">// add bootstrap so it can be used with roo classic
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
@@ -44,8 +43,6 @@
 
 
         };
-
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
