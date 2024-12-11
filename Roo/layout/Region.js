@@ -59,6 +59,7 @@ Roo.layout.Region = function(mgr, config, pos){
     this.titleEl.enableDisplayMode();
     /** This region's title text element 
     * @type HTMLElement */
+    this.leftTools = Roo.get(this.titleEl.dom.childNodes[0], true);
     this.titleTextEl = Roo.get(this.titleEl.dom.childNodes[1]).dom;
     this.tools = Roo.get(this.titleEl.dom.childNodes[2], true);
     this.closeBtn = this.createTool(this.tools.dom, "x-layout-close");
@@ -100,6 +101,10 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                     this.stickBtn.on("click", this.expand, this);
                     this.stickBtn.hide();
                 }
+
+                this.leftCollapseBtn = this.createTool(this.tools.dom, "x-layout-collapse-"+this.position);
+                this.leftCollapseBtn.on("click", this.collapse, this);
+                this.leftCollapseBtn.enableDisplayMode();
             }
             /** This region's collapsed element
             * @type Roo.Element */
