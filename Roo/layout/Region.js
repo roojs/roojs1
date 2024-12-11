@@ -110,7 +110,9 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                     this.tools.setStyle('right', 'initial');
                     this.closeBtn.setStyle('float', 'left');
                     this.collapseBtn.setStyle('float', 'left');
-                    this.stickBtn.setStyle('float', 'left');
+                    if(this.stickBtn) {
+                        this.stickBtn.setStyle('float', 'left');
+                    }
                     this.slideInBtn.setStyle('float', 'left');
                     this.titleTextEl.style['marginLeft'] = '15px';
                 }
