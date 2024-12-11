@@ -108,6 +108,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                 // put buttons on top left for east region
                 if(this.position == 'east') {
                     this.tools.setStyle('right', 'initial');
+                    this.closeBtn.setStyle('float', 'left');
                     this.collapseBtn.setStyle('float', 'left');
                     this.stickBtn.setStyle('float', 'left');
                     this.slideInBtn.setStyle('float', 'left');
