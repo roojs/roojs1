@@ -86481,16 +86481,14 @@ Roo.layout.Region = function(mgr, config, pos){
     * @type Roo.Element */
 
     this.titleEl = dh.append(this.el.dom, {tag: "div", unselectable: "on", cls: "x-unselectable x-layout-panel-hd x-layout-title-"+this.position, children:[
-        {tag: "div", cls: "x-unselectable x-layout-panel-hd-left-tools", unselectable: "on"},
         {tag: "span", cls: "x-unselectable x-layout-panel-hd-text", unselectable: "on", html: "&#160;"},
         {tag: "div", cls: "x-unselectable x-layout-panel-hd-tools", unselectable: "on"}
     ]}, true);
     this.titleEl.enableDisplayMode();
     /** This region's title text element 
     * @type HTMLElement */
-    this.leftTools = Roo.get(this.titleEl.dom.childNodes[0], true);
-    this.titleTextEl = Roo.get(this.titleEl.dom.childNodes[1]).dom;
-    this.tools = Roo.get(this.titleEl.dom.childNodes[2], true);
+    this.titleTextEl = this.titleEl.dom.firstChild;
+    this.tools = Roo.get(this.titleEl.dom.childNodes[1], true);
     this.closeBtn = this.createTool(this.tools.dom, "x-layout-close");
     this.closeBtn.enableDisplayMode();
     this.closeBtn.on("click", this.closeClicked, this);
@@ -86530,10 +86528,6 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                     this.stickBtn.on("click", this.expand, this);
                     this.stickBtn.hide();
                 }
-
-                this.leftCollapseBtn = this.createTool(this.leftTools.dom, "x-layout-collapse-"+this.position);
-                this.leftCollapseBtn.on("click", this.collapse, this);
-                this.leftCollapseBtn.enableDisplayMode();
             }
             /** This region's collapsed element
             * @type Roo.Element */
