@@ -8079,11 +8079,7 @@ Roo.onReady(function(){
         if(p){
             p.className += ' roo-strict';
         }
-        if (Array.from(document.getElementsByTagName('link')).filter(
-                function(e) { return e.href.match(/\/bootstrap.css/); }
-        ).length > 0) {
-            p.className += ' bootstrap';   
-        }
+         
     }
     bd.addClass(cls.join(' '));
 });

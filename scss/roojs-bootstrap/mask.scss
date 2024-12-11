@@ -1,75 +1,74 @@
-.bootstrap {
-	.roo-el-mask
-	{
-		z-index:20000;   
-		position:absolute;
-		top:0;
-		left:0;
-		-moz-opacity: 0.5;
-		opacity:.50;
-		filter: alpha(opacity=50);
-		background-color:$gray-light;
-		width:100%;
-		height:100%;
-		zoom:1;
-	}
-	.roo-el-mask-msg 
-	{
-	   position: absolute;
-		z-index:20000;
-		/*border: 4px double #557; */
-		background-color: $body-bg;
-		padding: 0px;
-		/*background-image: url('#{$bootstrap-image-path}/ux/lightbox/loading.gif');*/
-		background-repeat: no-repeat;
-		border: 10px solid white;
-		border-radius: 20px;
-		display: table;
-		min-width: 250px;
-	}
-	/* this is the 'spinner' */
+
+.roo-el-mask
+{
+	z-index:20000;   
+	position:absolute;
+	top:0;
+	left:0;
+	-moz-opacity: 0.5;
+	opacity:.50;
+	filter: alpha(opacity=50);
+	background-color:$gray-light;
+	width:100%;
+	height:100%;
+	zoom:1;
+}
+.roo-el-mask-msg 
+{
+   position: absolute;
+	z-index:20000;
+	/*border: 4px double #557; */
+	background-color: $body-bg;
+	padding: 0px;
+	/*background-image: url('#{$bootstrap-image-path}/ux/lightbox/loading.gif');*/
+	background-repeat: no-repeat;
+	border: 10px solid white;
+	border-radius: 20px;
+	display: table;
+	min-width: 250px;
+}
+/* this is the 'spinner' */
+
+.roo-el-mask-msg i {
+	font-size: 36px;
+	vertical-align: middle;
+	float: left;
+}
+
+.roo-el-mask-msg.no-spinner i {
+	display: none;
+}
+
+.roo-el-mask-msg div
+{
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 24px;
+	font-weight: 500;
+	z-index:20001;
+	padding:0px 15px;
+	color: $gray; //#557;
+	display: table-cell;
+	vertical-align: middle;
+	float: left;
 	
-	.roo-el-mask-msg i {
-		font-size: 36px;
-		vertical-align: middle;
-		float: left;
-	}
-	
-	.roo-el-mask-msg.no-spinner i {
-		display: none;
-	}
-	
-	.roo-el-mask-msg div
-	{
-		font-family: 'Source Sans Pro', sans-serif;
-		font-size: 24px;
-		font-weight: 500;
-		z-index:20001;
-		padding:0px 15px;
-		color: $gray; //#557;
-		display: table-cell;
-		vertical-align: middle;
-		float: left;
-		
-	}
-	.x-body-masked
-	{
-		overflow:hidden !important;
-	}
-	.x-body-masked select,.ext-masked object,.ext-masked embed
-	{
-		visibility:hidden;
-	}
-	.x-dlg-mask
-	{
-		z-index:10000;   
-		display:none;
-		position:absolute;
-		top:0;
-		left:0;
-		-moz-opacity: 0.5;
-		opacity:.50;
-		filter: alpha(opacity=50);
-		background-color: $gray-light;
-	}
+}
+.x-body-masked
+{
+	overflow:hidden !important;
+}
+.x-body-masked select,.ext-masked object,.ext-masked embed
+{
+	visibility:hidden;
+}
+.x-dlg-mask
+{
+	z-index:10000;   
+	display:none;
+	position:absolute;
+	top:0;
+	left:0;
+	-moz-opacity: 0.5;
+	opacity:.50;
+	filter: alpha(opacity=50);
+	background-color: $gray-light;
 }
