@@ -108,6 +108,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                 if(this.position == 'east') {
                     this.tools.setStyle('right', 'initial');
                     this.collapseBtn.setStyle('float', 'left');
+                    this.stickBtn.setStyle('float', 'left');
                     this.slideInBtn.setStyle('float', 'left');
                     this.titleTextEl.style['marginLeft'] = '15px';
                 }
