@@ -86533,7 +86533,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                 this.slideInBtn.on("click", this.slideIn, this);
                 this.slideInBtn.enableDisplayMode();
                 if(this.position == "east") {
-                    this.slideInBtn.setStyle('float', 'right');
+                    this.slideInBtn.setStyle('float', 'left');
                 }
             }
             /** This region's collapsed element
