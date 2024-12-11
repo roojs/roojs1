@@ -37510,7 +37510,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
             if(c.titlebar !== false){
                 this.collapseBtn = this.createTool(this.tools.dom, "x-layout-collapse-"+this.position);
                 this.collapseBtn.on("click", this.collapse, this);
-                this.collapseBtn.enableDisplayMode('block');
+                this.collapseBtn.enableDisplayMode();
 
                 if(c.showPin === true || this.showPin){
                     this.stickBtn = this.createTool(this.tools.dom, "x-layout-stick");
@@ -37518,6 +37518,10 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                     this.stickBtn.on("click", this.expand, this);
                     this.stickBtn.hide();
                 }
+
+                this.slideInBtn = this.createTool(this.tools.dom, "x-layout-slide-in-"+this.position);
+                this.slideInBtn.on("click", this.slideIn, this);
+                this.slideInBtn.enableDisplayMode();
             }
             /** This region's collapsed element
             * @type Roo.Element */
