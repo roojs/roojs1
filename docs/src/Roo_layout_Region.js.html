@@ -99,6 +99,23 @@
                     </span><span class="jsdoc-var">this.stickBtn.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.expand</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">this.stickBtn.hide</span><span class="jsdoc-syntax">();
                 }
+
+                </span><span class="jsdoc-var">this.slideInBtn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createTool</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tools.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;x-layout-slide-in-&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.slideInBtn.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.slideIn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.slideInBtn.enableDisplayMode</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.slideInBtn.hide</span><span class="jsdoc-syntax">();
+
+                </span><span class="jsdoc-comment">// put buttons on top left for east region
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'east'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.tools.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'initial'</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">this.closeBtn.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'float'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">this.collapseBtn.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'float'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stickBtn</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">this.stickBtn.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'float'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">);
+                    }
+                    </span><span class="jsdoc-var">this.slideInBtn.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'float'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">this.titleTextEl.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'marginLeft'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'15px'</span><span class="jsdoc-syntax">;
+                }
             }
             </span><span class="jsdoc-comment">/** This region's collapsed element
             * @type Roo.Element */
