@@ -50,7 +50,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         };
         
         
-        var rooui =  typeof(Roo.bootstrap) == 'undefined' ? Roo : Roo.bootstrap;
+        var rooui =  typeof(Roo.bootstrap.form.HtmlEditor) == 'undefined' ? Roo : Roo.bootstrap;
         
         var syncValue = toolbar.editorcore.syncValue;
         
