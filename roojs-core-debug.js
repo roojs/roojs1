@@ -18248,7 +18248,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                     // fall through
                 default:
                     el = Roo.get(ename);
-                    if (typeof(Roo.bootstrap) != 'undefined' && tree['|xns'] == 'Roo.bootstrap') {
+                    if (typeof(Roo.bootstrap.Body) != 'undefined' && tree['|xns'] == 'Roo.bootstrap') {
                         this.parent = { el : true};
                     }
                     
@@ -18271,7 +18271,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         // altertive root elements ??? - we need a better way to indicate these.
         var is_alt = Roo.XComponent.is_alt ||
                     (typeof(tree.el) != 'undefined' && tree.el == document.body) ||
-                    (typeof(Roo.bootstrap) != 'undefined' && tree.xns == Roo.bootstrap) ||
+                    (typeof(Roo.bootstrap.Body) != 'undefined' && tree.xns == Roo.bootstrap) ||
                     (typeof(Roo.mailer) != 'undefined' && tree.xns == Roo.mailer) ;
         
         
