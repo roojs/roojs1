@@ -227,7 +227,7 @@ Roo.docs.init = {
         Roo.Ajax.request({
             url : 'src/' +this.currentClass.replace(/\./g,'_') + '.js.html',
             method : 'GET',
-            success : function(res, o)
+            success : function(res)
             {
                 Roo.docs.ViewSource.show({
                         source : res.responseText,
