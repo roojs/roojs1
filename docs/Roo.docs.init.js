@@ -43,7 +43,7 @@ Roo.docs.init = {
         Roo.Ajax.request({
             url : this.prefix + 'tree.json',
             method : 'GET',
-            success : function(res, o)
+            success : function(res)
             {
                 var d = Roo.decode(res.responseText);
                 //Roo.log(d);
