@@ -315,7 +315,7 @@ Roo.docs.init = {
         ax.request({
             url : this.prefix + 'symbols/' + next + '.json',
             method : 'GET',
-            success : function(res, o)
+            success : function(res)
             {
                 
                 var r = Roo.decode(res.responseText);
@@ -360,7 +360,7 @@ Roo.docs.init = {
              
             
             
-                this.fillAugments(d,ext, cb)
+                this.fillAugments(d,ext, cb);
                 
             },
             scope : this
