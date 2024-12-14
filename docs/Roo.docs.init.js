@@ -274,7 +274,7 @@ Roo.docs.init = {
         Roo.Ajax.request({
             url : this.prefix + 'symbols/' + cls.name + '.json',
             method : 'GET',
-            success : function(res, o)
+            success : function(res)
             {
                 
                 var d = Roo.decode(res.responseText);
