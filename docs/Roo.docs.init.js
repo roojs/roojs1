@@ -31,7 +31,7 @@ Roo.docs.init = {
             
         }
         
-        window.onhashchange = function() { Roo.docs.init.onHashChange(); }
+        window.onhashchange = function() { Roo.docs.init.onHashChange(); };
          
         
     },
