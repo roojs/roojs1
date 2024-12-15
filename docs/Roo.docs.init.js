@@ -9,7 +9,7 @@ Roo.docs.init = {
     hash : '',
     
     SymbolKind : {
-    	Any : 0,
+        Any : 0,
         File : 1,
         Module : 2,
         Namespace : 3,
@@ -418,10 +418,35 @@ Roo.docs.init = {
             Roo.docs.classType.el.dom.firstChild.textContent  = 'abstract class ';
         }
         // ??? do we have this?
-        if (d.is_enum) {
+        if (d.stype == this.SymbolKind.Enum) {
             Roo.docs.classType.el.dom.firstChild.textContent  = 'enum ';
         }
-         
+        document.body.scrollTop  = 0;
+        Roo.docs.doc_name.el.dom.innerHTML = Roo.docs.template.resolveLinks(d.fqn);
+        Roo.docs.doc_desc.el.dom.innerHTML = Roo.docs.template.summary(d.doc);
+        
+        Roo.docs.doc_extends.hide();
+        Roo.docs.doc_extends_sep.hide();
+        if (d['inherits-str'].length) {
+            Roo.docs.doc_extends.show();
+            Roo.docs.doc_extends_sep.show();
+            Roo.docs.doc_extends.el.dom.innerHTML = d['inherits-str'];
+            Roo.docs.doc_extends.el.dom.href= '#' + d['inherits-str'];
+        }
+        // source?? - would be nice to download the gitlab page ;)
+        //Roo.docs.doc_source.el.dom.innerHTML = d.name.replace(/\./g,"/") + ".js";
+        //if (Roo.docs.init.prefix.length) {
+            Roo.docs.doc_source_row.hide();
+        //}
+        // inhertiance tree? - later..
+        //if (d.augments.length) {
+        //    Roo.docs.augments.show();
+        //    Roo.docs.augments.bodyEl().dom.innerHTML = Roo.docs.template.augments(d);
+        //} else {
+        //    Roo.docs.augments.hide();
+        //}
+        
+        
     },
     
     
