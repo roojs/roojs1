@@ -421,7 +421,7 @@ Roo.docs.init = {
         d.isEnum = d.stype == this.SymbolKind.Enum;
         d.isAbstract  = d['is-abstract'];
         d.augments = [ d['inherits-str'] ]; // ??
-        
+        d.example = '';
     },
     
     
