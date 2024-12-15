@@ -140,8 +140,8 @@ Roo.docs.template  = {
                 (dtag.values && dtag.values.length ? ("<BR/>Possible Values: " +
                 dtag.values.map(function(v) {
                 return v.length ? v : "<B>Empty</B>";
-                }).join(", ")) : '' */
-            ) + '</div></div>';
+                }).join(", ")) : ''
+            ) + '*/ </div></div>';
             */
         //Roo.log(JSON.stringify(output));
         return output;
