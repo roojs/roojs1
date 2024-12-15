@@ -419,7 +419,7 @@ Roo.docs.init = {
         d.memberOf = d['parent-name'] === '' ? Roo.docs.init.currentClass :  d['parent-name'];
         d.config  = typeof(d.props) == 'undefined'  ? [] : Object.values(d.props).map(this.gtkToRoo, this);
         d.methods = typeof(d.methods) == 'undefined'  ? [] : Object.values(d.methods).map(this.gtkToRoo, this);
-        d.listeners =typeof(d.signals) == 'undefined'  ? [] :  Object.values(d.signals).map(this.gtkToRoo, this);
+        d.events =typeof(d.signals) == 'undefined'  ? [] :  Object.values(d.signals).map(this.gtkToRoo, this);
         d.isEnum = d.stype == this.SymbolKind.Enum;
         d.isAbstract  = d['is-abstract'];
         d.augments = [ d['inherits-str'] ]; // ??
