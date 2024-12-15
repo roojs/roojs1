@@ -319,7 +319,7 @@ Roo.docs.init = {
                 var d = Roo.decode(res.responseText);
                 if (typeof(d['file-id']) != 'undefined'){
                     // Gtk Doc..
-                    this.fillGtkDoc(d);
+                    this.gtkToRoo(d);  
                     return;
                 }
                 
