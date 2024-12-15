@@ -415,13 +415,15 @@ Roo.docs.init = {
     {
         d.name =  d.stype == this.SymbolKind.Class ? d.fqn : d.name; // ???
         d.desc = d.doc;
-        d.config  = typeof(d.props) == 'undefined'  ? [] : Object.values(d.props).forEach(this.gtkToRoo, this);
+        
+        d.config  = typeof(d.props) == 'undefined'  ? [] : Object.values(d.props).map(this.gtkToRoo, this);
         d.methods = typeof(d.methods) == 'undefined'  ? [] : Object.values(d.methods).forEach(this.gtkToRoo, this);
         d.listeners =typeof(d.signals) == 'undefined'  ? [] :  Object.values(d.signals).forEach(this.gtkToRoo, this);
         d.isEnum = d.stype == this.SymbolKind.Enum;
         d.isAbstract  = d['is-abstract'];
         d.augments = [ d['inherits-str'] ]; // ??
         d.example = '';
+        return d;
     },
     
     
