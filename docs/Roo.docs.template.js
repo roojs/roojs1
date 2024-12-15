@@ -5,8 +5,7 @@ Roo.docs.template  = {
     summary : function (data)
     {
 
-        var output = this.resolv
-        eLinks(output) ;
+        var output = this.resolveLinks(output) ;
         if (data.example.length) {
             output += '<pre class="code">'+data.example+'</pre>';
         }
