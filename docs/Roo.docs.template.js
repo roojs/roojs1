@@ -11,17 +11,7 @@ Roo.docs.template  = {
         }
         return output;
     },
-
-    summaryGtk : function (data)
-    {
-    
-        output = this.resolveLinks(data.doc) ;
-        //if (data.example.length) {
-        //    output += '<pre class="code">'+data.example+'</pre>';
-        //}
-        return output;
-    },
-    
+   
     augments : function(data)
     {
         if (!data.augments.length) {
@@ -123,31 +113,7 @@ Roo.docs.template  = {
         //Roo.log(JSON.stringify(output));
         return output;
     },
-    
-    
-    propGtk : function (dtag)
-    {
-        
-        dtag.memberOf = dtag['parant-name'] === '' ? Roo.docs.currentClass :  dtag['parant-name'] ;
-        
-        var output = '<a name="'+dtag.memberOf+'-cfg-'+dtag.name+'"></a>';
-        output += '<div class="fixedFont"><b  class="itemname"> ' + dtag.name + '</b> : ' +
-            (dtag.rtype.length ? this.linkSymbol(dtag.rtype) : "" ) + '</div>';
-              
-        output += '<div class="mdesc"><div class="short">'+this.resolveLinks(this.summarize(dtag.doc))+'</div></div>';
-            
-        output += '<div class="mdesc"><div class="long">' + this.resolveLinks(dtag.doc)+   '</div></div>';
-        /*' ' + 
-                (dtag.values && dtag.values.length ? ("<BR/>Possible Values: " +
-                dtag.values.map(function(v) {
-                return v.length ? v : "<B>Empty</B>";
-                }).join(", ")) : ''
-            ) + '  </div></div>';
-          */  
-        //Roo.log(JSON.stringify(output));
-        return output;
-        
-    },
+     
     
     methodsSort : function(data)
     {
@@ -159,7 +125,8 @@ Roo.docs.template  = {
             !data.isBuiltin && 
             !data.isSingleton &&
             !data.isStatic &&
-            !data.isFlutter
+            !data.isFlutter &&
+            !data['file-id'] // gkt..
             ) {
             data.isInherited = false;
             data.isConstructor = true;
