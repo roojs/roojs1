@@ -126,7 +126,7 @@ Roo.docs.template  = {
             !data.isSingleton &&
             !data.isStatic &&
             !data.isFlutter &&
-            !data['file-id'] // gkt..
+            !data.isGtk // gkt..
             ) {
             data.isInherited = false;
             data.isConstructor = true;
