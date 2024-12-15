@@ -8,6 +8,44 @@ Roo.docs.init = {
     prefix : '',
     hash : '',
     
+    SymbolKind : {
+    	Any = 0,
+        File = 1,
+        Module = 2,
+        Namespace = 3,
+        Package = 4,
+        Class = 5,
+        Method = 6,
+        Property = 7,
+        Field = 8,
+        Constructor = 9,
+        Enum = 10,
+        Interface = 11,
+        Function = 12,
+        Variable = 13,
+        Constant = 14,
+        String = 15,
+        Number = 16,
+        Boolean = 17,
+        Array = 18,
+        Object = 19,
+        Key = 20,
+        Null = 21,
+        EnumMember = 22,
+        Struct = 23,
+        Event = 24,
+        Operator = 25,
+        TypeParameter = 26,
+        Delegate = 27,// ?? not standard.
+        Parameter = 28, // ?? not standard.
+        Signal = 29, // ?? not standard.
+     	Return = 30, // ?? not standard.
+        MemberAccess = 31,
+        ObjectType = 32,
+        MethodCall = 33
+    },
+    
+    
     onReady : function()
     {
        
@@ -27,7 +65,7 @@ Roo.docs.init = {
             
         }, this);
         if (window.location.search.length > 0) {
-            this.prefix = "/gtk/";
+            this.prefix = window.location.pathname + "gtk/";
             
         }
         
@@ -252,7 +290,7 @@ Roo.docs.init = {
         Roo.docs.doc_body_content.hide();
         Roo.docs.navHeaderBar.collapse();
         this.currentClass = cls.name;
-        if (!cls ) {
+        if (!cls) {
             Roo.docs.introBody.show();
             return;
         }
@@ -279,6 +317,11 @@ Roo.docs.init = {
             {
                 
                 var d = Roo.decode(res.responseText);
+                if (typeof(d.file_id) != 'undefined'){
+                    // Gtk Doc..
+                    this.fillGtkDoc(d);
+                    return;
+                }
                 
                 if (typeof(d.augments) == 'undefined') {
                     d.augments = [];
@@ -368,6 +411,18 @@ Roo.docs.init = {
         
     },
     
+    fillGtkDoc : function(d)
+    {
+        Roo.docs.classType.el.dom.firstChild.textContent  = 'Class ';
+        if (d.is_abstract) {
+            Roo.docs.classType.el.dom.firstChild.textContent  = 'abstract class ';
+        }
+        // ??? do we have this?
+        if (d.is_enum) {
+            Roo.docs.classType.el.dom.firstChild.textContent  = 'enum ';
+        }
+         
+    },
     
     
     fillDoc : function(d)
@@ -489,7 +544,7 @@ Roo.docs.init = {
       
         
         Roo.Ajax.request({
-            url : 'summary.txt',
+            url : this.prefix + 'summary.txt',
             method : 'GET',
             success : function(res)
             {
@@ -512,7 +567,8 @@ Roo.docs.init = {
         var lines = intro.split("\n");
         var tree = { 'name' : 'root', cn : []};
         var state = [ tree ];
-        for (var i=0;i< lines.length;i++) {
+        var i=0;
+        for (i=0;i< lines.length;i++) {
             var line = lines[i];
             if (!line.length || line.match(/^\s+$/)) {
                 continue;
@@ -529,7 +585,7 @@ Roo.docs.init = {
         }
         //Roo.log(tree);
         
-        for(var i = 0; i < tree.cn.length; i++) {
+        for(i = 0; i < tree.cn.length; i++) {
             // make a container..
             var treei = tree.cn[i];
             var ctree = {
