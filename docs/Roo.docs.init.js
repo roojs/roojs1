@@ -317,7 +317,7 @@ Roo.docs.init = {
             {
                 
                 var d = Roo.decode(res.responseText);
-                if (typeof(d.file_id) != 'undefined'){
+                if (typeof(d['file-id']) != 'undefined'){
                     // Gtk Doc..
                     this.fillGtkDoc(d);
                     return;
@@ -423,7 +423,7 @@ Roo.docs.init = {
         }
         document.body.scrollTop  = 0;
         Roo.docs.doc_name.el.dom.innerHTML = Roo.docs.template.resolveLinks(d.fqn);
-        Roo.docs.doc_desc.el.dom.innerHTML = Roo.docs.template.summary(d.doc);
+        Roo.docs.doc_desc.el.dom.innerHTML = Roo.docs.template.summaryGtk(d.doc);
         
         Roo.docs.doc_extends.hide();
         Roo.docs.doc_extends_sep.hide();
