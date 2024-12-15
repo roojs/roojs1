@@ -136,13 +136,14 @@ Roo.docs.template  = {
               
         output += '<div class="mdesc"><div class="short">'+this.resolveLinks(this.summarize(dtag.doc))+'</div></div>';
             
-        output += '<div class="mdesc"><div class="long">' + this.resolveLinks(dtag.doc)+  /*' ' + 
+        output += '<div class="mdesc"><div class="long">' + this.resolveLinks(dtag.doc)+   </div></div>;
+        /*' ' + 
                 (dtag.values && dtag.values.length ? ("<BR/>Possible Values: " +
                 dtag.values.map(function(v) {
                 return v.length ? v : "<B>Empty</B>";
                 }).join(", ")) : ''
-            ) + '*/ </div></div>';
-            
+            ) + '  </div></div>';
+          */  
         //Roo.log(JSON.stringify(output));
         return output;
         
