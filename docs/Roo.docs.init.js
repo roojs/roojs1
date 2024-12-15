@@ -424,6 +424,7 @@ Roo.docs.init = {
         d.isAbstract  = d['is-abstract'];
         d.augments = [ d['inherits-str'] ]; // ??
         d.example = '';
+        d.type = d.rtype;
         return d;
     },
     
