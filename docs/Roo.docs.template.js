@@ -95,9 +95,7 @@ Roo.docs.template  = {
     
     config : function(dtag)
     {
-        if (typeof(dtag.file_id)) {
-            return this.propGtk(dtag);
-        }
+       
         var output = '<a name="'+dtag.memberOf+'-cfg-'+dtag.name+'"></a>';
         output += '<div class="fixedFont"><b  class="itemname"> ' + dtag.name + '</b> : ' +
             (dtag.type.length ? this.linkSymbol(dtag.type) : "" ) + '</div>';
