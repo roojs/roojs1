@@ -19660,7 +19660,9 @@ Roo.Markdown.toHtml = function(text) {
       this.options = options || {};
     }
     
-    Renderer.prototype.code = function(code, lang, escaped) {
+    Renderer.prototype.code = function(code, lang, escaped)
+    {
+      escaped = false;
       if (this.options.highlight) {
         var out = this.options.highlight(code, lang);
         if (out != null && out !== code) {
@@ -19669,7 +19671,7 @@ Roo.Markdown.toHtml = function(text) {
         }
       } else {
             // hack!!! - it's already escapeD?
-            escaped = true;
+          //  escaped = true;
       }
     
       if (!lang) {
