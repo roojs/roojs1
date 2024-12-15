@@ -4,7 +4,9 @@ Roo.docs.template  = {
 
     summary : function (data)
     {
-        var output = this.resolveLinks(output) ;
+
+        var output = this.resolv
+        eLinks(output) ;
         if (data.example.length) {
             output += '<pre class="code">'+data.example+'</pre>';
         }
@@ -453,6 +455,9 @@ Roo.docs.template  = {
         if (!str || typeof(str) == 'undefined') {
             return '';
         }
+        
+        str = Roo.Markdown.toHtml(str);
+
         
         // gtk specific. now..
         // @ -> bold.. - they are arguments..
