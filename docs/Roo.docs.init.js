@@ -411,61 +411,21 @@ Roo.docs.init = {
         
     },
     
-    fillGtkDoc : function(d)
+    
+    gtkToRoo : function(d)
     {
-        Roo.docs.classType.el.dom.firstChild.textContent  = 'Class ';
-        if (d.is_abstract) {
-            Roo.docs.classType.el.dom.firstChild.textContent  = 'abstract class ';
-        }
-        // ??? do we have this?
-        if (d.stype == this.SymbolKind.Enum) {
-            Roo.docs.classType.el.dom.firstChild.textContent  = 'enum ';
-        }
-        document.body.scrollTop  = 0;
-        Roo.docs.doc_name.el.dom.innerHTML = Roo.docs.template.resolveLinks(d.fqn);
-        Roo.docs.doc_desc.el.dom.innerHTML = Roo.docs.template.summaryGtk(d);
-        
-        Roo.docs.doc_extends.hide();
-        Roo.docs.doc_extends_sep.hide();
-        if (d['inherits-str'].length) {
-            Roo.docs.doc_extends.show();
-            Roo.docs.doc_extends_sep.show();
-            Roo.docs.doc_extends.el.dom.innerHTML = d['inherits-str'];
-            Roo.docs.doc_extends.el.dom.href= '#' + d['inherits-str'];
-        }
-        // source?? - would be nice to download the gitlab page ;)
-        //Roo.docs.doc_source.el.dom.innerHTML = d.name.replace(/\./g,"/") + ".js";
-        //if (Roo.docs.init.prefix.length) {
-            Roo.docs.doc_source_row.hide();
-        //}
-        // inhertiance tree? - later..
-        //if (d.augments.length) {
-        //    Roo.docs.augments.show();
-        //    Roo.docs.augments.bodyEl().dom.innerHTML = Roo.docs.template.augments(d);
-        //} else {
-        //    Roo.docs.augments.hide();
-        //}
-        Roo.docs.configTableContainer.hide();
-        Roo.docs.methodsTableContainer.hide();
-        Roo.docs.eventsTableContainer.hide();
-        if (Object.values(d.props).length) {
-            Roo.docs.configTableContainer.show();
-            Roo.docs.configTable.store.load( { params : { data : Object.values(d.props).sort(Roo.docs.template.makeSortby("name")) }});
-        } 
-        
-        if (Object.values(d.methods).length) {
-            Roo.docs.methodsTable.store.load( { params : { data : Roo.docs.template.methodsSort(d) }});
-            Roo.docs.methodsTableContainer.show();
-        }
-        if (Object.values(d.signals).length) {
-            Roo.docs.eventsTable.store.load( { params : { data : Object.values(d.signals).sort(Roo.docs.template.makeSortby("name")) }});
-            Roo.docs.eventsTableContainer.show();
-        }
-        
-        
-        
+        d.name =  d.stype == this.SymbolKind.Class ? d.fqn : d.name; // ???
+        d.desc = d.doc;
+        d.config  = Object.values(d.props).apply(this.gtkToRoo);
+        d.methods = Object.values(d.methods).apply(this.gtkToRoo);
+        d.listeners = Object.values(d.signals).apply(this.gtkToRoo);
+        d.isEnum = d.stype == this.SymbolKind.Enum;
+        d.isAbstract  = d['is-abstract'];
+        d.augments = [ d['inherits-str'] ]; // ??
         
     },
+    
+    
     
     
     fillDoc : function(d)
