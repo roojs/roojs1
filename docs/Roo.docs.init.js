@@ -445,6 +445,24 @@ Roo.docs.init = {
         //} else {
         //    Roo.docs.augments.hide();
         //}
+        Roo.docs.configTableContainer.hide();
+        Roo.docs.methodsTableContainer.hide();
+        Roo.docs.eventsTableContainer.hide();
+        if (Object.values(d.props).length) {
+            Roo.docs.configTableContainer.show();
+            Roo.docs.configTable.store.load( { params : { data : Object.values(d.props).sort(Roo.docs.template.makeSortby("name")) }});
+        } 
+        
+        if (Object.values(d.methods).length) {
+            Roo.docs.methodsTable.store.load( { params : { data : Roo.docs.template.methodsSort(d) }});
+            Roo.docs.methodsTableContainer.show();
+        }
+        if (Object.values(d.signals).length) {
+            Roo.docs.eventsTable.store.load( { params : { data : Object.values(d.signals).sort(Roo.docs.template.makeSortby("name")) }});
+            Roo.docs.eventsTableContainer.show();
+        }
+        
+        
         
         
     },
