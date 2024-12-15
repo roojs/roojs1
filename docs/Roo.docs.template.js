@@ -4,7 +4,6 @@ Roo.docs.template  = {
 
     summary : function (data)
     {
-        var output = Roo.Markdown.toHtml(data.desc);
         var output = this.resolveLinks(output) ;
         if (data.example.length) {
             output += '<pre class="code">'+data.example+'</pre>';
