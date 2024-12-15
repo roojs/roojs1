@@ -889,7 +889,7 @@ Roo.Markdown.toHtml = function(text) {
         }
       } else {
             // hack!!! - it's already escapeD?
-            escaped = true;
+          //  escaped = true;
       }
     
       if (!lang) {
