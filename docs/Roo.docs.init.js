@@ -320,7 +320,6 @@ Roo.docs.init = {
                 if (typeof(d['file-id']) != 'undefined'){
                     // Gtk Doc..
                     this.gtkToRoo(d);  
-                    return;
                 }
                 
                 if (typeof(d.augments) == 'undefined') {
