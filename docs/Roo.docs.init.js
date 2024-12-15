@@ -417,8 +417,8 @@ Roo.docs.init = {
         d.name =  d.stype == this.SymbolKind.Class ? d.fqn : d.name; // ???
         d.desc = d.doc;
         d.config  = Object.values(d.props).forEach(this.gtkToRoo);
-        d.methods = Object.values(d.methods).aforEachpply(this.gtkToRoo);
-        d.listeners = Object.values(d.signals).apforEachply(this.gtkToRoo);
+        d.methods = Object.values(d.methods).forEach(this.gtkToRoo);
+        d.listeners = Object.values(d.signals).forEach(this.gtkToRoo);
         d.isEnum = d.stype == this.SymbolKind.Enum;
         d.isAbstract  = d['is-abstract'];
         d.augments = [ d['inherits-str'] ]; // ??
