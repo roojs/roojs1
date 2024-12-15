@@ -444,8 +444,7 @@ Roo.docs.template  = {
                     
                      
                 }
-            ).join(", ")
-        +
+            ).join(", ")  +
         ")";
         return signature;
         
