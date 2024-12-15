@@ -423,7 +423,7 @@ Roo.docs.init = {
         }
         document.body.scrollTop  = 0;
         Roo.docs.doc_name.el.dom.innerHTML = Roo.docs.template.resolveLinks(d.fqn);
-        Roo.docs.doc_desc.el.dom.innerHTML = Roo.docs.template.summaryGtk(d.doc);
+        Roo.docs.doc_desc.el.dom.innerHTML = Roo.docs.template.summaryGtk(d);
         
         Roo.docs.doc_extends.hide();
         Roo.docs.doc_extends_sep.hide();
