@@ -413,6 +413,7 @@ Roo.docs.init = {
     
     gtkToRoo : function(d)
     {
+        d.isGtk = true;
         d.name =  d.stype == this.SymbolKind.Class ? d.fqn : d.name; // ???
         d.desc = d.doc;
         d.memberOf = d['parent-name'] === '' ? Roo.docs.init.currentClass :  d['parent-name'];
