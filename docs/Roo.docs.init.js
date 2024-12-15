@@ -425,6 +425,7 @@ Roo.docs.init = {
         d.augments = [ d['inherits-str'] ]; // ??
         d.example = '';
         d.type = d.rtype;
+        d.params = []; // not yet.
         return d;
     },
     
