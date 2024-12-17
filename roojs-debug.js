@@ -95878,15 +95878,16 @@ Roo.extend(Roo.bootstrap.Toaster, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
          
         return cfg = {
-            tag: 'div',
-            cls: 'toaster bootstrap',  // add bootstrap so it can be used with roo classic
-            cn : [
-                {
-                    tag: 'div',
-                    cls : 'toast-holder'
-                }
-            ]
-                
+            cls : 'bootstrap', // wrapped so we can use it elsewhere
+            cn : [ {
+                cls: 'toaster',  // add bootstrap so it can be used with roo classic
+                cn : [
+                    {
+                        tag: 'div',
+                        cls : 'toast-holder'
+                    }
+                ]    
+            }]
             
         }; 
     },
