@@ -79,7 +79,7 @@ Roo.docs.template  = {
         var output = '<ul class="doc-children-list res-block"> ';
         ar.sort(function (a, b) {
             return a.toLowerCase().localeCompare(b.toLowerCase());
-        })
+        });
         for(var i = 0; i < ar.length; i++) {
             output += '<li>' +linkSymbol(ar[i])  + "</li>";
             
@@ -88,7 +88,7 @@ Roo.docs.template  = {
     
         
          
-        return output +   '</ul>'
+        return output +   '</ul>';
     
     },
     
@@ -215,11 +215,11 @@ Roo.docs.template  = {
         output += this.makeSignature(member.params);
         if (member.returns && member.returns.length) {
             output += ': ';
-            for(var i = 0;i< member.returns.length;i++) {
-                var item = member.returns[i];
+            //for(var i = 0;i< member.returns.length;i++) {
+                var item = member.returns;
                 output += (i > 0 ? ' or ' : '') +
                 this.linkSymbol(typeof(item) == 'string' ? item : item.type);
-            }
+            //}
         }
             
             
@@ -286,12 +286,13 @@ Roo.docs.template  = {
                        </dl>
                </if>
                */
-        if (member.returns && member.returns.length) {
+        if (member.returns && member.returns.length) { 
             output += '<dl class="detailList"><dt class="heading">Returns:</dt>';
-            for (var i =0; i < member.returns.length; i++) {
-                var item = member.returns[i];
-                 output+= '<dd>' + this.linkSymbol( item.type ) + ' ' + this.resolveLinks(item.desc) + '</dd></dl>';
-            }
+             
+                var item = member.returns;
+                 output+= '<dd>' + this.linkSymbol( typeof(item) == 'string' ? item : item.type ) +
+                            ' ' + this.resolveLinks(typeof(item) == 'string' ? '' : item.desc) + '</dd></dl>';
+            
                         
         }
         
@@ -381,13 +382,11 @@ Roo.docs.template  = {
                 */    
         if (member.returns && member.returns.length) {
             output += '<dl class="detailList"><dt class="heading">Returns:</dt>';
-            for (var i =0; i < member.returns.length; i++) {
-                var item = member.returns[i];
-                output+= '<dd>' + this.linkSymbol( item.type ) + ' ' + this.resolveLinks(item.desc) + '</dd></dl>';
-            }
-                    
-        }
-        
+            var item = member.returns;
+            output+= '<dd>' + this.linkSymbol( typeof(item) == 'string' ? item : item.type ) +
+                        ' ' + this.resolveLinks(typeof(item) == 'string' ? '' : item.desc) + '</dd></dl>';
+        }    
+           
         /*
                 <if test="member.requires.length">
                         <dl class="detailList">
