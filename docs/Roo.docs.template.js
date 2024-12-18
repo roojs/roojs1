@@ -218,7 +218,7 @@ Roo.docs.template  = {
             for(var i = 0;i< member.returns.length;i++) {
                 var item = member.returns[i];
                 output += (i > 0 ? ' or ' : '') +
-                this.linkSymbol(item.type);
+                this.linkSymbol(typeof(item) == 'string' ? item : item.type);
             }
         }
             
@@ -419,7 +419,7 @@ Roo.docs.template  = {
     makeSignature : function(params)
     {
         
-            if (!params.length) return "()";
+        if (!params.length) return "()";
         var linkSymbol = this.linkSymbol;
         var signature = " ("    +
             params.filter(
