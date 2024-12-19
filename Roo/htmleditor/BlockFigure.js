@@ -107,7 +107,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     {
                         var b = block();
 
-                        var isYoutube = this.class == 'youtube';
+                        var isYoutube = b.class == 'youtube';
 
                         var msg = "Enter the url for the link - leave blank to have no link";
                         if(isYoutube) {
