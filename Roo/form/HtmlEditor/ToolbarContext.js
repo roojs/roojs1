@@ -409,6 +409,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         Roo.log('UPDATE TOOLBAR');
         Roo.log(block);
         Roo.log(this.tb);
+
+        if(this.tb.name == 'BLOCK.Figure') {
+            
+        }
         
         // update attributes
         if (block && this.tb.fields) {
