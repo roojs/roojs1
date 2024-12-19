@@ -75045,6 +75045,9 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var block = function() {
             return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
         };
+
+        Roo.log('CONTEXTMENUUUUU');
+        Roo.log(toolbar);
         
         
         var rooui =  typeof(Roo.bootstrap.form) == 'undefined' ? Roo : Roo.bootstrap;
@@ -80239,7 +80242,6 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
      */
     updateToolbar: function(editor ,ev, sel)
     {
-        Roo.log('UPDATE TOOL BAR');
         
         if (ev) {
             ev.stopEvent(); // se if we can stop this looping with mutiple events.
