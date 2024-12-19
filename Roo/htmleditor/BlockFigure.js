@@ -49,9 +49,16 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     {
         
         var block = function() {
-            Roo.log(toolbar.tb.selectedNode);
             return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
         };
+
+        var sel = toolbar.tb.selectedNode;
+
+        if (sel && sel.hasAttribute('data-block')) {
+            db = sel;
+        } else if (sel && sel.closest('[data-block]')) {
+            db = sel.closest('[data-block]'); 
+        }
 
         Roo.log('CONTEXTMENUUUUU');
         Roo.log(toolbar.tb.selectedNode);
