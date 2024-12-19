@@ -51,6 +51,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var block = function() {
             return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
         };
+
+        var isYoutube = block().cls == 'youtube';
         
         
         var rooui =  typeof(Roo.bootstrap.form) == 'undefined' ? Roo : Roo.bootstrap;
