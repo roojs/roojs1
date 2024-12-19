@@ -75046,6 +75046,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
         };
 
+        Roo.log('BLOCKKKKKKK');
         Roo.log(block());
 
         var isYoutube = block().cls == 'youtube';
