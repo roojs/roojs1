@@ -408,7 +408,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         Roo.log('UPDATE TOOLBAR');
         Roo.log(block);
-        Roo.log(this.tb.fields);
+        Roo.log(this.tb);
         
         // update attributes
         if (block && this.tb.fields) {
