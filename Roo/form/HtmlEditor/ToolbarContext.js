@@ -289,6 +289,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
      */
     updateToolbar: function(editor ,ev, sel)
     {
+        Roo.log('UPDATE TOOL BAR');
         
         if (ev) {
             ev.stopEvent(); // se if we can stop this looping with mutiple events.
