@@ -61597,6 +61597,11 @@ Roo.Msg.show({
             return this;
         },
 
+        getTextboxEl: function() {
+            var d = this.getDialog();
+            return d.body.dom.firstChild.childNodes[2];
+        },
+
         /**
          * Displays a message box with a progress bar.  This message box has no buttons and is not closeable by
          * the user.  You are responsible for updating the progress bar as needed via {@link Roo.MessageBox#updateProgress}
@@ -75130,7 +75135,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                             value : b.href
                         });
 
-                        Roo.log(Roo.MessageBox.getDialog());
+                        Roo.log(Roo.MessageBox.getTextboxEl());
                     }
                 },
                 xns : rooui.Toolbar

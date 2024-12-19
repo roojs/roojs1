@@ -136,7 +136,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                             value : b.href
                         });
 
-                        Roo.log(Roo.MessageBox.getDialog());
+                        Roo.log(Roo.MessageBox.getTextboxEl());
                     }
                 },
                 xns : rooui.Toolbar
