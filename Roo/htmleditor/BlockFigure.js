@@ -139,7 +139,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         });
                         
                         var activeTextEl = Roo.MessageBox.getActiveTextEl();
-                        activeTextEl.remeoveListener('keyup', btn.onPromptKeyUp);
+                        activeTextEl.removeListener('keyup', btn.onPromptKeyUp);
                         if(isYoutube) {
                             activeTextEl.addListener('keyup', btn.onPromptKeyUp);
                         }
