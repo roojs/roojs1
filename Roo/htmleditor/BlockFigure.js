@@ -106,9 +106,9 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
 
                     var msg = "Enter the url for the link - leave blank to have no link";
                     if(isYoutube) {
-                        msg += "<br>Embed Link: <a href='" + b.video_url + "' target='_blank'>" + b.video_url + "</a>";
+                        msg += "<br>Embed Link: <a href='" + e.target.value + "' target='_blank'>" + e.target.value + "</a>";
                     }
-                    
+
                     Roo.MessageBox.updateText()
                 },
                 listeners : {
