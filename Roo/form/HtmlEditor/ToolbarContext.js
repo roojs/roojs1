@@ -410,8 +410,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         Roo.log(block);
         Roo.log(this.tb);
 
-        if(this.tb.name == 'BLOCK.Figure') {
-            
+        if(this.tb.name == 'BLOCK.Figure' && this.tb.items && block && block.cls == 'youtube') {
+
         }
         
         // update attributes
