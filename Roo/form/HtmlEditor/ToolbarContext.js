@@ -531,8 +531,6 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     },
     buildToolbar: function(tlist, nm, friendly_name, block)
     {
-        Roo.log('BUILD TOOL BAR');
-        Roo.log(tlist);
         var editor = this.editor;
         var editorcore = this.editorcore;
          // create a new element.
