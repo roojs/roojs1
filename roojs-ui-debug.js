@@ -31349,7 +31349,12 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         Roo.log(this.tb);
 
         if(this.tb.name == 'BLOCK.Figure' && this.tb.items && block && block.cls == 'youtube') {
-            
+            this.tb.items.each(function(item) {
+                if(item.cls && item.cls == 'x-toolbar-figure-show-video-url') {
+                    Roo.log('HIDE');
+                    item.hide();
+                }
+            });
         }
         
         // update attributes
