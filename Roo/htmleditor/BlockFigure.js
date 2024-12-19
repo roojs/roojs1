@@ -60,8 +60,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             db = sel.closest('[data-block]'); 
         }
 
-        Roo.log('CONTEXT MENUUU');
-        Roo.log(Roo.htmleditor.Block.factory(db));
+        var isYoutube = Roo.htmleditor.Block.factory(db).cls == 'youtube';
         
         
         var rooui =  typeof(Roo.bootstrap.form) == 'undefined' ? Roo : Roo.bootstrap;
