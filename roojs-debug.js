@@ -75046,7 +75046,11 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
         };
 
+        Roo.log('CONTEXTMENUUUUU');
+
         var sel = toolbar.tb.selectedNode;
+
+        Roo.log(sel);
 
         if (sel && sel.hasAttribute('data-block')) {
             db = sel;
