@@ -140,6 +140,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 },
                 xns : rooui.Toolbar
             },
+            /*
             {
                 xtype : 'Button',
                 text: 'Show Video URL',
@@ -154,7 +155,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 },
                 xns : rooui.Toolbar
             },
-            
+            */
             
             {
                 xtype : 'TextItem',
