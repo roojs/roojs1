@@ -114,8 +114,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         
                         Roo.MessageBox.show({
                             title : "Link URL",
-                            msg : "Enter the url for the link - leave blank to have no link" +
-                                "<br>Embed Link: <a href='" + b.video_url + "' target='_blank'>" + b.video_url + "</a>",
+                            msg : msg,
                             buttons: Roo.MessageBox.OKCANCEL,
                             fn: function(btn, val){
                                 if (btn != 'ok') {
