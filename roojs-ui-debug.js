@@ -26117,6 +26117,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                             modal : true,
                             value : b.href
                         });
+
+                        Roo.log(Roo.MessageBox);
                     }
                 },
                 xns : rooui.Toolbar
