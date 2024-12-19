@@ -60,6 +60,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             db = sel.closest('[data-block]'); 
         }
 
+        Roo.log('CONTEXT MENUUU');
         Roo.log(Roo.htmleditor.Block.factory(db));
         
         
