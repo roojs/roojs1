@@ -406,6 +406,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         // update name
         this.tb.items.first().el.innerHTML = left_label + ':&nbsp;';
         
+        Roo.log('UPDATE TOOLBAR');
+        Roo.log(block);
+        Roo.log(this.tb.fields);
         
         // update attributes
         if (block && this.tb.fields) {
