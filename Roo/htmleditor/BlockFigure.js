@@ -106,6 +106,11 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     click: function (btn, state)
                     {
                         var b = block();
+
+                        var msg = "Enter the url for the link - leave blank to have no link";
+                        if(this.class == 'youtube') {
+                            msg += "<br>Embed Link: <a href='" + b.video_url + "' target='_blank'>" + b.video_url + "</a>";
+                        }
                         
                         Roo.MessageBox.show({
                             title : "Link URL",
