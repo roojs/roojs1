@@ -100,7 +100,9 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             {
                 xtype : 'Button',
                 text: 'Change Link URL',
-                 
+                onTextBoxKeyUp : function(e) {
+                    Roo.log('KEYUP');
+                },
                 listeners : {
                     click: function (btn, state)
                     {
