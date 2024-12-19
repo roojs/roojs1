@@ -374,7 +374,7 @@ Roo.Msg.show({
 
         getTextboxEl: function() {
             var d = this.getDialog();
-            return d.body.dom.childNodes[2];
+            return d.body.dom.firstChild.childNodes[2];
         },
 
         /**
