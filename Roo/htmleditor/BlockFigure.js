@@ -109,7 +109,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         
                         Roo.MessageBox.show({
                             title : "Link URL",
-                            msg : "Enter the url for the link - leave blank to have no link<br>abc",
+                            msg : "Enter the url for the link - leave blank to have no link<br>Link: <a href='" + b.href + "'>" + b.href + "</a>",
                             buttons: Roo.MessageBox.OKCANCEL,
                             fn: function(btn, val){
                                 if (btn != 'ok') {
