@@ -123,6 +123,9 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                                     return;
                                 }
                                 b.href = val;
+                                if(isYoutube) {
+                                    b.video_url = val.split('/').pop().split('?').shift();
+                                }
                                 b.updateElement();
                                 syncValue();
                                 toolbar.editorcore.onEditorEvent();
