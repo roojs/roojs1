@@ -143,7 +143,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             {
                 xtype : 'Button',
                 text: 'Show Video URL',
-                hidden: 
+                hidden: isYoutube,
                 listeners : {
                     click: function (btn, state)
                     {
