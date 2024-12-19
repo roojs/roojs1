@@ -75047,6 +75047,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         };
 
         Roo.log('CONTEXTMENUUUUU');
+        Roo.log(toolbar.tb.selectedNode);
         Roo.log(Roo.htmleditor.Block.factory(toolbar.tb.selectedNode));
         
         

@@ -52,9 +52,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
         };
 
-        toolbar.tb.selectedNode
-
         Roo.log('CONTEXTMENUUUUU');
+        Roo.log(toolbar.tb.selectedNode);
         Roo.log(Roo.htmleditor.Block.factory(toolbar.tb.selectedNode));
         
         
