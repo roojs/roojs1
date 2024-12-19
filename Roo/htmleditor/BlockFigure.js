@@ -107,12 +107,12 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     {
                         var b = block();
 
+                        var isYoutube = this.class == 'youtube';
+
                         var msg = "Enter the url for the link - leave blank to have no link";
                         if(this.class == 'youtube') {
                             msg += "<br>Embed Link: <a href='" + b.video_url + "' target='_blank'>" + b.video_url + "</a>";
                         }
-
-                        var _this = this;
                         
                         Roo.MessageBox.show({
                             title : "Link URL",
