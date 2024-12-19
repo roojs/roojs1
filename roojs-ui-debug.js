@@ -26106,7 +26106,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                                 }
                                 b.href = val;
                                 if(isYoutube) {
-                                    b.video_url = val.split('/').pop().split('?').shift();
+                                    b.video_url = "//www.youtube.com/embed/" + val.split('/').pop().split('?').shift();
                                 }
                                 b.updateElement();
                                 syncValue();
