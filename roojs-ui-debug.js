@@ -12586,8 +12586,7 @@ Roo.Msg.show({
         },
 
         getTextboxEl: function() {
-            var d = this.getDialog();
-            return d.body.dom.firstChild.childNodes[2];
+            return textboxEl;
         },
 
         /**
