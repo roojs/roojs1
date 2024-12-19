@@ -101,6 +101,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 xtype : 'Button',
                 text: 'Change Link URL',
                 onPromptKeyUp: function(e) {
+                    Roo.log('ON PROMPT KEY UP');
                     var b = block();
                     var isYoutube = b.cls == 'youtube';
 
