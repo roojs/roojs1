@@ -29961,8 +29961,19 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             {
                 xtype : 'Button',
                 text: 'Change Link URL',
-                onTextBoxKeyUp : function(e) {
-                    Roo.log('KEYUP');
+                onPromptKeyUp: function(e) {
+                    var b = block();
+                    var isYoutube = b.cls == 'youtube';
+
+                    if(!isYoutube) {
+                        return;
+                    }
+
+                    var msg = "Enter the url for the link - leave blank to have no link";
+                    var video_url = "//www.youtube.com/embed/" + e.target.value.split('/').pop().split('?').shift();
+                    msg += "<br>Embed Link: <a href='" + video_url + "' target='_blank'>" + video_url + "</a>";
+
+                    Roo.MessageBox.updateText(msg);
                 },
                 listeners : {
                     click: function (btn, state)
@@ -29999,11 +30010,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                             value : b.href
                         });
                         
-                        var textboxEl = Roo.MessageBox.getTextboxEl();
-                        textboxEl.removeEventListener('keyup', btn.onTextBoxKeyUp);
-
+                        var activeTextEl = Roo.MessageBox.getActiveTextEl();
+                        activeTextEl.removeListener('keyup', btn.onPromptKeyUp);
                         if(isYoutube) {
-                            Roo.MessageBox.getTextboxEl().addEventListener('keyup', btn.onTextBoxKeyUp);
+                            activeTextEl.addListener('keyup', btn.onPromptKeyUp);
                         }
                     }
                 },
