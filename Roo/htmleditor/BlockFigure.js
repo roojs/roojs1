@@ -110,7 +110,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 listeners : {
                     click: function (btn, state)
                     {
-                        Roo.log('BLOCK');
+                        Roo.log('BLOCKKKKK');
                         var b = block();
 
                         var isYoutube = b.cls == 'youtube';
