@@ -26042,8 +26042,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             db = sel.closest('[data-block]'); 
         }
 
-        Roo.log('CONTEXT MENUUU');
-        Roo.log(Roo.htmleditor.Block.factory(db));
+        var isYoutube = Roo.htmleditor.Block.factory(db).cls == 'youtube';
         
         
         var rooui =  typeof(Roo.bootstrap.form) == 'undefined' ? Roo : Roo.bootstrap;
@@ -26100,8 +26099,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     {
                         var b = block();
 
-                        var isYoutube = b.cls == 'youtube';
-
                         var msg = "Enter the url for the link - leave blank to have no link";
                         if(isYoutube) {
                             msg += "<br>Embed Link: <a href='" + b.video_url + "' target='_blank'>" + b.video_url + "</a>";
@@ -26136,6 +26133,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             {
                 xtype : 'Button',
                 text: 'Show Video URL',
+                hidden: isYoutube,
                 listeners : {
                     click: function (btn, state)
                     {
