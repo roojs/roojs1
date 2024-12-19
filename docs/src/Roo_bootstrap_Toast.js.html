@@ -112,7 +112,7 @@
                             </span><span class="jsdoc-syntax">}
                         },
                         {
-                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'toast-body-text'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'toast-body-text small'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.body
                         </span><span class="jsdoc-syntax">}
                     ]
@@ -213,6 +213,7 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.progress </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.progress </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.progress</span><span class="jsdoc-syntax">, 1.0);
             </span><span class="jsdoc-var">this.progress </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.progress</span><span class="jsdoc-syntax">, 0.0);
+            </span><span class="jsdoc-var">this.bodyEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.progressEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;d-none&quot;</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.progressBarEl.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(100 * </span><span class="jsdoc-var">this.progress</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'%'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
@@ -241,6 +242,8 @@
      */
      </span><span class="jsdoc-var">updateBody </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">)
      {
+        </span><span class="jsdoc-var">this.bodyTextEl</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">str.length </span><span class="jsdoc-syntax">&gt; 0 ? </span><span class="jsdoc-string">'removeClass' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'addClass'</span><span class="jsdoc-syntax">](</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.bodyEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.bodyTextEl.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">);
      }
 });
