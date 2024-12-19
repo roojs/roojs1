@@ -96028,7 +96028,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
                             }
                         },
                         {
-                            cls: 'toast-body-text',
+                            cls: 'toast-body-text small',
                             html : this.body
                         }
                     ]
@@ -96129,6 +96129,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         if (this.progress !== false) {
             this.progress = Math.min(this.progress, 1.0);
             this.progress = Math.max(this.progress, 0.0);
+            this.bodyEl.removeClass('d-none');
             this.progressEl.removeClass("d-none");
             this.progressBarEl.setWidth(Math.floor(100 * this.progress) + '%');
             return;
@@ -96157,6 +96158,8 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
      */
      updateBody : function(str)
      {
+        this.bodyTextEl[str.length > 0 ? 'removeClass' : 'addClass']('d-none');
+        this.bodyEl.removeClass('d-none');
         this.bodyTextEl.update(str);
      }
 });

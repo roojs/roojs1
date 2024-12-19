@@ -244,8 +244,8 @@ H.hide();}I.setDisplayed(B.progress===true);if(B.progress){d.animate=false;}this
 },OK:{ok:true},YESNO:{yes:true,no:true},OKCANCEL:{ok:true,cancel:true},YESNOCANCEL:{yes:true,no:true,cancel:true},defaultTextHeight:75,maxWidth:600,minWidth:100,minProgressWidth:250,buttonText:{ok:"OK",cancel:"Cancel",yes:"Yes",no:"No"}};}();Roo.MessageBox=Roo.MessageBox||Roo.bootstrap.MessageBox;
 Roo.Msg=Roo.Msg||Roo.MessageBox;
 // Roo/bootstrap/Toaster.js
-Roo.bootstrap.Toaster=function(A){if(Roo.bootstrap.Toaster.page!==false){throw "toaster already initialized";}Roo.bootstrap.Toaster.superclass.constructor.call(this,A);Roo.bootstrap.Toaster.page=this;};Roo.bootstrap.Toaster.page=false;Roo.extend(Roo.bootstrap.Toaster,Roo.bootstrap.Component,{getAutoCreate:function(){return cfg={tag:'div',cls:'toaster bootstrap',cn:[{tag:'div',cls:'toast-holder'}
-]};},initEvents:function(){this.containerEl=this.el.select('.toast-holder',true).first();},getChildContainer:function(){return this.containerEl;},show:function(){if(!this.el){this.render(document.body);}this.el.removeClass('d-none');},hide:function(){this.el.addClass('d-none');
+Roo.bootstrap.Toaster=function(A){if(Roo.bootstrap.Toaster.page!==false){throw "toaster already initialized";}Roo.bootstrap.Toaster.superclass.constructor.call(this,A);Roo.bootstrap.Toaster.page=this;};Roo.bootstrap.Toaster.page=false;Roo.extend(Roo.bootstrap.Toaster,Roo.bootstrap.Component,{getAutoCreate:function(){return cfg={cls:'bootstrap',cn:[{cls:'toaster',cn:[{tag:'div',cls:'toast-holder'}
+]}]};},initEvents:function(){this.containerEl=this.el.select('.toast-holder',true).first();},getChildContainer:function(){return this.containerEl;},show:function(){if(!this.el){this.render(document.body);}this.el.removeClass('d-none');},hide:function(){this.el.addClass('d-none');
 }});
 // Roo/bootstrap/Toast.js
 Roo.bootstrap.Toast=function(A){if(Roo.bootstrap.Toaster.page===false){(new Roo.bootstrap.Toaster()).show();}Roo.bootstrap.Toast.superclass.constructor.call(this,A);this.addEvents({"close":true,"show":true,});this.render(Roo.bootstrap.Toaster.page.getChildContainer());

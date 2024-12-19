@@ -32,15 +32,16 @@
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
-            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'toaster bootstrap'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-comment">// add bootstrap so it can be used with roo classic
-            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
-                {
-                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'toast-holder'
-                </span><span class="jsdoc-syntax">}
-            ]
-
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'bootstrap'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// wrapped so we can use it elsewhere
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [ {
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'toaster'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-comment">// add bootstrap so it can be used with roo classic
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                    {
+                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'toast-holder'
+                    </span><span class="jsdoc-syntax">}
+                ]
+            }]
 
         };
     },
