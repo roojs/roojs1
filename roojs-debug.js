@@ -75130,7 +75130,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                             value : b.href
                         });
 
-                        Roo.log(Roo.MessageBox);
+                        Roo.log(Roo.MessageBox.getDialog());
                     }
                 },
                 xns : rooui.Toolbar
