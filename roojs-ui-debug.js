@@ -26123,6 +26123,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             },
             {
                 xtype : 'Button',
+                cls: 'x-toolbar-figure-show-video-url',
                 text: 'Show Video URL',
                 listeners : {
                     click: function (btn, state)
@@ -31346,6 +31347,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         Roo.log('UPDATE TOOLBAR');
         Roo.log(block);
         Roo.log(this.tb);
+
+        if(this.tb.name == 'BLOCK.Figure' && this.tb.items && block && block.cls == 'youtube') {
+            
+        }
         
         // update attributes
         if (block && this.tb.fields) {
@@ -31468,8 +31473,6 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     },
     buildToolbar: function(tlist, nm, friendly_name, block)
     {
-        Roo.log('BUILD TOOL BAR');
-        Roo.log(tlist);
         var editor = this.editor;
         var editorcore = this.editorcore;
          // create a new element.
