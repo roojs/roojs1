@@ -26089,7 +26089,11 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     {
                         var b = block();
 
+                        Roo.log(b);
+
                         var isYoutube = b.class == 'youtube';
+
+                        Roo.log(isYoutube);
 
                         var msg = "Enter the url for the link - leave blank to have no link";
                         if(isYoutube) {
