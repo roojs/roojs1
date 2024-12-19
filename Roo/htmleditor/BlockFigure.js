@@ -139,7 +139,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         });
                         
                         var activeTextEl = Roo.MessageBox.getActiveTextEl();
-                        Roo.log(textboxEl);
+                        activeTextEl.remeoveListener('keyup', btn.onPromptKeyUp);
+                        if(isYoutube) {
+                            activeTextEl.addListener('keyup', btn.onPromptKeyUp);
+                        }
                     }
                 },
                 xns : rooui.Toolbar
