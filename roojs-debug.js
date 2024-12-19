@@ -75043,13 +75043,18 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     {
         
         var block = function() {
-            Roo.log(toolbar.tb.selectedNode);
             return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
         };
 
-        Roo.log('CONTEXTMENUUUUU');
-        Roo.log(toolbar.tb.selectedNode);
-        Roo.log(Roo.htmleditor.Block.factory(toolbar.tb.selectedNode));
+        var sel = toolbar.tb.selectedNode;
+
+        if (sel && sel.hasAttribute('data-block')) {
+            db = sel;
+        } else if (sel && sel.closest('[data-block]')) {
+            db = sel.closest('[data-block]'); 
+        }
+
+        Roo.log(Roo.htmleditor.Block.factory(db));
         
         
         var rooui =  typeof(Roo.bootstrap.form) == 'undefined' ? Roo : Roo.bootstrap;
@@ -75104,7 +75109,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 listeners : {
                     click: function (btn, state)
                     {
-                        Roo.log('BLOCKKKKK');
                         var b = block();
 
                         var isYoutube = b.cls == 'youtube';
