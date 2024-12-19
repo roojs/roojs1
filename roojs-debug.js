@@ -80355,16 +80355,15 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         this.tb.el.show();
         // update name
         this.tb.items.first().el.innerHTML = left_label + ':&nbsp;';
-        
-        Roo.log('UPDATE TOOLBAR');
-        Roo.log(block);
-        Roo.log(this.tb);
 
-        if(this.tb.name == 'BLOCK.Figure' && this.tb.items && block && block.cls == 'youtube') {
+        if(this.tb.name == 'BLOCK.Figure' && this.tb.items && block) {
             this.tb.items.each(function(item) {
                 if(item.cls && item.cls == 'x-toolbar-figure-show-video-url') {
-                    Roo.log('HIDE');
-                    item.hide();
+                    if(block.cls == 'youtube') {
+                        item.hide();
+                        return;
+                    }
+                    item.show();
                 }
             });
         }
