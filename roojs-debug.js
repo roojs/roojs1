@@ -75047,7 +75047,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         };
 
         Roo.log('CONTEXTMENUUUUU');
-        Roo.log(toolbar);
+        Roo.log(Roo.htmleditor.Block.factory(toolbar.tb.selectedNode));
         
         
         var rooui =  typeof(Roo.bootstrap.form) == 'undefined' ? Roo : Roo.bootstrap;
