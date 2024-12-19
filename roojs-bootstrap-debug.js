@@ -29997,7 +29997,11 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                             value : b.href
                         });
 
-                        Roo.log(Roo.MessageBox.getDialog());
+                        if(isYoutube) {
+                            Roo.MessageBox.getTextboxEl().addEventListener('keyup', function(e) {
+                                Roo.log('KEYUP');
+                            });
+                        }
                     }
                 },
                 xns : rooui.Toolbar
