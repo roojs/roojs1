@@ -109,14 +109,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     }
 
                     var msg = "Enter the url for the link - leave blank to have no link";
-
                     var video_url = "//www.youtube.com/embed/" + e.target.value.split('/').pop().split('?').shift();
-                    
-                    if(isYoutube) {
-                        msg += "<br>Embed Link: <a href='" + e.target.value + "' target='_blank'>" + e.target.value + "</a>";
-                    }
+                    msg += "<br>Embed Link: <a href='" + video_url + "' target='_blank'>" + video_url + "</a>";
 
-                    Roo.MessageBox.updateText(msg)
+                    Roo.MessageBox.updateText(msg);
                 },
                 listeners : {
                     click: function (btn, state)
