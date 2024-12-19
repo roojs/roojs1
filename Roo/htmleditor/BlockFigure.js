@@ -51,21 +51,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var block = function() {
             return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
         };
-
-        Roo.log('CONTEXTMENUUUUU');
-
-        var sel = toolbar.tb.selectedNode;
-
-        Roo.log(sel);
-
-        if (sel && sel.hasAttribute('data-block')) {
-            db = sel;
-        } else if (sel && sel.closest('[data-block]')) {
-            db = sel.closest('[data-block]'); 
-        }
-
-        var isYoutube = Roo.htmleditor.Block.factory(db).cls == 'youtube';
-        
         
         var rooui =  typeof(Roo.bootstrap.form) == 'undefined' ? Roo : Roo.bootstrap;
         
