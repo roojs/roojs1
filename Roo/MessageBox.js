@@ -372,8 +372,8 @@ Roo.Msg.show({
             return this;
         },
 
-        getTextboxEl: function() {
-            return textboxEl;
+        getActiveTextEl: function() {
+            return activeTextEl;
         },
 
         /**
