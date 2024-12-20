@@ -243,6 +243,26 @@ H.hide();}I.setDisplayed(B.progress===true);if(B.progress){d.animate=false;}this
 },confirm:function(Q,R,fn,S){this.show({title:Q,msg:R,buttons:this.YESNO,fn:fn,scope:S,modal:true});return this;},prompt:function(Q,R,fn,S,T){this.show({title:Q,msg:R,buttons:this.OKCANCEL,fn:fn,minWidth:250,scope:S,prompt:true,multiline:T,modal:true});return this;
 },OK:{ok:true},YESNO:{yes:true,no:true},OKCANCEL:{ok:true,cancel:true},YESNOCANCEL:{yes:true,no:true,cancel:true},defaultTextHeight:75,maxWidth:600,minWidth:100,minProgressWidth:250,buttonText:{ok:"OK",cancel:"Cancel",yes:"Yes",no:"No"}};}();Roo.MessageBox=Roo.MessageBox||Roo.bootstrap.MessageBox;
 Roo.Msg=Roo.Msg||Roo.MessageBox;
+<<<<<<< HEAD
+=======
+// Roo/bootstrap/Toaster.js
+Roo.bootstrap.Toaster=function(A){if(Roo.bootstrap.Toaster.page!==false){throw "toaster already initialized";}Roo.bootstrap.Toaster.superclass.constructor.call(this,A);Roo.bootstrap.Toaster.page=this;};Roo.bootstrap.Toaster.page=false;Roo.extend(Roo.bootstrap.Toaster,Roo.bootstrap.Component,{getAutoCreate:function(){return cfg={cls:'bootstrap',cn:[{cls:'toaster',cn:[{tag:'div',cls:'toast-holder'}
+]}]};},initEvents:function(){this.containerEl=this.el.select('.toast-holder',true).first();},getChildContainer:function(){return this.containerEl;},show:function(){if(!this.el){this.render(document.body);}this.el.removeClass('d-none');},hide:function(){this.el.addClass('d-none');
+}});
+// Roo/bootstrap/Toast.js
+Roo.bootstrap.Toast=function(A){if(Roo.bootstrap.Toaster.page===false){(new Roo.bootstrap.Toaster()).show();}Roo.bootstrap.Toast.superclass.constructor.call(this,A);this.addEvents({"close":true,"show":true,});this.render(Roo.bootstrap.Toaster.page.getChildContainer());
+this.fireEvent('show',this);};Roo.extend(Roo.bootstrap.Toast,Roo.bootstrap.Component,{title:'',body:'',show_time:false,timeout:false,progress:false,weight:'primary',getAutoCreate:function(){console.log(Roo.BLANK_IMAGE_URL);return {cls:'toast fade show',role:'alert',cn:[{cls:'toast-header',cn:[{tag:'img',src:Roo.BLANK_IMAGE_URL,cls:'rounded mr-2 bg-'+this.weight,}
+,{tag:'small',cls:'mr-auto',html:this.title},{tag:'small',cls:'toast-timer text-muted d-none',html:''},{tag:'button',cls:'ml-2 mb-1 close',type:'button',cn:[{tag:'span',html:'&times;'}]}]},{cls:'toast-body',cn:[{cls:'progress d-none',cn:{cls:'progress-bar bg-'+this.weight}
+},{cls:'toast-body-text small',html:this.body}]}]};},progressBarEl:null,progressEl:null,bodyEl:null,bodyTextEl:null,closeEl:null,timerEl:null,timeout_id:false,initEvents:function(){this.progressBarEl=this.el.select('.progress-bar',true).first();this.bodyEl=this.el.select('.toast-body',true).first();
+this.bodyTextEl=this.el.select('.toast-body-text',true).first();this.closeEl=this.el.select('.close',true).first();this.timerEl=this.el.select('.toast-timer',true).first();this.progressEl=this.el.select('.progress',true).first();if(this.body==''){this.bodyTextEl.addClass('d-none');
+if(this.progress===false){this.bodyEl.addClass('d-none');}}this.updateProgress(this.progress);this.closeEl.on('click',this.hide,this);this.setTimeout(this.timeout);if(this.show_time>0){this.timerEl.removeClass('d-none');this.show_time=new Date();this.updateTimer();
+}},hide:function(){if(!this.el){return;}if(this.show_time_interval!==false){clearInterval(this.show_time_interval);}this.closeEl.un('click',this.hide);this.el.dom.parentNode.removeChild(this.el.dom);this.el=false;this.fireEvent('close',this);},updateTimer:function(){if(!this.el){return;
+}if(this.show_time===false){this.show_time=new Date();}var s=Math.floor(((new Date())-this.show_time)/1000);var m=Math.floor(s/60);this.timerEl.update(s<1?'now':(s>60?(m+" mins ago"):(s+" sec. ago")));this.updateTimer.defer(s<60?5000:60000,this);},updateProgress:function(n){this.progress=n
+if(this.progress!==false){this.progress=Math.min(this.progress,1.0);
+this.progress=Math.max(this.progress,0.0);this.bodyEl.removeClass('d-none');this.progressEl.removeClass("d-none");this.progressBarEl.setWidth(Math.floor(100*this.progress)+'%');return;}this.progressEl.addClass('d-none');},setTimeout:function(n){if(this.timeout_id!==false){clearTimeout(this.timeout_id);
+this.timeout_id=false;}if(n>0){this.timeout=n;this.timeout_id=this.hide.defer(this.timeout*1000,this);}},updateBody:function(A){this.bodyTextEl[A.length>0?'removeClass':'addClass']('d-none');this.bodyEl.removeClass('d-none');this.bodyTextEl.update(A);}});
+
+>>>>>>> master
 // Roo/bootstrap/nav/Bar.js
 Roo.bootstrap.nav.Bar=function(A){Roo.bootstrap.nav.Bar.superclass.constructor.call(this,A);this.addEvents({"beforetoggle":true});};Roo.extend(Roo.bootstrap.nav.Bar,Roo.bootstrap.Component,{navItems:false,loadMask:false,getAutoCreate:function(){throw {message:"nav bar is now a abstract base class - use NavSimplebar / NavHeaderbar / NavSidebar etc..."}
 ;},initEvents:function(){this.el.select('.navbar-toggle',true).on('click',this.onToggle,this);var A={tag:"div",cls:"x-dlg-mask"};this.maskEl=Roo.DomHelper.append(this.el,A,true);var B=this.el.getSize();this.maskEl.setSize(B.width,B.height);this.maskEl.enableDisplayMode("block");
