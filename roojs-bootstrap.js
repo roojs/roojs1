@@ -243,8 +243,6 @@ H.hide();}I.setDisplayed(B.progress===true);if(B.progress){d.animate=false;}this
 },confirm:function(Q,R,fn,S){this.show({title:Q,msg:R,buttons:this.YESNO,fn:fn,scope:S,modal:true});return this;},prompt:function(Q,R,fn,S,T){this.show({title:Q,msg:R,buttons:this.OKCANCEL,fn:fn,minWidth:250,scope:S,prompt:true,multiline:T,modal:true});return this;
 },OK:{ok:true},YESNO:{yes:true,no:true},OKCANCEL:{ok:true,cancel:true},YESNOCANCEL:{yes:true,no:true,cancel:true},defaultTextHeight:75,maxWidth:600,minWidth:100,minProgressWidth:250,buttonText:{ok:"OK",cancel:"Cancel",yes:"Yes",no:"No"}};}();Roo.MessageBox=Roo.MessageBox||Roo.bootstrap.MessageBox;
 Roo.Msg=Roo.Msg||Roo.MessageBox;
-<<<<<<< HEAD
-=======
 // Roo/bootstrap/Toaster.js
 Roo.bootstrap.Toaster=function(A){if(Roo.bootstrap.Toaster.page!==false){throw "toaster already initialized";}Roo.bootstrap.Toaster.superclass.constructor.call(this,A);Roo.bootstrap.Toaster.page=this;};Roo.bootstrap.Toaster.page=false;Roo.extend(Roo.bootstrap.Toaster,Roo.bootstrap.Component,{getAutoCreate:function(){return cfg={cls:'bootstrap',cn:[{cls:'toaster',cn:[{tag:'div',cls:'toast-holder'}
 ]}]};},initEvents:function(){this.containerEl=this.el.select('.toast-holder',true).first();},getChildContainer:function(){return this.containerEl;},show:function(){if(!this.el){this.render(document.body);}this.el.removeClass('d-none');},hide:function(){this.el.addClass('d-none');
@@ -262,7 +260,6 @@ if(this.progress!==false){this.progress=Math.min(this.progress,1.0);
 this.progress=Math.max(this.progress,0.0);this.bodyEl.removeClass('d-none');this.progressEl.removeClass("d-none");this.progressBarEl.setWidth(Math.floor(100*this.progress)+'%');return;}this.progressEl.addClass('d-none');},setTimeout:function(n){if(this.timeout_id!==false){clearTimeout(this.timeout_id);
 this.timeout_id=false;}if(n>0){this.timeout=n;this.timeout_id=this.hide.defer(this.timeout*1000,this);}},updateBody:function(A){this.bodyTextEl[A.length>0?'removeClass':'addClass']('d-none');this.bodyEl.removeClass('d-none');this.bodyTextEl.update(A);}});
 
->>>>>>> master
 // Roo/bootstrap/nav/Bar.js
 Roo.bootstrap.nav.Bar=function(A){Roo.bootstrap.nav.Bar.superclass.constructor.call(this,A);this.addEvents({"beforetoggle":true});};Roo.extend(Roo.bootstrap.nav.Bar,Roo.bootstrap.Component,{navItems:false,loadMask:false,getAutoCreate:function(){throw {message:"nav bar is now a abstract base class - use NavSimplebar / NavHeaderbar / NavSidebar etc..."}
 ;},initEvents:function(){this.el.select('.navbar-toggle',true).on('click',this.onToggle,this);var A={tag:"div",cls:"x-dlg-mask"};this.maskEl=Roo.DomHelper.append(this.el,A,true);var B=this.el.getSize();this.maskEl.setSize(B.width,B.height);this.maskEl.enableDisplayMode("block");

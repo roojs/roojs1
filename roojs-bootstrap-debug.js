@@ -5535,8 +5535,6 @@ Roo.Msg = Roo.Msg || Roo.MessageBox;
 /*
  * - LGPL
  *
-<<<<<<< HEAD
-=======
  * toaster  - collection of toasts  - notification popups.
  * 
  */
@@ -5858,7 +5856,6 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
 /*
  * - LGPL
  *
->>>>>>> master
  * navbar
  * 
  */
