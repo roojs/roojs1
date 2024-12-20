@@ -30234,7 +30234,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
         };
         
-        
         var rooui =  typeof(Roo.bootstrap.form) == 'undefined' ? Roo : Roo.bootstrap;
         
         var syncValue = toolbar.editorcore.syncValue;
@@ -30283,21 +30282,44 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             {
                 xtype : 'Button',
                 text: 'Change Link URL',
-                 
+                onPromptKeyUp: function(e) {
+                    var b = block();
+                    var isYoutube = b.cls == 'youtube';
+
+                    if(!isYoutube) {
+                        return;
+                    }
+
+                    var msg = "Enter the url for the link - leave blank to have no link";
+                    var video_url = "//www.youtube.com/embed/" + e.target.value.split('/').pop().split('?').shift();
+                    msg += "<br>Embed Link: <a href='" + video_url + "' target='_blank'>" + video_url + "</a>";
+
+                    Roo.MessageBox.updateText(msg);
+                },
                 listeners : {
                     click: function (btn, state)
                     {
                         var b = block();
+
+                        var isYoutube = b.cls == 'youtube';
+
+                        var msg = "Enter the url for the link - leave blank to have no link";
+                        if(isYoutube) {
+                            msg += "<br>Embed Link: <a href='" + b.video_url + "' target='_blank'>" + b.video_url + "</a>";
+                        }
                         
                         Roo.MessageBox.show({
                             title : "Link URL",
-                            msg : "Enter the url for the link - leave blank to have no link",
+                            msg : msg,
                             buttons: Roo.MessageBox.OKCANCEL,
                             fn: function(btn, val){
                                 if (btn != 'ok') {
                                     return;
                                 }
                                 b.href = val;
+                                if(isYoutube) {
+                                    b.video_url = "//www.youtube.com/embed/" + val.split('/').pop().split('?').shift();
+                                }
                                 b.updateElement();
                                 syncValue();
                                 toolbar.editorcore.onEditorEvent();
@@ -30308,14 +30330,20 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                             modal : true,
                             value : b.href
                         });
+                        
+                        var activeTextEl = Roo.MessageBox.getActiveTextEl();
+                        activeTextEl.removeListener('keyup', btn.onPromptKeyUp);
+                        if(isYoutube) {
+                            activeTextEl.addListener('keyup', btn.onPromptKeyUp);
+                        }
                     }
                 },
                 xns : rooui.Toolbar
             },
             {
                 xtype : 'Button',
+                cls: 'x-toolbar-figure-show-video-url',
                 text: 'Show Video URL',
-                 
                 listeners : {
                     click: function (btn, state)
                     {
@@ -30326,7 +30354,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 },
                 xns : rooui.Toolbar
             },
-            
             
             {
                 xtype : 'TextItem',
