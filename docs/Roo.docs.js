@@ -238,13 +238,13 @@ Roo.docs = new Roo.XComponent({
      position : 'fixed-top',
      style : '',
      listeners : {
-      beforetoggle : function (_self)
+      beforetoggle : function ()
        {
           // _this.mobileNavGroup.autoExpand(); 
            
            
        },
-      render : function (_self)
+      render : function ()
        {
           
             _this.navHeaderBar = this;
