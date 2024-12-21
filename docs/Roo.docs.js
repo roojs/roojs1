@@ -152,7 +152,7 @@ Roo.docs = new Roo.XComponent({
                    lookupMenu(c, index);
                });
                
-           }
+           };
            
            Roo.each(pagemenus, function(v, k){
                
@@ -172,13 +172,13 @@ Roo.docs = new Roo.XComponent({
            
        },
        listeners : {
-        childrenrendered : function (_self)
+          childrenrendered : function ()
          {
              _this.navGroup.autoExpand();
              
              _this.navGroup.activeLookup();
          },
-        render : function (_self)
+          render : function ()
          {
              _this.navGroup = this;
              
@@ -201,7 +201,7 @@ Roo.docs = new Roo.XComponent({
            href : '#',
            preventDefault : true,
            listeners : {
-            click : function (e)
+            click : function ()
              {
                  document.location.hash = '#';
              }
