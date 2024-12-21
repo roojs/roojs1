@@ -359,13 +359,13 @@ Roo.docs.template  = {
         }            
         if ((member.deprecated && member.deprecated.length) || member.isDeprecated) {
             output+= '<dl class="detailList"><dt class="heading">Deprecated:</dt><dt>' +
-                        +member.deprecated+'</dt></dl>';
+                        member.deprecated+'</dt></dl>';
         }
         
         
         if (member.since && member.since.length) {
             output+= '<dl class="detailList"><dt class="heading">Since:</dt><dt>' +
-                        +member.since+'</dt></dl>';
+                        member.since+'</dt></dl>';
         }
          /*
                 <if test="member.exceptions.length">
