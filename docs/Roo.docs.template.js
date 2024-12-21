@@ -521,7 +521,7 @@ Roo.docs.template  = {
     },
         makeSortby : function(attribute) {
         return function(a, b) {
-            if (a[attribute] != undefined && b[attribute] != undefined) {
+            if (typeof(a[attribute]) != 'undefined' && typeof(b[attribute]) != 'undefined') {
             a = a[attribute]; //.toLowerCase();
             b = b[attribute];//.toLowerCase();
             if (a < b) return -1;
@@ -529,6 +529,6 @@ Roo.docs.template  = {
             return 0;
             }
             return 0;
-        }
+        };
     }
 }
