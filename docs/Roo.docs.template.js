@@ -28,12 +28,12 @@ Roo.docs.template  = {
             output += linkSymbol($) + "\n"; 
             iblock_indent += 20;
             }
-        )
+        );
          
         return output +  '<img src="../images/default/s.gif" height="1"  width="' +  iblock_indent +'"/>' +
             '<img class="elbow" src="../images/default/tree/elbow-end.gif"/>'+data.name+
         
-               '</pre></div>'
+               '</pre></div>';
            
     },
     
@@ -58,10 +58,10 @@ Roo.docs.template  = {
                 
             }
             
-        }
+        };
         iterArray(data.childClasses[data.name]);
          
-        return output +   '</ul>'
+        return output +   '</ul>';
     
     },
     
@@ -213,15 +213,15 @@ Roo.docs.template  = {
         output += '</span><b class="itemname">' + member.name + '</b>';
                 
         output += this.makeSignature(member.params);
-        if (member.returns && member.returns.length) {
-            output += ': ';
-            //for(var i = 0;i< member.returns.length;i++) {
-                var item = member.returns;
-                output += (i > 0 ? ' or ' : '') +
-                this.linkSymbol(typeof(item) == 'string' ? item : item.type);
-            //}
-        }
-            
+             if (member.returns && member.returns.length) {
+             output += ': ';
+            for(var i = 0;i< member.returns.length;i++) {
+                var item = member.returns[i];
+                 output += (i > 0 ? ' or ' : '') +
+                this.linkSymbol(item.type);
+            }
+         }
+
             
         output += '</div> <div class="mdesc">';
             if (!member.isConstructor) {
@@ -286,15 +286,15 @@ Roo.docs.template  = {
                        </dl>
                </if>
                */
-        if (member.returns && member.returns.length) { 
-            output += '<dl class="detailList"><dt class="heading">Returns:</dt>';
-             
-                var item = member.returns;
-                 output+= '<dd>' + this.linkSymbol( typeof(item) == 'string' ? item : item.type ) +
-                            ' ' + this.resolveLinks(typeof(item) == 'string' ? '' : item.desc) + '</dd></dl>';
-            
-                        
-        }
+        if (member.returns && member.returns.length) {
+             output += '<dl class="detailList"><dt class="heading">Returns:</dt>';
+            for (var i =0; i < member.returns.length; i++) {
+                var item = member.returns[i];
+                 output+= '<dd>' + this.linkSymbol( item.type ) + ' ' + this.resolveLinks(item.desc) + '</dd></dl>';
+            }
+                         
+         }
+
         
         /*
                 <if test="member.requires.length">
@@ -381,11 +381,15 @@ Roo.docs.template  = {
                 </if>
                 */    
         if (member.returns && member.returns.length) {
-            output += '<dl class="detailList"><dt class="heading">Returns:</dt>';
-            var item = member.returns;
-            output+= '<dd>' + this.linkSymbol( typeof(item) == 'string' ? item : item.type ) +
-                        ' ' + this.resolveLinks(typeof(item) == 'string' ? '' : item.desc) + '</dd></dl>';
-        }    
+             output += '<dl class="detailList"><dt class="heading">Returns:</dt>';
+            for (var i =0; i < member.returns.length; i++) {
+                var item = member.returns[i];
+                output+= '<dd>' + this.linkSymbol( item.type ) + ' ' + this.resolveLinks(item.desc) + '</dd></dl>';
+            }
+                    
+        }
+        
+    
            
         /*
                 <if test="member.requires.length">
