@@ -434,9 +434,9 @@ Roo.docs.init = {
             ];
         }
         d.params = [];
-        if (typeof(d['params-ar']) != 'undefined') {
+        if (typeof(d['param-ar']) != 'undefined') {
         //d.isOptional d.defaultValue
-            d.params  = d['params-ar'].map(this.gtkToRoo, this); 
+            d.params  = d['param-ar'].map(this.gtkToRoo, this); 
         }
         return d;
     },
