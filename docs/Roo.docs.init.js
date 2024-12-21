@@ -428,7 +428,8 @@ Roo.docs.init = {
         if (d.stype == this.SymbolKind.Function || this.SymbolKind.Signal) {
              d.returns = [
                 {
-                    type : d.rtype // for methods.
+                    type : d.rtype, // for methods.
+                    desc : ''
                 }
             ];
         }
