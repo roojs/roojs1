@@ -433,10 +433,11 @@ Roo.docs.init = {
                 }
             ];
         }
-       
+        d.params = [];
+        if (typeof(d['params-ar']) != 'undefined') {
         //d.isOptional d.defaultValue
-        d.params = typeof(d['params-ar']) == 'undefined'  ? [] : d['params-ar'].map(this.gtkToRoo, this); 
-       
+            d.params   d['params-ar'].map(this.gtkToRoo, this); 
+        }
         return d;
     },
     
