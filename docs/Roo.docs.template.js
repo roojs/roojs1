@@ -517,9 +517,9 @@ Roo.docs.template  = {
             out = '<span class=\"fixedFont\"><a href="#' + bit+ '">' + bit + '</a>' + out + '</span>';
         }
     
-    return out;
+        return out;
     },
-        makeSortby : function(attribute) {
+    makeSortby : function(attribute) {
         return function(a, b) {
             if (typeof(a[attribute]) != 'undefined' && typeof(b[attribute]) != 'undefined') {
             a = a[attribute]; //.toLowerCase();
