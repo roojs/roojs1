@@ -456,9 +456,7 @@ Roo.docs.template  = {
         if (!str || typeof(str) == 'undefined') {
             return '';
         }
-         Roo.log(str);
         str = Roo.Markdown.toHtml(str);
-        Roo.log(str);
         
         // gtk specific. now..
         // @ -> bold.. - they are arguments..
