@@ -9,12 +9,12 @@ Roo.docs = new Roo.XComponent({
  _strings : {
   '3e6ec55e2dff4342e3f25b0b0b988de9' :"Inheritance tree",
   'ae635f08107a69569e636835f24e6f6f' :" extends ",
+  'decbe415d8accca7c2c16d48a79ee934' :"Read More",
   '87f9f735a1d36793ceaecd4e47124b63' :"Events",
   'd41d8cd98f00b204e9800998ecf8427e' :"",
   '4d9ee8f98abde282da987fed0aac295c' :"Children that can be added using addxtype({...})",
   '9b34238e8113db140b452beec500024b' :"Roo JS Documentation",
   '50f33d14f129e4548c1c270fd6725a78' :"Configuration options",
-  'e64b94523532dbac62df6795a5153f04' :"doc-desc",
   '3673e725413179fe76f341ed908a5c36' :"Defined in: ",
   'd2b697ad8e989a6c4592987f22f5bbfc' :"doc-comments",
   'f361257612a512f9be2fdc2abfb25aef' :"<small>Defined by</small>",
@@ -474,22 +474,40 @@ Roo.docs = new Roo.XComponent({
            ]
           },
           {
-           xtype : 'Container',
-           clickable : true,
-           cls : 'doc-desc',
-           html : _this._strings['e64b94523532dbac62df6795a5153f04'] /* doc-desc */,
-           listeners : {
-            click : function (_self, e)
-             {
-                 this.el.toggleClass('active');
-             },
-            render : function (_self)
-             {
-                 _this.doc_desc = this;
-             }
-           },
+           xtype : 'Element',
            xns : Roo.bootstrap,
-           '|xns' : 'Roo.bootstrap'
+           '|xns' : 'Roo.bootstrap',
+           items  : [
+            {
+             xtype : 'Element',
+             cls : 'doc-desc',
+             listeners : {
+              render : function (_self)
+               {
+                   _this.doc_desc = this;
+               }
+             },
+             xns : Roo.bootstrap,
+             '|xns' : 'Roo.bootstrap'
+            },
+            {
+             xtype : 'Button',
+             cls : 'btn-block',
+             html : _this._strings['decbe415d8accca7c2c16d48a79ee934'] /* Read More */,
+             pressed : false,
+             size : 'sm',
+             weight : 'info',
+             listeners : {
+              toggle : function (btn, e, pressed)
+               {
+                   _this.doc_desc.el.toggleClass('active');
+                   this.setText(pressed ? "Hide Content" : "Show More");
+               }
+             },
+             xns : Roo.bootstrap,
+             '|xns' : 'Roo.bootstrap'
+            }
+           ]
           },
           {
            xtype : 'Container',

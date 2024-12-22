@@ -442,24 +442,40 @@
           },
           {
            "$ xns" : "Roo.bootstrap",
-           "Boolean clickable" : true,
-           "String cls" : "doc-desc",
-           "String html" : "doc-desc",
-           "listeners" : {
-            "click" : [
-             "function (_self, e)",
-             "{",
-             "    this.el.toggleClass('active');",
-             "}"
-            ],
-            "render" : [
-             "function (_self)",
-             "{",
-             "    _this.doc_desc = this;",
-             "}"
-            ]
-           },
-           "xtype" : "Container"
+           "items" : [
+            {
+             "$ xns" : "Roo.bootstrap",
+             "String cls" : "doc-desc",
+             "listeners" : {
+              "render" : [
+               "function (_self)",
+               "{",
+               "    _this.doc_desc = this;",
+               "}"
+              ]
+             },
+             "xtype" : "Element"
+            },
+            {
+             "$ xns" : "Roo.bootstrap",
+             "Boolean pressed" : false,
+             "String cls" : "btn-block",
+             "String html" : "Read More",
+             "String size" : "sm",
+             "String weight" : "info",
+             "listeners" : {
+              "toggle" : [
+               "function (btn, e, pressed)",
+               "{",
+               "    _this.doc_desc.el.toggleClass('active');",
+               "    this.setText(pressed ? \"Hide Content\" : \"Show More\");",
+               "}"
+              ]
+             },
+             "xtype" : "Button"
+            }
+           ],
+           "xtype" : "Element"
           },
           {
            "$ xns" : "Roo.bootstrap",
@@ -891,7 +907,7 @@
   "ae635f08107a69569e636835f24e6f6f" : " extends ",
   "d2b697ad8e989a6c4592987f22f5bbfc" : "doc-comments",
   "d41d8cd98f00b204e9800998ecf8427e" : " ",
-  "e64b94523532dbac62df6795a5153f04" : "doc-desc",
+  "decbe415d8accca7c2c16d48a79ee934" : "Read More",
   "f361257612a512f9be2fdc2abfb25aef" : "<small>Defined by</small>",
   "f561aaf6ef0bf14d4208bb46a4ccb3ad" : "xxx"
  },
