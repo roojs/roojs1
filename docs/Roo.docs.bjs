@@ -443,7 +443,6 @@
           {
            "$ xns" : "Roo.bootstrap",
            "Boolean clickable" : true,
-           "Boolean expandable" : true,
            "String cls" : "doc-desc",
            "String html" : "doc-desc",
            "listeners" : {

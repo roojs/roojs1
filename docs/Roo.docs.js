@@ -477,7 +477,6 @@ Roo.docs = new Roo.XComponent({
            xtype : 'Container',
            clickable : true,
            cls : 'doc-desc',
-           expandable : true,
            html : _this._strings['e64b94523532dbac62df6795a5153f04'] /* doc-desc */,
            listeners : {
             click : function (_self, e)
