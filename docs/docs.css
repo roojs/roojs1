@@ -977,6 +977,6 @@ a.dropdown-toggle::before {
     max-height: 400px;
     overflow:hidden;
 }
-.doc-desc:hover {
+.doc-desc.active {
     max-height: fit-content;
 }
