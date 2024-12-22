@@ -480,7 +480,7 @@ Roo.docs = new Roo.XComponent({
            listeners : {
             click : function (_self, e)
              {
-             
+                 this.el.toggleClass('active');
              },
             render : function (_self)
              {

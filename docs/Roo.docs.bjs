@@ -448,7 +448,7 @@
             "click" : [
              "function (_self, e)",
              "{",
-             "",
+             "    this.el.toggleClass('active');",
              "}"
             ],
             "render" : [
