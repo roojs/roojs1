@@ -973,3 +973,10 @@ a.dropdown-toggle::before {
     padding-left: 10px;
 
 }
+.doc-desc {
+    max-height: 400px;
+    overflow:hidden;
+}
+.doc-desc:hidden {
+    max-height: 100%;
+}
