@@ -445,6 +445,12 @@
            "String cls" : "doc-desc",
            "String html" : "doc-desc",
            "listeners" : {
+            "click" : [
+             "function (_self, e)",
+             "{",
+             "",
+             "}"
+            ],
             "render" : [
              "function (_self)",
              "{",

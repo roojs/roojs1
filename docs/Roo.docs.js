@@ -152,7 +152,7 @@ Roo.docs = new Roo.XComponent({
                    lookupMenu(c, index);
                });
                
-           };
+           }
            
            Roo.each(pagemenus, function(v, k){
                
@@ -172,13 +172,13 @@ Roo.docs = new Roo.XComponent({
            
        },
        listeners : {
-          childrenrendered : function ()
+        childrenrendered : function (_self)
          {
              _this.navGroup.autoExpand();
              
              _this.navGroup.activeLookup();
          },
-          render : function ()
+        render : function (_self)
          {
              _this.navGroup = this;
              
@@ -201,7 +201,7 @@ Roo.docs = new Roo.XComponent({
            href : '#',
            preventDefault : true,
            listeners : {
-            click : function ()
+            click : function (e)
              {
                  document.location.hash = '#';
              }
@@ -238,13 +238,13 @@ Roo.docs = new Roo.XComponent({
      position : 'fixed-top',
      style : '',
      listeners : {
-      beforetoggle : function ()
+      beforetoggle : function (_self)
        {
           // _this.mobileNavGroup.autoExpand(); 
            
            
        },
-      render : function ()
+      render : function (_self)
        {
           
             _this.navHeaderBar = this;
@@ -478,6 +478,10 @@ Roo.docs = new Roo.XComponent({
            cls : 'doc-desc',
            html : _this._strings['e64b94523532dbac62df6795a5153f04'] /* doc-desc */,
            listeners : {
+            click : function (_self, e)
+             {
+             
+             },
             render : function (_self)
              {
                  _this.doc_desc = this;
