@@ -518,7 +518,7 @@ Roo.docs = new Roo.XComponent({
            '|xns' : 'Roo.bootstrap'
           },
           {
-           xtype : 'Container',
+           xtype : 'Card',
            cls : 'doc-table-container',
            expandable : true,
            expanded : true,
