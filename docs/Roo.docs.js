@@ -336,7 +336,7 @@ Roo.docs = new Roo.XComponent({
      ]
     },
     {
-     xtype : 'Container',
+     xtype : 'Card',
      cls : 'general-content-body',
      listeners : {
       render : function (_self)

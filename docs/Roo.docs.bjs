@@ -873,7 +873,7 @@
        "}"
       ]
      },
-     "xtype" : "Container"
+     "xtype" : "Card"
     }
    ],
    "listeners" : {
