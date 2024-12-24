@@ -698,7 +698,7 @@
              "}"
             ]
            },
-           "xtype" : "Container"
+           "xtype" : "Card"
           },
           {
            "$ xns" : "Roo.bootstrap",

@@ -614,7 +614,7 @@ Roo.docs = new Roo.XComponent({
            ]
           },
           {
-           xtype : 'Container',
+           xtype : 'Card',
            cls : 'doc-table-container',
            expandable : true,
            expanded : true,
