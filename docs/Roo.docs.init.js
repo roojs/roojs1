@@ -487,7 +487,7 @@ Roo.docs.init = {
         
         if (d.augments.length) {
             Roo.docs.augments.show();
-            Roo.docs.augments.bodyEl().dom.innerHTML = Roo.docs.template.augments(d);
+            Roo.docs.augments.bodyEl.dom.innerHTML = Roo.docs.template.augments(d);
         } else {
             Roo.docs.augments.hide();
         }
