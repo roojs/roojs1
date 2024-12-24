@@ -980,3 +980,11 @@ a.dropdown-toggle::before {
 .doc-desc.active {
     max-height: fit-content;
 }
+
+.panel-heading {
+    padding: 4px 8px;
+}
+.panel-title {
+    font-size : 14px;
+    font-weight: bold;
+}
