@@ -476,7 +476,7 @@ Roo.extend(Roo.bootstrap.form.TriggerField, Roo.bootstrap.form.Input,  {
         
         if(this.fireEvent("remove", this) !== false){
             this.reset();
-            this.fireEvent("afterremove", this)
+            this.fireEvent("afterremove", this);
         }
     },
     
