@@ -173,7 +173,7 @@
          "xtype" : "Row"
         }
        ],
-       "xtype" : "Container"
+       "xtype" : "Card"
       }
      ],
      "listeners" : {
@@ -300,7 +300,7 @@
        "}"
       ]
      },
-     "xtype" : "Container"
+     "xtype" : "Card"
     },
     {
      "$ xns" : "Roo.bootstrap",

@@ -214,7 +214,7 @@ Roo.docs = new Roo.XComponent({
        ]
       },
       {
-       xtype : 'Container',
+       xtype : 'Card',
        cls : 'left-menu-sidebar-options',
        xns : Roo.bootstrap,
        '|xns' : 'Roo.bootstrap',
@@ -298,7 +298,7 @@ Roo.docs = new Roo.XComponent({
      ]
     },
     {
-     xtype : 'Container',
+     xtype : 'Card',
      cls : 'general-content-body general-content-intro',
      listeners : {
       render : function (_self)
