@@ -812,7 +812,7 @@ Roo.docs = new Roo.XComponent({
          '|xns' : 'Roo.bootstrap',
          items  : [
           {
-           xtype : 'Container',
+           xtype : 'Card',
            cls : 'doc-augments',
            header : _this._strings['3e6ec55e2dff4342e3f25b0b0b988de9'] /* Inheritance tree */,
            panel : 'primary',
@@ -826,7 +826,7 @@ Roo.docs = new Roo.XComponent({
            '|xns' : 'Roo.bootstrap'
           },
           {
-           xtype : 'Container',
+           xtype : 'Card',
            cls : 'doc-implementors',
            header : _this._strings['3c81cc62cd8a24b231d0c0db34feda61'] /* Implementations */,
            panel : 'primary',
@@ -840,7 +840,7 @@ Roo.docs = new Roo.XComponent({
            '|xns' : 'Roo.bootstrap'
           },
           {
-           xtype : 'Container',
+           xtype : 'Card',
            cls : 'doc-children',
            header : _this._strings['4d9ee8f98abde282da987fed0aac295c'] /* Children that can be added using addxtype({...}) */,
            panel : 'primary',

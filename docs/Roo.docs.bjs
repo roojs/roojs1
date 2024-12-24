@@ -826,7 +826,7 @@
              "}"
             ]
            },
-           "xtype" : "Container"
+           "xtype" : "Card"
           },
           {
            "$ xns" : "Roo.bootstrap",
@@ -841,7 +841,7 @@
              "}"
             ]
            },
-           "xtype" : "Container"
+           "xtype" : "Card"
           },
           {
            "$ xns" : "Roo.bootstrap",
@@ -856,7 +856,7 @@
              "}"
             ]
            },
-           "xtype" : "Container"
+           "xtype" : "Card"
           }
          ],
          "xtype" : "Column"
