@@ -337,6 +337,12 @@ Roo.docs = new Roo.XComponent({
        items  : [
         {
          xtype : 'Row',
+         listeners : {
+          render : function (_self)
+           {
+           
+           }
+         },
          xns : Roo.bootstrap,
          '|xns' : 'Roo.bootstrap'
         }

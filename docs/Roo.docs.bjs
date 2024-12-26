@@ -286,6 +286,14 @@
        "items" : [
         {
          "$ xns" : "Roo.bootstrap",
+         "listeners" : {
+          "render" : [
+           "function (_self)",
+           "{",
+           "",
+           "}"
+          ]
+         },
          "xtype" : "Row"
         }
        ],
