@@ -70,6 +70,10 @@ Roo.docs.init = {
         
         if (window.location.protocol == 'xhttp:' || window.location.protocol == 'resource:'  ) {
             this.prefix = "/docs/";
+            Roo.docs.sidebar.hide();
+            Roo.docs.doc_body_content.el.setStyle( { marginLeft : '10px'})
+
+            
         }
         
         window.onhashchange = function() { Roo.docs.init.onHashChange(); };
