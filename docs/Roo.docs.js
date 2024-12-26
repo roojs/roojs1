@@ -340,7 +340,7 @@ Roo.docs = new Roo.XComponent({
          listeners : {
           render : function (_self)
            {
-           
+               _this.introRow = this;
            }
          },
          xns : Roo.bootstrap,
