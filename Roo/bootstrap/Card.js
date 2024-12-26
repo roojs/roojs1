@@ -10,7 +10,7 @@
  * @cfg {String} header_image  src url of image.
  * @cfg {String|Object} header
  * @cfg {Number} header_size (0|1|2|3|4|5) H1 or H2 etc.. 0 indicates default
- * @cfg {Number} header_weight  (primary|secondary|success|info|warning|danger|light|dark)
+ * @cfg {String} header_weight (primary|secondary|success|info|warning|danger|light|dark)
  * 
  * @cfg {String} title
  * @cfg {String} subtitle
@@ -164,7 +164,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         ['', 'xs', 'sm', 'lg', 'xl'].forEach(function(v) {
             if (('' + t['display' + (v.length ? '_' : '') + v]).length) {
-                cls += ' d' +  (v.length ? '-' : '') + v + '-' + t['display' + (v.length ? '_' : '') + v]
+                cls += ' d' +  (v.length ? '-' : '') + v + '-' + t['display' + (v.length ? '_' : '') + v];
             }
         });
         
@@ -207,12 +207,14 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             cls : 'card',
             cn : [ ]
         };
+        //var bodycls = '';
         
-        if (this.weight.length && this.weight != 'light') {
-            cfg.cls += ' text-white';
-        } else {
-            cfg.cls += ' text-dark'; // need as it's nested..
-        }
+        //this seems pretty messed up.
+        //if (this.weight.length && this.weight != 'light') {
+        //    bodycls += ' text-white';
+        //} else {
+        //    bodycls += ' text-dark'; // need as it's nested..
+        //}
         if (this.weight.length) {
             cfg.cls += ' bg-' + this.weight;
         }
@@ -221,10 +223,13 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         var hdr = false;
         var hdr_ctr = false;
+        var hw = (this.header_weight ? ' bg-' + this.header_weight : '');
+        var hb = (['light', 'white'].indexOf(this.header_weight) > -1 ? ' text-dark' : ' text-white');
+          
         if (this.header.length) {
             hdr = {
                 tag : this.header_size > 0 ? 'h' + this.header_size : 'div',
-                cls : 'card-header ' + (this.header_weight ? 'bg-' + this.header_weight : ''),
+                cls : 'card-header' + hw + hb,
                 cn : []
             };
             cfg.cn.push(hdr);
@@ -232,7 +237,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         } else {
             hdr = {
                 tag : 'div',
-                cls : 'card-header d-none ' + (this.header_weight ? 'bg-' + this.header_weight : ''),
+                cls : 'card-header d-none ' + hw + hb,
                 cn : []
             };
             cfg.cn.push(hdr);
@@ -240,7 +245,6 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         }
         if (this.collapsable) {
             hdr_ctr = {
-            tag : 'a',
             cls : 'd-block user-select-none',
             cn: [
                     {

@@ -3512,6 +3512,9 @@ html[dir="rtl"] .roo-select2-search-choice-close {
   background-color: #fff;
   color: #17a2b8; }
 
+.sidebar .sidebar-menu .dropdown-toggle::after {
+  display: none; }
+
 /*html, */
 /* Sticky footer styles
 -------------------------------------------------- */

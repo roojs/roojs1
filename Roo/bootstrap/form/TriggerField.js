@@ -488,7 +488,7 @@ Roo.extend(Roo.bootstrap.form.TriggerField, Roo.bootstrap.form.Input,  {
             style: 'display:none'
         });
         
-        this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';;
+        this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
     },
 

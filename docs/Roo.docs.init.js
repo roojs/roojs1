@@ -286,7 +286,13 @@ Roo.docs.init = {
             return;
         }
         //Roo.docs.mobileNavGroup.hide();
-        Roo.log("loadDoc?");
+       // Roo.log("loadDoc?");
+        
+        Roo.docs.doc_desc.el.removeClass('active');
+        Roo.docs.read_more_btn.setActive(false);
+        Roo.docs.read_more_btn.hide(); 
+        
+
         Roo.docs.doc_body_content.hide();
         Roo.docs.navHeaderBar.collapse();
         this.currentClass = cls.name;
@@ -310,6 +316,9 @@ Roo.docs.init = {
         
         Roo.docs.introBody.hide();
         Roo.docs.doc_body_content.show();
+        
+        
+        
         Roo.Ajax.request({
             url : this.prefix + 'symbols/' + cls.name + '.json',
             method : 'GET',
@@ -471,6 +480,9 @@ Roo.docs.init = {
         document.body.scrollTop  = 0;
         Roo.docs.doc_name.el.dom.innerHTML = Roo.docs.template.resolveLinks(d.name);
         Roo.docs.doc_desc.el.dom.innerHTML = Roo.docs.template.summary(d);
+        if (Roo.docs.doc_desc.el.isScrollable()) {
+             Roo.docs.read_more_btn.show(); 
+        }
         Roo.docs.doc_extends.hide();
         Roo.docs.doc_extends_sep.hide();
         if (d.augments.length) {

@@ -456,6 +456,15 @@ Roo.docs.template  = {
         }
         str = Roo.Markdown.toHtml(str);
         
+        var linkSymbol = this.linkSymbol;
+
+         //[vfunc@Gtk.Widget.get_request_mode]
+        str = str.replace(/\[(\S+)@(\S+)\]/gi,
+            function(match, type,  symbolName) {
+                Roo.log([ "match", type, match,symbolName]);
+                return  linkSymbol(symbolName);
+            }
+        );
         // gtk specific. now..
         // @ -> bold.. - they are arguments..
         /*
@@ -485,6 +494,8 @@ Roo.docs.template  = {
         str = str.replace(/\n\n+/gi, '<br/><br/>');
         //str = str.replace(/\n/gi, '<br/>');
         var linkSymbol = this.linkSymbol;
+
+        //[vfunc@Gtk.Widget.get_request_mode]
         str = str.replace(/\{@link ([^} ]+) ?\}/gi,
             function(match, symbolName) {
                 return linkSymbol(symbolName);
@@ -504,7 +515,7 @@ Roo.docs.template  = {
     },
     linkSymbol : function(str)
     {
-        Roo.log(str);
+        //Roo.log(str);
         var ar = str.split('<');
         var out = '';
         for(var i = ar.length-1; i > -1; i--) {

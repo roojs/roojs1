@@ -141,6 +141,7 @@ h6,
 
 
 .left-menu-sidebar.sidebar .sidebar-menu  ul.treeview-menu.show, /* the actuall menu that is shown */
+.left-menu-sidebar.sidebar .sidebar-menu ul.treeview-menu.show ul.treeview-menu,
 .left-menu-sidebar.sidebar .sidebar-menu  ul.treeview-menu.show > li.treeview-menu > a.dropdown-item, /* the actuall menu that is shown */
   
 /* expanded non-menu item */
@@ -742,12 +743,12 @@ header-menu-options ul.socials > li:first-child,
 .roo-required-indicator.left-indicator {
     display: none;
 }
-
-.panel-hpa > .panel-heading {
+/*
+.-hpa > .panel-heading {
     background-color: #16114C;
     color: white;
 }
-
+*/
 
 /** - share this.. lighten... */
 .st-btn {
@@ -800,7 +801,7 @@ header-menu-options ul.socials > li:first-child,
 }
  
  
-.doc-table-container .panel-body  {
+.doc-table-container .card-body  {
     padding: 0
 }
 .doc-table-container .table {
@@ -831,9 +832,14 @@ td>.fixedFont {
 {
     vertical-align: top;
     padding: 5px 10px;
-    font-size: 13px;
-    
-} 
+    font-size: 13px; 
+}
+.doc-table-container .long {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+
 .doc-table-container .short {
     color: #666;
 }
@@ -913,16 +919,21 @@ td>.fixedFont {
     margin: 10px 10px 10px 0px;
     padding: 10px;
 }
-.doc-augments .panel-body 
+.doc-augments .card-body 
 {
     padding: 0;
 }
-.doc-augments .panel-body pre {
+.doc-augments .dard-body pre {
     margin: 0;
 }
 pre code {
     color: #000;
     font-family: monospace; /** default font is too soft.. */
+  
+}
+pre {
+      background-color: #eee;
+      padding: 4px;
 }
 .doc-not-member {
     background-color:  #fcf8e3;
@@ -950,7 +961,7 @@ a.dropdown-toggle::before {
     border-bottom: 0;
     border-left: .3em solid transparent;
 }
-.doc-implementors .panel-body {
+.doc-implementors .card-body {
     max-height: 300px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -981,10 +992,25 @@ a.dropdown-toggle::before {
     max-height: fit-content;
 }
 
-.panel-heading {
+.card-header {
     padding: 4px 8px;
-}
-.panel-title {
+
     font-size : 14px;
     font-weight: bold;
+}
+.card p {
+    display: inline-block;  /* override markdown <p> */
+    margin: 0;
+}
+ 
+.card-body {
+   padding: 0 ;
+}
+.doc-augments .card-body,
+.doc-implementors .card-body
+{
+    padding: 4px;
+}
+table th.x-hcol-1 {
+    padding: 6px 0;
 }
