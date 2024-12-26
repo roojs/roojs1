@@ -68,7 +68,7 @@ Roo.docs.init = {
             this.prefix = window.location.pathname + "/../gtk/";
         }
         
-        if (window.location.protocol == 'xhttp:' || window.location.protocol == 'resource:'  ) {
+        if (window.location.protocol == 'doc:'  ) {
             this.prefix = "/docs/";
             Roo.docs.sidebar.hide();
             Roo.docs.doc_body_content.el.setStyle( { marginLeft : '10px'})
