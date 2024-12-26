@@ -333,7 +333,14 @@ Roo.docs = new Roo.XComponent({
          }
        },
        xns : Roo.bootstrap,
-       '|xns' : 'Roo.bootstrap'
+       '|xns' : 'Roo.bootstrap',
+       items  : [
+        {
+         xtype : 'Row',
+         xns : Roo.bootstrap,
+         '|xns' : 'Roo.bootstrap'
+        }
+       ]
       }
      ]
     },

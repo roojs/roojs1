@@ -283,6 +283,12 @@
       {
        "$ xns" : "Roo.bootstrap",
        "String cls" : "border-0",
+       "items" : [
+        {
+         "$ xns" : "Roo.bootstrap",
+         "xtype" : "Row"
+        }
+       ],
        "listeners" : {
         "render" : [
          "function (_self)",
