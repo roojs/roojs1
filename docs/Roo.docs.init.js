@@ -64,7 +64,7 @@ Roo.docs.init = {
             }
             
         }, this);
-        if (window.location.search.length > 0) {
+        if (window.location.pathname.match(/gtk.html$/)) {
             this.prefix = window.location.pathname + "gtk/";
             
         }
