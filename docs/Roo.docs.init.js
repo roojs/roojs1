@@ -707,7 +707,7 @@ Roo.docs.init = {
             
             
             
-            Roo.docs.introBody.addxtypeChild(ctree);
+            Roo.docs.introRow.addxtypeChild(ctree);
         }
         
         
