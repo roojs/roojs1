@@ -39,7 +39,7 @@ Roo.docs.init = {
         Delegate : 27,// ?? not standard.
         Parameter : 28, // ?? not standard.
         Signal : 29, // ?? not standard.
-     	Return : 30, // ?? not standard.
+        Return : 30, // ?? not standard.
         MemberAccess : 31,
         ObjectType : 32,
         MethodCall : 33
@@ -638,8 +638,8 @@ Roo.docs.init = {
                 // another container..
                var ctreei = {
                     header : treeii.name,
-                    xtype : 'Container',
-                    panel : 'primary',
+                    xtype : 'Card',
+                    header_weight : 'primary',
                     xns : Roo.bootstrap,
                   
                     items : [
