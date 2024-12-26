@@ -58,13 +58,16 @@ Roo.docs.init = {
             
             //Roo.XComponent.modules[0].el.fireEvent('render');
             this.loadTree();
-            if (window.location.pathname.match(/gtk.html$/)) {
+            if (window.location.search.length > 0) {
                 
                 Roo.docs.roo_title.el.dom.innerHTML = "Gtk Documentation";
             }
             
         }, this);
-        
+        if (window.location.pathname.match(/gtk.html$/)) {
+            this.prefix = window.location.pathname + "/../gtk/";
+            
+        }
         
         window.onhashchange = function() { Roo.docs.init.onHashChange(); };
          
