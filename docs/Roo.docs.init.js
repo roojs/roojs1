@@ -71,7 +71,7 @@ Roo.docs.init = {
         if (window.location.protocol == 'doc:'  ) {
             this.prefix = "";
             Roo.docs.sidebar.hide();
-            Roo.docs.doc_body_content.el.setStyle( { marginLeft : '10px'})
+            Roo.docs.doc_body_content.el.setStyle( { marginLeft : '10px'});
 
             
         }
