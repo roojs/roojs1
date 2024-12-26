@@ -66,7 +66,10 @@ Roo.docs.init = {
         }, this);
         if (window.location.pathname.match(/gtk.html$/)) {
             this.prefix = window.location.pathname + "/../gtk/";
-            
+        }
+        
+        if (window.location.protocol == 'xhttp:' || window.location.protocol == 'resource:'  ) {
+            this.prefix = "/docs/";
         }
         
         window.onhashchange = function() { Roo.docs.init.onHashChange(); };
