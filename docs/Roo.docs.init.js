@@ -627,8 +627,8 @@ Roo.docs.init = {
                 sm : 6,
                 items : [ {
                     header : treei.name,
-                    xtype : 'Container',
-                    panel : 'info',
+                    xtype : 'Card',
+                    header_weight : 'info',
                     xns : Roo.bootstrap,
                     items : []
                 }]
