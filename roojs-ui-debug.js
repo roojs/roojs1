@@ -1201,9 +1201,6 @@ Roo.data.Field = function(config){
             case "date":
                 this.sortType = st.asDate;
                 break;
-            case "int":
-                this.sortType = st.asInt;
-                break;
             default:
                 this.sortType = st.none;
         }
