@@ -405,7 +405,18 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         this.tb.el.show();
         // update name
         this.tb.items.first().el.innerHTML = left_label + ':&nbsp;';
-        
+
+        if(this.tb.name == 'BLOCK.Figure' && this.tb.items && block) {
+            this.tb.items.each(function(item) {
+                if(item.cls && item.cls == 'x-toolbar-figure-show-video-url') {
+                    if(block.cls == 'youtube') {
+                        item.hide();
+                        return;
+                    }
+                    item.show();
+                }
+            });
+        }
         
         // update attributes
         if (block && this.tb.fields) {

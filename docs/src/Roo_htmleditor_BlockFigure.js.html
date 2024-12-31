@@ -52,7 +52,6 @@
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">toolbar.tb.selectedNode</span><span class="jsdoc-syntax">);
         };
 
-
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rooui </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.form</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">syncValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">toolbar.editorcore.syncValue</span><span class="jsdoc-syntax">;
@@ -101,21 +100,44 @@
             {
                 </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Change Link URL'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">onPromptKeyUp</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">isYoutube </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">b.cls </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'youtube'</span><span class="jsdoc-syntax">;
 
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">isYoutube</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                    }
+
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;Enter the url for the link - leave blank to have no link&quot;</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">video_url </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;//www.youtube.com/embed/&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">e.target.value.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'/'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.pop</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'?'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.shift</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot;&lt;br&gt;Embed Link: &lt;a href='&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">video_url </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;' target='_blank'&gt;&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">video_url </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;&lt;/a&gt;&quot;</span><span class="jsdoc-syntax">;
+
+                    </span><span class="jsdoc-var">Roo.MessageBox.updateText</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">);
+                },
                 </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
                     </span><span class="jsdoc-var">click</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
                     {
                         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">();
 
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">isYoutube </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">b.cls </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'youtube'</span><span class="jsdoc-syntax">;
+
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;Enter the url for the link - leave blank to have no link&quot;</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isYoutube</span><span class="jsdoc-syntax">) {
+                            </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot;&lt;br&gt;Embed Link: &lt;a href='&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">b.video_url </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;' target='_blank'&gt;&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">b.video_url </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;&lt;/a&gt;&quot;</span><span class="jsdoc-syntax">;
+                        }
+
                         </span><span class="jsdoc-var">Roo.MessageBox.show</span><span class="jsdoc-syntax">({
                             </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Link URL&quot;</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Enter the url for the link - leave blank to have no link&quot;</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">buttons</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.MessageBox.OKCANCEL</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">){
                                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'ok'</span><span class="jsdoc-syntax">) {
                                     </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
                                 }
                                 </span><span class="jsdoc-var">b.href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">;
+                                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isYoutube</span><span class="jsdoc-syntax">) {
+                                    </span><span class="jsdoc-var">b.video_url </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;//www.youtube.com/embed/&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">val.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'/'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.pop</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'?'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.shift</span><span class="jsdoc-syntax">();
+                                }
                                 </span><span class="jsdoc-var">b.updateElement</span><span class="jsdoc-syntax">();
                                 </span><span class="jsdoc-var">syncValue</span><span class="jsdoc-syntax">();
                                 </span><span class="jsdoc-var">toolbar.editorcore.onEditorEvent</span><span class="jsdoc-syntax">();
@@ -126,14 +148,20 @@
                             </span><span class="jsdoc-var">modal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">b.href
                         </span><span class="jsdoc-syntax">});
+
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">activeTextEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.MessageBox.getActiveTextEl</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">activeTextEl.removeListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">btn.onPromptKeyUp</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isYoutube</span><span class="jsdoc-syntax">) {
+                            </span><span class="jsdoc-var">activeTextEl.addListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">btn.onPromptKeyUp</span><span class="jsdoc-syntax">);
+                        }
                     }
                 },
                 </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.Toolbar
             </span><span class="jsdoc-syntax">},
             {
                 </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-toolbar-figure-show-video-url'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Show Video URL'</span><span class="jsdoc-syntax">,
-
                 </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
                     </span><span class="jsdoc-var">click</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
                     {
@@ -144,7 +172,6 @@
                 },
                 </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.Toolbar
             </span><span class="jsdoc-syntax">},
-
 
             {
                 </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'TextItem'</span><span class="jsdoc-syntax">,

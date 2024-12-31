@@ -5566,15 +5566,16 @@ Roo.extend(Roo.bootstrap.Toaster, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
          
         return cfg = {
-            tag: 'div',
-            cls: 'toaster bootstrap',  // add bootstrap so it can be used with roo classic
-            cn : [
-                {
-                    tag: 'div',
-                    cls : 'toast-holder'
-                }
-            ]
-                
+            cls : 'bootstrap', // wrapped so we can use it elsewhere
+            cn : [ {
+                cls: 'toaster',  // add bootstrap so it can be used with roo classic
+                cn : [
+                    {
+                        tag: 'div',
+                        cls : 'toast-holder'
+                    }
+                ]    
+            }]
             
         }; 
     },
@@ -5715,7 +5716,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
                             }
                         },
                         {
-                            cls: 'toast-body-text',
+                            cls: 'toast-body-text small',
                             html : this.body
                         }
                     ]
@@ -5816,6 +5817,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
         if (this.progress !== false) {
             this.progress = Math.min(this.progress, 1.0);
             this.progress = Math.max(this.progress, 0.0);
+            this.bodyEl.removeClass('d-none');
             this.progressEl.removeClass("d-none");
             this.progressBarEl.setWidth(Math.floor(100 * this.progress) + '%');
             return;
@@ -5844,6 +5846,8 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
      */
      updateBody : function(str)
      {
+        this.bodyTextEl[str.length > 0 ? 'removeClass' : 'addClass']('d-none');
+        this.bodyEl.removeClass('d-none');
         this.bodyTextEl.update(str);
      }
 });
@@ -30230,7 +30234,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
         };
         
-        
         var rooui =  typeof(Roo.bootstrap.form) == 'undefined' ? Roo : Roo.bootstrap;
         
         var syncValue = toolbar.editorcore.syncValue;
@@ -30279,21 +30282,44 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             {
                 xtype : 'Button',
                 text: 'Change Link URL',
-                 
+                onPromptKeyUp: function(e) {
+                    var b = block();
+                    var isYoutube = b.cls == 'youtube';
+
+                    if(!isYoutube) {
+                        return;
+                    }
+
+                    var msg = "Enter the url for the link - leave blank to have no link";
+                    var video_url = "//www.youtube.com/embed/" + e.target.value.split('/').pop().split('?').shift();
+                    msg += "<br>Embed Link: <a href='" + video_url + "' target='_blank'>" + video_url + "</a>";
+
+                    Roo.MessageBox.updateText(msg);
+                },
                 listeners : {
                     click: function (btn, state)
                     {
                         var b = block();
+
+                        var isYoutube = b.cls == 'youtube';
+
+                        var msg = "Enter the url for the link - leave blank to have no link";
+                        if(isYoutube) {
+                            msg += "<br>Embed Link: <a href='" + b.video_url + "' target='_blank'>" + b.video_url + "</a>";
+                        }
                         
                         Roo.MessageBox.show({
                             title : "Link URL",
-                            msg : "Enter the url for the link - leave blank to have no link",
+                            msg : msg,
                             buttons: Roo.MessageBox.OKCANCEL,
                             fn: function(btn, val){
                                 if (btn != 'ok') {
                                     return;
                                 }
                                 b.href = val;
+                                if(isYoutube) {
+                                    b.video_url = "//www.youtube.com/embed/" + val.split('/').pop().split('?').shift();
+                                }
                                 b.updateElement();
                                 syncValue();
                                 toolbar.editorcore.onEditorEvent();
@@ -30304,14 +30330,20 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                             modal : true,
                             value : b.href
                         });
+                        
+                        var activeTextEl = Roo.MessageBox.getActiveTextEl();
+                        activeTextEl.removeListener('keyup', btn.onPromptKeyUp);
+                        if(isYoutube) {
+                            activeTextEl.addListener('keyup', btn.onPromptKeyUp);
+                        }
                     }
                 },
                 xns : rooui.Toolbar
             },
             {
                 xtype : 'Button',
+                cls: 'x-toolbar-figure-show-video-url',
                 text: 'Show Video URL',
-                 
                 listeners : {
                     click: function (btn, state)
                     {
@@ -30322,7 +30354,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 },
                 xns : rooui.Toolbar
             },
-            
             
             {
                 xtype : 'TextItem',

@@ -1,0 +1,252 @@
+<html><head><title>Roo/bootstrap/Toast.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * toast - notification popup.
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Toast
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Toaster Class - a notification with toasts
+ * 
+ * @constructor
+ *
+ * Create a new Toast - will auto create a toaster if necessary.
+ * @cfg title {string} Title of toast
+ * @cfg body {string} Body text of string
+ * @cfg show_time {boolean} should a time stamp be show/updated? - default false?
+ * @cfg timeout {number|boolean} number of seconds until it should be hidden false
+ * @cfg progress {number|boolean} show progressBar - false to hide, to show 0-100
+ * @cfg {String} weight (primary|warning|info|danger|secondary|success|light|dark) colour to make the square!
+ * 
+ * @param {Object} config The config object
+ *
+ * 
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.Toast  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
+{
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Toaster.page </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+        (</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Toaster</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.show</span><span class="jsdoc-syntax">();
+    }
+
+    </span><span class="jsdoc-var">Roo.bootstrap.Toast.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+      </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">// raw events
+        /**
+         * @event close
+         * When a toast is closed (via button or timeout.)
+         * @param {Roo.bootstrap.Toast} toast
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;close&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+         </span><span class="jsdoc-comment">/**
+         * @event show
+         * When a toast is show() - usually on contruction..
+         * @param {Roo.bootstrap.Toast} toast
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;show&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    });
+
+
+    </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Toaster.page.getChildContainer</span><span class="jsdoc-syntax">());
+    </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Toast</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+
+    </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">show_time </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">timeout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">progress </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">weight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'primary'</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+          </span><span class="jsdoc-var">console.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.BLANK_IMAGE_URL</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'toast fade show'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">role </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'alert'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'toast-header'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.BLANK_IMAGE_URL</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'rounded mr-2 bg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">,
+                        },
+                        {
+                            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'small'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'mr-auto'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.title
+                        </span><span class="jsdoc-syntax">},
+                        {
+                            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'small'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'toast-timer text-muted d-none'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
+                        </span><span class="jsdoc-syntax">},
+                        {
+                            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ml-2 mb-1 close'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                                {
+                                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&amp;times;'
+                                </span><span class="jsdoc-syntax">}
+                            ]
+                        }
+                    ]
+
+                },
+                {
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'toast-body'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'progress d-none'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: {
+                                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'progress-bar bg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.weight
+                            </span><span class="jsdoc-syntax">}
+                        },
+                        {
+                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'toast-body-text small'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.body
+                        </span><span class="jsdoc-syntax">}
+                    ]
+                }
+            ]
+
+
+        };
+
+    },
+    </span><span class="jsdoc-var">progressBarEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">progressEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">bodyEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">bodyTextEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">closeEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">timerEl  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">timeout_id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.progressBarEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.progress-bar'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.toast-body'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.bodyTextEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.toast-body-text'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.closeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.close'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.timerEl  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.toast-timer'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.progressEl  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.progress'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.body </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.bodyTextEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.progress </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.bodyEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
+            }
+        }
+        </span><span class="jsdoc-var">this.updateProgress</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.progress</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.closeEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.setTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timeout</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.show_time </span><span class="jsdoc-syntax">&gt; 0) {
+            </span><span class="jsdoc-var">this.timerEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.show_time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.updateTimer</span><span class="jsdoc-syntax">();
+
+        }
+
+
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * hide and destroy the toast
+     */
+    </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.show_time_interval </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">clearInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.show_time_interval</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.closeEl.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.dom.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'close'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+    },
+
+
+    </span><span class="jsdoc-var">updateTimer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.show_time </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.show_time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">();
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(((</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">()) - </span><span class="jsdoc-var">this.show_time</span><span class="jsdoc-syntax">) / 1000);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">/60);
+        </span><span class="jsdoc-var">this.timerEl.update</span><span class="jsdoc-syntax">(
+            </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">&lt; 1 ? </span><span class="jsdoc-string">'now' </span><span class="jsdoc-syntax">:
+            (
+                </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">&gt; 60 ? (</span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot; mins ago&quot;</span><span class="jsdoc-syntax">) : (</span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot; sec. ago&quot;</span><span class="jsdoc-syntax">)
+            )
+        );
+
+        </span><span class="jsdoc-var">this.updateTimer.defer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">&lt; 60 ? 5000 : 60000, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * update the Progress Bar
+     * @param {Number|Boolean} false to hide, or number between 0-1
+     */
+    </span><span class="jsdoc-var">updateProgress </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.progress </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.progress </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.progress </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.progress</span><span class="jsdoc-syntax">, 1.0);
+            </span><span class="jsdoc-var">this.progress </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.progress</span><span class="jsdoc-syntax">, 0.0);
+            </span><span class="jsdoc-var">this.bodyEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.progressEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;d-none&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.progressBarEl.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(100 * </span><span class="jsdoc-var">this.progress</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'%'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">this.progressEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-comment">/**
+     * set / update timeout - time when the notification will autohide
+     * @param {string} timeout in seconds
+     */
+    </span><span class="jsdoc-var">setTimeout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timeout_id </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timeout_id</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.timeout_id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">&gt; 0) {
+            </span><span class="jsdoc-var">this.timeout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.timeout_id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.hide.defer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timeout </span><span class="jsdoc-syntax">* 1000, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+     },
+    </span><span class="jsdoc-comment">/**
+     * update body text
+     * @param {string} text to put in body
+     */
+     </span><span class="jsdoc-var">updateBody </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">)
+     {
+        </span><span class="jsdoc-var">this.bodyTextEl</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">str.length </span><span class="jsdoc-syntax">&gt; 0 ? </span><span class="jsdoc-string">'removeClass' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'addClass'</span><span class="jsdoc-syntax">](</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.bodyEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.bodyTextEl.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">);
+     }
+});
+
+
+</span></code></body></html>
