@@ -131,7 +131,7 @@ Roo.docs.init = {
                 }, this);
                 
                 var roo = Roo.docs.navGroup.items[1].menu;
-                if (!Roo.docs.init.prefix.length) {
+                if (!Roo.docs.init.prefix.length && roo) {
                     roo.show(roo.triggerEl, '?', false);
                 }
                 
