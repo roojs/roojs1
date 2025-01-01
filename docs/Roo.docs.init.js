@@ -68,7 +68,7 @@ Roo.docs.init = {
             this.prefix = window.location.pathname + "/../gtk/";
         }
          
-        if (window.location.protocol == 'doc'  ) {
+        if (window.location.protocol == 'doc:'  ) {
             this.prefix = "";
         }
         
@@ -81,7 +81,7 @@ Roo.docs.init = {
     {
         Roo.log("protocol: " + window.location.protocol);;
         
-        if (window.location.protocol == 'doc'  ) {
+        if (window.location.protocol == 'doc:'  ) {
             Roo.docs.roo_title.el.dom.innerHTML = "Gtk Documentation";
             Roo.docs.sidebar.hide();
             Roo.docs.doc_body_content.el.setStyle( { marginLeft : '10px'});
