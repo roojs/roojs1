@@ -85,8 +85,7 @@ Roo.docs.init = {
             Roo.docs.roo_title.el.dom.innerHTML = "Gtk Documentation";
             Roo.docs.sidebar.hide();
             Roo.docs.doc_body_content.el.setStyle( { marginLeft : '10px'});
-            this.loadHash();
-            return;
+        
         }
         
         Roo.docs.doc_body_content.hide();
@@ -264,6 +263,8 @@ Roo.docs.init = {
     
     loadClass : function(name)
     {
+        
+        
         if(typeof(this.classes[name]) != 'undefined' && this.classes[name].is_class ) {
             this.loadDoc(this.classes[name]);
         }
@@ -575,6 +576,9 @@ Roo.docs.init = {
     },
     loadHash : function()
     {
+        
+        Roo.log("hash:" + location.hash);
+        
         if (location.hash.length < 2) {
             this.loadDoc(false);
         }
