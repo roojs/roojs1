@@ -59,11 +59,11 @@ Roo.docs.init = {
             //Roo.XComponent.modules[0].el.fireEvent('render');
             this.loadTree();
             if (window.location.pathname.match(/gtk.html$/)) {
-                
+                // testing in browser..
                 Roo.docs.roo_title.el.dom.innerHTML = "Gtk Documentation";
             }
             if (window.location.protocol == 'doc'  ) {
-                
+                 Roo.docs.roo_title.el.dom.innerHTML = "Gtk Documentation";
                 Roo.docs.sidebar.hide();
                 Roo.docs.doc_body_content.el.setStyle( { marginLeft : '10px'});
     
