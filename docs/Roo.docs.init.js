@@ -49,7 +49,7 @@ Roo.docs.init = {
     onReady : function()
     {
        
-        
+        Roo.log("onready");
         Roo.XComponent.hideProgress = true;
         Roo.XComponent.build();
         Roo.XComponent.on('buildcomplete', function() {
