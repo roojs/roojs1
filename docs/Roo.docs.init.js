@@ -83,6 +83,7 @@ Roo.docs.init = {
         
         if (window.location.protocol == 'doc:'  ) {
             Roo.docs.roo_title.el.dom.innerHTML = "Gtk Documentation";
+              Roo.docs.roo_title.hide();
             Roo.docs.sidebar.hide();
             Roo.docs.doc_body_content.el.setStyle( { marginLeft : '10px'});
         
