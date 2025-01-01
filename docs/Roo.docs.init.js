@@ -321,18 +321,18 @@ Roo.docs.init = {
         }
         
         // expand parents..
-        
-        var m = cls.parent_menu;
-        m.show(m.triggerEl,'?', false);
-        var mp = cls;
-        while ((mp = mp.parent)) {
-            m = mp.parent_menu;
+        if (window.location.protocol != 'doc:') { 
+            var m = cls.parent_menu;
             m.show(m.triggerEl,'?', false);
+            var mp = cls;
+            while ((mp = mp.parent)) {
+                m = mp.parent_menu;
+                m.show(m.triggerEl,'?', false);
+            }
+            cls.node.el.scrollIntoView(Roo.docs.sidebar.el,false);
+            Roo.docs.sidebar.el.select('.active').removeClass('active');
+            cls.node.el.addClass('active');
         }
-        cls.node.el.scrollIntoView(Roo.docs.sidebar.el,false);
-        Roo.docs.sidebar.el.select('.active').removeClass('active');
-        cls.node.el.addClass('active');
-        
         Roo.docs.introBody.hide();
         Roo.docs.doc_body_content.show();
         
