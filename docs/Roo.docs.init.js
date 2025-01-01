@@ -58,10 +58,18 @@ Roo.docs.init = {
             
             //Roo.XComponent.modules[0].el.fireEvent('render');
             this.loadTree();
-            if (window.location.search.length > 0) {
+            if (window.location.pathname.match(/gtk.html$/)) {
                 
                 Roo.docs.roo_title.el.dom.innerHTML = "Gtk Documentation";
             }
+            if (window.location.protocol == 'doc'  ) {
+                
+                Roo.docs.sidebar.hide();
+                Roo.docs.doc_body_content.el.setStyle( { marginLeft : '10px'});
+    
+                
+            }
+            
             
         }, this);
         if (window.location.pathname.match(/gtk.html$/)) {
@@ -70,10 +78,6 @@ Roo.docs.init = {
          
         if (window.location.protocol == 'doc'  ) {
             this.prefix = "";
-            Roo.docs.sidebar.hide();
-            Roo.docs.doc_body_content.el.setStyle( { marginLeft : '10px'});
-
-            
         }
         
         window.onhashchange = function() { Roo.docs.init.onHashChange(); };
