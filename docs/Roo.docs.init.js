@@ -52,8 +52,6 @@ Roo.docs.init = {
         
         Roo.XComponent.hideProgress = true;
         Roo.XComponent.build();
-         
-        
         Roo.XComponent.on('buildcomplete', function() {
             
             //Roo.XComponent.modules[0].el.fireEvent('render');
