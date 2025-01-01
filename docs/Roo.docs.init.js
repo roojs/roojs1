@@ -84,7 +84,7 @@ Roo.docs.init = {
         Roo.log("protocol: " + window.location.protocol);
         
         if (window.location.protocol == 'doc:'  ) {
-            Roo.docs.roo_title.hide();
+          //  Roo.docs.roo_title.hide();
             Roo.docs.sidebar.hide();
             Roo.docs.doc_body_content.el.setStyle( { marginLeft : '10px'});
         
