@@ -62,13 +62,7 @@ Roo.docs.init = {
                 // testing in browser..
                 Roo.docs.roo_title.el.dom.innerHTML = "Gtk Documentation";
             }
-            if (window.location.protocol == 'doc'  ) {
-                 Roo.docs.roo_title.el.dom.innerHTML = "Gtk Documentation";
-                Roo.docs.sidebar.hide();
-                Roo.docs.doc_body_content.el.setStyle( { marginLeft : '10px'});
-    
-                
-            }
+            
             
             
         }, this);
@@ -87,6 +81,13 @@ Roo.docs.init = {
     
     loadTree: function()
     {
+        if (window.location.protocol == 'doc'  ) {
+            Roo.docs.roo_title.el.dom.innerHTML = "Gtk Documentation";
+            Roo.docs.sidebar.hide();
+            Roo.docs.doc_body_content.el.setStyle( { marginLeft : '10px'});
+            return;
+        }
+        
         Roo.docs.doc_body_content.hide();
         
         Roo.Ajax.request({
