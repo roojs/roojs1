@@ -130,7 +130,7 @@ Roo.docs.init = {
                     }
                 }, this);
                 
-                if (window.location.scheme != 'doc:' && !Roo.docs.init.prefix.length) {
+                if (window.location.protocol != 'doc:' && !Roo.docs.init.prefix.length) {
                     var roo = Roo.docs.navGroup.items[1].menu;
 
                     roo.show(roo.triggerEl, '?', false);
