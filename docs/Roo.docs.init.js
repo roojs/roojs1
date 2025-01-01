@@ -79,6 +79,8 @@ Roo.docs.init = {
     
     loadTree: function()
     {
+        Roo.log("protocol: " + window.location.protocol;
+        
         if (window.location.protocol == 'doc'  ) {
             Roo.docs.roo_title.el.dom.innerHTML = "Gtk Documentation";
             Roo.docs.sidebar.hide();
