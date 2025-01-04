@@ -474,6 +474,9 @@ Roo.docs = new Roo.XComponent({
                  {
                      
                      Roo.log(["click", this]);
+                     if (window.location.protocol == 'doc:') {
+                        return;
+                     }
                      if (this.el.dom.innerHTML.length > 0) {
                          Roo.docs.init.loadSource();
                      }
