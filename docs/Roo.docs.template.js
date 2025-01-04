@@ -30,7 +30,7 @@ Roo.docs.template  = {
             }
         );
          
-        return output +  '<span style="width:"' +  iblock_indent + 'px"/> +
+        return output +  '<span style="width:"' +  iblock_indent + 'px"/>' +
             '<i class="fa-solid fa-arrow-trend-down"></i>'+data.name+
         
                '</pre></div>';
