@@ -473,7 +473,9 @@ Roo.docs = new Roo.XComponent({
                 click : function (e)
                  {
                      
-                     Roo.log(JSON.stringify(["click", this.el.dom.innerHTML]));
+                     Roo.log(JSON.stringify(
+                         ["click",  this.el.dom.innerHTML]
+                     ));
                      if (window.location.protocol == 'doc:') {
                         return;
                      }
