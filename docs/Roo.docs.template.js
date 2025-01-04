@@ -24,14 +24,14 @@ Roo.docs.template  = {
          data.augments.reverse().map(
             function($) {  
             output += iblock_indent ? ('<span style="width:"' + 
-                iblock_indent + 'px"/><i class="fa-solid fa-arrow-trend-down"></i>') : '';
+                iblock_indent + 'px">&nbsp</span><i class="fas fa-chevron-right"></i>') : '';
             output += linkSymbol($) + "\n"; 
             iblock_indent += 20;
             }
         );
          
-        return output +  '<span style="width:"' +  iblock_indent + 'px"/>' +
-            '<i class="fa-solid fa-arrow-trend-down"></i>'+data.name+
+        return output +  '<span style="width:"' +  iblock_indent + 'px">&nbsp</span>' +
+            '<i class="fas fa-chevron-right"></i>'+data.name+
         
                '</pre></div>';
            
