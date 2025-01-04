@@ -513,7 +513,7 @@ Roo.docs.init = {
             Roo.docs.doc_extends.el.dom.href= '#' + d.augments[0];
         }
         if (window.location.protocol == 'doc:') {
-            Roo.docs.doc_source.el.dom.innerHTML = d.source_file;
+            Roo.docs.doc_source.el.dom.innerHTML = d['file-path'];
         } else {
              Roo.docs.doc_source.el.dom.innerHTML = d.name.replace(/\./g,"/") + ".js";
         }
