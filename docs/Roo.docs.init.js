@@ -454,6 +454,7 @@ Roo.docs.init = {
         d.augments = [ d['inherits-str'] ]; // ??
         d.example = '';
         d.type = d.rtype;
+        d.source_file = d['file-name'];
         if (d.stype == this.SymbolKind.Function || this.SymbolKind.Signal) {
              d.returns = [
                 {
