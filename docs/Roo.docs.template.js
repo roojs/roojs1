@@ -23,8 +23,8 @@ Roo.docs.template  = {
         var iblock_indent = 0;
          data.augments.reverse().map(
             function($) {  
-            output += iblock_indent ? ('<img src="../images/default/s.gif" height="1" width="' + 
-                iblock_indent + '"/><img src="../images/default/tree/elbow-end.gif" class="elbow"/>') : '';
+            output += iblock_indent ? ('<span style="width:"' + 
+                iblock_indent + 'px"/><<i class="fa-solid fa-arrow-trend-down"></i>') : '';
             output += linkSymbol($) + "\n"; 
             iblock_indent += 20;
             }
