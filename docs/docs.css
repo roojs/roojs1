@@ -920,3 +920,6 @@ table th.x-hcol-1 {
 .doc-children  ul {
   list-style: none;
 }
+.inheritance .fas {
+ margin-right:3px;
+}
