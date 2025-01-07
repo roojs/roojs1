@@ -913,3 +913,7 @@ a.dropdown-toggle::before {
 table th.x-hcol-1 {
     padding: 6px 0;
 }
+
+.doc-children-list  ul {
+  list-style: none;
+}
