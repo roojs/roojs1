@@ -931,3 +931,7 @@ table th.x-hcol-1 {
 body {
  font-size: 14px;
 }
+
+.roo-card-body-ctr .card {
+ margin-top: 10px;
+}
