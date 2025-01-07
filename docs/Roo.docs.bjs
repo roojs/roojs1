@@ -163,17 +163,6 @@
         "    ",
         "}"
        ]
-      },
-      {
-       "$ xns" : "Roo.bootstrap",
-       "String cls" : "left-menu-sidebar-options",
-       "items" : [
-        {
-         "$ xns" : "Roo.bootstrap",
-         "xtype" : "Row"
-        }
-       ],
-       "xtype" : "Card"
       }
      ],
      "listeners" : {
