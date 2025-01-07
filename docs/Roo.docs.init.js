@@ -667,7 +667,7 @@ Roo.docs.init = {
                var ctreei = {
                     header : treeii.name,
                     xtype : 'Card',
-                    header_weight : 'primary',
+                    header_weight : 'info',
                     xns : Roo.bootstrap,
                   
                     items : [
