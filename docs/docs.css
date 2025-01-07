@@ -902,11 +902,12 @@ a.dropdown-toggle::before {
 }
 .doc-augments .card-body pre {
     margin: 0;
+    padding: 6px;
 }
 .doc-augments .card-body .inheritance,
 .doc-implementors .card-body .doc-children-list
 {
-    padding: 4px;
+    padding: 0px;
 }
 
 table th.x-hcol-1 {
