@@ -923,3 +923,8 @@ table th.x-hcol-1 {
 .inheritance .fas {
  margin-right:3px;
 }
+
+.dropdown-item:hover, .dropdown-item:focus {
+   color: #fff;
+   background-color: #007bff ;
+}
