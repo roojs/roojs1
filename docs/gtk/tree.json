@@ -3,5 +3,10 @@
     "name" : "Gtk.Widget",
     "cn" : [],
     "is_class" : true
-  }
+  },
+  {
+    "name" : "Gtk.Align",
+   "cn" : [],
+   "is_class" : true
+ }
 ]
