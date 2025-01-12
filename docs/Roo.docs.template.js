@@ -97,7 +97,8 @@ Roo.docs.template  = {
     {
        
         var output = '<a name="'+dtag.memberOf+'-cfg-'+dtag.name+'"></a>';
-        output += '<div class="fixedFont"><b  class="itemname"> ' + dtag.name + '</b> : ' +
+        var name = (dtag.is_enum ? dtag.memberOf  +'.'') + dtag.name 
+        output += '<div class="fixedFont"><b  class="itemname"> ' + name + '</b> : ' +
             (dtag.type.length ? this.linkSymbol(dtag.type) : "" ) + '</div>';
               
         output += '<div class="mdesc"><div class="short">'+this.resolveLinks(this.summarize(dtag.desc))+'</div></div>';
