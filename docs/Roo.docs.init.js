@@ -455,7 +455,7 @@ Roo.docs.init = {
             d.config = Object.values(d.enums).map(this.gtkToRoo, this);
         }
         d.isAbstract  = d['is-abstract'];
-        d.augments = [ d['inherits-str'] ]; // ??
+        d.augments = [ d['inherits-str'] ].filter(function(v) { return v != ''; }); // ??
         d.example = '';
         d.type = d.rtype;
         d.source_file = d['file-name'];
