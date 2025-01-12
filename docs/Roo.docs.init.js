@@ -450,6 +450,9 @@ Roo.docs.init = {
         d.methods = typeof(d.methods) == 'undefined'  ? [] : Object.values(d.methods).map(this.gtkToRoo, this);
         d.events =typeof(d.signals) == 'undefined'  ? [] :  Object.values(d.signals).map(this.gtkToRoo, this);
         d.isEnum = d.stype == this.SymbolKind.Enum;
+        if (d.isEnum) {
+            d.config = Object.values(d.enums).map(this.gtkToRoo, this);
+        }
         d.isAbstract  = d['is-abstract'];
         d.augments = [ d['inherits-str'] ]; // ??
         d.example = '';
@@ -468,6 +471,8 @@ Roo.docs.init = {
         //d.isOptional d.defaultValue
             d.params  = d['param-ar'].map(this.gtkToRoo, this); 
         }
+        
+        
         return d;
     },
     
