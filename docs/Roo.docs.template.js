@@ -99,7 +99,7 @@ Roo.docs.template  = {
         var output = '<a name="'+dtag.memberOf+'-cfg-'+dtag.name+'"></a>';
         var name = (dtag.is_enum ? dtag.memberOf  + '.' : '') + dtag.name;
         
-        var type = dtype.is_enum ? dtype.type : this.linkSymbol(dtag.type);
+        var type = dtag.is_enum ? dtag.type : this.linkSymbol(dtag.type);
         output += '<div class="fixedFont"><b  class="itemname"> ' + name + '</b> : ' +
                  type+ '</div>';
               
