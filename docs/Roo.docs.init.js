@@ -495,7 +495,7 @@ Roo.docs.init = {
         
         Roo.docs.classType.el.dom.firstChild.textContent  = 'Class ';
         if (d.isAbstract) {
-            Roo.docs.classType.el.dom.firstChild.textContent  = 'abstract class ';
+            Roo.docs.classType.el.dom.firstChild.textContent  = 'interface '; // slightly better?
         }
         if (d.isEnum) {
             Roo.docs.classType.el.dom.firstChild.textContent  = 'enum ';
