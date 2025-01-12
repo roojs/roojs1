@@ -450,8 +450,8 @@ Roo.docs.init = {
         d.config  = typeof(d.props) == 'undefined'  ? [] : Object.values(d.props).map(this.gtkToRoo, this);
         d.methods = typeof(d.methods) == 'undefined'  ? [] : Object.values(d.methods).map(this.gtkToRoo, this);
         d.events =typeof(d.signals) == 'undefined'  ? [] :  Object.values(d.signals).map(this.gtkToRoo, this);
-        d.is_enum = d.stype == this.SymbolKind.Enum;
-        if (d.is_enum) {
+        d.is_enum = d.stype == this.SymbolKind.Enum || this.SymbolKind.EnumMember;
+        if (d.stype == this.SymbolKind.Enum) {
             d.config = Object.values(d.enums).map(this.gtkToRoo, this);
         }
         d.isAbstract  = d['is-abstract'];
