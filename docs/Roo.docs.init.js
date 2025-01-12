@@ -497,7 +497,7 @@ Roo.docs.init = {
         if (d.isAbstract) {
             Roo.docs.classType.el.dom.firstChild.textContent  = 'abstract class ';
         }
-        if (d.is_enum) {
+        if (d.isEnum) {
             Roo.docs.classType.el.dom.firstChild.textContent  = 'enum ';
         }
         if (d.is_mixin) {
