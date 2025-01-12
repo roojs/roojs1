@@ -935,3 +935,6 @@ body {
 .roo-card-body-ctr .card {
  margin-top: 10px;
 }
+.doc-header-container .card-body {
+  padding 5px 0;
+}
