@@ -348,7 +348,8 @@ Roo.docs.init = {
                 var d = Roo.decode(res.responseText);
                 if (typeof(d['file-id']) != 'undefined'){
                     // Gtk Doc..
-                    this.gtkToRoo(d);  
+                    this.gtkToRoo(d);
+                    Roo.log(d);
                 }
                 
                 if (typeof(d.augments) == 'undefined') {
