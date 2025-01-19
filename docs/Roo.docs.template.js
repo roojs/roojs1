@@ -15,7 +15,7 @@ Roo.docs.template  = {
     addAugments: function(ag, inherits)
     {
         inherits.forEach(function(sc) {
-            ar.push(sc);
+            ag.push(sc);
             var cc = Roo.docs.init.classes[sc];
             this.addAugments(ag, cc.inherits);
         }  ,this);
