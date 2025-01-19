@@ -18,10 +18,10 @@ Roo.docs.template  = {
             ar.push(sc);
             var cc = Roo.docs.init.classes[sc];
             this.addAugments(ag, cc.inherits);
-        }  ,this};
+        }  ,this);
     
         
-    }.
+    },
     augments : function(data)
     {
         
