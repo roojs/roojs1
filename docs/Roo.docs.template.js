@@ -12,12 +12,12 @@ Roo.docs.template  = {
         return output;
     },
     
-    addAugments: function(ar, cn)
+    addAugments: function(ag, inherits)
     {
-        ar.forEach(function(sc) {
+        inhertis.forEach(function(sc) {
             ar.push(sc);
             var cc = Roo.docs.init.classes[sc];
-            this.addAugments(cc.inherits, ar);
+            this.addAugments(ag, cc.inherits);
         }       
         ,this};
     
