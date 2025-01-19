@@ -46,7 +46,7 @@ Roo.docs.template  = {
         }
         var linkSymbol  = this.linkSymbol;
         //var linkSymbol  = this.linkSymbol;
-        var output = 'xxx<ul class="inheritance res-block"> ';
+        var output = '<ul class="inheritance res-block"> ';
         
         var iterArray  = function(ar) {
             for(var i = 0; i < ar.length; i++) {
