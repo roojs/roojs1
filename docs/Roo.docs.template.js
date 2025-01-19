@@ -20,7 +20,7 @@ Roo.docs.template  = {
             return '';
         }
         var linkSymbol  = this.linkSymbol;
-        var output = '<div class="inheritance res-block"> <pre class="res-block-inner">';
+        var output = 'aaa<div class="inheritance res-block"> <pre class="res-block-inner">';
         
         var iblock_indent = 0;
          data.augments.reverse().map(
