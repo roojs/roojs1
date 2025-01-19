@@ -15,12 +15,16 @@ Roo.docs.template  = {
     augments : function(data)
     {
         
+        var tc = Roo..docs.init.classes[data.name];
+        if (typeof(tc.inherits) != 'undefined') {
+            
+        }
         
         if (!data.augments.length) {
             return '';
         }
         var linkSymbol  = this.linkSymbol;
-        var output = 'aaa<div class="inheritance res-block"> <pre class="res-block-inner">';
+        var output = '<div class="inheritance res-block"> <pre class="res-block-inner">';
         
         var iblock_indent = 0;
          data.augments.reverse().map(
