@@ -250,6 +250,10 @@ Roo.docs.init = {
         if (!e.cn.length) {
             return;
         }
+        
+        e = e.sort(Roo.docs.template.makeSortby("name"));
+
+        
         e.cn.forEach(function(ec) {
             var cn = ec.name.split('.').pop();
             //Roo.log(cn);
