@@ -17,7 +17,7 @@ Roo.docs.template  = {
         ar.forEach(function(sc) {
             ar.push(sc);
             var cc = Roo.docs.init.classes[sc];
-            this.addAugments(cn.inherits, ar);
+            this.addAugments(cc.inherits, ar);
         }       
         ,this};
     
