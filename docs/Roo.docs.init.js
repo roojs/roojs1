@@ -251,7 +251,7 @@ Roo.docs.init = {
             return;
         }
         
-        e = e.sort(Roo.docs.template.makeSortby("name"));
+        e.cn = e.cn.sort(Roo.docs.template.makeSortby("name"));
 
         
         e.cn.forEach(function(ec) {
