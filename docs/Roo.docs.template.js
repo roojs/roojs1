@@ -16,12 +16,7 @@ Roo.docs.template  = {
     augments : function(data)
     {
         
-        var tc = Roo.docs.init.classes[data.name];
-        if (typeof(tc.inherits) != 'undefined') {
-            
-            this.addAugments(data, tc.inherits); 
-             
-        }
+         
         
         if (!data.augments.length) {
             return '';
