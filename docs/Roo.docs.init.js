@@ -477,9 +477,9 @@ Roo.docs.init = {
         //d.isOptional d.defaultValue
             d.params  = d['param-ar'].map(this.gtkToRoo, this); 
         }
-        if (typeof(d.inherits) != 'undefined') {
+        if (typeof(this.classes[d.fqn].inherits) != 'undefined') {
             
-            this.addAugments(d, d.inherits); 
+            this.addAugments(d, this.classes[d.fqn].inherits); 
              
         }
         
