@@ -51,17 +51,13 @@ Roo.docs.template  = {
         var linkSymbol  = this.linkSymbol;
         var output = '<div class="inheritance res-block"> <pre class="res-block-inner">';
         
-        var iblock_indent = 0;
          data.implements.map(
             function($) {  
             output += linkSymbol($) + "\n"; 
             }
         );
          
-        return output +  '<span style="display:inline-block;width:' +  iblock_indent + 'px">&nbsp</span>' +
-            '<i class="fas fa-chevron-right"></i>'+data.name+
-        
-               '</pre></div>';
+        return output +   '</pre></div>';
            
     },
     implementors : function(data)
