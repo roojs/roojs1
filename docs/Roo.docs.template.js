@@ -54,10 +54,7 @@ Roo.docs.template  = {
         var iblock_indent = 0;
          data.implements.map(
             function($) {  
-            output += iblock_indent ? ('<span style="display:inline-block;width:' + 
-                iblock_indent + 'px">&nbsp</span><i class="fas fa-chevron-right"></i>') : '';
             output += linkSymbol($) + "\n"; 
-            iblock_indent += 20;
             }
         );
          
