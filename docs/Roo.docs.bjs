@@ -851,7 +851,7 @@
           },
           {
            "$ xns" : "Roo.bootstrap",
-           "String cls" : "doc-implements",
+           "String cls" : "doc-augments",
            "String header" : "Implements Interfaces",
            "String panel" : "primary",
            "listeners" : {

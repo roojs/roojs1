@@ -844,7 +844,7 @@ Roo.docs = new Roo.XComponent({
           },
           {
            xtype : 'Card',
-           cls : 'doc-implements',
+           cls : 'doc-augments',
            header : _this._strings['c6faf864445938958b9ba7eaca3bb2f4'] /* Implements Interfaces */,
            header_weight : 'info',
            panel : 'primary',
