@@ -12,16 +12,18 @@ Roo.docs.template  = {
         return output;
     },
     
-    addAugments: function(ag, inherits)
+    addAugments: function(orig, inherits)
     {
         inherits.forEach(function(sc) {
            
             
             var cc = Roo.docs.init.classes[sc];
-             if (cc.is_class) {
-                ag.push(sc);
+            if (cc.is_class) {
+                orig.augments.push(sc);
+            } else if (orig.implements.indexOf(sc) < 0) {
+                orig.implements.push(sc);
             }
-            this.addAugments(ag, cc.inherits);
+            this.addAugments(orig, cc.inherits);
         }  ,this);
     
         
@@ -31,8 +33,8 @@ Roo.docs.template  = {
         
         var tc = Roo.docs.init.classes[data.name];
         if (typeof(tc.inherits) != 'undefined') {
-            data.augments = [];
-            this.addAugments(data.augments, tc.inherits); 
+           
+            this.addAugments(data, tc.inherits); 
              
         }
         
