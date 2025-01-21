@@ -489,7 +489,6 @@ Roo.docs.init = {
     addAugments: function(orig, inherits)
     {
         inherits.forEach(function(sc) {
-           
             
             var cc = this.classes[sc];
             if (cc.is_class) {
