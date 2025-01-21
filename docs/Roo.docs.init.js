@@ -491,7 +491,7 @@ Roo.docs.init = {
         inherits.forEach(function(sc) {
            
             
-            var cc = Roo.docs.init.classes[sc];
+            var cc = this.classes[sc];
             if (cc.is_class) {
                 orig.augments.push(sc);
             } else if (orig.implements.indexOf(sc) < 0) {
