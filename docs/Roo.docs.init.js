@@ -502,9 +502,11 @@ Roo.docs.init = {
         
     },
     
+    activeDoc : false,
     
     fillDoc : function(d)
     {
+        this.activeDoc = d;
         /*{
             "name" : "Roo.bootstrap.Progress",
             "augments" : [
