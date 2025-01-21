@@ -477,12 +477,31 @@ Roo.docs.init = {
         //d.isOptional d.defaultValue
             d.params  = d['param-ar'].map(this.gtkToRoo, this); 
         }
-        
+        if (typeof(d.inherits) != 'undefined') {
+            
+            this.addAugments(d, d.inherits); 
+             
+        }
         
         return d;
     },
     
+    addAugments: function(orig, inherits)
+    {
+        inherits.forEach(function(sc) {
+           
+            
+            var cc = Roo.docs.init.classes[sc];
+            if (cc.is_class) {
+                orig.augments.push(sc);
+            } else if (orig.implements.indexOf(sc) < 0) {
+                orig.implements.push(sc);
+            }
+            this.addAugments(orig, cc.inherits);
+        }  ,this);
     
+        
+    },
     
     
     fillDoc : function(d)
