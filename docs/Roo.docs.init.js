@@ -355,7 +355,7 @@ Roo.docs.init = {
                     this.gtkToRoo(d);
                     Roo.log(d);
                 }
-                
+                // flutter support? doesnt work anyway?
                 if (typeof(d.augments) == 'undefined') {
                     d.augments = [];
                     d.config = []; // props for ctor?
