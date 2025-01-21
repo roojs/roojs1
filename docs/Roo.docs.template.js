@@ -40,7 +40,33 @@ Roo.docs.template  = {
                '</pre></div>';
            
     },
-    
+    implements : function(data)
+    {
+        
+         
+        
+        if (!data.implements.length) {
+            return '';
+        }
+        var linkSymbol  = this.linkSymbol;
+        var output = '<div class="inheritance res-block"> <pre class="res-block-inner">';
+        
+        var iblock_indent = 0;
+         data.implements.map(
+            function($) {  
+            output += iblock_indent ? ('<span style="display:inline-block;width:' + 
+                iblock_indent + 'px">&nbsp</span><i class="fas fa-chevron-right"></i>') : '';
+            output += linkSymbol($) + "\n"; 
+            iblock_indent += 20;
+            }
+        );
+         
+        return output +  '<span style="display:inline-block;width:' +  iblock_indent + 'px">&nbsp</span>' +
+            '<i class="fas fa-chevron-right"></i>'+data.name+
+        
+               '</pre></div>';
+           
+    },
     implementors : function(data)
     {
         if (!data.childClasses || typeof(data.childClasses[data.name]) == 'undefined') { 
