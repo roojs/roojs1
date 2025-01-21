@@ -560,6 +560,13 @@ Roo.docs.init = {
             Roo.docs.augments.hide();
         }
         
+        if (d.implements.length) {
+            Roo.docs.implements.show();
+            Roo.docs.implements.bodyEl.dom.innerHTML = Roo.docs.template.implements(d);
+        } else {
+            Roo.docs.implements.hide();
+        }
+        
         if (d.childClasses && typeof(d.childClasses[d.name]) != 'undefined') { 
             Roo.docs.implementors.show();
             Roo.docs.implementors.bodyEl.dom.innerHTML = Roo.docs.template.implementors(d);
