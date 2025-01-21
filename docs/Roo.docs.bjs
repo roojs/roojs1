@@ -851,6 +851,22 @@
           },
           {
            "$ xns" : "Roo.bootstrap",
+           "String cls" : "doc-implements",
+           "String header" : "Implements Interfaces",
+           "String panel" : "primary",
+           "listeners" : {
+            "render" : [
+             "function (_self)",
+             "{",
+             "    _this.implements  = this;",
+             "}"
+            ]
+           },
+           "string header_weight" : "info",
+           "xtype" : "Card"
+          },
+          {
+           "$ xns" : "Roo.bootstrap",
            "String cls" : "doc-implementors",
            "String header" : "Implementations",
            "String panel" : "primary",
@@ -927,6 +943,7 @@
   "9bd81329febf6efe22788e03ddeaf0af" : " Class ",
   "a1d108496af420635536a4e29e87d42b" : "Constructor, Static and Public Methods",
   "ae635f08107a69569e636835f24e6f6f" : " extends ",
+  "c6faf864445938958b9ba7eaca3bb2f4" : "Implements Interfaces",
   "d2b697ad8e989a6c4592987f22f5bbfc" : "doc-comments",
   "d41d8cd98f00b204e9800998ecf8427e" : " ",
   "decbe415d8accca7c2c16d48a79ee934" : "Read More",
