@@ -456,7 +456,7 @@ Roo.docs.init = {
         d.desc = d.doc;
         d.memberOf = d['parent-name'] === '' ? Roo.docs.init.currentClass :  d['parent-name'];
         d.config  = typeof(d.props) == 'undefined'  ? [] : Object.values(d.props).map(this.gtkToRoo, this);
-        d.config.filter(function(a) { return a.name !== '...'; });
+        d.config.filter(function(a) { return a.name !== "..."; });
         d.methods = typeof(d.methods) == 'undefined'  ? [] : Object.values(d.methods).map(this.gtkToRoo, this);
         if (typeof(d.ctors) != 'undefined') {
             d.methods = d.methods.concat(Object.values(d.ctors).map(this.gtkToRoo, this));
