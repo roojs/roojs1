@@ -40,18 +40,18 @@ Roo.docs.template  = {
                '</pre></div>';
            
     },
-    implements : function(data)
+    implements : function(ar)
     {
         
          
         
-        if (!data.implements.length) {
+        if (!ar.length) {
             return '';
         }
         var linkSymbol  = this.linkSymbol;
         var output = '<div class="inheritance res-block"> <pre class="res-block-inner">';
         
-         data.implements.map(
+         ar.map(
             function($) {  
             output += linkSymbol($) + "\n"; 
             }
