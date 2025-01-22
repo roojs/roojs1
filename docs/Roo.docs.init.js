@@ -510,10 +510,18 @@ Roo.docs.init = {
         // call recursively until we dont add any new ones..
         var add = [];
         this.classesAr.forEach(function(c) {
-            if (typeof(c.inherits) != 'undefined' && c.inherits.indexOf(fqn) > -1 && orig.implementors.indexOf(c.name) < -1) {
-                orig.implementors.push(c.name);
-                add.push(k);
+            if (typeof(c.inherits) == 'undefined') {
+                return;
             }
+            if (c.inherits.indexOf(fqn) < 0) {
+                return;
+            }
+            if (orig.implementors.indexOf(c.name) > -1) {
+                return;
+            }
+            orig.implementors.push(c.name);
+            add.push(k);
+            
         });
         add.forEach(function(a) {
             this.addImplementors(orig, a);
