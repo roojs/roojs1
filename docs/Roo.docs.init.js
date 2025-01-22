@@ -520,7 +520,7 @@ Roo.docs.init = {
                 return;
             }
             orig.implementors.push(c.name);
-            add.push(k);
+            add.push(c.name);
             
         });
         add.forEach(function(a) {
@@ -596,12 +596,19 @@ Roo.docs.init = {
             Roo.docs.implements.hide();
         }
         
-        if (d.childClasses && typeof(d.childClasses[d.name]) != 'undefined') { 
+        if (typeof(d.imlementors) != 'undefined' && d.implementors.length) {
+            Roo.docs.implementors.show();
+            Roo.docs.implementors.bodyEl.dom.innerHTML = Roo.docs.template.implements(d);
+        } else  if (d.childClasses && typeof(d.childClasses[d.name]) != 'undefined') { 
             Roo.docs.implementors.show();
             Roo.docs.implementors.bodyEl.dom.innerHTML = Roo.docs.template.implementors(d);
         } else {
             Roo.docs.implementors.hide();
         }
+        }
+        
+        
+        
         
         if (d.tree_children && d.tree_children.length > 0) {
             Roo.docs.doc_children.show();
