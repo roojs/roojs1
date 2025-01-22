@@ -462,6 +462,7 @@ Roo.docs.init = {
         if (d.stype == this.SymbolKind.Constructor) { 
             d.isStatic = true;
             d.isConstructor = true;
+            d.name = d.name == 'new' ? d.memberOf : d.fqn;
         }
         d.events =typeof(d.signals) == 'undefined'  ? [] :  Object.values(d.signals).map(this.gtkToRoo, this);
         d.is_enum = (d.stype == this.SymbolKind.Enum || d.stype == this.SymbolKind.EnumMember);
