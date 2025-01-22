@@ -100,6 +100,7 @@ Roo.docs.init = {
                 var d = Roo.decode(res.responseText);
                 //Roo.log(d);
                 this.classes = {};
+                this.classesAr = [];
                 
                 d = d.sort(Roo.docs.template.makeSortby("name"));
                 
