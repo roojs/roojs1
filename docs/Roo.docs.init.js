@@ -513,7 +513,7 @@ Roo.docs.init = {
                 orig.implementors.push(c.name);
                 add.push(k);
             }
-        }
+        });
         add.forEach(function(a) {
             this.addImplementors(orig, a);
         }.this);
