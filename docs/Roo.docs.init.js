@@ -504,7 +504,7 @@ Roo.docs.init = {
     addImplementors : function(orig, fqn)
     {
         // call recursively until we dont add any new ones..
-        var add = 0;
+        var add = [];
         foreach(var k in this.classes) {
             var c = this.classes[k];
             if (c.inherits.indexOf(k) > -1 && d.implementors.indexOf(k) < -1) {
