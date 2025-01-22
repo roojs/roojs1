@@ -419,6 +419,9 @@ Roo.docs.init = {
                     if (m.isConstant) {
                         return;
                     }
+                    if (n.name == "...") {
+                        return;
+                    }
                     if (d.props.find(function(e) {
                         return e.name == m.name;
                     })) {
