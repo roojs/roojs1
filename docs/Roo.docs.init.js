@@ -459,7 +459,10 @@ Roo.docs.init = {
         if (typeof(d.ctors) != 'undefined') {
             d.methods = d.methods.concat(Object.values(d.ctors).map(this.gtkToRoo, this));
         }
-        d.isConstructor = d.stype == this.SymbolKind.Constructor;
+        if (d.stype == this.SymbolKind.Constructor) { 
+            d.isStatic = true;
+            d.isConstructor = true;
+        }
         d.events =typeof(d.signals) == 'undefined'  ? [] :  Object.values(d.signals).map(this.gtkToRoo, this);
         d.is_enum = (d.stype == this.SymbolKind.Enum || d.stype == this.SymbolKind.EnumMember);
         if (d.stype == this.SymbolKind.Enum) {
