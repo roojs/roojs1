@@ -516,7 +516,7 @@ Roo.docs.init = {
         });
         add.forEach(function(a) {
             this.addImplementors(orig, a);
-        }.this);
+        },this);
         
         
     },
