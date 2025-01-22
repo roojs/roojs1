@@ -508,14 +508,16 @@ Roo.docs.init = {
         foreach(var k in this.classes) {
             var c = this.classes[k];
             if (c.inherits.indexOf(k) > -1 && d.implementors.indexOf(k) < -1) {
-                d.implementors.push(k);
+                orig.implementors.push(k);
                 add.push(k);
             }
         }
+        add.forEach(function(a) {
+            this.addImplementors(orig, a);
+        }.this)
         
         
-        
-    }
+    },
     
     
     activeDoc : false,
