@@ -481,11 +481,12 @@ Roo.docs.init = {
             d.params  = d['param-ar'].map(this.gtkToRoo, this); 
         }
         if (typeof(this.classes[d.fqn]) != 'undefined') {
-            this.addAugments(d, this.classes[d.fqn].inherits); 
-        }
-        d.implementors = [];
-        this.addImplementors(d, d.fqn);
+            this.addAugments(d, this.classes[d.fqn].inherits);
+            d.implementors = [];
+            this.addImplementors(d, d.fqn);
         
+        }
+       
         return d;
     },
     
