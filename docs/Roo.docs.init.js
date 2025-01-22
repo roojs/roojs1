@@ -591,14 +591,14 @@ Roo.docs.init = {
         
         if (d.implements.length) {
             Roo.docs.implements.show();
-            Roo.docs.implements.bodyEl.dom.innerHTML = Roo.docs.template.implements(d);
+            Roo.docs.implements.bodyEl.dom.innerHTML = Roo.docs.template.implements(d.implements);
         } else {
             Roo.docs.implements.hide();
         }
         
         if (typeof(d.imlementors) != 'undefined' && d.implementors.length) {
             Roo.docs.implementors.show();
-            Roo.docs.implementors.bodyEl.dom.innerHTML = Roo.docs.template.implements(d);
+            Roo.docs.implementors.bodyEl.dom.innerHTML = Roo.docs.template.implements(d.imlementors);
         } else  if (d.childClasses && typeof(d.childClasses[d.name]) != 'undefined') { 
             Roo.docs.implementors.show();
             Roo.docs.implementors.bodyEl.dom.innerHTML = Roo.docs.template.implementors(d);
