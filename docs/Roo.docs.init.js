@@ -419,7 +419,7 @@ Roo.docs.init = {
                     if (m.isConstant) {
                         return;
                     }
-                    if (n.name == "...") {
+                    if (m.name == "...") {
                         return;
                     }
                     if (d.props.find(function(e) {
