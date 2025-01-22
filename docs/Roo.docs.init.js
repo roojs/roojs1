@@ -2,7 +2,8 @@
 
 Roo.docs.init = {
     
-    classes : false, // flat version of list of classes 
+    classes : false, // flat version of list of classes
+    classesAr : [],
     currentClass : '--none--', // currently viewed class name
     
     prefix : '',
