@@ -460,7 +460,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                     Roo.log(b);
                 },
                 tabIndex: -1
-            })
+            });
             
             
             tb.add(cmenu);

@@ -27637,8 +27637,6 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
             if(a.name == 'dir') {
                 var documentDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'rtl' : 'ltr';
                 var nodeDir = a.value.toLowerCase();
-                Roo.log(node.tagName + ' : ' + documentDir + ' : ' + a.value);
-                Roo.log(a.value.toLowerCase() == documentDir);
 
                 // remove span dir if it is same as the document dir
                 if(node.tagName.toLowerCase() == 'span' && nodeDir == documentDir) {
@@ -32609,8 +32607,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
 
         var html = cd.getData('text/html'); // clipboard event
-
-        console.log(html);
 
         
         html = this.cleanWordChars(html);
