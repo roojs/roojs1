@@ -33,10 +33,17 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
         }
 
         var parent = node.hasAttribute('dir') ? node.ownerDocument.createElement('span') : node.parentNode;
+        var span = node.ownerDocument.createElement('span');
 
         var ar = Array.from(node.childNodes);
         for (var i = 0; i < ar.length; i++) {
             node.removeChild(ar[i]);
+
+            if(node.hasAttribute('dir')) {
+                span.appendChild(ar[i]);
+                continue;
+            }
+            
             // what if we need to walk these???
             node.parentNode.insertBefore(ar[i], node);
         }
