@@ -484,7 +484,6 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                         }
                     }
 
-                    Roo.log(ancestors);
 
                     // if no dir removed
                     if(!removeDir) {
