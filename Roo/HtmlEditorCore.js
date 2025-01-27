@@ -658,8 +658,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         var html = cd.getData('text/html'); // clipboard event
 
-        console.log(html);
-
         
         html = this.cleanWordChars(html);
 
