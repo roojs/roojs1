@@ -79648,9 +79648,21 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 handler: function(a, b) {
                     var ancestors = editorcore.getAllAncestors();
                     for(var i = 0; i < ancestors.length; i++) {
-                        if(ancestors[i].tagName && ancestors[i].tagName.toLowerCase() == 'span') {
-                            if(ancestors[i].hasAttribute('dir')) {
-                                ancestors[i].removeAttribute('dir');
+                        var node = ancestors[i];
+                        if(node.tagName && node.tagName.toLowerCase() == 'span') {
+                            if(node.hasAttribute('dir')) {
+                                node.removeAttribute('dir');
+
+                                if(node.attributes.length == 0) {
+                                    ar = Array.from(node.childNodes);
+                                    for (var i = 0; i < ar.length; i++) {
+                                     
+                                        node.removeChild(ar[i]);
+                                        node.parentNode.insertBefore(ar[i], node);
+                                       
+                                    }
+                                    node.parentNode.removeChild(node);
+                                }
                                 break;
                             }
                             break;
