@@ -396,6 +396,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 new Roo.htmleditor.FilterBlack({ node : div, tag : this.black});
                 new Roo.htmleditor.FilterAttributes({
                     node : div,
+                    lang : this.language,
                     attrib_white : [
                             'href',
                             'src',
@@ -1441,6 +1442,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         new Roo.htmleditor.FilterComment({node : node});
         new Roo.htmleditor.FilterAttributes({
                 node : node,
+                lang : this.language,
                 attrib_black : this.ablack,
                 attrib_clean : this.aclean,
                 style_white : this.cwhite,
