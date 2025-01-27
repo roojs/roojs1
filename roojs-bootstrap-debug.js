@@ -27891,7 +27891,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
 
         var span = node.ownerDocument.createElement('span');
         var documentDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'rtl' : 'ltr';
-        var keepDir = node.hasAttribute('dir') && node.getAttribute('dir') != documentDir;
+        var keepDir = node.hasAttribute('dir') && node.getAttribute('dir').toLowerCase() != documentDir;
 
         console.log('KEEP DIR ' + documentDir);
         console.log(node.getAttribute('dir'));
