@@ -86,23 +86,23 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
 
             if(a.name == 'dir') {
                 var documentDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'rtl' : 'ltr';
+                var nodeDir = a.value.toLowerCase();
                 Roo.log(node.tagName + ' : ' + documentDir + ' : ' + a.value);
                 Roo.log(a.value.toLowerCase() == documentDir);
 
                 // remove span dir if it is same as the document dir
-                if(node.tagName.toLowerCase() == 'span' && a.value.toLowerCase() == documentDir) {
+                if(node.tagName.toLowerCase() == 'span' && nodeDir == documentDir) {
                     node.removeAttribute(a.name);
                 }
-
                 // replace p by span and keep dir if it is not same as the document dir
-                if(node.tagName.toLowerCase() == 'p' && a.value.toLowerCase() != documentDir) {
+                else if(node.tagName.toLowerCase() == 'p' && nodeDir != documentDir) {
                     var span = node.ownerDocument.createElement('span');
                     var ar = Array.from(node.childNodes);
                     for (var i = 0; i < ar.length; i++) {
                         node.removeChild(ar[i]);
                         span.appendChild(ar[i]);
                     }
-                    span.setAttribute(a.name, a.value);
+                    span.setAttribute(a.name, nodeDir);
                     node.parentNode.insertBefore(span, node);
                 }
 
