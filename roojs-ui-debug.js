@@ -23708,6 +23708,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
         }
 
         if(node.hasAttribute('dir')) {
+            span.setAttribute('dir', node.getAttribute('dir'));
             node.parentNode.insertBefore(span, node);
         }
         // now what about this?
