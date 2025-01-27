@@ -27560,6 +27560,7 @@ Roo.htmleditor.Filter.prototype = {
 Roo.htmleditor.FilterAttributes = function(cfg)
 {
     Roo.apply(this, cfg);
+    this.lang = this.lang || 'en';
     this.attrib_black = this.attrib_black || [];
     this.attrib_white = this.attrib_white || [];
 
@@ -27632,6 +27633,30 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
             
             // style cleanup!?
             // class cleanup?
+
+            if(a.name == 'dir') {
+                var documentDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'rtl' : 'ltr';
+                /*
+        var span = node.ownerDocument.createElement('span');
+        var documentDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'rtl' : 'ltr';
+        var keepDir = node.hasAttribute('dir') && node.getAttribute('dir').toLowerCase() != documentDir;
+
+        console.log('KEEP DIR ' + documentDir);
+        console.log(node.getAttribute('dir'));
+        console.log(keepDir);
+
+            if(keepDir) {
+                span.appendChild(ar[i]);
+                continue;
+            }
+
+        if(keepDir) {
+            span.setAttribute('dir', node.getAttribute('dir'));
+            node.parentNode.insertBefore(span, node);
+        }
+                */
+
+            }
             
         }
         return true; // clean children
@@ -27863,9 +27888,8 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
  * @param {Object} config Configuration options
  */
 
-Roo.htmleditor.FilterParagraph = function(cfg, lang)
+Roo.htmleditor.FilterParagraph = function(cfg)
 {
-    this.lang = typeof(lang) === 'undefined' ? 'en' : lang;
     // no need to apply config.
     this.searchTag(cfg.node);
 }
@@ -27889,31 +27913,14 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
             return false; // no need to walk..
         }
 
-        var span = node.ownerDocument.createElement('span');
-        var documentDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'rtl' : 'ltr';
-        var keepDir = node.hasAttribute('dir') && node.getAttribute('dir').toLowerCase() != documentDir;
-
-        console.log('KEEP DIR ' + documentDir);
-        console.log(node.getAttribute('dir'));
-        console.log(keepDir);
-
         var ar = Array.from(node.childNodes);
         for (var i = 0; i < ar.length; i++) {
             node.removeChild(ar[i]);
-
-            if(keepDir) {
-                span.appendChild(ar[i]);
-                continue;
-            }
 
             // what if we need to walk these???
             node.parentNode.insertBefore(ar[i], node);
         }
 
-        if(keepDir) {
-            span.setAttribute('dir', node.getAttribute('dir'));
-            node.parentNode.insertBefore(span, node);
-        }
         // now what about this?
         // <p> &nbsp; </p>
         
@@ -32340,6 +32347,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 new Roo.htmleditor.FilterBlack({ node : div, tag : this.black});
                 new Roo.htmleditor.FilterAttributes({
                     node : div,
+                    lang : this.language,
                     attrib_white : [
                             'href',
                             'src',
@@ -32437,7 +32445,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 this.owner.fireEvent('push', this, v);
             }
             if (this.autoClean) {
-                new Roo.htmleditor.FilterParagraph({node : this.doc.body}, this.language); // paragraphs
+                new Roo.htmleditor.FilterParagraph({node : this.doc.body}); // paragraphs
                 new Roo.htmleditor.FilterSpan({node : this.doc.body}); // empty spans
             }
             if (this.enableBlocks) {
@@ -32665,6 +32673,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
                 node : d,
+                lang : this.language,
                 attrib_white : [
                     'href',
                     'src',
@@ -32694,7 +32703,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
             // should be fonts..
             new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', ':' ]} );
-            new Roo.htmleditor.FilterParagraph({ node : d }, this.language);
+            new Roo.htmleditor.FilterParagraph({ node : d });
             new Roo.htmleditor.FilterHashLink({node : d});
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
@@ -33384,6 +33393,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         new Roo.htmleditor.FilterComment({node : node});
         new Roo.htmleditor.FilterAttributes({
                 node : node,
+                lang : this.language,
                 attrib_black : this.ablack,
                 attrib_clean : this.aclean,
                 style_white : this.cwhite,
