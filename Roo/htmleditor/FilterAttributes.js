@@ -79,6 +79,10 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                 }
                 continue;
             }
+
+            if(a.name == 'dir') {
+                console.log(node);
+            }
             
             
             // style cleanup!?
