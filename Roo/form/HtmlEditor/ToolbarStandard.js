@@ -483,6 +483,11 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                             break;
                         }
                     }
+
+                    // no dir removed
+                    if(!removeDir) {
+
+                    }
                 },
                 tabIndex: -1
             });
