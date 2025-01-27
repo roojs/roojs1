@@ -89,10 +89,8 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                 Roo.log(node.tagName + ' : ' + documentDir + ' : ' + a.value);
                 Roo.log(a.value.toLowerCase() == documentDir);
 
-                if(node.tagName.toLowerCase() == 'span') {
-                    if(a.value.toLowerCase() == documentDir) {
-                        node.removeAttribute('dir');
-                    }
+                if(node.tagName.toLowerCase() == 'span' && a.value.toLowerCase() == documentDir) {
+                    node.removeAttribute('dir');
                 }
                 if(node.tagName.toLowerCase() == 'p') {
 
