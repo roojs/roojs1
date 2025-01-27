@@ -498,7 +498,6 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                         span.setAttribute('dir', nodeDir);
                         var ar = Array.from(node.childNodes);
                         for (var i = 0; i < ar.length; i++) {
-                            node.removeChild(ar[i]);
                             span.appendChild(ar[i]);
                         }
                         node.parentNode.insertBefore(span, node);
