@@ -23781,9 +23781,12 @@ Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.FilterKeepChildren,
  
     replaceTag : function(node)
     {
-        if (node.attributes && node.attributes.length > 0) {
+        Roo.log('SPAN CONTENT');
+        Roo.log(node.textContent);
+        if (node.attributes && node.attributes.length > 0 && node.textContet.trim().length > 0) {
             return true; // walk if there are any.
         }
+
         Roo.htmleditor.FilterKeepChildren.prototype.replaceTag.call(this, node);
         return false;
      
