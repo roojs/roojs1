@@ -32,6 +32,10 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
             return false; // no need to walk..
         }
 
+        if(node.hasAttribute('dir')) {
+            var span = node.ownerDocument.createElement('span');
+        }
+
         var ar = Array.from(node.childNodes);
         for (var i = 0; i < ar.length; i++) {
             node.removeChild(ar[i]);
