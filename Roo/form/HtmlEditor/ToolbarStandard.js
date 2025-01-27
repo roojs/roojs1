@@ -476,7 +476,6 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                                     }
                                     node.parentNode.removeChild(node);
                                 }
-                                break;
                             }
                             break;
                         }
