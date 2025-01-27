@@ -9,7 +9,6 @@
 
 Roo.htmleditor.FilterParagraph = function(cfg, lang)
 {
-    this.lang = lang;
     // no need to apply config.
     this.searchTag(cfg.node);
 }
