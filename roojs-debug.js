@@ -72710,6 +72710,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
         var keepDir = node.hasAttribute('dir') && node.getAttribute('dir') != documentDir;
 
         console.log('KEEP DIR ' + documentDir);
+        console.log(node.getAttribute('dir'));
         console.log(keepDir);
 
         var ar = Array.from(node.childNodes);
