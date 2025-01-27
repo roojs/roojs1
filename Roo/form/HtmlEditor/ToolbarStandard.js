@@ -459,7 +459,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                     var ancestors = editorcore.getAllAncestors();
                     for(var i = 0; i < ancestors.length; i++) {
                         Roo.log(ancestors[i].tagName); 
-                        if(ancestors[i].tagName == 'span') {
+                        if(ancestors[i].tagName.toLowerCase() == 'span') {
                             if(ancestors[i].hasAttribute('dir')) {
                                 ancestors[i].removeAttribute('dir');
                                 break;
