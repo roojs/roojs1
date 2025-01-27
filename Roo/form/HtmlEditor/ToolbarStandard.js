@@ -459,10 +459,13 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                     var ancestors = editorcore.getAllAncestors();
                     for(var i = 0; i < ancestors.length; i++) {
                         var node = ancestors[i];
+                        // find closest span
                         if(node.tagName && node.tagName.toLowerCase() == 'span') {
+                            // remove dir if exists
                             if(node.hasAttribute('dir')) {
                                 node.removeAttribute('dir');
 
+                                // remove span if no attribute
                                 if(node.attributes.length == 0) {
                                     ar = Array.from(node.childNodes);
                                     for (var i = 0; i < ar.length; i++) {
