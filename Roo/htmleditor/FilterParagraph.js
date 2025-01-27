@@ -43,7 +43,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
         for (var i = 0; i < ar.length; i++) {
             node.removeChild(ar[i]);
 
-            if(node.hasAttribute('dir')) {
+            if(keepDir) {
                 span.appendChild(ar[i]);
                 continue;
             }
@@ -52,7 +52,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
             node.parentNode.insertBefore(ar[i], node);
         }
 
-        if(node.hasAttribute('dir')) {
+        if(keepDir) {
             console.log('OWNER LANG');
             console.log(this.lang);
             span.setAttribute('dir', node.getAttribute('dir'));
