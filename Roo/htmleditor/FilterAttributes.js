@@ -86,9 +86,12 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
 
             if(a.name == 'dir') {
                 var documentDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'rtl' : 'ltr';
-                var keepDir = a.value.toLowerCase() != documentDir;
                 Roo.log(documentDir + ' : ' + a.value);
-                Roo.log(keepDir);
+                Roo.log(a.value.toLowerCase() == documentDir);
+
+                if(a.value.toLowerCase() == documentDir) {
+
+                }
                 /*
         var span = node.ownerDocument.createElement('span');
         var documentDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'rtl' : 'ltr';
