@@ -2147,8 +2147,9 @@ for(var i=0;i<ar.length;i++){var e=ar[i];if(e.nodeType==1){if((typeof(this.tag)=
 continue;}}}ar=Array.from(A.childNodes);for(var i=0;i<ar.length;i++){A.removeChild(ar[i]);A.parentNode.insertBefore(ar[i],A);if(this.tag!==false){this.walk(ar[i]);}}A.parentNode.removeChild(A);return false;}});
 // Roo/htmleditor/FilterParagraph.js
 Roo.htmleditor.FilterParagraph=function(A){this.searchTag(A.node);};Roo.extend(Roo.htmleditor.FilterParagraph,Roo.htmleditor.Filter,{tag:'P',replaceTag:function(A){if(A.childNodes.length==1&&A.childNodes[0].nodeType==3&&A.childNodes[0].textContent.trim().length<1){A.parentNode.replaceChild(A.ownerDocument.createElement('BR'),A);
-return false;}var B=A.ownerDocument.createElement('span');var ar=Array.from(A.childNodes);for(var i=0;i<ar.length;i++){A.removeChild(ar[i]);if(A.hasAttribute('dir')){B.appendChild(ar[i]);continue;}A.parentNode.insertBefore(ar[i],A);}if(A.hasAttribute('dir')){B.setAttribute('dir',A.getAttribute('dir'));
-A.parentNode.insertBefore(B,A);}A.parentNode.insertBefore(A.ownerDocument.createElement('BR'),A);A.parentNode.insertBefore(A.ownerDocument.createElement('BR'),A);A.parentNode.removeChild(A);return false;}});
+return false;}var B=A.ownerDocument.createElement('span');var ar=Array.from(A.childNodes);for(var i=0;i<ar.length;i++){A.removeChild(ar[i]);if(A.hasAttribute('dir')){B.appendChild(ar[i]);continue;}A.parentNode.insertBefore(ar[i],A);}if(A.hasAttribute('dir')){console.log('OWNER LANG');
+console.log(A.ownerDocument.lang);B.setAttribute('dir',A.getAttribute('dir'));A.parentNode.insertBefore(B,A);}A.parentNode.insertBefore(A.ownerDocument.createElement('BR'),A);A.parentNode.insertBefore(A.ownerDocument.createElement('BR'),A);A.parentNode.removeChild(A);
+return false;}});
 // Roo/htmleditor/FilterHashLink.js
 Roo.htmleditor.FilterHashLink=function(A){this.searchTag(A.node);};Roo.extend(Roo.htmleditor.FilterHashLink,Roo.htmleditor.Filter,{tag:'A',replaceTag:function(A){for(var i=0;i<A.attributes.length;i++){var a=A.attributes[i];if(a.name.toLowerCase()=='href'&&a.value.startsWith('#')){this.removeNodeKeepChildren(A);
 }}return false;}});
