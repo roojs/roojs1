@@ -82,6 +82,7 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
 
             if(a.name == 'dir') {
                 var span = node.ownerDocument.createElement('span');
+                span.setAttribute('dir', a.value);
                 node.appendChild(span);
             }
             
