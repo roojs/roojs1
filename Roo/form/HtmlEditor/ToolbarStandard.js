@@ -459,7 +459,10 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                     var ancestors = editorcore.getAllAncestors();
                     for(var i = 0; i < ancestors.length; i++) {
                         if(ancestors[i].tagName == 'span') {
-
+                            if(ancestors[i].hasAttribute('dir')) {
+                                ancestors[i].removeAttribute('dir');
+                            }
+                            break;
                         }
                     }
                 },
