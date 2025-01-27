@@ -457,6 +457,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 html: 'Change Selected Text Direction',
                 handler: function(a, b) {
                     var ancestors = editorcore.getAllAncestors();
+                    var removeDir = false;
                     for(var i = 0; i < ancestors.length; i++) {
                         var node = ancestors[i];
                         // find closest span
