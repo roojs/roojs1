@@ -484,9 +484,10 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                         }
                     }
 
-                    // if no dir removed => add span with opposite dir
+                    // if no dir removed
                     if(!removeDir) {
-
+                        // add span with oppsite dir
+                        
                     }
                 },
                 tabIndex: -1
