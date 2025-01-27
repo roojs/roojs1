@@ -30635,12 +30635,18 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 html: 'Change Selected Text Direction',
                 handler: function(a, b) {
                     var ancestors = editorcore.getAllAncestors();
+                    var removeDir = false;
                     for(var i = 0; i < ancestors.length; i++) {
                         var node = ancestors[i];
+                        // find closest span
                         if(node.tagName && node.tagName.toLowerCase() == 'span') {
+                            // remove dir if exists
                             if(node.hasAttribute('dir')) {
                                 node.removeAttribute('dir');
 
+                                removeDir = true;
+
+                                // remove span if no attribute
                                 if(node.attributes.length == 0) {
                                     ar = Array.from(node.childNodes);
                                     for (var i = 0; i < ar.length; i++) {
@@ -30651,10 +30657,26 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                                     }
                                     node.parentNode.removeChild(node);
                                 }
-                                break;
                             }
                             break;
                         }
+                    }
+
+                    // if no dir removed
+                    if(!removeDir) {
+                        var node = ancestors[0];
+                        // dir opposite to document dir
+                        var nodeDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'ltr' : 'rtl';
+
+                        // add span with oppsite dir
+                        var span = node.ownerDocument.createElement('span');
+                        span.setAttribute('dir', nodeDir);
+                        var ar = Array.from(node.childNodes);
+                        for (var i = 0; i < ar.length; i++) {
+                            node.removeChild(ar[i]);
+                            span.appendChild(ar[i]);
+                        }
+                        node.parentNode.insertBefore(span, node);
                     }
                 },
                 tabIndex: -1
