@@ -90,7 +90,7 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                 Roo.log(a.value.toLowerCase() == documentDir);
 
                 if(a.value.toLowerCase() == documentDir) {
-
+                    node.removeAttribute('dir');
                 }
                 /*
         var span = node.ownerDocument.createElement('span');
