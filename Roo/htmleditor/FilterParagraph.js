@@ -7,7 +7,7 @@
  * @param {Object} config Configuration options
  */
 
-Roo.htmleditor.FilterParagraph = function(cfg)
+Roo.htmleditor.FilterParagraph = function(cfg, lang)
 {
     // no need to apply config.
     this.searchTag(cfg.node);
