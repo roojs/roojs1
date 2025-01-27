@@ -10,6 +10,7 @@
 Roo.htmleditor.FilterAttributes = function(cfg)
 {
     Roo.apply(this, cfg);
+    this.lang = this.lang || 'en';
     this.attrib_black = this.attrib_black || [];
     this.attrib_white = this.attrib_white || [];
 

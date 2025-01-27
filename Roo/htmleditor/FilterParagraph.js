@@ -9,7 +9,6 @@
 
 Roo.htmleditor.FilterParagraph = function(cfg)
 {
-    this.lang = typeof(lang) === 'undefined' ? 'en' : lang;
     // no need to apply config.
     this.searchTag(cfg.node);
 }
