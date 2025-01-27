@@ -496,7 +496,6 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                         span.setAttribute('dir', nodeDir);
                         node.parentNode.insertBefore(span, node);
                         span.appendChild(node);
-                        // node.parentNode.removeChild(node);
 
                     }
                 },
