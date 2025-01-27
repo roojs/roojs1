@@ -23456,6 +23456,7 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                     }
                     span.setAttribute(a.name, nodeDir);
                     node.parentNode.insertBefore(span, node);
+                    node.parentNode.removeChild(node);
                 }
 
             }
@@ -30666,6 +30667,8 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                     // if no dir removed
                     if(!removeDir) {
                         var node = ancestors[1];
+                        Roo.log(node);
+                        Roo.log(this.getParentElement());
                         // dir opposite to document dir
                         var nodeDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(editorcore.language) ? 'ltr' : 'rtl';
 

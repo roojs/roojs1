@@ -27652,6 +27652,7 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                     }
                     span.setAttribute(a.name, nodeDir);
                     node.parentNode.insertBefore(span, node);
+                    node.parentNode.removeChild(node);
                 }
 
             }
