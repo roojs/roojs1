@@ -90,7 +90,7 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                 Roo.log(a.value.toLowerCase() == documentDir);
 
                 if(node.tagName.toLowerCase() == 'span' && a.value.toLowerCase() == documentDir) {
-                    node.removeAttribute('dir');
+                    node.removeAttribute(a.name);
                 }
                 if(node.tagName.toLowerCase() == 'p' && a.value.toLowerCase() != documentDir) {
                     var span = node.ownerDocument.createElement('span');
@@ -99,7 +99,7 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                         node.removeChild(ar[i]);
                         span.appendChild(ar[i]);
                     }
-                    span.setAttribute('dir', a.value);
+                    span.setAttribute(a.name, a.value);
                     node.parentNode.insertBefore(span, node);
                 }
 
