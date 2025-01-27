@@ -484,7 +484,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                         }
                     }
 
-                    // no dir removed
+                    // if no dir removed => add span with opposite dir
                     if(!removeDir) {
 
                     }
