@@ -36,11 +36,6 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
         for (var i = 0; i < ar.length; i++) {
             node.removeChild(ar[i]);
 
-            if(keepDir) {
-                span.appendChild(ar[i]);
-                continue;
-            }
-
             // what if we need to walk these???
             node.parentNode.insertBefore(ar[i], node);
         }
