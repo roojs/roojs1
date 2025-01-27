@@ -728,8 +728,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'align',
                     'colspan',
                     'rowspan',
-                    'start',
-                    'dir'
+                    'start'
                 /*  THESE ARE NOT ALLWOED FOR PASTE
                  *    'data-display',
                     'data-caption-display',
