@@ -451,6 +451,15 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 },
                 tabIndex:-1
             });
+
+            cmenu.menu.items.push({
+                actiontype : 'dir',
+                html: 'Change Selected Text Direction',
+                handler: function(a, b) {
+
+                },
+                tabIndex: -1
+            })
             
             
             tb.add(cmenu);
