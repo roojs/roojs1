@@ -23669,7 +23669,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
 
 Roo.htmleditor.FilterParagraph = function(cfg, lang)
 {
-    this.lang = lang;
+    this.lang = typeof(lang) === 'undefined' ? 'en' : lang;
     // no need to apply config.
     this.searchTag(cfg.node);
 }
@@ -28240,7 +28240,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 this.owner.fireEvent('push', this, v);
             }
             if (this.autoClean) {
-                new Roo.htmleditor.FilterParagraph({node : this.doc.body}); // paragraphs
+                new Roo.htmleditor.FilterParagraph({node : this.doc.body}, this.language); // paragraphs
                 new Roo.htmleditor.FilterSpan({node : this.doc.body}); // empty spans
             }
             if (this.enableBlocks) {
