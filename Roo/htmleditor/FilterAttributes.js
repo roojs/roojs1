@@ -89,9 +89,36 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                 Roo.log(node.tagName + ' : ' + documentDir + ' : ' + a.value);
                 Roo.log(a.value.toLowerCase() == documentDir);
 
-                if(a.value.toLowerCase() == documentDir) {
-                    node.removeAttribute('dir');
+                if(node.tagName.toLowerCase() == 'span') {
+                    if(a.value.toLowerCase() == documentDir) {
+                        node.removeAttribute('dir');
+                    }
                 }
+                if(node.tagName.toLowerCase() == 'p') {
+
+                }
+
+
+
+                /*
+        var span = node.ownerDocument.createElement('span');
+        var documentDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'rtl' : 'ltr';
+        var keepDir = node.hasAttribute('dir') && node.getAttribute('dir').toLowerCase() != documentDir;
+
+        console.log('KEEP DIR ' + documentDir);
+        console.log(node.getAttribute('dir'));
+        console.log(keepDir);
+
+            if(keepDir) {
+                span.appendChild(ar[i]);
+                continue;
+            }
+
+        if(keepDir) {
+            span.setAttribute('dir', node.getAttribute('dir'));
+            node.parentNode.insertBefore(span, node);
+        }
+                */
 
             }
             
