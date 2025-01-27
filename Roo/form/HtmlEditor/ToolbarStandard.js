@@ -488,6 +488,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                     // if no dir removed
                     if(!removeDir) {
                         var node = ancestors[1];
+                        Roo.log(editorcore.lang);
                         // dir opposite to document dir
                         var nodeDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(editorcore.lang) ? 'ltr' : 'rtl';
 
@@ -500,6 +501,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                             span.appendChild(ar[i]);
                         }
                         node.parentNode.insertBefore(span, node);
+
                     }
                 },
                 tabIndex: -1
