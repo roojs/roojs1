@@ -28144,7 +28144,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'frameborder',
                             'width',
                             'height',
-                            'alt'
+                            'alt',
+                            'dir'
                             ],
                     attrib_clean : ['href', 'src' ] 
                 });
@@ -28385,6 +28386,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         var html = cd.getData('text/html'); // clipboard event
 
+        console.log(html);
+
         
         html = this.cleanWordChars(html);
 
@@ -28454,7 +28457,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'align',
                     'colspan',
                     'rowspan',
-                    'start'
+                    'start',
+                    'dir'
                 /*  THESE ARE NOT ALLWOED FOR PASTE
                  *    'data-display',
                     'data-caption-display',
@@ -46993,7 +46997,7 @@ Roo.bootstrap.Toast  = function(config)
          * @param {Roo.bootstrap.Toast} toast
          * @param {Roo.EventObject} e
          */
-        "show" : true,
+        "show" : true
     });
     
     
@@ -47022,7 +47026,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
                         {
                             tag : 'img',
                             src : Roo.BLANK_IMAGE_URL,
-                            cls : 'rounded mr-2 bg-' + this.weight,
+                            cls : 'rounded mr-2 bg-' + this.weight
                         },
                         {
                             tag : 'small',
@@ -47155,7 +47159,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
      */
     updateProgress : function(n)
     {
-        this.progress = n
+        this.progress = n;
         if (this.progress !== false) {
             this.progress = Math.min(this.progress, 1.0);
             this.progress = Math.max(this.progress, 0.0);
