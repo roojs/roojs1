@@ -491,7 +491,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                         var nodeDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'ltr' : 'rtl';
 
                         // add span with oppsite dir
-                        var span = node.ownerDocument.createElement('span');
+                        var span = editorcore.doc.createElement('span');
                         span.setAttribute('dir', nodeDir);
                         var ar = Array.from(node.childNodes);
                         for (var i = 0; i < ar.length; i++) {
