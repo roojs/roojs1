@@ -40,10 +40,6 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
             node.parentNode.insertBefore(ar[i], node);
         }
 
-        if(keepDir) {
-            span.setAttribute('dir', node.getAttribute('dir'));
-            node.parentNode.insertBefore(span, node);
-        }
         // now what about this?
         // <p> &nbsp; </p>
         
