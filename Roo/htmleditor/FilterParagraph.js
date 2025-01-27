@@ -52,9 +52,9 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
             node.parentNode.insertBefore(ar[i], node);
         }
 
+        console.log('KEEP DIR');
+        console.log(keepDir);
         if(keepDir) {
-            console.log('OWNER LANG');
-            console.log(this.lang);
             span.setAttribute('dir', node.getAttribute('dir'));
             node.parentNode.insertBefore(span, node);
         }
