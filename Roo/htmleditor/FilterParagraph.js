@@ -50,7 +50,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
 
         if(node.hasAttribute('dir')) {
             console.log('OWNER LANG');
-            console.log(HtmlEditorC);
+            console.log(this.lang);
             span.setAttribute('dir', node.getAttribute('dir'));
             node.parentNode.insertBefore(span, node);
         }
