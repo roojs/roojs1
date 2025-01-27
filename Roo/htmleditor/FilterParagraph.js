@@ -9,6 +9,7 @@
 
 Roo.htmleditor.FilterParagraph = function(cfg, lang)
 {
+    this.lang = lang;
     // no need to apply config.
     this.searchTag(cfg.node);
 }
@@ -49,7 +50,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
 
         if(node.hasAttribute('dir')) {
             console.log('OWNER LANG');
-            console.log(node.ownerDocument.lang);
+            console.log(HtmlEditorC);
             span.setAttribute('dir', node.getAttribute('dir'));
             node.parentNode.insertBefore(span, node);
         }
