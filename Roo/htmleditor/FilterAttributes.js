@@ -89,10 +89,12 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                 Roo.log(node.tagName + ' : ' + documentDir + ' : ' + a.value);
                 Roo.log(a.value.toLowerCase() == documentDir);
 
-                // remove span dir if it is same as the document language
+                // remove span dir if it is same as the document dir
                 if(node.tagName.toLowerCase() == 'span' && a.value.toLowerCase() == documentDir) {
                     node.removeAttribute(a.name);
                 }
+
+                // replace p by span and keep dir if it is not same as the document dir
                 if(node.tagName.toLowerCase() == 'p' && a.value.toLowerCase() != documentDir) {
                     var span = node.ownerDocument.createElement('span');
                     var ar = Array.from(node.childNodes);
