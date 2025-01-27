@@ -79646,6 +79646,9 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 actiontype : 'dir',
                 html: 'Change Selected Text Direction',
                 handler: function(a, b) {
+                    Roo.log('SELECTED');
+                    Roo.log(editorcore);
+                    Roo.log(editorcore.getAllAncestors());
                     Roo.log(editorcore.getSelectedNode());
                 },
                 tabIndex: -1
