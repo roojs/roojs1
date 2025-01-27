@@ -30634,10 +30634,16 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 actiontype : 'dir',
                 html: 'Change Selected Text Direction',
                 handler: function(a, b) {
-                    Roo.log('SELECTED');
-                    Roo.log(editorcore);
-                    Roo.log(editorcore.getAllAncestors());
-                    Roo.log(editorcore.getSelectedNode());
+                    var ancestors = editorcore.getAllAncestors();
+                    for(var i = 0; i < ancestors.length; i++) {
+                        if(ancestors[i].tagName == 'span') {
+                            if(ancestors[i].hasAttribute('dir')) {
+                                ancestors[i].removeAttribute('dir');
+                                break;
+                            }
+                            break;
+                        }
+                    }
                 },
                 tabIndex: -1
             });
