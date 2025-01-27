@@ -79,13 +79,6 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                 }
                 continue;
             }
-
-            if(a.name == 'dir') {
-                var span = node.ownerDocument.createElement('span');
-                span.setAttribute('dir', a.value);
-                node.appendChild(span);
-            }
-            
             
             // style cleanup!?
             // class cleanup?
