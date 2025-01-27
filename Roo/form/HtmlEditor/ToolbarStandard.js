@@ -498,6 +498,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                             node.removeChild(ar[i]);
                             span.appendChild(ar[i]);
                         }
+                        node.parentNode.insertBefore(span, node);
                     }
                 },
                 tabIndex: -1
