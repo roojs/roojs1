@@ -92,8 +92,13 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                 if(node.tagName.toLowerCase() == 'span' && a.value.toLowerCase() == documentDir) {
                     node.removeAttribute('dir');
                 }
-                if(node.tagName.toLowerCase() == 'p') {
-
+                if(node.tagName.toLowerCase() == 'p' && a.value.toLowerCase() != documentDir) {
+                    var span = node.ownerDocument.createElement('span');
+                    var ar = Array.from(node.childNodes);
+                    for (var i = 0; i < ar.length; i++) {
+                        node.removeChild(ar[i]);
+                        span.appendChild(ar[i]);
+                    }
                 }
 
 
