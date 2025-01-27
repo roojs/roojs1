@@ -7,7 +7,7 @@
  * @param {Object} config Configuration options
  */
 
-Roo.htmleditor.FilterParagraph = function(cfg, lang)
+Roo.htmleditor.FilterParagraph = function(cfg)
 {
     this.lang = typeof(lang) === 'undefined' ? 'en' : lang;
     // no need to apply config.
