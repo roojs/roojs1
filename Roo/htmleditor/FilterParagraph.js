@@ -34,6 +34,10 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
         }
 
         var span = node.ownerDocument.createElement('span');
+        var documentDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang);
+        var useSpan = node.hasAttribute('dir') && node.getAttribute('dir') == documentDir;
+
+
 
         var ar = Array.from(node.childNodes);
         for (var i = 0; i < ar.length; i++) {
