@@ -2154,7 +2154,7 @@ A.parentNode.removeChild(A);return false;}});
 Roo.htmleditor.FilterHashLink=function(A){this.searchTag(A.node);};Roo.extend(Roo.htmleditor.FilterHashLink,Roo.htmleditor.Filter,{tag:'A',replaceTag:function(A){for(var i=0;i<A.attributes.length;i++){var a=A.attributes[i];if(a.name.toLowerCase()=='href'&&a.value.startsWith('#')){this.removeNodeKeepChildren(A);
 }}return false;}});
 // Roo/htmleditor/FilterSpan.js
-Roo.htmleditor.FilterSpan=function(A){this.searchTag(A.node);};Roo.extend(Roo.htmleditor.FilterSpan,Roo.htmleditor.FilterKeepChildren,{tag:'SPAN',replaceTag:function(A){Roo.log('SPAN CONTENT');Roo.log(A.textContent);if(A.attributes&&A.attributes.length>0&&A.textContet.trim().length>0){return true;
+Roo.htmleditor.FilterSpan=function(A){this.searchTag(A.node);};Roo.extend(Roo.htmleditor.FilterSpan,Roo.htmleditor.FilterKeepChildren,{tag:'SPAN',replaceTag:function(A){Roo.log('SPAN CONTENT');Roo.log(A.textContent);if(A.attributes&&A.attributes.length>0&&A.textContent.trim().length>0){return true;
 }Roo.htmleditor.FilterKeepChildren.prototype.replaceTag.call(this,A);return false;}});
 // Roo/htmleditor/FilterTableWidth.js
 Roo.htmleditor.FilterTableWidth=function(A){this.tag=['TABLE','TD','TR','TH','THEAD','TBODY'];this.walk(A.node);};Roo.extend(Roo.htmleditor.FilterTableWidth,Roo.htmleditor.Filter,{replaceTag:function(A){if(A.hasAttribute('width')){A.removeAttribute('width');
