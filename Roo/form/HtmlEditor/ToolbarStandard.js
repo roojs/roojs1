@@ -461,6 +461,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                         if(ancestors[i].tagName == 'span') {
                             if(ancestors[i].hasAttribute('dir')) {
                                 ancestors[i].removeAttribute('dir');
+                                break;
                             }
                             break;
                         }
