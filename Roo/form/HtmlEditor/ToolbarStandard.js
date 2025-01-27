@@ -500,6 +500,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                             span.appendChild(ar[i]);
                         }
                         node.parentNode.insertBefore(span, node);
+                        node.parentNode.removeChild(node);
 
                     }
                 },
