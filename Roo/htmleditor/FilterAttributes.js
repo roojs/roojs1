@@ -99,6 +99,8 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                         node.removeChild(ar[i]);
                         span.appendChild(ar[i]);
                     }
+                    span.setAttribute('dir', a.value);
+                    node.parentNode.insertBefore(span, node);
                 }
 
 
