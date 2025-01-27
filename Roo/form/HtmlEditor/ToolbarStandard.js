@@ -486,8 +486,12 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
 
                     // if no dir removed
                     if(!removeDir) {
+                        // dir opposite to document dir
+                        var nodeDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'ltr' : 'rt;';
+
                         // add span with oppsite dir
-                        
+                        var span = node.ownerDocument.createElement('span');
+                        span.setAttribute('dir', nodeDir);
                     }
                 },
                 tabIndex: -1
