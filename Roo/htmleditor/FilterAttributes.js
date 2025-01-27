@@ -89,6 +89,7 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                 Roo.log(node.tagName + ' : ' + documentDir + ' : ' + a.value);
                 Roo.log(a.value.toLowerCase() == documentDir);
 
+                // remove span dir if it is same as the document language
                 if(node.tagName.toLowerCase() == 'span' && a.value.toLowerCase() == documentDir) {
                     node.removeAttribute(a.name);
                 }
