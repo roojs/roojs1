@@ -415,8 +415,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'frameborder',
                             'width',
                             'height',
-                            'alt',
-                            'dir'
+                            'alt'
                             ],
                     attrib_clean : ['href', 'src' ] 
                 });
