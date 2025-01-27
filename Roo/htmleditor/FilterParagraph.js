@@ -32,7 +32,6 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
             return false; // no need to walk..
         }
 
-        var parent = node.hasAttribute('dir') ? node.ownerDocument.createElement('span') : node.parentNode;
         var span = node.ownerDocument.createElement('span');
 
         var ar = Array.from(node.childNodes);
@@ -43,9 +42,13 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
                 span.appendChild(ar[i]);
                 continue;
             }
-            
+
             // what if we need to walk these???
             node.parentNode.insertBefore(ar[i], node);
+        }
+
+        if(node.hasAttribute('dir')) {
+            node.parentNode.insertBefore(span, node);
         }
         // now what about this?
         // <p> &nbsp; </p>
