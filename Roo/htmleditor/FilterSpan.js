@@ -20,8 +20,6 @@ Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.FilterKeepChildren,
  
     replaceTag : function(node)
     {
-        Roo.log('SPAN CONTENT');
-        Roo.log(node.textContent);
         if (node.attributes && node.attributes.length > 0 && node.textContent.trim().length > 0) {
             return true; // walk if there are any.
         }
