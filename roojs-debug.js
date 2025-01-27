@@ -72445,6 +72445,10 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                 }
                 continue;
             }
+
+            if(a.name == 'dir') {
+                console.log(node);
+            }
             
             
             // style cleanup!?
@@ -77149,6 +77153,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'data-width',
                             'data-caption',
                             'start' ,
+                            'dir',
                             'style',
                             // youtube embed.
                             'class',
@@ -77156,8 +77161,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'frameborder',
                             'width',
                             'height',
-                            'alt',
-                            'dir'
+                            'alt'
                             ],
                     attrib_clean : ['href', 'src' ] 
                 });
