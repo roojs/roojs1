@@ -55,7 +55,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
         for (var i = 0; i < ar.length; i++) {
             node.removeChild(ar[i]);
 
-            // copy content to span with a 'dir' attribute
+            // copy content to span with if the direction is needed
             if(nodeDir && nodeDir != documentDir) {
                 span.appendChild(ar[i]);
                 continue;
