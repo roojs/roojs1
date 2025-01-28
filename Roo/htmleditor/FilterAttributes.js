@@ -39,6 +39,9 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
         }
         
         for (var i = node.attributes.length-1; i > -1 ; i--) {
+            if(i >= node.attributes.length) {
+                continue;
+            }
             var a = node.attributes[i];
             //console.log(a);
             if (this.attrib_white.length && this.attrib_white.indexOf(a.name.toLowerCase()) < 0) {
@@ -73,6 +76,7 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
             if (a.name == 'class') {
                 if (a.value.match(/^Mso/)) {
                     node.removeAttribute('class');
+                    continue;
                 }
                 
                 if (a.value.match(/^body$/)) {
@@ -90,10 +94,10 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
 
                 // remove span dir if it is same as the document dir
                 if(node.tagName.toLowerCase() == 'span' && nodeDir == documentDir) {
-                    // node.removeAttribute(a.name);
+                    node.removeAttribute(a.name);
                 }
                 // replace p by span and keep dir if it is not same as the document dir
-                else if(node.tagName.toLowerCase() == 'p') {
+                else if(node.tagName.toLowerCase() == 'p' && nodeDir == documentDir) {
                     var span = node.ownerDocument.createElement('span');
                     var ar = Array.from(node.childNodes);
                     for (var i = 0; i < ar.length; i++) {
