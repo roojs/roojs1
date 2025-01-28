@@ -456,46 +456,56 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 actiontype : 'dir',
                 html: 'Change Selected Text Direction',
                 handler: function(a, b) {
-                    var ancestors = editorcore.getAllAncestors();
-                    var removeDir = false;
-                    for(var i = 0; i < ancestors.length; i++) {
-                        var node = ancestors[i];
-                        // find closest span
-                        if(node.tagName && node.tagName.toLowerCase() == 'span') {
-                            // remove dir if exists
-                            if(node.hasAttribute('dir')) {
-                                node.removeAttribute('dir');
-
-                                removeDir = true;
-
-                                // remove span if no attribute
-                                if(node.attributes.length == 0) {
-                                    ar = Array.from(node.childNodes);
-                                    for (var i = 0; i < ar.length; i++) {
-                                     
-                                        node.removeChild(ar[i]);
-                                        node.parentNode.insertBefore(ar[i], node);
-                                       
+                    Roo.log('SELECTION');
+                    var sel = editorcore.getSelection();
+                    var range = sel.getRangeAt();
+                    Roo.log(sel);
+                    Roo.log(sel.getRangeAt());
+                    Roo.log(sel.toString());
+                    Roo.log(range.startContainer == range.endContainer);
+                    Roo.log(range.startContainer.nodeType == 3);
+                    // select plain text within same container
+                    if(range.startContainer == range.endContainer && range.startContainer.nodeType == 3) {
+                        var ancestors = editorcore.getAllAncestors();
+                        Roo.log(ancestors);
+                        var removeDir = false;
+                        for(var i = 0; i < ancestors.length; i++) {
+                            var node = ancestors[i];
+                            // find closest span
+                            if(node.tagName && node.tagName.toLowerCase() == 'span') {
+                                // remove dir if exists
+                                if(node.hasAttribute('dir')) {
+                                    node.removeAttribute('dir');
+    
+                                    removeDir = true;
+                                    Roo.log('REMOVEEEE');
+    
+                                    // remove span if no attribute
+                                    if(node.attributes.length == 0) {
+                                        ar = Array.from(node.childNodes);
+                                        for (var i = 0; i < ar.length; i++) {
+                                         
+                                            node.removeChild(ar[i]);
+                                            node.parentNode.insertBefore(ar[i], node);
+                                           
+                                        }
+                                        node.parentNode.removeChild(node);
                                     }
-                                    node.parentNode.removeChild(node);
                                 }
+                                break;
                             }
-                            break;
                         }
-                    }
+    
+                        // if no dir removed
+                        if(!removeDir) {
 
-
-                    // if no dir removed
-                    if(!removeDir) {
-                        var node = ancestors[1];
-                        // dir opposite to document dir
                         var nodeDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(editorcore.language) ? 'ltr' : 'rtl';
-
-                        // add span with oppsite dir
-                        var span = node.ownerDocument.createElement('span');
+                        var span = editorcore.doc.createElement('span');
                         span.setAttribute('dir', nodeDir);
-                        node.parentNode.insertBefore(span, node);
-                        span.appendChild(node);
+                        range.surroundContents(span);
+                        sel.removeAllRanges();
+                        sel.addRange(range);
+                        }
 
                     }
                 },
