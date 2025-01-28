@@ -22,22 +22,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
     
      
     replaceTag : function(node)
-    {
-        /*
-                        // replace p by span and keep dir if it is not same as the document dir
-                else if(node.tagName.toLowerCase() == 'p' && nodeDir != documentDir) {
-                    var span = node.ownerDocument.createElement('span');
-                    var ar = Array.from(node.childNodes);
-                    for (var i = 0; i < ar.length; i++) {
-                        node.removeChild(ar[i]);
-                        span.appendChild(ar[i]);
-                    }
-                    span.setAttribute(a.name, nodeDir);
-                    node.parentNode.insertBefore(span, node);
-                    node.parentNode.removeChild(node);
-                }
-        */
-        
+    {   
         if (node.childNodes.length == 1 &&
             node.childNodes[0].nodeType == 3 &&
             node.childNodes[0].textContent.trim().length < 1
