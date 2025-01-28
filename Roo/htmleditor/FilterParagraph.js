@@ -54,7 +54,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
         if(nodeDir && nodeDir != documentDir) {
             // keep direction
             span.setAttribute('dir', nodeDir);
-            node.parent.insertBefore(span, node);
+            node.parentNode.insertBefore(span, node);
         }
 
         // now what about this?
