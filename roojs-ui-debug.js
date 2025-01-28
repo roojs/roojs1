@@ -23444,10 +23444,10 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
 
                 // remove span dir if it is same as the document dir
                 if(node.tagName.toLowerCase() == 'span' && nodeDir == documentDir) {
-                    node.removeAttribute(a.name);
+                    // node.removeAttribute(a.name);
                 }
                 // replace p by span and keep dir if it is not same as the document dir
-                else if(node.tagName.toLowerCase() == 'p' && nodeDir != documentDir) {
+                else if(node.tagName.toLowerCase() == 'p') {
                     var span = node.ownerDocument.createElement('span');
                     var ar = Array.from(node.childNodes);
                     for (var i = 0; i < ar.length; i++) {
