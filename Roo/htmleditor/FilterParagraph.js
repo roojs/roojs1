@@ -9,12 +9,9 @@
 
 Roo.htmleditor.FilterParagraph = function(cfg)
 {
+    this.lang = cfg.lang || 'en';
     // no need to apply config.
     this.searchTag(cfg.node);
-    this.lang = cfg.lang || 'en';
-    Roo.log('LANG');
-    Roo.log(cfg.lang);
-    Roo.log(this.lang);
 }
 
 Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
