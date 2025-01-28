@@ -23450,19 +23450,6 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                 if(node.tagName.toLowerCase() == 'span' && nodeDir == documentDir) {
                     node.removeAttribute(a.name);
                 }
-                // replace p by span and keep dir if it is not same as the document dir
-                else if(node.tagName.toLowerCase() == 'p' && nodeDir != documentDir) {
-                    var span = node.ownerDocument.createElement('span');
-                    var ar = Array.from(node.childNodes);
-                    for (var i = 0; i < ar.length; i++) {
-                        node.removeChild(ar[i]);
-                        span.appendChild(ar[i]);
-                    }
-                    span.setAttribute(a.name, nodeDir);
-                    node.parentNode.insertBefore(span, node);
-                    node.parentNode.removeChild(node);
-                }
-
             }
             
         }
@@ -23699,6 +23686,7 @@ Roo.htmleditor.FilterParagraph = function(cfg)
 {
     // no need to apply config.
     this.searchTag(cfg.node);
+    this.lang = cfg.lang || 'en';
 }
 
 Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
@@ -23720,12 +23708,28 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
             return false; // no need to walk..
         }
 
+        var documentDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'rtl' : 'ltr';
+        var nodeDir = node.hasAttribute('dir') ? node.getAttribute('dir').toLowerCase() : false;
+        var span = node.ownerDocument.createElement('span');
+
         var ar = Array.from(node.childNodes);
         for (var i = 0; i < ar.length; i++) {
             node.removeChild(ar[i]);
 
+            // copy content to span with if the direction is needed
+            if(nodeDir && nodeDir != documentDir) {
+                span.appendChild(ar[i]);
+                continue;
+            }
+
             // what if we need to walk these???
             node.parentNode.insertBefore(ar[i], node);
+        }
+
+        if(nodeDir && nodeDir != documentDir) {
+            // keep direction
+            span.setAttribute('dir', nodeDir);
+            node.parent.insertBefore(span, node);
         }
 
         // now what about this?
@@ -28253,7 +28257,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 this.owner.fireEvent('push', this, v);
             }
             if (this.autoClean) {
-                new Roo.htmleditor.FilterParagraph({node : this.doc.body}); // paragraphs
+                new Roo.htmleditor.FilterParagraph({node : this.doc.body, lang: this.language}); // paragraphs
                 new Roo.htmleditor.FilterSpan({node : this.doc.body}); // empty spans
             }
             if (this.enableBlocks) {
@@ -28509,7 +28513,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
             // should be fonts..
             new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', ':' ]} );
-            new Roo.htmleditor.FilterParagraph({ node : d });
+            new Roo.htmleditor.FilterParagraph({ node : d, lang: this.language });
             new Roo.htmleditor.FilterHashLink({node : d});
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
