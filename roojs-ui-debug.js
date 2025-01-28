@@ -23684,12 +23684,12 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
 
 Roo.htmleditor.FilterParagraph = function(cfg)
 {
-    // no need to apply config.
-    this.searchTag(cfg.node);
     this.lang = cfg.lang || 'en';
     Roo.log('LANG');
     Roo.log(cfg.lang);
     Roo.log(this.lang);
+    // no need to apply config.
+    this.searchTag(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
