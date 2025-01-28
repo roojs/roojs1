@@ -27923,9 +27923,11 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
         }
 
         if(nodeDir && nodeDir != documentDir) {
+            Roo.log('P');
+            Roo.log(node.textContent);
             // keep direction
             span.setAttribute('dir', nodeDir);
-            node.parent.insertBefore(span, node);
+            node.parentNode.insertBefore(span, node);
         }
 
         // now what about this?
