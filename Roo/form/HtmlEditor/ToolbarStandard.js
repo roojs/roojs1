@@ -456,14 +456,8 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 actiontype : 'dir',
                 html: 'Change Selected Text Direction',
                 handler: function(a, b) {
-                    Roo.log('SELECTION');
                     var sel = editorcore.getSelection();
                     var range = sel.getRangeAt();
-                    Roo.log(sel);
-                    Roo.log(sel.getRangeAt());
-                    Roo.log(sel.toString());
-                    Roo.log(range.startContainer == range.endContainer);
-                    Roo.log(range.startContainer.nodeType == 3);
                     // select plain text within same container
                     if(range.startContainer == range.endContainer && range.startContainer.nodeType == 3) {
                         var ancestors = editorcore.getAllAncestors();
@@ -478,7 +472,6 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                                     node.removeAttribute('dir');
     
                                     removeDir = true;
-                                    Roo.log('REMOVEEEE');
     
                                     // remove span if no attribute
                                     if(node.attributes.length == 0) {
