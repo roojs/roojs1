@@ -28521,6 +28521,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
             // should be fonts..
             new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', ':' ]} );
+            Roo.log('FILTER PARAGRAPH');
+            Roo.log(this.language);
             new Roo.htmleditor.FilterParagraph({ node : d, lang: this.language });
             new Roo.htmleditor.FilterHashLink({node : d});
             new Roo.htmleditor.FilterSpan({ node : d });
