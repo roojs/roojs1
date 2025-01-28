@@ -490,13 +490,12 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
     
                         // if no dir removed
                         if(!removeDir) {
-
-                        var nodeDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(editorcore.language) ? 'ltr' : 'rtl';
-                        var span = editorcore.doc.createElement('span');
-                        span.setAttribute('dir', nodeDir);
-                        range.surroundContents(span);
-                        sel.removeAllRanges();
-                        sel.addRange(range);
+                            var nodeDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(editorcore.language) ? 'ltr' : 'rtl';
+                            var span = editorcore.doc.createElement('span');
+                            span.setAttribute('dir', nodeDir);
+                            range.surroundContents(span);
+                            sel.removeAllRanges();
+                            sel.addRange(range);
                         }
 
                     }
