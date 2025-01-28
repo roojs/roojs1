@@ -72697,9 +72697,6 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
 Roo.htmleditor.FilterParagraph = function(cfg)
 {
     this.lang = cfg.lang || 'en';
-    Roo.log('LANG');
-    Roo.log(cfg.lang);
-    Roo.log(this.lang);
     // no need to apply config.
     this.searchTag(cfg.node);
 }
@@ -72742,11 +72739,6 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
         }
 
         if(nodeDir && nodeDir != documentDir) {
-            Roo.log('P');
-            Roo.log(node.textContent);
-            Roo.log(this.lang);
-            Roo.log(documentDir);
-            Roo.log(nodeDir);
             // keep direction
             span.setAttribute('dir', nodeDir);
             node.parentNode.insertBefore(span, node);
@@ -77533,8 +77525,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
             // should be fonts..
             new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', ':' ]} );
-            Roo.log('FILTER PARAGRAPH');
-            Roo.log(this.language);
             new Roo.htmleditor.FilterParagraph({ node : d, lang: this.language });
             new Roo.htmleditor.FilterHashLink({node : d});
             new Roo.htmleditor.FilterSpan({ node : d });
