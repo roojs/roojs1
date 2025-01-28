@@ -10,9 +10,6 @@
 Roo.htmleditor.FilterParagraph = function(cfg)
 {
     this.lang = cfg.lang || 'en';
-    Roo.log('LANG');
-    Roo.log(cfg.lang);
-    Roo.log(this.lang);
     // no need to apply config.
     this.searchTag(cfg.node);
 }
@@ -55,11 +52,6 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
         }
 
         if(nodeDir && nodeDir != documentDir) {
-            Roo.log('P');
-            Roo.log(node.textContent);
-            Roo.log(this.lang);
-            Roo.log(documentDir);
-            Roo.log(nodeDir);
             // keep direction
             span.setAttribute('dir', nodeDir);
             node.parentNode.insertBefore(span, node);
