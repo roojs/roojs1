@@ -30643,18 +30643,11 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 actiontype : 'dir',
                 html: 'Change Selected Text Direction',
                 handler: function(a, b) {
-                    Roo.log('SELECTION');
                     var sel = editorcore.getSelection();
                     var range = sel.getRangeAt();
-                    Roo.log(sel);
-                    Roo.log(sel.getRangeAt());
-                    Roo.log(sel.toString());
-                    Roo.log(range.startContainer == range.endContainer);
-                    Roo.log(range.startContainer.nodeType == 3);
                     // select plain text within same container
                     if(range.startContainer == range.endContainer && range.startContainer.nodeType == 3) {
                         var ancestors = editorcore.getAllAncestors();
-                        Roo.log(ancestors);
                         var removeDir = false;
                         for(var i = 0; i < ancestors.length; i++) {
                             var node = ancestors[i];
@@ -30665,7 +30658,6 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                                     node.removeAttribute('dir');
     
                                     removeDir = true;
-                                    Roo.log('REMOVEEEE');
     
                                     // remove span if no attribute
                                     if(node.attributes.length == 0) {
@@ -30685,13 +30677,12 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
     
                         // if no dir removed
                         if(!removeDir) {
-
-                        var nodeDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(editorcore.language) ? 'ltr' : 'rtl';
-                        var span = editorcore.doc.createElement('span');
-                        span.setAttribute('dir', nodeDir);
-                        range.surroundContents(span);
-                        sel.removeAllRanges();
-                        sel.addRange(range);
+                            var nodeDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(editorcore.language) ? 'ltr' : 'rtl';
+                            var span = editorcore.doc.createElement('span');
+                            span.setAttribute('dir', nodeDir);
+                            range.surroundContents(span);
+                            sel.removeAllRanges();
+                            sel.addRange(range);
                         }
 
                     }
