@@ -147,7 +147,7 @@ Roo.docs.init = {
                     this.loadHash();
                     return;
                 }
-                
+                done();
                 this.loadIntro();
                 
                 
