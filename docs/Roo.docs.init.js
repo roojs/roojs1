@@ -683,12 +683,12 @@ Roo.docs.init = {
     
     onHashChange : function()
     {
-        
+        var t= this;
         this.loadTree(function() {
-            if (this.hash == location.hash) {
+            if (t.hash == location.hash) {
                 return;
             }
-            this.loadHash();
+            t.loadHash();
         });
        
         
