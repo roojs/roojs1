@@ -183,9 +183,10 @@ Roo.docs.init = {
     
     
     addTreeItem : function(parent, e, type , parent_e) {
-        
-          this.classes[e.name] = e;
-          this.classesAr.push(e);
+            
+        this.classes[e.name] = e;
+        Roo.log("add class " + e.name);
+        this.classesAr.push(e);
         
          if (window.location.protocol == 'doc:'  ) {
             return;
