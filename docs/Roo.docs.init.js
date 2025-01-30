@@ -58,15 +58,7 @@ Roo.docs.init = {
             
             //Roo.XComponent.modules[0].el.fireEvent('render');
             var t = this;
-            this.loadTree(function() {
-                
-                if (location.hash.length) {
-                    t.loadHash();
-                    return;
-                }
-                
-                t.loadIntro();
-            });
+            this.loadTree();
             if (window.location.pathname.match(/gtk.html$/)) {
                 // testing in browser..
                 Roo.docs.roo_title.el.dom.innerHTML = "Gtk Documentation";
