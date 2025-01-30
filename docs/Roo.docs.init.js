@@ -92,16 +92,16 @@ Roo.docs.init = {
     
     loadTree: function()
     {
-        if (this.classes !== false) {
-            done();
-        }
+        
         
         if (!location.hash.length) {
             this.loadIntro();
             return;
         }
         
-       
+        if (this.classes !== false) {
+            done();
+        }
         
         Roo.log("protocol: " + window.location.protocol);
         
