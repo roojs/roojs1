@@ -168,7 +168,7 @@ Roo.docs.init = {
                   this.loadingTree = true;
                   Roo.log("Loading Tree done");
                 
-                done();
+                this.loadHash();
                 
                 
                 
