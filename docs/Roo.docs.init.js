@@ -685,6 +685,8 @@ Roo.docs.init = {
     {
         var t= this;
         this.loadTree(function() {
+            
+            
             if (t.hash == location.hash) {
                 return;
             }
@@ -695,7 +697,9 @@ Roo.docs.init = {
     },
     loadHash : function()
     {
-        
+        if (this.hash == location.hash) {
+            return;
+        }
         Roo.log("load hash:" + location.hash);
         
         if (location.hash.length < 2) {
