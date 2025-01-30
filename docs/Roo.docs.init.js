@@ -698,8 +698,13 @@ Roo.docs.init = {
     loadHash : function()
     {
         if (this.hash == location.hash) {
+            Roo.log("skip load Hash (existing)");
             return;
         }
+        if (this.loadingTree) {
+            this.loadH;ash.defer(400, this.loadHash, this);
+        }
+        
         Roo.log("load hash:" + location.hash);
         
         if (location.hash.length < 2) {
