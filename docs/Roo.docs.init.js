@@ -90,11 +90,18 @@ Roo.docs.init = {
         
     },
     
-    loadTree: function(done)
+    loadTree: function()
     {
         if (this.classes !== false) {
             done();
         }
+        
+        if (!location.hash.length) {
+            this.loadIntro();
+            return;
+        }
+        
+       
         
         Roo.log("protocol: " + window.location.protocol);
         
@@ -155,6 +162,7 @@ Roo.docs.init = {
                     roo.show(roo.triggerEl, '?', false);
                 }
                   this.loadingTree = true;
+                  Roo.log("Loading Tree done");
                 
                 done();
                 
