@@ -78,8 +78,12 @@ Roo.docs.init = {
         
     },
     
-    loadTree: function()
+    loadTree: function(done)
     {
+        if (this.classes !== false) {
+            done();
+        }
+        
         Roo.log("protocol: " + window.location.protocol);
         
         if (window.location.protocol == 'doc:'  ) {
