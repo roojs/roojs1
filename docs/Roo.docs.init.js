@@ -56,14 +56,15 @@ Roo.docs.init = {
         Roo.XComponent.on('buildcomplete', function() {
             
             //Roo.XComponent.modules[0].el.fireEvent('render');
+            var t = this;
             this.loadTree(function() {
                 
                 if (location.hash.length) {
-                    this.loadHash();
+                    t.loadHash();
                     return;
                 }
                 
-                this.loadIntro();
+                t.loadIntro();
             });
             if (window.location.pathname.match(/gtk.html$/)) {
                 // testing in browser..
