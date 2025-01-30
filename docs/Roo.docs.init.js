@@ -98,9 +98,12 @@ Roo.docs.init = {
             this.loadIntro();
             return;
         }
+        if (this.loadingTree) {
+            Roo.log("Should not get here  - already loading tree.")
+        }
         
         if (this.classes !== false) {
-            done();
+            this.loadHash();
         }
         
         Roo.log("protocol: " + window.location.protocol);
