@@ -74,6 +74,8 @@ Roo.docs.init = {
             
             
         }, this);
+        
+        
         if (window.location.pathname.match(/gtk.html$/)) {
             this.prefix = window.location.pathname + "/../gtk/";
         }
@@ -681,10 +683,14 @@ Roo.docs.init = {
     
     onHashChange : function()
     {
-        if (this.hash == location.hash) {
-            return;
-        }
-        this.loadHash();
+        
+        this.loadTree(function() {
+            if (this.hash == location.hash) {
+                return;
+            }
+            this.loadHash();
+        });
+       
         
     },
     loadHash : function()
