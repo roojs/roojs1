@@ -116,7 +116,7 @@ Roo.docs.init = {
             success : function(res)
             {
                 var d = Roo.decode(res.responseText);
-                //Roo.log(d);
+                Roo.log("GOT Tree = building classes");
                 this.classes = {};
                 this.classesAr = [];
                 
