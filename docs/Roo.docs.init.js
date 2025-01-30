@@ -104,6 +104,7 @@ Roo.docs.init = {
         
         if (this.classes !== false) {
             this.loadHash();
+            return;
         }
         
         Roo.log("protocol: " + window.location.protocol);
