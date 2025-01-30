@@ -56,7 +56,15 @@ Roo.docs.init = {
         Roo.XComponent.on('buildcomplete', function() {
             
             //Roo.XComponent.modules[0].el.fireEvent('render');
-            this.loadTree();
+            this.loadTree(function() {
+                
+                if (location.hash.length) {
+                    this.loadHash();
+                    return;
+                }
+                
+                this.loadIntro();
+            });
             if (window.location.pathname.match(/gtk.html$/)) {
                 // testing in browser..
                 Roo.docs.roo_title.el.dom.innerHTML = "Gtk Documentation";
@@ -142,13 +150,8 @@ Roo.docs.init = {
 
                     roo.show(roo.triggerEl, '?', false);
                 }
-                
-                if (location.hash.length) {
-                    this.loadHash();
-                    return;
-                }
                 done();
-                this.loadIntro();
+                
                 
                 
             },
