@@ -316,11 +316,14 @@ Roo.docs.init = {
     
     loadDoc : function(cls)
     {
+        Roo.log("loadDoc: " + cls);
+
         if (this.currentClass == cls.name) {
+            Roo.log("loadDoc: (same as current)");
+
             return;
         }
         //Roo.docs.mobileNavGroup.hide();
-       // Roo.log("loadDoc?");
         
         Roo.docs.doc_desc.el.removeClass('active');
         Roo.docs.read_more_btn.setActive(false);
