@@ -57,7 +57,6 @@ Roo.docs.init = {
         Roo.XComponent.on('buildcomplete', function() {
             
             //Roo.XComponent.modules[0].el.fireEvent('render');
-            var t = this;
             this.loadTree();
             if (window.location.pathname.match(/gtk.html$/)) {
                 // testing in browser..
@@ -690,7 +689,7 @@ Roo.docs.init = {
     
     onHashChange : function()
     {
-        var t= this;
+     
         this.loadTree();
        
         
