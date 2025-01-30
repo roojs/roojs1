@@ -6,6 +6,7 @@ Roo.docs.init = {
     classesAr : [],
     currentClass : '--none--', // currently viewed class name
     
+    loadingTree : false,
     prefix : '',
     hash : '',
     
@@ -106,7 +107,7 @@ Roo.docs.init = {
         }
         
         Roo.docs.doc_body_content.hide();
-        
+        this.loadingTree = true;
         Roo.Ajax.request({
             url : this.prefix + 'tree.json',
             method : 'GET',
@@ -153,6 +154,8 @@ Roo.docs.init = {
 
                     roo.show(roo.triggerEl, '?', false);
                 }
+                  this.loadingTree = true;
+                
                 done();
                 
                 
