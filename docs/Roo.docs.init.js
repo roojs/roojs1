@@ -703,7 +703,7 @@ Roo.docs.init = {
         }
         if (this.loadingTree) {
             Roo.log("currentlyl Loading tree - delay");
-            this.loadH;ash.defer(500, this.loadHash, this);
+            this.loadHash.defer(500, this.loadHash, this);
             return;
         }
         
