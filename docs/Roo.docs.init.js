@@ -294,7 +294,7 @@ Roo.docs.init = {
     {
         
         
-        if(typeof(this.classes[name]) != 'undefined') {
+        if(typeof(this.classes[name]) == 'undefined') {
             Roo.log("Class " + name + " no in this.classes");
             return;
         }
