@@ -99,7 +99,7 @@ Roo.docs.init = {
             return;
         }
         if (this.loadingTree) {
-            Roo.log("Should not get here  - already loading tree.")
+            Roo.log("Should not get here  - already loading tree.");
         }
         
         if (this.classes !== false) {
