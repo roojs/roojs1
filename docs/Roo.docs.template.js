@@ -74,25 +74,26 @@ Roo.docs.template  = {
         var oar = []
         var iterArray  = function(ar) {
             for(var i = 0; i < ar.length; i++) {
-                output += '<li>' +linkSymbol(ar[i]) ; // a href...
+                oar.push(ar[i]);
                 if (typeof(data.childClasses[ar[i]]) != 'undefined') {
-                    output += '<ul>';
-                    iterArray(data.childClasses[ar[i]].sort());
-                    output += '</ul>';
+                
+                    iterArray(data.childClasses[ar[i]]);
+                 
                 }
-                output +=  "</li>";
+                
                 
             }
             
         };
-        iterArray(data.childClasses[data.name];
+        iterArray(data.childClasses[data.name]);
+        oar.sort();
         
         var output = '<ul class="inheritance res-block"> ';
         for(var i = 0; i < aor.length; i++) {
                 output += '<li>' +linkSymbol(oar[i]) + '</li>' ; // a href...
                   
                 
-            }
+        }
         
         
         
