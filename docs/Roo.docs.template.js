@@ -66,9 +66,7 @@ Roo.docs.template  = {
             return '';
         }
         
-        data.childClasses[data.name] = data.childClasses[data.name].sort(function(a,b) {
-            return a == b ? 0  : (a >  b  ? -1 : 1 );
-        });
+        data.childClasses[data.name] = data.childClasses[data.name].sort(f);
 
         var linkSymbol  = this.linkSymbol;
         //var linkSymbol  = this.linkSymbol;
