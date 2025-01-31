@@ -599,6 +599,12 @@ Roo.docs.init = {
         if (d.is_enum) {
             Roo.docs.classType.el.dom.firstChild.textContent  = 'enum ';
         }
+        if (d.is_namespace) {
+            Roo.docs.classType.el.dom.firstChild.textContent  = 'namespace ';
+        }
+        if (d.is_struct) {
+            Roo.docs.classType.el.dom.firstChild.textContent  = 'Struct ';
+        }
         if (d.is_mixin) {
             Roo.docs.classType.el.dom.firstChild.textContent  = 'mixin ';
         }
