@@ -71,6 +71,7 @@ Roo.docs.template  = {
         //var linkSymbol  = this.linkSymbol;
         var output = '<ul class="inheritance res-block"> ';
         
+        var oar = []
         var iterArray  = function(ar) {
             for(var i = 0; i < ar.length; i++) {
                 output += '<li>' +linkSymbol(ar[i]) ; // a href...
@@ -84,8 +85,17 @@ Roo.docs.template  = {
             }
             
         };
-        iterArray(data.childClasses[data.name].sprt();;
-         
+        iterArray(data.childClasses[data.name];
+        
+        var output = '<ul class="inheritance res-block"> ';
+        for(var i = 0; i < aor.length; i++) {
+                output += '<li>' +linkSymbol(oar[i]) + '</li>' ; // a href...
+                  
+                
+            }
+        
+        
+        
         return output +   '</ul>';
     
     },
