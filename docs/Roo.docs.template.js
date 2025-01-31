@@ -67,7 +67,7 @@ Roo.docs.template  = {
         }
         
         data.childClasses = data.childClasses.sort(function(a,b) {
-            return a == b ? 0 (a >  b  ? -1 : 1 );
+            return a == b ? 0  : (a >  b  ? -1 : 1 );
         });
 
         var linkSymbol  = this.linkSymbol;
