@@ -76,7 +76,7 @@ Roo.docs.template  = {
                 output += '<li>' +linkSymbol(ar[i]) ; // a href...
                 if (typeof(data.childClasses[ar[i]]) != 'undefined') {
                     output += '<ul>';
-                    iterArray(data.childClasses[ar[i]]);
+                    iterArray(data.childClasses[ar[i]].sort());
                     output += '</ul>';
                 }
                 output +=  "</li>";
