@@ -593,7 +593,7 @@ Roo.docs.init = {
         */
         
         Roo.docs.classType.el.dom.firstChild.textContent  = 'Class ';
-        if (d.isAbstract) {
+        if (d.is_interface) {
             Roo.docs.classType.el.dom.firstChild.textContent  = 'Interface '; // slightly better?
         }
         if (d.is_enum) {
