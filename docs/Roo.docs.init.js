@@ -593,18 +593,25 @@ Roo.docs.init = {
         */
         
         Roo.docs.classType.el.dom.firstChild.textContent  = 'Class ';
-        if (d.is_interface) {
-            Roo.docs.classType.el.dom.firstChild.textContent  = 'Interface '; // slightly better?
+        if (d.stype) {
+            switch (d.stype) {
+                case this.SymbolKind.Interface:
+                     Roo.docs.classType.el.dom.firstChild.textContent  = 'Interface '; // slightly better?
+                     break;
+                case this.SymbolKind.Enum:
+                   Roo.docs.classType.el.dom.firstChild.textContent  = 'Enum '; // slightly better?
+                   break;
+                case this.SymbolKind.Namespace:
+                   Roo.docs.classType.el.dom.firstChild.textContent  = 'Namespace '; // slightly better?
+                   break;
+                case this.SymbolKind.Struct:
+                   Roo.docs.classType.el.dom.firstChild.textContent  = 'Struct '; // slightly better?
+                   break;
+                
+
+            }
         }
-        if (d.is_enum) {
-            Roo.docs.classType.el.dom.firstChild.textContent  = 'Enum ';
-        }
-        if (d.is_namespace) {
-            Roo.docs.classType.el.dom.firstChild.textContent  = 'Namespace ';
-        }
-        if (d.is_struct) {
-            Roo.docs.classType.el.dom.firstChild.textContent  = 'Struct ';
-        }
+      
         if (d.is_mixin) {
             Roo.docs.classType.el.dom.firstChild.textContent  = 'Mixin ';
         }
