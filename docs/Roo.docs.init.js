@@ -594,19 +594,19 @@ Roo.docs.init = {
         
         Roo.docs.classType.el.dom.firstChild.textContent  = 'Class ';
         if (d.isAbstract) {
-            Roo.docs.classType.el.dom.firstChild.textContent  = 'interface '; // slightly better?
+            Roo.docs.classType.el.dom.firstChild.textContent  = 'Interface '; // slightly better?
         }
         if (d.is_enum) {
-            Roo.docs.classType.el.dom.firstChild.textContent  = 'enum ';
+            Roo.docs.classType.el.dom.firstChild.textContent  = 'Enum ';
         }
         if (d.is_namespace) {
-            Roo.docs.classType.el.dom.firstChild.textContent  = 'namespace ';
+            Roo.docs.classType.el.dom.firstChild.textContent  = 'Namespace ';
         }
         if (d.is_struct) {
             Roo.docs.classType.el.dom.firstChild.textContent  = 'Struct ';
         }
         if (d.is_mixin) {
-            Roo.docs.classType.el.dom.firstChild.textContent  = 'mixin ';
+            Roo.docs.classType.el.dom.firstChild.textContent  = 'Mixin ';
         }
         document.body.scrollTop  = 0;
         Roo.docs.doc_name.el.dom.innerHTML = Roo.docs.template.resolveLinks(d.name);
