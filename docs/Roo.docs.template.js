@@ -66,7 +66,6 @@ Roo.docs.template  = {
             return '';
         }
         
-        data.childClasses[data.name] = data.childClasses[data.name].sort(f);
 
         var linkSymbol  = this.linkSymbol;
         //var linkSymbol  = this.linkSymbol;
@@ -85,7 +84,7 @@ Roo.docs.template  = {
             }
             
         };
-        iterArray(data.childClasses[data.name]);
+        iterArray(data.childClasses[data.name].sprt();;
          
         return output +   '</ul>';
     
