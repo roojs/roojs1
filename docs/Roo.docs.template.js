@@ -71,14 +71,12 @@ Roo.docs.template  = {
         //var linkSymbol  = this.linkSymbol;
         var output = '<ul class="inheritance res-block"> ';
         
-        var oar = []
+        var oar = [];
         var iterArray  = function(ar) {
             for(var i = 0; i < ar.length; i++) {
                 oar.push(ar[i]);
                 if (typeof(data.childClasses[ar[i]]) != 'undefined') {
-                
                     iterArray(data.childClasses[ar[i]]);
-                 
                 }
                 
                 
