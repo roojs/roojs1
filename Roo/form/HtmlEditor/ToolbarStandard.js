@@ -510,14 +510,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
 
                                             textNode.parentNode.insertBefore(document.createTextNode(text), textNode);
                                             textNode.parentNode.removeChild(textNode);
-
-
                                         }
-
-
-                                        // if(prev.nodeType == 3) {
-                                        //     document.createTextNode
-                                        // }
                                     }
                                 }
                                 break;

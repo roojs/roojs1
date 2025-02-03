@@ -30679,19 +30679,25 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                                             var textNode = ar[0];
 
                                             var prev = textNode.previousSibling;
-                                            Roo.log(prev.nodeType);
-                                            Roo.log(prev.textContent);
-                                            Roo.log(textNode.nodeType);
-                                            Roo.log(textNode.textContent);
                                             var next = textNode.nextSibling;
-                                            Roo.log(next.nodeType);
-                                            Roo.log(next.textContent);
+
+                                            // merge adjacent text nodes
+
+                                            var text = '';
+
+                                            if(prev.nodeType == 3) {
+                                                text += prev.textContent;
+                                                textNode.parentNode.removeChild(prev);
+                                            }
+                                            text += textNode.textContent;
+                                            if(next.nodeType == 3) {
+                                                text += next.textContent;
+                                                textNode.parentNode.removeChild(next);
+                                            }
+
+                                            textNode.parentNode.insertBefore(document.createTextNode(text), textNode);
+                                            textNode.parentNode.removeChild(textNode);
                                         }
-
-
-                                        // if(prev.nodeType == 3) {
-                                        //     document.createTextNode
-                                        // }
                                     }
                                 }
                                 break;
