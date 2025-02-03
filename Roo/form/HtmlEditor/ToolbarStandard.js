@@ -486,6 +486,12 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                                         }
                                         node.parentNode.removeChild(node);
                                     }
+
+                                    Roo.log(node.nodeType);
+                                    Roo.log(node.textContent);
+                                    var next = node.nextSibling;
+                                    Roo.log(next.nodeType);
+                                    Roo.log(next.textContent);
                                 }
                                 break;
                             }
