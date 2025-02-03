@@ -457,13 +457,10 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 html: 'Change Selected Text Direction',
                 handler: function(a, b) {
                     var sel = editorcore.getSelection();
-                    Roo.log(sel);
                     var range = sel.getRangeAt();
-                    Roo.log(range);
                     // select plain text within same container
                     if(range.startContainer == range.endContainer && range.startContainer.nodeType == 3) {
                         var ancestors = editorcore.getAllAncestors();
-                        Roo.log(ancestors);
                         var removeDir = false;
                         for(var i = 0; i < ancestors.length; i++) {
                             var node = ancestors[i];
