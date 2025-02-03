@@ -30686,12 +30686,12 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                                         if(ar.length == 1 && ar[0].nodeType == 3) {
                                             var textNode = ar[0].nodeType;
 
-                                            var prev = newNode.previousSibling;
+                                            var prev = textNode.previousSibling;
                                             Roo.log(prev.nodeType);
                                             Roo.log(prev.textContent);
                                             Roo.log(textNode.nodeType);
                                             Roo.log(textNode.textContent);
-                                            var next = newNode.nextSibling;
+                                            var next = textNode.nextSibling;
                                             Roo.log(next.nodeType);
                                             Roo.log(next.textContent);
                                         }
