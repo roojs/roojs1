@@ -474,6 +474,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                                     node.removeAttribute('dir');
     
                                     removeDir = true;
+                                    var textNode = false;
     
                                     // remove span if no attribute
                                     if(node.attributes.length == 0) {
@@ -482,10 +483,14 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                                          
                                             node.removeChild(ar[i]);
                                             node.parentNode.insertBefore(ar[i], node);
+                                            textNode = ar[i];
                                            
                                         }
                                         node.parentNode.removeChild(node);
                                     }
+
+                                    Roo.log(node);
+                                    /*
 
                                     var prev = node.previousSibling;
                                     Roo.log(prev.nodeType);
@@ -495,6 +500,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                                     var next = node.nextSibling;
                                     Roo.log(next.nodeType);
                                     Roo.log(next.textContent);
+                                    */
                                 }
                                 break;
                             }
