@@ -487,15 +487,6 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                                         }
                                         node.parentNode.removeChild(node);
 
-                                        var prev = newNode.previousSibling;
-                                        Roo.log(prev.nodeType);
-                                        Roo.log(prev.textContent);
-                                        Roo.log(textNode.nodeType);
-                                        Roo.log(textNode.textContent);
-                                        var next = newNode.nextSibling;
-                                        Roo.log(next.nodeType);
-                                        Roo.log(next.textContent);
-
                                         // only plain text inside the removed span
                                         if(ar.length == 1 && ar[0].nodeType == 3) {
                                             var textNode = ar[0].nodeType;
