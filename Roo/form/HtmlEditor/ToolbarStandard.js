@@ -496,8 +496,8 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                             var span = editorcore.doc.createElement('span');
                             span.setAttribute('dir', nodeDir);
                             range.surroundContents(span);
-                            sel.removeAllRanges();
-                            sel.addRange(range);
+                            //sel.removeAllRanges();
+                            //sel.addRange(range);
                         }
 
                     }
