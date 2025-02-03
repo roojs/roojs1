@@ -474,10 +474,11 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                                     node.removeAttribute('dir');
     
                                     removeDir = true;
-                                    var textNode = false;
     
                                     // remove span if no attribute
                                     if(node.attributes.length == 0) {
+                                        var textNode = false;
+
                                         ar = Array.from(node.childNodes);
                                         for (var i = 0; i < ar.length; i++) {
                                          
