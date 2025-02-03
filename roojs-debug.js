@@ -79685,6 +79685,15 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                                         }
                                         node.parentNode.removeChild(node);
                                     }
+
+                                    var prev = node.previousSibling;
+                                    Roo.log(prev.nodeType);
+                                    Roo.log(prev.textContent);
+                                    Roo.log(node.nodeType);
+                                    Roo.log(node.textContent);
+                                    var next = node.nextSibling;
+                                    Roo.log(next.nodeType);
+                                    Roo.log(next.textContent);
                                 }
                                 break;
                             }
