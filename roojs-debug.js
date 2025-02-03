@@ -79676,24 +79676,27 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
     
                                     // remove span if no attribute
                                     if(node.attributes.length == 0) {
+                                        var textNode = false;
+
                                         ar = Array.from(node.childNodes);
                                         for (var i = 0; i < ar.length; i++) {
                                          
                                             node.removeChild(ar[i]);
                                             node.parentNode.insertBefore(ar[i], node);
+                                            textNode = ar[i];
                                            
                                         }
                                         node.parentNode.removeChild(node);
-                                    }
 
-                                    var prev = node.previousSibling;
-                                    Roo.log(prev.nodeType);
-                                    Roo.log(prev.textContent);
-                                    Roo.log(node.nodeType);
-                                    Roo.log(node.textContent);
-                                    var next = node.nextSibling;
-                                    Roo.log(next.nodeType);
-                                    Roo.log(next.textContent);
+                                        var prev = textNode.previousSibling;
+                                        Roo.log(prev.nodeType);
+                                        Roo.log(prev.textContent);
+                                        Roo.log(textNode.nodeType);
+                                        Roo.log(textNode.textContent);
+                                        var next = textNode.nextSibling;
+                                        Roo.log(next.nodeType);
+                                        Roo.log(next.textContent);
+                                    }
                                 }
                                 break;
                             }

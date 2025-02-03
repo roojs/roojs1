@@ -488,20 +488,16 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                                            
                                         }
                                         node.parentNode.removeChild(node);
+
+                                        var prev = textNode.previousSibling;
+                                        Roo.log(prev.nodeType);
+                                        Roo.log(prev.textContent);
+                                        Roo.log(textNode.nodeType);
+                                        Roo.log(textNode.textContent);
+                                        var next = textNode.nextSibling;
+                                        Roo.log(next.nodeType);
+                                        Roo.log(next.textContent);
                                     }
-
-                                    Roo.log(node);
-                                    /*
-
-                                    var prev = node.previousSibling;
-                                    Roo.log(prev.nodeType);
-                                    Roo.log(prev.textContent);
-                                    Roo.log(node.nodeType);
-                                    Roo.log(node.textContent);
-                                    var next = node.nextSibling;
-                                    Roo.log(next.nodeType);
-                                    Roo.log(next.textContent);
-                                    */
                                 }
                                 break;
                             }
