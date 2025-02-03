@@ -477,26 +477,42 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
     
                                     // remove span if no attribute
                                     if(node.attributes.length == 0) {
-                                        var textNode = false;
 
                                         ar = Array.from(node.childNodes);
                                         for (var i = 0; i < ar.length; i++) {
                                          
                                             node.removeChild(ar[i]);
                                             node.parentNode.insertBefore(ar[i], node);
-                                            textNode = ar[i];
                                            
                                         }
                                         node.parentNode.removeChild(node);
 
-                                        var prev = textNode.previousSibling;
+                                        var prev = newNode.previousSibling;
                                         Roo.log(prev.nodeType);
                                         Roo.log(prev.textContent);
                                         Roo.log(textNode.nodeType);
                                         Roo.log(textNode.textContent);
-                                        var next = textNode.nextSibling;
+                                        var next = newNode.nextSibling;
                                         Roo.log(next.nodeType);
                                         Roo.log(next.textContent);
+
+                                        if(ar.length == 1 && ar[0].nodeType == 3) {
+                                            var textNode = ar[0].nodeType;
+
+                                            var prev = newNode.previousSibling;
+                                            Roo.log(prev.nodeType);
+                                            Roo.log(prev.textContent);
+                                            Roo.log(textNode.nodeType);
+                                            Roo.log(textNode.textContent);
+                                            var next = newNode.nextSibling;
+                                            Roo.log(next.nodeType);
+                                            Roo.log(next.textContent);
+                                        }
+
+
+                                        // if(prev.nodeType == 3) {
+                                        //     document.createTextNode
+                                        // }
                                     }
                                 }
                                 break;
