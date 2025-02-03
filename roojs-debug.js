@@ -79662,6 +79662,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                     // select plain text within same container
                     if(range.startContainer == range.endContainer && range.startContainer.nodeType == 3) {
                         var ancestors = editorcore.getAllAncestors();
+                        Roo.log(ancestors);
                         var removeDir = false;
                         for(var i = 0; i < ancestors.length; i++) {
                             var node = ancestors[i];
@@ -79695,8 +79696,6 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                             var span = editorcore.doc.createElement('span');
                             span.setAttribute('dir', nodeDir);
                             range.surroundContents(span);
-                            //sel.removeAllRanges();
-                            //sel.addRange(range);
                         }
 
                     }
