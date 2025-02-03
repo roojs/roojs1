@@ -496,7 +496,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                                         Roo.log(next.nodeType);
                                         Roo.log(next.textContent);
 
-                                        // plain text inside the removed span
+                                        // only plain text inside the removed span
                                         if(ar.length == 1 && ar[0].nodeType == 3) {
                                             var textNode = ar[0].nodeType;
 
