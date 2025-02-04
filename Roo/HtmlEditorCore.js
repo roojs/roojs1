@@ -396,6 +396,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 new Roo.htmleditor.FilterBlack({ node : div, tag : this.black});
                 new Roo.htmleditor.FilterAttributes({
                     node : div,
+                    lang : this.language,
                     attrib_white : [
                             'href',
                             'src',
@@ -408,6 +409,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'data-width',
                             'data-caption',
                             'start' ,
+                            'dir',
                             'style',
                             // youtube embed.
                             'class',
@@ -492,7 +494,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 this.owner.fireEvent('push', this, v);
             }
             if (this.autoClean) {
-                new Roo.htmleditor.FilterParagraph({node : this.doc.body}); // paragraphs
+                new Roo.htmleditor.FilterParagraph({node : this.doc.body, lang: this.language}); // paragraphs
                 new Roo.htmleditor.FilterSpan({node : this.doc.body}); // empty spans
             }
             if (this.enableBlocks) {
@@ -718,6 +720,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
                 node : d,
+                lang : this.language,
                 attrib_white : [
                     'href',
                     'src',
@@ -725,7 +728,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'align',
                     'colspan',
                     'rowspan',
-                    'start'
+                    'start',
+                    'dir'
                 /*  THESE ARE NOT ALLWOED FOR PASTE
                  *    'data-display',
                     'data-caption-display',
@@ -746,7 +750,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
             // should be fonts..
             new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', ':' ]} );
-            new Roo.htmleditor.FilterParagraph({ node : d });
+            new Roo.htmleditor.FilterParagraph({ node : d, lang: this.language });
             new Roo.htmleditor.FilterHashLink({node : d});
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
@@ -1436,6 +1440,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         new Roo.htmleditor.FilterComment({node : node});
         new Roo.htmleditor.FilterAttributes({
                 node : node,
+                lang : this.language,
                 attrib_black : this.ablack,
                 attrib_clean : this.aclean,
                 style_white : this.cwhite,

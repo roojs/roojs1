@@ -72376,6 +72376,7 @@ Roo.htmleditor.Filter.prototype = {
 Roo.htmleditor.FilterAttributes = function(cfg)
 {
     Roo.apply(this, cfg);
+    this.lang = this.lang || 'en';
     this.attrib_black = this.attrib_black || [];
     this.attrib_white = this.attrib_white || [];
 
@@ -72404,6 +72405,9 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
         }
         
         for (var i = node.attributes.length-1; i > -1 ; i--) {
+            if(i >= node.attributes.length) {
+                continue;
+            }
             var a = node.attributes[i];
             //console.log(a);
             if (this.attrib_white.length && this.attrib_white.indexOf(a.name.toLowerCase()) < 0) {
@@ -72438,6 +72442,7 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
             if (a.name == 'class') {
                 if (a.value.match(/^Mso/)) {
                     node.removeAttribute('class');
+                    continue;
                 }
                 
                 if (a.value.match(/^body$/)) {
@@ -72446,9 +72451,18 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                 continue;
             }
             
-            
             // style cleanup!?
             // class cleanup?
+
+            if(a.name == 'dir') {
+                var documentDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'rtl' : 'ltr';
+                var nodeDir = a.value.toLowerCase();
+
+                // remove span dir if it is same as the document dir
+                if(node.tagName.toLowerCase() == 'span' && nodeDir == documentDir) {
+                    node.removeAttribute(a.name);
+                }
+            }
             
         }
         return true; // clean children
@@ -72682,6 +72696,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
 
 Roo.htmleditor.FilterParagraph = function(cfg)
 {
+    this.lang = cfg.lang || 'en';
     // no need to apply config.
     this.searchTag(cfg.node);
 }
@@ -72705,12 +72720,30 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
             return false; // no need to walk..
         }
 
+        var documentDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'rtl' : 'ltr';
+        var nodeDir = node.hasAttribute('dir') ? node.getAttribute('dir').toLowerCase() : false;
+        var span = node.ownerDocument.createElement('span');
+
         var ar = Array.from(node.childNodes);
         for (var i = 0; i < ar.length; i++) {
             node.removeChild(ar[i]);
+
+            // copy content to span with if the direction is needed
+            if(nodeDir && nodeDir != documentDir) {
+                span.appendChild(ar[i]);
+                continue;
+            }
+
             // what if we need to walk these???
             node.parentNode.insertBefore(ar[i], node);
         }
+
+        if(nodeDir && nodeDir != documentDir) {
+            // keep direction
+            span.setAttribute('dir', nodeDir);
+            node.parentNode.insertBefore(span, node);
+        }
+
         // now what about this?
         // <p> &nbsp; </p>
         
@@ -72780,9 +72813,10 @@ Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.FilterKeepChildren,
  
     replaceTag : function(node)
     {
-        if (node.attributes && node.attributes.length > 0) {
+        if (node.attributes && node.attributes.length > 0 && node.textContent.trim().length > 0) {
             return true; // walk if there are any.
         }
+
         Roo.htmleditor.FilterKeepChildren.prototype.replaceTag.call(this, node);
         return false;
      
@@ -77137,6 +77171,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 new Roo.htmleditor.FilterBlack({ node : div, tag : this.black});
                 new Roo.htmleditor.FilterAttributes({
                     node : div,
+                    lang : this.language,
                     attrib_white : [
                             'href',
                             'src',
@@ -77149,6 +77184,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'data-width',
                             'data-caption',
                             'start' ,
+                            'dir',
                             'style',
                             // youtube embed.
                             'class',
@@ -77233,7 +77269,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 this.owner.fireEvent('push', this, v);
             }
             if (this.autoClean) {
-                new Roo.htmleditor.FilterParagraph({node : this.doc.body}); // paragraphs
+                new Roo.htmleditor.FilterParagraph({node : this.doc.body, lang: this.language}); // paragraphs
                 new Roo.htmleditor.FilterSpan({node : this.doc.body}); // empty spans
             }
             if (this.enableBlocks) {
@@ -77459,6 +77495,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
                 node : d,
+                lang : this.language,
                 attrib_white : [
                     'href',
                     'src',
@@ -77466,7 +77503,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'align',
                     'colspan',
                     'rowspan',
-                    'start'
+                    'start',
+                    'dir'
                 /*  THESE ARE NOT ALLWOED FOR PASTE
                  *    'data-display',
                     'data-caption-display',
@@ -77487,7 +77525,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
             // should be fonts..
             new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', ':' ]} );
-            new Roo.htmleditor.FilterParagraph({ node : d });
+            new Roo.htmleditor.FilterParagraph({ node : d, lang: this.language });
             new Roo.htmleditor.FilterHashLink({node : d});
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
@@ -78177,6 +78215,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         new Roo.htmleditor.FilterComment({node : node});
         new Roo.htmleditor.FilterAttributes({
                 node : node,
+                lang : this.language,
                 attrib_black : this.ablack,
                 attrib_clean : this.aclean,
                 style_white : this.cwhite,
@@ -79610,6 +79649,81 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                     editorcore.syncValue();
                 },
                 tabIndex:-1
+            });
+
+            cmenu.menu.items.push({
+                actiontype : 'dir',
+                html: 'Change Selected Text Direction',
+                handler: function(a, b) {
+                    var sel = editorcore.getSelection();
+                    var range = sel.getRangeAt();
+                    // select plain text within same container
+                    if(range.startContainer == range.endContainer && range.startContainer.nodeType == 3) {
+                        var ancestors = editorcore.getAllAncestors();
+                        var removeDir = false;
+                        for(var i = 0; i < ancestors.length; i++) {
+                            var node = ancestors[i];
+                            // find closest span
+                            if(node.tagName && node.tagName.toLowerCase() == 'span') {
+                                // remove dir if exists
+                                if(node.hasAttribute('dir')) {
+                                    node.removeAttribute('dir');
+    
+                                    removeDir = true;
+    
+                                    // remove span if no attribute
+                                    if(node.attributes.length == 0) {
+
+                                        ar = Array.from(node.childNodes);
+                                        for (var i = 0; i < ar.length; i++) {
+                                         
+                                            node.removeChild(ar[i]);
+                                            node.parentNode.insertBefore(ar[i], node);
+                                           
+                                        }
+                                        node.parentNode.removeChild(node);
+
+                                        // only plain text inside the removed span
+                                        if(ar.length == 1 && ar[0].nodeType == 3) {
+                                            var textNode = ar[0];
+
+                                            var prev = textNode.previousSibling;
+                                            var next = textNode.nextSibling;
+
+                                            // merge adjacent text nodes
+
+                                            var text = '';
+
+                                            if(prev.nodeType == 3) {
+                                                text += prev.textContent;
+                                                textNode.parentNode.removeChild(prev);
+                                            }
+                                            text += textNode.textContent;
+                                            if(next.nodeType == 3) {
+                                                text += next.textContent;
+                                                textNode.parentNode.removeChild(next);
+                                            }
+
+                                            textNode.parentNode.insertBefore(document.createTextNode(text), textNode);
+                                            textNode.parentNode.removeChild(textNode);
+                                        }
+                                    }
+                                }
+                                break;
+                            }
+                        }
+    
+                        // if no dir removed
+                        if(!removeDir) {
+                            var nodeDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(editorcore.language) ? 'ltr' : 'rtl';
+                            var span = editorcore.doc.createElement('span');
+                            span.setAttribute('dir', nodeDir);
+                            range.surroundContents(span);
+                        }
+
+                    }
+                },
+                tabIndex: -1
             });
             
             
@@ -96005,7 +96119,7 @@ Roo.bootstrap.Toast  = function(config)
          * @param {Roo.bootstrap.Toast} toast
          * @param {Roo.EventObject} e
          */
-        "show" : true,
+        "show" : true
     });
     
     
@@ -96034,7 +96148,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
                         {
                             tag : 'img',
                             src : Roo.BLANK_IMAGE_URL,
-                            cls : 'rounded mr-2 bg-' + this.weight,
+                            cls : 'rounded mr-2 bg-' + this.weight
                         },
                         {
                             tag : 'small',
@@ -96167,7 +96281,7 @@ Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
      */
     updateProgress : function(n)
     {
-        this.progress = n
+        this.progress = n;
         if (this.progress !== false) {
             this.progress = Math.min(this.progress, 1.0);
             this.progress = Math.max(this.progress, 0.0);
