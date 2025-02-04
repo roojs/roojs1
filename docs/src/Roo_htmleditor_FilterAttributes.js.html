@@ -10,6 +10,7 @@
 </span><span class="jsdoc-var">Roo.htmleditor.FilterAttributes </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
 {
     </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.lang </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.lang </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'en'</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.attrib_black </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.attrib_black </span><span class="jsdoc-syntax">|| [];
     </span><span class="jsdoc-var">this.attrib_white </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.attrib_white </span><span class="jsdoc-syntax">|| [];
 
@@ -38,6 +39,9 @@
         }
 
         </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.attributes.length</span><span class="jsdoc-syntax">-1; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt; -1 ; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">--) {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">node.attributes.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.attributes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
             </span><span class="jsdoc-comment">//console.log(a);
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.attrib_white.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.attrib_white.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name.toLowerCase</span><span class="jsdoc-syntax">()) &lt; 0) {
@@ -72,6 +76,7 @@
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'class'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.value.match</span><span class="jsdoc-syntax">(/^Mso/)) {
                     </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'class'</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
                 }
 
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.value.match</span><span class="jsdoc-syntax">(/^body$/)) {
@@ -80,11 +85,20 @@
                 </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
             }
 
-
             </span><span class="jsdoc-comment">// style cleanup!?
             // class cleanup?
 
-        </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'dir'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">documentDir </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">'ar'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'he'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'fa'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'ur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'ps'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'syr'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'dv'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'arc'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'nqo'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'sam'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'tzm'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'ug'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'yi'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.includes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lang</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'rtl' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ltr'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeDir </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">a.value.toLowerCase</span><span class="jsdoc-syntax">();
+
+                </span><span class="jsdoc-comment">// remove span dir if it is same as the document dir
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'span' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">nodeDir </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">documentDir</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name</span><span class="jsdoc-syntax">);
+                }
+            }
+
+        }
         </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// clean children
     </span><span class="jsdoc-syntax">},
 
