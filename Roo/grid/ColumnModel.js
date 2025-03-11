@@ -474,7 +474,7 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      */
     getDisplayedColumnIndexes: function(add) {
         var indexes = this.config.filter(function(c) {
-            return typeof(c.hidden) == 'undefined' && c.hidden !== true;
+            return typeof(c.hidden) == 'undefined' || c.hidden !== true;
         }).map(function(c) {
             return c.dataIndex;
         });
