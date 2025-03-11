@@ -43316,12 +43316,14 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     },
 
     /**
-     * 
+     * Return the dataIndex for display columns
      * @param {Array} add Array of data indexes added to the result
      * @return {Array} result
      */
-    getDataIndexes: function(add) {
-        var indexes = this.config.map(function(c) {
+    getDisplayedColumnIndexes: function(add) {
+        var indexes = this.config.filter(function(c) {
+            return typeof(c.hidden) == 'undefined' || c.hidden !== true;
+        }).map(function(c) {
             return c.dataIndex;
         });
 
