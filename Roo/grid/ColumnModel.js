@@ -468,6 +468,19 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     },
 
     /**
+     * 
+     * @param {Array} add Array of data indexes added to the result
+     * @return {Array} result
+     */
+    getDataIndexes: function(add) {
+        var indexes = this.config.map(function(c) {
+            return c.dataIndex;
+        });
+
+        return indexes.concat(add);
+    },
+
+    /**
      * Sets the dataIndex for a column.
      * @param {Number} col The column index
      * @param {Number} dataIndex The new dataIndex
