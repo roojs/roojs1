@@ -468,7 +468,7 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     },
 
     /**
-     * Return the dataIndex for display columns
+     * Return the dataIndex for displayed columns
      * @param {Array} add Array of data indexes added to the result
      * @return {Array} result
      */
