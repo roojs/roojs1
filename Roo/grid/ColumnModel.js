@@ -473,7 +473,11 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      * @return {Array} result
      */
     getDisplayedColumnIndexes: function(add) {
-        var indexes = this.config.map(function(c) {
+        var indexes = this.config.filter(function(c) {
+            if(typeof(c.hidden) != 'undefined' && c.hidden === true) {
+                return false;
+            }
+        }).map(function(c) {
             return c.dataIndex;
         });
 
