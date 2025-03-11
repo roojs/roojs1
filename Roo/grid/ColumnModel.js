@@ -477,6 +477,7 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
             if(typeof(c.hidden) != 'undefined' && c.hidden === true) {
                 return false;
             }
+            return !(typeof(c.hidden) != 'undefined' && c.hidden === true);
         }).map(function(c) {
             return c.dataIndex;
         });
