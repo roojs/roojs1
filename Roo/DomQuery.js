@@ -228,7 +228,7 @@ Roo.DomQuery = function(){
         compile : function(path, type){
             type = type || "select";
             
- 			var fn = ["var mode; ++Roo.DomQuery.batch; var n = arguments[0] || document;\n"];
+ 			var fn = ["var mode; ++Roo.DomQuery.batch; var n = root = arguments[0] || document;\n"];
             var q = path, mode, lq;
             var tk = Roo.DomQuery.matchers;
             var tklen = tk.length;

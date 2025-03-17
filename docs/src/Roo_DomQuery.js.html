@@ -228,8 +228,7 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
         </span><span class="jsdoc-var">compile </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">path</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;select&quot;</span><span class="jsdoc-syntax">;
 
-            </span><span class="jsdoc-comment">//var fn = [&quot;var f = function(root){\n var mode; ++batch; var n = root || document;\n&quot;];
-			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">&quot;var mode; ++Roo.DomQuery.batch; var n = arguments[0] || document;\n&quot;</span><span class="jsdoc-syntax">];
+ 			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">&quot;var mode; ++Roo.DomQuery.batch; var n = root = arguments[0] || document;\n&quot;</span><span class="jsdoc-syntax">];
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">path</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">lq</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tk </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomQuery.matchers</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tklen </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tk.length</span><span class="jsdoc-syntax">;
@@ -294,21 +293,11 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
                     </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mm</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
                 }
             }
-            </span><span class="jsdoc-comment">//fn[fn.length] = &quot;return nodup(n);\n}&quot;;
-			</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fn.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">&quot;return Roo.DomQuery.nodup(n);&quot;</span><span class="jsdoc-syntax">;
-
+ 			</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fn.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">&quot;return Roo.DomQuery.nodup(n);&quot;</span><span class="jsdoc-syntax">;
 
 			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">));
-		</span><span class="jsdoc-comment">/*
-			return function(root)  {
-				return fnd(root);
-			}
-			/*
-			Roo.log(fn.join(&quot;&quot;));
-            eval(fn.join(&quot;&quot;));
-            return f;
-            */
-        </span><span class="jsdoc-syntax">},
+
+        },
 
         </span><span class="jsdoc-comment">/**
          * Selects a group of elements.
