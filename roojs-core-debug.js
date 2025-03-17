@@ -6411,23 +6411,7 @@ Roo.DomQuery = function(){
 
     
 
-    function attrValue(n, attr){
-        if(!n.tagName && typeof n.length != "undefined"){
-            n = n[0];
-        }
-        if(!n){
-            return null;
-        }
-        if(attr == "for"){
-            return n.htmlFor;
-        }
-        if(attr == "class" || attr == "className"){
-	    return (n instanceof SVGElement) ? n.className.baseVal : n.className;
-        }
-        return n.getAttribute(attr) || n[attr];
-
-    };
-
+    
      
 
     function concat(a, b){
@@ -6531,8 +6515,7 @@ Roo.DomQuery = function(){
         compile : function(path, type){
             type = type || "select";
             
-            //var fn = ["var f = function(root){\n var mode; ++batch; var n = root || document;\n"];
-			var fn = ["var mode; ++Roo.DomQuery.batch; var n = arguments[0] || document;\n"];
+ 			var fn = ["var mode; ++Roo.DomQuery.batch; var n = arguments[0] || document;\n"];
             var q = path, mode, lq;
             var tk = Roo.DomQuery.matchers;
             var tklen = tk.length;
@@ -6597,32 +6580,10 @@ Roo.DomQuery = function(){
                     q = q.replace(mm[1], "");
                 }
             }
-            //fn[fn.length] = "return nodup(n);\n}";
-			fn[fn.length] = "return Roo.DomQuery.nodup(n);";
-            
-             /** 
-              * list of variables that need from compression as they are used by eval.
-             *  eval:var:batch 
-             *  eval:var:nodup
+ 			fn[fn.length] = "return Roo.DomQuery.nodup(n);";
              
-             
-             *  eval:var:mode
-             *  eval:var:root
-             *  eval:var:n
-             *  eval:var:byClassName
-              *  eval:var:attrValue
-             * 
-             **/
 			return Function(fn.join(""));
-		/*
-			return function(root)  {
-				return fnd(root);
-			}
-			/*
-			Roo.log(fn.join(""));
-            eval(fn.join(""));
-            return f;
-            */
+		 
         },
 
         /**
@@ -6747,7 +6708,7 @@ Roo.DomQuery = function(){
                 select: 'n = Roo.DomQuery.byId(n, null, "{1}");'
             },{
                 re: /^@([\w-]+)/,
-                select: 'return {firstChild:{nodeValue:attrValue(n, "{1}")}};'
+                select: 'return {firstChild:{nodeValue:Roo.DomQuery.attrValue(n, "{1}")}};'
             }
         ],
 
@@ -7119,7 +7080,25 @@ Roo.DomQuery = function(){
 				}
 			}
 			return r;
+		},
+		attrValue : function (n, attr)
+		{
+			if(!n.tagName && typeof n.length != "undefined"){
+				n = n[0];
+			}
+			if(!n){
+				return null;
+			}
+			if(attr == "for"){
+				return n.htmlFor;
+			}
+			if(attr == "class" || attr == "className"){
+			return (n instanceof SVGElement) ? n.className.baseVal : n.className;
+			}
+			return n.getAttribute(attr) || n[attr];
+	
 		}
+
 
     };
 }();

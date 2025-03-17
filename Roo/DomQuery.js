@@ -228,8 +228,7 @@ Roo.DomQuery = function(){
         compile : function(path, type){
             type = type || "select";
             
-            //var fn = ["var f = function(root){\n var mode; ++batch; var n = root || document;\n"];
-			var fn = ["var mode; ++Roo.DomQuery.batch; var n = arguments[0] || document;\n"];
+ 			var fn = ["var mode; ++Roo.DomQuery.batch; var n = arguments[0] || document;\n"];
             var q = path, mode, lq;
             var tk = Roo.DomQuery.matchers;
             var tklen = tk.length;
@@ -294,20 +293,10 @@ Roo.DomQuery = function(){
                     q = q.replace(mm[1], "");
                 }
             }
-            //fn[fn.length] = "return nodup(n);\n}";
-			fn[fn.length] = "return Roo.DomQuery.nodup(n);";
-            
+ 			fn[fn.length] = "return Roo.DomQuery.nodup(n);";
              
 			return Function(fn.join(""));
-		/*
-			return function(root)  {
-				return fnd(root);
-			}
-			/*
-			Roo.log(fn.join(""));
-            eval(fn.join(""));
-            return f;
-            */
+		 
         },
 
         /**
