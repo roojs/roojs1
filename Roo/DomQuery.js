@@ -339,8 +339,9 @@ Roo.DomQuery = function(){
                 }
             }
  			fn[fn.length] = "return Roo.DomQuery.nodup(n);";
-             
-			return Function(fn.join(""));
+            return runFn.createDelegate(null, cmdar, true);
+			
+			//return Function(fn.join(""));
 		 
         },
 
