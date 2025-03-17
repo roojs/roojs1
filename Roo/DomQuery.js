@@ -218,7 +218,8 @@ Roo.DomQuery = function(){
 		getNodes: function(n, root, mode, node, arg) {
 			return Roo.DomQuery.getNodes(n, mode, arg)
 		},
-		
+		fn[fn.length] = 'n = Roo.DomQuery.byId(n, null, "'+tm[2]+'");';
+							cmdar.push([ Roo.DomQuery.byId , tm[2] ]);
 	}
    
 
@@ -285,20 +286,21 @@ Roo.DomQuery = function(){
                     if(tm){
                         if(tm[1] == "#"){
                             fn[fn.length] = 'n = Roo.DomQuery.quickId(n, mode, root, "'+tm[2]+'");';
-							cmdar.push([ Roo.DomQuery.quickId , tm[2] ]);
+							cmdar.push([ "quickId" , tm[2] ]);
                         }else{
                             fn[fn.length] = 'n = Roo.DomQuery.getNodes(n, mode, "'+tm[2]+'");';
-							cmdar.push([ Roo.DomQuery.getNodes , tm[2] ]);
+							cmdar.push([ "getNodes" , tm[2] ]);
                         }
                         q = q.replace(tm[0], "");
                     }else if(q.substr(0, 1) != '@'){
                         fn[fn.length] = 'n = Roo.DomQuery.getNodes(n, mode, "*");';
-						cmdar.push([ Roo.DomQuery.getNodes , "*" ]);
+						cmdar.push([ "getNodes" , "*" ]);
                     }
                 }else{
                     if(tm){
                         if(tm[1] == "#"){
                             fn[fn.length] = 'n = Roo.DomQuery.byId(n, null, "'+tm[2]+'");';
+							cmdar.push([ Roo.DomQuery.byId , tm[2] ]);
                         }else{
                             fn[fn.length] = 'n = Roo.DomQuery.byTag(n, "'+tm[2]+'");';
                         }
