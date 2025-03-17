@@ -229,7 +229,11 @@ Roo.DomQuery = function(){
 		{
             type = type || "select";
             
- 			var fn = ["var mode; ++Roo.DomQuery.batch; var root = arguments[0]; var n = root || document;\n"];
+ 			var fn = ["var mode; ",
+					  "++Roo.DomQuery.batch;",
+					  "var root = arguments[0];",
+					  "var n = root || document;"
+					];
             var q = path, mode, lq;
             var tk = Roo.DomQuery.matchers;
             var tklen = tk.length;
