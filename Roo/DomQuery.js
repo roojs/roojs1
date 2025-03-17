@@ -124,23 +124,7 @@ Roo.DomQuery = function(){
 
     
 
-    function attrValue(n, attr){
-        if(!n.tagName && typeof n.length != "undefined"){
-            n = n[0];
-        }
-        if(!n){
-            return null;
-        }
-        if(attr == "for"){
-            return n.htmlFor;
-        }
-        if(attr == "class" || attr == "className"){
-	    return (n instanceof SVGElement) ? n.className.baseVal : n.className;
-        }
-        return n.getAttribute(attr) || n[attr];
-
-    };
-
+    
      
 
     function concat(a, b){
@@ -313,19 +297,7 @@ Roo.DomQuery = function(){
             //fn[fn.length] = "return nodup(n);\n}";
 			fn[fn.length] = "return Roo.DomQuery.nodup(n);";
             
-             /** 
-              * list of variables that need from compression as they are used by eval.
-             *  eval:var:batch 
-             *  eval:var:nodup
              
-             
-             *  eval:var:mode
-             *  eval:var:root
-             *  eval:var:n
-             *  eval:var:byClassName
-              *  eval:var:attrValue
-             * 
-             **/
 			return Function(fn.join(""));
 		/*
 			return function(root)  {
@@ -460,7 +432,7 @@ Roo.DomQuery = function(){
                 select: 'n = Roo.DomQuery.byId(n, null, "{1}");'
             },{
                 re: /^@([\w-]+)/,
-                select: 'return {firstChild:{nodeValue:attrValue(n, "{1}")}};'
+                select: 'return {firstChild:{nodeValue:Roo.DomQuery.attrValue(n, "{1}")}};'
             }
         ],
 
@@ -832,7 +804,25 @@ Roo.DomQuery = function(){
 				}
 			}
 			return r;
+		},
+		attrValue : function (n, attr)
+		{
+			if(!n.tagName && typeof n.length != "undefined"){
+				n = n[0];
+			}
+			if(!n){
+				return null;
+			}
+			if(attr == "for"){
+				return n.htmlFor;
+			}
+			if(attr == "class" || attr == "className"){
+			return (n instanceof SVGElement) ? n.className.baseVal : n.className;
+			}
+			return n.getAttribute(attr) || n[attr];
+	
 		}
+
 
     };
 }();
