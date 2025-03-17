@@ -211,13 +211,39 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
     }
+	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cmdcall </span><span class="jsdoc-syntax">= {
+		</span><span class="jsdoc-var">quickId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">) {
+			</span><span class="jsdoc-keyword">return  </span><span class="jsdoc-var">Roo.DomQuery.quickId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">);
+		},
+		</span><span class="jsdoc-var">getNodes</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">) {
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.DomQuery.getNodes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">)
+		},
 
+	}
 
 
     </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
         </span><span class="jsdoc-var">getStyle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">);
         },
+
+
+		</span><span class="jsdoc-var">runFn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">)
+		{
+			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">;
+			++</span><span class="jsdoc-var">Roo.DomQuery.batch</span><span class="jsdoc-syntax">;
+			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">root </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">;
+			</span><span class="jsdoc-var">cmds.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">) {
+				</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">)) {
+					</span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">;
+					</span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+				}
+				</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cmdcall</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">[0]](</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">[1]);
+			});
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.DomQuery.nodup</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
+
+		},
+
         </span><span class="jsdoc-comment">/**
          * Compiles a selector/xpath query into a reusable function. The returned function
          * takes one parameter &quot;root&quot; (optional), which is the context node from where the query should start.
@@ -234,6 +260,7 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
 					  </span><span class="jsdoc-string">&quot;var root = arguments[0];&quot;</span><span class="jsdoc-syntax">,
 					  </span><span class="jsdoc-string">&quot;var n = root || document;&quot;
 					</span><span class="jsdoc-syntax">];
+			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cmdar </span><span class="jsdoc-syntax">= [];
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">path</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">lq</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tk </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomQuery.matchers</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tklen </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tk.length</span><span class="jsdoc-syntax">;
@@ -243,6 +270,7 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lmode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">modeRe</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lmode </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">lmode</span><span class="jsdoc-syntax">[1]){
                 </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fn.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'mode=&quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">lmode</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">trimRe</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-string">'&quot;;'</span><span class="jsdoc-syntax">;
+				</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lmode</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">trimRe</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">));
                 </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lmode</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
             }
             </span><span class="jsdoc-comment">// strip leading slashes
@@ -257,12 +285,15 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
                     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">){
                         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[1] == </span><span class="jsdoc-string">&quot;#&quot;</span><span class="jsdoc-syntax">){
                             </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fn.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'n = Roo.DomQuery.quickId(n, mode, root, &quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2]+</span><span class="jsdoc-string">'&quot;);'</span><span class="jsdoc-syntax">;
+							</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-var">Roo.DomQuery.quickId </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2] ]);
                         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
                             </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fn.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'n = Roo.DomQuery.getNodes(n, mode, &quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2]+</span><span class="jsdoc-string">'&quot;);'</span><span class="jsdoc-syntax">;
+							</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-var">Roo.DomQuery.getNodes </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2] ]);
                         }
                         </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
                     }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">q.substr</span><span class="jsdoc-syntax">(0, 1) != </span><span class="jsdoc-string">'@'</span><span class="jsdoc-syntax">){
                         </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fn.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'n = Roo.DomQuery.getNodes(n, mode, &quot;*&quot;);'</span><span class="jsdoc-syntax">;
+						</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-var">Roo.DomQuery.getNodes </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;*&quot; </span><span class="jsdoc-syntax">]);
                     }
                 }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
                     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">){

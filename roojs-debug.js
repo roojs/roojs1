@@ -6498,13 +6498,39 @@ Roo.DomQuery = function(){
         }
         return r;
     }
-
+	var cmdcall = {
+		quickId : function(n, root, mode, node, arg) {
+			return  Roo.DomQuery.quickId(n, mode, root, arg);
+		},
+		getNodes: function(n, root, mode, node, arg) {
+			return Roo.DomQuery.getNodes(n, mode, arg)
+		},
+		
+	}
    
 
     return {
         getStyle : function(el, name){
             return Roo.fly(el).getStyle(name);
         },
+		
+		
+		runFn : function(cmds, root)
+		{
+			var mode;
+			++Roo.DomQuery.batch;
+			var n = root || document;
+			cmds.forEach(function(cmd) {
+				if (typeof(cmd == "string")) {
+					mode = cmd;
+					return;
+				}
+				n = cmdcall[cmd[0]](n, root, mode, node, cmd[1]);
+			});
+			return Roo.DomQuery.nodup(n);
+			
+		},
+		
         /**
          * Compiles a selector/xpath query into a reusable function. The returned function
          * takes one parameter "root" (optional), which is the context node from where the query should start.
@@ -6521,6 +6547,7 @@ Roo.DomQuery = function(){
 					  "var root = arguments[0];",
 					  "var n = root || document;"
 					];
+			var cmdar = [];
             var q = path, mode, lq;
             var tk = Roo.DomQuery.matchers;
             var tklen = tk.length;
@@ -6530,6 +6557,7 @@ Roo.DomQuery = function(){
             var lmode = q.match(modeRe);
             if(lmode && lmode[1]){
                 fn[fn.length] = 'mode="'+lmode[1].replace(trimRe, "")+'";';
+				cmdar.push(lmode[1].replace(trimRe, ""));
                 q = q.replace(lmode[1], "");
             }
             // strip leading slashes
@@ -6544,12 +6572,15 @@ Roo.DomQuery = function(){
                     if(tm){
                         if(tm[1] == "#"){
                             fn[fn.length] = 'n = Roo.DomQuery.quickId(n, mode, root, "'+tm[2]+'");';
+							cmdar.push([ Roo.DomQuery.quickId , tm[2] ]);
                         }else{
                             fn[fn.length] = 'n = Roo.DomQuery.getNodes(n, mode, "'+tm[2]+'");';
+							cmdar.push([ Roo.DomQuery.getNodes , tm[2] ]);
                         }
                         q = q.replace(tm[0], "");
                     }else if(q.substr(0, 1) != '@'){
                         fn[fn.length] = 'n = Roo.DomQuery.getNodes(n, mode, "*");';
+						cmdar.push([ Roo.DomQuery.getNodes , "*" ]);
                     }
                 }else{
                     if(tm){
