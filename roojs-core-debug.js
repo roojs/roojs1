@@ -6512,10 +6512,11 @@ Roo.DomQuery = function(){
          * @param {String} type (optional) Either "select" (the default) or "simple" for a simple selector match
          * @return {Function}
          */
-        compile : function(path, type){
+        compile : function(path, type)
+		{
             type = type || "select";
             
- 			var fn = ["var mode; ++Roo.DomQuery.batch; var root = arguuments[0]; var n = root || document;\n"];
+ 			var fn = ["var mode; ++Roo.DomQuery.batch; var root = arguments[0]; var n = root || document;\n"];
             var q = path, mode, lq;
             var tk = Roo.DomQuery.matchers;
             var tklen = tk.length;
