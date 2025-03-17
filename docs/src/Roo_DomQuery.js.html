@@ -218,9 +218,10 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
 		</span><span class="jsdoc-var">getNodes</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">) {
 			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.DomQuery.getNodes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">)
 		},
-		</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fn.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'n = Roo.DomQuery.byId(n, null, &quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2]+</span><span class="jsdoc-string">'&quot;);'</span><span class="jsdoc-syntax">;
-							</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-var">Roo.DomQuery.byId </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2] ]);
-	}
+		</span><span class="jsdoc-var">byId</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">) {
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.DomQuery.byId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">);
+		}
+ 	}
 
 
     </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{

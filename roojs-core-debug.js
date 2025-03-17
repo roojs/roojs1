@@ -6505,9 +6505,10 @@ Roo.DomQuery = function(){
 		getNodes: function(n, root, mode, node, arg) {
 			return Roo.DomQuery.getNodes(n, mode, arg)
 		},
-		fn[fn.length] = 'n = Roo.DomQuery.byId(n, null, "'+tm[2]+'");';
-							cmdar.push([ Roo.DomQuery.byId , tm[2] ]);
-	}
+		byId: function(n, root, mode, node, arg) {
+			return Roo.DomQuery.byId(n, null, arg);
+		}
+ 	}
    
 
     return {
