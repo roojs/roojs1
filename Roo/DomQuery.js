@@ -220,7 +220,11 @@ Roo.DomQuery = function(){
 		},
 		byId: function(n, root, mode, node, arg) {
 			return Roo.DomQuery.byId(n, null, arg);
-		}
+		},
+		byTag: function(n, root, mode, node, arg) {
+			return Roo.DomQuery.byTag(n, arg);
+		},
+		
  	}
    
 
