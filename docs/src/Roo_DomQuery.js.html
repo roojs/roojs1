@@ -234,7 +234,7 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
         },
 
 
-		</span><span class="jsdoc-var">runFn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">)
+		</span><span class="jsdoc-var">runFn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cmds</span><span class="jsdoc-syntax">)
 		{
 			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">;
 			++</span><span class="jsdoc-var">Roo.DomQuery.batch</span><span class="jsdoc-syntax">;
@@ -339,10 +339,11 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
                 }
             }
  			</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fn.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">&quot;return Roo.DomQuery.nodup(n);&quot;</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">runFn.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cmdar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
 
-			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">));
+			</span><span class="jsdoc-comment">//return Function(fn.join(&quot;&quot;));
 
-        },
+        </span><span class="jsdoc-syntax">},
 
         </span><span class="jsdoc-comment">/**
          * Selects a group of elements.

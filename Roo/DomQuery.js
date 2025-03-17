@@ -234,7 +234,7 @@ Roo.DomQuery = function(){
         },
 		
 		
-		runFn : function(cmds, root)
+		runFn : function(root, cmds)
 		{
 			var mode;
 			++Roo.DomQuery.batch;

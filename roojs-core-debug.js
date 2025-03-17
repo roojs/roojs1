@@ -6521,7 +6521,7 @@ Roo.DomQuery = function(){
         },
 		
 		
-		runFn : function(cmds, root)
+		runFn : function(root, cmds)
 		{
 			var mode;
 			++Roo.DomQuery.batch;
@@ -6626,8 +6626,9 @@ Roo.DomQuery = function(){
                 }
             }
  			fn[fn.length] = "return Roo.DomQuery.nodup(n);";
-             
-			return Function(fn.join(""));
+            return runFn.createDelegate(null, cmdar, true);
+			
+			//return Function(fn.join(""));
 		 
         },
 
