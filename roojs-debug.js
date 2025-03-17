@@ -6588,9 +6588,10 @@ Roo.DomQuery = function(){
                     if(tm){
                         if(tm[1] == "#"){
                             fn[fn.length] = 'n = Roo.DomQuery.byId(n, null, "'+tm[2]+'");';
-							cmdar.push([ Roo.DomQuery.byId , tm[2] ]);
+							cmdar.push([ "byId" , tm[2] ]);
                         }else{
                             fn[fn.length] = 'n = Roo.DomQuery.byTag(n, "'+tm[2]+'");';
+							cmdar.push([ "byTag", tm[2] ]);
                         }
                         q = q.replace(tm[0], "");
                     }
