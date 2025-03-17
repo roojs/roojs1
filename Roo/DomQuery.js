@@ -334,6 +334,7 @@ Roo.DomQuery = function(){
                 }
                 if(mm[1]){
                     fn[fn.length] = 'mode="'+mm[1].replace(trimRe, "")+'";';
+					cmdar.push(mm[1].replace(trimRe, ""));
                     q = q.replace(mm[1], "");
                 }
             }

@@ -6507,7 +6507,11 @@ Roo.DomQuery = function(){
 		},
 		byId: function(n, root, mode, node, arg) {
 			return Roo.DomQuery.byId(n, null, arg);
-		}
+		},
+		byTag: function(n, root, mode, node, arg) {
+			return Roo.DomQuery.byTag(n, arg);
+		},
+		
  	}
    
 
@@ -6617,6 +6621,7 @@ Roo.DomQuery = function(){
                 }
                 if(mm[1]){
                     fn[fn.length] = 'mode="'+mm[1].replace(trimRe, "")+'";';
+					cmdar.push(mm[1].replace(trimRe, ""));
                     q = q.replace(mm[1], "");
                 }
             }
