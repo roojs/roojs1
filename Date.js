@@ -249,7 +249,6 @@ Date.getFormatCode = function(character) {
     }
 };
 
-Date.parseFuncData = {};
 
 
 /**
@@ -306,7 +305,7 @@ Date.parseDate = function(input, format) {
 		
 		var regex = "";
 		var funcs = [];
-    var emtpy = function() {}; 
+		 
 		var special = false;
 		var ch = '';
 		for (var i = 0; i < format.length; ++i) {
@@ -317,17 +316,15 @@ Date.parseDate = function(input, format) {
 			else if (special) {
 				special = false;
 				regex += String.escape(ch);
-       // funcs.push(empty);
-			}
+ 			}
 			else {
         
 				var obj = Date.formatCodeToRegex(ch, 0);
-        //Logger.log("%s %s", ch, obj);
-				//currentGroup += obj.g; // ???
+  
 				regex += obj.s;
 				if (obj.f !== false) {
-            funcs.push(obj.f);
-        }
+					funcs.push(obj.f);
+				}
 			}
 		}
 		Date.parseFuncData[format] = {
@@ -339,14 +336,13 @@ Date.parseDate = function(input, format) {
    //  Logger.log( input );
 	}
 	input.replace(Date.parseFuncData[format].re, function(   ) {
-		//Roo.log(JSON.stringify(arguments,null,2));
-    var results = arguments;
-    Date.parseFuncData[format].f.forEach(function(v, i) {
-        //Logger.log(v)
-       // Logger.log("match: " + results[i+1]);
-        v(results[i+1], out);
-
-    });
+			
+	   var results = arguments;
+	   Date.parseFuncData[format].f.forEach(function(v, i) {
+		   
+		   v(results[i+1], out);
+   
+	   });
 
 	});
 	//Logger.log(JSON.stringify(out));
@@ -371,21 +367,20 @@ Date.parseDate = function(input, format) {
 		v = new Date(out.y);
 		v.setFullYear(out.y);
 	}
- // Logger.log(v);
-  if (!v || (out.z === false && out.o === false)) {
-    return v;
-  }
-  if (out.z !== false) {
-      return v.add(Date.SECOND, (v.getTimezoneOffset() * 60) + (out.z*1));
-  }
-  // out.o
-  return v.add(Date.HOUR, (v.getGMTOffset() / 100) + (out.o / -100))  ; // reset to GMT, then add offset
-
-
-  
 	
-	
+	if (!v || (out.z === false && out.o === false)) {
+	  return v;
+	}
+	if (out.z !== false) {
+		return v.add(Date.SECOND, (v.getTimezoneOffset() * 60) + (out.z*1));
+	}
+	// out.o
+	return v.add(Date.HOUR, (v.getGMTOffset() / 100) + (out.o / -100))  ; // reset to GMT, then add offset
+
+ 
 };
+Date.parseFuncData = {};
+
 /**
  * Get the timezone abbreviation of the current date (equivalent to the format specifier 'T').
  * @return {String} The abbreviated timezone name (e.g. 'CST')
