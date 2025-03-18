@@ -1333,7 +1333,6 @@ Date.prototype.formatCodeToValue = function(character) {
     case "Y":
         return this.getFullYear();
     case "y":
-     Logger.log(this);
         return (this.getFullYear()+ "").substring(2, 4) ;
     case "a":
         return (this.getHours() < 12 ? 'am' : 'pm') ;
@@ -1405,7 +1404,6 @@ dt = Date.parseDate("2006-1-15 3:20:01 PM", "Y-m-d h:i:s A" );
  
 
 Date.parseDate = function(input, format) {
-   // Logger.log([ input, format ]);
     
     var out = {
 		y : -1,
@@ -1458,8 +1456,7 @@ Date.parseDate = function(input, format) {
 			re : new RegExp("^" + regex + "$")
 		};
     
-    //Roo.log(Date.parseFuncData[format]);
-   //  Logger.log( input );
+   
 	}
 	input.replace(Date.parseFuncData[format].re, function(   ) {
 			
@@ -1471,7 +1468,7 @@ Date.parseDate = function(input, format) {
 	   });
 
 	});
-	//Logger.log(JSON.stringify(out));
+	
 	
 
     if (out.y >= 0 && out.m >= 0 && out.d > 0 && out.h >= 0 && out.i >= 0 && out.s >= 0) {
@@ -1658,7 +1655,7 @@ Date.formatCodeToRegex = function(character) {
 				var sn = out.o.substring(0,1);
 				var hr = out.o.substring(1,3)*1 + Math.floor(out.o.substring(4,6) / 60);
 				var mn = out.o.substring(4,6) % 60;
-       // Logger.log([sn, hr, mn]);
+       
 				out.o = ((-12 <= (hr*60 + mn)/60) && ((hr*60 + mn)/60 <= 14))?
     	                (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;
 			},
