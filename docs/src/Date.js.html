@@ -249,7 +249,6 @@ document.write(dt.format(Date.patterns.ShortDate));
     }
 };
 
-</span><span class="jsdoc-var">Date.parseFuncData </span><span class="jsdoc-syntax">= {};
 
 
 </span><span class="jsdoc-comment">/**
@@ -306,7 +305,7 @@ dt = Date.parseDate(&quot;2006-1-15 3:20:01 PM&quot;, &quot;Y-m-d h:i:s A&quot; 
 
 		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
 		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">funcs </span><span class="jsdoc-syntax">= [];
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">emtpy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {};
+
 		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">special </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ch </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
 		</span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">format.length</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
@@ -317,17 +316,15 @@ dt = Date.parseDate(&quot;2006-1-15 3:20:01 PM&quot;, &quot;Y-m-d h:i:s A&quot; 
 			</span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">special</span><span class="jsdoc-syntax">) {
 				</span><span class="jsdoc-var">special </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 				</span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">String.escape</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ch</span><span class="jsdoc-syntax">);
-       </span><span class="jsdoc-comment">// funcs.push(empty);
-			</span><span class="jsdoc-syntax">}
+ 			}
 			</span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
 
 				</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">obj </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.formatCodeToRegex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ch</span><span class="jsdoc-syntax">, 0);
-        </span><span class="jsdoc-comment">//Logger.log(&quot;%s %s&quot;, ch, obj);
-				//currentGroup += obj.g; // ???
+
 				</span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">obj.s</span><span class="jsdoc-syntax">;
 				</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">obj.f </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">funcs.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">obj.f</span><span class="jsdoc-syntax">);
-        }
+					</span><span class="jsdoc-var">funcs.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">obj.f</span><span class="jsdoc-syntax">);
+				}
 			}
 		}
 		</span><span class="jsdoc-var">Date.parseFuncData</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">] = {
@@ -339,14 +336,13 @@ dt = Date.parseDate(&quot;2006-1-15 3:20:01 PM&quot;, &quot;Y-m-d h:i:s A&quot; 
    //  Logger.log( input );
 	</span><span class="jsdoc-syntax">}
 	</span><span class="jsdoc-var">input.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.parseFuncData</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.re</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(   ) {
-		</span><span class="jsdoc-comment">//Roo.log(JSON.stringify(arguments,null,2));
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">results </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">;
-    </span><span class="jsdoc-var">Date.parseFuncData</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.f.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-comment">//Logger.log(v)
-       // Logger.log(&quot;match: &quot; + results[i+1]);
-        </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">+1], </span><span class="jsdoc-var">out</span><span class="jsdoc-syntax">);
 
-    });
+	   </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">results </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">;
+	   </span><span class="jsdoc-var">Date.parseFuncData</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.f.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+
+		   </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">+1], </span><span class="jsdoc-var">out</span><span class="jsdoc-syntax">);
+
+	   });
 
 	});
 	</span><span class="jsdoc-comment">//Logger.log(JSON.stringify(out));
@@ -371,21 +367,20 @@ dt = Date.parseDate(&quot;2006-1-15 3:20:01 PM&quot;, &quot;Y-m-d h:i:s A&quot; 
 		</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">out.y</span><span class="jsdoc-syntax">);
 		</span><span class="jsdoc-var">v.setFullYear</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">out.y</span><span class="jsdoc-syntax">);
 	}
- </span><span class="jsdoc-comment">// Logger.log(v);
-  </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">out.z </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">out.o </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">)) {
-    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
-  }
-  </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">out.z </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
-      </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.SECOND</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-var">v.getTimezoneOffset</span><span class="jsdoc-syntax">() * 60) + (</span><span class="jsdoc-var">out.z</span><span class="jsdoc-syntax">*1));
-  }
-  </span><span class="jsdoc-comment">// out.o
-  </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.HOUR</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-var">v.getGMTOffset</span><span class="jsdoc-syntax">() / 100) + (</span><span class="jsdoc-var">out.o </span><span class="jsdoc-syntax">/ -100))  ; </span><span class="jsdoc-comment">// reset to GMT, then add offset
 
-
-
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">out.z </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">out.o </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">)) {
+	  </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+	}
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">out.z </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+		</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.SECOND</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-var">v.getTimezoneOffset</span><span class="jsdoc-syntax">() * 60) + (</span><span class="jsdoc-var">out.z</span><span class="jsdoc-syntax">*1));
+	}
+	</span><span class="jsdoc-comment">// out.o
+	</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.HOUR</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-var">v.getGMTOffset</span><span class="jsdoc-syntax">() / 100) + (</span><span class="jsdoc-var">out.o </span><span class="jsdoc-syntax">/ -100))  ; </span><span class="jsdoc-comment">// reset to GMT, then add offset
 
 
 </span><span class="jsdoc-syntax">};
+</span><span class="jsdoc-var">Date.parseFuncData </span><span class="jsdoc-syntax">= {};
+
 </span><span class="jsdoc-comment">/**
  * Get the timezone abbreviation of the current date (equivalent to the format specifier 'T').
  * @return {String} The abbreviated timezone name (e.g. 'CST')
