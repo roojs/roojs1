@@ -1365,6 +1365,9 @@ Date.getFormatCode = function(character) {
     }
 };
 
+Date.parseFuncData = {};
+
+
 /**
  * Parses the passed string using the specified format. Note that this function expects dates in normal calendar
  * format, meaning that months are 1-based (1 = January) and not zero-based like in JavaScript dates.  Any part of
@@ -1390,215 +1393,115 @@ dt = Date.parseDate("2006-1-15 3:20:01 PM", "Y-m-d h:i:s A" );
  * @return {Date} The parsed date
  * @static
  */
+ 
+
 Date.parseDate = function(input, format) {
-    if (Date.parseFunctions[format] == null) {
-        Date.createParser(format);
-    }
-    var func = Date.parseFunctions[format];
-    return Date[func](input);
-};
-/**
- * @private
- */
-
-Date.createParser = function(format) {
-    var funcName = "parse" + Date.parseFunctions.count++;
-    var regexNum = Date.parseRegexes.length;
-    var currentGroup = 1;
-    Date.parseFunctions[format] = funcName;
-
-    var code = "Date." + funcName + " = function(input){\n"
-        + "var y = -1, m = -1, d = -1, h = -1, i = -1, s = -1, o, z, v;\n"
-        + "var d = new Date();\n"
-        + "y = d.getFullYear();\n"
-        + "m = d.getMonth();\n"
-        + "d = d.getDate();\n"
-        + "if (typeof(input) !== 'string') { input = input.toString(); }\n"
-        + "var results = input.match(Date.parseRegexes[" + regexNum + "]);\n"
-        + "if (results && results.length > 0) {";
-    var regex = "";
-
-    var special = false;
-    var ch = '';
-    for (var i = 0; i < format.length; ++i) {
-        ch = format.charAt(i);
-        if (!special && ch == "\\") {
-            special = true;
-        }
-        else if (special) {
-            special = false;
-            regex += String.escape(ch);
-        }
-        else {
-            var obj = Date.formatCodeToRegex(ch, currentGroup);
-            currentGroup += obj.g;
-            regex += obj.s;
-            if (obj.g && obj.c) {
-                code += obj.c;
-            }
-        }
-    }
-
-    code += "if (y >= 0 && m >= 0 && d > 0 && h >= 0 && i >= 0 && s >= 0)\n"
-        + "{v = new Date(y, m, d, h, i, s); v.setFullYear(y);}\n"
-        + "else if (y >= 0 && m >= 0 && d > 0 && h >= 0 && i >= 0)\n"
-        + "{v = new Date(y, m, d, h, i); v.setFullYear(y);}\n"
-        + "else if (y >= 0 && m >= 0 && d > 0 && h >= 0)\n"
-        + "{v = new Date(y, m, d, h); v.setFullYear(y);}\n"
-        + "else if (y >= 0 && m >= 0 && d > 0)\n"
-        + "{v = new Date(y, m, d); v.setFullYear(y);}\n"
-        + "else if (y >= 0 && m >= 0)\n"
-        + "{v = new Date(y, m); v.setFullYear(y);}\n"
-        + "else if (y >= 0)\n"
-        + "{v = new Date(y); v.setFullYear(y);}\n"
-        + "}return (v && (z || o))?\n" // favour UTC offset over GMT offset
-        + "    ((z)? v.add(Date.SECOND, (v.getTimezoneOffset() * 60) + (z*1)) :\n" // reset to UTC, then add offset
-        + "        v.add(Date.HOUR, (v.getGMTOffset() / 100) + (o / -100))) : v\n" // reset to GMT, then add offset
-        + ";}";
-
-    Date.parseRegexes[regexNum] = new RegExp("^" + regex + "$");
-    /** eval:var:zzzzzzzzzzzzz */
-    eval(code);
-};
-
-// private
-Date.formatCodeToRegex = function(character, currentGroup) {
-    switch (character) {
-    case "D":
-        return {g:0,
-        c:null,
-        s:"(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)"};
-    case "j":
-        return {g:1,
-            c:"d = parseInt(results[" + currentGroup + "], 10);\n",
-            s:"(\\d{1,2})"}; // day of month without leading zeroes
-    case "d":
-        return {g:1,
-            c:"d = parseInt(results[" + currentGroup + "], 10);\n",
-            s:"(\\d{2})"}; // day of month with leading zeroes
-    case "l":
-        return {g:0,
-            c:null,
-            s:"(?:" + Date.dayNames.join("|") + ")"};
-    case "S":
-        return {g:0,
-            c:null,
-            s:"(?:st|nd|rd|th)"};
-    case "w":
-        return {g:0,
-            c:null,
-            s:"\\d"};
-    case "z":
-        return {g:0,
-            c:null,
-            s:"(?:\\d{1,3})"};
-    case "W":
-        return {g:0,
-            c:null,
-            s:"(?:\\d{2})"};
-    case "F":
-        return {g:1,
-            c:"m = parseInt(Date.monthNumbers[results[" + currentGroup + "].substring(0, 3)], 10);\n",
-            s:"(" + Date.monthNames.join("|") + ")"};
-    case "M":
-        return {g:1,
-            c:"m = parseInt(Date.monthNumbers[results[" + currentGroup + "]], 10);\n",
-            s:"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"};
-    case "n":
-        return {g:1,
-            c:"m = parseInt(results[" + currentGroup + "], 10) - 1;\n",
-            s:"(\\d{1,2})"}; // Numeric representation of a month, without leading zeros
-    case "m":
-        return {g:1,
-            c:"m = Math.max(0,parseInt(results[" + currentGroup + "], 10) - 1);\n",
-            s:"(\\d{2})"}; // Numeric representation of a month, with leading zeros
-    case "t":
-        return {g:0,
-            c:null,
-            s:"\\d{1,2}"};
-    case "L":
-        return {g:0,
-            c:null,
-            s:"(?:1|0)"};
-    case "Y":
-        return {g:1,
-            c:"y = parseInt(results[" + currentGroup + "], 10);\n",
-            s:"(\\d{4})"};
-    case "y":
-        return {g:1,
-            c:"var ty = parseInt(results[" + currentGroup + "], 10);\n"
-                + "y = ty > Date.y2kYear ? 1900 + ty : 2000 + ty;\n",
-            s:"(\\d{1,2})"};
-    case "a":
-        return {g:1,
-            c:"if (results[" + currentGroup + "] == 'am') {\n"
-                + "if (h == 12) { h = 0; }\n"
-                + "} else { if (h < 12) { h += 12; }}",
-            s:"(am|pm)"};
-    case "A":
-        return {g:1,
-            c:"if (results[" + currentGroup + "] == 'AM') {\n"
-                + "if (h == 12) { h = 0; }\n"
-                + "} else { if (h < 12) { h += 12; }}",
-            s:"(AM|PM)"};
-    case "g":
-    case "G":
-        return {g:1,
-            c:"h = parseInt(results[" + currentGroup + "], 10);\n",
-            s:"(\\d{1,2})"}; // 12/24-hr format  format of an hour without leading zeroes
-    case "h":
-    case "H":
-        return {g:1,
-            c:"h = parseInt(results[" + currentGroup + "], 10);\n",
-            s:"(\\d{2})"}; //  12/24-hr format  format of an hour with leading zeroes
-    case "i":
-        return {g:1,
-            c:"i = parseInt(results[" + currentGroup + "], 10);\n",
-            s:"(\\d{2})"};
-    case "s":
-        return {g:1,
-            c:"s = parseInt(results[" + currentGroup + "], 10);\n",
-            s:"(\\d{2})"};
-    case "O":
-        return {g:1,
-            c:[
-                "o = results[", currentGroup, "];\n",
-                "var sn = o.substring(0,1);\n", // get + / - sign
-                "var hr = o.substring(1,3)*1 + Math.floor(o.substring(3,5) / 60);\n", // get hours (performs minutes-to-hour conversion also)
-                "var mn = o.substring(3,5) % 60;\n", // get minutes
-                "o = ((-12 <= (hr*60 + mn)/60) && ((hr*60 + mn)/60 <= 14))?\n", // -12hrs <= GMT offset <= 14hrs
-                "    (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;\n"
-            ].join(""),
-            s:"([+\-]\\d{2,4})"};
+   // Logger.log([ input, format ]);
     
+    var out = {
+		y : -1,
+		m : -1,
+		d : -1,
+		h : -1,
+		i : -1,
+		s : -1,
+		o : false,
+		z : false,
+		
+	};
+	var v;
+    var d = new Date();
+    out.y = d.getFullYear();
+    out.m = d.getMonth();
+    out.d = d.getDate();
+    if (typeof(input) !== 'string') {
+		input = input.toString();
+	}
+    if (typeof(Date.parseFuncData[format]) == 'undefined') {
+			
+		
+		var regex = "";
+		var funcs = [];
+    var emtpy = function() {}; 
+		var special = false;
+		var ch = '';
+		for (var i = 0; i < format.length; ++i) {
+			ch = format.charAt(i);
+			if (!special && ch == "\\") {
+				special = true;
+			}
+			else if (special) {
+				special = false;
+				regex += String.escape(ch);
+       // funcs.push(empty);
+			}
+			else {
+        
+				var obj = Date.formatCodeToRegex(ch, 0);
+        //Logger.log("%s %s", ch, obj);
+				//currentGroup += obj.g; // ???
+				regex += obj.s;
+				if (obj.f !== false) {
+            funcs.push(obj.f);
+        }
+			}
+		}
+		Date.parseFuncData[format] = {
+			f : funcs ,
+			re : new RegExp("^" + regex + "$")
+		};
     
-    case "P":
-    	return {g:1,
-    		c:[
-    		   "o = results[", currentGroup, "];\n",
-    		   "var sn = o.substring(0,1);\n",
-    		   "var hr = o.substring(1,3)*1 + Math.floor(o.substring(4,6) / 60);\n",
-    		   "var mn = o.substring(4,6) % 60;\n",
-    		   "o = ((-12 <= (hr*60 + mn)/60) && ((hr*60 + mn)/60 <= 14))?\n",
-    	                "    (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;\n"
-            ].join(""),
-            s:"([+\-]\\d{4})"};
-    case "T":
-        return {g:0,
-            c:null,
-            s:"[A-Z]{1,4}"}; // timezone abbrev. may be between 1 - 4 chars
-    case "Z":
-        return {g:1,
-            c:"z = results[" + currentGroup + "];\n" // -43200 <= UTC offset <= 50400
-                  + "z = (-43200 <= z*1 && z*1 <= 50400)? z : null;\n",
-            s:"([+\-]?\\d{1,5})"}; // leading '+' sign is optional for UTC offset
-    default:
-        return {g:0,
-            c:null,
-            s:String.escape(character)};
-    }
-};
+    //Roo.log(Date.parseFuncData[format]);
+   //  Logger.log( input );
+	}
+	input.replace(Date.parseFuncData[format].re, function(   ) {
+		//Roo.log(JSON.stringify(arguments,null,2));
+    var results = arguments;
+    Date.parseFuncData[format].f.forEach(function(v, i) {
+        //Logger.log(v)
+       // Logger.log("match: " + results[i+1]);
+        v(results[i+1], out);
 
+    });
+
+	});
+	//Logger.log(JSON.stringify(out));
+	
+
+    if (out.y >= 0 && out.m >= 0 && out.d > 0 && out.h >= 0 && out.i >= 0 && out.s >= 0) {
+		v = new Date(out.y, out.m, out.d, out.h, out.i, out.s);
+		v.setFullYear(out.y);
+	} else if (out.y >= 0 && out.m >= 0 && out.d > 0 && out.h >= 0 && out.i >= 0)  {
+		v = new Date(out.y, out.m, out.d, out.h, out.i);
+		v.setFullYear(out.y);
+	} else if (out.y >= 0 && out.m >= 0 && out.d > 0 && out.h >= 0) {
+		v = new Date(out.y, out.m, out.d, out.h);
+		v.setFullYear(out.y);
+	}else if (out.y >= 0 && out.m >= 0 && out.d > 0) {
+		v = new Date(out.y, out.m, out.d);
+		v.setFullYear(out.y);
+	} else if (out.y >= 0 && out.m >= 0) {
+		v = new Date(out.y, out.m);
+		v.setFullYear(out.y);
+	} else if (out.y >= 0) {
+		v = new Date(out.y);
+		v.setFullYear(out.y);
+	}
+ // Logger.log(v);
+  if (!v || (out.z === false && out.o === false)) {
+    return v;
+  }
+  if (out.z !== false) {
+      return v.add(Date.SECOND, (v.getTimezoneOffset() * 60) + (out.z*1));
+  }
+  // out.o
+  return v.add(Date.HOUR, (v.getGMTOffset() / 100) + (out.o / -100))  ; // reset to GMT, then add offset
+
+
+  
+	
+	
+};
 /**
  * Get the timezone abbreviation of the current date (equivalent to the format specifier 'T').
  * @return {String} The abbreviated timezone name (e.g. 'CST')
