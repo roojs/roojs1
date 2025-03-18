@@ -184,7 +184,6 @@ Date.prototype.dateFormat = function(format) {
     return ret;
  
 };
-// fixme need to implement this really - as the eval replacement.
 Date.prototype.formatCodeToValue = function(character) {
     switch (character) {
     case "d":
@@ -392,6 +391,180 @@ Date.parseDate = function(input, format) {
 };
 Date.parseFuncData = {};
 
+Date.formatCodeToRegex = function(character) {
+    switch (character) {
+    case "D":
+        return {
+	    f : function(result, out) {},
+        s:"(Sun|Mon|Tue|Wed|Thu|Fri|Sat)"};
+    case "j":
+        return {
+          f : function(result, out) {
+            out.d = parseInt(result, 10);
+          },
+          s:"(\\d{1,2})"}; // day of month without leading zeroes,
+    case "d":
+        return {
+			f : function(result, out) {
+				out.d = parseInt(result, 10);
+			},
+            s:"(\\d{2})"}; // day of month with leading zeroes
+    case "l":
+        return {
+			f : function(result, out) {},
+            s:"(" + Date.dayNames.join("|") + ")"};
+    case "S":
+        return {
+			f : function(result, out) {},
+            s:"(st|nd|rd|th)"};
+    case "w":
+        return {
+			f : false,             
+            s:"\\d"};
+    case "z":
+        return { 
+			f : function(result, out) {},
+            s:"(\\d{1,3})"};
+    case "W":
+        return {
+			f : function(result, out) {},
+            s:"(\\d{2})"};
+    case "F":
+        return {
+			f : function(result, out) {
+				out.m = parseInt(Date.monthNumbers[result].substring(0, 3), 10);
+			},
+            s:"(" + Date.monthNames.join("|") + ")"};
+    case "M":
+        return {
+            f : function(result, out) {
+				out.m = parseInt(Date.monthNumbers[result], 10);
+			},
+            s:"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"};
+    case "n":
+        return {
+			f : function(result, out) {
+				out.m = parseInt(Date.monthNumbers[result], 10);
+			},
+            s:"(\\d{1,2})"}; // Numeric representation of a month, without leading zeros
+    case "m":
+        return {
+			f : function(result, out) {
+				out.m = Math.max(0,parseInt(result, 10) - 1);
+			},
+            s:"(\\d{2})"}; // Numeric representation of a month, with leading zeros
+    case "t":
+        return {
+			f : false,
+            s:"\\d{1,2}"};
+    case "L":
+        return {
+			f : function(result, out) {},
+            s:"(1|0)"};
+    case "Y":
+        return {
+			f : function(result, out) {
+				out.y =  parseInt(result, 10);
+			},
+            s:"(\\d{4})"};
+    case "y":
+        return {
+			f : function(result, out) {
+				var ty = parseInt(result, 10);
+                out.y = ty > Date.y2kYear ? 1900 + ty : 2000 + ty;
+			},
+            s:"(\\d{1,2})"};
+    case "a":
+        return {
+			f : function(result, out) {
+				if (result == 'am') {
+					if (out.h == 12) { h = 0; }
+                } else {
+					if (out.h < 12) { out.h += 12; }
+				}
+			},	
+            s:"(am|pm)"};
+    case "A":
+        return {
+			f : function(result, out) {
+				if (result == 'AM') {
+					if (out.h == 12) { h = 0; }
+                } else {
+					if (out.h < 12) { out.h += 12; }
+				}
+			},	
+            s:"(AM|PM)"};
+    case "g":
+    case "G":
+        return {
+			f : function(result, out) {
+				out.h = parseInt(result,10);
+			},	
+			s:"(\\d{1,2})"}; // 12/24-hr format  format of an hour without leading zeroes
+    case "h":
+    case "H":
+        return {
+			f : function(result, out) {
+				out.h = parseInt(result,10);
+			},
+            s:"(\\d{2})"}; //  12/24-hr format  format of an hour with leading zeroes
+    case "i":
+        return {
+			f : function(result, out) {
+				out.i = parseInt(result,10);
+			},	
+            s:"(\\d{2})"};
+    case "s":
+        return {
+			f : function(result, out) {
+				out.s = parseInt(result,10);
+			},	
+            s:"(\\d{2})"};
+    case "O": 
+        return {
+			f : function(result, out) {
+				out.o = result;
+                var sn = out.o.substring(0,1);
+                var hr = out.o.substring(1,3)*1 + Math.floor(out.o.substring(3,5) / 60); // get hours (performs minutes-to-hour conversion also)
+                var mn = out.o.substring(3,5) % 60; // get minutes
+                out.o = ((-12 <= (hr*60 + mn)/60) && ((hr*60 + mn)/60 <= 14))? // -12hrs <= GMT offset <= 14hrs
+                    (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;
+			},	
+			
+            s:"([+\-]\\d{2,4})"};
+    
+    
+    case "P":   //xx:yy
+    	return {
+			f : function(result, out) { 
+				out.o = result;
+				var sn = out.o.substring(0,1);
+				var hr = out.o.substring(1,3)*1 + Math.floor(out.o.substring(4,6) / 60);
+				var mn = out.o.substring(4,6) % 60;
+       // Logger.log([sn, hr, mn]);
+				out.o = ((-12 <= (hr*60 + mn)/60) && ((hr*60 + mn)/60 <= 14))?
+    	                (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;
+			},
+            s:"([+\-]\\d{2}:\\d{2})"};
+    
+	case "T": // note it's just ignored..
+        return {
+			f : function(result, out) {},
+            s:"([A-Z]{1,4})"}; // timezone abbrev. may be between 1 - 4 chars
+    case "Z":
+        return {
+			f : function(result, out) {
+				out.z = result; // -43200 <= UTC offset <= 50400
+                out.z = (-43200 <= out.z*1 && out.z*1 <= 50400)? out.z : null;
+			},
+            s:"([+\-]?\\d{1,5})"}; // leading '+' sign is optional for UTC offset
+    default:
+        return {
+			f : false,
+            s: String.escape(character)
+		};
+    }
+};
 /**
  * Get the timezone abbreviation of the current date (equivalent to the format specifier 'T').
  * @return {String} The abbreviated timezone name (e.g. 'CST')
