@@ -84,7 +84,7 @@ var myReader = new Roo.data.JsonReader({
     </span><span class="jsdoc-var">read </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">json </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response.responseText</span><span class="jsdoc-syntax">;
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-comment">/* eval:var:o */ </span><span class="jsdoc-keyword">eval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;(&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">json</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot;)&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">JSON.parse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">json</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// was eval
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-syntax">{</span><span class="jsdoc-var">message</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;JsonReader.read: Json object not found&quot;</span><span class="jsdoc-syntax">};
         }

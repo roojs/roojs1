@@ -122,84 +122,10 @@ Roo.DomQuery = function(){
  	    return this;
  	};
 
-    function byClassName(c, a, v){
-        if(!v){
-            return c;
-        }
-        var r = [], ri = -1, cn;
-        for(var i = 0, ci; ci = c[i]; i++){
-	    
-	    
-            if((' '+
-		( (ci instanceof SVGElement) ? ci.className.baseVal : ci.className)
-		 +' ').indexOf(v) != -1){
-                r[++ri] = ci;
-            }
-        }
-        return r;
-    };
+    
 
-    function attrValue(n, attr){
-        if(!n.tagName && typeof n.length != "undefined"){
-            n = n[0];
-        }
-        if(!n){
-            return null;
-        }
-        if(attr == "for"){
-            return n.htmlFor;
-        }
-        if(attr == "class" || attr == "className"){
-	    return (n instanceof SVGElement) ? n.className.baseVal : n.className;
-        }
-        return n.getAttribute(attr) || n[attr];
-
-    };
-
-    function getNodes(ns, mode, tagName){
-        var result = [], ri = -1, cs;
-        if(!ns){
-            return result;
-        }
-        tagName = tagName || "*";
-        if(typeof ns.getElementsByTagName != "undefined"){
-            ns = [ns];
-        }
-        if(!mode){
-            for(var i = 0, ni; ni = ns[i]; i++){
-                cs = ni.getElementsByTagName(tagName);
-                for(var j = 0, ci; ci = cs[j]; j++){
-                    result[++ri] = ci;
-                }
-            }
-        }else if(mode == "/" || mode == ">"){
-            var utag = tagName.toUpperCase();
-            for(var i = 0, ni, cn; ni = ns[i]; i++){
-                cn = ni.children || ni.childNodes;
-                for(var j = 0, cj; cj = cn[j]; j++){
-                    if(cj.nodeName == utag || cj.nodeName == tagName  || tagName == '*'){
-                        result[++ri] = cj;
-                    }
-                }
-            }
-        }else if(mode == "+"){
-            var utag = tagName.toUpperCase();
-            for(var i = 0, n; n = ns[i]; i++){
-                while((n = n.nextSibling) && n.nodeType != 1);
-                if(n && (n.nodeName == utag || n.nodeName == tagName || tagName == '*')){
-                    result[++ri] = n;
-                }
-            }
-        }else if(mode == "~"){
-            for(var i = 0, n; n = ns[i]; i++){
-                while((n = n.nextSibling) && (n.nodeType != 1 || (tagName == '*' || n.tagName.toLowerCase()!=tagName)));
-                if(n){
-                    result[++ri] = n;
-                }
-            }
-        }
-        return result;
-    };
+    
+     
 
     function concat(a, b){
         if(b.slice){
@@ -211,67 +137,11 @@ Roo.DomQuery = function(){
         return a;
     }
 
-    function byTag(cs, tagName){
-        if(cs.tagName || cs == document){
-            cs = [cs];
-        }
-        if(!tagName){
-            return cs;
-        }
-        var r = [], ri = -1;
-        tagName = tagName.toLowerCase();
-        for(var i = 0, ci; ci = cs[i]; i++){
-            if(ci.nodeType == 1 && ci.tagName.toLowerCase()==tagName){
-                r[++ri] = ci;
-            }
-        }
-        return r;
-    };
+   
+   
 
-    function byId(cs, attr, id){
-        if(cs.tagName || cs == document){
-            cs = [cs];
-        }
-        if(!id){
-            return cs;
-        }
-        var r = [], ri = -1;
-        for(var i = 0,ci; ci = cs[i]; i++){
-            if(ci && ci.id == id){
-                r[++ri] = ci;
-                return r;
-            }
-        }
-        return r;
-    };
+    
 
-    function byAttribute(cs, attr, value, op, custom){
-        var r = [], ri = -1, st = custom=="{";
-        var f = Roo.DomQuery.operators[op];
-        for(var i = 0, ci; ci = cs[i]; i++){
-            var a;
-            if(st){
-                a = Roo.DomQuery.getStyle(ci, attr);
-            }
-            else if(attr == "class" || attr == "className"){
-                a = (ci instanceof SVGElement) ? ci.className.baseVal : ci.className;
-            }else if(attr == "for"){
-                a = ci.htmlFor;
-            }else if(attr == "href"){
-                a = ci.getAttribute("href", 2);
-            }else{
-                a = ci.getAttribute(attr);
-            }
-            if((f && f(a, value)) || (!f && a)){
-                r[++ri] = ci;
-            }
-        }
-        return r;
-    };
-
-    function byPseudo(cs, name, value){
-        return Roo.DomQuery.pseudos[name](cs, value);
-    };
 
     // This is for IE MSXML which does not support expandos.
     // IE runs the same speed using setAttribute, however FF slows way down
@@ -303,39 +173,7 @@ Roo.DomQuery = function(){
         return r;
     }
 
-    function nodup(cs){
-        if(!cs){
-            return [];
-        }
-        var len = cs.length, c, i, r = cs, cj, ri = -1;
-        if(!len || typeof cs.nodeType != "undefined" || len == 1){
-            return cs;
-        }
-        if(isIE && typeof cs[0].selectSingleNode != "undefined"){
-            return nodupIEXml(cs);
-        }
-        var d = ++key;
-        cs[0]._nodup = d;
-        for(i = 1; c = cs[i]; i++){
-            if(c._nodup != d){
-                c._nodup = d;
-            }else{
-                r = [];
-                for(var j = 0; j < i; j++){
-                    r[++ri] = cs[j];
-                }
-                for(j = i+1; cj = cs[j]; j++){
-                    if(cj._nodup != d){
-                        cj._nodup = d;
-                        r[++ri] = cj;
-                    }
-                }
-                return r;
-            }
-        }
-        return r;
-    }
-
+   
     function quickDiffIEXml(c1, c2){
         var d = ++key;
         for(var i = 0, len = c1.length; i < len; i++){
@@ -373,20 +211,45 @@ Roo.DomQuery = function(){
         }
         return r;
     }
-
-    function quickId(ns, mode, root, id){
-        if(ns == root){
-           var d = root.ownerDocument || root;
-           return d.getElementById(id);
-        }
-        ns = getNodes(ns, mode, "*");
-        return byId(ns, null, id);
-    }
+	var cmdcall = {
+		quickId : function(n, root, mode, node, arg) {
+			return  Roo.DomQuery.quickId(n, mode, root, arg);
+		},
+		getNodes: function(n, root, mode, node, arg) {
+			return Roo.DomQuery.getNodes(n, mode, arg)
+		},
+		byId: function(n, root, mode, node, arg) {
+			return Roo.DomQuery.byId(n, null, arg);
+		},
+		byTag: function(n, root, mode, node, arg) {
+			return Roo.DomQuery.byTag(n, arg);
+		},
+		
+ 	}
+   
 
     return {
         getStyle : function(el, name){
             return Roo.fly(el).getStyle(name);
         },
+		
+		
+		runFn : function(root, cmds)
+		{
+			var mode;
+			++Roo.DomQuery.batch;
+			var n = root || document;
+			cmds.forEach(function(cmd) {
+				if (typeof(cmd == "string")) {
+					mode = cmd;
+					return;
+				}
+				n = cmdcall[cmd[0]](n, root, mode, node, cmd[1]);
+			});
+			return Roo.DomQuery.nodup(n);
+			
+		},
+		
         /**
          * Compiles a selector/xpath query into a reusable function. The returned function
          * takes one parameter "root" (optional), which is the context node from where the query should start.
@@ -394,10 +257,16 @@ Roo.DomQuery = function(){
          * @param {String} type (optional) Either "select" (the default) or "simple" for a simple selector match
          * @return {Function}
          */
-        compile : function(path, type){
+        compile : function(path, type)
+		{
             type = type || "select";
             
-            var fn = ["var f = function(root){\n var mode; ++batch; var n = root || document;\n"];
+ 			var fn = ["var mode; ",
+					  "++Roo.DomQuery.batch;",
+					  "var root = arguments[0];",
+					  "var n = root || document;"
+					];
+			var cmdar = [];
             var q = path, mode, lq;
             var tk = Roo.DomQuery.matchers;
             var tklen = tk.length;
@@ -407,6 +276,7 @@ Roo.DomQuery = function(){
             var lmode = q.match(modeRe);
             if(lmode && lmode[1]){
                 fn[fn.length] = 'mode="'+lmode[1].replace(trimRe, "")+'";';
+				cmdar.push(lmode[1].replace(trimRe, ""));
                 q = q.replace(lmode[1], "");
             }
             // strip leading slashes
@@ -420,20 +290,25 @@ Roo.DomQuery = function(){
                 if(type == "select"){
                     if(tm){
                         if(tm[1] == "#"){
-                            fn[fn.length] = 'n = quickId(n, mode, root, "'+tm[2]+'");';
+                            fn[fn.length] = 'n = Roo.DomQuery.quickId(n, mode, root, "'+tm[2]+'");';
+							cmdar.push([ "quickId" , tm[2] ]);
                         }else{
-                            fn[fn.length] = 'n = getNodes(n, mode, "'+tm[2]+'");';
+                            fn[fn.length] = 'n = Roo.DomQuery.getNodes(n, mode, "'+tm[2]+'");';
+							cmdar.push([ "getNodes" , tm[2] ]);
                         }
                         q = q.replace(tm[0], "");
                     }else if(q.substr(0, 1) != '@'){
-                        fn[fn.length] = 'n = getNodes(n, mode, "*");';
+                        fn[fn.length] = 'n = Roo.DomQuery.getNodes(n, mode, "*");';
+						cmdar.push([ "getNodes" , "*" ]);
                     }
                 }else{
                     if(tm){
                         if(tm[1] == "#"){
-                            fn[fn.length] = 'n = byId(n, null, "'+tm[2]+'");';
+                            fn[fn.length] = 'n = Roo.DomQuery.byId(n, null, "'+tm[2]+'");';
+							cmdar.push([ "byId" , tm[2] ]);
                         }else{
-                            fn[fn.length] = 'n = byTag(n, "'+tm[2]+'");';
+                            fn[fn.length] = 'n = Roo.DomQuery.byTag(n, "'+tm[2]+'");';
+							cmdar.push([ "byTag", tm[2] ]);
                         }
                         q = q.replace(tm[0], "");
                     }
@@ -459,30 +334,15 @@ Roo.DomQuery = function(){
                 }
                 if(mm[1]){
                     fn[fn.length] = 'mode="'+mm[1].replace(trimRe, "")+'";';
+					cmdar.push(mm[1].replace(trimRe, ""));
                     q = q.replace(mm[1], "");
                 }
             }
-            fn[fn.length] = "return nodup(n);\n}";
-            
-             /** 
-              * list of variables that need from compression as they are used by eval.
-             *  eval:var:batch 
-             *  eval:var:nodup
-             *  eval:var:byTag
-             *  eval:var:ById
-             *  eval:var:getNodes
-             *  eval:var:quickId
-             *  eval:var:mode
-             *  eval:var:root
-             *  eval:var:n
-             *  eval:var:byClassName
-             *  eval:var:byPseudo
-             *  eval:var:byAttribute
-             *  eval:var:attrValue
-             * 
-             **/ 
-            eval(fn.join(""));
-            return f;
+ 			fn[fn.length] = "return Roo.DomQuery.nodup(n);";
+            return runFn.createDelegate(null, cmdar, true);
+			
+			//return Function(fn.join(""));
+		 
         },
 
         /**
@@ -514,7 +374,7 @@ Roo.DomQuery = function(){
                 }
             }
             if(paths.length > 1){
-                return nodup(results);
+                return Roo.DomQuery.nodup(results);
             }
             return results;
         },
@@ -595,19 +455,19 @@ Roo.DomQuery = function(){
          */
         matchers : [{
                 re: /^\.([\w-]+)/,
-                select: 'n = byClassName(n, null, " {1} ");'
+                select: 'n = Roo.DomQuery.byClassName(n, null, " {1} ");'
             }, {
                 re: /^\:([\w-]+)(?:\(((?:[^\s>\/]*|.*?))\))?/,
-                select: 'n = byPseudo(n, "{1}", "{2}");'
+                select: 'n = Roo.DomQuery.byPseudo(n, "{1}", "{2}");'
             },{
                 re: /^(?:([\[\{])(?:@)?([\w-]+)\s?(?:(=|.=)\s?['"]?(.*?)["']?)?[\]\}])/,
-                select: 'n = byAttribute(n, "{2}", "{4}", "{3}", "{1}");'
+                select: 'n = Roo.DomQuery.byAttribute(n, "{2}", "{4}", "{3}", "{1}");'
             }, {
                 re: /^#([\w-]+)/,
-                select: 'n = byId(n, null, "{1}");'
+                select: 'n = Roo.DomQuery.byId(n, null, "{1}");'
             },{
                 re: /^@([\w-]+)/,
-                select: 'return {firstChild:{nodeValue:attrValue(n, "{1}")}};'
+                select: 'return {firstChild:{nodeValue:Roo.DomQuery.attrValue(n, "{1}")}};'
             }
         ],
 
@@ -812,7 +672,193 @@ Roo.DomQuery = function(){
                 }
                 return r;
             }
-        }
+        },
+		
+		getNodes : function (ns, mode, tagName)
+		{
+			var result = [], ri = -1, cs;
+			if(!ns){
+				return result;
+			}
+			tagName = tagName || "*";
+			if(typeof ns.getElementsByTagName != "undefined"){
+				ns = [ns];
+			}
+			if(!mode){
+				for(var i = 0, ni; ni = ns[i]; i++){
+					cs = ni.getElementsByTagName(tagName);
+					for(var j = 0, ci; ci = cs[j]; j++){
+						result[++ri] = ci;
+					}
+				}
+			}else if(mode == "/" || mode == ">"){
+				var utag = tagName.toUpperCase();
+				for(var i = 0, ni, cn; ni = ns[i]; i++){
+					cn = ni.children || ni.childNodes;
+					for(var j = 0, cj; cj = cn[j]; j++){
+						if(cj.nodeName == utag || cj.nodeName == tagName  || tagName == '*'){
+							result[++ri] = cj;
+						}
+					}
+				}
+			}else if(mode == "+"){
+				var utag = tagName.toUpperCase();
+				for(var i = 0, n; n = ns[i]; i++){
+					while((n = n.nextSibling) && n.nodeType != 1);
+					if(n && (n.nodeName == utag || n.nodeName == tagName || tagName == '*')){
+						result[++ri] = n;
+					}
+				}
+			}else if(mode == "~"){
+				for(var i = 0, n; n = ns[i]; i++){
+					while((n = n.nextSibling) && (n.nodeType != 1 || (tagName == '*' || n.tagName.toLowerCase()!=tagName)));
+					if(n){
+						result[++ri] = n;
+					}
+				}
+			}
+			return result;
+		},
+		byClassName : function (c, a, v)
+		{
+			if(!v){
+				return c;
+			}
+			var r = [], ri = -1, cn;
+			for(var i = 0, ci; ci = c[i]; i++){
+			
+			
+				if((' '+
+			( (ci instanceof SVGElement) ? ci.className.baseVal : ci.className)
+			 +' ').indexOf(v) != -1){
+					r[++ri] = ci;
+				}
+			}
+			return r;
+		},
+		quickId :  function (ns, mode, root, id)
+		{
+			if(ns == root){
+			   var d = root.ownerDocument || root;
+			   return d.getElementById(id);
+			}
+			ns = Roo.DomQuery.getNodes(ns, mode, "*");
+			return Roo.DomQuery.byId(ns, null, id);
+		},
+		byId : function (cs, attr, id)
+		{
+			if(cs.tagName || cs == document){
+				cs = [cs];
+			}
+			if(!id){
+				return cs;
+			}
+			var r = [], ri = -1;
+			for(var i = 0,ci; ci = cs[i]; i++){
+				if(ci && ci.id == id){
+					r[++ri] = ci;
+					return r;
+				}
+			}
+			return r;
+		},
+		byTag : function (cs, tagName)
+		 {
+			if(cs.tagName || cs == document){
+				cs = [cs];
+			}
+			if(!tagName){
+				return cs;
+			}
+			var r = [], ri = -1;
+			tagName = tagName.toLowerCase();
+			for(var i = 0, ci; ci = cs[i]; i++){
+				if(ci.nodeType == 1 && ci.tagName.toLowerCase()==tagName){
+					r[++ri] = ci;
+				}
+			}
+			return r;
+		},
+		nodup : function(cs)
+		{
+			if(!cs){
+				return [];
+			}
+			var len = cs.length, c, i, r = cs, cj, ri = -1;
+			if(!len || typeof cs.nodeType != "undefined" || len == 1){
+				return cs;
+			}
+			if(isIE && typeof cs[0].selectSingleNode != "undefined"){
+				return nodupIEXml(cs);
+			}
+			var d = ++key;
+			cs[0]._nodup = d;
+			for(i = 1; c = cs[i]; i++){
+				if(c._nodup != d){
+					c._nodup = d;
+				}else{
+					r = [];
+					for(var j = 0; j < i; j++){
+						r[++ri] = cs[j];
+					}
+					for(j = i+1; cj = cs[j]; j++){
+						if(cj._nodup != d){
+							cj._nodup = d;
+							r[++ri] = cj;
+						}
+					}
+					return r;
+				}
+			}
+			return r;
+		},
+		byPseudo : function (cs, name, value)
+		{
+			return Roo.DomQuery.pseudos[name](cs, value);
+		},
+		byAttribute : function (cs, attr, value, op, custom)
+		{
+			var r = [], ri = -1, st = custom=="{";
+			var f = Roo.DomQuery.operators[op];
+			for(var i = 0, ci; ci = cs[i]; i++){
+				var a;
+				if(st){
+					a = Roo.DomQuery.getStyle(ci, attr);
+				}
+				else if(attr == "class" || attr == "className"){
+					a = (ci instanceof SVGElement) ? ci.className.baseVal : ci.className;
+				}else if(attr == "for"){
+					a = ci.htmlFor;
+				}else if(attr == "href"){
+					a = ci.getAttribute("href", 2);
+				}else{
+					a = ci.getAttribute(attr);
+				}
+				if((f && f(a, value)) || (!f && a)){
+					r[++ri] = ci;
+				}
+			}
+			return r;
+		},
+		attrValue : function (n, attr)
+		{
+			if(!n.tagName && typeof n.length != "undefined"){
+				n = n[0];
+			}
+			if(!n){
+				return null;
+			}
+			if(attr == "for"){
+				return n.htmlFor;
+			}
+			if(attr == "class" || attr == "className"){
+			return (n instanceof SVGElement) ? n.className.baseVal : n.className;
+			}
+			return n.getAttribute(attr) || n[attr];
+	
+		}
+
+
     };
 }();
 

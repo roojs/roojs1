@@ -221,7 +221,11 @@ Roo.Template.prototype = {
          * eval:var:values
          * eval:var:fm
          */
-        eval(body);
+        try {
+            eval(body);
+        } catch(e) {
+            Roo.log(e); // probably eval not allowed.
+        }
         return this;
     },
     
