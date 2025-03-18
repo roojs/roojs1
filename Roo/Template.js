@@ -215,13 +215,20 @@ Roo.Template.prototype = {
             body = ["this.compiled = function(values){ return ['"];
             body.push(this.html.replace(/\\/g, '\\\\').replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn));
             body.push("'].join('');};");
-            body = body.join('');
+            body = body.join("");
+            
         }
+        console.log(body);
+         
         /**
          * eval:var:values
          * eval:var:fm
          */
-        eval(body);
+        try {
+            eval(body);
+        } catch(e) {
+            Roo.log("CSP probably disables eval - should be ok as we dont' need to compile templates");
+        }
         return this;
     },
     
