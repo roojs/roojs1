@@ -211,21 +211,236 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
     }
-	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cmdcall </span><span class="jsdoc-syntax">= {
-		</span><span class="jsdoc-var">quickId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">) {
-			</span><span class="jsdoc-keyword">return  </span><span class="jsdoc-var">Roo.DomQuery.quickId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">);
-		},
-		</span><span class="jsdoc-var">getNodes</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">) {
-			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.DomQuery.getNodes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">)
-		},
-		</span><span class="jsdoc-var">byId</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">) {
-			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.DomQuery.byId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">);
-		},
-		</span><span class="jsdoc-var">byTag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">) {
-			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.DomQuery.byTag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">);
-		},
 
- 	}
+	</span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">quickId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">)
+	{
+		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">){
+		   </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">root.ownerDocument </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">;
+		   </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">d.getElementById</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+		}
+		</span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">getNodes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;*&quot;</span><span class="jsdoc-syntax">);
+		</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.DomQuery.byId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+	}
+	</span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">getNodes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tagName</span><span class="jsdoc-syntax">)
+	{
+		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">ri </span><span class="jsdoc-syntax">= -1, </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">;
+		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">){
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">;
+		}
+		</span><span class="jsdoc-var">tagName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tagName </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;*&quot;</span><span class="jsdoc-syntax">;
+		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">ns.getElementsByTagName </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
+			</span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">];
+		}
+		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">){
+			</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">ni</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">ni </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+				</span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ni.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tagName</span><span class="jsdoc-syntax">);
+				</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">ci </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++){
+					</span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">;
+				}
+			}
+		}</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;/&quot; </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;&gt;&quot;</span><span class="jsdoc-syntax">){
+			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">utag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tagName.toUpperCase</span><span class="jsdoc-syntax">();
+			</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">ni</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">ni </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+				</span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ni.children </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ni.childNodes</span><span class="jsdoc-syntax">;
+				</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">cj</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">cj </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++){
+					</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cj.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">utag </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cj.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">tagName  </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">){
+						</span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">cj</span><span class="jsdoc-syntax">;
+					}
+				}
+			}
+		}</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;+&quot;</span><span class="jsdoc-syntax">){
+			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">utag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tagName.toUpperCase</span><span class="jsdoc-syntax">();
+			</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+				</span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.nextSibling</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">n.nodeType </span><span class="jsdoc-syntax">!= 1);
+				</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">n.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">utag </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">n.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">tagName </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">)){
+					</span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">;
+				}
+			}
+		}</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;~&quot;</span><span class="jsdoc-syntax">){
+			</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+				</span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.nextSibling</span><span class="jsdoc-syntax">) &amp;&amp; (</span><span class="jsdoc-var">n.nodeType </span><span class="jsdoc-syntax">!= 1 || (</span><span class="jsdoc-var">tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'*' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">n.tagName.toLowerCase</span><span class="jsdoc-syntax">()!=</span><span class="jsdoc-var">tagName</span><span class="jsdoc-syntax">)));
+				</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">){
+					</span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">;
+				}
+			}
+		}
+		</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">;
+	}
+	</span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">byId </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">)
+	{
+		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs.tagName </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">){
+			</span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">];
+		}
+		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">;
+		}
+		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">ri </span><span class="jsdoc-syntax">= -1;
+		</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0,</span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">ci </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ci </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ci.id </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+				</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">;
+				</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+			}
+		}
+		</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+	}
+
+
+	</span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">byTag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tagName</span><span class="jsdoc-syntax">)
+	{
+		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs.tagName </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">){
+			</span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">];
+		}
+		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tagName</span><span class="jsdoc-syntax">){
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">;
+		}
+		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">ri </span><span class="jsdoc-syntax">= -1;
+		</span><span class="jsdoc-var">tagName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tagName.toLowerCase</span><span class="jsdoc-syntax">();
+		</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">ci </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ci.nodeType </span><span class="jsdoc-syntax">== 1 &amp;&amp; </span><span class="jsdoc-var">ci.tagName.toLowerCase</span><span class="jsdoc-syntax">()==</span><span class="jsdoc-var">tagName</span><span class="jsdoc-syntax">){
+				</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">;
+			}
+		}
+		</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+	}
+
+
+
+	</span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">byClassName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
+	{
+		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+		}
+		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">ri </span><span class="jsdoc-syntax">= -1, </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
+		</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">ci </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+
+
+			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">+
+		( (</span><span class="jsdoc-var">ci </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">SVGElement</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">ci.className.baseVal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ci.className</span><span class="jsdoc-syntax">)
+		 +</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) != -1){
+				</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">;
+			}
+		}
+		</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+	}
+	</span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">byAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">op</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">custom</span><span class="jsdoc-syntax">)
+	{
+		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">ri </span><span class="jsdoc-syntax">= -1, </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">custom</span><span class="jsdoc-syntax">==</span><span class="jsdoc-string">&quot;{&quot;</span><span class="jsdoc-syntax">;
+		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomQuery.operators</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">op</span><span class="jsdoc-syntax">];
+		</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">ci </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">;
+			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">st</span><span class="jsdoc-syntax">){
+				</span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomQuery.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">);
+			}
+			</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;class&quot; </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;className&quot;</span><span class="jsdoc-syntax">){
+				</span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">ci </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">SVGElement</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">ci.className.baseVal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ci.className</span><span class="jsdoc-syntax">;
+			}</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;for&quot;</span><span class="jsdoc-syntax">){
+				</span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ci.htmlFor</span><span class="jsdoc-syntax">;
+			}</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;href&quot;</span><span class="jsdoc-syntax">){
+				</span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ci.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;href&quot;</span><span class="jsdoc-syntax">, 2);
+			}</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+				</span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ci.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">);
+			}
+			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)) || (!</span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">)){
+				</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">;
+			}
+		}
+		</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+	}
+
+
+	</span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">nodup</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">)
+	{
+		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">){
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[];
+		}
+		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs.length</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cj</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ri </span><span class="jsdoc-syntax">= -1;
+		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">cs.nodeType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot; </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">== 1){
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">;
+		}
+		</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isIE </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.selectSingleNode </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">nodupIEXml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">);
+		}
+		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= ++</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">;
+		</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">._nodup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">;
+		</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 1; </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c._nodup </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">){
+				</span><span class="jsdoc-var">c._nodup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">;
+			}</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+				</span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= [];
+				</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++){
+					</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">];
+				}
+				</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">+1; </span><span class="jsdoc-var">cj </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++){
+					</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cj._nodup </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">){
+						</span><span class="jsdoc-var">cj._nodup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">;
+						</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">cj</span><span class="jsdoc-syntax">;
+					}
+				}
+				</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+			}
+		}
+		</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+	}
+
+	</span><span class="jsdoc-comment">// enable a generic call to all of the above functions.
+
+	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cmdcall </span><span class="jsdoc-syntax">= {
+		</span><span class="jsdoc-var">quickId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">) {
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">quickId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">);
+		},
+		</span><span class="jsdoc-var">getNodes</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">) {
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">getNodes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">)
+		},
+		</span><span class="jsdoc-var">byId</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">) {
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">byId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">);
+		},
+		</span><span class="jsdoc-var">byTag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">) {
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">byTag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">);
+		},
+		</span><span class="jsdoc-var">byClassName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">) {
+			</span><span class="jsdoc-keyword">return  </span><span class="jsdoc-var">byClassName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">[1] + </span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">);
+		},
+		</span><span class="jsdoc-var">byPseudo</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">) {
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">byPseudo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">[2]);
+		},
+		</span><span class="jsdoc-var">byAttribute</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">) {
+           </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">byAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">[2], </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">[4], </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">[3], </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">[1]);
+		},
+        </span><span class="jsdoc-var">byIdAr</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">byId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arg</span><span class="jsdoc-syntax">[1]);
+        }
+ 	};
+
+	</span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">byPseudo </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)
+	{
+		</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.DomQuery.pseudos</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+	}
+
+    </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">runFn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cmds</span><span class="jsdoc-syntax">)
+	{
+
+		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">;
+		++</span><span class="jsdoc-var">Roo.DomQuery.batch</span><span class="jsdoc-syntax">;
+		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">root </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">;
+		</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">cmds.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cmds</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+			</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">) {
+				</span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">;
+				</span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+			}
+			</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;attrValue&quot;</span><span class="jsdoc-syntax">) {
+				</span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+					</span><span class="jsdoc-var">firstChild</span><span class="jsdoc-syntax">:{
+						</span><span class="jsdoc-var">nodeValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.DomQuery.attrValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">[1][1])
+					}
+				};
+			}
+			</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cmdcall</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">[0]](</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">[1]);
+		}
+		</span><span class="jsdoc-keyword">return  </span><span class="jsdoc-var">nodup</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
+
+	}
+
 
 
     </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
@@ -234,21 +449,7 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
         },
 
 
-		</span><span class="jsdoc-var">runFn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cmds</span><span class="jsdoc-syntax">)
-		{
-			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">;
-			++</span><span class="jsdoc-var">Roo.DomQuery.batch</span><span class="jsdoc-syntax">;
-			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">root </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">;
-			</span><span class="jsdoc-var">cmds.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">) {
-				</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">)) {
-					</span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">;
-					</span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-				}
-				</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cmdcall</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">[0]](</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">[1]);
-			});
-			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.DomQuery.nodup</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
 
-		},
 
         </span><span class="jsdoc-comment">/**
          * Compiles a selector/xpath query into a reusable function. The returned function
@@ -261,11 +462,6 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
 		{
             </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;select&quot;</span><span class="jsdoc-syntax">;
 
- 			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">&quot;var mode; &quot;</span><span class="jsdoc-syntax">,
-					  </span><span class="jsdoc-string">&quot;++Roo.DomQuery.batch;&quot;</span><span class="jsdoc-syntax">,
-					  </span><span class="jsdoc-string">&quot;var root = arguments[0];&quot;</span><span class="jsdoc-syntax">,
-					  </span><span class="jsdoc-string">&quot;var n = root || document;&quot;
-					</span><span class="jsdoc-syntax">];
 			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cmdar </span><span class="jsdoc-syntax">= [];
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">path</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">lq</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tk </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomQuery.matchers</span><span class="jsdoc-syntax">;
@@ -275,8 +471,7 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
             </span><span class="jsdoc-comment">// accept leading mode switch
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lmode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">modeRe</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lmode </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">lmode</span><span class="jsdoc-syntax">[1]){
-                </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fn.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'mode=&quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">lmode</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">trimRe</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-string">'&quot;;'</span><span class="jsdoc-syntax">;
-				</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lmode</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">trimRe</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lmode</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">trimRe</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">));
                 </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lmode</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
             }
             </span><span class="jsdoc-comment">// strip leading slashes
@@ -290,25 +485,20 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;select&quot;</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">){
                         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[1] == </span><span class="jsdoc-string">&quot;#&quot;</span><span class="jsdoc-syntax">){
-                            </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fn.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'n = Roo.DomQuery.quickId(n, mode, root, &quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2]+</span><span class="jsdoc-string">'&quot;);'</span><span class="jsdoc-syntax">;
-							</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-string">&quot;quickId&quot; </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2] ]);
+                			</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-string">&quot;quickId&quot; </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2] ]);
                         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-                            </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fn.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'n = Roo.DomQuery.getNodes(n, mode, &quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2]+</span><span class="jsdoc-string">'&quot;);'</span><span class="jsdoc-syntax">;
-							</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-string">&quot;getNodes&quot; </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2] ]);
+                			</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-string">&quot;getNodes&quot; </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2] ]);
                         }
                         </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
                     }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">q.substr</span><span class="jsdoc-syntax">(0, 1) != </span><span class="jsdoc-string">'@'</span><span class="jsdoc-syntax">){
-                        </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fn.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'n = Roo.DomQuery.getNodes(n, mode, &quot;*&quot;);'</span><span class="jsdoc-syntax">;
-						</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-string">&quot;getNodes&quot; </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;*&quot; </span><span class="jsdoc-syntax">]);
+                		</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-string">&quot;getNodes&quot; </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;*&quot; </span><span class="jsdoc-syntax">]);
                     }
                 }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
                     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">){
                         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[1] == </span><span class="jsdoc-string">&quot;#&quot;</span><span class="jsdoc-syntax">){
-                            </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fn.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'n = Roo.DomQuery.byId(n, null, &quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2]+</span><span class="jsdoc-string">'&quot;);'</span><span class="jsdoc-syntax">;
-							</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-string">&quot;byId&quot; </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2] ]);
+                			</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-string">&quot;byId&quot; </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2] ]);
                         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-                            </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fn.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'n = Roo.DomQuery.byTag(n, &quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2]+</span><span class="jsdoc-string">'&quot;);'</span><span class="jsdoc-syntax">;
-							</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-string">&quot;byTag&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2] ]);
+                			</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-string">&quot;byTag&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[2] ]);
                         }
                         </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tm</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
                     }
@@ -319,10 +509,8 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
                         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tk</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">];
                         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.re</span><span class="jsdoc-syntax">);
                         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">){
-                            </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fn.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">t.select.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tplRe</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">){
-                                                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
-                                                });
-                            </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+                			</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-var">t.method</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">]);
+				            </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
                             </span><span class="jsdoc-var">matched </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
                             </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
                         }
@@ -333,17 +521,13 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
                     }
                 }
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mm</span><span class="jsdoc-syntax">[1]){
-                    </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fn.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'mode=&quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">mm</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">trimRe</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-string">'&quot;;'</span><span class="jsdoc-syntax">;
-					</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mm</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">trimRe</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">));
+                	</span><span class="jsdoc-var">cmdar.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mm</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">trimRe</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">));
                     </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mm</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
                 }
             }
- 			</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fn.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">&quot;return Roo.DomQuery.nodup(n);&quot;</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">runFn.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cmdar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+ 			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">runFn.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, [ </span><span class="jsdoc-var">cmdar </span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
 
-			</span><span class="jsdoc-comment">//return Function(fn.join(&quot;&quot;));
-
-        </span><span class="jsdoc-syntax">},
+        },
 
         </span><span class="jsdoc-comment">/**
          * Selects a group of elements.
@@ -374,7 +558,7 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
                 }
             }
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">paths.length </span><span class="jsdoc-syntax">&gt; 1){
-                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.DomQuery.nodup</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return  </span><span class="jsdoc-var">nodup</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">);
             }
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">;
         },
@@ -453,21 +637,24 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
         </span><span class="jsdoc-comment">/**
          * Collection of matching regular expressions and code snippets.
          */
-        </span><span class="jsdoc-var">matchers </span><span class="jsdoc-syntax">: [{
+        </span><span class="jsdoc-var">matchers </span><span class="jsdoc-syntax">: [
+			{
                 </span><span class="jsdoc-var">re</span><span class="jsdoc-syntax">: /^\.([\w-]+)/,
-                </span><span class="jsdoc-var">select</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'n = Roo.DomQuery.byClassName(n, null, &quot; {1} &quot;);'
+ 				</span><span class="jsdoc-var">method </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'byClassName'
             </span><span class="jsdoc-syntax">}, {
                 </span><span class="jsdoc-var">re</span><span class="jsdoc-syntax">: /^\:([\w-]+)(?:\(((?:[^\s&gt;\/]*|.*?))\))?/,
-                </span><span class="jsdoc-var">select</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'n = Roo.DomQuery.byPseudo(n, &quot;{1}&quot;, &quot;{2}&quot;);'
+ 				</span><span class="jsdoc-var">method </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'byPseudo'
             </span><span class="jsdoc-syntax">},{
                 </span><span class="jsdoc-var">re</span><span class="jsdoc-syntax">: /^(?:([\[\{])(?:@)?([\w-]+)\s?(?:(=|.=)\s?['&quot;]?(.*?)[&quot;']?)?[\]\}])/,
-                </span><span class="jsdoc-var">select</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'n = Roo.DomQuery.byAttribute(n, &quot;{2}&quot;, &quot;{4}&quot;, &quot;{3}&quot;, &quot;{1}&quot;);'
+ 				</span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'byAttribute'
             </span><span class="jsdoc-syntax">}, {
                 </span><span class="jsdoc-var">re</span><span class="jsdoc-syntax">: /^#([\w-]+)/,
-                </span><span class="jsdoc-var">select</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'n = Roo.DomQuery.byId(n, null, &quot;{1}&quot;);'
+              </span><span class="jsdoc-comment">//  select: 'n = Roo.DomQuery.byId(n, null, &quot;{1}&quot;);',
+				</span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'byIdAr'
             </span><span class="jsdoc-syntax">},{
                 </span><span class="jsdoc-var">re</span><span class="jsdoc-syntax">: /^@([\w-]+)/,
-                </span><span class="jsdoc-var">select</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'return {firstChild:{nodeValue:Roo.DomQuery.attrValue(n, &quot;{1}&quot;)}};'
+                </span><span class="jsdoc-comment">//select: 'return {firstChild:{nodeValue:Roo.DomQuery.attrValue(n, &quot;{1}&quot;)}};',
+				</span><span class="jsdoc-var">method </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'attrValue'
             </span><span class="jsdoc-syntax">}
         ],
 
@@ -674,172 +861,11 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
             }
         },
 
-		</span><span class="jsdoc-var">getNodes </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tagName</span><span class="jsdoc-syntax">)
-		{
-			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">ri </span><span class="jsdoc-syntax">= -1, </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">;
-			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">){
-				</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">;
-			}
-			</span><span class="jsdoc-var">tagName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tagName </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;*&quot;</span><span class="jsdoc-syntax">;
-			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">ns.getElementsByTagName </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
-				</span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">];
-			}
-			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">){
-				</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">ni</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">ni </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-					</span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ni.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tagName</span><span class="jsdoc-syntax">);
-					</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">ci </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++){
-						</span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">;
-					}
-				}
-			}</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;/&quot; </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;&gt;&quot;</span><span class="jsdoc-syntax">){
-				</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">utag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tagName.toUpperCase</span><span class="jsdoc-syntax">();
-				</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">ni</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">ni </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-					</span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ni.children </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ni.childNodes</span><span class="jsdoc-syntax">;
-					</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">cj</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">cj </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++){
-						</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cj.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">utag </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cj.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">tagName  </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">){
-							</span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">cj</span><span class="jsdoc-syntax">;
-						}
-					}
-				}
-			}</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;+&quot;</span><span class="jsdoc-syntax">){
-				</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">utag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tagName.toUpperCase</span><span class="jsdoc-syntax">();
-				</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-					</span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.nextSibling</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">n.nodeType </span><span class="jsdoc-syntax">!= 1);
-					</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">n.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">utag </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">n.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">tagName </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">)){
-						</span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">;
-					}
-				}
-			}</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;~&quot;</span><span class="jsdoc-syntax">){
-				</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-					</span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.nextSibling</span><span class="jsdoc-syntax">) &amp;&amp; (</span><span class="jsdoc-var">n.nodeType </span><span class="jsdoc-syntax">!= 1 || (</span><span class="jsdoc-var">tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'*' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">n.tagName.toLowerCase</span><span class="jsdoc-syntax">()!=</span><span class="jsdoc-var">tagName</span><span class="jsdoc-syntax">)));
-					</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">){
-						</span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">;
-					}
-				}
-			}
-			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">;
-		},
-		</span><span class="jsdoc-var">byClassName </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
-		{
-			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
-				</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
-			}
-			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">ri </span><span class="jsdoc-syntax">= -1, </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
-			</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">ci </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
 
 
-				</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">+
-			( (</span><span class="jsdoc-var">ci </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">SVGElement</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">ci.className.baseVal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ci.className</span><span class="jsdoc-syntax">)
-			 +</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) != -1){
-					</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">;
-				}
-			}
-			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
-		},
-		</span><span class="jsdoc-var">quickId </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">)
-		{
-			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">){
-			   </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">root.ownerDocument </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">;
-			   </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">d.getElementById</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
-			}
-			</span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomQuery.getNodes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;*&quot;</span><span class="jsdoc-syntax">);
-			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.DomQuery.byId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
-		},
-		</span><span class="jsdoc-var">byId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">)
-		{
-			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs.tagName </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">){
-				</span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">];
-			}
-			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
-				</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">;
-			}
-			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">ri </span><span class="jsdoc-syntax">= -1;
-			</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0,</span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">ci </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-				</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ci </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ci.id </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
-					</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">;
-					</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
-				}
-			}
-			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
-		},
-		</span><span class="jsdoc-var">byTag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tagName</span><span class="jsdoc-syntax">)
-		 {
-			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs.tagName </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">){
-				</span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">];
-			}
-			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tagName</span><span class="jsdoc-syntax">){
-				</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">;
-			}
-			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">ri </span><span class="jsdoc-syntax">= -1;
-			</span><span class="jsdoc-var">tagName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tagName.toLowerCase</span><span class="jsdoc-syntax">();
-			</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">ci </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-				</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ci.nodeType </span><span class="jsdoc-syntax">== 1 &amp;&amp; </span><span class="jsdoc-var">ci.tagName.toLowerCase</span><span class="jsdoc-syntax">()==</span><span class="jsdoc-var">tagName</span><span class="jsdoc-syntax">){
-					</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">;
-				}
-			}
-			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
-		},
-		</span><span class="jsdoc-var">nodup </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">)
-		{
-			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">){
-				</span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[];
-			}
-			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs.length</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cj</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ri </span><span class="jsdoc-syntax">= -1;
-			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">cs.nodeType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot; </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">== 1){
-				</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">;
-			}
-			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isIE </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.selectSingleNode </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
-				</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">nodupIEXml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">);
-			}
-			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= ++</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">;
-			</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">._nodup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">;
-			</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 1; </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-				</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c._nodup </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">){
-					</span><span class="jsdoc-var">c._nodup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">;
-				}</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-					</span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= [];
-					</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++){
-						</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">];
-					}
-					</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">+1; </span><span class="jsdoc-var">cj </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++){
-						</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cj._nodup </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">){
-							</span><span class="jsdoc-var">cj._nodup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">;
-							</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">cj</span><span class="jsdoc-syntax">;
-						}
-					}
-					</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
-				}
-			}
-			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
-		},
-		</span><span class="jsdoc-var">byPseudo </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)
-		{
-			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.DomQuery.pseudos</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
-		},
-		</span><span class="jsdoc-var">byAttribute </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">op</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">custom</span><span class="jsdoc-syntax">)
-		{
-			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">ri </span><span class="jsdoc-syntax">= -1, </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">custom</span><span class="jsdoc-syntax">==</span><span class="jsdoc-string">&quot;{&quot;</span><span class="jsdoc-syntax">;
-			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomQuery.operators</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">op</span><span class="jsdoc-syntax">];
-			</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">ci </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-				</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">;
-				</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">st</span><span class="jsdoc-syntax">){
-					</span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomQuery.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">);
-				}
-				</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;class&quot; </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;className&quot;</span><span class="jsdoc-syntax">){
-					</span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">ci </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">SVGElement</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">ci.className.baseVal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ci.className</span><span class="jsdoc-syntax">;
-				}</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;for&quot;</span><span class="jsdoc-syntax">){
-					</span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ci.htmlFor</span><span class="jsdoc-syntax">;
-				}</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;href&quot;</span><span class="jsdoc-syntax">){
-					</span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ci.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;href&quot;</span><span class="jsdoc-syntax">, 2);
-				}</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-					</span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ci.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">);
-				}
-				</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)) || (!</span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">)){
-					</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">;
-				}
-			}
-			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
-		},
+
+
+
 		</span><span class="jsdoc-var">attrValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">)
 		{
 			</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">n.tagName </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">n.length </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
@@ -870,5 +896,4 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
  * @member Roo
  * @method query
  */
-</span><span class="jsdoc-var">Roo.query </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomQuery.select</span><span class="jsdoc-syntax">;
-</span></code></body></html>
+</span><span class="jsdoc-var">Roo.query </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomQuery.select</span><span class="jsdoc-syntax">;</span></code></body></html>
