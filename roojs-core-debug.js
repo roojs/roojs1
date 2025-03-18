@@ -6587,22 +6587,237 @@ Roo.DomQuery = function(){
         }
         return r;
     }
-	var cmdcall = {
-		quickId : function(n, root, mode, node, arg) {
-			return  Roo.DomQuery.quickId(n, mode, root, arg);
-		},
-		getNodes: function(n, root, mode, node, arg) {
-			return Roo.DomQuery.getNodes(n, mode, arg)
-		},
-		byId: function(n, root, mode, node, arg) {
-			return Roo.DomQuery.byId(n, null, arg);
-		},
-		byTag: function(n, root, mode, node, arg) {
-			return Roo.DomQuery.byTag(n, arg);
-		},
+	
+	function quickId(ns, mode, root, id)
+	{
+		if(ns == root){
+		   var d = root.ownerDocument || root;
+		   return d.getElementById(id);
+		}
+		ns =  getNodes(ns, mode, "*");
+		return Roo.DomQuery.byId(ns, null, id);
+	}
+	function getNodes(ns, mode, tagName)
+	{
+		var result = [], ri = -1, cs;
+		if(!ns){
+			return result;
+		}
+		tagName = tagName || "*";
+		if(typeof ns.getElementsByTagName != "undefined"){
+			ns = [ns];
+		}
+		if(!mode){
+			for(var i = 0, ni; ni = ns[i]; i++){
+				cs = ni.getElementsByTagName(tagName);
+				for(var j = 0, ci; ci = cs[j]; j++){
+					result[++ri] = ci;
+				}
+			}
+		}else if(mode == "/" || mode == ">"){
+			var utag = tagName.toUpperCase();
+			for(var i = 0, ni, cn; ni = ns[i]; i++){
+				cn = ni.children || ni.childNodes;
+				for(var j = 0, cj; cj = cn[j]; j++){
+					if(cj.nodeName == utag || cj.nodeName == tagName  || tagName == '*'){
+						result[++ri] = cj;
+					}
+				}
+			}
+		}else if(mode == "+"){
+			var utag = tagName.toUpperCase();
+			for(var i = 0, n; n = ns[i]; i++){
+				while((n = n.nextSibling) && n.nodeType != 1);
+				if(n && (n.nodeName == utag || n.nodeName == tagName || tagName == '*')){
+					result[++ri] = n;
+				}
+			}
+		}else if(mode == "~"){
+			for(var i = 0, n; n = ns[i]; i++){
+				while((n = n.nextSibling) && (n.nodeType != 1 || (tagName == '*' || n.tagName.toLowerCase()!=tagName)));
+				if(n){
+					result[++ri] = n;
+				}
+			}
+		}
+		return result;
+	}
+	function byId (cs, attr, id)
+	{
+		if(cs.tagName || cs == document){
+			cs = [cs];
+		}
+		if(!id){
+			return cs;
+		}
+		var r = [], ri = -1;
+		for(var i = 0,ci; ci = cs[i]; i++){
+			if(ci && ci.id == id){
+				r[++ri] = ci;
+				return r;
+			}
+		}
+		return r;
+	}
+	
+	
+	function byTag(cs, tagName)
+	{
+		if(cs.tagName || cs == document){
+			cs = [cs];
+		}
+		if(!tagName){
+			return cs;
+		}
+		var r = [], ri = -1;
+		tagName = tagName.toLowerCase();
+		for(var i = 0, ci; ci = cs[i]; i++){
+			if(ci.nodeType == 1 && ci.tagName.toLowerCase()==tagName){
+				r[++ri] = ci;
+			}
+		}
+		return r;
+	}
+
+	
+	
+	function byClassName(c, a, v)
+	{
+		if(!v){
+			return c;
+		}
+		var r = [], ri = -1, cn;
+		for(var i = 0, ci; ci = c[i]; i++){
 		
- 	}
+		
+			if((' '+
+		( (ci instanceof SVGElement) ? ci.className.baseVal : ci.className)
+		 +' ').indexOf(v) != -1){
+				r[++ri] = ci;
+			}
+		}
+		return r;
+	}
+	function byAttribute(cs, attr, value, op, custom)
+	{
+		var r = [], ri = -1, st = custom=="{";
+		var f = Roo.DomQuery.operators[op];
+		for(var i = 0, ci; ci = cs[i]; i++){
+			var a;
+			if(st){
+				a = Roo.DomQuery.getStyle(ci, attr);
+			}
+			else if(attr == "class" || attr == "className"){
+				a = (ci instanceof SVGElement) ? ci.className.baseVal : ci.className;
+			}else if(attr == "for"){
+				a = ci.htmlFor;
+			}else if(attr == "href"){
+				a = ci.getAttribute("href", 2);
+			}else{
+				a = ci.getAttribute(attr);
+			}
+			if((f && f(a, value)) || (!f && a)){
+				r[++ri] = ci;
+			}
+		}
+		return r;
+	}
+	
+	
+	function nodup(cs)
+	{
+		if(!cs){
+			return [];
+		}
+		var len = cs.length, c, i, r = cs, cj, ri = -1;
+		if(!len || typeof cs.nodeType != "undefined" || len == 1){
+			return cs;
+		}
+		if(isIE && typeof cs[0].selectSingleNode != "undefined"){
+			return nodupIEXml(cs);
+		}
+		var d = ++key;
+		cs[0]._nodup = d;
+		for(i = 1; c = cs[i]; i++){
+			if(c._nodup != d){
+				c._nodup = d;
+			}else{
+				r = [];
+				for(var j = 0; j < i; j++){
+					r[++ri] = cs[j];
+				}
+				for(j = i+1; cj = cs[j]; j++){
+					if(cj._nodup != d){
+						cj._nodup = d;
+						r[++ri] = cj;
+					}
+				}
+				return r;
+			}
+		}
+		return r;
+	}
+	
+	// enable a generic call to all of the above functions.
+	
+	var cmdcall = {
+		quickId : function(n, root, mode, arg) {
+			return quickId(n, mode, root, arg);
+		},
+		getNodes: function(n, root, mode, arg) {
+			return getNodes(n, mode, arg)
+		},
+		byId: function(n, root, mode, arg) {
+			return byId(n, null, arg);
+		},
+		byTag: function(n, root, mode, arg) {
+			return byTag(n, arg);
+		},
+		byClassName: function(n, root, mode, arg) {
+			return  byClassName(n, null, " " + arg[1] + " ");
+		},
+		byPseudo: function(n, root, mode, arg) {
+			return byPseudo(n, arg[1], arg[2]);
+		},
+		byAttribute: function(n, root, mode, arg) {
+           return byAttribute(n, arg[2], arg[4], arg[3], arg[1]);
+		},
+        byIdAr: function(n, root, mode, arg) {
+            return byId(n, null, arg[1]);
+        }
+ 	};
    
+	function byPseudo (cs, name, value)
+	{
+		return Roo.DomQuery.pseudos[name](cs, value);
+	}
+	
+    function runFn(root, cmds)
+	{
+		 
+		var mode;
+		++Roo.DomQuery.batch;
+		var n = root || document;
+		for(var i = 0; i < cmds.length;i++) {
+			var cmd = cmds[i];
+			if (typeof(cmd) == "string") {
+				mode = cmd;
+				continue;
+			}
+			if (cmd == "attrValue") {
+				return {
+					firstChild:{
+						nodeValue: Roo.DomQuery.attrValue(n, cmd[1][1])
+					}
+				};
+			}
+			n = cmdcall[cmd[0]](n, root,  mode,  cmd[1]);
+		}
+		return  nodup(n);
+		
+	}
+	
+	 
 
     return {
         getStyle : function(el, name){
@@ -6610,21 +6825,7 @@ Roo.DomQuery = function(){
         },
 		
 		
-		runFn : function(root, cmds)
-		{
-			var mode;
-			++Roo.DomQuery.batch;
-			var n = root || document;
-			cmds.forEach(function(cmd) {
-				if (typeof(cmd == "string")) {
-					mode = cmd;
-					return;
-				}
-				n = cmdcall[cmd[0]](n, root, mode, node, cmd[1]);
-			});
-			return Roo.DomQuery.nodup(n);
-			
-		},
+		
 		
         /**
          * Compiles a selector/xpath query into a reusable function. The returned function
@@ -6636,12 +6837,7 @@ Roo.DomQuery = function(){
         compile : function(path, type)
 		{
             type = type || "select";
-            
- 			var fn = ["var mode; ",
-					  "++Roo.DomQuery.batch;",
-					  "var root = arguments[0];",
-					  "var n = root || document;"
-					];
+        
 			var cmdar = [];
             var q = path, mode, lq;
             var tk = Roo.DomQuery.matchers;
@@ -6651,8 +6847,7 @@ Roo.DomQuery = function(){
             // accept leading mode switch
             var lmode = q.match(modeRe);
             if(lmode && lmode[1]){
-                fn[fn.length] = 'mode="'+lmode[1].replace(trimRe, "")+'";';
-				cmdar.push(lmode[1].replace(trimRe, ""));
+                cmdar.push(lmode[1].replace(trimRe, ""));
                 q = q.replace(lmode[1], "");
             }
             // strip leading slashes
@@ -6666,25 +6861,20 @@ Roo.DomQuery = function(){
                 if(type == "select"){
                     if(tm){
                         if(tm[1] == "#"){
-                            fn[fn.length] = 'n = Roo.DomQuery.quickId(n, mode, root, "'+tm[2]+'");';
-							cmdar.push([ "quickId" , tm[2] ]);
+                			cmdar.push([ "quickId" , tm[2] ]);
                         }else{
-                            fn[fn.length] = 'n = Roo.DomQuery.getNodes(n, mode, "'+tm[2]+'");';
-							cmdar.push([ "getNodes" , tm[2] ]);
+                			cmdar.push([ "getNodes" , tm[2] ]);
                         }
                         q = q.replace(tm[0], "");
                     }else if(q.substr(0, 1) != '@'){
-                        fn[fn.length] = 'n = Roo.DomQuery.getNodes(n, mode, "*");';
-						cmdar.push([ "getNodes" , "*" ]);
+                		cmdar.push([ "getNodes" , "*" ]);
                     }
                 }else{
                     if(tm){
                         if(tm[1] == "#"){
-                            fn[fn.length] = 'n = Roo.DomQuery.byId(n, null, "'+tm[2]+'");';
-							cmdar.push([ "byId" , tm[2] ]);
+                			cmdar.push([ "byId" , tm[2] ]);
                         }else{
-                            fn[fn.length] = 'n = Roo.DomQuery.byTag(n, "'+tm[2]+'");';
-							cmdar.push([ "byTag", tm[2] ]);
+                			cmdar.push([ "byTag", tm[2] ]);
                         }
                         q = q.replace(tm[0], "");
                     }
@@ -6695,10 +6885,8 @@ Roo.DomQuery = function(){
                         var t = tk[j];
                         var m = q.match(t.re);
                         if(m){
-                            fn[fn.length] = t.select.replace(tplRe, function(x, i){
-                                                    return m[i];
-                                                });
-                            q = q.replace(m[0], "");
+                			cmdar.push([ t.method, m]);
+				            q = q.replace(m[0], "");
                             matched = true;
                             break;
                         }
@@ -6709,16 +6897,12 @@ Roo.DomQuery = function(){
                     }
                 }
                 if(mm[1]){
-                    fn[fn.length] = 'mode="'+mm[1].replace(trimRe, "")+'";';
-					cmdar.push(mm[1].replace(trimRe, ""));
+                	cmdar.push(mm[1].replace(trimRe, ""));
                     q = q.replace(mm[1], "");
                 }
             }
- 			fn[fn.length] = "return Roo.DomQuery.nodup(n);";
-            return runFn.createDelegate(null, cmdar, true);
+ 			return runFn.createDelegate(null, [ cmdar ], true);
 			
-			//return Function(fn.join(""));
-		 
         },
 
         /**
@@ -6750,7 +6934,7 @@ Roo.DomQuery = function(){
                 }
             }
             if(paths.length > 1){
-                return Roo.DomQuery.nodup(results);
+                return  nodup(results);
             }
             return results;
         },
@@ -6829,21 +7013,24 @@ Roo.DomQuery = function(){
         /**
          * Collection of matching regular expressions and code snippets.
          */
-        matchers : [{
+        matchers : [
+			{
                 re: /^\.([\w-]+)/,
-                select: 'n = Roo.DomQuery.byClassName(n, null, " {1} ");'
+ 				method : 'byClassName'
             }, {
                 re: /^\:([\w-]+)(?:\(((?:[^\s>\/]*|.*?))\))?/,
-                select: 'n = Roo.DomQuery.byPseudo(n, "{1}", "{2}");'
+ 				method : 'byPseudo'
             },{
                 re: /^(?:([\[\{])(?:@)?([\w-]+)\s?(?:(=|.=)\s?['"]?(.*?)["']?)?[\]\}])/,
-                select: 'n = Roo.DomQuery.byAttribute(n, "{2}", "{4}", "{3}", "{1}");'
+ 				method: 'byAttribute'
             }, {
                 re: /^#([\w-]+)/,
-                select: 'n = Roo.DomQuery.byId(n, null, "{1}");'
+              //  select: 'n = Roo.DomQuery.byId(n, null, "{1}");',
+				method: 'byIdAr'
             },{
                 re: /^@([\w-]+)/,
-                select: 'return {firstChild:{nodeValue:Roo.DomQuery.attrValue(n, "{1}")}};'
+                //select: 'return {firstChild:{nodeValue:Roo.DomQuery.attrValue(n, "{1}")}};',
+				method : 'attrValue'
             }
         ],
 
@@ -7050,172 +7237,11 @@ Roo.DomQuery = function(){
             }
         },
 		
-		getNodes : function (ns, mode, tagName)
-		{
-			var result = [], ri = -1, cs;
-			if(!ns){
-				return result;
-			}
-			tagName = tagName || "*";
-			if(typeof ns.getElementsByTagName != "undefined"){
-				ns = [ns];
-			}
-			if(!mode){
-				for(var i = 0, ni; ni = ns[i]; i++){
-					cs = ni.getElementsByTagName(tagName);
-					for(var j = 0, ci; ci = cs[j]; j++){
-						result[++ri] = ci;
-					}
-				}
-			}else if(mode == "/" || mode == ">"){
-				var utag = tagName.toUpperCase();
-				for(var i = 0, ni, cn; ni = ns[i]; i++){
-					cn = ni.children || ni.childNodes;
-					for(var j = 0, cj; cj = cn[j]; j++){
-						if(cj.nodeName == utag || cj.nodeName == tagName  || tagName == '*'){
-							result[++ri] = cj;
-						}
-					}
-				}
-			}else if(mode == "+"){
-				var utag = tagName.toUpperCase();
-				for(var i = 0, n; n = ns[i]; i++){
-					while((n = n.nextSibling) && n.nodeType != 1);
-					if(n && (n.nodeName == utag || n.nodeName == tagName || tagName == '*')){
-						result[++ri] = n;
-					}
-				}
-			}else if(mode == "~"){
-				for(var i = 0, n; n = ns[i]; i++){
-					while((n = n.nextSibling) && (n.nodeType != 1 || (tagName == '*' || n.tagName.toLowerCase()!=tagName)));
-					if(n){
-						result[++ri] = n;
-					}
-				}
-			}
-			return result;
-		},
-		byClassName : function (c, a, v)
-		{
-			if(!v){
-				return c;
-			}
-			var r = [], ri = -1, cn;
-			for(var i = 0, ci; ci = c[i]; i++){
-			
-			
-				if((' '+
-			( (ci instanceof SVGElement) ? ci.className.baseVal : ci.className)
-			 +' ').indexOf(v) != -1){
-					r[++ri] = ci;
-				}
-			}
-			return r;
-		},
-		quickId :  function (ns, mode, root, id)
-		{
-			if(ns == root){
-			   var d = root.ownerDocument || root;
-			   return d.getElementById(id);
-			}
-			ns = Roo.DomQuery.getNodes(ns, mode, "*");
-			return Roo.DomQuery.byId(ns, null, id);
-		},
-		byId : function (cs, attr, id)
-		{
-			if(cs.tagName || cs == document){
-				cs = [cs];
-			}
-			if(!id){
-				return cs;
-			}
-			var r = [], ri = -1;
-			for(var i = 0,ci; ci = cs[i]; i++){
-				if(ci && ci.id == id){
-					r[++ri] = ci;
-					return r;
-				}
-			}
-			return r;
-		},
-		byTag : function (cs, tagName)
-		 {
-			if(cs.tagName || cs == document){
-				cs = [cs];
-			}
-			if(!tagName){
-				return cs;
-			}
-			var r = [], ri = -1;
-			tagName = tagName.toLowerCase();
-			for(var i = 0, ci; ci = cs[i]; i++){
-				if(ci.nodeType == 1 && ci.tagName.toLowerCase()==tagName){
-					r[++ri] = ci;
-				}
-			}
-			return r;
-		},
-		nodup : function(cs)
-		{
-			if(!cs){
-				return [];
-			}
-			var len = cs.length, c, i, r = cs, cj, ri = -1;
-			if(!len || typeof cs.nodeType != "undefined" || len == 1){
-				return cs;
-			}
-			if(isIE && typeof cs[0].selectSingleNode != "undefined"){
-				return nodupIEXml(cs);
-			}
-			var d = ++key;
-			cs[0]._nodup = d;
-			for(i = 1; c = cs[i]; i++){
-				if(c._nodup != d){
-					c._nodup = d;
-				}else{
-					r = [];
-					for(var j = 0; j < i; j++){
-						r[++ri] = cs[j];
-					}
-					for(j = i+1; cj = cs[j]; j++){
-						if(cj._nodup != d){
-							cj._nodup = d;
-							r[++ri] = cj;
-						}
-					}
-					return r;
-				}
-			}
-			return r;
-		},
-		byPseudo : function (cs, name, value)
-		{
-			return Roo.DomQuery.pseudos[name](cs, value);
-		},
-		byAttribute : function (cs, attr, value, op, custom)
-		{
-			var r = [], ri = -1, st = custom=="{";
-			var f = Roo.DomQuery.operators[op];
-			for(var i = 0, ci; ci = cs[i]; i++){
-				var a;
-				if(st){
-					a = Roo.DomQuery.getStyle(ci, attr);
-				}
-				else if(attr == "class" || attr == "className"){
-					a = (ci instanceof SVGElement) ? ci.className.baseVal : ci.className;
-				}else if(attr == "for"){
-					a = ci.htmlFor;
-				}else if(attr == "href"){
-					a = ci.getAttribute("href", 2);
-				}else{
-					a = ci.getAttribute(attr);
-				}
-				if((f && f(a, value)) || (!f && a)){
-					r[++ri] = ci;
-				}
-			}
-			return r;
-		},
+		
+		
+		
+		
+		
 		attrValue : function (n, attr)
 		{
 			if(!n.tagName && typeof n.length != "undefined"){
@@ -7246,8 +7272,7 @@ Roo.DomQuery = function(){
  * @member Roo
  * @method query
  */
-Roo.query = Roo.DomQuery.select;
-/*
+Roo.query = Roo.DomQuery.select;/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
