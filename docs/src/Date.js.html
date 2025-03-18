@@ -531,7 +531,8 @@ dt = Date.parseDate(&quot;2006-1-15 3:20:01 PM&quot;, &quot;Y-m-d h:i:s A&quot; 
                     </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">String.leftPad</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hr</span><span class="jsdoc-syntax">, 2, 0) + </span><span class="jsdoc-var">String.leftPad</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mn</span><span class="jsdoc-syntax">, 2, 0)) : </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
 			},
 
-            </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;([+\-]\\d{2,4})&quot;</span><span class="jsdoc-syntax">};
+            </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;([+\-]\\d{2,4})&quot;
+		</span><span class="jsdoc-syntax">};
 
 
     </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;P&quot;</span><span class="jsdoc-syntax">:   </span><span class="jsdoc-comment">//xx:yy
@@ -545,7 +546,8 @@ dt = Date.parseDate(&quot;2006-1-15 3:20:01 PM&quot;, &quot;Y-m-d h:i:s A&quot; 
 				</span><span class="jsdoc-var">out.o </span><span class="jsdoc-syntax">= ((-12 &lt;= (</span><span class="jsdoc-var">hr</span><span class="jsdoc-syntax">*60 + </span><span class="jsdoc-var">mn</span><span class="jsdoc-syntax">)/60) &amp;&amp; ((</span><span class="jsdoc-var">hr</span><span class="jsdoc-syntax">*60 + </span><span class="jsdoc-var">mn</span><span class="jsdoc-syntax">)/60 &lt;= 14))?
     	                (</span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">String.leftPad</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hr</span><span class="jsdoc-syntax">, 2, 0) + </span><span class="jsdoc-var">String.leftPad</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mn</span><span class="jsdoc-syntax">, 2, 0)) : </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
 			},
-            </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;([+\-]\\d{2}:\\d{2})&quot;</span><span class="jsdoc-syntax">};
+            </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;([+\-]\\d{2}:\\d{2})&quot;
+		</span><span class="jsdoc-syntax">};
 
 	</span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;T&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-comment">// note it's just ignored..
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
@@ -557,7 +559,8 @@ dt = Date.parseDate(&quot;2006-1-15 3:20:01 PM&quot;, &quot;Y-m-d h:i:s A&quot; 
 				</span><span class="jsdoc-var">out.z </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// -43200 &lt;= UTC offset &lt;= 50400
                 </span><span class="jsdoc-var">out.z </span><span class="jsdoc-syntax">= (-43200 &lt;= </span><span class="jsdoc-var">out.z</span><span class="jsdoc-syntax">*1 &amp;&amp; </span><span class="jsdoc-var">out.z</span><span class="jsdoc-syntax">*1 &lt;= 50400)? </span><span class="jsdoc-var">out.z </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
 			},
-            </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;([+\-]?\\d{1,5})&quot;</span><span class="jsdoc-syntax">}; </span><span class="jsdoc-comment">// leading '+' sign is optional for UTC offset
+            </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;([+\-]?\\d{1,5})&quot;
+		</span><span class="jsdoc-syntax">}; </span><span class="jsdoc-comment">// leading '+' sign is optional for UTC offset
     </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
 			</span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
