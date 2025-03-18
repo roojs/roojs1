@@ -1884,14 +1884,8 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
      */
     read : function(response){
         var json = response.responseText;
-		var o = false;
-		try {
-			// handle fallback if eval failes..
-			o = /* eval:var:o */ eval("("+json+")");
-		} catch(e) {
-			o = JSON.parse(json);
-		}
-        
+       
+        var o = /* eval:var:o */ eval("("+json+")");
         if(!o) {
             throw {message: "JsonReader.read: Json object not found"};
         }
@@ -1999,7 +1993,6 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
             var id = this.getId(n);
             for(var j = 0; j < fl; j++){
                 f = fi[j];
-			 
 				var v = this.ef[j](n);
 				if (!f.convert) {
 					Roo.log('missing convert for ' + f.name);
@@ -2007,8 +2000,6 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
 					continue;
 				}
 				values[f.name] = f.convert((v !== undefined) ? v : f.defaultValue);
-			 
-				
             }
 			if (!Record) {
 				return {
