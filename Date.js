@@ -144,14 +144,110 @@ Date.parseRegexes = [];
 Date.formatFunctions = {count:0};
 
 // private
+Date.formatParsed = {}
 Date.prototype.dateFormat = function(format) {
-    if (Date.formatFunctions[format] == null) {
-        Date.createNewFormat(format);
+    if (typeof(Date.formatParsed[format])  == 'undefined') {
+        
+          //  var funcName = "format" + Date.formatFunctions.count++;
+          //Date.formatFunctions[format] = funcName;
+          //var code = "Date.prototype." + funcName + " = function(){return ";
+          // generate an array.. 
+          var code = [];
+          var special = false;
+          var ch = '';
+          for (var i = 0; i < format.length; ++i) {
+              ch = format.charAt(i);
+              if (!special && ch == "\\") {
+                  special = true;
+              }
+              else if (special) {
+                  special = false;
+                  code.push([String.escape(ch)]);
+              }
+              else {
+                  code.push(ch);
+              }
+          }
+          Date.formatParsed[format] = code;
     }
-    var func = Date.formatFunctions[format];
-    return this[func]();
+    var ret = '';
+    var ar =  Date.formatParsed[format];
+    for(var i =0; i <ar.length; i++) {
+        var c = ar[i];
+    
+      if (typeof(c) != 'string') {
+        ret += c[0];
+        continue;
+      }
+      ret += this.formatCodeToValue(c);
+    }
+    return ret;
+ 
 };
-
+// fixme need to implement this really - as the eval replacement.
+Date.prototype.formatCodeToValue = function(character) {
+    switch (character) {
+    case "d":
+        return String.leftPad(this.getDate(), 2, '0');
+    case "D":
+        return Date.dayNames[this.getDay()].substring(0, 3);
+    case "j":
+        return this.getDate();
+    case "l":
+        return Date.dayNames[this.getDay()];
+    case "S":
+        return this.getSuffix();
+    case "w":
+        return this.getDay();
+    case "z":
+        return this.getDayOfYear();
+    case "W":
+        return this.getWeekOfYear();
+    case "F":
+        return Date.monthNames[this.getMonth()];
+    case "m":
+        return String.leftPad(this.getMonth() + 1, 2, '0');
+    case "M":
+        return Date.monthNames[this.getMonth()].substring(0, 3);
+    case "n":
+        return (this.getMonth() + 1);
+    case "t":
+        return this.getDaysInMonth();
+    case "L":
+        return (this.isLeapYear() ? 1 : 0);
+    case "Y":
+        return this.getFullYear();
+    case "y":
+     Logger.log(this);
+        return (this.getFullYear()+ "").substring(2, 4) ;
+    case "a":
+        return (this.getHours() < 12 ? 'am' : 'pm') ;
+    case "A":
+        return (this.getHours() < 12 ? 'AM' : 'PM') ;
+    case "g":
+        return ((this.getHours() % 12) ? this.getHours() % 12 : 12);
+    case "G":
+        return this.getHours();
+    case "h":
+        return String.leftPad((this.getHours() % 12) ? this.getHours() % 12 : 12, 2, '0');
+    case "H":
+        return String.leftPad(this.getHours(), 2, '0');
+    case "i":
+        return String.leftPad(this.getMinutes(), 2, '0');
+    case "s":
+        return String.leftPad(this.getSeconds(), 2, '0');
+    case "O":
+        return this.getGMTOffset();
+    case "P":
+    	return this.getGMTColonOffset();
+    case "T":
+        return this.getTimezone();
+    case "Z":
+        return (this.getTimezoneOffset() * -60);
+    default:
+        return String.escape(character);
+    }
+};
 
 /**
  * Formats a date given the supplied format string
@@ -162,92 +258,7 @@ Date.prototype.dateFormat = function(format) {
 Date.prototype.format = Date.prototype.dateFormat;
 
 // private
-Date.createNewFormat = function(format) {
-    var funcName = "format" + Date.formatFunctions.count++;
-    Date.formatFunctions[format] = funcName;
-    var code = "Date.prototype." + funcName + " = function(){return ";
-    var special = false;
-    var ch = '';
-    for (var i = 0; i < format.length; ++i) {
-        ch = format.charAt(i);
-        if (!special && ch == "\\") {
-            special = true;
-        }
-        else if (special) {
-            special = false;
-            code += "'" + String.escape(ch) + "' + ";
-        }
-        else {
-            code += Date.getFormatCode(ch);
-        }
-    }
-    /** eval:var:zzzzzzzzzzzzz */
-    eval(code.substring(0, code.length - 3) + ";}");
-};
-
-// private
-Date.getFormatCode = function(character) {
-    switch (character) {
-    case "d":
-        return "String.leftPad(this.getDate(), 2, '0') + ";
-    case "D":
-        return "Date.dayNames[this.getDay()].substring(0, 3) + ";
-    case "j":
-        return "this.getDate() + ";
-    case "l":
-        return "Date.dayNames[this.getDay()] + ";
-    case "S":
-        return "this.getSuffix() + ";
-    case "w":
-        return "this.getDay() + ";
-    case "z":
-        return "this.getDayOfYear() + ";
-    case "W":
-        return "this.getWeekOfYear() + ";
-    case "F":
-        return "Date.monthNames[this.getMonth()] + ";
-    case "m":
-        return "String.leftPad(this.getMonth() + 1, 2, '0') + ";
-    case "M":
-        return "Date.monthNames[this.getMonth()].substring(0, 3) + ";
-    case "n":
-        return "(this.getMonth() + 1) + ";
-    case "t":
-        return "this.getDaysInMonth() + ";
-    case "L":
-        return "(this.isLeapYear() ? 1 : 0) + ";
-    case "Y":
-        return "this.getFullYear() + ";
-    case "y":
-        return "('' + this.getFullYear()).substring(2, 4) + ";
-    case "a":
-        return "(this.getHours() < 12 ? 'am' : 'pm') + ";
-    case "A":
-        return "(this.getHours() < 12 ? 'AM' : 'PM') + ";
-    case "g":
-        return "((this.getHours() % 12) ? this.getHours() % 12 : 12) + ";
-    case "G":
-        return "this.getHours() + ";
-    case "h":
-        return "String.leftPad((this.getHours() % 12) ? this.getHours() % 12 : 12, 2, '0') + ";
-    case "H":
-        return "String.leftPad(this.getHours(), 2, '0') + ";
-    case "i":
-        return "String.leftPad(this.getMinutes(), 2, '0') + ";
-    case "s":
-        return "String.leftPad(this.getSeconds(), 2, '0') + ";
-    case "O":
-        return "this.getGMTOffset() + ";
-    case "P":
-    	return "this.getGMTColonOffset() + ";
-    case "T":
-        return "this.getTimezone() + ";
-    case "Z":
-        return "(this.getTimezoneOffset() * -60) + ";
-    default:
-        return "'" + String.escape(character) + "' + ";
-    }
-};
+ 
 
 
 
