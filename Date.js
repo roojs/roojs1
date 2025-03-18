@@ -531,7 +531,8 @@ Date.formatCodeToRegex = function(character) {
                     (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;
 			},	
 			
-            s:"([+\-]\\d{2,4})"};
+            s:"([+\-]\\d{2,4})"
+		};
     
     
     case "P":   //xx:yy
@@ -545,7 +546,8 @@ Date.formatCodeToRegex = function(character) {
 				out.o = ((-12 <= (hr*60 + mn)/60) && ((hr*60 + mn)/60 <= 14))?
     	                (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;
 			},
-            s:"([+\-]\\d{2}:\\d{2})"};
+            s:"([+\-]\\d{2}:\\d{2})"
+		};
     
 	case "T": // note it's just ignored..
         return {
@@ -557,7 +559,8 @@ Date.formatCodeToRegex = function(character) {
 				out.z = result; // -43200 <= UTC offset <= 50400
                 out.z = (-43200 <= out.z*1 && out.z*1 <= 50400)? out.z : null;
 			},
-            s:"([+\-]?\\d{1,5})"}; // leading '+' sign is optional for UTC offset
+            s:"([+\-]?\\d{1,5})"
+		}; // leading '+' sign is optional for UTC offset
     default:
         return {
 			f : false,
