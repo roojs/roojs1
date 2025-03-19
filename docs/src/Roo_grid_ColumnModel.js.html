@@ -468,6 +468,21 @@
     },
 
     </span><span class="jsdoc-comment">/**
+     * Return the dataIndex for displayed columns
+     * @param {Array} add Array of data indexes added to the result
+     * @return {Array} result
+     */
+    </span><span class="jsdoc-var">getDisplayedColumnIndexes</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">add</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">indexes </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.hidden</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">c.hidden </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        })</span><span class="jsdoc-var">.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">c.dataIndex</span><span class="jsdoc-syntax">;
+        });
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">indexes.concat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">add</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
      * Sets the dataIndex for a column.
      * @param {Number} col The column index
      * @param {Number} dataIndex The new dataIndex
