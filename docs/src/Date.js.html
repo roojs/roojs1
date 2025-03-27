@@ -339,9 +339,12 @@ dt = Date.parseDate(&quot;2006-1-15 3:20:01 PM&quot;, &quot;Y-m-d h:i:s A&quot; 
 			</span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">funcs </span><span class="jsdoc-syntax">,
 			</span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">RegExp</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;^&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;$&quot;</span><span class="jsdoc-syntax">)
 		};
+  }
 
-
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">input.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.parseFuncData</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.re</span><span class="jsdoc-syntax">)) {
+		</span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
 	}
+
 	</span><span class="jsdoc-var">input.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.parseFuncData</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.re</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(   ) {
 
 	   </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">results </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">;
