@@ -339,9 +339,12 @@ Date.parseDate = function(input, format) {
 			f : funcs ,
 			re : new RegExp("^" + regex + "$")
 		};
-    
-   
+  }
+	
+	if (!input.match(Date.parseFuncData[format].re)) {
+		return null;
 	}
+	
 	input.replace(Date.parseFuncData[format].re, function(   ) {
 			
 	   var results = arguments;
