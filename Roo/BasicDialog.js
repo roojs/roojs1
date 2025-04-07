@@ -311,6 +311,10 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
         this[this.collapsed ? "expand" : "collapse"]();
     },
 
+    resizeClick: function() {
+        this.resizeTo(Roo.lib.Dom.getViewWidth() * 0.9, Roo.lib.Dom.getViewHeight() * 0.9);
+    },
+
     /**
      * Collapses the dialog to its minimized state (only the title bar is visible).
      * Equivalent to the user clicking the collapse dialog button.
