@@ -313,6 +313,7 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
 
     resizeClick: function() {
         this.resizeTo(Roo.lib.Dom.getViewWidth() * 0.9, Roo.lib.Dom.getViewHeight() * 0.9);
+        this.onResize();
     },
 
     /**
