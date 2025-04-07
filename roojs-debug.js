@@ -60290,6 +60290,9 @@ Roo.BasicDialog = function(el, config){
         });
         this.resizer.on("beforeresize", this.beforeResize, this);
         this.resizer.on("resize", this.onResize, this);
+
+        this.resizeBtn = this.toolbox.createChild({cls:"fa-solid fa-window-maximize"});
+        this.resizeBtn.on("click", this.resizeClick, this);
     }
     if(this.draggable !== false){
         el.addClass("x-dlg-draggable");
@@ -60424,6 +60427,12 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
     // private
     collapseClick : function(){
         this[this.collapsed ? "expand" : "collapse"]();
+    },
+
+    resizeClick: function() {
+        // maximize
+        this.resizeTo(Roo.lib.Dom.getViewWidth() * 0.9, Roo.lib.Dom.getViewHeight() * 0.9);
+        this.fireEvent("resize", this, this.size.width, this.size.height);
     },
 
     /**
