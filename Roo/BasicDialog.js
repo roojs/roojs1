@@ -173,7 +173,7 @@ Roo.BasicDialog = function(el, config){
         this.resizer.on("beforeresize", this.beforeResize, this);
         this.resizer.on("resize", this.onResize, this);
 
-        this.resizeBtn = this.toolbox.createChild({cls:"fa-solid maximize"});
+        this.resizeBtn = this.toolbox.createChild({cls:"fa-solid fa-window-maximize"});
         this.resizeBtn.on("click", this.resizeClick, this);
     }
     if(this.draggable !== false){
