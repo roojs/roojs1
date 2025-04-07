@@ -312,8 +312,9 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
     },
 
     resizeClick: function() {
+        // maximize
         this.resizeTo(Roo.lib.Dom.getViewWidth() * 0.9, Roo.lib.Dom.getViewHeight() * 0.9);
-        this.onResize();
+        this.fireEvent("resize", this, this.size.width, this.size.height);
     },
 
     /**
