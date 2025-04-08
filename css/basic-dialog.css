@@ -154,6 +154,14 @@ body.masked .x-dlg select {
 	visibility:inherit;
 	background-image:url(../images/default/basic-dialog/close.gif);
 }
+.x-dlg .x-dlg-resize {
+	position: absolute;
+	top: 4px;
+	right: 25px;
+	cursor: pointer;
+	font-size: 15px;
+	color: #ddd;
+}
 .x-dlg div.x-resizable-handle-east{
 	background-image:url(../images/default/sizer/e-handle-dark.gif);
 	border:0;
