@@ -160,7 +160,7 @@ body.masked .x-dlg select {
 	right: 25px;
 	cursor: pointer;
 	font-size: 15px;
-	color: white;
+	color: #ddd;
 }
 .x-dlg div.x-resizable-handle-east{
 	background-image:url(../images/default/sizer/e-handle-dark.gif);
