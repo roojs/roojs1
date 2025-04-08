@@ -158,9 +158,9 @@ body.masked .x-dlg select {
 	position: absolute;
 	top: 4px;
 	right: 25px;
-	height: 13px;
-	width: 13px;
 	cursor: pointer;
+	font-size: 15px;
+	color: white;
 }
 .x-dlg div.x-resizable-handle-east{
 	background-image:url(../images/default/sizer/e-handle-dark.gif);
