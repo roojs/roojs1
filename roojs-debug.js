@@ -60291,7 +60291,7 @@ Roo.BasicDialog = function(el, config){
         this.resizer.on("beforeresize", this.beforeResize, this);
         this.resizer.on("resize", this.onResize, this);
 
-        this.resizeBtn = this.toolbox.createChild({cls:"x-dlg-resize"});
+        this.resizeBtn = this.toolbox.createChild({cls:"x-dlg-resize fas fa-window-resize"});
         this.resizeBtn.on("click", this.resizeClick, this);
     }
     if(this.draggable !== false){
