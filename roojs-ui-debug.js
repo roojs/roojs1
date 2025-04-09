@@ -11109,6 +11109,9 @@ Roo.BasicDialog = function(el, config){
 
         // default maximize button
         this.resizeBtn = this.toolbox.createChild({cls:"x-dlg-resize fas fa-window-maximize"});
+        if(this.closable === false) {
+            this.resizeBtn.setStyle('right', '6px');
+        }
         this.resizeBtn.on("click", this.resizeClick, this);
     }
     if(this.draggable !== false){
