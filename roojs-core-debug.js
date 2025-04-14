@@ -24841,6 +24841,8 @@ Roo.languagedetect.LanguageDetect.prototype = {
     if (sample == '' || String(sample).length < 3) {return [];}
 
     var sampleObj = new Roo.languagedetect.Parser(sample);
+    Roo.log("STRING");
+    Roo.log(sampleObj.string);
     sampleObj.setPadStart(true);
     sampleObj.analyze();
 
