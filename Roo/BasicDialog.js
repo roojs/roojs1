@@ -38,6 +38,7 @@ dlg.show();
  * @cfg {Number} y The default top page coordinate of the dialog (defaults to center screen)
  * @cfg {String/Element} animateTarget Id or element from which the dialog should animate while opening
  * (defaults to null with no animation)
+ * @cfg {Boolean} maximizable True to show maximize button
  * @cfg {Boolean} resizable False to disable manual dialog resizing (defaults to true)
  * @cfg {String} resizeHandles Which resize handles to display - see the {@link Roo.Resizable} handles config
  * property for valid values (defaults to 'all')
@@ -172,13 +173,11 @@ Roo.BasicDialog = function(el, config){
         });
         this.resizer.on("beforeresize", this.beforeResize, this);
         this.resizer.on("resize", this.onResize, this);
-
+    }
+    if(this.maximizable === true) {
         // default maximize button
-        this.resizeBtn = this.toolbox.createChild({cls:"x-dlg-resize fas fa-window-maximize"});
-        if(this.closable === false) {
-            this.resizeBtn.setStyle('right', '6px');
-        }
-        this.resizeBtn.on("click", this.resizeClick, this);
+        this.maximizeBtn = this.toolbox.createChild({cls:"x-dlg-resize fas fa-window-maximize"});
+        this.maximizeBtn.on("click", this.maximizeClick, this);
     }
     if(this.draggable !== false){
         el.addClass("x-dlg-draggable");
@@ -315,23 +314,23 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
         this[this.collapsed ? "expand" : "collapse"]();
     },
 
-    resizeClick: function() {
+    maximizeClick: function() {
 
         // maximize
-        if(this.resizeBtn.hasClass('fa-window-maximize')) {
+        if(this.maximizeBtn.hasClass('fa-window-maximize')) {
             this.originalWidth = this.size.width;
             this.originalHeight = this.size.height;
             this.resizeTo(Roo.lib.Dom.getViewWidth() - 50, Roo.lib.Dom.getViewHeight() - 50);
             this.moveTo(25, 25);
-            this.resizeBtn.removeClass('fa-window-maximize');
-            this.resizeBtn.addClass('fa-window-restore');
+            this.maximizeBtn.removeClass('fa-window-maximize');
+            this.maximizeBtn.addClass('fa-window-restore');
         }
         // restore
         else {
             this.resizeTo(this.originalWidth, this.originalHeight);
             this.moveTo((Roo.lib.Dom.getViewWidth() - this.originalWidth) / 2, (Roo.lib.Dom.getViewHeight() - this.originalHeight) / 2);
-            this.resizeBtn.removeClass('fa-window-restore');
-            this.resizeBtn.addClass('fa-window-maximize');
+            this.maximizeBtn.removeClass('fa-window-restore');
+            this.maximizeBtn.addClass('fa-window-maximize');
         }
 
         this.fireEvent("resize", this, this.size.width, this.size.height);

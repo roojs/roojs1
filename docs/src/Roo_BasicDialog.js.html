@@ -38,6 +38,7 @@ dlg.show();
  * @cfg {Number} y The default top page coordinate of the dialog (defaults to center screen)
  * @cfg {String/Element} animateTarget Id or element from which the dialog should animate while opening
  * (defaults to null with no animation)
+ * @cfg {Boolean} maximizable True to show maximize button
  * @cfg {Boolean} resizable False to disable manual dialog resizing (defaults to true)
  * @cfg {String} resizeHandles Which resize handles to display - see the {@link Roo.Resizable} handles config
  * property for valid values (defaults to 'all')
@@ -172,13 +173,11 @@ dlg.show();
         </span><span class="jsdoc-syntax">});
         </span><span class="jsdoc-var">this.resizer.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeresize&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.beforeResize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.resizer.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;resize&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onResize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-
+    }
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maximizable </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-comment">// default maximize button
-        </span><span class="jsdoc-var">this.resizeBtn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toolbox.createChild</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;x-dlg-resize fas fa-window-maximize&quot;</span><span class="jsdoc-syntax">});
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.closable </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.resizeBtn.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'6px'</span><span class="jsdoc-syntax">);
-        }
-        </span><span class="jsdoc-var">this.resizeBtn.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.resizeClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.maximizeBtn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toolbox.createChild</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;x-dlg-resize fas fa-window-maximize&quot;</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.maximizeBtn.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.maximizeClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     }
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.draggable </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-dlg-draggable&quot;</span><span class="jsdoc-syntax">);
@@ -315,23 +314,23 @@ dlg.show();
         </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.collapsed </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;expand&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;collapse&quot;</span><span class="jsdoc-syntax">]();
     },
 
-    </span><span class="jsdoc-var">resizeClick</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+    </span><span class="jsdoc-var">maximizeClick</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
 
         </span><span class="jsdoc-comment">// maximize
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeBtn.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fa-window-maximize'</span><span class="jsdoc-syntax">)) {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maximizeBtn.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fa-window-maximize'</span><span class="jsdoc-syntax">)) {
             </span><span class="jsdoc-var">this.originalWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.size.width</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">this.originalHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.size.height</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">this.resizeTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">() - 50, </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">() - 50);
             </span><span class="jsdoc-var">this.moveTo</span><span class="jsdoc-syntax">(25, 25);
-            </span><span class="jsdoc-var">this.resizeBtn.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fa-window-maximize'</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.resizeBtn.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fa-window-restore'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maximizeBtn.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fa-window-maximize'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maximizeBtn.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fa-window-restore'</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-comment">// restore
         </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">this.resizeTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.originalWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.originalHeight</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.moveTo</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.originalWidth</span><span class="jsdoc-syntax">) / 2, (</span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.originalHeight</span><span class="jsdoc-syntax">) / 2);
-            </span><span class="jsdoc-var">this.resizeBtn.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fa-window-restore'</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.resizeBtn.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fa-window-maximize'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maximizeBtn.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fa-window-restore'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.maximizeBtn.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fa-window-maximize'</span><span class="jsdoc-syntax">);
         }
 
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;resize&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.size.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.size.height</span><span class="jsdoc-syntax">);

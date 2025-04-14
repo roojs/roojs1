@@ -155,6 +155,14 @@
       "optvals" : []
     },
     {
+      "name" : "maximizable",
+      "type" : "Boolean",
+      "desc" : "True to show maximize button",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "autoCreate",
       "type" : "Boolean/DomHelper",
       "desc" : "True to auto create from scratch, or using a DomHelper Object (defaults to false)",

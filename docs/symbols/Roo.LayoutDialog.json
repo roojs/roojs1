@@ -109,14 +109,6 @@
       "optvals" : []
     },
     {
-      "name" : "resizeHandles",
-      "type" : "String",
-      "desc" : "Which resize handles to display - see the {@link Roo.Resizable} handles config\nproperty for valid values (defaults to 'all')",
-      "memberOf" : "Roo.BasicDialog",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
       "name" : "width",
       "type" : "Number",
       "desc" : "Width of the dialog in pixels (can also be set via CSS).  Determined by browser if unspecified.",
@@ -128,6 +120,14 @@
       "name" : "shim",
       "type" : "Boolean",
       "desc" : "True to create an iframe shim that prevents selects from showing through (defaults to false)",
+      "memberOf" : "Roo.BasicDialog",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "resizeHandles",
+      "type" : "String",
+      "desc" : "Which resize handles to display - see the {@link Roo.Resizable} handles config\nproperty for valid values (defaults to 'all')",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
       "optvals" : []
@@ -304,6 +304,14 @@
       "name" : "minHeight",
       "type" : "Number",
       "desc" : "The minimum allowable height for a resizable dialog (defaults to 80)",
+      "memberOf" : "Roo.BasicDialog",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "maximizable",
+      "type" : "Boolean",
+      "desc" : "True to show maximize button",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
       "optvals" : []
