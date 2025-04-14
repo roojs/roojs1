@@ -89,6 +89,8 @@ Roo.languagedetect.Detect.prototype = {
 
         var isLang = {...this.detectLangByCount(input), ...this.detectLangByScore(input)};
 
+        Roo.log(isLang);
+
         // positive testing
         if(typeof(isLang[lang]) === 'undefined' || isLang[lang] !== true) {
             return false;
