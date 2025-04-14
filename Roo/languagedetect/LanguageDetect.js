@@ -162,16 +162,11 @@ Roo.languagedetect.LanguageDetect.prototype = {
     if (sample == '' || String(sample).length < 3) {return [];}
 
     var sampleObj = new Roo.languagedetect.Parser(sample);
-    Roo.log("STRING");
-    Roo.log(sampleObj.string);
     sampleObj.setPadStart(true);
     sampleObj.analyze();
 
     var trigramFreqs = sampleObj.getTrigramRanks()
       , trigramCount = Object.keys(trigramFreqs).length;
-
-    Roo.log('TRIGRAMFREQ');
-    Roo.log(trigramFreqs);
 
     if (trigramCount == 0) {return [];}
 
