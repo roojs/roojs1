@@ -52024,7 +52024,7 @@ Roo.languagedetect.Parser = function (string) {
      * @access  private
      * @param   string  string to be parsed
      */
-    this.string = string ? string.replace(/[~!@#$%^&*()_|+\-=?;:",.<>\{\}\[\]\\\/]/g, ' ') : '';
+    this.string = string ? string.replace(/[\d~!@#$%^&*()_|+\-=?;:",.<>\{\}\[\]\\\/]/g, ' ') : '';
 };
 
   
