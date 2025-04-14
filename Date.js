@@ -297,7 +297,7 @@ Date.parseDate = function(input, format) {
 		i : -1,
 		s : -1,
 		o : false,
-		z : false,
+		z : false
 		
 	};
 	var v;

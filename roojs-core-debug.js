@@ -1413,7 +1413,7 @@ Date.parseDate = function(input, format) {
 		i : -1,
 		s : -1,
 		o : false,
-		z : false,
+		z : false
 		
 	};
 	var v;
@@ -25684,6 +25684,9 @@ Roo.languagedetect.Detect.prototype = {
         }
 
         var isLang = {...this.detectLangByCount(input), ...this.detectLangByScore(input)};
+
+        Roo.log("ISLANG");
+        Roo.log(isLang);
 
         // positive testing
         if(typeof(isLang[lang]) === 'undefined' || isLang[lang] !== true) {
