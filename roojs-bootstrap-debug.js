@@ -51683,16 +51683,11 @@ Roo.languagedetect.LanguageDetect.prototype = {
     if (sample == '' || String(sample).length < 3) {return [];}
 
     var sampleObj = new Roo.languagedetect.Parser(sample);
-    Roo.log("STRING");
-    Roo.log(sampleObj.string);
     sampleObj.setPadStart(true);
     sampleObj.analyze();
 
     var trigramFreqs = sampleObj.getTrigramRanks()
       , trigramCount = Object.keys(trigramFreqs).length;
-
-    Roo.log('TRIGRAMFREQ');
-    Roo.log(trigramFreqs);
 
     if (trigramCount == 0) {return [];}
 
@@ -52532,9 +52527,6 @@ Roo.languagedetect.Detect.prototype = {
 
         var isLang = {...this.detectLangByCount(input), ...this.detectLangByScore(input)};
 
-        Roo.log("ISLANG");
-        Roo.log(isLang);
-
         // positive testing
         if(typeof(isLang[lang]) === 'undefined' || isLang[lang] !== true) {
             return false;
@@ -52554,8 +52546,6 @@ Roo.languagedetect.Detect.prototype = {
 
     getHighestScore : function(input) {
         var scores = this.languageDetect.detect(input);
-        Roo.log('SCORE');
-        Roo.log(scores);
         if(!scores.length) {
             return [];
         }

@@ -89,9 +89,6 @@ Roo.languagedetect.Detect.prototype = {
 
         var isLang = {...this.detectLangByCount(input), ...this.detectLangByScore(input)};
 
-        Roo.log("ISLANG");
-        Roo.log(isLang);
-
         // positive testing
         if(typeof(isLang[lang]) === 'undefined' || isLang[lang] !== true) {
             return false;
@@ -111,8 +108,6 @@ Roo.languagedetect.Detect.prototype = {
 
     getHighestScore : function(input) {
         var scores = this.languageDetect.detect(input);
-        Roo.log('SCORE');
-        Roo.log(scores);
         if(!scores.length) {
             return [];
         }
