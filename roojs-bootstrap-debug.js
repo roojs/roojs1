@@ -51689,6 +51689,9 @@ Roo.languagedetect.LanguageDetect.prototype = {
     var trigramFreqs = sampleObj.getTrigramRanks()
       , trigramCount = Object.keys(trigramFreqs).length;
 
+    Roo.log('TRIGRAMFREQ');
+    Roo.log(trigramFreqs);
+
     if (trigramCount == 0) {return [];}
 
     var keys = [], i, lang;
