@@ -1413,7 +1413,7 @@ Date.parseDate = function(input, format) {
 		i : -1,
 		s : -1,
 		o : false,
-		z : false,
+		z : false
 		
 	};
 	var v;
@@ -25182,7 +25182,7 @@ Roo.languagedetect.Parser = function (string) {
      * @access  private
      * @param   string  string to be parsed
      */
-    this.string = string ? string.replace(/[~!@#$%^&*()_|+\-=?;:",.<>\{\}\[\]\\\/]/g, ' ') : '';
+    this.string = string ? string.replace(/[\d~!@#$%^&*()_|+\-=?;:",.<>\{\}\[\]\\\/]/g, ' ') : '';
 };
 
   
