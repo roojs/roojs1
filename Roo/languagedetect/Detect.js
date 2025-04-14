@@ -111,6 +111,8 @@ Roo.languagedetect.Detect.prototype = {
 
     getHighestScore : function(input) {
         var scores = this.languageDetect.detect(input);
+        Roo.log('SCORE');
+        Roo.log(scores);
         if(!scores.length) {
             return [];
         }
