@@ -52527,6 +52527,7 @@ Roo.languagedetect.Detect.prototype = {
 
         var isLang = {...this.detectLangByCount(input), ...this.detectLangByScore(input)};
 
+        Roo.log("ISLANG");
         Roo.log(isLang);
 
         // positive testing
