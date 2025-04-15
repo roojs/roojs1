@@ -178,6 +178,9 @@ Roo.BasicDialog = function(el, config){
         // default maximize button
         this.maximizeBtn = this.toolbox.createChild({cls:"x-dlg-resize fas fa-window-maximize"});
         this.maximizeBtn.on("click", this.maximizeClick, this);
+        if(this.closable === false) {
+            this.maximizeBtn.setStyle('right', '6px');
+        }
     }
     if(this.draggable !== false){
         el.addClass("x-dlg-draggable");
