@@ -55,6 +55,11 @@ dashboard8 = new Roo.XComponent({
       },
       {
        xtype : 'Row',
+       listeners : {
+        beforerender : function (self) {
+         
+         }
+       },
        xns : Roo.bootstrap,
        '|xns' : 'Roo.bootstrap',
        items  : [
