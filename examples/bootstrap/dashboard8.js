@@ -73,7 +73,7 @@ dashboard8 = new Roo.XComponent({
          style : 'max-width:300px;margin: 0 12px;',
          weight : 'danger',
          listeners : {
-          cardover : function (this, data) {
+          cardover : function (sslef, data) {
            
            }
          },
