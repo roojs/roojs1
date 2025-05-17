@@ -3,6 +3,7 @@
  "items" : [
   {
    "$ xns" : "Roo.bootstrap",
+   "Boolean can_build_overlaid" : true,
    "String cls" : "skin-blue",
    "items" : [
     {

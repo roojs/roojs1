@@ -27,6 +27,7 @@ dashboard8 = new Roo.XComponent({
    var MODULE = this;
    return {
    xtype : 'Body',
+   can_build_overlaid : true,
    cls : 'skin-blue',
    xns : Roo.bootstrap,
    '|xns' : 'Roo.bootstrap',
