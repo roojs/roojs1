@@ -49,7 +49,7 @@ dashboard8 = new Roo.XComponent({
            Roo.docs.ViewSource.show({
                src: '/roojs1/examples/bootstrap/dashboard4.js'
            });
-           var =x [;
+         
            
          }
        },
