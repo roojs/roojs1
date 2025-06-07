@@ -16,7 +16,6 @@ dashboard3 = new Roo.XComponent({
   'f3ff0ceca73743a13990e970c318fc36' :"<span class=\"glyphicon glyphicon-chevron-left\"></span>",
   '34ae6773410925b4574e656be194f0ad' :"income",
   'e864378363f435160e7c2209cc2949b7' :"<span class=\"glyphicon glyphicon-chevron-right\"></span>",
-  '3603b8561ee517ec30ec633d5ec0e3b4' :"New Orders 13",
   '1d17cb9923b99f823da9f5a16dc460e5' :"Department",
   '222a267cc5778206b253be35ee3ddab5' :"Current",
   '75f1bb6830981ca0ce62c3eb434373ba' :"Table tabs",
@@ -26,6 +25,7 @@ dashboard3 = new Roo.XComponent({
   '9fc10133312e352754f8ca264a3e272d' :"New Orders",
   '9a7b64c98b066602b21f869ae7cd673a' :"test 1",
   '58a00f6a3da23fc3821f24115493b750' :"tab 2",
+  '8e1dd98cc1e7862d4359c33ad7ee51f5' :"New Orders 134",
   '3c8d74bd7be3168fe440d9c85da42be8' :"<b> Alert </b> test alert",
   'd80590035c13589acfbdd2b2dcb60773' :"Aspire"
  },
@@ -161,7 +161,7 @@ dashboard3 = new Roo.XComponent({
                headline : 150,
                height : 150,
                style : 'col-lg-3',
-               title : _this._strings['3603b8561ee517ec30ec633d5ec0e3b4'] /* New Orders 13 */,
+               title : _this._strings['8e1dd98cc1e7862d4359c33ad7ee51f5'] /* New Orders 134 */,
                width : 'col-md-5',
                xns : Roo.bootstrap.dash,
                '|xns' : 'Roo.bootstrap.dash'
