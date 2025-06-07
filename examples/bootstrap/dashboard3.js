@@ -25,7 +25,7 @@ dashboard3 = new Roo.XComponent({
   '9fc10133312e352754f8ca264a3e272d' :"New Orders",
   '9a7b64c98b066602b21f869ae7cd673a' :"test 1",
   '58a00f6a3da23fc3821f24115493b750' :"tab 2",
-  '8e1dd98cc1e7862d4359c33ad7ee51f5' :"New Orders 134",
+  'e4145fbe01b875ac1b0d4ff09f5361e8' :"New Ordersv",
   '3c8d74bd7be3168fe440d9c85da42be8' :"<b> Alert </b> test alert",
   'd80590035c13589acfbdd2b2dcb60773' :"Aspire"
  },
@@ -161,7 +161,7 @@ dashboard3 = new Roo.XComponent({
                headline : 150,
                height : 150,
                style : 'col-lg-3',
-               title : _this._strings['8e1dd98cc1e7862d4359c33ad7ee51f5'] /* New Orders 134 */,
+               title : _this._strings['e4145fbe01b875ac1b0d4ff09f5361e8'] /* New Ordersv */,
                width : 'col-md-5',
                xns : Roo.bootstrap.dash,
                '|xns' : 'Roo.bootstrap.dash'
