@@ -451,6 +451,81 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 },
                 tabIndex:-1
             });
+
+            cmenu.menu.items.push({
+                actiontype : 'dir',
+                html: 'Change Selected Text Direction',
+                handler: function(a, b) {
+                    var sel = editorcore.getSelection();
+                    var range = sel.getRangeAt();
+                    // select plain text within same container
+                    if(range.startContainer == range.endContainer && range.startContainer.nodeType == 3) {
+                        var ancestors = editorcore.getAllAncestors();
+                        var removeDir = false;
+                        for(var i = 0; i < ancestors.length; i++) {
+                            var node = ancestors[i];
+                            // find closest span
+                            if(node.tagName && node.tagName.toLowerCase() == 'span') {
+                                // remove dir if exists
+                                if(node.hasAttribute('dir')) {
+                                    node.removeAttribute('dir');
+    
+                                    removeDir = true;
+    
+                                    // remove span if no attribute
+                                    if(node.attributes.length == 0) {
+
+                                        ar = Array.from(node.childNodes);
+                                        for (var i = 0; i < ar.length; i++) {
+                                         
+                                            node.removeChild(ar[i]);
+                                            node.parentNode.insertBefore(ar[i], node);
+                                           
+                                        }
+                                        node.parentNode.removeChild(node);
+
+                                        // only plain text inside the removed span
+                                        if(ar.length == 1 && ar[0].nodeType == 3) {
+                                            var textNode = ar[0];
+
+                                            var prev = textNode.previousSibling;
+                                            var next = textNode.nextSibling;
+
+                                            // merge adjacent text nodes
+
+                                            var text = '';
+
+                                            if(prev.nodeType == 3) {
+                                                text += prev.textContent;
+                                                textNode.parentNode.removeChild(prev);
+                                            }
+                                            text += textNode.textContent;
+                                            if(next.nodeType == 3) {
+                                                text += next.textContent;
+                                                textNode.parentNode.removeChild(next);
+                                            }
+
+                                            textNode.parentNode.insertBefore(document.createTextNode(text), textNode);
+                                            textNode.parentNode.removeChild(textNode);
+                                        }
+                                    }
+                                }
+                                break;
+                            }
+                        }
+    
+                        // if no dir removed
+                        if(!removeDir) {
+                            var nodeDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(editorcore.language) ? 'ltr' : 'rtl';
+                            var span = editorcore.doc.createElement('span');
+                            span.setAttribute('dir', nodeDir);
+                            range.surroundContents(span);
+                        }
+
+                    }
+                },
+                tabIndex: -1
+            });
             
             
             tb.add(cmenu);

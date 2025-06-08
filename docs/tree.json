@@ -552,6 +552,16 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.bootstrap.Toast",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.bootstrap.Toaster",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.bootstrap.Tooltip",
             "cn" : [],
             "is_class" : true

@@ -452,6 +452,81 @@
                 </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">:-1
             });
 
+            </span><span class="jsdoc-var">cmenu.menu.items.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">actiontype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'dir'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Change Selected Text Direction'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editorcore.getSelection</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.getRangeAt</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-comment">// select plain text within same container
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range.startContainer </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">range.endContainer </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">range.startContainer.nodeType </span><span class="jsdoc-syntax">== 3) {
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ancestors </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editorcore.getAllAncestors</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">removeDir </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">ancestors.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ancestors</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                            </span><span class="jsdoc-comment">// find closest span
+                            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">node.tagName.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">) {
+                                </span><span class="jsdoc-comment">// remove dir if exists
+                                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dir'</span><span class="jsdoc-syntax">)) {
+                                    </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dir'</span><span class="jsdoc-syntax">);
+
+                                    </span><span class="jsdoc-var">removeDir </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+
+                                    </span><span class="jsdoc-comment">// remove span if no attribute
+                                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.attributes.length </span><span class="jsdoc-syntax">== 0) {
+
+                                        </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">);
+                                        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">ar.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+
+                                            </span><span class="jsdoc-var">node.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+                                            </span><span class="jsdoc-var">node.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+
+                                        }
+                                        </span><span class="jsdoc-var">node.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+
+                                        </span><span class="jsdoc-comment">// only plain text inside the removed span
+                                        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar.length </span><span class="jsdoc-syntax">== 1 &amp;&amp; </span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.nodeType </span><span class="jsdoc-syntax">== 3) {
+                                            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">textNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[0];
+
+                                            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">prev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">textNode.previousSibling</span><span class="jsdoc-syntax">;
+                                            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">next </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">textNode.nextSibling</span><span class="jsdoc-syntax">;
+
+                                            </span><span class="jsdoc-comment">// merge adjacent text nodes
+
+                                            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+
+                                            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prev.nodeType </span><span class="jsdoc-syntax">== 3) {
+                                                </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">prev.textContent</span><span class="jsdoc-syntax">;
+                                                </span><span class="jsdoc-var">textNode.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prev</span><span class="jsdoc-syntax">);
+                                            }
+                                            </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">textNode.textContent</span><span class="jsdoc-syntax">;
+                                            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">next.nodeType </span><span class="jsdoc-syntax">== 3) {
+                                                </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">next.textContent</span><span class="jsdoc-syntax">;
+                                                </span><span class="jsdoc-var">textNode.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">next</span><span class="jsdoc-syntax">);
+                                            }
+
+                                            </span><span class="jsdoc-var">textNode.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.createTextNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">textNode</span><span class="jsdoc-syntax">);
+                                            </span><span class="jsdoc-var">textNode.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">textNode</span><span class="jsdoc-syntax">);
+                                        }
+                                    }
+                                }
+                                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                            }
+                        }
+
+                        </span><span class="jsdoc-comment">// if no dir removed
+                        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">removeDir</span><span class="jsdoc-syntax">) {
+                            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeDir </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">'ar'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'he'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'fa'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'ur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'ps'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'syr'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'dv'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'arc'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'nqo'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'sam'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'tzm'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'ug'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'yi'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.includes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editorcore.language</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'ltr' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'rtl'</span><span class="jsdoc-syntax">;
+                            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">span </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editorcore.doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">);
+                            </span><span class="jsdoc-var">span.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dir'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nodeDir</span><span class="jsdoc-syntax">);
+                            </span><span class="jsdoc-var">range.surroundContents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">span</span><span class="jsdoc-syntax">);
+                        }
+
+                    }
+                },
+                </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">: -1
+            });
+
 
             </span><span class="jsdoc-var">tb.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmenu</span><span class="jsdoc-syntax">);
         }

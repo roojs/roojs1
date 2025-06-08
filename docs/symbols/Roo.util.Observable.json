@@ -260,6 +260,8 @@
       "Roo.bootstrap.TableBody",
       "Roo.bootstrap.TableCell",
       "Roo.bootstrap.TableRow",
+      "Roo.bootstrap.Toast",
+      "Roo.bootstrap.Toaster",
       "Roo.bootstrap.UploadCropbox",
       "Roo.bootstrap.breadcrumb.Item",
       "Roo.bootstrap.breadcrumb.Nav",

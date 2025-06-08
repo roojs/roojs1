@@ -48,6 +48,9 @@ Roo.bootstrap.menu.Separator
 Roo.bootstrap.Modal
 Roo.bootstrap.MessageBox
 
+Roo.bootstrap.Toaster
+Roo.bootstrap.Toast
+
 
 
 Roo.bootstrap.nav.Bar
@@ -245,6 +248,8 @@ Roo.bootstrap.form.PhoneInput
 Roo.bootstrap.form.MoneyField
 
 Roo.bootstrap.BezierSignature
+
+
 
 
 Roo.bootstrap.form.deprecated

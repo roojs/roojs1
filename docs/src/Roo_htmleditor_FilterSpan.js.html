@@ -20,9 +20,10 @@
 
     </span><span class="jsdoc-var">replaceTag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.attributes </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">node.attributes.length </span><span class="jsdoc-syntax">&gt; 0) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.attributes </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">node.attributes.length </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-var">node.textContent.trim</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">&gt; 0) {
             </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// walk if there are any.
         </span><span class="jsdoc-syntax">}
+
         </span><span class="jsdoc-var">Roo.htmleditor.FilterKeepChildren.prototype.replaceTag.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
 

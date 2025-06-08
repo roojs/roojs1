@@ -406,6 +406,17 @@
         </span><span class="jsdoc-comment">// update name
         </span><span class="jsdoc-var">this.tb.items.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.el.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">left_label </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">':&amp;nbsp;'</span><span class="jsdoc-syntax">;
 
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tb.name </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'BLOCK.Figure' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.tb.items </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.tb.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.cls </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">item.cls </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'x-toolbar-figure-show-video-url'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">block.cls </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'youtube'</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">item.hide</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                    }
+                    </span><span class="jsdoc-var">item.show</span><span class="jsdoc-syntax">();
+                }
+            });
+        }
 
         </span><span class="jsdoc-comment">// update attributes
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">block </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.tb.fields</span><span class="jsdoc-syntax">) {

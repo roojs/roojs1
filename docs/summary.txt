@@ -104,8 +104,10 @@ Bootstrap Widgets
         Roo.bootstrap.Element Generic HTML use 'tag' for span or other..
         Roo.bootstrap.Popover
         Roo.bootstrap.Tooltip
+        Roo.bootstrap.Toast
         Examples
             [examples/bootstrap4/popover.html] Popover dialog
+            [examples/bootstrap4/toast.html] Notification (Toasts)
 
     Buttons
         Roo.bootstrap.ButtonGroup

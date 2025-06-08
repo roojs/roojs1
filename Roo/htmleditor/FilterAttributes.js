@@ -10,6 +10,7 @@
 Roo.htmleditor.FilterAttributes = function(cfg)
 {
     Roo.apply(this, cfg);
+    this.lang = this.lang || 'en';
     this.attrib_black = this.attrib_black || [];
     this.attrib_white = this.attrib_white || [];
 
@@ -38,6 +39,9 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
         }
         
         for (var i = node.attributes.length-1; i > -1 ; i--) {
+            if(i >= node.attributes.length) {
+                continue;
+            }
             var a = node.attributes[i];
             //console.log(a);
             if (this.attrib_white.length && this.attrib_white.indexOf(a.name.toLowerCase()) < 0) {
@@ -72,6 +76,7 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
             if (a.name == 'class') {
                 if (a.value.match(/^Mso/)) {
                     node.removeAttribute('class');
+                    continue;
                 }
                 
                 if (a.value.match(/^body$/)) {
@@ -80,9 +85,18 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                 continue;
             }
             
-            
             // style cleanup!?
             // class cleanup?
+
+            if(a.name == 'dir') {
+                var documentDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'rtl' : 'ltr';
+                var nodeDir = a.value.toLowerCase();
+
+                // remove span dir if it is same as the document dir
+                if(node.tagName.toLowerCase() == 'span' && nodeDir == documentDir) {
+                    node.removeAttribute(a.name);
+                }
+            }
             
         }
         return true; // clean children

@@ -293,8 +293,20 @@ Company.data.CustomStore = function(config) { ... }
             for (i=0; i<a.length; ++i) {
                 d=a[i].split(".");
                 rt = d[0];
-                /** eval:var:o */
-                eval('if (typeof ' + rt + ' == "undefined"){' + rt + ' = {};} o = ' + rt + ';');
+                
+				if (typeof(window != 'undefined')) {
+					if (typeof(window[rt]) == "undefined"){
+						window[rt] = {};
+					}
+					o = window[rt];
+				
+				} else {
+					/** eval:var:o */
+					eval('if (typeof ' + rt + ' == "undefined"){' + rt + ' = {};} o = ' + rt + ';');
+				}
+				
+				
+                
                 for (j=1; j<d.length; ++j) {
                     o[d[j]]=o[d[j]] || {};
                     o=o[d[j]];
@@ -1248,14 +1260,108 @@ Date.parseRegexes = [];
 Date.formatFunctions = {count:0};
 
 // private
+Date.formatParsed = {}
 Date.prototype.dateFormat = function(format) {
-    if (Date.formatFunctions[format] == null) {
-        Date.createNewFormat(format);
+    if (typeof(Date.formatParsed[format])  == 'undefined') {
+        
+          //  var funcName = "format" + Date.formatFunctions.count++;
+          //Date.formatFunctions[format] = funcName;
+          //var code = "Date.prototype." + funcName + " = function(){return ";
+          // generate an array.. 
+          var code = [];
+          var special = false;
+          var ch = '';
+          for (var i = 0; i < format.length; ++i) {
+              ch = format.charAt(i);
+              if (!special && ch == "\\") {
+                  special = true;
+              }
+              else if (special) {
+                  special = false;
+                  code.push([String.escape(ch)]);
+              }
+              else {
+                  code.push(ch);
+              }
+          }
+          Date.formatParsed[format] = code;
     }
-    var func = Date.formatFunctions[format];
-    return this[func]();
+    var ret = '';
+    var ar =  Date.formatParsed[format];
+    for(var i =0; i <ar.length; i++) {
+        var c = ar[i];
+    
+      if (typeof(c) != 'string') {
+        ret += c[0];
+        continue;
+      }
+      ret += this.formatCodeToValue(c);
+    }
+    return ret;
+ 
 };
-
+Date.prototype.formatCodeToValue = function(character) {
+    switch (character) {
+    case "d":
+        return String.leftPad(this.getDate(), 2, '0');
+    case "D":
+        return Date.dayNames[this.getDay()].substring(0, 3);
+    case "j":
+        return this.getDate();
+    case "l":
+        return Date.dayNames[this.getDay()];
+    case "S":
+        return this.getSuffix();
+    case "w":
+        return this.getDay();
+    case "z":
+        return this.getDayOfYear();
+    case "W":
+        return this.getWeekOfYear();
+    case "F":
+        return Date.monthNames[this.getMonth()];
+    case "m":
+        return String.leftPad(this.getMonth() + 1, 2, '0');
+    case "M":
+        return Date.monthNames[this.getMonth()].substring(0, 3);
+    case "n":
+        return (this.getMonth() + 1);
+    case "t":
+        return this.getDaysInMonth();
+    case "L":
+        return (this.isLeapYear() ? 1 : 0);
+    case "Y":
+        return this.getFullYear();
+    case "y":
+        return (this.getFullYear()+ "").substring(2, 4) ;
+    case "a":
+        return (this.getHours() < 12 ? 'am' : 'pm') ;
+    case "A":
+        return (this.getHours() < 12 ? 'AM' : 'PM') ;
+    case "g":
+        return ((this.getHours() % 12) ? this.getHours() % 12 : 12);
+    case "G":
+        return this.getHours();
+    case "h":
+        return String.leftPad((this.getHours() % 12) ? this.getHours() % 12 : 12, 2, '0');
+    case "H":
+        return String.leftPad(this.getHours(), 2, '0');
+    case "i":
+        return String.leftPad(this.getMinutes(), 2, '0');
+    case "s":
+        return String.leftPad(this.getSeconds(), 2, '0');
+    case "O":
+        return this.getGMTOffset();
+    case "P":
+    	return this.getGMTColonOffset();
+    case "T":
+        return this.getTimezone();
+    case "Z":
+        return (this.getTimezoneOffset() * -60);
+    default:
+        return String.escape(character);
+    }
+};
 
 /**
  * Formats a date given the supplied format string
@@ -1266,92 +1372,9 @@ Date.prototype.dateFormat = function(format) {
 Date.prototype.format = Date.prototype.dateFormat;
 
 // private
-Date.createNewFormat = function(format) {
-    var funcName = "format" + Date.formatFunctions.count++;
-    Date.formatFunctions[format] = funcName;
-    var code = "Date.prototype." + funcName + " = function(){return ";
-    var special = false;
-    var ch = '';
-    for (var i = 0; i < format.length; ++i) {
-        ch = format.charAt(i);
-        if (!special && ch == "\\") {
-            special = true;
-        }
-        else if (special) {
-            special = false;
-            code += "'" + String.escape(ch) + "' + ";
-        }
-        else {
-            code += Date.getFormatCode(ch);
-        }
-    }
-    /** eval:var:zzzzzzzzzzzzz */
-    eval(code.substring(0, code.length - 3) + ";}");
-};
+ 
 
-// private
-Date.getFormatCode = function(character) {
-    switch (character) {
-    case "d":
-        return "String.leftPad(this.getDate(), 2, '0') + ";
-    case "D":
-        return "Date.dayNames[this.getDay()].substring(0, 3) + ";
-    case "j":
-        return "this.getDate() + ";
-    case "l":
-        return "Date.dayNames[this.getDay()] + ";
-    case "S":
-        return "this.getSuffix() + ";
-    case "w":
-        return "this.getDay() + ";
-    case "z":
-        return "this.getDayOfYear() + ";
-    case "W":
-        return "this.getWeekOfYear() + ";
-    case "F":
-        return "Date.monthNames[this.getMonth()] + ";
-    case "m":
-        return "String.leftPad(this.getMonth() + 1, 2, '0') + ";
-    case "M":
-        return "Date.monthNames[this.getMonth()].substring(0, 3) + ";
-    case "n":
-        return "(this.getMonth() + 1) + ";
-    case "t":
-        return "this.getDaysInMonth() + ";
-    case "L":
-        return "(this.isLeapYear() ? 1 : 0) + ";
-    case "Y":
-        return "this.getFullYear() + ";
-    case "y":
-        return "('' + this.getFullYear()).substring(2, 4) + ";
-    case "a":
-        return "(this.getHours() < 12 ? 'am' : 'pm') + ";
-    case "A":
-        return "(this.getHours() < 12 ? 'AM' : 'PM') + ";
-    case "g":
-        return "((this.getHours() % 12) ? this.getHours() % 12 : 12) + ";
-    case "G":
-        return "this.getHours() + ";
-    case "h":
-        return "String.leftPad((this.getHours() % 12) ? this.getHours() % 12 : 12, 2, '0') + ";
-    case "H":
-        return "String.leftPad(this.getHours(), 2, '0') + ";
-    case "i":
-        return "String.leftPad(this.getMinutes(), 2, '0') + ";
-    case "s":
-        return "String.leftPad(this.getSeconds(), 2, '0') + ";
-    case "O":
-        return "this.getGMTOffset() + ";
-    case "P":
-    	return "this.getGMTColonOffset() + ";
-    case "T":
-        return "this.getTimezone() + ";
-    case "Z":
-        return "(this.getTimezoneOffset() * -60) + ";
-    default:
-        return "'" + String.escape(character) + "' + ";
-    }
-};
+
 
 /**
  * Parses the passed string using the specified format. Note that this function expects dates in normal calendar
@@ -1378,215 +1401,289 @@ dt = Date.parseDate("2006-1-15 3:20:01 PM", "Y-m-d h:i:s A" );
  * @return {Date} The parsed date
  * @static
  */
+ 
+
 Date.parseDate = function(input, format) {
-    if (Date.parseFunctions[format] == null) {
-        Date.createParser(format);
-    }
-    var func = Date.parseFunctions[format];
-    return Date[func](input);
+    
+    var out = {
+		y : -1,
+		m : -1,
+		d : -1,
+		h : -1,
+		i : -1,
+		s : -1,
+		o : false,
+		z : false
+		
+	};
+	var v;
+    var d = new Date();
+    out.y = d.getFullYear();
+    out.m = d.getMonth();
+    out.d = d.getDate();
+    if (typeof(input) !== 'string') {
+		input = input.toString();
+	}
+    if (typeof(Date.parseFuncData[format]) == 'undefined') {
+			
+		
+		var regex = "";
+		var funcs = [];
+		 
+		var special = false;
+		var ch = '';
+		for (var i = 0; i < format.length; ++i) {
+			ch = format.charAt(i);
+			if (!special && ch == "\\") {
+				special = true;
+			}
+			else if (special) {
+				special = false;
+				regex += String.escape(ch);
+ 			}
+			else {
+        
+				var obj = Date.formatCodeToRegex(ch, 0);
+  
+				regex += obj.s;
+				if (obj.f !== false) {
+					funcs.push(obj.f);
+				}
+			}
+		}
+		Date.parseFuncData[format] = {
+			f : funcs ,
+			re : new RegExp("^" + regex + "$")
+		};
+  }
+	
+	if (!input.match(Date.parseFuncData[format].re)) {
+		return null;
+	}
+	
+	input.replace(Date.parseFuncData[format].re, function(   ) {
+			
+	   var results = arguments;
+	   Date.parseFuncData[format].f.forEach(function(v, i) {
+		   
+		   v(results[i+1], out);
+   
+	   });
+
+	});
+	
+	
+
+    if (out.y >= 0 && out.m >= 0 && out.d > 0 && out.h >= 0 && out.i >= 0 && out.s >= 0) {
+		v = new Date(out.y, out.m, out.d, out.h, out.i, out.s);
+		v.setFullYear(out.y);
+	} else if (out.y >= 0 && out.m >= 0 && out.d > 0 && out.h >= 0 && out.i >= 0)  {
+		v = new Date(out.y, out.m, out.d, out.h, out.i);
+		v.setFullYear(out.y);
+	} else if (out.y >= 0 && out.m >= 0 && out.d > 0 && out.h >= 0) {
+		v = new Date(out.y, out.m, out.d, out.h);
+		v.setFullYear(out.y);
+	}else if (out.y >= 0 && out.m >= 0 && out.d > 0) {
+		v = new Date(out.y, out.m, out.d);
+		v.setFullYear(out.y);
+	} else if (out.y >= 0 && out.m >= 0) {
+		v = new Date(out.y, out.m);
+		v.setFullYear(out.y);
+	} else if (out.y >= 0) {
+		v = new Date(out.y);
+		v.setFullYear(out.y);
+	}
+	
+	if (!v || (out.z === false && out.o === false)) {
+	  return v;
+	}
+	if (out.z !== false) {
+		return v.add(Date.SECOND, (v.getTimezoneOffset() * 60) + (out.z*1));
+	}
+	// out.o
+	return v.add(Date.HOUR, (v.getGMTOffset() / 100) + (out.o / -100))  ; // reset to GMT, then add offset
+
+ 
 };
-/**
- * @private
- */
+Date.parseFuncData = {};
 
-Date.createParser = function(format) {
-    var funcName = "parse" + Date.parseFunctions.count++;
-    var regexNum = Date.parseRegexes.length;
-    var currentGroup = 1;
-    Date.parseFunctions[format] = funcName;
-
-    var code = "Date." + funcName + " = function(input){\n"
-        + "var y = -1, m = -1, d = -1, h = -1, i = -1, s = -1, o, z, v;\n"
-        + "var d = new Date();\n"
-        + "y = d.getFullYear();\n"
-        + "m = d.getMonth();\n"
-        + "d = d.getDate();\n"
-        + "if (typeof(input) !== 'string') { input = input.toString(); }\n"
-        + "var results = input.match(Date.parseRegexes[" + regexNum + "]);\n"
-        + "if (results && results.length > 0) {";
-    var regex = "";
-
-    var special = false;
-    var ch = '';
-    for (var i = 0; i < format.length; ++i) {
-        ch = format.charAt(i);
-        if (!special && ch == "\\") {
-            special = true;
-        }
-        else if (special) {
-            special = false;
-            regex += String.escape(ch);
-        }
-        else {
-            var obj = Date.formatCodeToRegex(ch, currentGroup);
-            currentGroup += obj.g;
-            regex += obj.s;
-            if (obj.g && obj.c) {
-                code += obj.c;
-            }
-        }
-    }
-
-    code += "if (y >= 0 && m >= 0 && d > 0 && h >= 0 && i >= 0 && s >= 0)\n"
-        + "{v = new Date(y, m, d, h, i, s); v.setFullYear(y);}\n"
-        + "else if (y >= 0 && m >= 0 && d > 0 && h >= 0 && i >= 0)\n"
-        + "{v = new Date(y, m, d, h, i); v.setFullYear(y);}\n"
-        + "else if (y >= 0 && m >= 0 && d > 0 && h >= 0)\n"
-        + "{v = new Date(y, m, d, h); v.setFullYear(y);}\n"
-        + "else if (y >= 0 && m >= 0 && d > 0)\n"
-        + "{v = new Date(y, m, d); v.setFullYear(y);}\n"
-        + "else if (y >= 0 && m >= 0)\n"
-        + "{v = new Date(y, m); v.setFullYear(y);}\n"
-        + "else if (y >= 0)\n"
-        + "{v = new Date(y); v.setFullYear(y);}\n"
-        + "}return (v && (z || o))?\n" // favour UTC offset over GMT offset
-        + "    ((z)? v.add(Date.SECOND, (v.getTimezoneOffset() * 60) + (z*1)) :\n" // reset to UTC, then add offset
-        + "        v.add(Date.HOUR, (v.getGMTOffset() / 100) + (o / -100))) : v\n" // reset to GMT, then add offset
-        + ";}";
-
-    Date.parseRegexes[regexNum] = new RegExp("^" + regex + "$");
-    /** eval:var:zzzzzzzzzzzzz */
-    eval(code);
-};
-
-// private
-Date.formatCodeToRegex = function(character, currentGroup) {
+Date.formatCodeToRegex = function(character) {
     switch (character) {
     case "D":
-        return {g:0,
-        c:null,
-        s:"(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)"};
+        return {
+	    f : function(result, out) {},
+        s:"(Sun|Mon|Tue|Wed|Thu|Fri|Sat)"};
     case "j":
-        return {g:1,
-            c:"d = parseInt(results[" + currentGroup + "], 10);\n",
-            s:"(\\d{1,2})"}; // day of month without leading zeroes
+        return {
+          f : function(result, out) {
+            out.d = parseInt(result, 10);
+          },
+          s:"(\\d{1,2})"}; // day of month without leading zeroes,
     case "d":
-        return {g:1,
-            c:"d = parseInt(results[" + currentGroup + "], 10);\n",
+        return {
+			f : function(result, out) {
+				out.d = parseInt(result, 10);
+			},
             s:"(\\d{2})"}; // day of month with leading zeroes
     case "l":
-        return {g:0,
-            c:null,
-            s:"(?:" + Date.dayNames.join("|") + ")"};
+        return {
+			f : function(result, out) {},
+            s:"(" + Date.dayNames.join("|") + ")"};
     case "S":
-        return {g:0,
-            c:null,
-            s:"(?:st|nd|rd|th)"};
+        return {
+			f : function(result, out) {},
+            s:"(st|nd|rd|th)"};
     case "w":
-        return {g:0,
-            c:null,
+        return {
+			f : false,             
             s:"\\d"};
     case "z":
-        return {g:0,
-            c:null,
-            s:"(?:\\d{1,3})"};
+        return { 
+			f : function(result, out) {},
+            s:"(\\d{1,3})"};
     case "W":
-        return {g:0,
-            c:null,
-            s:"(?:\\d{2})"};
+        return {
+			f : function(result, out) {},
+            s:"(\\d{2})"};
     case "F":
-        return {g:1,
-            c:"m = parseInt(Date.monthNumbers[results[" + currentGroup + "].substring(0, 3)], 10);\n",
+        return {
+			f : function(result, out) {
+				out.m = parseInt(Date.monthNumbers[result].substring(0, 3), 10);
+			},
             s:"(" + Date.monthNames.join("|") + ")"};
     case "M":
-        return {g:1,
-            c:"m = parseInt(Date.monthNumbers[results[" + currentGroup + "]], 10);\n",
+        return {
+            f : function(result, out) {
+				out.m = parseInt(Date.monthNumbers[result], 10);
+			},
             s:"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"};
     case "n":
-        return {g:1,
-            c:"m = parseInt(results[" + currentGroup + "], 10) - 1;\n",
+        return {
+			f : function(result, out) {
+				out.m = parseInt(Date.monthNumbers[result], 10);
+			},
             s:"(\\d{1,2})"}; // Numeric representation of a month, without leading zeros
     case "m":
-        return {g:1,
-            c:"m = Math.max(0,parseInt(results[" + currentGroup + "], 10) - 1);\n",
+        return {
+			f : function(result, out) {
+				out.m = Math.max(0,parseInt(result, 10) - 1);
+			},
             s:"(\\d{2})"}; // Numeric representation of a month, with leading zeros
     case "t":
-        return {g:0,
-            c:null,
+        return {
+			f : false,
             s:"\\d{1,2}"};
     case "L":
-        return {g:0,
-            c:null,
-            s:"(?:1|0)"};
+        return {
+			f : function(result, out) {},
+            s:"(1|0)"};
     case "Y":
-        return {g:1,
-            c:"y = parseInt(results[" + currentGroup + "], 10);\n",
+        return {
+			f : function(result, out) {
+				out.y =  parseInt(result, 10);
+			},
             s:"(\\d{4})"};
     case "y":
-        return {g:1,
-            c:"var ty = parseInt(results[" + currentGroup + "], 10);\n"
-                + "y = ty > Date.y2kYear ? 1900 + ty : 2000 + ty;\n",
+        return {
+			f : function(result, out) {
+				var ty = parseInt(result, 10);
+                out.y = ty > Date.y2kYear ? 1900 + ty : 2000 + ty;
+			},
             s:"(\\d{1,2})"};
     case "a":
-        return {g:1,
-            c:"if (results[" + currentGroup + "] == 'am') {\n"
-                + "if (h == 12) { h = 0; }\n"
-                + "} else { if (h < 12) { h += 12; }}",
+        return {
+			f : function(result, out) {
+				if (result == 'am') {
+					if (out.h == 12) { h = 0; }
+                } else {
+					if (out.h < 12) { out.h += 12; }
+				}
+			},	
             s:"(am|pm)"};
     case "A":
-        return {g:1,
-            c:"if (results[" + currentGroup + "] == 'AM') {\n"
-                + "if (h == 12) { h = 0; }\n"
-                + "} else { if (h < 12) { h += 12; }}",
+        return {
+			f : function(result, out) {
+				if (result == 'AM') {
+					if (out.h == 12) { h = 0; }
+                } else {
+					if (out.h < 12) { out.h += 12; }
+				}
+			},	
             s:"(AM|PM)"};
     case "g":
     case "G":
-        return {g:1,
-            c:"h = parseInt(results[" + currentGroup + "], 10);\n",
-            s:"(\\d{1,2})"}; // 12/24-hr format  format of an hour without leading zeroes
+        return {
+			f : function(result, out) {
+				out.h = parseInt(result,10);
+			},	
+			s:"(\\d{1,2})"}; // 12/24-hr format  format of an hour without leading zeroes
     case "h":
     case "H":
-        return {g:1,
-            c:"h = parseInt(results[" + currentGroup + "], 10);\n",
+        return {
+			f : function(result, out) {
+				out.h = parseInt(result,10);
+			},
             s:"(\\d{2})"}; //  12/24-hr format  format of an hour with leading zeroes
     case "i":
-        return {g:1,
-            c:"i = parseInt(results[" + currentGroup + "], 10);\n",
+        return {
+			f : function(result, out) {
+				out.i = parseInt(result,10);
+			},	
             s:"(\\d{2})"};
     case "s":
-        return {g:1,
-            c:"s = parseInt(results[" + currentGroup + "], 10);\n",
+        return {
+			f : function(result, out) {
+				out.s = parseInt(result,10);
+			},	
             s:"(\\d{2})"};
-    case "O":
-        return {g:1,
-            c:[
-                "o = results[", currentGroup, "];\n",
-                "var sn = o.substring(0,1);\n", // get + / - sign
-                "var hr = o.substring(1,3)*1 + Math.floor(o.substring(3,5) / 60);\n", // get hours (performs minutes-to-hour conversion also)
-                "var mn = o.substring(3,5) % 60;\n", // get minutes
-                "o = ((-12 <= (hr*60 + mn)/60) && ((hr*60 + mn)/60 <= 14))?\n", // -12hrs <= GMT offset <= 14hrs
-                "    (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;\n"
-            ].join(""),
-            s:"([+\-]\\d{2,4})"};
+    case "O": 
+        return {
+			f : function(result, out) {
+				out.o = result;
+                var sn = out.o.substring(0,1);
+                var hr = out.o.substring(1,3)*1 + Math.floor(out.o.substring(3,5) / 60); // get hours (performs minutes-to-hour conversion also)
+                var mn = out.o.substring(3,5) % 60; // get minutes
+                out.o = ((-12 <= (hr*60 + mn)/60) && ((hr*60 + mn)/60 <= 14))? // -12hrs <= GMT offset <= 14hrs
+                    (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;
+			},	
+			
+            s:"([+\-]\\d{2,4})"
+		};
     
     
-    case "P":
-    	return {g:1,
-    		c:[
-    		   "o = results[", currentGroup, "];\n",
-    		   "var sn = o.substring(0,1);\n",
-    		   "var hr = o.substring(1,3)*1 + Math.floor(o.substring(4,6) / 60);\n",
-    		   "var mn = o.substring(4,6) % 60;\n",
-    		   "o = ((-12 <= (hr*60 + mn)/60) && ((hr*60 + mn)/60 <= 14))?\n",
-    	                "    (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;\n"
-            ].join(""),
-            s:"([+\-]\\d{4})"};
-    case "T":
-        return {g:0,
-            c:null,
-            s:"[A-Z]{1,4}"}; // timezone abbrev. may be between 1 - 4 chars
+    case "P":   //xx:yy
+    	return {
+			f : function(result, out) { 
+				out.o = result;
+				var sn = out.o.substring(0,1);
+				var hr = out.o.substring(1,3)*1 + Math.floor(out.o.substring(4,6) / 60);
+				var mn = out.o.substring(4,6) % 60;
+       
+				out.o = ((-12 <= (hr*60 + mn)/60) && ((hr*60 + mn)/60 <= 14))?
+    	                (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;
+			},
+            s:"([+\-]\\d{2}:\\d{2})"
+		};
+    
+	case "T": // note it's just ignored..
+        return {
+			f : function(result, out) {},
+            s:"([A-Z]{1,4})"}; // timezone abbrev. may be between 1 - 4 chars
     case "Z":
-        return {g:1,
-            c:"z = results[" + currentGroup + "];\n" // -43200 <= UTC offset <= 50400
-                  + "z = (-43200 <= z*1 && z*1 <= 50400)? z : null;\n",
-            s:"([+\-]?\\d{1,5})"}; // leading '+' sign is optional for UTC offset
+        return {
+			f : function(result, out) {
+				out.z = result; // -43200 <= UTC offset <= 50400
+                out.z = (-43200 <= out.z*1 && out.z*1 <= 50400)? out.z : null;
+			},
+            s:"([+\-]?\\d{1,5})"
+		}; // leading '+' sign is optional for UTC offset
     default:
-        return {g:0,
-            c:null,
-            s:String.escape(character)};
+        return {
+			f : false,
+            s: String.escape(character)
+		};
     }
 };
-
 /**
  * Get the timezone abbreviation of the current date (equivalent to the format specifier 'T').
  * @return {String} The abbreviated timezone name (e.g. 'CST')
@@ -6183,7 +6280,11 @@ Roo.Template.prototype = {
          * eval:var:values
          * eval:var:fm
          */
-        eval(body);
+        try {
+            eval(body);
+        } catch(e) {
+            Roo.log(e); // probably eval not allowed.
+        }
         return this;
     },
     
@@ -6397,84 +6498,10 @@ Roo.DomQuery = function(){
  	    return this;
  	};
 
-    function byClassName(c, a, v){
-        if(!v){
-            return c;
-        }
-        var r = [], ri = -1, cn;
-        for(var i = 0, ci; ci = c[i]; i++){
-	    
-	    
-            if((' '+
-		( (ci instanceof SVGElement) ? ci.className.baseVal : ci.className)
-		 +' ').indexOf(v) != -1){
-                r[++ri] = ci;
-            }
-        }
-        return r;
-    };
+    
 
-    function attrValue(n, attr){
-        if(!n.tagName && typeof n.length != "undefined"){
-            n = n[0];
-        }
-        if(!n){
-            return null;
-        }
-        if(attr == "for"){
-            return n.htmlFor;
-        }
-        if(attr == "class" || attr == "className"){
-	    return (n instanceof SVGElement) ? n.className.baseVal : n.className;
-        }
-        return n.getAttribute(attr) || n[attr];
-
-    };
-
-    function getNodes(ns, mode, tagName){
-        var result = [], ri = -1, cs;
-        if(!ns){
-            return result;
-        }
-        tagName = tagName || "*";
-        if(typeof ns.getElementsByTagName != "undefined"){
-            ns = [ns];
-        }
-        if(!mode){
-            for(var i = 0, ni; ni = ns[i]; i++){
-                cs = ni.getElementsByTagName(tagName);
-                for(var j = 0, ci; ci = cs[j]; j++){
-                    result[++ri] = ci;
-                }
-            }
-        }else if(mode == "/" || mode == ">"){
-            var utag = tagName.toUpperCase();
-            for(var i = 0, ni, cn; ni = ns[i]; i++){
-                cn = ni.children || ni.childNodes;
-                for(var j = 0, cj; cj = cn[j]; j++){
-                    if(cj.nodeName == utag || cj.nodeName == tagName  || tagName == '*'){
-                        result[++ri] = cj;
-                    }
-                }
-            }
-        }else if(mode == "+"){
-            var utag = tagName.toUpperCase();
-            for(var i = 0, n; n = ns[i]; i++){
-                while((n = n.nextSibling) && n.nodeType != 1);
-                if(n && (n.nodeName == utag || n.nodeName == tagName || tagName == '*')){
-                    result[++ri] = n;
-                }
-            }
-        }else if(mode == "~"){
-            for(var i = 0, n; n = ns[i]; i++){
-                while((n = n.nextSibling) && (n.nodeType != 1 || (tagName == '*' || n.tagName.toLowerCase()!=tagName)));
-                if(n){
-                    result[++ri] = n;
-                }
-            }
-        }
-        return result;
-    };
+    
+     
 
     function concat(a, b){
         if(b.slice){
@@ -6486,67 +6513,11 @@ Roo.DomQuery = function(){
         return a;
     }
 
-    function byTag(cs, tagName){
-        if(cs.tagName || cs == document){
-            cs = [cs];
-        }
-        if(!tagName){
-            return cs;
-        }
-        var r = [], ri = -1;
-        tagName = tagName.toLowerCase();
-        for(var i = 0, ci; ci = cs[i]; i++){
-            if(ci.nodeType == 1 && ci.tagName.toLowerCase()==tagName){
-                r[++ri] = ci;
-            }
-        }
-        return r;
-    };
+   
+   
 
-    function byId(cs, attr, id){
-        if(cs.tagName || cs == document){
-            cs = [cs];
-        }
-        if(!id){
-            return cs;
-        }
-        var r = [], ri = -1;
-        for(var i = 0,ci; ci = cs[i]; i++){
-            if(ci && ci.id == id){
-                r[++ri] = ci;
-                return r;
-            }
-        }
-        return r;
-    };
+    
 
-    function byAttribute(cs, attr, value, op, custom){
-        var r = [], ri = -1, st = custom=="{";
-        var f = Roo.DomQuery.operators[op];
-        for(var i = 0, ci; ci = cs[i]; i++){
-            var a;
-            if(st){
-                a = Roo.DomQuery.getStyle(ci, attr);
-            }
-            else if(attr == "class" || attr == "className"){
-                a = (ci instanceof SVGElement) ? ci.className.baseVal : ci.className;
-            }else if(attr == "for"){
-                a = ci.htmlFor;
-            }else if(attr == "href"){
-                a = ci.getAttribute("href", 2);
-            }else{
-                a = ci.getAttribute(attr);
-            }
-            if((f && f(a, value)) || (!f && a)){
-                r[++ri] = ci;
-            }
-        }
-        return r;
-    };
-
-    function byPseudo(cs, name, value){
-        return Roo.DomQuery.pseudos[name](cs, value);
-    };
 
     // This is for IE MSXML which does not support expandos.
     // IE runs the same speed using setAttribute, however FF slows way down
@@ -6578,39 +6549,7 @@ Roo.DomQuery = function(){
         return r;
     }
 
-    function nodup(cs){
-        if(!cs){
-            return [];
-        }
-        var len = cs.length, c, i, r = cs, cj, ri = -1;
-        if(!len || typeof cs.nodeType != "undefined" || len == 1){
-            return cs;
-        }
-        if(isIE && typeof cs[0].selectSingleNode != "undefined"){
-            return nodupIEXml(cs);
-        }
-        var d = ++key;
-        cs[0]._nodup = d;
-        for(i = 1; c = cs[i]; i++){
-            if(c._nodup != d){
-                c._nodup = d;
-            }else{
-                r = [];
-                for(var j = 0; j < i; j++){
-                    r[++ri] = cs[j];
-                }
-                for(j = i+1; cj = cs[j]; j++){
-                    if(cj._nodup != d){
-                        cj._nodup = d;
-                        r[++ri] = cj;
-                    }
-                }
-                return r;
-            }
-        }
-        return r;
-    }
-
+   
     function quickDiffIEXml(c1, c2){
         var d = ++key;
         for(var i = 0, len = c1.length; i < len; i++){
@@ -6648,20 +6587,246 @@ Roo.DomQuery = function(){
         }
         return r;
     }
+	
+	function quickId(ns, mode, root, id)
+	{
+		if(ns == root){
+		   var d = root.ownerDocument || root;
+		   return d.getElementById(id);
+		}
+		ns =  getNodes(ns, mode, "*");
+		return Roo.DomQuery.byId(ns, null, id);
+	}
+	function getNodes(ns, mode, tagName)
+	{
+		var result = [], ri = -1, cs;
+		if(!ns){
+			return result;
+		}
+		tagName = tagName || "*";
+		if(typeof ns.getElementsByTagName != "undefined"){
+			ns = [ns];
+		}
+		if(!mode){
+			for(var i = 0, ni; ni = ns[i]; i++){
+				cs = ni.getElementsByTagName(tagName);
+				for(var j = 0, ci; ci = cs[j]; j++){
+					result[++ri] = ci;
+				}
+			}
+		}else if(mode == "/" || mode == ">"){
+			var utag = tagName.toUpperCase();
+			for(var i = 0, ni, cn; ni = ns[i]; i++){
+				cn = ni.children || ni.childNodes;
+				for(var j = 0, cj; cj = cn[j]; j++){
+					if(cj.nodeName == utag || cj.nodeName == tagName  || tagName == '*'){
+						result[++ri] = cj;
+					}
+				}
+			}
+		}else if(mode == "+"){
+			var utag = tagName.toUpperCase();
+			for(var i = 0, n; n = ns[i]; i++){
+				while((n = n.nextSibling) && n.nodeType != 1);
+				if(n && (n.nodeName == utag || n.nodeName == tagName || tagName == '*')){
+					result[++ri] = n;
+				}
+			}
+		}else if(mode == "~"){
+			for(var i = 0, n; n = ns[i]; i++){
+				while((n = n.nextSibling) && (n.nodeType != 1 || (tagName == '*' || n.tagName.toLowerCase()!=tagName)));
+				if(n){
+					result[++ri] = n;
+				}
+			}
+		}
+		return result;
+	}
+	function byId (cs, attr, id)
+	{
+		if(cs.tagName || cs == document){
+			cs = [cs];
+		}
+		if(!id){
+			return cs;
+		}
+		var r = [], ri = -1;
+		for(var i = 0,ci; ci = cs[i]; i++){
+			if(ci && ci.id == id){
+				r[++ri] = ci;
+				return r;
+			}
+		}
+		return r;
+	}
+	
+	
+	function byTag(cs, tagName)
+	{
+		if(cs.tagName || cs == document){
+			cs = [cs];
+		}
+		if(!tagName){
+			return cs;
+		}
+		var r = [], ri = -1;
+		tagName = tagName.toLowerCase();
+		for(var i = 0, ci; ci = cs[i]; i++){
+			if(ci.nodeType == 1 && ci.tagName.toLowerCase()==tagName){
+				r[++ri] = ci;
+			}
+		}
+		return r;
+	}
 
-    function quickId(ns, mode, root, id){
-        if(ns == root){
-           var d = root.ownerDocument || root;
-           return d.getElementById(id);
+	
+	
+	function byClassName(c, a, v)
+	{
+		if(!v){
+			return c;
+		}
+		var r = [], ri = -1, cn;
+		for(var i = 0, ci; ci = c[i]; i++){
+		
+		
+			if((' '+
+		( (ci instanceof SVGElement) ? ci.className.baseVal : ci.className)
+		 +' ').indexOf(v) != -1){
+				r[++ri] = ci;
+			}
+		}
+		return r;
+	}
+	function byAttribute(cs, attr, value, op, custom)
+	{
+		var r = [], ri = -1, st = custom=="{";
+		var f = Roo.DomQuery.operators[op];
+		for(var i = 0, ci; ci = cs[i]; i++){
+			var a;
+			if(st){
+				a = Roo.DomQuery.getStyle(ci, attr);
+			}
+			else if(attr == "class" || attr == "className"){
+				a = (ci instanceof SVGElement) ? ci.className.baseVal : ci.className;
+			}else if(attr == "for"){
+				a = ci.htmlFor;
+			}else if(attr == "href"){
+				a = ci.getAttribute("href", 2);
+			}else{
+				a = ci.getAttribute(attr);
+			}
+			if((f && f(a, value)) || (!f && a)){
+				r[++ri] = ci;
+			}
+		}
+		return r;
+	}
+	
+	
+	function nodup(cs)
+	{
+		if(!cs){
+			return [];
+		}
+		var len = cs.length, c, i, r = cs, cj, ri = -1;
+		if(!len || typeof cs.nodeType != "undefined" || len == 1){
+			return cs;
+		}
+		if(isIE && typeof cs[0].selectSingleNode != "undefined"){
+			return nodupIEXml(cs);
+		}
+		var d = ++key;
+		cs[0]._nodup = d;
+		for(i = 1; c = cs[i]; i++){
+			if(c._nodup != d){
+				c._nodup = d;
+			}else{
+				r = [];
+				for(var j = 0; j < i; j++){
+					r[++ri] = cs[j];
+				}
+				for(j = i+1; cj = cs[j]; j++){
+					if(cj._nodup != d){
+						cj._nodup = d;
+						r[++ri] = cj;
+					}
+				}
+				return r;
+			}
+		}
+		return r;
+	}
+	
+	// enable a generic call to all of the above functions.
+	
+	var cmdcall = {
+		quickId : function(n, root, mode, arg) {
+			return quickId(n, mode, root, arg);
+		},
+		getNodes: function(n, root, mode, arg) {
+			return getNodes(n, mode, arg)
+		},
+		byId: function(n, root, mode, arg) {
+			return byId(n, null, arg);
+		},
+		byTag: function(n, root, mode, arg) {
+			return byTag(n, arg);
+		},
+		byClassName: function(n, root, mode, arg) {
+			return  byClassName(n, null, " " + arg[1] + " ");
+		},
+		byPseudo: function(n, root, mode, arg) {
+			return byPseudo(n, arg[1], arg[2]);
+		},
+		byAttribute: function(n, root, mode, arg) {
+           return byAttribute(n, arg[2], arg[4], arg[3], arg[1]);
+		},
+        byIdAr: function(n, root, mode, arg) {
+            return byId(n, null, arg[1]);
         }
-        ns = getNodes(ns, mode, "*");
-        return byId(ns, null, id);
-    }
+ 	};
+   
+	function byPseudo (cs, name, value)
+	{
+		return Roo.DomQuery.pseudos[name](cs, value);
+	}
+	
+    function runFn(root, cmds)
+	{
+		 
+		var mode;
+		++Roo.DomQuery.batch;
+		var n = root || document;
+		for(var i = 0; i < cmds.length;i++) {
+			var cmd = cmds[i];
+			if (typeof(cmd) == "string") {
+				mode = cmd;
+				continue;
+			}
+			if (cmd == "attrValue") {
+				return {
+					firstChild:{
+						nodeValue: Roo.DomQuery.attrValue(n, cmd[1][1])
+					}
+				};
+			}
+			n = cmdcall[cmd[0]](n, root,  mode,  cmd[1]);
+		}
+		return  nodup(n);
+		
+	}
+	
+	 
 
     return {
         getStyle : function(el, name){
             return Roo.fly(el).getStyle(name);
         },
+		
+		
+		
+		
         /**
          * Compiles a selector/xpath query into a reusable function. The returned function
          * takes one parameter "root" (optional), which is the context node from where the query should start.
@@ -6669,10 +6834,11 @@ Roo.DomQuery = function(){
          * @param {String} type (optional) Either "select" (the default) or "simple" for a simple selector match
          * @return {Function}
          */
-        compile : function(path, type){
+        compile : function(path, type)
+		{
             type = type || "select";
-            
-            var fn = ["var f = function(root){\n var mode; ++batch; var n = root || document;\n"];
+        
+			var cmdar = [];
             var q = path, mode, lq;
             var tk = Roo.DomQuery.matchers;
             var tklen = tk.length;
@@ -6681,7 +6847,7 @@ Roo.DomQuery = function(){
             // accept leading mode switch
             var lmode = q.match(modeRe);
             if(lmode && lmode[1]){
-                fn[fn.length] = 'mode="'+lmode[1].replace(trimRe, "")+'";';
+                cmdar.push(lmode[1].replace(trimRe, ""));
                 q = q.replace(lmode[1], "");
             }
             // strip leading slashes
@@ -6695,20 +6861,20 @@ Roo.DomQuery = function(){
                 if(type == "select"){
                     if(tm){
                         if(tm[1] == "#"){
-                            fn[fn.length] = 'n = quickId(n, mode, root, "'+tm[2]+'");';
+                			cmdar.push([ "quickId" , tm[2] ]);
                         }else{
-                            fn[fn.length] = 'n = getNodes(n, mode, "'+tm[2]+'");';
+                			cmdar.push([ "getNodes" , tm[2] ]);
                         }
                         q = q.replace(tm[0], "");
                     }else if(q.substr(0, 1) != '@'){
-                        fn[fn.length] = 'n = getNodes(n, mode, "*");';
+                		cmdar.push([ "getNodes" , "*" ]);
                     }
                 }else{
                     if(tm){
                         if(tm[1] == "#"){
-                            fn[fn.length] = 'n = byId(n, null, "'+tm[2]+'");';
+                			cmdar.push([ "byId" , tm[2] ]);
                         }else{
-                            fn[fn.length] = 'n = byTag(n, "'+tm[2]+'");';
+                			cmdar.push([ "byTag", tm[2] ]);
                         }
                         q = q.replace(tm[0], "");
                     }
@@ -6719,10 +6885,8 @@ Roo.DomQuery = function(){
                         var t = tk[j];
                         var m = q.match(t.re);
                         if(m){
-                            fn[fn.length] = t.select.replace(tplRe, function(x, i){
-                                                    return m[i];
-                                                });
-                            q = q.replace(m[0], "");
+                			cmdar.push([ t.method, m]);
+				            q = q.replace(m[0], "");
                             matched = true;
                             break;
                         }
@@ -6733,31 +6897,12 @@ Roo.DomQuery = function(){
                     }
                 }
                 if(mm[1]){
-                    fn[fn.length] = 'mode="'+mm[1].replace(trimRe, "")+'";';
+                	cmdar.push(mm[1].replace(trimRe, ""));
                     q = q.replace(mm[1], "");
                 }
             }
-            fn[fn.length] = "return nodup(n);\n}";
-            
-             /** 
-              * list of variables that need from compression as they are used by eval.
-             *  eval:var:batch 
-             *  eval:var:nodup
-             *  eval:var:byTag
-             *  eval:var:ById
-             *  eval:var:getNodes
-             *  eval:var:quickId
-             *  eval:var:mode
-             *  eval:var:root
-             *  eval:var:n
-             *  eval:var:byClassName
-             *  eval:var:byPseudo
-             *  eval:var:byAttribute
-             *  eval:var:attrValue
-             * 
-             **/ 
-            eval(fn.join(""));
-            return f;
+ 			return runFn.createDelegate(null, [ cmdar ], true);
+			
         },
 
         /**
@@ -6789,7 +6934,7 @@ Roo.DomQuery = function(){
                 }
             }
             if(paths.length > 1){
-                return nodup(results);
+                return  nodup(results);
             }
             return results;
         },
@@ -6868,21 +7013,24 @@ Roo.DomQuery = function(){
         /**
          * Collection of matching regular expressions and code snippets.
          */
-        matchers : [{
+        matchers : [
+			{
                 re: /^\.([\w-]+)/,
-                select: 'n = byClassName(n, null, " {1} ");'
+ 				method : 'byClassName'
             }, {
                 re: /^\:([\w-]+)(?:\(((?:[^\s>\/]*|.*?))\))?/,
-                select: 'n = byPseudo(n, "{1}", "{2}");'
+ 				method : 'byPseudo'
             },{
                 re: /^(?:([\[\{])(?:@)?([\w-]+)\s?(?:(=|.=)\s?['"]?(.*?)["']?)?[\]\}])/,
-                select: 'n = byAttribute(n, "{2}", "{4}", "{3}", "{1}");'
+ 				method: 'byAttribute'
             }, {
                 re: /^#([\w-]+)/,
-                select: 'n = byId(n, null, "{1}");'
+              //  select: 'n = Roo.DomQuery.byId(n, null, "{1}");',
+				method: 'byIdAr'
             },{
                 re: /^@([\w-]+)/,
-                select: 'return {firstChild:{nodeValue:attrValue(n, "{1}")}};'
+                //select: 'return {firstChild:{nodeValue:Roo.DomQuery.attrValue(n, "{1}")}};',
+				method : 'attrValue'
             }
         ],
 
@@ -7087,7 +7235,32 @@ Roo.DomQuery = function(){
                 }
                 return r;
             }
-        }
+        },
+		
+		
+		
+		
+		
+		
+		attrValue : function (n, attr)
+		{
+			if(!n.tagName && typeof n.length != "undefined"){
+				n = n[0];
+			}
+			if(!n){
+				return null;
+			}
+			if(attr == "for"){
+				return n.htmlFor;
+			}
+			if(attr == "class" || attr == "className"){
+			return (n instanceof SVGElement) ? n.className.baseVal : n.className;
+			}
+			return n.getAttribute(attr) || n[attr];
+	
+		}
+
+
     };
 }();
 
@@ -7099,8 +7272,7 @@ Roo.DomQuery = function(){
  * @member Roo
  * @method query
  */
-Roo.query = Roo.DomQuery.select;
-/*
+Roo.query = Roo.DomQuery.select;/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -8074,10 +8246,12 @@ Roo.onReady(function(){
         cls.push('roo-border-box');
     }
     if(Roo.isStrict){ // add to the parent to allow for selectors like ".ext-strict .ext-ie"
+        
         var p = bd.dom.parentNode;
         if(p){
             p.className += ' roo-strict';
         }
+         
     }
     bd.addClass(cls.join(' '));
 });
@@ -18246,7 +18420,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                     // fall through
                 default:
                     el = Roo.get(ename);
-                    if (typeof(Roo.bootstrap) != 'undefined' && tree['|xns'] == 'Roo.bootstrap') {
+                    if (typeof(Roo.bootstrap.Body) != 'undefined' && tree['|xns'] == 'Roo.bootstrap') {
                         this.parent = { el : true};
                     }
                     
@@ -18269,7 +18443,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         // altertive root elements ??? - we need a better way to indicate these.
         var is_alt = Roo.XComponent.is_alt ||
                     (typeof(tree.el) != 'undefined' && tree.el == document.body) ||
-                    (typeof(Roo.bootstrap) != 'undefined' && tree.xns == Roo.bootstrap) ||
+                    (typeof(Roo.bootstrap.Body) != 'undefined' && tree.xns == Roo.bootstrap) ||
                     (typeof(Roo.mailer) != 'undefined' && tree.xns == Roo.mailer) ;
         
         
@@ -25010,7 +25184,7 @@ Roo.languagedetect.Parser = function (string) {
      * @access  private
      * @param   string  string to be parsed
      */
-    this.string = string ? string.replace(/[~!@#$%^&*()_|+\-=?;:",.<>\{\}\[\]\\\/]/g, ' ') : '';
+    this.string = string ? string.replace(/[\d~!@#$%^&*()_|+\-=?;:",.<>\{\}\[\]\\\/]/g, ' ') : '';
 };
 
   
@@ -50897,7 +51071,7 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
     read : function(response){
         var json = response.responseText;
        
-        var o = /* eval:var:o */ eval("("+json+")");
+        var o = JSON.parse(json); // was eval
         if(!o) {
             throw {message: "JsonReader.read: Json object not found"};
         }
@@ -59984,6 +60158,7 @@ dlg.show();
  * @cfg {Number} y The default top page coordinate of the dialog (defaults to center screen)
  * @cfg {String/Element} animateTarget Id or element from which the dialog should animate while opening
  * (defaults to null with no animation)
+ * @cfg {Boolean} maximizable True to show maximize button
  * @cfg {Boolean} resizable False to disable manual dialog resizing (defaults to true)
  * @cfg {String} resizeHandles Which resize handles to display - see the {@link Roo.Resizable} handles config
  * property for valid values (defaults to 'all')
@@ -60119,6 +60294,14 @@ Roo.BasicDialog = function(el, config){
         this.resizer.on("beforeresize", this.beforeResize, this);
         this.resizer.on("resize", this.onResize, this);
     }
+    if(this.maximizable === true) {
+        // default maximize button
+        this.maximizeBtn = this.toolbox.createChild({cls:"x-dlg-resize fas fa-window-maximize"});
+        this.maximizeBtn.on("click", this.maximizeClick, this);
+        if(this.closable === false) {
+            this.maximizeBtn.setStyle('right', '6px');
+        }
+    }
     if(this.draggable !== false){
         el.addClass("x-dlg-draggable");
         if (!this.proxyDrag) {
@@ -60252,6 +60435,28 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
     // private
     collapseClick : function(){
         this[this.collapsed ? "expand" : "collapse"]();
+    },
+
+    maximizeClick: function() {
+
+        // maximize
+        if(this.maximizeBtn.hasClass('fa-window-maximize')) {
+            this.originalWidth = this.size.width;
+            this.originalHeight = this.size.height;
+            this.resizeTo(Roo.lib.Dom.getViewWidth() - 50, Roo.lib.Dom.getViewHeight() - 50);
+            this.moveTo(25, 25);
+            this.maximizeBtn.removeClass('fa-window-maximize');
+            this.maximizeBtn.addClass('fa-window-restore');
+        }
+        // restore
+        else {
+            this.resizeTo(this.originalWidth, this.originalHeight);
+            this.moveTo((Roo.lib.Dom.getViewWidth() - this.originalWidth) / 2, (Roo.lib.Dom.getViewHeight() - this.originalHeight) / 2);
+            this.maximizeBtn.removeClass('fa-window-restore');
+            this.maximizeBtn.addClass('fa-window-maximize');
+        }
+
+        this.fireEvent("resize", this, this.size.width, this.size.height);
     },
 
     /**
@@ -61595,6 +61800,10 @@ Roo.Msg.show({
             }
             dlg.toFront();
             return this;
+        },
+
+        getActiveTextEl: function() {
+            return activeTextEl;
         },
 
         /**
@@ -72372,6 +72581,7 @@ Roo.htmleditor.Filter.prototype = {
 Roo.htmleditor.FilterAttributes = function(cfg)
 {
     Roo.apply(this, cfg);
+    this.lang = this.lang || 'en';
     this.attrib_black = this.attrib_black || [];
     this.attrib_white = this.attrib_white || [];
 
@@ -72400,6 +72610,9 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
         }
         
         for (var i = node.attributes.length-1; i > -1 ; i--) {
+            if(i >= node.attributes.length) {
+                continue;
+            }
             var a = node.attributes[i];
             //console.log(a);
             if (this.attrib_white.length && this.attrib_white.indexOf(a.name.toLowerCase()) < 0) {
@@ -72434,6 +72647,7 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
             if (a.name == 'class') {
                 if (a.value.match(/^Mso/)) {
                     node.removeAttribute('class');
+                    continue;
                 }
                 
                 if (a.value.match(/^body$/)) {
@@ -72442,9 +72656,18 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
                 continue;
             }
             
-            
             // style cleanup!?
             // class cleanup?
+
+            if(a.name == 'dir') {
+                var documentDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'rtl' : 'ltr';
+                var nodeDir = a.value.toLowerCase();
+
+                // remove span dir if it is same as the document dir
+                if(node.tagName.toLowerCase() == 'span' && nodeDir == documentDir) {
+                    node.removeAttribute(a.name);
+                }
+            }
             
         }
         return true; // clean children
@@ -72678,6 +72901,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
 
 Roo.htmleditor.FilterParagraph = function(cfg)
 {
+    this.lang = cfg.lang || 'en';
     // no need to apply config.
     this.searchTag(cfg.node);
 }
@@ -72701,12 +72925,30 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
             return false; // no need to walk..
         }
 
+        var documentDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'rtl' : 'ltr';
+        var nodeDir = node.hasAttribute('dir') ? node.getAttribute('dir').toLowerCase() : false;
+        var span = node.ownerDocument.createElement('span');
+
         var ar = Array.from(node.childNodes);
         for (var i = 0; i < ar.length; i++) {
             node.removeChild(ar[i]);
+
+            // copy content to span with if the direction is needed
+            if(nodeDir && nodeDir != documentDir) {
+                span.appendChild(ar[i]);
+                continue;
+            }
+
             // what if we need to walk these???
             node.parentNode.insertBefore(ar[i], node);
         }
+
+        if(nodeDir && nodeDir != documentDir) {
+            // keep direction
+            span.setAttribute('dir', nodeDir);
+            node.parentNode.insertBefore(span, node);
+        }
+
         // now what about this?
         // <p> &nbsp; </p>
         
@@ -72776,9 +73018,10 @@ Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.FilterKeepChildren,
  
     replaceTag : function(node)
     {
-        if (node.attributes && node.attributes.length > 0) {
+        if (node.attributes && node.attributes.length > 0 && node.textContent.trim().length > 0) {
             return true; // walk if there are any.
         }
+
         Roo.htmleditor.FilterKeepChildren.prototype.replaceTag.call(this, node);
         return false;
      
@@ -75046,8 +75289,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
         };
         
-        
-        var rooui =  typeof(Roo.bootstrap) == 'undefined' ? Roo : Roo.bootstrap;
+        var rooui =  typeof(Roo.bootstrap.form) == 'undefined' ? Roo : Roo.bootstrap;
         
         var syncValue = toolbar.editorcore.syncValue;
         
@@ -75095,21 +75337,44 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             {
                 xtype : 'Button',
                 text: 'Change Link URL',
-                 
+                onPromptKeyUp: function(e) {
+                    var b = block();
+                    var isYoutube = b.cls == 'youtube';
+
+                    if(!isYoutube) {
+                        return;
+                    }
+
+                    var msg = "Enter the url for the link - leave blank to have no link";
+                    var video_url = "//www.youtube.com/embed/" + e.target.value.split('/').pop().split('?').shift();
+                    msg += "<br>Embed Link: <a href='" + video_url + "' target='_blank'>" + video_url + "</a>";
+
+                    Roo.MessageBox.updateText(msg);
+                },
                 listeners : {
                     click: function (btn, state)
                     {
                         var b = block();
+
+                        var isYoutube = b.cls == 'youtube';
+
+                        var msg = "Enter the url for the link - leave blank to have no link";
+                        if(isYoutube) {
+                            msg += "<br>Embed Link: <a href='" + b.video_url + "' target='_blank'>" + b.video_url + "</a>";
+                        }
                         
                         Roo.MessageBox.show({
                             title : "Link URL",
-                            msg : "Enter the url for the link - leave blank to have no link",
+                            msg : msg,
                             buttons: Roo.MessageBox.OKCANCEL,
                             fn: function(btn, val){
                                 if (btn != 'ok') {
                                     return;
                                 }
                                 b.href = val;
+                                if(isYoutube) {
+                                    b.video_url = "//www.youtube.com/embed/" + val.split('/').pop().split('?').shift();
+                                }
                                 b.updateElement();
                                 syncValue();
                                 toolbar.editorcore.onEditorEvent();
@@ -75120,14 +75385,20 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                             modal : true,
                             value : b.href
                         });
+                        
+                        var activeTextEl = Roo.MessageBox.getActiveTextEl();
+                        activeTextEl.removeListener('keyup', btn.onPromptKeyUp);
+                        if(isYoutube) {
+                            activeTextEl.addListener('keyup', btn.onPromptKeyUp);
+                        }
                     }
                 },
                 xns : rooui.Toolbar
             },
             {
                 xtype : 'Button',
+                cls: 'x-toolbar-figure-show-video-url',
                 text: 'Show Video URL',
-                 
                 listeners : {
                     click: function (btn, state)
                     {
@@ -75139,7 +75410,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 xns : rooui.Toolbar
             },
             
-            
             {
                 xtype : 'TextItem',
                 text : "Width: ",
@@ -75147,6 +75417,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             },
             {
                 xtype : 'ComboBox',
+                
                 allowBlank : false,
                 displayField : 'val',
                 editable : true,
@@ -75497,7 +75768,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         };
         
         
-        var rooui =  typeof(Roo.bootstrap) == 'undefined' ? Roo : Roo.bootstrap;
+        var rooui =  typeof(Roo.bootstrap.form) == 'undefined' ? Roo : Roo.bootstrap;
         
         var syncValue = toolbar.editorcore.syncValue;
         
@@ -76022,7 +76293,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             }
         }
         
-        var rooui =  typeof(Roo.bootstrap) == 'undefined' ? Roo : Roo.bootstrap;
+        var rooui =  typeof(Roo.bootstrap.form) == 'undefined' ? Roo : Roo.bootstrap;
         
         var syncValue = toolbar.editorcore.syncValue;
         
@@ -77105,6 +77376,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 new Roo.htmleditor.FilterBlack({ node : div, tag : this.black});
                 new Roo.htmleditor.FilterAttributes({
                     node : div,
+                    lang : this.language,
                     attrib_white : [
                             'href',
                             'src',
@@ -77117,6 +77389,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'data-width',
                             'data-caption',
                             'start' ,
+                            'dir',
                             'style',
                             // youtube embed.
                             'class',
@@ -77201,7 +77474,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 this.owner.fireEvent('push', this, v);
             }
             if (this.autoClean) {
-                new Roo.htmleditor.FilterParagraph({node : this.doc.body}); // paragraphs
+                new Roo.htmleditor.FilterParagraph({node : this.doc.body, lang: this.language}); // paragraphs
                 new Roo.htmleditor.FilterSpan({node : this.doc.body}); // empty spans
             }
             if (this.enableBlocks) {
@@ -77427,6 +77700,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
                 node : d,
+                lang : this.language,
                 attrib_white : [
                     'href',
                     'src',
@@ -77434,7 +77708,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'align',
                     'colspan',
                     'rowspan',
-                    'start'
+                    'start',
+                    'dir'
                 /*  THESE ARE NOT ALLWOED FOR PASTE
                  *    'data-display',
                     'data-caption-display',
@@ -77455,7 +77730,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
             // should be fonts..
             new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', ':' ]} );
-            new Roo.htmleditor.FilterParagraph({ node : d });
+            new Roo.htmleditor.FilterParagraph({ node : d, lang: this.language });
             new Roo.htmleditor.FilterHashLink({node : d});
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
@@ -78145,6 +78420,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         new Roo.htmleditor.FilterComment({node : node});
         new Roo.htmleditor.FilterAttributes({
                 node : node,
+                lang : this.language,
                 attrib_black : this.ablack,
                 attrib_clean : this.aclean,
                 style_white : this.cwhite,
@@ -79579,6 +79855,81 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 },
                 tabIndex:-1
             });
+
+            cmenu.menu.items.push({
+                actiontype : 'dir',
+                html: 'Change Selected Text Direction',
+                handler: function(a, b) {
+                    var sel = editorcore.getSelection();
+                    var range = sel.getRangeAt();
+                    // select plain text within same container
+                    if(range.startContainer == range.endContainer && range.startContainer.nodeType == 3) {
+                        var ancestors = editorcore.getAllAncestors();
+                        var removeDir = false;
+                        for(var i = 0; i < ancestors.length; i++) {
+                            var node = ancestors[i];
+                            // find closest span
+                            if(node.tagName && node.tagName.toLowerCase() == 'span') {
+                                // remove dir if exists
+                                if(node.hasAttribute('dir')) {
+                                    node.removeAttribute('dir');
+    
+                                    removeDir = true;
+    
+                                    // remove span if no attribute
+                                    if(node.attributes.length == 0) {
+
+                                        ar = Array.from(node.childNodes);
+                                        for (var i = 0; i < ar.length; i++) {
+                                         
+                                            node.removeChild(ar[i]);
+                                            node.parentNode.insertBefore(ar[i], node);
+                                           
+                                        }
+                                        node.parentNode.removeChild(node);
+
+                                        // only plain text inside the removed span
+                                        if(ar.length == 1 && ar[0].nodeType == 3) {
+                                            var textNode = ar[0];
+
+                                            var prev = textNode.previousSibling;
+                                            var next = textNode.nextSibling;
+
+                                            // merge adjacent text nodes
+
+                                            var text = '';
+
+                                            if(prev.nodeType == 3) {
+                                                text += prev.textContent;
+                                                textNode.parentNode.removeChild(prev);
+                                            }
+                                            text += textNode.textContent;
+                                            if(next.nodeType == 3) {
+                                                text += next.textContent;
+                                                textNode.parentNode.removeChild(next);
+                                            }
+
+                                            textNode.parentNode.insertBefore(document.createTextNode(text), textNode);
+                                            textNode.parentNode.removeChild(textNode);
+                                        }
+                                    }
+                                }
+                                break;
+                            }
+                        }
+    
+                        // if no dir removed
+                        if(!removeDir) {
+                            var nodeDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(editorcore.language) ? 'ltr' : 'rtl';
+                            var span = editorcore.doc.createElement('span');
+                            span.setAttribute('dir', nodeDir);
+                            range.surroundContents(span);
+                        }
+
+                    }
+                },
+                tabIndex: -1
+            });
             
             
             tb.add(cmenu);
@@ -80346,7 +80697,18 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         this.tb.el.show();
         // update name
         this.tb.items.first().el.innerHTML = left_label + ':&nbsp;';
-        
+
+        if(this.tb.name == 'BLOCK.Figure' && this.tb.items && block) {
+            this.tb.items.each(function(item) {
+                if(item.cls && item.cls == 'x-toolbar-figure-show-video-url') {
+                    if(block.cls == 'youtube') {
+                        item.hide();
+                        return;
+                    }
+                    item.show();
+                }
+            });
+        }
         
         // update attributes
         if (block && this.tb.fields) {
@@ -86530,6 +86892,23 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                     this.stickBtn.on("click", this.expand, this);
                     this.stickBtn.hide();
                 }
+
+                this.slideInBtn = this.createTool(this.tools.dom, "x-layout-slide-in-"+this.position);
+                this.slideInBtn.on("click", this.slideIn, this);
+                this.slideInBtn.enableDisplayMode();
+                this.slideInBtn.hide();
+
+                // put buttons on top left for east region
+                if(this.position == 'east') {
+                    this.tools.setStyle('right', 'initial');
+                    this.closeBtn.setStyle('float', 'left');
+                    this.collapseBtn.setStyle('float', 'left');
+                    if(this.stickBtn) {
+                        this.stickBtn.setStyle('float', 'left');
+                    }
+                    this.slideInBtn.setStyle('float', 'left');
+                    this.titleTextEl.style['marginLeft'] = '15px';
+                }
             }
             /** This region's collapsed element
             * @type Roo.Element */
@@ -87223,6 +87602,9 @@ Roo.extend(Roo.layout.SplitRegion, Roo.layout.Region, {
         if(this.collapseBtn){
             this.collapseBtn.hide();
         }
+        if(this.slideInBtn) {
+            this.slideInBtn.show();
+        }
         this.closeBtnState = this.closeBtn.getStyle('display');
         this.closeBtn.hide();
         if(this.stickBtn){
@@ -87251,6 +87633,9 @@ Roo.extend(Roo.layout.SplitRegion, Roo.layout.Region, {
         this.el.setStyle("z-index", "");
         if(this.collapseBtn){
             this.collapseBtn.show();
+        }
+        if(this.slideInBtn) {
+            this.slideInBtn.hide();
         }
         this.closeBtn.setStyle('display', this.closeBtnState);
         if(this.stickBtn){
@@ -92148,6 +92533,21 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     },
 
     /**
+     * Return the dataIndex for displayed columns
+     * @param {Array} add Array of data indexes added to the result
+     * @return {Array} result
+     */
+    getDisplayedColumnIndexes: function(add) {
+        var indexes = this.config.filter(function(c) {
+            return typeof(c.hidden) == 'undefined' || c.hidden !== true;
+        }).map(function(c) {
+            return c.dataIndex;
+        });
+
+        return indexes.concat(add);
+    },
+
+    /**
      * Sets the dataIndex for a column.
      * @param {Number} col The column index
      * @param {Number} dataIndex The new dataIndex
@@ -95389,4 +95789,755 @@ Roo.CenterLayoutRegion = Roo.layout.Center;
 
 Roo.LayoutStateManager  = Roo.layout.StateManager;
 Roo.ReaderLayout = Roo.layout.Reader;
+
+Roo.bootstrap = {};/*
+ * - LGPL
+ *
+ * base class for bootstrap elements.
+ * 
+ */
+
+Roo.bootstrap = Roo.bootstrap || {};
+/**
+ * @class Roo.bootstrap.Component
+ * @extends Roo.Component
+ * @abstract
+ * @children Roo.bootstrap.Component
+ * Bootstrap Component base class
+ * @cfg {String} cls css class
+ * @cfg {String} style any extra css
+ * @cfg {Object} xattr extra attributes to add to 'element' (used by builder to store stuff.)
+ * @cfg {Boolean} can_build_overlaid  True if element can be rebuild from a HTML page
+ * @cfg {string} dataId cutomer id
+ * @cfg {string} name Specifies name attribute
+ * @cfg {string} tooltip  Text for the tooltip
+ * @cfg {string} container_method method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)
+ * @cfg {string|object} visibilityEl (el|parent) What element to use for visibility (@see getVisibilityEl())
+ 
+ * @constructor
+ * Do not use directly - it does not do anything..
+ * @param {Object} config The config object
+ */
+
+
+
+Roo.bootstrap.Component = function(config){
+    Roo.bootstrap.Component.superclass.constructor.call(this, config);
+       
+    this.addEvents({
+        /**
+         * @event childrenrendered
+         * Fires when the children have been rendered..
+         * @param {Roo.bootstrap.Component} this
+         */
+        "childrenrendered" : true
+        
+        
+        
+    });
+    
+    
+};
+
+Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
+    
+    
+    allowDomMove : false, // to stop relocations in parent onRender...
+    
+    cls : false,
+    
+    style : false,
+    
+    autoCreate : false,
+    
+    tooltip : null,
+    /**
+     * Initialize Events for the element
+     */
+    initEvents : function() { },
+    
+    xattr : false,
+    
+    parentId : false,
+    
+    can_build_overlaid : true,
+    
+    container_method : false,
+    
+    dataId : false,
+    
+    name : false,
+    
+    parent: function() {
+        // returns the parent component..
+        return Roo.ComponentMgr.get(this.parentId)
+        
+        
+    },
+    
+    // private
+    onRender : function(ct, position)
+    {
+       // Roo.log("Call onRender: " + this.xtype);
+        
+        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        
+        if(this.el){
+            if (this.el.attr('xtype')) {
+                this.el.attr('xtypex', this.el.attr('xtype'));
+                this.el.dom.removeAttribute('xtype');
+                
+                this.initEvents();
+            }
+            
+            return;
+        }
+        
+         
+        
+        var cfg = Roo.apply({},  this.getAutoCreate());
+        
+        cfg.id = this.id || Roo.id();
+        
+        // fill in the extra attributes 
+        if (this.xattr && typeof(this.xattr) =='object') {
+            for (var i in this.xattr) {
+                cfg[i] = this.xattr[i];
+            }
+        }
+        
+        if(this.dataId){
+            cfg.dataId = this.dataId;
+        }
+        
+        if (this.cls) {
+            cfg.cls = (typeof(cfg.cls) == 'undefined' ? this.cls : cfg.cls) + ' ' + this.cls;
+        }
+        
+        if (this.style) { // fixme needs to support more complex style data.
+            cfg.style = (typeof(cfg.style) == 'undefined' ? this.style : cfg.style) + '; ' + this.style;
+        }
+        
+        if(this.name){
+            cfg.name = this.name;
+        }
+        
+        this.el = ct.createChild(cfg, position);
+        
+        if (this.tooltip) {
+            this.tooltipEl().attr('tooltip', this.tooltip);
+        }
+        
+        if(this.tabIndex !== undefined){
+            this.el.dom.setAttribute('tabIndex', this.tabIndex);
+        }
+        
+        this.initEvents();
+	
+    },
+    /**
+     * Fetch the element to add children to
+     * @return {Roo.Element} defaults to this.el
+     */
+    getChildContainer : function()
+    {
+        return this.el;
+    },
+    getDocumentBody : function() // used by menus - as they are attached to the body so zIndexes work
+    {
+        return Roo.get(document.body);
+    },
+    
+    /**
+     * Fetch the element to display the tooltip on.
+     * @return {Roo.Element} defaults to this.el
+     */
+    tooltipEl : function()
+    {
+        return this.el;
+    },
+        
+    addxtype  : function(tree,cntr)
+    {
+        var cn = this;
+        
+        cn = Roo.factory(tree);
+        //Roo.log(['addxtype', cn]);
+           
+        cn.parentType = this.xtype; //??
+        cn.parentId = this.id;
+        
+        cntr = (typeof(cntr) == 'undefined' ) ? 'getChildContainer' : cntr;
+        if (typeof(cn.container_method) == 'string') {
+            cntr = cn.container_method;
+        }
+        
+        
+        var has_flexy_each =  (typeof(tree['flexy:foreach']) != 'undefined');
+        
+        var has_flexy_if =  (typeof(tree['flexy:if']) != 'undefined');
+        
+        var build_from_html =  Roo.XComponent.build_from_html;
+          
+        var is_body  = (tree.xtype == 'Body') ;
+          
+        var page_has_body = (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body');
+          
+        var self_cntr_el = Roo.get(this[cntr](false));
+        
+        // do not try and build conditional elements 
+        if ((has_flexy_each || has_flexy_if || this.can_build_overlaid == false ) && build_from_html) {
+            return false;
+        }
+        
+        if (!has_flexy_each || !build_from_html || is_body || !page_has_body) {
+            if(!has_flexy_if || typeof(tree.name) == 'undefined' || !build_from_html || is_body || !page_has_body){
+                return this.addxtypeChild(tree,cntr, is_body);
+            }
+            
+            var echild =self_cntr_el ? self_cntr_el.child('>*[name=' + tree.name + ']') : false;
+                
+            if(echild){
+                return this.addxtypeChild(Roo.apply({}, tree),cntr);
+            }
+            
+            Roo.log('skipping render');
+            return cn;
+            
+        }
+        
+        var ret = false;
+        if (!build_from_html) {
+            return false;
+        }
+        
+        // this i think handles overlaying multiple children of the same type
+        // with the sam eelement.. - which might be buggy..
+        while (true) {
+            var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
+            
+            if (!echild) {
+                break;
+            }
+            
+            if (echild && echild.attr('xtype').split('.').pop() != cn.xtype) {
+                break;
+            }
+            
+            ret = this.addxtypeChild(Roo.apply({}, tree),cntr);
+        }
+       
+        return ret;
+    },
+    
+    
+    addxtypeChild : function (tree, cntr, is_body)
+    {
+        Roo.debug && Roo.log('addxtypeChild:' + cntr);
+        var cn = this;
+        cntr = (typeof(cntr) == 'undefined' ) ? 'getChildContainer' : cntr;
+        
+        
+        var has_flexy = (typeof(tree['flexy:if']) != 'undefined') ||
+                    (typeof(tree['flexy:foreach']) != 'undefined');
+          
+    
+        
+        skip_children = false;
+        // render the element if it's not BODY.
+        if (!is_body) {
+            
+            // if parent was disabled, then do not try and create the children..
+            if(!this[cntr](true)){
+                tree.items = [];
+                return tree;
+            }
+           
+            cn = Roo.factory(tree);
+           
+            cn.parentType = this.xtype; //??
+            cn.parentId = this.id;
+            
+            var build_from_html =  Roo.XComponent.build_from_html;
+            
+            
+            // does the container contain child eleemnts with 'xtype' attributes.
+            // that match this xtype..
+            // note - when we render we create these as well..
+            // so we should check to see if body has xtype set.
+            if (build_from_html && Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body') {
+               
+                var self_cntr_el = Roo.get(this[cntr](false));
+                var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
+                if (echild) { 
+                    //Roo.log(Roo.XComponent.build_from_html);
+                    //Roo.log("got echild:");
+                    //Roo.log(echild);
+                }
+                // there is a scenario where some of the child elements are flexy:if (and all of the same type)
+                // and are not displayed -this causes this to use up the wrong element when matching.
+                // at present the only work around for this is to nest flexy:if elements in another element that is always rendered.
+                
+                
+                if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
+                  //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
+                  
+                  
+                  
+                    cn.el = echild;
+                  //  Roo.log("GOT");
+                    //echild.dom.removeAttribute('xtype');
+                } else {
+                    Roo.debug && Roo.log("MISSING " + cn.xtype + " on child of " + (this.el ? this.el.attr('xbuilderid') : 'no parent'));
+                    Roo.debug && Roo.log(self_cntr_el);
+                    Roo.debug && Roo.log(echild);
+                    Roo.debug && Roo.log(cn);
+                }
+            }
+           
+            
+           
+            // if object has flexy:if - then it may or may not be rendered.
+            if (build_from_html && has_flexy && !cn.el &&  cn.can_build_overlaid) {
+                // skip a flexy if element.
+                Roo.debug && Roo.log('skipping render');
+                Roo.debug && Roo.log(tree);
+                if (!cn.el) {
+                    Roo.debug && Roo.log('skipping all children');
+                    skip_children = true;
+                }
+                
+             } else {
+                 
+                // actually if flexy:foreach is found, we really want to create 
+                // multiple copies here...
+                //Roo.log('render');
+                //Roo.log(this[cntr]());
+                // some elements do not have render methods.. like the layouts...
+                /*
+                if(this[cntr](true) === false){
+                    cn.items = [];
+                    return cn;
+                }
+                */
+                cn.render && cn.render(this[cntr](true));
+                
+             }
+            // then add the element..
+        }
+         
+        // handle the kids..
+        
+        var nitems = [];
+        /*
+        if (typeof (tree.menu) != 'undefined') {
+            tree.menu.parentType = cn.xtype;
+            tree.menu.triggerEl = cn.el;
+            nitems.push(cn.addxtype(Roo.apply({}, tree.menu)));
+            
+        }
+        */
+        if (!tree.items || !tree.items.length) {
+            cn.items = nitems;
+            //Roo.log(["no children", this]);
+            
+            return cn;
+        }
+         
+        var items = tree.items;
+        delete tree.items;
+        
+        //Roo.log(items.length);
+            // add the items..
+        if (!skip_children) {    
+            for(var i =0;i < items.length;i++) {
+              //  Roo.log(['add child', items[i]]);
+                nitems.push(cn.addxtype(items[i].xns == false ? items[i] : Roo.apply({}, items[i])));
+            }
+        }
+        
+        cn.items = nitems;
+        
+        //Roo.log("fire childrenrendered");
+        
+        cn.fireEvent('childrenrendered', this);
+        
+        return cn;
+    },
+    
+    /**
+     * Set the element that will be used to show or hide
+     */
+    setVisibilityEl : function(el)
+    {
+	this.visibilityEl = el;
+    },
+    
+     /**
+     * Get the element that will be used to show or hide
+     */
+    getVisibilityEl : function()
+    {
+	if (typeof(this.visibilityEl) == 'object') {
+	    return this.visibilityEl;
+	}
+	
+	if (typeof(this.visibilityEl) == 'string') {
+	    return this.visibilityEl == 'parent' ? this.parent().getEl() : this.getEl();
+	}
+	
+	return this.getEl();
+    },
+    
+    /**
+     * Show a component - removes 'hidden' class
+     */
+    show : function()
+    {
+        if(!this.getVisibilityEl()){
+            return;
+        }
+         
+        this.getVisibilityEl().removeClass(['hidden','d-none']);
+        
+        this.fireEvent('show', this);
+        
+        
+    },
+    /**
+     * Hide a component - adds 'hidden' class
+     */
+    hide: function()
+    {
+        if(!this.getVisibilityEl()){
+            return;
+        }
+        
+        this.getVisibilityEl().addClass(['hidden','d-none']);
+        
+        this.fireEvent('hide', this);
+        
+    }
+});
+
+ /*
+ * - LGPL
+ *
+ * toaster  - collection of toasts  - notification popups.
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Toaster
+ * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Toast
+ * Bootstrap Toaster Class - a notification with toasts
+ * 
+ * @constructor
+ * Create a new Toaster - should really only be one on the page.?
+ * 
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Toaster = function(config){
+    if (Roo.bootstrap.Toaster.page !== false) {
+        throw "toaster already initialized";
+    }
+    
+    Roo.bootstrap.Toaster.superclass.constructor.call(this, config);
+    Roo.bootstrap.Toaster.page = this;
+};
+Roo.bootstrap.Toaster.page = false;
+
+Roo.extend(Roo.bootstrap.Toaster, Roo.bootstrap.Component,  {
+ 
+    getAutoCreate : function(){
+         
+        return cfg = {
+            cls : 'bootstrap', // wrapped so we can use it elsewhere
+            cn : [ {
+                cls: 'toaster',  // add bootstrap so it can be used with roo classic
+                cn : [
+                    {
+                        tag: 'div',
+                        cls : 'toast-holder'
+                    }
+                ]    
+            }]
+            
+        }; 
+    },
+    initEvents : function()
+    {
+         this.containerEl = this.el.select('.toast-holder', true).first();
+    },
+    getChildContainer : function() /// what children are added to.
+    {
+        return this.containerEl;
+    },
+    show : function ()
+    {
+        if (!this.el) {
+            this.render(document.body);
+        }
+        this.el.removeClass('d-none');
+    },
+    hide : function()
+    {
+        this.el.addClass('d-none'); // not sure if this would ever be needed..
+    }
+   
+});
+
+
+/*
+ * - LGPL
+ *
+ * toast - notification popup.
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Toast
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Toaster Class - a notification with toasts
+ * 
+ * @constructor
+ *
+ * Create a new Toast - will auto create a toaster if necessary.
+ * @cfg title {string} Title of toast
+ * @cfg body {string} Body text of string
+ * @cfg show_time {boolean} should a time stamp be show/updated? - default false?
+ * @cfg timeout {number|boolean} number of seconds until it should be hidden false
+ * @cfg progress {number|boolean} show progressBar - false to hide, to show 0-100
+ * @cfg {String} weight (primary|warning|info|danger|secondary|success|light|dark) colour to make the square!
+ * 
+ * @param {Object} config The config object
+ *
+ * 
+ */
+
+Roo.bootstrap.Toast  = function(config)
+{
+    if (Roo.bootstrap.Toaster.page === false) {
+        (new Roo.bootstrap.Toaster()).show();
+    }
+    
+    Roo.bootstrap.Toast.superclass.constructor.call(this, config);
+      this.addEvents({
+        // raw events
+        /**
+         * @event close
+         * When a toast is closed (via button or timeout.)
+         * @param {Roo.bootstrap.Toast} toast
+         * @param {Roo.EventObject} e
+         */
+        "close" : true,
+         /**
+         * @event show
+         * When a toast is show() - usually on contruction..
+         * @param {Roo.bootstrap.Toast} toast
+         * @param {Roo.EventObject} e
+         */
+        "show" : true
+    });
+    
+    
+    this.render(Roo.bootstrap.Toaster.page.getChildContainer());
+    this.fireEvent('show', this);
+};
+ 
+Roo.extend(Roo.bootstrap.Toast, Roo.bootstrap.Component,  {
+    
+    title : '',
+    body : '',
+    show_time : false,
+    timeout : false,
+    progress : false,
+    weight : 'primary',
+ 
+    getAutoCreate : function(){
+          console.log(Roo.BLANK_IMAGE_URL);
+        return {
+            cls: 'toast fade show',
+            role : 'alert',
+            cn : [
+                {
+                    cls : 'toast-header',
+                    cn : [
+                        {
+                            tag : 'img',
+                            src : Roo.BLANK_IMAGE_URL,
+                            cls : 'rounded mr-2 bg-' + this.weight
+                        },
+                        {
+                            tag : 'small',
+                            cls : 'mr-auto',
+                            html : this.title
+                        },
+                        {
+                            tag : 'small',
+                            cls : 'toast-timer text-muted d-none',
+                            html : ''
+                        },
+                        {
+                            tag : 'button',
+                            cls : 'ml-2 mb-1 close',
+                            type : 'button',
+                            cn : [
+                                {
+                                    tag: 'span',
+                                    html : '&times;'
+                                }
+                            ]
+                        }
+                    ]
+                    
+                },
+                {
+                    cls : 'toast-body',
+                    cn : [
+                        {
+                            cls : 'progress d-none',
+                            cn : {
+                                cls : 'progress-bar bg-' + this.weight
+                            }
+                        },
+                        {
+                            cls: 'toast-body-text small',
+                            html : this.body
+                        }
+                    ]
+                }
+            ]
+                
+            
+        };
+        
+    },
+    progressBarEl : null,
+
+    progressEl : null,
+    bodyEl : null,
+    
+    bodyTextEl : null,
+    closeEl : null,
+    timerEl  : null,
+    timeout_id : false,
+     
+    initEvents : function()
+    {
+        this.progressBarEl = this.el.select('.progress-bar', true).first();
+        this.bodyEl = this.el.select('.toast-body', true).first();
+        this.bodyTextEl = this.el.select('.toast-body-text', true).first();
+        this.closeEl = this.el.select('.close', true).first();
+        this.timerEl  = this.el.select('.toast-timer', true).first();
+        this.progressEl  = this.el.select('.progress', true).first();
+        
+        if (this.body == '') {
+            this.bodyTextEl.addClass('d-none');
+            if (this.progress === false) {
+                this.bodyEl.addClass('d-none');
+            }
+        }
+        this.updateProgress(this.progress);
+        
+        this.closeEl.on('click', this.hide, this);
+        this.setTimeout(this.timeout);
+        
+        if (this.show_time > 0) {
+            this.timerEl.removeClass('d-none');
+            this.show_time = new Date();
+            this.updateTimer();
+             
+        }
+        
+        
+    },
+    
+    /**
+     * hide and destroy the toast
+     */
+    hide : function() 
+    {
+        if (!this.el) {
+            return;
+        }
+        if (this.show_time_interval !== false) {
+            clearInterval(this.show_time_interval);
+        }
+        this.closeEl.un('click',this.hide);
+        this.el.dom.parentNode.removeChild(this.el.dom);
+        this.el = false;
+        this.fireEvent('close', this);
+        
+    },
+    
+     
+    updateTimer : function()
+    {
+        if (!this.el) {
+            return;
+        }
+        if (this.show_time === false) {
+            this.show_time = new Date();
+        }
+        
+        var s = Math.floor(((new Date()) - this.show_time) / 1000);
+        var m = Math.floor(s/60);
+        this.timerEl.update(
+            s < 1 ? 'now' :
+            (
+                s > 60 ? (m + " mins ago") : (s + " sec. ago")
+            )
+        );
+        
+        this.updateTimer.defer(s < 60 ? 5000 : 60000, this);
+    },
+    
+    /**
+     * update the Progress Bar
+     * @param {Number|Boolean} false to hide, or number between 0-1
+     */
+    updateProgress : function(n)
+    {
+        this.progress = n;
+        if (this.progress !== false) {
+            this.progress = Math.min(this.progress, 1.0);
+            this.progress = Math.max(this.progress, 0.0);
+            this.bodyEl.removeClass('d-none');
+            this.progressEl.removeClass("d-none");
+            this.progressBarEl.setWidth(Math.floor(100 * this.progress) + '%');
+            return;
+        }
+        
+        this.progressEl.addClass('d-none');
+    },
+    /**
+     * set / update timeout - time when the notification will autohide
+     * @param {string} timeout in seconds
+     */
+    setTimeout : function(n)
+    {
+        if (this.timeout_id !== false) {
+            clearTimeout(this.timeout_id);
+            this.timeout_id = false;
+        }
+        if (n > 0) {
+            this.timeout = n;
+            this.timeout_id = this.hide.defer(this.timeout * 1000, this);
+        }
+     },
+    /**
+     * update body text
+     * @param {string} text to put in body
+     */
+     updateBody : function(str)
+     {
+        this.bodyTextEl[str.length > 0 ? 'removeClass' : 'addClass']('d-none');
+        this.bodyEl.removeClass('d-none');
+        this.bodyTextEl.update(str);
+     }
+});
+
 

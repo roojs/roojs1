@@ -9,6 +9,7 @@
 
 </span><span class="jsdoc-var">Roo.htmleditor.FilterParagraph </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
 {
+    </span><span class="jsdoc-var">this.lang </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.lang </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'en'</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-comment">// no need to apply config.
     </span><span class="jsdoc-var">this.searchTag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
 }
@@ -32,12 +33,30 @@
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// no need to walk..
         </span><span class="jsdoc-syntax">}
 
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">documentDir </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">'ar'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'he'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'fa'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'ur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'ps'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'syr'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'dv'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'arc'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'nqo'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'sam'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'tzm'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'ug'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'yi'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.includes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lang</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'rtl' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ltr'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeDir </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dir'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">node.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dir'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">span </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.ownerDocument.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">);
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">ar.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
             </span><span class="jsdoc-var">node.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+
+            </span><span class="jsdoc-comment">// copy content to span with if the direction is needed
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeDir </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">nodeDir </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">documentDir</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">span.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+
             </span><span class="jsdoc-comment">// what if we need to walk these???
             </span><span class="jsdoc-var">node.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
         }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeDir </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">nodeDir </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">documentDir</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// keep direction
+            </span><span class="jsdoc-var">span.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dir'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nodeDir</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">node.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">span</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+        }
+
         </span><span class="jsdoc-comment">// now what about this?
         // &lt;p&gt; &amp;nbsp; &lt;/p&gt;
 

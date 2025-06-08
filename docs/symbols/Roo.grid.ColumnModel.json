@@ -818,6 +818,38 @@
       ]
     },
     {
+      "name" : "getDisplayedColumnIndexes",
+      "type" : "function",
+      "desc" : "Return the dataIndex for displayed columns",
+      "sig" : "(add)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "add",
+          "type" : "Array",
+          "desc" : "Array of data indexes added to the result",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Array",
+          "desc" : "result"
+        }
+      ]
+    },
+    {
       "name" : "isResizable",
       "type" : "function",
       "desc" : "Returns true if the column can be resized",

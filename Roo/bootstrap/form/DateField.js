@@ -556,7 +556,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     {
         Roo.bootstrap.form.DateField.superclass.onBlur.call(this);
 
-        if(!this.readOnly) {
+        if(!this.readOnly && this.editable) {
             var d = this.inputEl().getValue();
             var date = this.parseDate(d);
             if(date) {

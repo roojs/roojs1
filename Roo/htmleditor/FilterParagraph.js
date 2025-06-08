@@ -9,6 +9,7 @@
 
 Roo.htmleditor.FilterParagraph = function(cfg)
 {
+    this.lang = cfg.lang || 'en';
     // no need to apply config.
     this.searchTag(cfg.node);
 }
@@ -32,12 +33,30 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
             return false; // no need to walk..
         }
 
+        var documentDir = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv', 'arc', 'nqo', 'sam', 'tzm', 'ug', 'yi'].includes(this.lang) ? 'rtl' : 'ltr';
+        var nodeDir = node.hasAttribute('dir') ? node.getAttribute('dir').toLowerCase() : false;
+        var span = node.ownerDocument.createElement('span');
+
         var ar = Array.from(node.childNodes);
         for (var i = 0; i < ar.length; i++) {
             node.removeChild(ar[i]);
+
+            // copy content to span with if the direction is needed
+            if(nodeDir && nodeDir != documentDir) {
+                span.appendChild(ar[i]);
+                continue;
+            }
+
             // what if we need to walk these???
             node.parentNode.insertBefore(ar[i], node);
         }
+
+        if(nodeDir && nodeDir != documentDir) {
+            // keep direction
+            span.setAttribute('dir', nodeDir);
+            node.parentNode.insertBefore(span, node);
+        }
+
         // now what about this?
         // <p> &nbsp; </p>
         

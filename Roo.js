@@ -293,8 +293,20 @@ Company.data.CustomStore = function(config) { ... }
             for (i=0; i<a.length; ++i) {
                 d=a[i].split(".");
                 rt = d[0];
-                /** eval:var:o */
-                eval('if (typeof ' + rt + ' == "undefined"){' + rt + ' = {};} o = ' + rt + ';');
+                
+				if (typeof(window != 'undefined')) {
+					if (typeof(window[rt]) == "undefined"){
+						window[rt] = {};
+					}
+					o = window[rt];
+				
+				} else {
+					/** eval:var:o */
+					eval('if (typeof ' + rt + ' == "undefined"){' + rt + ' = {};} o = ' + rt + ';');
+				}
+				
+				
+                
                 for (j=1; j<d.length; ++j) {
                     o[d[j]]=o[d[j]] || {};
                     o=o[d[j]];
