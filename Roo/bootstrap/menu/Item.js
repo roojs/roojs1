@@ -49,7 +49,7 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
         if(this.isContainer){
             return {
                 tag: 'li',
-                cls: 'dropdown-menu-item '
+                cls: 'roo-dropdown-menu-item '
             };
         }
         var ctag = {
@@ -76,7 +76,7 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
         
         var cfg= {
             tag: 'li',
-            cls: 'dropdown-menu-item',
+            cls: 'roo-dropdown-menu-item',
             cn: [ anc ]
         };
         if (this.parent().type == 'treeview') {

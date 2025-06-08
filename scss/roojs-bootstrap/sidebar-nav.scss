@@ -195,3 +195,7 @@
     background-color: $body-bg;
     color: $brand-info;
 }
+
+.sidebar .sidebar-menu .dropdown-toggle::after {
+    display: none;
+}
