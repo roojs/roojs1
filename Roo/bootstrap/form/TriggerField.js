@@ -476,7 +476,7 @@ Roo.extend(Roo.bootstrap.form.TriggerField, Roo.bootstrap.form.Input,  {
         
         if(this.fireEvent("remove", this) !== false){
             this.reset();
-            this.fireEvent("afterremove", this)
+            this.fireEvent("afterremove", this);
         }
     },
     
@@ -488,7 +488,7 @@ Roo.extend(Roo.bootstrap.form.TriggerField, Roo.bootstrap.form.Input,  {
             style: 'display:none'
         });
         
-        this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';;
+        this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
     },
 

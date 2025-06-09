@@ -163,17 +163,6 @@
         "    ",
         "}"
        ]
-      },
-      {
-       "$ xns" : "Roo.bootstrap",
-       "String cls" : "left-menu-sidebar-options",
-       "items" : [
-        {
-         "$ xns" : "Roo.bootstrap",
-         "xtype" : "Row"
-        }
-       ],
-       "xtype" : "Container"
       }
      ],
      "listeners" : {
@@ -263,7 +252,8 @@
     },
     {
      "$ xns" : "Roo.bootstrap",
-     "String cls" : "general-content-body general-content-intro",
+     "String cls" : "general-content-body general-content-intro border-0",
+     "String weight" : "white",
      "items" : [
       {
        "$ xns" : "Roo.bootstrap",
@@ -281,6 +271,21 @@
       },
       {
        "$ xns" : "Roo.bootstrap",
+       "String cls" : "border-0",
+       "items" : [
+        {
+         "$ xns" : "Roo.bootstrap",
+         "listeners" : {
+          "render" : [
+           "function (_self)",
+           "{",
+           "    _this.introRow = this;",
+           "}"
+          ]
+         },
+         "xtype" : "Row"
+        }
+       ],
        "listeners" : {
         "render" : [
          "function (_self)",
@@ -289,7 +294,7 @@
          "}"
         ]
        },
-       "xtype" : "Container"
+       "xtype" : "Card"
       }
      ],
      "listeners" : {
@@ -300,11 +305,12 @@
        "}"
       ]
      },
-     "xtype" : "Container"
+     "xtype" : "Card"
     },
     {
      "$ xns" : "Roo.bootstrap",
-     "String cls" : "general-content-body",
+     "String cls" : "general-content-body border-0",
+     "String weight" : "white",
      "items" : [
       {
        "$ xns" : "Roo.bootstrap",
@@ -316,7 +322,8 @@
          "items" : [
           {
            "$ xns" : "Roo.bootstrap",
-           "String cls" : "doc-header-container",
+           "String cls" : "doc-header-container border-0",
+           "String weight" : "white",
            "items" : [
             {
              "$ xns" : "Roo.bootstrap",
@@ -411,7 +418,12 @@
                  "function (e)",
                  "{",
                  "    ",
-                 "    Roo.log([\"click\", this]);",
+                 "    alert(JSON.stringify(",
+                 "        [\"click\",  this.el.dom.innerHTML]",
+                 "    ));",
+                 "    if (window.location.protocol == 'doc:') {",
+                 "       return;",
+                 "    }",
                  "    if (this.el.dom.innerHTML.length > 0) {",
                  "        Roo.docs.init.loadSource();",
                  "    }",
@@ -438,21 +450,50 @@
              "xtype" : "Header"
             }
            ],
-           "xtype" : "Container"
+           "xtype" : "Card"
           },
           {
            "$ xns" : "Roo.bootstrap",
-           "String cls" : "doc-desc",
-           "String html" : "doc-desc",
-           "listeners" : {
-            "render" : [
-             "function (_self)",
-             "{",
-             "    _this.doc_desc = this;",
-             "}"
-            ]
-           },
-           "xtype" : "Container"
+           "items" : [
+            {
+             "$ xns" : "Roo.bootstrap",
+             "String cls" : "doc-desc",
+             "listeners" : {
+              "render" : [
+               "function (_self)",
+               "{",
+               "    _this.doc_desc = this;",
+               "}"
+              ]
+             },
+             "xtype" : "Element"
+            },
+            {
+             "$ xns" : "Roo.bootstrap",
+             "Boolean pressed" : false,
+             "String cls" : "btn-block mt-2",
+             "String html" : "Read More",
+             "String size" : "sm",
+             "String weight" : "info",
+             "listeners" : {
+              "render" : [
+               "function (_self)",
+               "{",
+               "    _this.read_more_btn = this;",
+               "}"
+              ],
+              "toggle" : [
+               "function (btn, e, pressed)",
+               "{",
+               "    _this.doc_desc.el.toggleClass('active');",
+               "    this.setText(pressed ? \"Hide Content\" : \"Show More\");",
+               "}"
+              ]
+             },
+             "xtype" : "Button"
+            }
+           ],
+           "xtype" : "Element"
           },
           {
            "$ xns" : "Roo.bootstrap",
@@ -463,12 +504,12 @@
           },
           {
            "$ xns" : "Roo.bootstrap",
-           "Boolean expandable" : true,
-           "Boolean expanded" : true,
-           "String cls" : "doc-table-container",
-           "String header" : "Configuration options",
-           "String panel" : "primary",
+           "Boolean collapsable" : true,
+           "String cls" : "doc-table-container mt-4 border-dark",
+           "String header" : "Configuration options / Properties",
+           "String header_weight" : "info",
            "String style" : "margin-top:15px",
+           "String weight" : "white",
            "items" : [
             {
              "$ xns" : "Roo.bootstrap",
@@ -556,6 +597,7 @@
                "}"
               ]
              },
+             "string selected_weight" : "",
              "xtype" : "Table"
             }
            ],
@@ -567,17 +609,18 @@
              "}"
             ]
            },
-           "xtype" : "Container"
+           "xtype" : "Card"
           },
           {
            "$ xns" : "Roo.bootstrap",
-           "Boolean expandable" : true,
+           "Boolean collapsable" : true,
            "Boolean expanded" : true,
-           "String cls" : "doc-table-container",
+           "String cls" : "doc-table-container mt-4 border-dark",
            "String header" : "Constructor, Static and Public Methods",
-           "String panel" : "primary",
+           "String header_weight" : "info",
            "items" : [
             {
+             "# string selected_weight" : "",
              "$ xns" : "Roo.bootstrap",
              "Boolean rowSelection" : true,
              "boolean responsive" : true,
@@ -675,17 +718,17 @@
              "}"
             ]
            },
-           "xtype" : "Container"
+           "xtype" : "Card"
           },
           {
            "$ xns" : "Roo.bootstrap",
-           "Boolean expandable" : true,
-           "Boolean expanded" : true,
-           "String cls" : "doc-table-container",
+           "Boolean collapsable" : true,
+           "String cls" : "doc-table-container mt-4 border-dark",
            "String header" : "Events",
-           "String panel" : "primary",
+           "String header_weight" : "info",
            "items" : [
             {
+             "# string selected_weight" : "",
              "$ xns" : "Roo.bootstrap",
              "Boolean rowSelection" : true,
              "boolean responsive" : true,
@@ -781,7 +824,7 @@
              "}"
             ]
            },
-           "xtype" : "Container"
+           "xtype" : "Card"
           }
          ],
          "xtype" : "Column"
@@ -803,7 +846,24 @@
              "}"
             ]
            },
-           "xtype" : "Container"
+           "string header_weight" : "info",
+           "xtype" : "Card"
+          },
+          {
+           "$ xns" : "Roo.bootstrap",
+           "String cls" : "doc-augments",
+           "String header" : "Implements Interfaces",
+           "String panel" : "primary",
+           "listeners" : {
+            "render" : [
+             "function (_self)",
+             "{",
+             "    _this.implements  = this;",
+             "}"
+            ]
+           },
+           "string header_weight" : "info",
+           "xtype" : "Card"
           },
           {
            "$ xns" : "Roo.bootstrap",
@@ -818,13 +878,14 @@
              "}"
             ]
            },
-           "xtype" : "Container"
+           "string header_weight" : "info",
+           "xtype" : "Card"
           },
           {
            "$ xns" : "Roo.bootstrap",
            "String cls" : "doc-children",
            "String header" : "Children that can be added using addxtype({...})",
-           "String panel" : "primary",
+           "String header_weight" : "info",
            "listeners" : {
             "render" : [
              "function (_self)",
@@ -833,7 +894,7 @@
              "}"
             ]
            },
-           "xtype" : "Container"
+           "xtype" : "Card"
           }
          ],
          "xtype" : "Column"
@@ -850,7 +911,7 @@
        "}"
       ]
      },
-     "xtype" : "Container"
+     "xtype" : "Card"
     }
    ],
    "listeners" : {
@@ -871,20 +932,21 @@
  "parent" : "",
  "permname" : "",
  "strings" : {
+  "0d073857ee3281e8b55980467544221c" : "Configuration options / Properties",
   "3673e725413179fe76f341ed908a5c36" : "Defined in: ",
   "3c81cc62cd8a24b231d0c0db34feda61" : "Implementations",
   "3e6ec55e2dff4342e3f25b0b0b988de9" : "Inheritance tree",
   "494a64a432ff6a121e4ab9003c7a0df3" : "parentcls",
   "4d9ee8f98abde282da987fed0aac295c" : "Children that can be added using addxtype({...})",
-  "50f33d14f129e4548c1c270fd6725a78" : "Configuration options",
   "87f9f735a1d36793ceaecd4e47124b63" : "Events",
   "9b34238e8113db140b452beec500024b" : "Roo JS Documentation",
   "9bd81329febf6efe22788e03ddeaf0af" : " Class ",
   "a1d108496af420635536a4e29e87d42b" : "Constructor, Static and Public Methods",
   "ae635f08107a69569e636835f24e6f6f" : " extends ",
+  "c6faf864445938958b9ba7eaca3bb2f4" : "Implements Interfaces",
   "d2b697ad8e989a6c4592987f22f5bbfc" : "doc-comments",
   "d41d8cd98f00b204e9800998ecf8427e" : " ",
-  "e64b94523532dbac62df6795a5153f04" : "doc-desc",
+  "decbe415d8accca7c2c16d48a79ee934" : "Read More",
   "f361257612a512f9be2fdc2abfb25aef" : "<small>Defined by</small>",
   "f561aaf6ef0bf14d4208bb46a4ccb3ad" : "xxx"
  },

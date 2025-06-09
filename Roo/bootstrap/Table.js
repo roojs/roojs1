@@ -69,7 +69,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * @cfg {Roo.grid.ColumnModel} cm[] A column for the grid.
  * 
  * @cfg {String} cls table class
- *
+ * @cfg {String} selected_weight (primary|secondary|success|danger|warning|info|light|dark|muted|white|) colour of selected row use blank to disable, default info
  *
  * @cfg {string} empty_results  Text to display for no results 
  * @cfg {boolean} striped Should the rows be alternative striped
@@ -252,7 +252,7 @@ Roo.bootstrap.Table = function(config)
 Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     cls: false,
-    
+    selected_weight : 'info',
     empty_results : '',
     striped : false,
     scrollBody : false,
@@ -1071,7 +1071,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     // private - called by RowSelection
     onRowSelect : function(rowIndex){
         var row = this.getRowDom(rowIndex);
-        row.addClass(['bg-info','info']);
+        if (this.selected_weight !== '') {
+            row.addClass(['bg-' + this.selected_weight, this.selected_weight]);
+        }
     },
     // private - called by RowSelection
     onRowDeselect : function(rowIndex)
@@ -1080,7 +1082,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         var row = this.getRowDom(rowIndex);
-        row.removeClass(['bg-info','info']);
+        if (this.selected_weight !== '') {
+             row.removeClass(['bg-' + this.selected_weight, this.selected_weight]);
+        }
     },
       /**
      * Focuses the specified row.
