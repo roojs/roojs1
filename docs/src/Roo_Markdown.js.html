@@ -62,7 +62,7 @@
         </span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/&gt;/g, </span><span class="jsdoc-string">'&amp;gt;'</span><span class="jsdoc-syntax">)
         </span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/&quot;/g, </span><span class="jsdoc-string">'&amp;quot;'</span><span class="jsdoc-syntax">)
         </span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/'/g, </span><span class="jsdoc-string">'&amp;#39;'</span><span class="jsdoc-syntax">);
-    }
+    };
 
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">unescape </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-comment">// explicitly match decimal, hex, and named HTML entities 
@@ -70,13 +70,13 @@
         </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.toLowerCase</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'colon'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">':'</span><span class="jsdoc-syntax">; }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.charAt</span><span class="jsdoc-syntax">(0) === </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">) {
-          </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n.charAt</span><span class="jsdoc-syntax">(1) === </span><span class="jsdoc-string">'x'
-            </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.substring</span><span class="jsdoc-syntax">(2), 16))
-            : </span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(+</span><span class="jsdoc-var">n.substring</span><span class="jsdoc-syntax">(1));
+          </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n.charAt</span><span class="jsdoc-syntax">(1) === </span><span class="jsdoc-string">'x' </span><span class="jsdoc-syntax">?
+            </span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.substring</span><span class="jsdoc-syntax">(2), 16))   :
+            </span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(+</span><span class="jsdoc-var">n.substring</span><span class="jsdoc-syntax">(1));
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
       });
-    }
+    };
 
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">replace </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">regex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">opt</span><span class="jsdoc-syntax">) {
       </span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">regex.source</span><span class="jsdoc-syntax">;
@@ -88,22 +88,22 @@
         </span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">regex.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">self</span><span class="jsdoc-syntax">;
       };
-    }
+    };
 
 
          </span><span class="jsdoc-comment">/**
          * eval:var:noop
     */
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">noop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {}
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">noop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {};
     </span><span class="jsdoc-var">noop.exec </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">noop</span><span class="jsdoc-syntax">;
 
          </span><span class="jsdoc-comment">/**
          * eval:var:merge
     */
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">merge </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">) {
-      </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 1
-        , </span><span class="jsdoc-var">target
-        </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">;
+      </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 1,
+         </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">,
+         </span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">;
 
       </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">arguments.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
         </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
@@ -115,7 +115,7 @@
       }
 
       </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">;
-    }
+    };
 
 
     </span><span class="jsdoc-comment">/**
@@ -880,7 +880,9 @@
       </span><span class="jsdoc-var">this.options </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">options </span><span class="jsdoc-syntax">|| {};
     }
 
-    </span><span class="jsdoc-var">Renderer.prototype.code </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">escaped</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-var">Renderer.prototype.code </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">escaped</span><span class="jsdoc-syntax">)
+    {
+      </span><span class="jsdoc-var">escaped </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
       </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.options.highlight</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">out </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.options.highlight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">out </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">out </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">code</span><span class="jsdoc-syntax">) {
@@ -889,8 +891,8 @@
         }
       } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-comment">// hack!!! - it's already escapeD?
-            </span><span class="jsdoc-var">escaped </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-      }
+          //  escaped = true;
+      </span><span class="jsdoc-syntax">}
 
       </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'&lt;pre&gt;&lt;code&gt;'
@@ -1288,7 +1290,7 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">opt</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-var">opt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">merge</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">marked.defaults</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">opt</span><span class="jsdoc-syntax">); }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Parser.parse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Lexer.lex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">opt</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">opt</span><span class="jsdoc-syntax">);
       } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-var">e.message </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'\nPlease report this to https://github.com/chjj/marked.'</span><span class="jsdoc-syntax">;
+       </span><span class="jsdoc-comment">// e.message += '\nPlease report this to https://github.com/chjj/marked.';
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">opt </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">marked.defaults</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.silent</span><span class="jsdoc-syntax">) {
           </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'&lt;p&gt;An error occured:&lt;/p&gt;&lt;pre&gt;'
             </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">escape</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.message </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)
@@ -1313,7 +1315,7 @@
       </span><span class="jsdoc-var">tables</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
       </span><span class="jsdoc-var">breaks</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
       </span><span class="jsdoc-var">pedantic</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-      </span><span class="jsdoc-var">sanitize</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+      </span><span class="jsdoc-var">sanitize</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// default to clean up html?
       </span><span class="jsdoc-var">sanitizer</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
       </span><span class="jsdoc-var">mangle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
       </span><span class="jsdoc-var">smartLists</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,

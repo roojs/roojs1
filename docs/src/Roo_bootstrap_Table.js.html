@@ -69,7 +69,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * @cfg {Roo.grid.ColumnModel} cm[] A column for the grid.
  * 
  * @cfg {String} cls table class
- *
+ * @cfg {String} selected_weight (primary|secondary|success|danger|warning|info|light|dark|muted|white|) colour of selected row use blank to disable, default info
  *
  * @cfg {string} empty_results  Text to display for no results 
  * @cfg {boolean} striped Should the rows be alternative striped
@@ -252,7 +252,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Table</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
 
     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-
+    </span><span class="jsdoc-var">selected_weight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'info'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">empty_results </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">striped </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">scrollBody </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -1071,7 +1071,9 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
     </span><span class="jsdoc-comment">// private - called by RowSelection
     </span><span class="jsdoc-var">onRowSelect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRowDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">row.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'bg-info'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'info'</span><span class="jsdoc-syntax">]);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selected_weight </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">row.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'bg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.selected_weight</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.selected_weight</span><span class="jsdoc-syntax">]);
+        }
     },
     </span><span class="jsdoc-comment">// private - called by RowSelection
     </span><span class="jsdoc-var">onRowDeselect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">)
@@ -1080,7 +1082,9 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRowDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">row.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'bg-info'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'info'</span><span class="jsdoc-syntax">]);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selected_weight </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+             </span><span class="jsdoc-var">row.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'bg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.selected_weight</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.selected_weight</span><span class="jsdoc-syntax">]);
+        }
     },
       </span><span class="jsdoc-comment">/**
      * Focuses the specified row.
