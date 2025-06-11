@@ -180,7 +180,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     findTargetItem : function(e)
     {
-        var t = e.getTarget(".dropdown-menu-item", this.el,  true);
+        var t = e.getTarget(".roo-dropdown-menu-item", this.el,  true);
         if(!t){
             return false;
         }
