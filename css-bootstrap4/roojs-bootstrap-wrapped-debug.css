@@ -2979,6 +2979,8 @@ not sure why it was so small..
   .bootstrap .sidebar .sidebar-menu > li.active .badge-info {
     background-color: #fff;
     color: #17a2b8; }
+  .bootstrap .sidebar .sidebar-menu .dropdown-toggle::after {
+    display: none; }
   .bootstrap html.bootstrap-sticky {
     position: relative;
     min-height: 100%; }

@@ -650,7 +650,7 @@ Roo.docs.init = {
             Roo.docs.augments.hide();
         }
         
-        if (d.implements.length) {
+        if (d.implements && d.implements.length) {
             Roo.docs.implements.show();
             Roo.docs.implements.bodyEl.dom.innerHTML = Roo.docs.template.implements(d.implements);
         } else {

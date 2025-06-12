@@ -19016,7 +19016,7 @@ Roo.Markdown.toHtml = function(text) {
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#39;');
-    }
+    };
     
     var unescape = function (html) {
         // explicitly match decimal, hex, and named HTML entities 
@@ -19024,13 +19024,13 @@ Roo.Markdown.toHtml = function(text) {
         n = n.toLowerCase();
         if (n === 'colon') { return ':'; }
         if (n.charAt(0) === '#') {
-          return n.charAt(1) === 'x'
-            ? String.fromCharCode(parseInt(n.substring(2), 16))
-            : String.fromCharCode(+n.substring(1));
+          return n.charAt(1) === 'x' ?
+            String.fromCharCode(parseInt(n.substring(2), 16))   :
+            String.fromCharCode(+n.substring(1));
         }
         return '';
       });
-    }
+    };
     
     var replace = function (regex, opt) {
       regex = regex.source;
@@ -19042,22 +19042,22 @@ Roo.Markdown.toHtml = function(text) {
         regex = regex.replace(name, val);
         return self;
       };
-    }
+    };
 
 
          /**
          * eval:var:noop
     */
-    var noop = function () {}
+    var noop = function () {};
     noop.exec = noop;
     
          /**
          * eval:var:merge
     */
     var merge = function (obj) {
-      var i = 1
-        , target
-        , key;
+      var i = 1,
+         target,
+         key;
     
       for (; i < arguments.length; i++) {
         target = arguments[i];
@@ -19069,7 +19069,7 @@ Roo.Markdown.toHtml = function(text) {
       }
     
       return obj;
-    }
+    };
     
     
     /**
@@ -20244,7 +20244,7 @@ Roo.Markdown.toHtml = function(text) {
         if (opt) { opt = merge({}, marked.defaults, opt); }
         return Parser.parse(Lexer.lex(src, opt), opt);
       } catch (e) {
-        e.message += '\nPlease report this to https://github.com/chjj/marked.';
+       // e.message += '\nPlease report this to https://github.com/chjj/marked.';
         if ((opt || marked.defaults).silent) {
           return '<p>An error occured:</p><pre>'
             + escape(e.message + '', true)
@@ -20269,7 +20269,7 @@ Roo.Markdown.toHtml = function(text) {
       tables: true,
       breaks: false,
       pedantic: false,
-      sanitize: false,
+      sanitize: true, // default to clean up html?
       sanitizer: null,
       mangle: true,
       smartLists: false,

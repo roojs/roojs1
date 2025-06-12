@@ -86,7 +86,7 @@ Roo.docs.template  = {
         oar.sort();
         
         var output = '<ul class="inheritance res-block"> ';
-        for(var i = 0; i < aor.length; i++) {
+        for(var i = 0; i < oar.length; i++) {
                 output += '<li>' +linkSymbol(oar[i]) + '</li>' ; // a href...
                   
                 

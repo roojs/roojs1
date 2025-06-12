@@ -10,7 +10,7 @@
  * @cfg {String} header_image  src url of image.
  * @cfg {String|Object} header
  * @cfg {Number} header_size (0|1|2|3|4|5) H1 or H2 etc.. 0 indicates default
- * @cfg {Number} header_weight  (primary|secondary|success|info|warning|danger|light|dark)
+ * @cfg {String} header_weight (primary|secondary|success|info|warning|danger|light|dark)
  * 
  * @cfg {String} title
  * @cfg {String} subtitle
@@ -207,12 +207,14 @@
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [ ]
         };
+        </span><span class="jsdoc-comment">//var bodycls = '';
 
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weight.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.weight </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'light'</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' text-white'</span><span class="jsdoc-syntax">;
-        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' text-dark'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// need as it's nested..
-        </span><span class="jsdoc-syntax">}
+        //this seems pretty messed up.
+        //if (this.weight.length &amp;&amp; this.weight != 'light') {
+        //    bodycls += ' text-white';
+        //} else {
+        //    bodycls += ' text-dark'; // need as it's nested..
+        //}
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weight.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' bg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">;
         }
@@ -221,10 +223,13 @@
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hdr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hdr_ctr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hw </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.header_weight </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">' bg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.header_weight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hb </span><span class="jsdoc-syntax">= ([</span><span class="jsdoc-string">'light'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'white'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.header_weight</span><span class="jsdoc-syntax">) &gt; -1 ? </span><span class="jsdoc-string">' text-dark' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">' text-white'</span><span class="jsdoc-syntax">);
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.header.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">hdr </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.header_size </span><span class="jsdoc-syntax">&gt; 0 ? </span><span class="jsdoc-string">'h' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.header_size </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-header ' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.header_weight </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'bg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.header_weight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-header' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">hw </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">hb</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
             };
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hdr</span><span class="jsdoc-syntax">);
@@ -232,7 +237,7 @@
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">hdr </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-header d-none ' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.header_weight </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'bg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.header_weight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-header d-none ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">hw </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">hb</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
             };
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hdr</span><span class="jsdoc-syntax">);
@@ -240,7 +245,6 @@
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapsable</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">hdr_ctr </span><span class="jsdoc-syntax">= {
-            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'d-block user-select-none'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
                     {

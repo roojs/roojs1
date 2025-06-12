@@ -307,7 +307,7 @@
     },
     {
       "name" : "header_weight",
-      "type" : "Number",
+      "type" : "String",
       "desc" : "",
       "memberOf" : "",
       "isOptional" : false,

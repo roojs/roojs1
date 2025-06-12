@@ -107,6 +107,26 @@
       "optvals" : []
     },
     {
+      "name" : "selected_weight",
+      "type" : "String",
+      "desc" : "|) colour of selected row use blank to disable, default in",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : [
+        "primary",
+        "secondary",
+        "success",
+        "danger",
+        "warning",
+        "info",
+        "light",
+        "dark",
+        "muted",
+        "white",
+        ""
+      ]
+    },
+    {
       "name" : "minColumnWidth",
       "type" : "Number",
       "desc" : "default 50 pixels minimum column width",
