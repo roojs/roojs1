@@ -2185,12 +2185,12 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         };
         //var bodycls = '';
         
-        //this seems pretty messed up.
-        //if (this.weight.length && this.weight != 'light') {
-        //    bodycls += ' text-white';
-        //} else {
-        //    bodycls += ' text-dark'; // need as it's nested..
-        //}
+        //this seems pretty messed up. - it's needed on our cards app.
+        if (this.weight.length && this.weight != 'light') {
+            bodycls += ' text-white';
+        } else {
+            bodycls += ' text-dark'; // need as it's nested..
+        }
         if (this.weight.length) {
             cfg.cls += ' bg-' + this.weight;
         }

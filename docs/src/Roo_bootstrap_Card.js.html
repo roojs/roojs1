@@ -209,12 +209,12 @@
         };
         </span><span class="jsdoc-comment">//var bodycls = '';
 
-        //this seems pretty messed up.
-        //if (this.weight.length &amp;&amp; this.weight != 'light') {
-        //    bodycls += ' text-white';
-        //} else {
-        //    bodycls += ' text-dark'; // need as it's nested..
-        //}
+        //this seems pretty messed up. - it's needed on our cards app.
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weight.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.weight </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'light'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">bodycls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' text-white'</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">bodycls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' text-dark'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// need as it's nested..
+        </span><span class="jsdoc-syntax">}
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weight.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' bg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">;
         }
