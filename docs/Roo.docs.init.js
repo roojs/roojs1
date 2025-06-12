@@ -87,7 +87,10 @@ Roo.docs.init = {
         
         if (!location.hash.length) {
             this.loadIntro();
-            return;
+             if (window.location.protocol == 'doc:'  ) {
+                return;
+             }
+            //return;
         }
         if (this.loadingTree) {
             Roo.log("Should not get here  - already loading tree.");
