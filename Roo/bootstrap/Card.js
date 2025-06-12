@@ -97,6 +97,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     
     
     weight : '',
+    header_weight : '',
     
     margin: '', /// may be better in component?
     margin_top: '', 
