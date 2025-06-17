@@ -2073,6 +2073,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     
     
     weight : '',
+    header_weight : '',
     
     margin: '', /// may be better in component?
     margin_top: '', 
@@ -3779,9 +3780,9 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
             if (!this.hideTrigger) {
                 if (this.triggerEl.hasClass('nav-item') && this.triggerEl.select('.nav-link',true).length) {
                     // dropdown toggle on the 'a' in BS4?
-                    this.triggerEl.select('.nav-link',true).first().addClass('dropdown-toggle');
+                    this.triggerEl.select('.nav-link',true).first().addClass(['dropdown-toggle','dropdown-item']);
                 } else {
-                    this.triggerEl.addClass('dropdown-toggle');
+                    this.triggerEl.addClass(['dropdown-toggle', 'dropdown-item']);
                 }
             }
         }

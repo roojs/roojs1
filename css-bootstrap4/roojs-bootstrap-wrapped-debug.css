@@ -286,6 +286,7 @@
   /* --- override it appears it's done un-reliably in JS normally.. */
   /* for some reason it's -15px on BS */
   /* was -15 before, on mobile it made the buttons too close to the edit.. */
+  /** tree in pulldown mobile menu */
   /** not sure if these are needed with is-valid / is-invalid.. */
   /*
  * DISABLED probably needs deleting...
@@ -2290,6 +2291,28 @@ not sure why it was so small..
   .bootstrap .tab-pane .navbar-nav,
   .bootstrap .tab-pane .navbar-nav .nav-item {
     width: 100%; }
+  .bootstrap .roo-navbar-collapse {
+    padding-top: 20px;
+    padding-left: 20px;
+    height: 100%;
+    position: fixed;
+    overflow: scroll;
+    top: 55px;
+    left: 0;
+    width: 100%;
+    background: #fff; }
+  .bootstrap .roo-navbar-collapse .dropdown-toggle ul.treeview-menu {
+    list-style: none;
+    padding-left: 24px; }
+  .bootstrap .roo-navbar-collapse .dropdown-item {
+    padding-left: 0; }
+  .bootstrap .roo-navbar-collapse > ul.nav {
+    padding-bottom: 100px; }
+  .bootstrap .roo-navbar-collapse ul.nav > li {
+    width: 100%; }
+  .bootstrap .roo-navbar-collapse .dropdown-toggle::after,
+  .bootstrap .roo-navbar-collapse a.dropdown-toggle::before {
+    display: none; }
   .bootstrap .roo-numberbox {
     background-color: #007bff !important;
     border: 10px solid black; }

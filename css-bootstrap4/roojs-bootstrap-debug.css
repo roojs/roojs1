@@ -2621,6 +2621,35 @@ table td .navbar {
 .tab-pane .navbar-nav .nav-item {
   width: 100%; }
 
+/** tree in pulldown mobile menu */
+.roo-navbar-collapse {
+  padding-top: 20px;
+  padding-left: 20px;
+  height: 100%;
+  position: fixed;
+  overflow: scroll;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  background: #fff; }
+
+.roo-navbar-collapse .dropdown-toggle ul.treeview-menu {
+  list-style: none;
+  padding-left: 24px; }
+
+.roo-navbar-collapse .dropdown-item {
+  padding-left: 0; }
+
+.roo-navbar-collapse > ul.nav {
+  padding-bottom: 100px; }
+
+.roo-navbar-collapse ul.nav > li {
+  width: 100%; }
+
+.roo-navbar-collapse .dropdown-toggle::after,
+.roo-navbar-collapse a.dropdown-toggle::before {
+  display: none; }
+
 .roo-numberbox {
   background-color: #007bff !important;
   border: 10px solid black; }
