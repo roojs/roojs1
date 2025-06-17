@@ -2640,6 +2640,12 @@ table td .navbar {
 .roo-navbar-collapse .dropdown-item {
   padding-left: 0; }
 
+.roo-navbar-collapse > ul.nav {
+  padding-bottom: 100px; }
+
+.roo-navbar-collapse ul.nav > li {
+  width: 100%; }
+
 .roo-navbar-collapse .dropdown-toggle::after,
 .roo-navbar-collapse a.dropdown-toggle::before {
   display: none; }
