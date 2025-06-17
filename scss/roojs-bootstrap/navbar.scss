@@ -21,3 +21,9 @@ table td .navbar {
 .tab-pane .navbar-nav .nav-item {
     width: 100%;
 }
+
+
+/** tree in pulldown mobile menu */
+.dropdown-toggle ul.treeview-menu {
+    list-style: none;
+}
