@@ -2292,7 +2292,8 @@ not sure why it was so small..
   .bootstrap .tab-pane .navbar-nav .nav-item {
     width: 100%; }
   .bootstrap .roo-navbar-collapse .dropdown-toggle ul.treeview-menu {
-    list-style: none; }
+    list-style: none;
+    padding-left: 20px; }
   .bootstrap .roo-navbar-collapse .dropdown-toggle::after {
     display: none; }
   .bootstrap .roo-numberbox {

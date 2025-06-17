@@ -2623,7 +2623,8 @@ table td .navbar {
 
 /** tree in pulldown mobile menu */
 .roo-navbar-collapse .dropdown-toggle ul.treeview-menu {
-  list-style: none; }
+  list-style: none;
+  padding-left: 20px; }
 
 .roo-navbar-collapse .dropdown-toggle::after {
   display: none; }
