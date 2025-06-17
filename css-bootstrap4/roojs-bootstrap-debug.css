@@ -2637,7 +2637,8 @@ table td .navbar {
   list-style: none;
   padding-left: 20px; }
 
-.roo-navbar-collapse .dropdown-toggle::after {
+.roo-navbar-collapse .dropdown-toggle::after,
+.roo-navbar-collapse a.dropdown-toggle::before {
   display: none; }
 
 .roo-numberbox {

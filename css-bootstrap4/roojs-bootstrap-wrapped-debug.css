@@ -2304,7 +2304,8 @@ not sure why it was so small..
   .bootstrap .roo-navbar-collapse .dropdown-toggle ul.treeview-menu {
     list-style: none;
     padding-left: 20px; }
-  .bootstrap .roo-navbar-collapse .dropdown-toggle::after {
+  .bootstrap .roo-navbar-collapse .dropdown-toggle::after,
+  .bootstrap .roo-navbar-collapse a.dropdown-toggle::before {
     display: none; }
   .bootstrap .roo-numberbox {
     background-color: #007bff !important;
