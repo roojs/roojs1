@@ -2291,6 +2291,8 @@ not sure why it was so small..
   .bootstrap .tab-pane .navbar-nav,
   .bootstrap .tab-pane .navbar-nav .nav-item {
     width: 100%; }
+  .bootstrap .dropdown-item {
+    width: auto; }
   .bootstrap .roo-navbar-collapse.show {
     padding-top: 20px;
     padding-left: 20px;

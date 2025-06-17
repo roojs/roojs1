@@ -24,6 +24,11 @@ table td .navbar {
 
 
 /** tree in pulldown mobile menu */
+
+.dropdown-item {
+   width: auto; 
+}
+
 .roo-navbar-collapse.show
  {
     padding-top: 20px;
