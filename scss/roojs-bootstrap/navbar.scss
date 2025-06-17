@@ -39,7 +39,11 @@ table td .navbar {
 
 .roo-navbar-collapse .dropdown-toggle ul.treeview-menu {
     list-style: none;
-    padding-left:20px;
+    padding-left:24px;
+}
+
+.roo-navbar-collapse .dropdown-item {
+    padding-left:0;
 }
 
 .roo-navbar-collapse .dropdown-toggle::after,
