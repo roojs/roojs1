@@ -24,6 +24,10 @@ table td .navbar {
 
 
 /** tree in pulldown mobile menu */
-.dropdown-toggle ul.treeview-menu {
+.roo-navbar-collapse .dropdown-toggle ul.treeview-menu {
     list-style: none;
+}
+
+.roo-navbar-collapse .dropdown-toggle::after {
+    display: none;
 }
