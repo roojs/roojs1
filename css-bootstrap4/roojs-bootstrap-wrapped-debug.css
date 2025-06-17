@@ -2291,7 +2291,7 @@ not sure why it was so small..
   .bootstrap .tab-pane .navbar-nav,
   .bootstrap .tab-pane .navbar-nav .nav-item {
     width: 100%; }
-  .bootstrap .roo-navbar-collapse {
+  .bootstrap .roo-navbar-collapse.show {
     padding-top: 20px;
     padding-left: 20px;
     height: 100%;
@@ -2301,17 +2301,17 @@ not sure why it was so small..
     left: 0;
     width: 100%;
     background: #fff; }
-  .bootstrap .roo-navbar-collapse .dropdown-toggle ul.treeview-menu {
+  .bootstrap .roo-navbar-collapse.show .dropdown-toggle ul.treeview-menu {
     list-style: none;
     padding-left: 24px; }
-  .bootstrap .roo-navbar-collapse .dropdown-item {
+  .bootstrap .roo-navbar-collapse.show .dropdown-item {
     padding-left: 0; }
-  .bootstrap .roo-navbar-collapse > ul.nav {
+  .bootstrap .roo-navbar-collapse.show > ul.nav {
     padding-bottom: 100px; }
-  .bootstrap .roo-navbar-collapse ul.nav > li {
+  .bootstrap .roo-navbar-collapse.show ul.nav > li {
     width: 100%; }
-  .bootstrap .roo-navbar-collapse .dropdown-toggle::after,
-  .bootstrap .roo-navbar-collapse a.dropdown-toggle::before {
+  .bootstrap .roo-navbar-collapse.show .dropdown-toggle::after,
+  .bootstrap .roo-navbar-collapse.show a.dropdown-toggle::before {
     display: none; }
   .bootstrap .roo-numberbox {
     background-color: #007bff !important;
