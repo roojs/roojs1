@@ -2622,6 +2622,17 @@ table td .navbar {
   width: 100%; }
 
 /** tree in pulldown mobile menu */
+.roo-navbar-collapse {
+  padding-top: 20px;
+  padding-left: 20px;
+  height: 100%;
+  position: fixed;
+  overflow: scroll;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  background: #fff; }
+
 .roo-navbar-collapse .dropdown-toggle ul.treeview-menu {
   list-style: none;
   padding-left: 20px; }
