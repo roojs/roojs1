@@ -343,7 +343,7 @@ Roo.docs.init = {
     
     loadDoc : function(cls)
     {
-        Roo.log("loadDoc: " + cls);
+        Roo.log("loadDoc: " + cls.name);
 
         if (this.currentClass == cls.name) {
             Roo.log("loadDoc: (same as current)");
@@ -388,7 +388,7 @@ Roo.docs.init = {
             method : 'GET',
             success : function(res)
             {
-                
+                Roo.log("got " + res.responseText);
                 var d = Roo.decode(res.responseText);
                 if (typeof(d['file-id']) != 'undefined'){
                     // Gtk Doc..

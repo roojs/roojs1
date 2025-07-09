@@ -214,12 +214,13 @@ Roo.docs.template  = {
             if (data.isSingleton) {
                 return true;
             }
-            if (($.memberOf != data.name) && $.isStatic){
+            if (($.memberOf != data.name) && ($.isStaticd || data.isStatic)){
+                $.isStatic = true;
                 return true;
             }
             if (!$.isStatic) {
-            $.isInherited = ($.memberOf != data.alias);
-            ownMethods.push($);
+                $.isInherited = ($.memberOf != data.alias);
+                ownMethods.push($);
             }
             
             return true;
