@@ -1,600 +1,634 @@
 {
- "name" : "homepage",
- "parent" : "",
- "title" : "",
- "path" : "/home/alan/gitlive/roojs1/examples/bootstrap/homepage.bjs",
- "permname" : "",
- "modOrder" : "001",
- "strings" : {
-  "167d10e1548c4dd34c59a5a143acbcc8" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?",
-  "20d25edf30cd635994f8636d1b7af16f" : "The best place to tell people why they are here",
-  "6fc642524ba59140ab8b69301261d393" : "<i class=\"fa fa-heart fa-5\"></i>Creative Commons",
-  "2295195aac9d2c7b410428029f2369bf" : "More Pages",
-  "4e01ca94bcef3d1d6e1caff7fa42a099" : "Follow me",
-  "0b6d966a2b73f4617ae20d9d0f286926" : "<i class=\"fa fa-twitter fa-2\"></i>",
-  "c90c8c53c27cd538b32a2fd0b7e2ac50" : "Well, there are thousands of stock art galleries, but personally, \n\t\t\t\t\tI prefer to use photos from these sites: \n\t\t<a href=\"http://unsplash.com\">Unsplash.com</a> \n\t\t\t\t\tand \n<a href=\"http://www.flickr.com/creativecommons/by-2.0/tags/\">Flickr - Creative Commons</a>",
-  "544ed65266ffc37e762fb588771a5c50" : "Nice header. Where do I find more images like that one?",
-  "65e69ec9f42722989b738ea6c97aa70c" : "\tThe difference between involvement and commitment is like an eggs-and-ham breakfast:\n\t<br> \n\tthe chicken was involved; the pig was committed.\n\t\t",
-  "bbaff12800505b22a853e8b7f4eb6a22" : "Contact",
-  "9cef554366342b985660f540adad49a3" : "+234 23 9873237\n<br>\n<a href=\"mailto:#\">some.email@somewhere.com</a>\n<br>\n<br>\n234 Hidden Pond Road, Ashland City, TN 37015\n\t\t\t\t\t\t\t",
-  "d54164e86d9e4d31e5c683861d3832a2" : "<i class=\"fa fa-dribbble fa-2\"></i>",
-  "fa7d0f3e094ac32ae6947791153a4ff7" : "Eius consequatur nihil quibusdam! Laborum, rerum, quis, inventore ipsa autem repellat provident assumenda labore soluta minima alias temporibus facere distinctio quas adipisci nam sunt explicabo officia tenetur at ea quos doloribus dolorum voluptate reprehenderit architecto sint libero illo et hic.",
-  "bd04e83c01b437cca28fc08e693a76a8" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, commodi, sequi quis ad fugit omnis cumque a libero error nesciunt molestiae repellat quos perferendis numquam quibusdam rerum repellendus laboriosam reprehenderit! ",
-  "5405d8a903c83e89cb649f1b518ef1be" : "Frequently Asked Questions",
-  "bda9f9ca9e653bb4a20a30b8d0f253d4" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, excepturi, maiores, dolorem quasi reprehenderit illo accusamus nulla minima repudiandae quas ducimus reiciendis odio sequi atque temporibus facere corporis eos expedita? ",
-  "ca98e91c48e9c483c403abb7af44d036" : "<i class=\"fa fa-smile-o fa-5\"></i>Author's support",
-  "748d1c66b53692e34084b5d1be6eb07a" : "some tag line",
-  "f757cef8954558e37499e14b7fcb23d3" : "Reasons to use this template",
-  "1522f8912011fd73c3b6b72604e9eb4f" : "<i class=\"fa fa-flash fa-5\"></i>Fat-free",
-  "a966e9d1c9065dbbea23d8d6705b9e42" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, vitae, perferendis, perspiciatis nobis voluptate quod illum soluta minima ipsam ratione quia numquam eveniet eum reprehenderit dolorem dicta nesciunt corporis?",
-  "c71c85fb79a1e589cfe00a8233e37841" : "a button",
-  "932c1787f028d8eb514db1ac402fac54" : "I'd highly recommend you <a href=\"http://www.sublimetext.com/\">Sublime Text</a> \n- a free to try text editor which I'm using daily. Awesome tool!",
-  "5b6c1f1969e02981d7d8455b6538292d" : "Can you customize this template for me?",
-  "8f7f4c1ce7a4f933663d10543562b096" : "About",
-  "89f57a5ba6334d012ddb709b186b3a98" : "<i class=\"fa fa-github fa-2\"></i>",
-  "3cf1ef47ec04254f4a98d9fde7f70581" : "Text widget",
-  "5264548d77038db97f4f4aa5d8813b8b" : "Dicta, nostrum nemo soluta sapiente sit dolor quae voluptas quidem doloribus recusandae facere magni ullam suscipit sunt atque rerum eaque iusto facilis esse nam veniam incidunt officia perspiciatis at voluptatibus. Libero, aliquid illum possimus numquam fuga.",
-  "8e9efcdf6f236ccbbd6ba45378fc5938" : "<i class=\"fa fa-facebook fa-2\"></i>",
-  "25d3bc8aaa2306df70a61938535634dc" : "<a class=\"btn btn-primary btn-large\">Learn more »</a>",
-  "4b4614a2a02ceb468d0030b06c9fc151" : "The HR Platform",
-  "c57215a93662add542baf3690cbde5db" : "Can I use it to build a site for my client?",
-  "f106c3ac1b76182d358f96951c8bb235" : "<i class=\"fa fa-cogs fa-5\"></i>Bootstrap-powered",
-  "43afe83e70e529de2ddba6b515c4cb37" : "Which code editor would you recommend?",
-  "778d568d19d00c60b9cd62573dff9d48" : "Yes, I can. Please drop me a line to sergey-at-pozhilov.com and describe your needs in details. Please note, my services are not cheap.",
-  "8cf04a9734132302f96da8e113e80ce5" : "Home",
-  "6b405cff8a90f9f3fae8d953edf67160" : "Yes, you can. You may use this template for any purpose, just don't forget about the \n<a href=\"http://creativecommons.org/licenses/by/3.0/\">license</a>\nwhich says: \"You must give appropriate credit\", i.e. you must provide the name of the creator and a link to the original template in your work. \n",
-  "2a2f84bd9854960f2c63eeb3af60fb70" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, dolores, quibusdam architecto voluptatem amet fugiat nesciunt placeat provident cumque accusamus itaque voluptate modi quidem dolore optio velit hic iusto vero praesentium repellat commodi ad id expedita cupiditate repellendus possimus unde?",
-  "5ac2119f318eaad0c139c729c78eba5f" : "Sign in / Sign up"
- },
+ "gen_extended" : false,
  "items" : [
   {
-   "String cls" : "home",
-   "xtype" : "Body",
    "$ xns" : "Roo.bootstrap",
+   "String cls" : "home",
    "items" : [
     {
-     "String cls" : "headroom animated",
-     "String position" : "fixed-top",
-     "xtype" : "NavHeaderbar",
+     "$ xns" : "Roo.bootstrap",
      "Boolean inverse" : true,
      "String brand" : "Hydra",
-     "$ xns" : "Roo.bootstrap",
+     "String cls" : "headroom animated",
+     "String position" : "fixed-top",
      "items" : [
       {
-       "String type" : "nav",
-       "xtype" : "NavGroup",
-       "String align" : "right",
        "$ xns" : "Roo.bootstrap",
+       "String align" : "right",
+       "String type" : "nav",
        "items" : [
         {
-         "xtype" : "NavItem",
          "$ xns" : "Roo.bootstrap",
-         "String html" : "Home"
+         "String html" : "Home",
+         "xtype" : "NavItem"
         },
         {
-         "xtype" : "NavItem",
          "$ xns" : "Roo.bootstrap",
-         "String html" : "About"
+         "String html" : "About",
+         "xtype" : "NavItem"
         },
         {
-         "xtype" : "NavItem",
          "$ xns" : "Roo.bootstrap",
-         "String html" : "More Pages"
+         "String html" : "More Pages",
+         "xtype" : "NavItem"
         },
         {
-         "xtype" : "NavItem",
          "$ xns" : "Roo.bootstrap",
-         "String html" : "Contact"
+         "String html" : "Contact",
+         "xtype" : "NavItem"
         },
         {
-         "string button_weight" : "primary",
+         "$ xns" : "Roo.bootstrap",
          "String cls" : "btn",
-         "xtype" : "NavItem",
+         "String html" : "Sign in / Sign up",
          "bool button_outline" : true,
-         "$ xns" : "Roo.bootstrap",
-         "String html" : "Sign in / Sign up"
+         "string button_weight" : "primary",
+         "xtype" : "NavItem"
         }
-       ]
+       ],
+       "xtype" : "NavGroup"
       }
-     ]
+     ],
+     "xtype" : "NavHeaderbar"
     },
     {
-     "String tag" : "header",
-     "String cls" : "pr-head",
-     "xtype" : "Element",
      "$ xns" : "Roo.bootstrap",
+     "String cls" : "pr-head",
+     "String tag" : "header",
      "items" : [
       {
-       "xtype" : "Container",
        "$ xns" : "Roo.bootstrap",
        "items" : [
         {
-         "xtype" : "Row",
          "$ xns" : "Roo.bootstrap",
          "items" : [
           {
+           "$ xns" : "Roo.bootstrap",
            "String cls" : "lead",
-           "xtype" : "Header",
-           "$ xns" : "Roo.bootstrap",
-           "String html" : "The HR Platform"
+           "String html" : "The HR Platform",
+           "xtype" : "Header"
           },
           {
-           "String tag" : "p",
+           "$ xns" : "Roo.bootstrap",
            "String cls" : "tagline",
-           "xtype" : "Element",
-           "$ xns" : "Roo.bootstrap",
-           "String html" : "some tag line"
+           "String html" : "some tag line",
+           "String tag" : "p",
+           "xtype" : "Element"
           },
           {
-           "String tag" : "p",
-           "xtype" : "Element",
            "$ xns" : "Roo.bootstrap",
+           "String tag" : "p",
            "items" : [
             {
-             "String tag" : "a",
-             "String size" : "lg",
-             "String href" : "#",
-             "xtype" : "Button",
              "$ xns" : "Roo.bootstrap",
-             "String html" : "a button"
+             "String href" : "#",
+             "String html" : "a button",
+             "String size" : "lg",
+             "String tag" : "a",
+             "xtype" : "Button"
             },
             {
-             "String tag" : "a",
-             "String size" : "lg",
-             "String href" : "#",
-             "xtype" : "Button",
              "$ xns" : "Roo.bootstrap",
-             "String html" : "a button"
+             "String href" : "#",
+             "String html" : "a button",
+             "String size" : "lg",
+             "String tag" : "a",
+             "xtype" : "Button"
             }
-           ]
+           ],
+           "xtype" : "Element"
           }
-         ]
+         ],
+         "xtype" : "Row"
         }
-       ]
+       ],
+       "xtype" : "Container"
       }
-     ]
+     ],
+     "xtype" : "Element"
     },
     {
-     "String cls" : "container text-center",
-     "xtype" : "Element",
      "$ xns" : "Roo.bootstrap",
+     "String cls" : "container text-center",
      "items" : [
       {
-       "String cls" : "thin",
-       "xtype" : "Header",
        "$ xns" : "Roo.bootstrap",
        "Number level" : 2,
-       "String html" : "The best place to tell people why they are here"
+       "String cls" : "thin",
+       "String html" : "The best place to tell people why they are here",
+       "xtype" : "Header"
       },
       {
-       "String tag" : "p",
-       "String cls" : "text-muted",
-       "xtype" : "Element",
        "$ xns" : "Roo.bootstrap",
-       "String html" : "\tThe difference between involvement and commitment is like an eggs-and-ham breakfast:\n\t<br> \n\tthe chicken was involved; the pig was committed.\n\t\t"
+       "String cls" : "text-muted",
+       "String html" : [
+        "\tThe difference between involvement and commitment is like an eggs-and-ham breakfast:",
+        "\t<br> ",
+        "\tthe chicken was involved; the pig was committed.",
+        "\t\t"
+       ],
+       "String tag" : "p",
+       "xtype" : "Element"
       }
-     ]
+     ],
+     "xtype" : "Element"
     },
     {
-     "String cls" : "",
-     "xtype" : "Element",
      "$ xns" : "Roo.bootstrap",
+     "String cls" : "",
      "items" : [
       {
-       "xtype" : "Container",
        "$ xns" : "Roo.bootstrap",
        "items" : [
         {
-         "String cls" : "text-center thin",
-         "xtype" : "Header",
          "$ xns" : "Roo.bootstrap",
          "Number level" : 3,
-         "String html" : "Reasons to use this template"
+         "String cls" : "text-center thin",
+         "String html" : "Reasons to use this template",
+         "xtype" : "Header"
         },
         {
-         "String cls" : "",
-         "xtype" : "Row",
          "$ xns" : "Roo.bootstrap",
+         "String cls" : "",
          "items" : [
           {
-           "String cls" : "col-md-3 col-sm-6 highlight",
-           "xtype" : "Element",
            "$ xns" : "Roo.bootstrap",
+           "String cls" : "col-md-3 col-sm-6 highlight",
            "items" : [
             {
-             "String cls" : "h-caption",
-             "xtype" : "Element",
              "$ xns" : "Roo.bootstrap",
+             "String cls" : "h-caption",
              "items" : [
               {
-               "xtype" : "Header",
-               "Number level" : 4,
                "$ xns" : "Roo.bootstrap",
-               "String html" : "<i class=\"fa fa-cogs fa-5\"></i>Bootstrap-powered"
+               "Number level" : 4,
+               "String html" : "<i class=\"fa fa-cogs fa-5\"></i>Bootstrap-powered",
+               "xtype" : "Header"
               }
-             ]
+             ],
+             "xtype" : "Element"
             },
             {
-             "String cls" : "h-body text-center",
-             "xtype" : "Element",
              "$ xns" : "Roo.bootstrap",
+             "String cls" : "h-body text-center",
              "items" : [
               {
-               "String tag" : "p",
-               "xtype" : "Element",
                "$ xns" : "Roo.bootstrap",
-               "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?"
+               "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?",
+               "String tag" : "p",
+               "xtype" : "Element"
               }
-             ]
+             ],
+             "xtype" : "Element"
             }
-           ]
+           ],
+           "xtype" : "Element"
           },
           {
-           "String cls" : "col-md-3 col-sm-6 highlight",
-           "xtype" : "Element",
            "$ xns" : "Roo.bootstrap",
+           "String cls" : "col-md-3 col-sm-6 highlight",
            "items" : [
             {
-             "String cls" : "h-caption",
-             "xtype" : "Element",
              "$ xns" : "Roo.bootstrap",
+             "String cls" : "h-caption",
              "items" : [
               {
-               "xtype" : "Header",
-               "Number level" : 4,
                "$ xns" : "Roo.bootstrap",
-               "String html" : "<i class=\"fa fa-flash fa-5\"></i>Fat-free"
+               "Number level" : 4,
+               "String html" : "<i class=\"fa fa-flash fa-5\"></i>Fat-free",
+               "xtype" : "Header"
               }
-             ]
+             ],
+             "xtype" : "Element"
             },
             {
-             "String cls" : "h-body text-center",
-             "xtype" : "Element",
              "$ xns" : "Roo.bootstrap",
+             "String cls" : "h-body text-center",
              "items" : [
               {
-               "String tag" : "p",
-               "xtype" : "Element",
                "$ xns" : "Roo.bootstrap",
-               "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, commodi, sequi quis ad fugit omnis cumque a libero error nesciunt molestiae repellat quos perferendis numquam quibusdam rerum repellendus laboriosam reprehenderit! "
+               "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, commodi, sequi quis ad fugit omnis cumque a libero error nesciunt molestiae repellat quos perferendis numquam quibusdam rerum repellendus laboriosam reprehenderit! ",
+               "String tag" : "p",
+               "xtype" : "Element"
               }
-             ]
+             ],
+             "xtype" : "Element"
             }
-           ]
+           ],
+           "xtype" : "Element"
           },
           {
-           "String cls" : "col-md-3 col-sm-6 highlight",
-           "xtype" : "Element",
            "$ xns" : "Roo.bootstrap",
+           "String cls" : "col-md-3 col-sm-6 highlight",
            "items" : [
             {
-             "String cls" : "h-caption",
-             "xtype" : "Element",
              "$ xns" : "Roo.bootstrap",
+             "String cls" : "h-caption",
              "items" : [
               {
-               "xtype" : "Header",
                "$ xns" : "Roo.bootstrap",
                "Number level" : 4,
-               "String html" : "<i class=\"fa fa-heart fa-5\"></i>Creative Commons"
+               "String html" : "<i class=\"fa fa-heart fa-5\"></i>Creative Commons",
+               "xtype" : "Header"
               }
-             ]
+             ],
+             "xtype" : "Element"
             },
             {
-             "String cls" : "h-body text-center",
-             "xtype" : "Element",
              "$ xns" : "Roo.bootstrap",
+             "String cls" : "h-body text-center",
              "items" : [
               {
-               "String tag" : "p",
-               "xtype" : "Element",
                "$ xns" : "Roo.bootstrap",
-               "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, vitae, perferendis, perspiciatis nobis voluptate quod illum soluta minima ipsam ratione quia numquam eveniet eum reprehenderit dolorem dicta nesciunt corporis?"
+               "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, vitae, perferendis, perspiciatis nobis voluptate quod illum soluta minima ipsam ratione quia numquam eveniet eum reprehenderit dolorem dicta nesciunt corporis?",
+               "String tag" : "p",
+               "xtype" : "Element"
               }
-             ]
+             ],
+             "xtype" : "Element"
             }
-           ]
+           ],
+           "xtype" : "Element"
           },
           {
-           "String cls" : "col-md-3 col-sm-6 highlight",
-           "xtype" : "Element",
            "$ xns" : "Roo.bootstrap",
+           "String cls" : "col-md-3 col-sm-6 highlight",
            "items" : [
             {
-             "String cls" : "h-caption",
-             "xtype" : "Element",
              "$ xns" : "Roo.bootstrap",
+             "String cls" : "h-caption",
              "items" : [
               {
-               "xtype" : "Header",
-               "Number level" : 4,
                "$ xns" : "Roo.bootstrap",
-               "String html" : "<i class=\"fa fa-smile-o fa-5\"></i>Author's support"
+               "Number level" : 4,
+               "String html" : "<i class=\"fa fa-smile-o fa-5\"></i>Author's support",
+               "xtype" : "Header"
               }
-             ]
+             ],
+             "xtype" : "Element"
             },
             {
-             "String cls" : "h-body text-center",
-             "xtype" : "Element",
              "$ xns" : "Roo.bootstrap",
+             "String cls" : "h-body text-center",
              "items" : [
               {
-               "String tag" : "p",
-               "xtype" : "Element",
                "$ xns" : "Roo.bootstrap",
-               "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, excepturi, maiores, dolorem quasi reprehenderit illo accusamus nulla minima repudiandae quas ducimus reiciendis odio sequi atque temporibus facere corporis eos expedita? "
+               "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, excepturi, maiores, dolorem quasi reprehenderit illo accusamus nulla minima repudiandae quas ducimus reiciendis odio sequi atque temporibus facere corporis eos expedita? ",
+               "String tag" : "p",
+               "xtype" : "Element"
               }
-             ]
+             ],
+             "xtype" : "Element"
             }
-           ]
+           ],
+           "xtype" : "Element"
           }
-         ]
+         ],
+         "xtype" : "Row"
         }
-       ]
+       ],
+       "xtype" : "Container"
       }
-     ]
+     ],
+     "xtype" : "Element"
     },
     {
-     "xtype" : "Container",
      "$ xns" : "Roo.bootstrap",
      "items" : [
       {
-       "String cls" : "text-center top-space",
-       "xtype" : "Header",
        "$ xns" : "Roo.bootstrap",
        "Number level" : 2,
-       "String html" : "Frequently Asked Questions"
+       "String cls" : "text-center top-space",
+       "String html" : "Frequently Asked Questions",
+       "xtype" : "Header"
       },
       {
-       "xtype" : "Row",
        "$ xns" : "Roo.bootstrap",
        "items" : [
         {
-         "String cls" : "col-sm-6",
-         "xtype" : "Element",
          "$ xns" : "Roo.bootstrap",
+         "String cls" : "col-sm-6",
          "items" : [
           {
-           "xtype" : "Header",
            "$ xns" : "Roo.bootstrap",
            "Number level" : 3,
-           "String html" : "Which code editor would you recommend?"
+           "String html" : "Which code editor would you recommend?",
+           "xtype" : "Header"
           },
           {
-           "String tag" : "p",
-           "xtype" : "Element",
            "$ xns" : "Roo.bootstrap",
-           "String html" : "I'd highly recommend you <a href=\"http://www.sublimetext.com/\">Sublime Text</a> \n- a free to try text editor which I'm using daily. Awesome tool!"
+           "String html" : [
+            "I'd highly recommend you <a href=\"http://www.sublimetext.com/\">Sublime Text</a> ",
+            "- a free to try text editor which I'm using daily. Awesome tool!"
+           ],
+           "String tag" : "p",
+           "xtype" : "Element"
           }
-         ]
+         ],
+         "xtype" : "Element"
         },
         {
-         "String cls" : "col-sm-6",
-         "xtype" : "Element",
          "$ xns" : "Roo.bootstrap",
+         "String cls" : "col-sm-6",
          "items" : [
           {
-           "xtype" : "Header",
            "$ xns" : "Roo.bootstrap",
            "Number level" : 3,
-           "String html" : "Nice header. Where do I find more images like that one?"
+           "String html" : "Nice header. Where do I find more images like that one?",
+           "xtype" : "Header"
           },
           {
-           "String tag" : "p",
-           "xtype" : "Element",
            "$ xns" : "Roo.bootstrap",
-           "String html" : "Well, there are thousands of stock art galleries, but personally, \n\t\t\t\t\tI prefer to use photos from these sites: \n\t\t<a href=\"http://unsplash.com\">Unsplash.com</a> \n\t\t\t\t\tand \n<a href=\"http://www.flickr.com/creativecommons/by-2.0/tags/\">Flickr - Creative Commons</a>"
+           "String html" : [
+            "Well, there are thousands of stock art galleries, but personally, ",
+            "\t\t\t\t\tI prefer to use photos from these sites: ",
+            "\t\t<a href=\"http://unsplash.com\">Unsplash.com</a> ",
+            "\t\t\t\t\tand ",
+            "<a href=\"http://www.flickr.com/creativecommons/by-2.0/tags/\">Flickr - Creative Commons</a>"
+           ],
+           "String tag" : "p",
+           "xtype" : "Element"
           }
-         ]
+         ],
+         "xtype" : "Element"
         }
-       ]
+       ],
+       "xtype" : "Row"
       },
       {
-       "xtype" : "Row",
        "$ xns" : "Roo.bootstrap",
        "items" : [
         {
-         "String cls" : "col-sm-6",
-         "xtype" : "Element",
          "$ xns" : "Roo.bootstrap",
+         "String cls" : "col-sm-6",
          "items" : [
           {
-           "xtype" : "Header",
-           "Number level" : 3,
            "$ xns" : "Roo.bootstrap",
-           "String html" : "Can I use it to build a site for my client?"
+           "Number level" : 3,
+           "String html" : "Can I use it to build a site for my client?",
+           "xtype" : "Header"
           },
           {
-           "String tag" : "p",
-           "xtype" : "Element",
            "$ xns" : "Roo.bootstrap",
-           "String html" : "Yes, you can. You may use this template for any purpose, just don't forget about the \n<a href=\"http://creativecommons.org/licenses/by/3.0/\">license</a>\nwhich says: \"You must give appropriate credit\", i.e. you must provide the name of the creator and a link to the original template in your work. \n"
+           "String html" : [
+            "Yes, you can. You may use this template for any purpose, just don't forget about the ",
+            "<a href=\"http://creativecommons.org/licenses/by/3.0/\">license</a>",
+            "which says: \"You must give appropriate credit\", i.e. you must provide the name of the creator and a link to the original template in your work. ",
+            ""
+           ],
+           "String tag" : "p",
+           "xtype" : "Element"
           }
-         ]
+         ],
+         "xtype" : "Element"
         },
         {
-         "String cls" : "col-sm-6",
-         "xtype" : "Element",
          "$ xns" : "Roo.bootstrap",
+         "String cls" : "col-sm-6",
          "items" : [
           {
-           "xtype" : "Header",
-           "Number level" : 3,
            "$ xns" : "Roo.bootstrap",
-           "String html" : "Can you customize this template for me?"
+           "Number level" : 3,
+           "String html" : "Can you customize this template for me?",
+           "xtype" : "Header"
           },
           {
-           "String tag" : "p",
-           "xtype" : "Element",
            "$ xns" : "Roo.bootstrap",
-           "String html" : "Yes, I can. Please drop me a line to sergey-at-pozhilov.com and describe your needs in details. Please note, my services are not cheap."
+           "String html" : "Yes, I can. Please drop me a line to sergey-at-pozhilov.com and describe your needs in details. Please note, my services are not cheap.",
+           "String tag" : "p",
+           "xtype" : "Element"
           }
-         ]
+         ],
+         "xtype" : "Element"
         }
-       ]
+       ],
+       "xtype" : "Row"
       },
       {
+       "$ xns" : "Roo.bootstrap",
        "String cls" : "jumbotron top-space",
-       "xtype" : "Element",
-       "$ xns" : "Roo.bootstrap",
        "items" : [
         {
-         "xtype" : "Header",
          "$ xns" : "Roo.bootstrap",
          "Number level" : 4,
-         "String html" : "Dicta, nostrum nemo soluta sapiente sit dolor quae voluptas quidem doloribus recusandae facere magni ullam suscipit sunt atque rerum eaque iusto facilis esse nam veniam incidunt officia perspiciatis at voluptatibus. Libero, aliquid illum possimus numquam fuga."
+         "String html" : "Dicta, nostrum nemo soluta sapiente sit dolor quae voluptas quidem doloribus recusandae facere magni ullam suscipit sunt atque rerum eaque iusto facilis esse nam veniam incidunt officia perspiciatis at voluptatibus. Libero, aliquid illum possimus numquam fuga.",
+         "xtype" : "Header"
         },
         {
-         "String tag" : "p",
-         "String cls" : "text-right",
-         "xtype" : "Element",
          "$ xns" : "Roo.bootstrap",
-         "String html" : "<a class=\"btn btn-primary btn-large\">Learn more »</a>"
+         "String cls" : "text-right",
+         "String html" : "<a class=\"btn btn-primary btn-large\">Learn more »</a>",
+         "String tag" : "p",
+         "xtype" : "Element"
         }
-       ]
+       ],
+       "xtype" : "Element"
       }
-     ]
+     ],
+     "xtype" : "Container"
     },
     {
-     "String cls" : "top-space",
-     "xtype" : "Container",
      "$ xns" : "Roo.bootstrap",
+     "String cls" : "top-space",
      "items" : [
       {
-       "String cls" : "footer1",
-       "xtype" : "Container",
        "$ xns" : "Roo.bootstrap",
+       "String cls" : "footer1",
        "items" : [
         {
-         "xtype" : "Container",
          "$ xns" : "Roo.bootstrap",
          "items" : [
           {
-           "xtype" : "Row",
            "$ xns" : "Roo.bootstrap",
            "items" : [
             {
-             "String cls" : "col-md-3 widget",
-             "xtype" : "Element",
              "$ xns" : "Roo.bootstrap",
+             "String cls" : "col-md-3 widget",
              "items" : [
               {
-               "String cls" : "widget-title",
-               "xtype" : "Header",
-               "Number level" : 3,
                "$ xns" : "Roo.bootstrap",
-               "String html" : "Contact"
+               "Number level" : 3,
+               "String cls" : "widget-title",
+               "String html" : "Contact",
+               "xtype" : "Header"
               },
               {
-               "String cls" : "widget-body",
-               "xtype" : "Element",
                "$ xns" : "Roo.bootstrap",
+               "String cls" : "widget-body",
                "items" : [
                 {
-                 "String tag" : "p",
-                 "xtype" : "Element",
                  "$ xns" : "Roo.bootstrap",
-                 "String html" : "+234 23 9873237\n<br>\n<a href=\"mailto:#\">some.email@somewhere.com</a>\n<br>\n<br>\n234 Hidden Pond Road, Ashland City, TN 37015\n\t\t\t\t\t\t\t"
+                 "String html" : [
+                  "+234 23 9873237",
+                  "<br>",
+                  "<a href=\"mailto:#\">some.email@somewhere.com</a>",
+                  "<br>",
+                  "<br>",
+                  "234 Hidden Pond Road, Ashland City, TN 37015",
+                  "\t\t\t\t\t\t\t"
+                 ],
+                 "String tag" : "p",
+                 "xtype" : "Element"
                 }
-               ]
+               ],
+               "xtype" : "Element"
               }
-             ]
+             ],
+             "xtype" : "Element"
             },
             {
-             "String cls" : "col-md-3 widget",
-             "xtype" : "Element",
              "$ xns" : "Roo.bootstrap",
+             "String cls" : "col-md-3 widget",
              "items" : [
               {
-               "String cls" : "widget-title",
-               "xtype" : "Header",
-               "Number level" : 3,
                "$ xns" : "Roo.bootstrap",
-               "String html" : "Follow me"
+               "Number level" : 3,
+               "String cls" : "widget-title",
+               "String html" : "Follow me",
+               "xtype" : "Header"
               },
               {
-               "String cls" : "widget-body",
-               "xtype" : "Element",
                "$ xns" : "Roo.bootstrap",
+               "String cls" : "widget-body",
                "items" : [
                 {
-                 "String tag" : "p",
-                 "String cls" : "follow-me-icons",
-                 "xtype" : "Element",
                  "$ xns" : "Roo.bootstrap",
+                 "String cls" : "follow-me-icons",
+                 "String tag" : "p",
                  "items" : [
                   {
-                   "String tag" : "a",
-                   "xtype" : "Element",
                    "$ xns" : "Roo.bootstrap",
-                   "String html" : "<i class=\"fa fa-twitter fa-2\"></i>"
+                   "String html" : "<i class=\"fa fa-twitter fa-2\"></i>",
+                   "String tag" : "a",
+                   "xtype" : "Element"
                   },
                   {
-                   "String tag" : "a",
-                   "xtype" : "Element",
                    "$ xns" : "Roo.bootstrap",
-                   "String html" : "<i class=\"fa fa-dribbble fa-2\"></i>"
+                   "String html" : "<i class=\"fa fa-dribbble fa-2\"></i>",
+                   "String tag" : "a",
+                   "xtype" : "Element"
                   },
                   {
-                   "String tag" : "a",
-                   "xtype" : "Element",
                    "$ xns" : "Roo.bootstrap",
-                   "String html" : "<i class=\"fa fa-github fa-2\"></i>"
+                   "String html" : "<i class=\"fa fa-github fa-2\"></i>",
+                   "String tag" : "a",
+                   "xtype" : "Element"
                   },
                   {
-                   "String tag" : "a",
-                   "xtype" : "Element",
                    "$ xns" : "Roo.bootstrap",
-                   "String html" : "<i class=\"fa fa-facebook fa-2\"></i>"
+                   "String html" : "<i class=\"fa fa-facebook fa-2\"></i>",
+                   "String tag" : "a",
+                   "xtype" : "Element"
                   }
-                 ]
+                 ],
+                 "xtype" : "Element"
                 }
-               ]
+               ],
+               "xtype" : "Element"
               }
-             ]
+             ],
+             "xtype" : "Element"
             },
             {
-             "String cls" : "col-md-6 widget",
-             "xtype" : "Element",
              "$ xns" : "Roo.bootstrap",
+             "String cls" : "col-md-6 widget",
              "items" : [
               {
-               "String cls" : "widget-title",
-               "xtype" : "Header",
-               "Number level" : 3,
                "$ xns" : "Roo.bootstrap",
-               "String html" : "Text widget"
+               "Number level" : 3,
+               "String cls" : "widget-title",
+               "String html" : "Text widget",
+               "xtype" : "Header"
               },
               {
-               "String cls" : "widget-body",
-               "xtype" : "Element",
                "$ xns" : "Roo.bootstrap",
+               "String cls" : "widget-body",
                "items" : [
                 {
-                 "String tag" : "p",
-                 "xtype" : "Element",
                  "$ xns" : "Roo.bootstrap",
-                 "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, dolores, quibusdam architecto voluptatem amet fugiat nesciunt placeat provident cumque accusamus itaque voluptate modi quidem dolore optio velit hic iusto vero praesentium repellat commodi ad id expedita cupiditate repellendus possimus unde?"
+                 "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, dolores, quibusdam architecto voluptatem amet fugiat nesciunt placeat provident cumque accusamus itaque voluptate modi quidem dolore optio velit hic iusto vero praesentium repellat commodi ad id expedita cupiditate repellendus possimus unde?",
+                 "String tag" : "p",
+                 "xtype" : "Element"
                 },
                 {
-                 "String tag" : "p",
-                 "xtype" : "Element",
                  "$ xns" : "Roo.bootstrap",
-                 "String html" : "Eius consequatur nihil quibusdam! Laborum, rerum, quis, inventore ipsa autem repellat provident assumenda labore soluta minima alias temporibus facere distinctio quas adipisci nam sunt explicabo officia tenetur at ea quos doloribus dolorum voluptate reprehenderit architecto sint libero illo et hic."
+                 "String html" : "Eius consequatur nihil quibusdam! Laborum, rerum, quis, inventore ipsa autem repellat provident assumenda labore soluta minima alias temporibus facere distinctio quas adipisci nam sunt explicabo officia tenetur at ea quos doloribus dolorum voluptate reprehenderit architecto sint libero illo et hic.",
+                 "String tag" : "p",
+                 "xtype" : "Element"
                 }
-               ]
+               ],
+               "xtype" : "Element"
               }
-             ]
+             ],
+             "xtype" : "Element"
             }
-           ]
+           ],
+           "xtype" : "Row"
           }
-         ]
+         ],
+         "xtype" : "Container"
         }
-       ]
+       ],
+       "xtype" : "Container"
       }
-     ]
+     ],
+     "xtype" : "Container"
     }
-   ]
+   ],
+   "listeners" : {
+    "beforehide" : [
+     "function () {",
+     "    return function;",
+     "}"
+    ]
+   },
+   "xtype" : "Body"
   }
- ]
+ ],
+ "modOrder" : "001",
+ "name" : "homepage",
+ "parent" : "",
+ "permname" : "",
+ "strings" : {
+  "0b6d966a2b73f4617ae20d9d0f286926" : "<i class=\"fa fa-twitter fa-2\"></i>",
+  "1522f8912011fd73c3b6b72604e9eb4f" : "<i class=\"fa fa-flash fa-5\"></i>Fat-free",
+  "167d10e1548c4dd34c59a5a143acbcc8" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?",
+  "20d25edf30cd635994f8636d1b7af16f" : "The best place to tell people why they are here",
+  "2295195aac9d2c7b410428029f2369bf" : "More Pages",
+  "25d3bc8aaa2306df70a61938535634dc" : "<a class=\"btn btn-primary btn-large\">Learn more »</a>",
+  "2a2f84bd9854960f2c63eeb3af60fb70" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, dolores, quibusdam architecto voluptatem amet fugiat nesciunt placeat provident cumque accusamus itaque voluptate modi quidem dolore optio velit hic iusto vero praesentium repellat commodi ad id expedita cupiditate repellendus possimus unde?",
+  "3cf1ef47ec04254f4a98d9fde7f70581" : "Text widget",
+  "43afe83e70e529de2ddba6b515c4cb37" : "Which code editor would you recommend?",
+  "4b4614a2a02ceb468d0030b06c9fc151" : "The HR Platform",
+  "4e01ca94bcef3d1d6e1caff7fa42a099" : "Follow me",
+  "5264548d77038db97f4f4aa5d8813b8b" : "Dicta, nostrum nemo soluta sapiente sit dolor quae voluptas quidem doloribus recusandae facere magni ullam suscipit sunt atque rerum eaque iusto facilis esse nam veniam incidunt officia perspiciatis at voluptatibus. Libero, aliquid illum possimus numquam fuga.",
+  "5405d8a903c83e89cb649f1b518ef1be" : "Frequently Asked Questions",
+  "544ed65266ffc37e762fb588771a5c50" : "Nice header. Where do I find more images like that one?",
+  "5ac2119f318eaad0c139c729c78eba5f" : "Sign in / Sign up",
+  "5b6c1f1969e02981d7d8455b6538292d" : "Can you customize this template for me?",
+  "65e69ec9f42722989b738ea6c97aa70c" : "\tThe difference between involvement and commitment is like an eggs-and-ham breakfast:\n\t<br> \n\tthe chicken was involved; the pig was committed.\n\t\t",
+  "6b405cff8a90f9f3fae8d953edf67160" : "Yes, you can. You may use this template for any purpose, just don't forget about the \n<a href=\"http://creativecommons.org/licenses/by/3.0/\">license</a>\nwhich says: \"You must give appropriate credit\", i.e. you must provide the name of the creator and a link to the original template in your work. \n",
+  "6fc642524ba59140ab8b69301261d393" : "<i class=\"fa fa-heart fa-5\"></i>Creative Commons",
+  "748d1c66b53692e34084b5d1be6eb07a" : "some tag line",
+  "778d568d19d00c60b9cd62573dff9d48" : "Yes, I can. Please drop me a line to sergey-at-pozhilov.com and describe your needs in details. Please note, my services are not cheap.",
+  "89f57a5ba6334d012ddb709b186b3a98" : "<i class=\"fa fa-github fa-2\"></i>",
+  "8cf04a9734132302f96da8e113e80ce5" : "Home",
+  "8e9efcdf6f236ccbbd6ba45378fc5938" : "<i class=\"fa fa-facebook fa-2\"></i>",
+  "8f7f4c1ce7a4f933663d10543562b096" : "About",
+  "932c1787f028d8eb514db1ac402fac54" : "I'd highly recommend you <a href=\"http://www.sublimetext.com/\">Sublime Text</a> \n- a free to try text editor which I'm using daily. Awesome tool!",
+  "9cef554366342b985660f540adad49a3" : "+234 23 9873237\n<br>\n<a href=\"mailto:#\">some.email@somewhere.com</a>\n<br>\n<br>\n234 Hidden Pond Road, Ashland City, TN 37015\n\t\t\t\t\t\t\t",
+  "a966e9d1c9065dbbea23d8d6705b9e42" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, vitae, perferendis, perspiciatis nobis voluptate quod illum soluta minima ipsam ratione quia numquam eveniet eum reprehenderit dolorem dicta nesciunt corporis?",
+  "bbaff12800505b22a853e8b7f4eb6a22" : "Contact",
+  "bd04e83c01b437cca28fc08e693a76a8" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, commodi, sequi quis ad fugit omnis cumque a libero error nesciunt molestiae repellat quos perferendis numquam quibusdam rerum repellendus laboriosam reprehenderit! ",
+  "bda9f9ca9e653bb4a20a30b8d0f253d4" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, excepturi, maiores, dolorem quasi reprehenderit illo accusamus nulla minima repudiandae quas ducimus reiciendis odio sequi atque temporibus facere corporis eos expedita? ",
+  "c57215a93662add542baf3690cbde5db" : "Can I use it to build a site for my client?",
+  "c71c85fb79a1e589cfe00a8233e37841" : "a button",
+  "c90c8c53c27cd538b32a2fd0b7e2ac50" : "Well, there are thousands of stock art galleries, but personally, \n\t\t\t\t\tI prefer to use photos from these sites: \n\t\t<a href=\"http://unsplash.com\">Unsplash.com</a> \n\t\t\t\t\tand \n<a href=\"http://www.flickr.com/creativecommons/by-2.0/tags/\">Flickr - Creative Commons</a>",
+  "ca98e91c48e9c483c403abb7af44d036" : "<i class=\"fa fa-smile-o fa-5\"></i>Author's support",
+  "d54164e86d9e4d31e5c683861d3832a2" : "<i class=\"fa fa-dribbble fa-2\"></i>",
+  "f106c3ac1b76182d358f96951c8bb235" : "<i class=\"fa fa-cogs fa-5\"></i>Bootstrap-powered",
+  "f757cef8954558e37499e14b7fcb23d3" : "Reasons to use this template",
+  "fa7d0f3e094ac32ae6947791153a4ff7" : "Eius consequatur nihil quibusdam! Laborum, rerum, quis, inventore ipsa autem repellat provident assumenda labore soluta minima alias temporibus facere distinctio quas adipisci nam sunt explicabo officia tenetur at ea quos doloribus dolorum voluptate reprehenderit architecto sint libero illo et hic."
+ },
+ "title" : ""
 }

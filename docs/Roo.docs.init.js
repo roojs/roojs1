@@ -653,7 +653,7 @@ Roo.docs.init = {
             Roo.docs.augments.hide();
         }
         
-        if (d.implements && d.implements.length) {
+        if (typeof(d.implements) != 'undefined' && d.implements.length) {
             Roo.docs.implements.show();
             Roo.docs.implements.bodyEl.dom.innerHTML = Roo.docs.template.implements(d.implements);
         } else {
@@ -669,8 +669,6 @@ Roo.docs.init = {
         } else {
             Roo.docs.implementors.hide();
         }
-        
-        
         
         
         

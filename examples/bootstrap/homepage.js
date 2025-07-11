@@ -60,6 +60,11 @@ homepage = new Roo.XComponent({
    return {
    xtype : 'Body',
    cls : 'home',
+   listeners : {
+    beforehide : function () {
+         return function;
+     }
+   },
    xns : Roo.bootstrap,
    '|xns' : 'Roo.bootstrap',
    items  : [
