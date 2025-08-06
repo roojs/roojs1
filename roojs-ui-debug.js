@@ -26086,6 +26086,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     cls : '',
     href: '',
     video_url : '',
+    height: '',
     
     // margin: '2%', not used
     
@@ -26391,7 +26392,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 frameborder : 0,
                 allowfullscreen : true,
                 width : 768,  // these are for video tricks - that we replace the outer
-                height: 768,
+                height: 768 / this.width * this.height,
                 src : this.video_url,
                 cn : [
                     img
