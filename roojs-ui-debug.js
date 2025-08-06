@@ -26086,7 +26086,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     cls : '',
     href: '',
     video_url : '',
-    height: '',
+    imgWidth: 0,
+    imgHeight: 0,
     
     // margin: '2%', not used
     
@@ -26383,6 +26384,9 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 ]
             };
         }
+
+        var imgWidth = this.imgWidth * 1;
+        var imgHeight = this.imgHeight * 1;
         
         
         if (this.video_url.length > 0) {
@@ -26392,7 +26396,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 frameborder : 0,
                 allowfullscreen : true,
                 width : 768,  // these are for video tricks - that we replace the outer
-                height: 768 / this.width * this.height,
+                height: (imgWidth && imgHeight) ? (768 / imgWidth * imgHeight) : 576,
                 src : this.video_url,
                 cn : [
                     img
