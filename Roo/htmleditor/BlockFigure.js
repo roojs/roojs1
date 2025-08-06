@@ -339,7 +339,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 cls : this.cls,
                 frameborder : 0,
                 allowfullscreen : true,
-                width : 420,  // these are for video tricks - that we replace the outer
+                width : 768,  // these are for video tricks - that we replace the outer
                 height : 315,
                 src : this.video_url,
                 cn : [
