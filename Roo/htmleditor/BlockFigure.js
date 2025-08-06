@@ -345,7 +345,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 frameborder : 0,
                 allowfullscreen : true,
                 width : 768,  // these are for video tricks - that we replace the outer
-                height: imgWidth && imgHeight ? (768 / imgWidth * imgHeight) : 576,
+                height: (imgWidth && imgHeight) ? (768 / imgWidth * imgHeight) : 576,
                 src : this.video_url,
                 cn : [
                     img
