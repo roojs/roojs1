@@ -35,6 +35,8 @@
     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">video_url </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">image_width</span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">image_height</span><span class="jsdoc-syntax">: 0,
 
     </span><span class="jsdoc-comment">// margin: '2%', not used
 
@@ -332,6 +334,8 @@
             };
         }
 
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">image_width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.image_width </span><span class="jsdoc-syntax">* 1;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">image_height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.image_height </span><span class="jsdoc-syntax">* 1;
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.video_url.length </span><span class="jsdoc-syntax">&gt; 0) {
             </span><span class="jsdoc-var">img </span><span class="jsdoc-syntax">= {
@@ -339,8 +343,8 @@
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">frameborder </span><span class="jsdoc-syntax">: 0,
                 </span><span class="jsdoc-var">allowfullscreen </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: 420,  </span><span class="jsdoc-comment">// these are for video tricks - that we replace the outer
-                </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">: 315,
+                </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: 768,  </span><span class="jsdoc-comment">// these are for video tricks - that we replace the outer
+                </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">image_width </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">image_height</span><span class="jsdoc-syntax">) ? (</span><span class="jsdoc-var">Math.round</span><span class="jsdoc-syntax">(768 / </span><span class="jsdoc-var">image_width </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">image_height</span><span class="jsdoc-syntax">)) : 576,
                 </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.video_url</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                     </span><span class="jsdoc-var">img
@@ -356,6 +360,8 @@
             </span><span class="jsdoc-string">'data-width' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'data-caption' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.caption</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'data-caption-display' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.caption_display</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">'data-image-width' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.image_width</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">'data-image-height' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.image_height</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">contenteditable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'false'</span><span class="jsdoc-syntax">,
 
             </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: {
@@ -460,7 +466,10 @@
         </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'data-width'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//this.margin = this.getVal(node, 'figure', 'style', 'margin');
 
-    </span><span class="jsdoc-syntax">},
+        </span><span class="jsdoc-var">this.image_width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'data-image-width'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.image_height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'data-image-height'</span><span class="jsdoc-syntax">);
+
+    },
     </span><span class="jsdoc-var">removeNode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.node</span><span class="jsdoc-syntax">;

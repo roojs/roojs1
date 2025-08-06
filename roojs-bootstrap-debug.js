@@ -30275,6 +30275,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     cls : '',
     href: '',
     video_url : '',
+    image_width: 0,
+    image_height: 0,
     
     // margin: '2%', not used
     
@@ -30571,7 +30573,9 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 ]
             };
         }
-        
+
+        var image_width = this.image_width * 1;
+        var image_height = this.image_height * 1;
         
         if (this.video_url.length > 0) {
             img = {
@@ -30579,8 +30583,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 cls : this.cls,
                 frameborder : 0,
                 allowfullscreen : true,
-                width : 420,  // these are for video tricks - that we replace the outer
-                height : 315,
+                width : 768,  // these are for video tricks - that we replace the outer
+                height: (image_width && image_height) ? (Math.round(768 / image_width * image_height)) : 576,
                 src : this.video_url,
                 cn : [
                     img
@@ -30596,6 +30600,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             'data-width' : this.width,
             'data-caption' : this.caption, 
             'data-caption-display' : this.caption_display,
+            'data-image-width' : this.image_width,
+            'data-image-height' : this.image_height,
             contenteditable : 'false',
             
             style : {
@@ -30699,6 +30705,9 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, true, 'data-width');
         //this.margin = this.getVal(node, 'figure', 'style', 'margin');
+
+        this.image_width = this.getVal(node, true, 'data-image-width');
+        this.image_height = this.getVal(node, true, 'data-image-height');
         
     },
     removeNode : function()
