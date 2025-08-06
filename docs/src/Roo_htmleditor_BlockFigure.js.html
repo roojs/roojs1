@@ -344,7 +344,7 @@
                 </span><span class="jsdoc-var">frameborder </span><span class="jsdoc-syntax">: 0,
                 </span><span class="jsdoc-var">allowfullscreen </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: 768,  </span><span class="jsdoc-comment">// these are for video tricks - that we replace the outer
-                </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">image_width </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">image_height</span><span class="jsdoc-syntax">) ? (768 / </span><span class="jsdoc-var">image_width </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">image_height</span><span class="jsdoc-syntax">) : 576,
+                </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">image_width </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">image_height</span><span class="jsdoc-syntax">) ? (</span><span class="jsdoc-var">Math.round</span><span class="jsdoc-syntax">(768 / </span><span class="jsdoc-var">image_width </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">image_height</span><span class="jsdoc-syntax">)) : 576,
                 </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.video_url</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                     </span><span class="jsdoc-var">img
