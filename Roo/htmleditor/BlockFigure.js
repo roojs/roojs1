@@ -363,6 +363,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             'data-width' : this.width,
             'data-caption' : this.caption, 
             'data-caption-display' : this.caption_display,
+            'data-image-width' : this.image_width,
+            'data-image-height' : this.image.height,
             contenteditable : 'false',
             
             style : {
