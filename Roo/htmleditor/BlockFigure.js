@@ -338,8 +338,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var image_height = this.image_height * 1;
         
         if (this.video_url.length > 0) {
-            console.log('IMG WIDTHHHHHHHHHHHHHHHH : ' + imgWidth);
-            console.log('IMG HEIGHTTTTTTTTTTTTTTT : ' + imgHeight);
+            console.log('IMG WIDTHHHHHHHHHHHHHHHH : ' + image_width);
+            console.log('IMG HEIGHTTTTTTTTTTTTTTT : ' + image_height);
             console.log(this);
             img = {
                 tag : 'div',
