@@ -77396,6 +77396,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'data-display',
                             'data-caption-display',
                             'data-width',
+                            'data-image-width',
+                            'data-image-height',
                             'data-caption',
                             'start' ,
                             'dir',
