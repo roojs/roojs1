@@ -466,6 +466,9 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, true, 'data-width');
         //this.margin = this.getVal(node, 'figure', 'style', 'margin');
+
+        this.image_width = this.getVal(node, true, 'data-image-width');
+        this.image_height = this.getVal(node, true, 'data-image-height');
         
     },
     removeNode : function()
