@@ -35,8 +35,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     cls : '',
     href: '',
     video_url : '',
-    imgWidth: 0,
-    imgHeight: 0,
+    image_width: 0,
+    image_height: 0,
     
     // margin: '2%', not used
     
