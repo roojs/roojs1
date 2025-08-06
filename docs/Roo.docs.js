@@ -461,10 +461,12 @@ Roo.docs = new Roo.XComponent({
                 click : function (e)
                  {
                      
-                     alert(JSON.stringify(
-                         ["click",  this.el.dom.innerHTML]
-                     ));
+                  
                      if (window.location.protocol == 'doc:') {
+                     // embeded viewer in roobuilder picks up on this
+                        alert(JSON.stringify(
+                             ["click",  this.el.dom.innerHTML]
+                         ));
                         return;
                      }
                      if (this.el.dom.innerHTML.length > 0) {
