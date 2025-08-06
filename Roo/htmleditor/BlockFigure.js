@@ -334,8 +334,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             };
         }
 
-        var imgWidth = this.imgWidth * 1;
-        var imgHeight = this.imgHeight * 1;
+        var image_width = this.image_width * 1;
+        var image_height = this.image_height * 1;
         
         if (this.video_url.length > 0) {
             console.log('IMG WIDTHHHHHHHHHHHHHHHH : ' + imgWidth);
@@ -347,7 +347,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 frameborder : 0,
                 allowfullscreen : true,
                 width : 768,  // these are for video tricks - that we replace the outer
-                height: (imgWidth && imgHeight) ? (768 / imgWidth * imgHeight) : 576,
+                height: (image_width && image_height) ? (768 / image_width * image_height) : 576,
                 src : this.video_url,
                 cn : [
                     img
