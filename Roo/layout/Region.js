@@ -90,6 +90,36 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
     applyConfig : function(c){
         if(c.tickable) {
             c.collapsible = false;
+
+            if(c.titlebar !== false && ['north', 'south'].includes(this.position)){
+                this.collapseBtn = this.createTool(this.tools.dom, "x-layout-collapse-"+this.position);
+                this.collapseBtn.on("click", this.collapse, this);
+                this.collapseBtn.enableDisplayMode();
+
+                if(c.showPin === true || this.showPin){
+                    this.stickBtn = this.createTool(this.tools.dom, "x-layout-stick");
+                    this.stickBtn.enableDisplayMode();
+                    this.stickBtn.on("click", this.expand, this);
+                    this.stickBtn.hide();
+                }
+
+                this.slideInBtn = this.createTool(this.tools.dom, "x-layout-slide-in-"+this.position);
+                this.slideInBtn.on("click", this.slideIn, this);
+                this.slideInBtn.enableDisplayMode();
+                this.slideInBtn.hide();
+
+                // put buttons on top left for east region
+                if(this.position == 'east') {
+                    this.tools.setStyle('right', 'initial');
+                    this.closeBtn.setStyle('float', 'left');
+                    this.collapseBtn.setStyle('float', 'left');
+                    if(this.stickBtn) {
+                        this.stickBtn.setStyle('float', 'left');
+                    }
+                    this.slideInBtn.setStyle('float', 'left');
+                    this.titleTextEl.style['marginLeft'] = '15px';
+                }
+            }
         }
         if(c.collapsible && this.position != "center" && !this.collapsedEl){
             var dh = Roo.DomHelper;
