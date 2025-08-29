@@ -13,6 +13,7 @@
  * @class Roo.layout.Region
  * @extends Roo.layout.BasicRegion
  * This class represents a region in a layout manager.
+ * @cfg {Boolean}   shouldShowCheckbox True to show checkbox near title. Tick to expand and untick to collapse (only for north and south region) (defaults to false)
  * @cfg {Boolean}   collapsible     False to disable collapsing (defaults to true)
  * @cfg {Boolean}   collapsed       True to set the initial display to collapsed (defaults to false)
  * @cfg {Boolean}   floatable       False to disable floating (defaults to true)
@@ -68,6 +69,7 @@
     </span><span class="jsdoc-var">this.createBody</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.visible </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.collapsed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.shouldShowCheckbox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.hideWhenEmpty</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
@@ -87,6 +89,8 @@
 
     </span><span class="jsdoc-var">applyConfig </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.collapsible </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;center&quot; </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.collapsedEl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">showCheckbox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.shouldShowCheckbox </span><span class="jsdoc-syntax">&amp;&amp; [</span><span class="jsdoc-string">'north'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'south'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.includes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">);
+
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.titlebar </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.collapseBtn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createTool</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tools.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;x-layout-collapse-&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">);
@@ -106,7 +110,8 @@
                 </span><span class="jsdoc-var">this.slideInBtn.hide</span><span class="jsdoc-syntax">();
 
                 </span><span class="jsdoc-comment">// put buttons on top left for east region
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'east'</span><span class="jsdoc-syntax">) {
+                // put checkobx on top left
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'east' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">showCheckbox</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">this.tools.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'initial'</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">this.closeBtn.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'float'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">this.collapseBtn.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'float'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">);
@@ -122,9 +127,17 @@
             </span><span class="jsdoc-var">this.collapsedEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dh.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mgr.el.dom</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-layout-collapsed x-layout-collapsed-&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">children</span><span class="jsdoc-syntax">:[
                 {</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-layout-collapsed-tools&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">children</span><span class="jsdoc-syntax">:[{</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-layout-ctools-inner&quot;</span><span class="jsdoc-syntax">}]}
             ]}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.floatable </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.floatable </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">showCheckbox</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-comment">// click collapsed elemnt to slide in / out
                </span><span class="jsdoc-var">this.collapsedEl.addClassOnOver</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-layout-collapsed-over&quot;</span><span class="jsdoc-syntax">);
                </span><span class="jsdoc-var">this.collapsedEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.collapseClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">showCheckbox</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">// click collapsed element to expand
+                </span><span class="jsdoc-var">this.collapsedEl.addClassOnOver</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-layout-collapsed-over&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.collapsedEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.expand</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             }
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.collapsedTitle </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;north&quot; </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;south&quot;</span><span class="jsdoc-syntax">)) {
