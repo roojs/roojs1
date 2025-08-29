@@ -93,18 +93,13 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
 
             if(c.titlebar !== false){
                 this.tickBtn = this.createTool(this.tools.dom, "x-layout-tick-"+this.position);
-                this.collapseBtn.on("click", this.collapse, this);
-                this.collapseBtn.enableDisplayMode();
+                this.tickBtn.on("click", this.collapse, this);
+                this.tickBtn.enableDisplayMode();
 
                 // put buttons on top left
                 if(this.position == 'east') {
                     this.tools.setStyle('right', 'initial');
-                    this.closeBtn.setStyle('float', 'left');
-                    this.collapseBtn.setStyle('float', 'left');
-                    if(this.stickBtn) {
-                        this.stickBtn.setStyle('float', 'left');
-                    }
-                    this.slideInBtn.setStyle('float', 'left');
+                    this.tickBtn.setStyle('float', 'left');
                     this.titleTextEl.style['marginLeft'] = '15px';
                 }
             }
