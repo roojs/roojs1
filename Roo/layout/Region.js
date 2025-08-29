@@ -92,7 +92,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
             c.collapsible = false;
 
             if(c.titlebar !== false){
-                this.collapseBtn = this.createTool(this.tools.dom, "x-layout-collapse-"+this.position);
+                this.tickBtn = this.createTool(this.tools.dom, "x-layout-tick-"+this.position);
                 this.collapseBtn.on("click", this.collapse, this);
                 this.collapseBtn.enableDisplayMode();
 
