@@ -115,7 +115,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
              this.expandBtn = this.createTool(this.collapsedEl.dom.firstChild.firstChild, "x-layout-expand-"+this.position);
              this.expandBtn.on("click", this.expand, this);
              this.expandBtn.setStyle('float', 'left');
-             this.titleTextEl.style['marginLeft'] = '15px';
+             this.collapsedTitleTextEl.style['marginLeft'] = '15px';
         }
         if(c.collapsible && this.position != "center" && !this.collapsedEl){
             var dh = Roo.DomHelper;
