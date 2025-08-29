@@ -96,19 +96,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                 this.collapseBtn.on("click", this.collapse, this);
                 this.collapseBtn.enableDisplayMode();
 
-                if(c.showPin === true || this.showPin){
-                    this.stickBtn = this.createTool(this.tools.dom, "x-layout-stick");
-                    this.stickBtn.enableDisplayMode();
-                    this.stickBtn.on("click", this.expand, this);
-                    this.stickBtn.hide();
-                }
-
-                this.slideInBtn = this.createTool(this.tools.dom, "x-layout-slide-in-"+this.position);
-                this.slideInBtn.on("click", this.slideIn, this);
-                this.slideInBtn.enableDisplayMode();
-                this.slideInBtn.hide();
-
-                // put buttons on top left for east region
+                // put buttons on top left
                 if(this.position == 'east') {
                     this.tools.setStyle('right', 'initial');
                     this.closeBtn.setStyle('float', 'left');
