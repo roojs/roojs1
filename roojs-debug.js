@@ -86817,6 +86817,7 @@ Roo.extend(Roo.layout.BasicRegion, Roo.util.Observable, {
  * @class Roo.layout.Region
  * @extends Roo.layout.BasicRegion
  * This class represents a region in a layout manager.
+ * @cfg {Boolean}   tickable        True to show tickbox near title. Tick to expand and untick to collapse (only for north and south region) (defaults to false)
  * @cfg {Boolean}   collapsible     False to disable collapsing (defaults to true)
  * @cfg {Boolean}   collapsed       True to set the initial display to collapsed (defaults to false)
  * @cfg {Boolean}   floatable       False to disable floating (defaults to true)
@@ -86872,6 +86873,7 @@ Roo.layout.Region = function(mgr, config, pos){
     this.createBody(config);
     this.visible = true;
     this.collapsed = false;
+    this.tickable = false;
 
     if(config.hideWhenEmpty){
         this.hide();
@@ -86890,6 +86892,9 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
     },
 
     applyConfig : function(c){
+        if(c.tickable) {
+            c.collapsible = false;
+        }
         if(c.collapsible && this.position != "center" && !this.collapsedEl){
             var dh = Roo.DomHelper;
             if(c.titlebar !== false){
