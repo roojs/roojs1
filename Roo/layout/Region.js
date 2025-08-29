@@ -111,7 +111,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                 this.collapsedTitleTextEl = dh.append(this.collapsedEl.dom, {tag: "div", cls: "x-unselectable x-layout-panel-hd-text",
                    id: "message", unselectable: "on", style:{"float":"left"}});
                this.collapsedTitleTextEl.innerHTML = c.collapsedTitle;
-               this.collapsedTitleTextEl.style['marginLeft'] = '15px';
+            //    this.collapsedTitleTextEl.style['marginLeft'] = '15px';
              }
              this.expandBtn = this.createTool(this.collapsedEl.dom.firstChild.firstChild, "x-layout-expand-"+this.position);
              this.expandBtn.on("click", this.expand, this);
