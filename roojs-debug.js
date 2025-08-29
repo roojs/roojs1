@@ -86910,6 +86910,12 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
             this.collapsedEl = dh.append(this.mgr.el.dom, {cls: "x-layout-collapsed x-layout-collapsed-"+this.position, children:[
                 {cls: "x-layout-collapsed-tools", children:[{cls: "x-layout-ctools-inner"}]}
             ]}, true);
+
+            if(c.collapsedTitle && (this.position == "north" || this.position== "south")) {
+                this.collapsedTitleTextEl = dh.append(this.collapsedEl.dom, {tag: "div", cls: "x-unselectable x-layout-panel-hd-text",
+                   id: "message", unselectable: "on", style:{"float":"left"}});
+               this.collapsedTitleTextEl.innerHTML = c.collapsedTitle;
+             }
         }
         if(c.collapsible && this.position != "center" && !this.collapsedEl){
             var dh = Roo.DomHelper;
