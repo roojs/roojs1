@@ -69,6 +69,7 @@ Roo.layout.Region = function(mgr, config, pos){
     this.createBody(config);
     this.visible = true;
     this.collapsed = false;
+    this.tickable = false;
 
     if(config.hideWhenEmpty){
         this.hide();
