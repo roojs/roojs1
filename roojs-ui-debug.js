@@ -37711,7 +37711,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
             c.collapsible = false;
 
             if(c.titlebar !== false){
-                this.tickBtn = this.createTool(this.tools.dom, "x-layout-tick-"+this.position);
+                this.tickBtn = this.createTool(this.tools.dom, "x-layout-collapse-"+this.position);
                 this.tickBtn.on("click", this.collapse, this);
                 this.tickBtn.enableDisplayMode();
 
@@ -37730,6 +37730,8 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                    id: "message", unselectable: "on", style:{"float":"left"}});
                this.collapsedTitleTextEl.innerHTML = c.collapsedTitle;
              }
+             this.expandBtn = this.createTool(this.collapsedEl.dom.firstChild.firstChild, "x-layout-expand-"+this.position);
+             this.expandBtn.on("click", this.expand, this);
         }
         if(c.collapsible && this.position != "center" && !this.collapsedEl){
             var dh = Roo.DomHelper;
