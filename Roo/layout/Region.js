@@ -13,6 +13,7 @@
  * @class Roo.layout.Region
  * @extends Roo.layout.BasicRegion
  * This class represents a region in a layout manager.
+ * @cfg {Boolean}   tickable        True to show tickbox near title. Tick to expand and untick to collapse (defaults to false)
  * @cfg {Boolean}   collapsible     False to disable collapsing (defaults to true)
  * @cfg {Boolean}   collapsed       True to set the initial display to collapsed (defaults to false)
  * @cfg {Boolean}   floatable       False to disable floating (defaults to true)
