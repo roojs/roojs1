@@ -37715,11 +37715,9 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                 this.tickBtn.enableDisplayMode();
 
                 // put buttons on top left
-                if(this.position == 'east') {
-                    this.tools.setStyle('right', 'initial');
-                    this.tickBtn.setStyle('float', 'left');
-                    this.titleTextEl.style['marginLeft'] = '15px';
-                }
+                this.tools.setStyle('right', 'initial');
+                this.tickBtn.setStyle('float', 'left');
+                this.titleTextEl.style['marginLeft'] = '15px';
             }
         }
         if(c.collapsible && this.position != "center" && !this.collapsedEl){
