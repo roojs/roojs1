@@ -86897,13 +86897,13 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
             c.collapsible = false;
 
             if(c.titlebar !== false){
-                this.tickBtn = this.createTool(this.tools.dom, "x-layout-collapse-"+this.position);
-                this.tickBtn.on("click", this.collapse, this);
-                this.tickBtn.enableDisplayMode();
+                this.collapseBtn = this.createTool(this.tools.dom, "x-layout-collapse-"+this.position);
+                this.collapseBtn.on("click", this.collapse, this);
+                this.collapseBtn.enableDisplayMode();
 
                 // put buttons on top left
                 this.tools.setStyle('right', 'initial');
-                this.tickBtn.setStyle('float', 'left');
+                this.collapseBtn.setStyle('float', 'left');
                 this.titleTextEl.style['marginLeft'] = '15px';
             }
 
@@ -86918,6 +86918,8 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
              }
              this.expandBtn = this.createTool(this.collapsedEl.dom.firstChild.firstChild, "x-layout-expand-"+this.position);
              this.expandBtn.on("click", this.expand, this);
+             this.expandBtn.setStyle('float', 'left');
+             this.collapsedTitleTextEl.style['marginLeft'] = '15px';
         }
         if(c.collapsible && this.position != "center" && !this.collapsedEl){
             var dh = Roo.DomHelper;
