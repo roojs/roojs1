@@ -89,6 +89,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
 
     applyConfig : function(c){
         if(c.tickable && ['north', 'south'].includes(this.position)) {
+            var dh = Roo.DomHelper;
             c.collapsible = false;
 
             if(c.titlebar !== false){
