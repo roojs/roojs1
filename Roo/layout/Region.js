@@ -88,6 +88,9 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
     },
 
     applyConfig : function(c){
+        if(c.tickable) {
+            c.collapsible = false;
+        }
         if(c.collapsible && this.position != "center" && !this.collapsedEl){
             var dh = Roo.DomHelper;
             if(c.titlebar !== false){
