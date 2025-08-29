@@ -37706,8 +37706,21 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
     },
 
     applyConfig : function(c){
-        if(c.tickable) {
+        if(c.tickable && ['north', 'south'].includes(this.position)) {
             c.collapsible = false;
+
+            if(c.titlebar !== false){
+                this.tickBtn = this.createTool(this.tools.dom, "x-layout-tick-"+this.position);
+                this.tickBtn.on("click", this.collapse, this);
+                this.tickBtn.enableDisplayMode();
+
+                // put buttons on top left
+                if(this.position == 'east') {
+                    this.tools.setStyle('right', 'initial');
+                    this.tickBtn.setStyle('float', 'left');
+                    this.titleTextEl.style['marginLeft'] = '15px';
+                }
+            }
         }
         if(c.collapsible && this.position != "center" && !this.collapsedEl){
             var dh = Roo.DomHelper;
