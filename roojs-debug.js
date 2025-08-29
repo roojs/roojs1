@@ -86905,6 +86905,10 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                 this.tickBtn.setStyle('float', 'left');
                 this.titleTextEl.style['marginLeft'] = '15px';
             }
+
+            this.collapsedEl = dh.append(this.mgr.el.dom, {cls: "x-layout-collapsed x-layout-collapsed-"+this.position, children:[
+                {cls: "x-layout-collapsed-tools", children:[{cls: "x-layout-ctools-inner"}]}
+            ]}, true);
         }
         if(c.collapsible && this.position != "center" && !this.collapsedEl){
             var dh = Roo.DomHelper;
