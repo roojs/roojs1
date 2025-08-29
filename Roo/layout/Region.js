@@ -88,10 +88,10 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
     },
 
     applyConfig : function(c){
-        if(c.tickable) {
+        if(c.tickable && ['north', 'south'].includes(this.position)) {
             c.collapsible = false;
 
-            if(c.titlebar !== false && ['north', 'south'].includes(this.position)){
+            if(c.titlebar !== false){
                 this.collapseBtn = this.createTool(this.tools.dom, "x-layout-collapse-"+this.position);
                 this.collapseBtn.on("click", this.collapse, this);
                 this.collapseBtn.enableDisplayMode();
