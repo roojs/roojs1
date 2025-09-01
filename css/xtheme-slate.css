@@ -8,12 +8,17 @@
 .x-dlg .x-dlg-close,
 .x-dlg-collapsed .x-dlg-collapse,
 .x-layout-tools-button,
-.x-layout-collapse-west, .x-layout-expand-east 
+.x-layout-collapse-west, .x-layout-expand-east,
+.x-layout-collapse-north,.x-layout-expand-south,
+.x-layout-expand-north,.x-layout-collapse-south
 {
     background-image:url("../images/slate/panel/tool-sprites.gif");
 }
 
 
+.x-layout-collapse-west, .x-layout-expand-east {
+    background-position: 0 -180px;
+}
 .x-layout-collapse-west, .x-layout-expand-east {
     background-position: 0 -180px;
 }
