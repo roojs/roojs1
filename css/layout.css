@@ -149,6 +149,9 @@
     background-repeat: no-repeat;
     background-position: 50% -36px;
 }
+.x-layout-tools-button > .x-layout-expand-north,.x-layout-tools-button > .x-layout-collapse-south {
+    background-position: 0 -210px;
+}
 .x-layout-split-h{
     background-image:url(../images/default/sizer/e-handle.gif);
     background-position: left;
