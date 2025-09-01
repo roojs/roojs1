@@ -151,10 +151,6 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                 tag: "div",
                 class: "x-layout-tools-checkbox"
             }, true);
-            var btn = Roo.DomHelper.append(parentEl, {tag: "div", cls: "x-layout-tools-button",
-                children: [{tag: "div", cls: "x-layout-tools-button-inner " + className, html: "&#160;"}]}, true);
-            btn.addClassOnOver("x-layout-tools-button-over");
-            return btn;
             this.expandBtn.on("click", this.expand, this);
 
             if(showCheckbox) {
