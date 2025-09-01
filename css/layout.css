@@ -93,6 +93,7 @@
 }
 .x-layout-checkbox{
     float:left;
+    cursor:pointer;
 }
 .x-layout-tools-button{
     z-index:6;
