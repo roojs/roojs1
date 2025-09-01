@@ -37765,6 +37765,10 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
              }
             this.expandBtn = this.createTool(this.collapsedEl.dom.firstChild.firstChild, "x-layout-expand-"+this.position);
             this.expandBtn.on("click", this.expand, this);
+
+            if(showCheckbox) {
+                this.expandBtn.setStyle('float', 'left');
+            }
         }
         if(this.collapseBtn){
             this.collapseBtn.setVisible(c.collapsible == true);
