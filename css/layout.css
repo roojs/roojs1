@@ -95,6 +95,8 @@
     float:left;
     cursor:pointer;
     margin:2px;
+    width:16px;
+    height:16px;
     background-image: url(../../roojs1/images/default/menu/chk-sprite.gif);
     background-repeat: no-repeat;
     background-position: 0 0;
