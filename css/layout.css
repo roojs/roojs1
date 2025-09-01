@@ -100,12 +100,7 @@
     background-position: 0 0;
 }
 .x-layout-checkbox .x-layout-checked{
-    float:left;
-    cursor:pointer;
-    margin:2px;
-    background-image: url(../../roojs1/images/default/menu/chk-sprite.gif);
-    background-repeat: no-repeat;
-    background-position: 0 0;
+    background-position: 0 -16px;
 }
 .x-layout-tools-button{
     z-index:6;

@@ -37711,7 +37711,10 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
 
             var dh = Roo.DomHelper;
             if(c.titlebar !== false){
-                this.collapseBtn = this.createTool(this.tools.dom, showCheckbox ? "x-grid-check-icon-checked" : "x-layout-collapse-"+this.position);
+                this.collapseBtn = showCheckbox ? Roo.DomHelper.append(this.collapsedEl.dom.firstChild.firstChild, {
+                    tag: "div",
+                    class: "x-layout-tools-checkbox x-layout-checked"
+                }, true) : this.createTool(this.tools.dom, "x-layout-collapse-"+this.position);
                 this.collapseBtn.on("click", this.collapse, this);
                 this.collapseBtn.enableDisplayMode();
 
@@ -37728,8 +37731,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                 this.slideInBtn.hide();
 
                 // put buttons on top left for east region
-                // put checkobx on top left
-                if(this.position == 'east' || showCheckbox) {
+                if(this.position == 'east') {
                     this.tools.setStyle('right', 'initial');
                     this.closeBtn.setStyle('float', 'left');
                     this.collapseBtn.setStyle('float', 'left');
@@ -37764,13 +37766,11 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                this.collapsedTitleTextEl.innerHTML = c.collapsedTitle;
              }
 
-            var expandBtnCls = showCheckbox ? "x-grid-check-icon" :  "x-layout-expand-"+this.position;
-            this.expandBtn = this.createTool(this.collapsedEl.dom.firstChild.firstChild, expandBtnCls);
+            this.expandBtn = showCheckbox ? Roo.DomHelper.append(this.collapsedEl.dom.firstChild.firstChild, {
+                tag: "div",
+                class: "x-layout-tools-checkbox"
+            }, true) : this.createTool(this.collapsedEl.dom.firstChild.firstChild, "x-layout-expand-"+this.position);
             this.expandBtn.on("click", this.expand, this);
-
-            if(showCheckbox) {
-                this.expandBtn.setStyle('float', 'left');
-            }
         }
         if(this.collapseBtn){
             this.collapseBtn.setVisible(c.collapsible == true);
