@@ -115,6 +115,12 @@
     background-repeat: no-repeat;
     background-position: 50% -48px;
 }
+.x-layout-check{
+
+}
+.x-layout-checked{
+
+}
 .x-layout-collapse-west,.x-layout-expand-east{
     background-image:url(../images/default/layout/layout-sprite.gif);
     background-repeat: no-repeat;
