@@ -86917,7 +86917,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                 this.slideInBtn.hide();
 
                 // put buttons on top left for east region
-                if(this.position == 'east') {
+                if(this.position == 'east' || showCheckbox) {
                     this.tools.setStyle('right', 'initial');
                     this.closeBtn.setStyle('float', 'left');
                     this.collapseBtn.setStyle('float', 'left');
