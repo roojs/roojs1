@@ -93,7 +93,10 @@
 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.titlebar </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">this.collapseBtn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createTool</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tools.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;x-layout-collapse-&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.collapseBtn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">showCheckbox </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tools.dom</span><span class="jsdoc-syntax">, {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">class</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-layout-tools-checkbox x-layout-checked&quot;
+                </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">this.createTool</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tools.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;x-layout-collapse-&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">this.collapseBtn.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">this.collapseBtn.enableDisplayMode</span><span class="jsdoc-syntax">();
 
@@ -110,7 +113,6 @@
                 </span><span class="jsdoc-var">this.slideInBtn.hide</span><span class="jsdoc-syntax">();
 
                 </span><span class="jsdoc-comment">// put buttons on top left for east region
-                // put checkobx on top left
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'east' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">showCheckbox</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">this.tools.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'initial'</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">this.closeBtn.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'float'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">);
@@ -119,7 +121,7 @@
                         </span><span class="jsdoc-var">this.stickBtn.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'float'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">);
                     }
                     </span><span class="jsdoc-var">this.slideInBtn.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'float'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-var">this.titleTextEl.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'marginLeft'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'15px'</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">this.titleTextEl.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'marginLeft'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">showCheckbox </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'20px' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'15px'</span><span class="jsdoc-syntax">;
                 }
             }
             </span><span class="jsdoc-comment">/** This region's collapsed element
@@ -145,7 +147,11 @@
                    </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;message&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">unselectable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;on&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-string">&quot;float&quot;</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;left&quot;</span><span class="jsdoc-syntax">}});
                </span><span class="jsdoc-var">this.collapsedTitleTextEl.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.collapsedTitle</span><span class="jsdoc-syntax">;
              }
-            </span><span class="jsdoc-var">this.expandBtn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createTool</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapsedEl.dom.firstChild.firstChild</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;x-layout-expand-&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-var">this.expandBtn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">showCheckbox </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapsedEl.dom.firstChild.firstChild</span><span class="jsdoc-syntax">, {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">class</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-layout-tools-checkbox&quot;
+            </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">this.createTool</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapsedEl.dom.firstChild.firstChild</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;x-layout-expand-&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.expandBtn.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.expand</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapseBtn</span><span class="jsdoc-syntax">){
