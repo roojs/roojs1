@@ -86925,7 +86925,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                         this.stickBtn.setStyle('float', 'left');
                     }
                     this.slideInBtn.setStyle('float', 'left');
-                    this.titleTextEl.style['marginLeft'] = '15px';
+                    this.titleTextEl.style['marginLeft'] = showCheckbox ? '20px' : '15px';
                 }
             }
             /** This region's collapsed element
