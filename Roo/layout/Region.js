@@ -93,7 +93,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
 
             var dh = Roo.DomHelper;
             if(c.titlebar !== false){
-                this.collapseBtn = this.createTool(this.tools.dom, showCheckbox ? "x-layout-check" : "x-layout-collapse-"+this.position);
+                this.collapseBtn = this.createTool(this.tools.dom, showCheckbox ? "x-layout-checked" : "x-layout-collapse-"+this.position);
                 this.collapseBtn.on("click", this.collapse, this);
                 this.collapseBtn.enableDisplayMode();
 
@@ -146,7 +146,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                this.collapsedTitleTextEl.innerHTML = c.collapsedTitle;
              }
 
-            var expandBtnCls = showCheckbox ? "x-layout-check-icon" :  "x-layout-expand-"+this.position;
+            var expandBtnCls = showCheckbox ? "x-layout-check" :  "x-layout-expand-"+this.position;
             this.expandBtn = this.createTool(this.collapsedEl.dom.firstChild.firstChild, expandBtnCls);
             this.expandBtn.on("click", this.expand, this);
 
