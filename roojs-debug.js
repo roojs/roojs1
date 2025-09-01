@@ -86897,7 +86897,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
 
             var dh = Roo.DomHelper;
             if(c.titlebar !== false){
-                this.collapseBtn = showCheckbox ? Roo.DomHelper.append(this.collapsedEl.dom.firstChild.firstChild, {
+                this.collapseBtn = showCheckbox ? Roo.DomHelper.append(this.tools.dom, {
                     tag: "div",
                     class: "x-layout-tools-checkbox x-layout-checked"
                 }, true) : this.createTool(this.tools.dom, "x-layout-collapse-"+this.position);
