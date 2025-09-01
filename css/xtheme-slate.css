@@ -27,6 +27,16 @@
     background-position: -15px -180px;
 }
 
+.x-layout-expand-west,.x-layout-collapse-east {
+    background-position: 0 -165px;
+}
+.x-layout-collapse-north,.x-layout-expand-south {
+    background-position: 0 -180px;
+}
+.x-layout-collapse-west, .x-layout-expand-east {
+    background-position: 0 -180px;
+}
+
 
 
 .x-panel {
