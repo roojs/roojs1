@@ -94,6 +94,7 @@
 .x-layout-checkbox{
     float:left;
     cursor:pointer;
+    margin:2px;
 }
 .x-layout-tools-button{
     z-index:6;
