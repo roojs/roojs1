@@ -9,6 +9,7 @@
 .x-dlg-collapsed .x-dlg-collapse,
 .x-layout-tools-button,
 .x-layout-collapse-west, .x-layout-expand-east,
+.x-layout-expand-west,.x-layout-collapse-east,
 .x-layout-collapse-north,.x-layout-expand-south,
 .x-layout-expand-north,.x-layout-collapse-south
 {
