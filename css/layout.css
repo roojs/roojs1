@@ -101,7 +101,7 @@
     background-repeat: no-repeat;
     background-position: 0 0;
 }
-.x-layout-tools-checkbox .x-layout-checked{
+.x-layout-tools-checkbox.x-layout-checked{
     background-position: 0 -16px;
 }
 .x-layout-tools-button{
