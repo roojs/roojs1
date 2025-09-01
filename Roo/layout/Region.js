@@ -146,7 +146,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                this.collapsedTitleTextEl.innerHTML = c.collapsedTitle;
              }
 
-            var expandBtnCls = showCheckbox ? "x-grid-check-icon" :  "x-layout-expand-"+this.position;
+            var expandBtnCls = showCheckbox ? "x-layout-check-icon" :  "x-layout-expand-"+this.position;
             this.expandBtn = this.createTool(this.collapsedEl.dom.firstChild.firstChild, expandBtnCls);
             this.expandBtn.on("click", this.expand, this);
 
