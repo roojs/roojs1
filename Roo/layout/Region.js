@@ -146,11 +146,10 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                this.collapsedTitleTextEl.innerHTML = c.collapsedTitle;
              }
 
-            this.expandBtn = this.createTool(this.collapsedEl.dom.firstChild.firstChild, "x-layout-expand-"+this.position);
-            this.expandBtn = Roo.DomHelper.append(this.collapsedEl.dom.firstChild.firstChild, {
+            this.expandBtn = showCheckbox ? Roo.DomHelper.append(this.collapsedEl.dom.firstChild.firstChild, {
                 tag: "div",
                 class: "x-layout-tools-checkbox"
-            }, true);
+            }, true) : this.createTool(this.collapsedEl.dom.firstChild.firstChild, "x-layout-expand-"+this.position);
             this.expandBtn.on("click", this.expand, this);
 
             if(showCheckbox) {
