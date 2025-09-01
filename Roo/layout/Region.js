@@ -93,7 +93,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
 
             var dh = Roo.DomHelper;
             if(c.titlebar !== false){
-                this.collapseBtn = this.createTool(this.tools.dom, showCheckbox ? "x-layout-checked" : "x-layout-collapse-"+this.position);
+                this.collapseBtn = this.createTool(this.tools.dom, "x-layout-collapse-"+this.position);
                 this.collapseBtn.on("click", this.collapse, this);
                 this.collapseBtn.enableDisplayMode();
 
@@ -146,8 +146,15 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                this.collapsedTitleTextEl.innerHTML = c.collapsedTitle;
              }
 
-            var expandBtnCls = showCheckbox ? "x-layout-check" :  "x-layout-expand-"+this.position;
-            this.expandBtn = this.createTool(this.collapsedEl.dom.firstChild.firstChild, expandBtnCls);
+            this.expandBtn = this.createTool(this.collapsedEl.dom.firstChild.firstChild, "x-layout-expand-"+this.position);
+            this.expandBtn = Roo.DomHelper.append(this.collapsedEl.dom.firstChild.firstChild, {
+                tag: "div",
+                class: "x-layout-tools-checkbox"
+            }, true);
+            var btn = Roo.DomHelper.append(parentEl, {tag: "div", cls: "x-layout-tools-button",
+                children: [{tag: "div", cls: "x-layout-tools-button-inner " + className, html: "&#160;"}]}, true);
+            btn.addClassOnOver("x-layout-tools-button-over");
+            return btn;
             this.expandBtn.on("click", this.expand, this);
 
             if(showCheckbox) {
