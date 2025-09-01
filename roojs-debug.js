@@ -86897,7 +86897,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
 
             var dh = Roo.DomHelper;
             if(c.titlebar !== false){
-                this.collapseBtn = this.createTool(this.tools.dom, "x-layout-collapse-"+this.position);
+                this.collapseBtn = this.createTool(this.tools.dom, showCheckbox ? "x-grid-check-icon-checked" : "x-layout-collapse-"+this.position);
                 this.collapseBtn.on("click", this.collapse, this);
                 this.collapseBtn.enableDisplayMode();
 
@@ -86949,7 +86949,9 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                    id: "message", unselectable: "on", style:{"float":"left"}});
                this.collapsedTitleTextEl.innerHTML = c.collapsedTitle;
              }
-            this.expandBtn = this.createTool(this.collapsedEl.dom.firstChild.firstChild, "x-layout-expand-"+this.position);
+
+            var expandBtnCls = showCheckbox ? "x-grid-check-icon" :  "x-layout-expand-"+this.position;
+            this.expandBtn = this.createTool(this.collapsedEl.dom.firstChild.firstChild, expandBtnCls);
             this.expandBtn.on("click", this.expand, this);
 
             if(showCheckbox) {
