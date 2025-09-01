@@ -33,7 +33,7 @@
 .x-layout-collapse-north,.x-layout-expand-south {
     background-position: 0 -210px;
 }
-.x-layout-collapse-west, .x-layout-expand-east {
+.x-layout-expand-north,.x-layout-collapse-south {
     background-position: 0 -195px;
 }
 
