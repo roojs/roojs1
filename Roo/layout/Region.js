@@ -93,7 +93,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
 
             var dh = Roo.DomHelper;
             if(c.titlebar !== false){
-                this.collapseBtn = this.createTool(this.tools.dom, showCheckbox ? "x-layout-check-icon-checked" : "x-layout-collapse-"+this.position);
+                this.collapseBtn = this.createTool(this.tools.dom, showCheckbox ? "x-layout-check" : "x-layout-collapse-"+this.position);
                 this.collapseBtn.on("click", this.collapse, this);
                 this.collapseBtn.enableDisplayMode();
 
