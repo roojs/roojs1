@@ -144,6 +144,9 @@
     background-repeat: no-repeat;
     background-position: 50% -24px;
 }
+.x-layout-tools-button > .x-layout-expand-north,.x-layout-tools-button > .x-layout-collapse-south {
+    background-position: 0 -195px;
+}
 .x-layout-expand-north,.x-layout-collapse-south{
     background-image:url(../images/default/layout/layout-sprite.gif);
     background-repeat: no-repeat;
