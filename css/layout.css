@@ -91,6 +91,20 @@
     padding-top:2px;
     padding-right:2px;width:40px;
 }
+.x-layout-tools-checkbox{
+    float:left;
+    cursor:pointer;
+    margin:2px;
+    width:16px;
+    height:16px;
+    background-image: url(../../roojs1/images/default/menu/chk-sprite.gif);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+.x-layout-tools-checkbox.x-layout-checked{
+    margin-top: 1px;
+    background-position: 0 -16px;
+}
 .x-layout-tools-button{
     z-index:6;
     padding:2px;

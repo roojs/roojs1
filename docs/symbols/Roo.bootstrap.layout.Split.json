@@ -172,6 +172,14 @@
       "optvals" : []
     },
     {
+      "name" : "shouldShowCheckbox",
+      "type" : "Boolean",
+      "desc" : "True to show checkbox near title. Tick to expand and untick to collapse (only for north and south region) (defaults to false)",
+      "memberOf" : "Roo.layout.Region",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "floatable",
       "type" : "Boolean",
       "desc" : "False to disable floating (defaults to true)",

@@ -86817,6 +86817,7 @@ Roo.extend(Roo.layout.BasicRegion, Roo.util.Observable, {
  * @class Roo.layout.Region
  * @extends Roo.layout.BasicRegion
  * This class represents a region in a layout manager.
+ * @cfg {Boolean}   shouldShowCheckbox True to show checkbox near title. Tick to expand and untick to collapse (only for north and south region) (defaults to false)
  * @cfg {Boolean}   collapsible     False to disable collapsing (defaults to true)
  * @cfg {Boolean}   collapsed       True to set the initial display to collapsed (defaults to false)
  * @cfg {Boolean}   floatable       False to disable floating (defaults to true)
@@ -86872,6 +86873,7 @@ Roo.layout.Region = function(mgr, config, pos){
     this.createBody(config);
     this.visible = true;
     this.collapsed = false;
+    this.shouldShowCheckbox = false;
 
     if(config.hideWhenEmpty){
         this.hide();
@@ -86891,9 +86893,14 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
 
     applyConfig : function(c){
         if(c.collapsible && this.position != "center" && !this.collapsedEl){
+            var showCheckbox = c.shouldShowCheckbox && ['north', 'south'].includes(this.position);
+
             var dh = Roo.DomHelper;
             if(c.titlebar !== false){
-                this.collapseBtn = this.createTool(this.tools.dom, "x-layout-collapse-"+this.position);
+                this.collapseBtn = showCheckbox ? Roo.DomHelper.append(this.tools.dom, {
+                    tag: "div",
+                    class: "x-layout-tools-checkbox x-layout-checked"
+                }, true) : this.createTool(this.tools.dom, "x-layout-collapse-"+this.position);
                 this.collapseBtn.on("click", this.collapse, this);
                 this.collapseBtn.enableDisplayMode();
 
@@ -86910,7 +86917,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                 this.slideInBtn.hide();
 
                 // put buttons on top left for east region
-                if(this.position == 'east') {
+                if(this.position == 'east' || showCheckbox) {
                     this.tools.setStyle('right', 'initial');
                     this.closeBtn.setStyle('float', 'left');
                     this.collapseBtn.setStyle('float', 'left');
@@ -86918,7 +86925,7 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                         this.stickBtn.setStyle('float', 'left');
                     }
                     this.slideInBtn.setStyle('float', 'left');
-                    this.titleTextEl.style['marginLeft'] = '15px';
+                    this.titleTextEl.style['marginLeft'] = showCheckbox ? '20px' : '15px';
                 }
             }
             /** This region's collapsed element
@@ -86926,9 +86933,17 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
             this.collapsedEl = dh.append(this.mgr.el.dom, {cls: "x-layout-collapsed x-layout-collapsed-"+this.position, children:[
                 {cls: "x-layout-collapsed-tools", children:[{cls: "x-layout-ctools-inner"}]}
             ]}, true);
-            if(c.floatable !== false){
+
+            if(c.floatable !== false && !showCheckbox){
+                // click collapsed elemnt to slide in / out
                this.collapsedEl.addClassOnOver("x-layout-collapsed-over");
                this.collapsedEl.on("click", this.collapseClick, this);
+            }
+
+            if(showCheckbox) {
+                // click collapsed element to expand
+                this.collapsedEl.addClassOnOver("x-layout-collapsed-over");
+                this.collapsedEl.on("click", this.expand, this);
             }
 
             if(c.collapsedTitle && (this.position == "north" || this.position== "south")) {
@@ -86936,7 +86951,11 @@ Roo.extend(Roo.layout.Region, Roo.layout.BasicRegion, {
                    id: "message", unselectable: "on", style:{"float":"left"}});
                this.collapsedTitleTextEl.innerHTML = c.collapsedTitle;
              }
-            this.expandBtn = this.createTool(this.collapsedEl.dom.firstChild.firstChild, "x-layout-expand-"+this.position);
+
+            this.expandBtn = showCheckbox ? Roo.DomHelper.append(this.collapsedEl.dom.firstChild.firstChild, {
+                tag: "div",
+                class: "x-layout-tools-checkbox"
+            }, true) : this.createTool(this.collapsedEl.dom.firstChild.firstChild, "x-layout-expand-"+this.position);
             this.expandBtn.on("click", this.expand, this);
         }
         if(this.collapseBtn){
