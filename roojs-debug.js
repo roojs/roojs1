@@ -82742,6 +82742,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
 
                     this.uploadProgress();
                 }.bind(this));
+                return;
             }
 
             Roo.Ajax.request(Roo.apply(this.createCallback(), {
