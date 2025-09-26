@@ -234,7 +234,13 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     
             } 
             
-            
+            if(isPost) {
+                this.getFormHash().then(function(hash) {
+                    this.form.findField('FORM_HASH').setValue(hash);
+                }.bind(this));
+            }
+            Roo.log(this.form.getValues());
+            /*
             Roo.Ajax.request(Roo.apply(this.createCallback(), {
                 form:this.form.el.dom,
                 url:this.getUrl(!isPost),
@@ -243,6 +249,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 isUpload: this.form.fileUpload,
                 formData : this.form.formData
             }));
+            */
             
             this.uploadProgress();
 
