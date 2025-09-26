@@ -671,9 +671,6 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      * @return {BasicForm} this
      */
     reset : function(){
-        Roo.log("SET FUID");
-        this.formUID = Math.random().toString(36).substring(2, 15);
-        
         this.items.each(function(f){
             f.reset();
         });
