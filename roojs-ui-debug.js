@@ -33424,6 +33424,7 @@ Roo.form.Action.prototype = {
     },
 
     getFormHash : function() {
+        this.form.findField('FORM_HASH').setValue('');
         var obj = this.form.getValues();
         var str = JSON.stringify(obj, Object.keys(obj).sort());
         var buffer = new TextEncoder().encode(str);
