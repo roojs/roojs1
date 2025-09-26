@@ -208,6 +208,9 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
     {
         // run get Values on the form, so it syncs any secondary forms.
         this.form.getValues();
+        Roo.log(this.form);
+        Roo.log(this.form.getValues());
+        return;
         
         var o = this.options;
         var method = this.getMethod();
