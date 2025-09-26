@@ -680,6 +680,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         });
         </span><span class="jsdoc-var">this.resetHasChanged</span><span class="jsdoc-syntax">();
 
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;SET FUID&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.findField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'FORM_UID'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.random</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.toString</span><span class="jsdoc-syntax">(36)</span><span class="jsdoc-var">.substring</span><span class="jsdoc-syntax">(2, 15));
+
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
     },
 
