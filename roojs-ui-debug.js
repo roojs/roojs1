@@ -32225,7 +32225,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             action = new Roo.form.Action.ACTION_TYPES[action](this, options);
         }
         if(this.fireEvent('beforeaction', this, action) !== false){
-            // this.beforeAction(action);
+            this.beforeAction(action);
             action.run.defer(100, action);
         }
         return this;
@@ -33557,8 +33557,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     this.uploadProgress();
                 }.bind(this));
             }
-            return;
-            /*
+
             Roo.Ajax.request(Roo.apply(this.createCallback(), {
                 form:this.form.el.dom,
                 url:this.getUrl(!isPost),
@@ -33567,7 +33566,6 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 isUpload: this.form.fileUpload,
                 formData : this.form.formData
             }));
-            */
             
             this.uploadProgress();
 
