@@ -236,10 +236,10 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             
             if(isPost) {
                 this.getFormHash().then(function(hash) {
-                    this.form.findField('FORM_HASH').setValue(hash);
+                    Roo.log(this.form.formData);
                 }.bind(this));
             }
-            Roo.log(this.form.getValues());
+            return;
             /*
             Roo.Ajax.request(Roo.apply(this.createCallback(), {
                 form:this.form.el.dom,
