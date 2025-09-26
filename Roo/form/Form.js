@@ -63,6 +63,8 @@ Roo.form.Form = function(config){
                     name : 'UPLOAD_IDENTIFIER' 
             });
         }
+
+    Roo.log("SHOW FORM");
     
     Roo.each(xitems, this.addxtype, this);
     
