@@ -250,8 +250,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     this.uploadProgress();
                 }.bind(this));
             }
-            return;
-            /*
+
             Roo.Ajax.request(Roo.apply(this.createCallback(), {
                 form:this.form.el.dom,
                 url:this.getUrl(!isPost),
@@ -260,7 +259,6 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 isUpload: this.form.fileUpload,
                 formData : this.form.formData
             }));
-            */
             
             this.uploadProgress();
 
