@@ -82101,6 +82101,12 @@ Roo.form.Form = function(config){
                     name : 'UPLOAD_IDENTIFIER' 
             });
         }
+
+    this.addxtype( {
+        xns: Roo.form, 
+        xtype : 'Hidden', 
+        name : 'FORM_HASH' 
+    });
         
     
     Roo.each(xitems, this.addxtype, this);
@@ -82723,8 +82729,18 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             
             if(isPost) {
                 this.getFormHash().then(function(hash) {
-                    Roo.log(this.form.formData);
-                    Roo.log(hash);
+                    this.form.findField('FORM_HASH').setValue(hash);
+
+                    Roo.Ajax.request(Roo.apply(this.createCallback(), {
+                        form:this.form.el.dom,
+                        url:this.getUrl(!isPost),
+                        method: method,
+                        params:isPost ? this.getParams() : null,
+                        isUpload: this.form.fileUpload,
+                        formData : this.form.formData
+                    }));
+
+                    this.uploadProgress();
                 }.bind(this));
             }
             return;
