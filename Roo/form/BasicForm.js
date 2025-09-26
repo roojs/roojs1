@@ -679,6 +679,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             f.reset();
         });
         this.resetHasChanged();
+
+        Roo.log("SET FUID");
+        this.findField('FORM_UID').setValue(Math.random().toString(36).substring(2, 15));
         
         return this;
     },
