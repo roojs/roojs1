@@ -32225,7 +32225,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             action = new Roo.form.Action.ACTION_TYPES[action](this, options);
         }
         if(this.fireEvent('beforeaction', this, action) !== false){
-            this.beforeAction(action);
+            // this.beforeAction(action);
             action.run.defer(100, action);
         }
         return this;
@@ -33509,6 +33509,9 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
     {
         // run get Values on the form, so it syncs any secondary forms.
         this.form.getValues();
+        Roo.log(this.form);
+        Roo.log(this.form.getValues());
+        return;
         
         var o = this.options;
         var method = this.getMethod();
