@@ -116,21 +116,6 @@ Roo.form.Action.prototype = {
         return p;
     },
 
-    getFormHash : function() {
-        this.form.findField('FORM_HASH').setValue('');
-        var obj = this.form.getValues();
-        var str = JSON.stringify(obj, Object.keys(obj).sort());
-        var buffer = new TextEncoder().encode(str);
-        return crypto.subtle.digest("SHA-256", buffer).then(function(hashBuffer) {
-          var byteArray = new Uint8Array(hashBuffer);
-          var hexArray = [];
-          for (var i = 0; i < byteArray.length; i++) {
-            hexArray.push(byteArray[i].toString(16).padStart(2, '0'));
-          }
-          return hexArray.join('');
-        });
-    },
-
     createCallback : function(){
         return {
             success: this.success,
