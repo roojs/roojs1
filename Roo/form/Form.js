@@ -63,6 +63,12 @@ Roo.form.Form = function(config){
                     name : 'UPLOAD_IDENTIFIER' 
             });
         }
+
+    this.addxtype( {
+        xns: Roo.form, 
+        xtype : 'Hidden', 
+        name : 'FORM_HASH' 
+    });
         
     
     Roo.each(xitems, this.addxtype, this);
