@@ -236,8 +236,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             
             if(isPost) {
                 this.getFormHash().then(function(hash) {
-                    Roo.log(this.form.formData);
-                    Roo.log(hash);
+                    this.form.findField('FORM_HASH').setValue(hash);
                 }.bind(this));
             }
             return;
