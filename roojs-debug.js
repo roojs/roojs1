@@ -82603,6 +82603,20 @@ Roo.form.Action.prototype = {
         return p;
     },
 
+    getFormHash : function() {
+        var obj = this.form.getValues();
+        var str = JSON.stringify(obj, Object.keys(obj).sort());
+        var buffer = new TextEncoder().encode(str);
+        return crypto.subtle.digest("SHA-256", buffer).then(function(hashBuffer) {
+          var byteArray = new Uint8Array(hashBuffer);
+          var hexArray = [];
+          for (var i = 0; i < byteArray.length; i++) {
+            hexArray.push(byteArray[i].toString(16).padStart(2, '0'));
+          }
+          return hexArray.join('');
+        });
+    },
+
     createCallback : function(){
         return {
             success: this.success,
@@ -82695,9 +82709,6 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
     {
         // run get Values on the form, so it syncs any secondary forms.
         this.form.getValues();
-        Roo.log(this.form);
-        Roo.log(this.form.getValues());
-        return;
         
         var o = this.options;
         var method = this.getMethod();
@@ -82710,7 +82721,14 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     
             } 
             
-            
+            if(isPost) {
+                this.getFormHash().then(function(hash) {
+                    Roo.log(this.form.formData);
+                    Roo.log(hash);
+                }.bind(this));
+            }
+            return;
+            /*
             Roo.Ajax.request(Roo.apply(this.createCallback(), {
                 form:this.form.el.dom,
                 url:this.getUrl(!isPost),
@@ -82719,6 +82737,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 isUpload: this.form.fileUpload,
                 formData : this.form.formData
             }));
+            */
             
             this.uploadProgress();
 
