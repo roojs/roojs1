@@ -11490,21 +11490,6 @@ Roo.form.Action.prototype = {
         return p;
     },
 
-    getFormHash : function() {
-        this.form.findField('FORM_HASH').setValue('');
-        var obj = this.form.getValues();
-        var str = JSON.stringify(obj, Object.keys(obj).sort());
-        var buffer = new TextEncoder().encode(str);
-        return crypto.subtle.digest("SHA-256", buffer).then(function(hashBuffer) {
-          var byteArray = new Uint8Array(hashBuffer);
-          var hexArray = [];
-          for (var i = 0; i < byteArray.length; i++) {
-            hexArray.push(byteArray[i].toString(16).padStart(2, '0'));
-          }
-          return hexArray.join('');
-        });
-    },
-
     createCallback : function(){
         return {
             success: this.success,
@@ -11608,27 +11593,6 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     (new Date() * 1) + '' + Math.random());
                     
             } 
-            
-            if(isPost) {
-                if(this.form.findField('FORM_IDENTIFIER').getValue() == '') {
-                    this.form.findField('FORM_IDENTIFIER').setValue(Math.random().toString(36).substring(2, 15));
-                }
-                this.getFormHash().then(function(hash) {
-                    this.form.findField('FORM_HASH').setValue(hash);
-
-                    Roo.Ajax.request(Roo.apply(this.createCallback(), {
-                        form:this.form.el.dom,
-                        url:this.getUrl(!isPost),
-                        method: method,
-                        params:isPost ? this.getParams() : null,
-                        isUpload: this.form.fileUpload,
-                        formData : this.form.formData
-                    }));
-
-                    this.uploadProgress();
-                }.bind(this));
-                return;
-            }
 
             Roo.Ajax.request(Roo.apply(this.createCallback(), {
                 form:this.form.el.dom,
