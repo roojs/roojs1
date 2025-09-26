@@ -267,7 +267,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             action = new Roo.form.Action.ACTION_TYPES[action](this, options);
         }
         if(this.fireEvent('beforeaction', this, action) !== false){
-            this.beforeAction(action);
+            // this.beforeAction(action);
             action.run.defer(100, action);
         }
         return this;
