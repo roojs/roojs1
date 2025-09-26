@@ -68,7 +68,7 @@ Roo.form.Form = function(config){
         xns: Roo.form,
         xtype: 'Hidden',
         name: 'FORM_UID'
-    })
+    });
     Roo.each(xitems, this.addxtype, this);
     
 };
