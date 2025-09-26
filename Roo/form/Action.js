@@ -117,9 +117,6 @@ Roo.form.Action.prototype = {
     },
 
     getFormHash : function() {
-        if(this.form.findField('FROM_IDENTIFIER').getValue() == '') {
-            this.form.findField('FORM_IDENTIFIER').setValue(Math.random().toString(36).substring(2, 15));
-        }
         this.form.findField('FORM_HASH').setValue('');
         var obj = this.form.getValues();
         var str = JSON.stringify(obj, Object.keys(obj).sort());
