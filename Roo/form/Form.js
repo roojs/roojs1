@@ -64,12 +64,6 @@ Roo.form.Form = function(config){
             });
         }
 
-    this.addxtype({
-        xns: Roo.form, 
-        xtype : 'Hidden', 
-        name : 'FORM_IDENTIFIER' 
-    })
-
     this.addxtype( {
         xns: Roo.form, 
         xtype : 'Hidden', 
