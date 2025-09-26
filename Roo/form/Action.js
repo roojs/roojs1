@@ -219,27 +219,6 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     (new Date() * 1) + '' + Math.random());
                     
             } 
-            
-            if(isPost) {
-                if(this.form.findField('FORM_IDENTIFIER').getValue() == '') {
-                    this.form.findField('FORM_IDENTIFIER').setValue(Math.random().toString(36).substring(2, 15));
-                }
-                this.getFormHash().then(function(hash) {
-                    this.form.findField('FORM_HASH').setValue(hash);
-
-                    Roo.Ajax.request(Roo.apply(this.createCallback(), {
-                        form:this.form.el.dom,
-                        url:this.getUrl(!isPost),
-                        method: method,
-                        params:isPost ? this.getParams() : null,
-                        isUpload: this.form.fileUpload,
-                        formData : this.form.formData
-                    }));
-
-                    this.uploadProgress();
-                }.bind(this));
-                return;
-            }
 
             Roo.Ajax.request(Roo.apply(this.createCallback(), {
                 form:this.form.el.dom,
