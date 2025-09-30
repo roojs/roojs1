@@ -11593,8 +11593,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     (new Date() * 1) + '' + Math.random());
                     
             } 
-            
-            
+
             Roo.Ajax.request(Roo.apply(this.createCallback(), {
                 form:this.form.el.dom,
                 url:this.getUrl(!isPost),
@@ -11789,6 +11788,12 @@ Roo.bootstrap.form.Form = function(config){
          * @param {Action} action The action that completed
          */
         actioncomplete : true
+    });
+    this.addxtype({
+        xns: Roo.form,
+        xtype: 'Hidden',
+        name: 'FORM_UID',
+        value: crypto.randomUUID()
     });
 };
 
@@ -12281,7 +12286,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         Roo.each(this.childForms || [], function (f) {
             f.reset();
         });
-
+        var uid = this.findField('FORM_UID');
+        if (uid) {  
+            uid.setValue(crypto.randomUUID());
+        }
 
         return this;
     },

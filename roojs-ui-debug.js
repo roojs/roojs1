@@ -32637,6 +32637,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             f.reset();
         });
         this.resetHasChanged();
+        var uid = this.findField('FORM_UID');
+        if (uid) {  
+            uid.setValue(crypto.randomUUID());
+        }
         
         return this;
     },
@@ -32915,8 +32919,13 @@ Roo.form.Form = function(config){
                     name : 'UPLOAD_IDENTIFIER' 
             });
         }
-        
     
+    this.addxtype({
+        xns: Roo.form,
+        xtype: 'Hidden',
+        name: 'FORM_UID',
+        value: crypto.randomUUID()
+    });
     Roo.each(xitems, this.addxtype, this);
     
 };
@@ -33520,8 +33529,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     (new Date() * 1) + '' + Math.random());
                     
             } 
-            
-            
+
             Roo.Ajax.request(Roo.apply(this.createCallback(), {
                 form:this.form.el.dom,
                 url:this.getUrl(!isPost),
