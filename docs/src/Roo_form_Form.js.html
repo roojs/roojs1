@@ -63,13 +63,17 @@
                     </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'UPLOAD_IDENTIFIER'
             </span><span class="jsdoc-syntax">});
         }
-
-    </span><span class="jsdoc-var">this.addxtype</span><span class="jsdoc-syntax">({
-        </span><span class="jsdoc-var">xns</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.form</span><span class="jsdoc-syntax">,
-        </span><span class="jsdoc-var">xtype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Hidden'</span><span class="jsdoc-syntax">,
-        </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'FORM_UID'</span><span class="jsdoc-syntax">,
-        </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">crypto.randomUUID</span><span class="jsdoc-syntax">()
-    });
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">has_crypto </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.location.protocol </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'https:' </span><span class="jsdoc-syntax">|| (
+        </span><span class="jsdoc-var">document.location.protocol </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'http:'  </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">document.location.hostname </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'localhost'
+    </span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">has_crypto</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.addxtype</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">xns</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.form</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">xtype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Hidden'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'FORM_UID'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">crypto.randomUUID</span><span class="jsdoc-syntax">()
+        });
+    }
     </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xitems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.addxtype</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
 };
