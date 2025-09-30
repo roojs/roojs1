@@ -679,8 +679,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             </span><span class="jsdoc-var">f.reset</span><span class="jsdoc-syntax">();
         });
         </span><span class="jsdoc-var">this.resetHasChanged</span><span class="jsdoc-syntax">();
-
-        </span><span class="jsdoc-var">this.findField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'FORM_UID'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.random</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.toString</span><span class="jsdoc-syntax">(36)</span><span class="jsdoc-var">.substring</span><span class="jsdoc-syntax">(2, 15));
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">uid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'FORM_UID'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">uid</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">uid.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">crypto.randomUUID</span><span class="jsdoc-syntax">());
+        }
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
     },

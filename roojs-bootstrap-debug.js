@@ -11789,6 +11789,12 @@ Roo.bootstrap.form.Form = function(config){
          */
         actioncomplete : true
     });
+    this.addxtype({
+        xns: Roo.form,
+        xtype: 'Hidden',
+        name: 'FORM_UID',
+        value: crypto.randomUUID()
+    });
 };
 
 Roo.extend(Roo.bootstrap.form.Form, Roo.bootstrap.Component,  {
@@ -12280,7 +12286,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         Roo.each(this.childForms || [], function (f) {
             f.reset();
         });
-
+        var uid = this.findField('FORM_UID');
+        if (uid) {  
+            uid.setValue(crypto.randomUUID());
+        }
 
         return this;
     },
