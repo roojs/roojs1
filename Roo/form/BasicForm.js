@@ -679,8 +679,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             f.reset();
         });
         this.resetHasChanged();
-
-        this.findField('FORM_UID').setValue(Math.random().toString(36).substring(2, 15));
+        var uid = this.findField('FORM_UID');
+        if (uid) {  
+            uid.setValue(crypto.randomUUID());
+        }
         
         return this;
     },
