@@ -11789,12 +11789,17 @@ Roo.bootstrap.form.Form = function(config){
          */
         actioncomplete : true
     });
-    this.addxtype({
-        xns: Roo.form,
-        xtype: 'Hidden',
-        name: 'FORM_UID',
-        value: crypto.randomUUID()
-    });
+    var has_crypto = document.location.protocol == 'https:' || (
+        document.location.protocol == 'http:'  && document.location.hostname == 'localhost'    
+    );
+    if (has_crypto) {
+        this.addxtype({
+            xns: Roo.form,
+            xtype: 'Hidden',
+            name: 'FORM_UID',
+            value: crypto.randomUUID()
+        });
+    }
 };
 
 Roo.extend(Roo.bootstrap.form.Form, Roo.bootstrap.Component,  {
