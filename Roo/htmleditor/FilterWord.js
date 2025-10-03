@@ -257,7 +257,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             ) {
                 var oldItem = currentItem;
                 currentItem = this.getNextListItem(currentItem);
-                oldItem.parentNode.removeChild(oldItem); // removed
+                if (oldItem.parentNode) {
+                    oldItem.parentNode.removeChild(oldItem); // removed
+                }
                 continue;
             }
 
