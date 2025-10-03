@@ -345,10 +345,13 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
 
 
-        if(item.tagName == 'LI' && ['OL', 'UL'].includes(item.parentNode.tagName)) {
+        if(item.tagName == 'LI' && item.parentNode && ['OL', 'UL'].includes(item.parentNode.tagName)) {
             item = item.parentNode;
         }
         var parent = item.parentNode;
+        if (!parent) {
+            return; // Skip if no parent node
+        }
         var doc = parent.ownerDocument;
 
         var list = doc.createElement(listItems[0]['type']);
