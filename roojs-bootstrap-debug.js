@@ -28438,7 +28438,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             return;
         }
 
-
+        Roo.log('ITEM');
+        Roo.log(item.innerHTML);
         if(item.tagName == 'LI' && item.parentNode && ['OL', 'UL'].includes(item.parentNode.tagName)) {
             item = item.parentNode;
         }
