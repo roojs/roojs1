@@ -168,7 +168,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     replaceDocBullets : function(doc)
     {
         // this is a bit odd - but it appears some indents use ql-indent-1
-         //Roo.log(doc.innerHTML);
+        Roo.log("BEFORE");
+        Roo.log(doc.innerHTML);
         
         var listpara = Array.from(doc.getElementsByClassName('MsoListParagraphCxSpFirst'));
         for( var i = 0; i < listpara.length; i ++) {
@@ -205,6 +206,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
        
         listpara = doc.getElementsByClassName('MsoListParagraph');
+        Roo.log(doc.innerHTML);
 
         while(listpara.length) {
             this.replaceDocListItem(listpara.item(0));
