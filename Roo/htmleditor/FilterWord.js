@@ -349,14 +349,14 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
         Roo.log('ITEM');
         Roo.log(item.innerHTML);
-        if(item.tagName == 'LI' && ['OL', 'UL'].includes(item.parentNode.tagName)) {
-        // if(item.tagName == 'LI' && item.parentNode && ['OL', 'UL'].includes(item.parentNode.tagName)) {
+        if(item.tagName == 'LI' && item.parentNode && ['OL', 'UL'].includes(item.parentNode.tagName)) {
             item = item.parentNode;
         }
         var parent = item.parentNode;
-        // if (!parent) {
-        //     return; // Skip if no parent node
-        // }
+        if (!parent) {
+            Roo.log('No parent node found, skipping item');
+            return; // Skip if no parent node
+        }
         var doc = parent.ownerDocument;
 
         var list = doc.createElement(listItems[0]['type']);
