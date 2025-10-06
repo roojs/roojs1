@@ -168,7 +168,6 @@
     </span><span class="jsdoc-var">replaceDocBullets </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-comment">// this is a bit odd - but it appears some indents use ql-indent-1
-         //Roo.log(doc.innerHTML);
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">listpara </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.getElementsByClassName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'MsoListParagraphCxSpFirst'</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">listpara.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">++) {
@@ -204,6 +203,14 @@
             }
         }
 
+        </span><span class="jsdoc-comment">// Add MsoListParagraph class to any p tag with mso-list in style
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">allP </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'p'</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">allP.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">allP</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">allP</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/mso-list:/)) {
+                </span><span class="jsdoc-var">allP</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;MsoListParagraph&quot;</span><span class="jsdoc-syntax">;
+            }
+        }
+
         </span><span class="jsdoc-var">listpara </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.getElementsByClassName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'MsoListParagraph'</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">listpara.length</span><span class="jsdoc-syntax">) {
@@ -214,7 +221,6 @@
 
     </span><span class="jsdoc-var">getNextListItem</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentItem</span><span class="jsdoc-syntax">)
     {
-
         </span><span class="jsdoc-comment">// special case : current item is last li inside ol or ul
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'OL'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'UL'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.includes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentItem.parentNode.tagName</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">currentItem.parentNode.lastElementChild </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">currentItem </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">currentItem.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'LI'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">currentItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">currentItem.parentNode</span><span class="jsdoc-syntax">;
@@ -344,6 +350,7 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
 
+        </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">listItems</span><span class="jsdoc-syntax">[0][</span><span class="jsdoc-string">'node'</span><span class="jsdoc-syntax">];
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'LI' </span><span class="jsdoc-syntax">&amp;&amp; [</span><span class="jsdoc-string">'OL'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'UL'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.includes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.parentNode.tagName</span><span class="jsdoc-syntax">)) {
             </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">item.parentNode</span><span class="jsdoc-syntax">;

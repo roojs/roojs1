@@ -73256,7 +73256,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     replaceDocBullets : function(doc)
     {
         // this is a bit odd - but it appears some indents use ql-indent-1
-         //Roo.log(doc.innerHTML);
         
         var listpara = Array.from(doc.getElementsByClassName('MsoListParagraphCxSpFirst'));
         for( var i = 0; i < listpara.length; i ++) {
@@ -73291,6 +73290,14 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 listpara[i].className = "MsoNormalx";
             }
         }
+        
+        // Add MsoListParagraph class to any p tag with mso-list in style
+        var allP = Array.from(doc.getElementsByTagName('p'));
+        for( var i = 0; i < allP.length; i ++) {
+            if (allP[i].hasAttribute('style') && allP[i].getAttribute('style').match(/mso-list:/)) {
+                allP[i].className = "MsoListParagraph";
+            }
+        }
        
         listpara = doc.getElementsByClassName('MsoListParagraph');
 
@@ -73302,7 +73309,6 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 
     getNextListItem: function (currentItem)
     {
-
         // special case : current item is last li inside ol or ul
         if(['OL', 'UL'].includes(currentItem.parentNode.tagName) && currentItem.parentNode.lastElementChild == currentItem && currentItem.tagName == 'LI') {
             currentItem = currentItem.parentNode;
@@ -73432,6 +73438,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             return;
         }
 
+        item = listItems[0]['node'];
 
         if(item.tagName == 'LI' && ['OL', 'UL'].includes(item.parentNode.tagName)) {
             item = item.parentNode;
