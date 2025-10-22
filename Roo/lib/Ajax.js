@@ -130,7 +130,9 @@
 
         transactionId:0,
 
-        enableQueue:true,
+        // you can enable a queue if there is an issue with the server not handling requests properly
+        // we saw this with on xhttprequest just hanging and stopping all other requests
+        enableQueue:false,
 
         requestQueue:[],
 
