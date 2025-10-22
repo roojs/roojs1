@@ -130,6 +130,12 @@
 
         transactionId:0,
 
+        enableQueue:true,
+
+        requestQueue:[],
+
+        activeRequest:false,
+
         setProgId:function(id)
         {
             this.activeX.unshift(id);
@@ -188,49 +194,81 @@
             var o;
             var tId = this.transactionId;
 
-            try
-            {
+            try {
                 o = this.createXhrObject(tId);
                 if (o) {
                     this.transactionId++;
                 }
-            }
-            catch(e) {
-            }
-            finally
-            {
+            } catch(e) { }
+            finally {
                 return o;
             }
         },
 
         asyncRequest:function(method, uri, callback, postData)
         {
-            var o = this.getConnectionObject();
+            // If queue is enabled and there's an active request, add to queue
 
+            var o = this.getConnectionObject();
             if (!o) {
                 return null;
             }
-            else {
-                o.conn.open(method, uri, true);
-
-                if (this.useDefaultXhrHeader) {
-                    if (!this.defaultHeaders['X-Requested-With']) {
-                        this.initHeader('X-Requested-With', this.defaultXhrHeader, true);
-                    }
-                }
-
-                if(postData && this.useDefaultHeader){
-                    this.initHeader('Content-Type', this.defaultPostHeader);
-                }
-
-                 if (this.hasDefaultHeaders || this.hasHeaders) {
-                    this.setHeader(o);
-                }
-
-                this.handleReadyState(o, callback);
-                o.conn.send(postData || null);
-
+            if (this.enableQueue && this.activeRequest) {
+               
+                
+                var queueEntry = {
+                    method: method,
+                    uri: uri,
+                    callback: callback,
+                    postData: postData,
+                    o: o
+                };
+                this.requestQueue.push(queueEntry);
                 return o;
+            }
+
+            return this.asyncRequestReal({method: method, uri: uri, callback: callback, postData: postData, o: o});
+        },
+
+        asyncRequestReal:function(queueEntry)
+        {
+               
+            queueEntry.o.conn.open(queueEntry.method, queueEntry.uri, true);
+
+            if (this.useDefaultXhrHeader) {
+                if (!this.defaultHeaders['X-Requested-With']) {
+                    this.initHeader('X-Requested-With', this.defaultXhrHeader, true);
+                }
+            }
+
+            if(queueEntry.postData && this.useDefaultHeader){
+                this.initHeader('Content-Type', this.defaultPostHeader);
+            }
+
+             if (this.hasDefaultHeaders || this.hasHeaders) {
+                this.setHeader(queueEntry.o);
+            }
+
+            this.handleReadyState(queueEntry.o, queueEntry.callback);
+            queueEntry.o.conn.send(queueEntry.postData || null);
+
+            // Mark as active request if queue is enabled
+            if (this.enableQueue) {
+                this.activeRequest = queueEntry.o;
+            }
+
+            return queueEntry.o;
+        },
+
+        processQueue:function()
+        {
+            if (!this.enableQueue || this.requestQueue.length === 0) {
+                return;
+            }
+
+            var nextRequest = this.requestQueue.shift();
+            if (nextRequest) {
+                this.asyncRequestReal(nextRequest);
             }
         },
 
@@ -299,6 +337,12 @@
                         callback.success.apply(callback.scope, [responseObject]);
                     }
                 }
+                
+                // Clear active request and process queue
+                if (this.enableQueue) {
+                    this.activeRequest = false;
+                    this.processQueue();
+                }
             }
             else {
                 switch (httpStatus) {
@@ -329,6 +373,12 @@
                                 callback.failure.apply(callback.scope, [responseObject]);
                             }
                         }
+                }
+                
+                // Clear active request and process queue on failure too
+                if (this.enableQueue) {
+                    this.activeRequest = false;
+                    this.processQueue();
                 }
             }
 
@@ -399,20 +449,15 @@
         initHeader:function(label, value, isDefault)
         {
             var headerObj = (isDefault) ? this.defaultHeaders : this.headers;
-
-            if (headerObj[label] === undefined) {
-                headerObj[label] = value;
-            }
-            else {
-
-
+            headerObj[label] = value;
+            if (typeof(headerObj[label]) != 'undefined') {
+            
                 headerObj[label] = value + "," + headerObj[label];
             }
 
             if (isDefault) {
                 this.hasDefaultHeaders = true;
-            }
-            else {
+            } else {
                 this.hasHeaders = true;
             }
         },
@@ -456,6 +501,12 @@
                 }
 
                 this.handleTransactionResponse(o, callback, true);
+
+                // Clear active request and process queue after abort
+                if (this.enableQueue) {
+                    this.activeRequest = false;
+                    this.processQueue();
+                }
 
                 return true;
             }
