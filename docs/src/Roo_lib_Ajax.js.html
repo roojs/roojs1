@@ -130,6 +130,12 @@
 
         </span><span class="jsdoc-var">transactionId</span><span class="jsdoc-syntax">:0,
 
+        </span><span class="jsdoc-var">enableQueue</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-var">requestQueue</span><span class="jsdoc-syntax">:[],
+
+        </span><span class="jsdoc-var">activeRequest</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
         </span><span class="jsdoc-var">setProgId</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">)
         {
             </span><span class="jsdoc-var">this.activeX.unshift</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
@@ -188,49 +194,81 @@
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.transactionId</span><span class="jsdoc-syntax">;
 
-            </span><span class="jsdoc-keyword">try
-            </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
                 </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createXhrObject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tId</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">this.transactionId</span><span class="jsdoc-syntax">++;
                 }
-            }
-            </span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
-            }
-            </span><span class="jsdoc-keyword">finally
-            </span><span class="jsdoc-syntax">{
+            } </span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) { }
+            </span><span class="jsdoc-keyword">finally </span><span class="jsdoc-syntax">{
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
             }
         },
 
         </span><span class="jsdoc-var">asyncRequest</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">uri</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">postData</span><span class="jsdoc-syntax">)
         {
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getConnectionObject</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-comment">// If queue is enabled and there's an active request, add to queue
 
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getConnectionObject</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
             }
-            </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-                </span><span class="jsdoc-var">o.conn.open</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">uri</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enableQueue </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.activeRequest</span><span class="jsdoc-syntax">) {
 
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.useDefaultXhrHeader</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.defaultHeaders</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'X-Requested-With'</span><span class="jsdoc-syntax">]) {
-                        </span><span class="jsdoc-var">this.initHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'X-Requested-With'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.defaultXhrHeader</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-                    }
-                }
 
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">postData </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.useDefaultHeader</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-var">this.initHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Content-Type'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.defaultPostHeader</span><span class="jsdoc-syntax">);
-                }
-
-                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasDefaultHeaders </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.hasHeaders</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">this.setHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
-                }
-
-                </span><span class="jsdoc-var">this.handleReadyState</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">o.conn.send</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">postData </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
-
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">queueEntry </span><span class="jsdoc-syntax">= {
+                    </span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">uri</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">uri</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">postData</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">postData</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">o
+                </span><span class="jsdoc-syntax">};
+                </span><span class="jsdoc-var">this.requestQueue.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">queueEntry</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.asyncRequestReal</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">uri</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">uri</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">postData</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">postData</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">});
+        },
+
+        </span><span class="jsdoc-var">asyncRequestReal</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">queueEntry</span><span class="jsdoc-syntax">)
+        {
+
+            </span><span class="jsdoc-var">queueEntry.o.conn.open</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">queueEntry.method</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">queueEntry.uri</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.useDefaultXhrHeader</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.defaultHeaders</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'X-Requested-With'</span><span class="jsdoc-syntax">]) {
+                    </span><span class="jsdoc-var">this.initHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'X-Requested-With'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.defaultXhrHeader</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+                }
+            }
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">queueEntry.postData </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.useDefaultHeader</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.initHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Content-Type'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.defaultPostHeader</span><span class="jsdoc-syntax">);
+            }
+
+             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasDefaultHeaders </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.hasHeaders</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.setHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">queueEntry.o</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-var">this.handleReadyState</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">queueEntry.o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">queueEntry.callback</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">queueEntry.o.conn.send</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">queueEntry.postData </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-comment">// Mark as active request if queue is enabled
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enableQueue</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.activeRequest </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">queueEntry.o</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">queueEntry.o</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-var">processQueue</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+        {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.enableQueue </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.requestQueue.length </span><span class="jsdoc-syntax">=== 0) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nextRequest </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.requestQueue.shift</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nextRequest</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.asyncRequestReal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nextRequest</span><span class="jsdoc-syntax">);
             }
         },
 
@@ -299,6 +337,12 @@
                         </span><span class="jsdoc-var">callback.success.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">callback.scope</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">responseObject</span><span class="jsdoc-syntax">]);
                     }
                 }
+
+                </span><span class="jsdoc-comment">// Clear active request and process queue
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enableQueue</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.activeRequest </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">this.processQueue</span><span class="jsdoc-syntax">();
+                }
             }
             </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
                 </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">httpStatus</span><span class="jsdoc-syntax">) {
@@ -329,6 +373,12 @@
                                 </span><span class="jsdoc-var">callback.failure.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">callback.scope</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">responseObject</span><span class="jsdoc-syntax">]);
                             }
                         }
+                }
+
+                </span><span class="jsdoc-comment">// Clear active request and process queue on failure too
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enableQueue</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.activeRequest </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">this.processQueue</span><span class="jsdoc-syntax">();
                 }
             }
 
@@ -399,20 +449,15 @@
         </span><span class="jsdoc-var">initHeader</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isDefault</span><span class="jsdoc-syntax">)
         {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">headerObj </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">isDefault</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.defaultHeaders </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.headers</span><span class="jsdoc-syntax">;
-
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">headerObj</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">] === </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">headerObj</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
-            }
-            </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-
+            </span><span class="jsdoc-var">headerObj</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">headerObj</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
 
                 </span><span class="jsdoc-var">headerObj</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;,&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">headerObj</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">];
             }
 
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isDefault</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">this.hasDefaultHeaders </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-            }
-            </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
                 </span><span class="jsdoc-var">this.hasHeaders </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
             }
         },
@@ -456,6 +501,12 @@
                 }
 
                 </span><span class="jsdoc-var">this.handleTransactionResponse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+
+                </span><span class="jsdoc-comment">// Clear active request and process queue after abort
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enableQueue</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.activeRequest </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">this.processQueue</span><span class="jsdoc-syntax">();
+                }
 
                 </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
             }
