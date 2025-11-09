@@ -533,6 +533,12 @@ Roo.docs.init = {
             this.addImplementors(d, d.fqn);
         
         }
+        d.readWrite = 'RW';
+        if (typeof(d['is-readable']) == 'undefined') {
+           d.readWrite = 'WO'; 
+        } else if (typeof(d['is-writeable']) == 'undefined') {
+           d.readWrite = 'RO'; 
+        }
        
         return d;
     },

@@ -185,7 +185,7 @@ Roo.docs.template  = {
                         return true;
                     }
                 
-                    $.isInherited = (memberOf != data.name);
+                    $.isInherited = ($.memberOf != data.name);
                     ownMethods.push($);
                     return true;
                 }
@@ -197,6 +197,12 @@ Roo.docs.template  = {
                 if ($.isStatic) {
                     $.isInherited = ($.memberOf != data.name);
                     ownMethods.push($);
+                    return false;
+                }
+                if (data.isStatic) {
+                    $.isStatic = true;
+                    ownMethods.push($);
+                    return false;
                 }
                 
                 return true;
@@ -214,7 +220,7 @@ Roo.docs.template  = {
             if (data.isSingleton) {
                 return true;
             }
-            if (($.memberOf != data.name) && ($.isStaticd || data.isStatic)){
+            if (($.memberOf != data.name) && $.isStatic){
                 $.isStatic = true;
                 return true;
             }
@@ -300,13 +306,13 @@ Roo.docs.template  = {
         }    
         if (member.isDeprecated || (member.deprecated && member.deprecated.length)) {
             output+= '<dl class="detailList"><dt class="heading">Deprecated:</dt><dt>' +
-                        +member.deprecated+'</dt></dl>';
+                        member.deprecated+'</dt></dl>';
         }
             
             
         if (member.since && member.since.length) {
             output+= '<dl class="detailList"><dt class="heading">Since:</dt><dt>' +
-                        +member.since+'</dt></dl>';
+                        member.since+'</dt></dl>';
         }
         /*
                <if test="member.exceptions.length">
