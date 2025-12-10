@@ -263,6 +263,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         
         Roo.log('SSE: Calling fetch...');
 
+        aaa
         window.fetch('https://google.com').then(function(response) {
         });
         
