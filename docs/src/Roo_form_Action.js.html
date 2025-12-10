@@ -267,22 +267,22 @@
             </span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'POST'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">formData
         </span><span class="jsdoc-syntax">})</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'SSE: Fetch response received'</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'SSE: Response OK: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">response.ok</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'SSE: Response status: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">response.status</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-comment">// Roo.log('SSE: Fetch response received');
+            // Roo.log('SSE: Response OK: ' + response.ok);
+            // Roo.log('SSE: Response status: ' + response.status);
 
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">response.ok</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">throw new </span><span class="jsdoc-var">Error</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Network response was not ok: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">response.status</span><span class="jsdoc-syntax">);
-            }
+            // if (!response.ok) {
+            //     throw new Error('Network response was not ok: ' + response.status);
+            // }
 
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">reader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response.body.getReader</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">decoder </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">TextDecoder</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">buffer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">chunkCount </span><span class="jsdoc-syntax">= 0;
+            // var reader = response.body.getReader();
+            // var decoder = new TextDecoder();
+            // var buffer = '';
+            // var chunkCount = 0;
 
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'SSE: Starting to read stream...'</span><span class="jsdoc-syntax">);
+            // Roo.log('SSE: Starting to read stream...');
 
-        </span><span class="jsdoc-comment">//     function read() {
+        //     function read() {
         //         reader.read().then(function(result) {
         //             chunkCount++;
         //             Roo.log('SSE: Chunk #' + chunkCount + ' received, done=' + result.done);
