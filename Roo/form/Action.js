@@ -269,17 +269,14 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         
         Roo.log('SSE: Calling fetch...');
         
-        // Use window.fetch to avoid keyword parsing issues in build tools
-        window.fetch(this.getUrl(false), {
+        fetch(this.getUrl(false), {
             method: 'POST',
             body: formData
         }).then(function(response) {
             Roo.log('SSE: Fetch response received');
             Roo.log('SSE: Response OK: ' + response.ok);
             Roo.log('SSE: Response status: ' + response.status);
-            
-            // Store the fetch Response object
-            _this.response = response;
+
             
             if (!response.ok) {
                 throw new Error('Network response was not ok: ' + response.status);
