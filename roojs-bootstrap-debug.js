@@ -11637,7 +11637,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         
         Roo.log('SSE: Calling fetch...');
 
-        fetch('https://google.com').then(function(response) {
+        window.fetch('https://google.com').then(function(response) {
             Roo.log('SSE: Fetch response received');
             Roo.log('SSE: Response OK: ' + response.ok);
             Roo.log('SSE: Response status: ' + response.status);
