@@ -370,6 +370,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                     errors: []
                                 };
                                 form.afterAction(_this, false);
+                                return;
                             }
                             currentEvent = null;
                         } else if (line.startsWith(':')) {
