@@ -342,6 +342,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                     _this.failureType = Roo.form.Action.SERVER_INVALID;
                                     _this.result = data;
                                     form.afterAction(_this, false);
+                                    return; // Stop reading after error
                                 } else if (currentEvent === 'complete') {
                                     Roo.log('SSE: COMPLETE event received, success=' + data.success);
                                     Roo.MessageBox.hide();
@@ -354,6 +355,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                         _this.failureType = Roo.form.Action.SERVER_INVALID;
                                         form.afterAction(_this, false);
                                     }
+                                    return; // Stop reading after complete
                                 } else {
                                     Roo.log('SSE: Unknown event type or no progress: ' + currentEvent);
                                 }
