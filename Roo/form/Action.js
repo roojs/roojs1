@@ -269,13 +269,17 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         
         Roo.log('SSE: Calling fetch...');
         
-        fetch(this.getUrl(false), {
+        // Use window.fetch to avoid keyword parsing issues in build tools
+        window.fetch(this.getUrl(false), {
             method: 'POST',
             body: formData
         }).then(function(response) {
             Roo.log('SSE: Fetch response received');
             Roo.log('SSE: Response OK: ' + response.ok);
             Roo.log('SSE: Response status: ' + response.status);
+            
+            // Store the fetch Response object
+            _this.response = response;
             
             if (!response.ok) {
                 throw new Error('Network response was not ok: ' + response.status);
@@ -338,12 +342,14 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                 } else if (currentEvent === 'error') {
                                     Roo.log('SSE: ERROR event received');
                                     Roo.MessageBox.hide();
+                                    _this.response = data;
                                     _this.failureType = Roo.form.Action.SERVER_INVALID;
                                     _this.result = data;
                                     form.afterAction(_this, false);
                                 } else if (currentEvent === 'complete') {
                                     Roo.log('SSE: COMPLETE event received, success=' + data.success);
                                     Roo.MessageBox.hide();
+                                    _this.response = data;
                                     _this.result = data;
                                     if (data.success) {
                                         Roo.log('SSE: Calling form.afterAction with success=true');
@@ -372,6 +378,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 }).catch(function(error) {
                     Roo.log('SSE: Read error: ' + error);
                     Roo.MessageBox.hide();
+                    _this.response = { error: error.toString() };
                     _this.failureType = Roo.form.Action.CONNECT_FAILURE;
                     form.afterAction(_this, false);
                 });
@@ -382,6 +389,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         }).catch(function(error) {
             Roo.log('SSE: Fetch error: ' + error);
             Roo.MessageBox.hide();
+            _this.response = { error: error.toString() };
             _this.failureType = Roo.form.Action.CONNECT_FAILURE;
             form.afterAction(_this, false);
         });
