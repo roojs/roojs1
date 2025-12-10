@@ -11650,6 +11650,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             Roo.log('SSE: Fetch response received');
             Roo.log('SSE: Response OK: ' + response.ok);
             Roo.log('SSE: Response status: ' + response.status);
+
             
             if (!response.ok) {
                 throw new Error('Network response was not ok: ' + response.status);
@@ -11747,6 +11748,10 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     Roo.log('SSE: Read error: ' + error);
                     Roo.MessageBox.hide();
                     _this.failureType = Roo.form.Action.CONNECT_FAILURE;
+                    _this.result = {
+                        success: false,
+                        errorMsg: 'SSE read error: ' + error.toString()
+                    };
                     form.afterAction(_this, false);
                 });
             }
@@ -11757,6 +11762,10 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             Roo.log('SSE: Fetch error: ' + error);
             Roo.MessageBox.hide();
             _this.failureType = Roo.form.Action.CONNECT_FAILURE;
+            _this.result = {
+                success: false,
+                errorMsg: 'SSE connection error: ' + error.toString()
+            };
             form.afterAction(_this, false);
         });
     },
