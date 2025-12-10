@@ -267,20 +267,20 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             method: 'POST',
             body: formData
         }).then(function(response) {
-            Roo.log('SSE: Fetch response received');
-            Roo.log('SSE: Response OK: ' + response.ok);
-            Roo.log('SSE: Response status: ' + response.status);
+            // Roo.log('SSE: Fetch response received');
+            // Roo.log('SSE: Response OK: ' + response.ok);
+            // Roo.log('SSE: Response status: ' + response.status);
             
-            if (!response.ok) {
-                throw new Error('Network response was not ok: ' + response.status);
-            }
+            // if (!response.ok) {
+            //     throw new Error('Network response was not ok: ' + response.status);
+            // }
             
-            var reader = response.body.getReader();
-            var decoder = new TextDecoder();
-            var buffer = '';
-            var chunkCount = 0;
+            // var reader = response.body.getReader();
+            // var decoder = new TextDecoder();
+            // var buffer = '';
+            // var chunkCount = 0;
             
-            Roo.log('SSE: Starting to read stream...');
+            // Roo.log('SSE: Starting to read stream...');
             
         //     function read() {
         //         reader.read().then(function(result) {
