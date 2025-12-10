@@ -363,7 +363,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                 Roo.log('SSE: JSON parse error: ' + e);
                                 Roo.log('SSE: Failed JSON string: ' + jsonStr);
                                 Roo.MessageBox.hide();
-                                _this.failureType = Roo.form.Action.LOAD_FAILURE;
+                                _this.failureType = Roo.form.Action.SERVER_INVALID;
                                 _this.result = {
                                     success: false,
                                     errorMsg: "Failed to read server message: " + jsonStr.substring(0, 200),
