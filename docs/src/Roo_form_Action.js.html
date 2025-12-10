@@ -277,6 +277,7 @@
             </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'SSE: Response OK: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">response.ok</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'SSE: Response status: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">response.status</span><span class="jsdoc-syntax">);
 
+
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">response.ok</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">throw new </span><span class="jsdoc-var">Error</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Network response was not ok: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">response.status</span><span class="jsdoc-syntax">);
             }
@@ -373,6 +374,10 @@
                     </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'SSE: Read error: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">error</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">Roo.MessageBox.hide</span><span class="jsdoc-syntax">();
                     </span><span class="jsdoc-var">_this.failureType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.Action.CONNECT_FAILURE</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">_this.result </span><span class="jsdoc-syntax">= {
+                        </span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">errorMsg</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'SSE read error: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">error.toString</span><span class="jsdoc-syntax">()
+                    };
                     </span><span class="jsdoc-var">form.afterAction</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
                 });
             }
@@ -383,6 +388,10 @@
             </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'SSE: Fetch error: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">error</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">Roo.MessageBox.hide</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">_this.failureType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.Action.CONNECT_FAILURE</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">_this.result </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">errorMsg</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'SSE connection error: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">error.toString</span><span class="jsdoc-syntax">()
+            };
             </span><span class="jsdoc-var">form.afterAction</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
         });
     },
