@@ -339,14 +339,12 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                 } else if (currentEvent === 'error') {
                                     Roo.log('SSE: ERROR event received');
                                     Roo.MessageBox.hide();
-                                    _this.response = data;
                                     _this.failureType = Roo.form.Action.SERVER_INVALID;
                                     _this.result = data;
                                     form.afterAction(_this, false);
                                 } else if (currentEvent === 'complete') {
                                     Roo.log('SSE: COMPLETE event received, success=' + data.success);
                                     Roo.MessageBox.hide();
-                                    _this.response = data;
                                     _this.result = data;
                                     if (data.success) {
                                         Roo.log('SSE: Calling form.afterAction with success=true');
@@ -375,7 +373,6 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 }).catch(function(error) {
                     Roo.log('SSE: Read error: ' + error);
                     Roo.MessageBox.hide();
-                    _this.response = { error: error.toString() };
                     _this.failureType = Roo.form.Action.CONNECT_FAILURE;
                     form.afterAction(_this, false);
                 });
@@ -386,7 +383,6 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         }).catch(function(error) {
             Roo.log('SSE: Fetch error: ' + error);
             Roo.MessageBox.hide();
-            _this.response = { error: error.toString() };
             _this.failureType = Roo.form.Action.CONNECT_FAILURE;
             form.afterAction(_this, false);
         });
