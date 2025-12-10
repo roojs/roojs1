@@ -1029,7 +1029,13 @@
         "cn" : [
           {
             "name" : "Roo.form.Action",
-            "cn" : [],
+            "cn" : [
+              {
+                "name" : "Roo.form.Action.Submit",
+                "cn" : [],
+                "is_class" : false
+              }
+            ],
             "is_class" : false
           },
           {
