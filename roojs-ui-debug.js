@@ -33583,11 +33583,19 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         Roo.MessageBox.progress("Processing", "Starting...");
         
         Roo.log('SSE: Calling fetch...');
+
+        fetch('https://google.com').then(function(response) {
+            Roo.log('SSE: Fetch response received');
+            Roo.log('SSE: Response OK: ' + response.ok);
+            Roo.log('SSE: Response status: ' + response.status);
+        }).catch(function(error) {
+            Roo.log('SSE: Fetch error: ' + error);
+        });
         
-        fetch(this.getUrl(false), {
-            method: 'POST',
-            body: formData
-        }).then(function(response) {
+        // fetch(this.getUrl(false), {
+        //     method: 'POST',
+        //     body: formData
+        // }).then(function(response) {
             // Roo.log('SSE: Fetch response received');
             // Roo.log('SSE: Response OK: ' + response.ok);
             // Roo.log('SSE: Response status: ' + response.status);
@@ -33694,12 +33702,12 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             
         //     read();
             
-        }).catch(function(error) {
-            Roo.log('SSE: Fetch error: ' + error);
-            Roo.MessageBox.hide();
-            _this.failureType = Roo.form.Action.CONNECT_FAILURE;
-            form.afterAction(_this, false);
-        });
+        // }).catch(function(error) {
+        //     Roo.log('SSE: Fetch error: ' + error);
+        //     Roo.MessageBox.hide();
+        //     _this.failureType = Roo.form.Action.CONNECT_FAILURE;
+        //     form.afterAction(_this, false);
+        // });
     },
 
     success : function(response)
