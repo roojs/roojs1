@@ -33534,6 +33534,12 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         var method = this.getMethod();
         var isPost = method == 'POST';
         if(o.clientValidation === false || this.form.isValid()){
+
+            // Check if SSE mode is enabled
+            if (this.form.useSSE || o.useSSE) {
+                this.runSSE();
+                return;
+            }
             
             if (this.form.progressUrl) {
                 this.form.findField('UPLOAD_IDENTIFIER').setValue(
