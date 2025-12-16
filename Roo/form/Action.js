@@ -438,6 +438,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     read();
                 }).catch(function(error) {
                     Roo.log('SSE: Read error: ' + error);
+                    stopFakeProgress();
                     Roo.MessageBox.hide();
                     _this.failureType = Roo.form.Action.CONNECT_FAILURE;
                     _this.result = {
