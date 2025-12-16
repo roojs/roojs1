@@ -403,7 +403,8 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                         data.message || 'Processing...'
                                     );
                                     // Start fake progress animation for this step
-                                    startFakeProgress(data.progress, data.message);
+                                    // data.total = total number of steps (e.g., 4)
+                                    startFakeProgress(data.progress, data.message, data.total);
                                 } else if (currentEvent === 'error') {
                                     Roo.log('SSE: ERROR event received');
                                     stopFakeProgress();
