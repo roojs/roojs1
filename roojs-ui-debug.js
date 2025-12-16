@@ -33611,8 +33611,6 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             // Fake progress animation state
             var fakeProgressInterval = null;
             var baseProgress = 0;           // The real progress from server
-            var displayedProgress = 0;      // Currently displayed progress
-            var oscillateForward = true;    // Direction of oscillation
             var progressMessage = 'Processing...';
             
             // Function to stop fake progress animation
@@ -33629,31 +33627,45 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 stopFakeProgress(); // Clear any existing animation
                 
                 baseProgress = realProgress;
-                displayedProgress = realProgress;
                 progressMessage = message || 'Processing...';
-                oscillateForward = true;
                 
                 // Calculate oscillation step: 1/10 of remaining space
                 var remainingSpace = 100 - baseProgress;
                 var oscillateStep = remainingSpace / 10;
                 
+                // Oscillation pattern: 0 -> 1 -> 2 -> 3 -> 2 -> 1 -> 0 -> 1 -> ...
+                // offsetSteps tracks position in this cycle (0-5, then repeats)
+                var offsetSteps = 0;
+                var maxOffset = 3;  // Go up 3 steps before coming back down
+                
                 Roo.log('SSE: Starting fake progress animation from ' + baseProgress + '%, step=' + oscillateStep);
                 
-                // Oscillate every 3 seconds
+                // Oscillate every 1 second
                 fakeProgressInterval = setInterval(function() {
-                    if (oscillateForward) {
-                        displayedProgress = baseProgress + oscillateStep;
-                    } else {
-                        displayedProgress = baseProgress;
-                    }
-                    oscillateForward = !oscillateForward;
+                    offsetSteps++;
                     
-                    Roo.log('SSE: Fake progress update: ' + displayedProgress + '%');
+                    // Calculate current offset in the cycle
+                    // Cycle: 0,1,2,3,2,1,0,1,2,3,2,1,0...
+                    // Full cycle length is 6 (0->3 is 3 steps, 3->0 is 3 steps)
+                    var cyclePosition = offsetSteps % (maxOffset * 2);
+                    var currentOffset;
+                    
+                    if (cyclePosition <= maxOffset) {
+                        // Going up: 0 -> 1 -> 2 -> 3
+                        currentOffset = cyclePosition;
+                    } else {
+                        // Going down: 3 -> 2 -> 1 -> 0
+                        currentOffset = (maxOffset * 2) - cyclePosition;
+                    }
+                    
+                    var displayedProgress = baseProgress + (currentOffset * oscillateStep);
+                    
+                    Roo.log('SSE: Fake progress update: ' + displayedProgress + '% (offset=' + currentOffset + ')');
                     Roo.MessageBox.updateProgress(
                         displayedProgress / 100,
                         progressMessage
                     );
-                }, 3000);
+                }, 1000);
             }
             
             Roo.log('SSE: Starting to read stream...');
