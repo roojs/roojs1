@@ -33623,44 +33623,48 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             }
             
             // Function to start fake progress animation
-            function startFakeProgress(realProgress, message) {
+            // totalSteps: total number of steps (e.g., 4 means each step = 25%)
+            function startFakeProgress(realProgress, message, totalSteps) {
                 stopFakeProgress(); // Clear any existing animation
                 
                 baseProgress = realProgress;
                 progressMessage = message || 'Processing...';
+                totalSteps = totalSteps || 1;  // Default to 1 step if not provided
                 
-                // Calculate oscillation step: 1/10 of remaining space
-                var remainingSpace = 100 - baseProgress;
-                var oscillateStep = remainingSpace / 10;
+                // Calculate step space (how much % each step represents)
+                var stepSpace = 100 / totalSteps;
                 
-                // Oscillation pattern: 0 -> 1 -> 2 -> 3 -> 2 -> 1 -> 0 -> 1 -> ...
-                // offsetSteps tracks position in this cycle (0-5, then repeats)
+                // Oscillation step: 5% of step space
+                // e.g., 4 steps -> stepSpace=25% -> oscillateStep=1.25%
+                var oscillateStep = stepSpace * 0.05;
+                
+                // Oscillation pattern: 0 -> 1 -> 2 -> 3 -> 4 -> 3 -> 2 -> 1 -> 0 -> 1 -> ...
                 var offsetSteps = 0;
-                var maxOffset = 3;  // Go up 3 steps before coming back down
+                var maxOffset = 4;  // Go up 4 steps before coming back down (reaches 20% of stepSpace)
                 
-                Roo.log('SSE: Starting fake progress animation from ' + baseProgress + '%, step=' + oscillateStep);
+                Roo.log('SSE: Starting fake progress animation from ' + baseProgress + '%, stepSpace=' + stepSpace + '%, oscillateStep=' + oscillateStep + '%');
                 
                 // Oscillate every 1 second
                 fakeProgressInterval = setInterval(function() {
                     offsetSteps++;
                     
                     // Calculate current offset in the cycle
-                    // Cycle: 0,1,2,3,2,1,0,1,2,3,2,1,0...
-                    // Full cycle length is 6 (0->3 is 3 steps, 3->0 is 3 steps)
+                    // Cycle: 0,1,2,3,4,3,2,1,0,1,2,3,4,3,2,1,0...
+                    // Full cycle length is 8 (0->4 is 4 steps, 4->0 is 4 steps)
                     var cyclePosition = offsetSteps % (maxOffset * 2);
                     var currentOffset;
                     
                     if (cyclePosition <= maxOffset) {
-                        // Going up: 0 -> 1 -> 2 -> 3
+                        // Going up: 0 -> 1 -> 2 -> 3 -> 4
                         currentOffset = cyclePosition;
                     } else {
-                        // Going down: 3 -> 2 -> 1 -> 0
+                        // Going down: 4 -> 3 -> 2 -> 1 -> 0
                         currentOffset = (maxOffset * 2) - cyclePosition;
                     }
                     
                     var displayedProgress = baseProgress + (currentOffset * oscillateStep);
                     
-                    Roo.log('SSE: Fake progress update: ' + displayedProgress + '% (offset=' + currentOffset + ')');
+                    Roo.log('SSE: Fake progress update: ' + displayedProgress.toFixed(2) + '% (offset=' + currentOffset + ')');
                     Roo.MessageBox.updateProgress(
                         displayedProgress / 100,
                         progressMessage
@@ -33720,7 +33724,8 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                         data.message || 'Processing...'
                                     );
                                     // Start fake progress animation for this step
-                                    startFakeProgress(data.progress, data.message);
+                                    // data.total = total number of steps (e.g., 4)
+                                    startFakeProgress(data.progress, data.message, data.total);
                                 } else if (currentEvent === 'error') {
                                     Roo.log('SSE: ERROR event received');
                                     stopFakeProgress();
