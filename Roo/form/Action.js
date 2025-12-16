@@ -315,7 +315,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 
                 // Oscillation step: 5% of step space
                 // e.g., 4 steps -> stepSpace=25% -> oscillateStep=1.25%
-                var oscillateStep = stepSpace * 0.05;
+                var oscillateStep = stepSpace * 0.25;
                 
                 // Oscillation pattern: 0 -> 1 -> 2 -> 3 -> 4 -> 3 -> 2 -> 1 -> 0 -> 1 -> ...
                 var offsetSteps = 0;
