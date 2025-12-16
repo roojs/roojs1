@@ -92906,10 +92906,10 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
     singleSelect : false,
 
     /**
-     * @cfg {Boolean} toggleClick
+     * @cfg {Boolean} toggleSelect
      * True to allow clicking a selected row to deselect it without holding Ctrl (defaults to false)
      */
-    toggleClick : false,
+    toggleSelect : false,
 
     // private
     initEvents : function(){
@@ -93144,7 +93144,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
             var isSelected = this.isSelected(rowIndex);
             if(e.button !== 0 && isSelected){
                 view.focusRow(rowIndex);
-        }else if((e.ctrlKey || this.toggleClick) && isSelected){
+        }else if((e.ctrlKey || this.toggleSelect) && isSelected){
             this.deselectRow(rowIndex);
             }else if(!isSelected){
                 this.selectRow(rowIndex, e.button === 0 && (e.ctrlKey || e.shiftKey));
