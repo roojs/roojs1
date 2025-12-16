@@ -82847,6 +82847,54 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             var buffer = '';
             var chunkCount = 0;
             
+            // Fake progress animation state
+            var fakeProgressInterval = null;
+            var baseProgress = 0;           // The real progress from server
+            var displayedProgress = 0;      // Currently displayed progress
+            var oscillateForward = true;    // Direction of oscillation
+            var progressMessage = 'Processing...';
+            
+            // Function to stop fake progress animation
+            function stopFakeProgress() {
+                if (fakeProgressInterval) {
+                    clearInterval(fakeProgressInterval);
+                    fakeProgressInterval = null;
+                    Roo.log('SSE: Stopped fake progress animation');
+                }
+            }
+            
+            // Function to start fake progress animation
+            function startFakeProgress(realProgress, message) {
+                stopFakeProgress(); // Clear any existing animation
+                
+                baseProgress = realProgress;
+                displayedProgress = realProgress;
+                progressMessage = message || 'Processing...';
+                oscillateForward = true;
+                
+                // Calculate oscillation step: 1/10 of remaining space
+                var remainingSpace = 100 - baseProgress;
+                var oscillateStep = remainingSpace / 10;
+                
+                Roo.log('SSE: Starting fake progress animation from ' + baseProgress + '%, step=' + oscillateStep);
+                
+                // Oscillate every 3 seconds
+                fakeProgressInterval = setInterval(function() {
+                    if (oscillateForward) {
+                        displayedProgress = baseProgress + oscillateStep;
+                    } else {
+                        displayedProgress = baseProgress;
+                    }
+                    oscillateForward = !oscillateForward;
+                    
+                    Roo.log('SSE: Fake progress update: ' + displayedProgress + '%');
+                    Roo.MessageBox.updateProgress(
+                        displayedProgress / 100,
+                        progressMessage
+                    );
+                }, 3000);
+            }
+            
             Roo.log('SSE: Starting to read stream...');
             
             function read() {
@@ -82856,6 +82904,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     
                     if (result.done) {
                         Roo.log('SSE: Stream complete');
+                        stopFakeProgress();
                         Roo.MessageBox.hide();
                         return;
                     }
@@ -82892,12 +82941,16 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                 
                                 if (currentEvent === 'progress' && data.progress !== undefined) {
                                     Roo.log('SSE: Updating progress: ' + data.progress + '%');
+                                    // Show real progress immediately
                                     Roo.MessageBox.updateProgress(
                                         data.progress / 100, 
                                         data.message || 'Processing...'
                                     );
+                                    // Start fake progress animation for this step
+                                    startFakeProgress(data.progress, data.message);
                                 } else if (currentEvent === 'error') {
                                     Roo.log('SSE: ERROR event received');
+                                    stopFakeProgress();
                                     Roo.MessageBox.hide();
                                     _this.failureType = Roo.form.Action.SERVER_INVALID;
                                     _this.result = data;
@@ -82905,6 +82958,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                     return; // Stop reading after error
                                 } else if (currentEvent === 'complete') {
                                     Roo.log('SSE: COMPLETE event received, success=' + data.success);
+                                    stopFakeProgress();
                                     Roo.MessageBox.hide();
                                     _this.result = data;
                                     if (data.success) {
@@ -82922,6 +82976,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                             } catch (e) {
                                 Roo.log('SSE: JSON parse error: ' + e);
                                 Roo.log('SSE: Failed JSON string: ' + jsonStr);
+                                stopFakeProgress();
                                 Roo.MessageBox.hide();
                                 _this.failureType = Roo.form.Action.SERVER_INVALID;
                                 _this.result = {
@@ -82943,6 +82998,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     read();
                 }).catch(function(error) {
                     Roo.log('SSE: Read error: ' + error);
+                    stopFakeProgress();
                     Roo.MessageBox.hide();
                     _this.failureType = Roo.form.Action.CONNECT_FAILURE;
                     _this.result = {
