@@ -390,6 +390,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                     startFakeProgress(data.progress, data.message);
                                 } else if (currentEvent === 'error') {
                                     Roo.log('SSE: ERROR event received');
+                                    stopFakeProgress();
                                     Roo.MessageBox.hide();
                                     _this.failureType = Roo.form.Action.SERVER_INVALID;
                                     _this.result = data;
@@ -397,6 +398,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                     return; // Stop reading after error
                                 } else if (currentEvent === 'complete') {
                                     Roo.log('SSE: COMPLETE event received, success=' + data.success);
+                                    stopFakeProgress();
                                     Roo.MessageBox.hide();
                                     _this.result = data;
                                     if (data.success) {
@@ -414,6 +416,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                             } catch (e) {
                                 Roo.log('SSE: JSON parse error: ' + e);
                                 Roo.log('SSE: Failed JSON string: ' + jsonStr);
+                                stopFakeProgress();
                                 Roo.MessageBox.hide();
                                 _this.failureType = Roo.form.Action.SERVER_INVALID;
                                 _this.result = {
