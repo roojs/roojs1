@@ -78433,19 +78433,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                // }
                 
              };
-        }else{
-            // Chrome/Gecko and other browsers
-            return function(e){
-                var k = e.getKey();
-                if(k == e.TAB){
-                    e.stopEvent();
-                    this.win.focus();
-                    // Insert preservable space span with tab character (&#9; = tab)
-                    this.insertAtCursor('<span style="white-space: pre">&nbsp;&#9;</span>');
-                    this.deferFocus();
-                    return;
-                }
-            };
         }
     }(),
     

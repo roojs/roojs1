@@ -47,13 +47,29 @@
 
     </span><span class="jsdoc-var">colspan </span><span class="jsdoc-syntax">: 1,
     </span><span class="jsdoc-var">rowspan </span><span class="jsdoc-syntax">: 1,
+    </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">,
 
 
     </span><span class="jsdoc-comment">// used by context menu
     </span><span class="jsdoc-var">friendly_name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Table Cell'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">deleteTitle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// use our customer delete
 
-    // context menu is drawn once..
+    // Store button references for border toggles (set by contextMenu)
+    </span><span class="jsdoc-var">leftBorderBtn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">rightBorderBtn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+
+    </span><span class="jsdoc-var">updateBorderButtons </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.leftBorderBtn </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.rightBorderBtn</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.border </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.leftBorderBtn.setPressed</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'L' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.rightBorderBtn.setPressed</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'R' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">));
+    },
+
+    </span><span class="jsdoc-comment">// context menu is drawn once..
 
     </span><span class="jsdoc-var">contextMenu </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">toolbar</span><span class="jsdoc-syntax">)
     {
@@ -92,6 +108,9 @@
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fields </span><span class="jsdoc-syntax">= {};
 
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tdbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">borderField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[
             {
                 </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
@@ -182,6 +201,74 @@
                     </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.data
                 </span><span class="jsdoc-syntax">}
             },
+
+            {
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'TextItem'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Borders: &quot;</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.Toolbar
+            </span><span class="jsdoc-syntax">},
+            {
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Hidden'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'border'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">)
+                    {
+                        </span><span class="jsdoc-var">borderField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">;
+                    }
+                },
+                </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)
+                {
+                    </span><span class="jsdoc-var">Roo.form.Field.prototype.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">// creates a new object - reading from the current node
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">b.border </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">leftBorderBtn.setPressed</span><span class="jsdoc-syntax">(!(</span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'L' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">));
+                    </span><span class="jsdoc-var">rightBorderBtn.setPressed</span><span class="jsdoc-syntax">(!(</span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'R' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">));
+
+                },
+                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.form
+            </span><span class="jsdoc-syntax">},
+            {
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">' | '</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">enableToggle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">)
+                    {
+                        </span><span class="jsdoc-var">leftBorderBtn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">;
+                    },
+                    </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+                    {
+                        </span><span class="jsdoc-var">toolbar.editorcore.selectNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">toolbar.tb.selectedNode</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">b.setLeft</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">b.getLeft</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">syncValue</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">borderField.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b.border</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">toolbar.editorcore.onEditorEvent</span><span class="jsdoc-syntax">();
+                    }
+                },
+                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.Toolbar
+            </span><span class="jsdoc-syntax">},
+            {
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">' | '</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">enableToggle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">)
+                    {
+                        </span><span class="jsdoc-var">rightBorderBtn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">;
+                    },
+                    </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+                    {
+                        </span><span class="jsdoc-var">toolbar.editorcore.selectNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">toolbar.tb.selectedNode</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">b.setRight</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">b.getRight</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">syncValue</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">borderField.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b.border</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">toolbar.editorcore.onEditorEvent</span><span class="jsdoc-syntax">();
+                    }
+                },
+                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.Toolbar
+            </span><span class="jsdoc-syntax">},
 
             {
                 </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'TextItem'</span><span class="jsdoc-syntax">,
@@ -339,6 +426,9 @@
      */
     </span><span class="jsdoc-var">toObject </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.border </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">borderStyle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'solid 1px rgb(0, 0, 0)'</span><span class="jsdoc-syntax">;
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">contenteditable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'true'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// this stops cell selection from picking the table.
@@ -346,13 +436,17 @@
             </span><span class="jsdoc-var">valign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.valign</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: {
                 </span><span class="jsdoc-string">'text-align' </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">this.textAlign</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'solid 1px rgb(0, 0, 0)'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// ??? hard coded?
                 </span><span class="jsdoc-string">'border-collapse' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'collapse'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">padding </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'6px'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// 8 for desktop / 4 for mobile
-                </span><span class="jsdoc-string">'vertical-align'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.valign
+                </span><span class="jsdoc-string">'vertical-align'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.valign</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-string">'border-top'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">borderStyle</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-string">'border-bottom'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">borderStyle</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-string">'border-left'</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'L'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">) &gt;= 0 ? </span><span class="jsdoc-var">borderStyle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-string">'border-right'</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'R'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">) &gt;= 0 ? </span><span class="jsdoc-var">borderStyle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'
             </span><span class="jsdoc-syntax">},
             </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html
         </span><span class="jsdoc-syntax">};
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">ret.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">ret.style.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">;
@@ -366,7 +460,10 @@
             </span><span class="jsdoc-var">ret.rowspan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.rowspan </span><span class="jsdoc-syntax">;
         }
 
-
+        </span><span class="jsdoc-comment">// Set data-border attribute for L, R, or N (not for B which is default)
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'L' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'R' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'N'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'data-border'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">;
+        }
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
 
@@ -382,6 +479,8 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.style.textAlign </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.textAlign </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.style.textAlign</span><span class="jsdoc-syntax">;
         }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">borderAttr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-border'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.border </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">borderAttr </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">borderAttr </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">;
 
 
     },
@@ -764,10 +863,118 @@
         }
 
         </span><span class="jsdoc-var">this.redrawAllCells</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">);
-    }
+    },
 
 
+    </span><span class="jsdoc-var">updateElement </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.node</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
 
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.border </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">borderStyle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'solid 1px rgb(0, 0, 0)'</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">// Update left and right borders based on border value
+        </span><span class="jsdoc-var">node.style.borderLeft </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">'L'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">) &gt;= 0 ? </span><span class="jsdoc-var">borderStyle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">node.style.borderRight </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">'R'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">) &gt;= 0 ? </span><span class="jsdoc-var">borderStyle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">// Set or remove data-border attribute
+        // Only set attribute if value is 'L', 'R', or 'N' (not for 'B' which is default)
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'L' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'R' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'N'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">node.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-border'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-border'</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">getLeft </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.border </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'L' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">getRight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.border </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'R' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">setLeft </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">on</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">recurse</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">recurse </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">recurse </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">// Update border state
+        </span><span class="jsdoc-var">this.border </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">on
+            </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">this.getRight</span><span class="jsdoc-syntax">() ? </span><span class="jsdoc-string">'B' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'L'</span><span class="jsdoc-syntax">)
+            : (</span><span class="jsdoc-var">this.getRight</span><span class="jsdoc-syntax">() ? </span><span class="jsdoc-string">'R' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'N'</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">// Update this cell's DOM
+        </span><span class="jsdoc-var">this.updateElement</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-comment">// If recurse is false, return early (no adjacent cell updates)
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">recurse</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-comment">// Update previous cell's right border to match this cell's left border
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">prevCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getPreviousCell</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">prevCell</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">prevCell.setRight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getLeft</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">setRight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">on</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">recurse</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">recurse </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">recurse </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">// Update border state
+        </span><span class="jsdoc-var">this.border </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">on
+            </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">this.getLeft</span><span class="jsdoc-syntax">() ? </span><span class="jsdoc-string">'B' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'R'</span><span class="jsdoc-syntax">)
+            : (</span><span class="jsdoc-var">this.getLeft</span><span class="jsdoc-syntax">() ? </span><span class="jsdoc-string">'L' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'N'</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">// Update this cell's DOM
+        </span><span class="jsdoc-var">this.updateElement</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-comment">// If recurse is false, return early (no adjacent cell updates)
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">recurse</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-comment">// Update next cell's left border to match this cell's right border
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nextCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getNextCell</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">nextCell</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">nextCell.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getRight</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// Adjacent cell helper methods
+    </span><span class="jsdoc-var">getPreviousCell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.node</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">prevNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.node.previousElementSibling</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">prevNode</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prevNode</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">getNextCell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.node</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nextNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.node.nextElementSibling</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">nextNode</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nextNode</span><span class="jsdoc-syntax">);
+    },
 
 })
 
