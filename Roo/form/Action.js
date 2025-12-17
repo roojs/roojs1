@@ -370,15 +370,27 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             
             Roo.log('SSE: Starting to read stream...');
             
+            // Track if we've already handled a terminal event (error/complete)
+            var finished = false;
+            
             function read() {
                 reader.read().then(function(result) {
                     chunkCount++;
                     Roo.log('SSE: Chunk #' + chunkCount + ' received, done=' + result.done);
                     
                     if (result.done) {
-                        Roo.log('SSE: Stream complete');
+                        Roo.log('SSE: Stream complete, finished=' + finished);
                         stopFakeProgress();
-                        Roo.MessageBox.hide();
+                        // Only hide MessageBox if we haven't already handled error/complete
+                        if (!finished) {
+                            Roo.MessageBox.hide();
+                        }
+                        return;
+                    }
+                    
+                    // Don't process more chunks if we've already finished
+                    if (finished) {
+                        Roo.log('SSE: Ignoring chunk - already finished');
                         return;
                     }
                     
