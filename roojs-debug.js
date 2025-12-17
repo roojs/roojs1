@@ -82930,15 +82930,27 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             
             Roo.log('SSE: Starting to read stream...');
             
+            // Track if we've already handled a terminal event (error/complete)
+            var finished = false;
+            
             function read() {
                 reader.read().then(function(result) {
                     chunkCount++;
                     Roo.log('SSE: Chunk #' + chunkCount + ' received, done=' + result.done);
                     
                     if (result.done) {
-                        Roo.log('SSE: Stream complete');
+                        Roo.log('SSE: Stream complete, finished=' + finished);
                         stopFakeProgress();
-                        Roo.MessageBox.hide();
+                        // Only hide MessageBox if we haven't already handled error/complete
+                        if (!finished) {
+                            Roo.MessageBox.hide();
+                        }
+                        return;
+                    }
+                    
+                    // Don't process more chunks if we've already finished
+                    if (finished) {
+                        Roo.log('SSE: Ignoring chunk - already finished');
                         return;
                     }
                     
@@ -82984,14 +82996,15 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                     startFakeProgress(data.progress, data.message, data.total);
                                 } else if (currentEvent === 'error') {
                                     Roo.log('SSE: ERROR event received');
+                                    finished = true;  // Mark as finished before showing error
                                     stopFakeProgress();
-                                    Roo.MessageBox.hide();
                                     _this.failureType = Roo.form.Action.SERVER_INVALID;
                                     _this.result = data;
                                     form.afterAction(_this, false);
-                                    return; // Stop reading after error
+                                    return; // Stop processing this chunk
                                 } else if (currentEvent === 'complete') {
                                     Roo.log('SSE: COMPLETE event received, success=' + data.success);
+                                    finished = true;  // Mark as finished
                                     stopFakeProgress();
                                     Roo.MessageBox.hide();
                                     _this.result = data;
@@ -83003,15 +83016,15 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                         _this.failureType = Roo.form.Action.SERVER_INVALID;
                                         form.afterAction(_this, false);
                                     }
-                                    return; // Stop reading after complete
+                                    return; // Stop processing this chunk
                                 } else {
                                     Roo.log('SSE: Unknown event type or no progress: ' + currentEvent);
                                 }
                             } catch (e) {
                                 Roo.log('SSE: JSON parse error: ' + e);
                                 Roo.log('SSE: Failed JSON string: ' + jsonStr);
+                                finished = true;  // Mark as finished
                                 stopFakeProgress();
-                                Roo.MessageBox.hide();
                                 _this.failureType = Roo.form.Action.SERVER_INVALID;
                                 _this.result = {
                                     success: false,
@@ -83029,11 +83042,17 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                         }
                     });
                     
-                    read();
+                    // Only continue reading if not finished
+                    if (!finished) {
+                        read();
+                    }
                 }).catch(function(error) {
                     Roo.log('SSE: Read error: ' + error);
+                    if (finished) {
+                        return; // Already handled
+                    }
+                    finished = true;
                     stopFakeProgress();
-                    Roo.MessageBox.hide();
                     _this.failureType = Roo.form.Action.CONNECT_FAILURE;
                     _this.result = {
                         success: false,
