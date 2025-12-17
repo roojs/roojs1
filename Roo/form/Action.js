@@ -482,11 +482,17 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                         }
                     });
                     
-                    read();
+                    // Only continue reading if not finished
+                    if (!finished) {
+                        read();
+                    }
                 }).catch(function(error) {
                     Roo.log('SSE: Read error: ' + error);
+                    if (finished) {
+                        return; // Already handled
+                    }
+                    finished = true;
                     stopFakeProgress();
-                    Roo.MessageBox.hide();
                     _this.failureType = Roo.form.Action.CONNECT_FAILURE;
                     _this.result = {
                         success: false,
