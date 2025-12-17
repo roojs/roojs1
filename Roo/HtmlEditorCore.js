@@ -410,6 +410,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'data-image-width',
                             'data-image-height',
                             'data-caption',
+                            'data-border',
                             'start' ,
                             'dir',
                             'style',
