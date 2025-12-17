@@ -11687,37 +11687,54 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 // Calculate step space (how much % each step represents)
                 var stepSpace = 100 / totalSteps;
                 
-                // Oscillation step: 5% of step space
-                // e.g., 4 steps -> stepSpace=25% -> oscillateStep=1.25%
-                var oscillateStep = stepSpace * 0.25;
+                // Oscillation step: 20% of step space
+                // e.g., 1 step -> stepSpace=100% -> oscillateStep=20%
+                var oscillateStep = stepSpace * 0.20;
                 
-                // Oscillation pattern: 0 -> 1 -> 2 -> 3 -> 4 -> 3 -> 2 -> 1 -> 0 -> 1 -> ...
-                var offsetSteps = 0;
-                var maxOffset = 4;  // Go up 4 steps before coming back down (reaches 20% of stepSpace)
+                // Animation phases:
+                // Phase 1 (initial climb): 0 -> 1 -> 2 -> 3 -> 4 (offset 0 to maxOffset)
+                // Phase 2 (bounce): 4 -> 3 -> 2 -> 3 -> 4 -> 3 -> 2 -> ... (between minBounce and maxOffset)
+                var tickCount = 0;
+                var maxOffset = 4;    // Peak offset (80% of stepSpace)
+                var minBounce = 2;    // Lower bound for bounce (40% of stepSpace)
+                var currentOffset = 0;
+                var goingUp = true;
+                var inBouncePhase = false;
                 
                 Roo.log('SSE: Starting fake progress animation from ' + baseProgress + '%, stepSpace=' + stepSpace + '%, oscillateStep=' + oscillateStep + '%');
                 
                 // Oscillate every 1 second
                 fakeProgressInterval = setInterval(function() {
-                    offsetSteps++;
+                    tickCount++;
                     
-                    // Calculate current offset in the cycle
-                    // Cycle: 0,1,2,3,4,3,2,1,0,1,2,3,4,3,2,1,0...
-                    // Full cycle length is 8 (0->4 is 4 steps, 4->0 is 4 steps)
-                    var cyclePosition = offsetSteps % (maxOffset * 2);
-                    var currentOffset;
-                    
-                    if (cyclePosition <= maxOffset) {
-                        // Going up: 0 -> 1 -> 2 -> 3 -> 4
-                        currentOffset = cyclePosition;
+                    if (!inBouncePhase) {
+                        // Phase 1: Initial climb from 0 to maxOffset
+                        currentOffset = tickCount;
+                        if (currentOffset >= maxOffset) {
+                            currentOffset = maxOffset;
+                            inBouncePhase = true;
+                            goingUp = false;  // Start going down after reaching peak
+                        }
                     } else {
-                        // Going down: 4 -> 3 -> 2 -> 1 -> 0
-                        currentOffset = (maxOffset * 2) - cyclePosition;
+                        // Phase 2: Bounce between minBounce and maxOffset
+                        if (goingUp) {
+                            currentOffset++;
+                            if (currentOffset >= maxOffset) {
+                                currentOffset = maxOffset;
+                                goingUp = false;
+                            }
+                        } else {
+                            currentOffset--;
+                            if (currentOffset <= minBounce) {
+                                currentOffset = minBounce;
+                                goingUp = true;
+                            }
+                        }
                     }
                     
                     var displayedProgress = baseProgress + (currentOffset * oscillateStep);
                     
-                    Roo.log('SSE: Fake progress update: ' + displayedProgress.toFixed(2) + '% (offset=' + currentOffset + ')');
+                    Roo.log('SSE: Fake progress update: ' + displayedProgress.toFixed(2) + '% (offset=' + currentOffset + ', bounce=' + inBouncePhase + ')');
                     Roo.MessageBox.updateProgress(
                         displayedProgress / 100,
                         progressMessage
