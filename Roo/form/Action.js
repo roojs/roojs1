@@ -436,14 +436,15 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                     startFakeProgress(data.progress, data.message, data.total);
                                 } else if (currentEvent === 'error') {
                                     Roo.log('SSE: ERROR event received');
+                                    finished = true;  // Mark as finished before showing error
                                     stopFakeProgress();
-                                    Roo.MessageBox.hide();
                                     _this.failureType = Roo.form.Action.SERVER_INVALID;
                                     _this.result = data;
                                     form.afterAction(_this, false);
-                                    return; // Stop reading after error
+                                    return; // Stop processing this chunk
                                 } else if (currentEvent === 'complete') {
                                     Roo.log('SSE: COMPLETE event received, success=' + data.success);
+                                    finished = true;  // Mark as finished
                                     stopFakeProgress();
                                     Roo.MessageBox.hide();
                                     _this.result = data;
@@ -455,15 +456,15 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                         _this.failureType = Roo.form.Action.SERVER_INVALID;
                                         form.afterAction(_this, false);
                                     }
-                                    return; // Stop reading after complete
+                                    return; // Stop processing this chunk
                                 } else {
                                     Roo.log('SSE: Unknown event type or no progress: ' + currentEvent);
                                 }
                             } catch (e) {
                                 Roo.log('SSE: JSON parse error: ' + e);
                                 Roo.log('SSE: Failed JSON string: ' + jsonStr);
+                                finished = true;  // Mark as finished
                                 stopFakeProgress();
-                                Roo.MessageBox.hide();
                                 _this.failureType = Roo.form.Action.SERVER_INVALID;
                                 _this.result = {
                                     success: false,
