@@ -28316,6 +28316,8 @@ Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.FilterKeepChildren,
         if (node.attributes && node.attributes.length > 0 && node.textContent.trim().length > 0) {
             return true; // walk if there are any.
         }
+        
+         
 
         Roo.htmleditor.FilterKeepChildren.prototype.replaceTag.call(this, node);
         return false;
@@ -31273,6 +31275,9 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 if (cell.rowspan > 1) {
                     td.rowspan = cell.rowspan ;
                 }
+                if (cell.border && (cell.border == 'L' || cell.border == 'R' || cell.border == 'N')) {
+                    td['data-border'] = cell.border;
+                }
                 
                 
                 // widths ?
@@ -31313,7 +31318,8 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     colspan : td.hasAttribute('colspan') ? td.getAttribute('colspan')*1 : 1,
                     rowspan : td.hasAttribute('rowspan') ? td.getAttribute('rowspan')*1 : 1,
                     style : td.hasAttribute('style') ? td.getAttribute('style') : '',
-                    html : td.innerHTML
+                    html : td.innerHTML,
+                    border : td.hasAttribute('data-border') ? td.getAttribute('data-border') : 'B'
                 };
                 no_column += add.colspan;
                      
@@ -31565,11 +31571,27 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     colspan : 1,
     rowspan : 1,
+    border : 'B',
     
     
     // used by context menu
     friendly_name : 'Table Cell',
     deleteTitle : false, // use our customer delete
+    
+    // Store button references for border toggles (set by contextMenu)
+    leftBorderBtn : false,
+    rightBorderBtn : false,
+ 
+
+    updateBorderButtons : function()
+    {
+        if (!this.leftBorderBtn || !this.rightBorderBtn) {
+            return;
+        }
+        var border = this.border || 'B';
+        this.leftBorderBtn.setPressed((border == 'L' || border == 'B'));
+        this.rightBorderBtn.setPressed((border == 'R' || border == 'B'));
+    },
     
     // context menu is drawn once..
     
@@ -31609,7 +31631,10 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         var syncValue = toolbar.editorcore.syncValue;
         
         var fields = {};
-        
+
+
+        var tdbar = this;
+        var borderField = false;
         return [
             {
                 xtype : 'Button',
@@ -31699,6 +31724,74 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     fields : [ 'val'],
                     xns : Roo.data
                 }
+            },
+            
+            {
+                xtype : 'TextItem',
+                text : "Borders: ",
+                xns : rooui.Toolbar 
+            },
+            {
+                xtype : 'Hidden',
+                name : 'border',
+                listeners : {
+                    render : function (_self)
+                    {
+                        borderField = _self;
+                    }
+                },
+                setValue : function(value)
+                {
+                    Roo.form.Field.prototype.setValue.call(this, value);
+                    var b = cell(); // creates a new object - reading from the current node
+                    var border =  b.border || 'B';
+                    leftBorderBtn.setPressed(!(border == 'L' || border == 'B'));
+                    rightBorderBtn.setPressed(!(border == 'R' || border == 'B'));
+                    
+                },
+                xns : rooui.form
+            },
+            {
+                xtype : 'Button',
+                text: ' | ',
+                enableToggle : true,
+                listeners : {
+                    render : function (_self)
+                    {
+                        leftBorderBtn = _self;
+                    },
+                    click : function (_self, e)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        var b = cell();
+                        b.setLeft(!b.getLeft(), true);
+                        syncValue();
+                        borderField.setValue(b.border);
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+            {
+                xtype : 'Button',
+                text: ' | ',
+                enableToggle : true,
+                listeners : {
+                    render : function (_self)
+                    {
+                        rightBorderBtn = _self;
+                    },
+                    click : function (_self, e)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        var b = cell();
+                        b.setRight(!b.getRight(), true);
+                        syncValue();
+                        borderField.setValue(b.border);
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.Toolbar
             },
             
             {
@@ -31857,6 +31950,9 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
      */
     toObject : function()
     {
+        var border = this.border || 'B';
+        var borderStyle = 'solid 1px rgb(0, 0, 0)';
+        
         var ret = {
             tag : 'td',
             contenteditable : 'true', // this stops cell selection from picking the table.
@@ -31864,13 +31960,17 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             valign : this.valign,
             style : {  
                 'text-align' :  this.textAlign,
-                border : 'solid 1px rgb(0, 0, 0)', // ??? hard coded?
                 'border-collapse' : 'collapse',
                 padding : '6px', // 8 for desktop / 4 for mobile
-                'vertical-align': this.valign
+                'vertical-align': this.valign,
+                'border-top': borderStyle,
+                'border-bottom': borderStyle,
+                'border-left': ['L','B'].indexOf(border) >= 0 ? borderStyle : 'none',
+                'border-right': ['R','B'].indexOf(border) >= 0 ? borderStyle : 'none'
             },
             html : this.html
         };
+        
         if (this.width != '') {
             ret.width = this.width;
             ret.style.width = this.width;
@@ -31884,7 +31984,10 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             ret.rowspan = this.rowspan ;
         }
         
-           
+        // Set data-border attribute for L, R, or N (not for B which is default)
+        if (border == 'L' || border == 'R' || border == 'N') {
+            ret['data-border'] = border;
+        }
         
         return ret;
          
@@ -31900,6 +32003,8 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         if (node.style.textAlign != '') {
             this.textAlign = node.style.textAlign;
         }
+        var borderAttr = node.getAttribute('data-border');
+        this.border = borderAttr ? borderAttr : 'B';
         
         
     },
@@ -32282,10 +32387,118 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         }
         
         this.redrawAllCells(table);
-    }
+    },
     
     
+    updateElement : function(node)
+    {
+        node = node ? node : this.node;
+        if (!node) {
+            return;
+        }
+        
+        var border = this.border || 'B';
+        var borderStyle = 'solid 1px rgb(0, 0, 0)';
+        
+        // Update left and right borders based on border value
+        node.style.borderLeft = ['L','B'].indexOf(border) >= 0 ? borderStyle : 'none';
+        node.style.borderRight = ['R','B'].indexOf(border) >= 0 ? borderStyle : 'none';
+        
+        // Set or remove data-border attribute
+        // Only set attribute if value is 'L', 'R', or 'N' (not for 'B' which is default)
+        if (border == 'L' || border == 'R' || border == 'N') {
+            node.setAttribute('data-border', border);
+        } else {
+            node.removeAttribute('data-border');
+        }
+    },
     
+    getLeft : function()
+    {
+        var border = this.border || 'B';
+        return (border == 'L' || border == 'B');
+    },
+    
+    getRight : function()
+    {
+        var border = this.border || 'B';
+        return (border == 'R' || border == 'B');
+    },
+    
+    setLeft : function(on, recurse)
+    {
+        recurse = recurse || false;
+        
+        // Update border state
+        this.border = on 
+            ? (this.getRight() ? 'B' : 'L') 
+            : (this.getRight() ? 'R' : 'N');
+        
+        // Update this cell's DOM
+        this.updateElement();
+        
+        // If recurse is false, return early (no adjacent cell updates)
+        if (!recurse) {
+            return;
+        }
+        
+        // Update previous cell's right border to match this cell's left border
+        var prevCell = this.getPreviousCell();
+        if (!prevCell) {
+            return;
+        }
+        prevCell.setRight(this.getLeft(), false);
+    },
+    
+    setRight : function(on, recurse)
+    {
+        recurse = recurse || false;
+        
+        // Update border state
+        this.border = on 
+            ? (this.getLeft() ? 'B' : 'R') 
+            : (this.getLeft() ? 'L' : 'N');
+        
+        // Update this cell's DOM
+        this.updateElement();
+        
+        // If recurse is false, return early (no adjacent cell updates)
+        if (!recurse) {
+            return;
+        }
+        
+        // Update next cell's left border to match this cell's right border
+        var nextCell = this.getNextCell();
+        if (!nextCell) {
+            return;
+        }
+        nextCell.setLeft(this.getRight(), false);
+    },
+    
+    // Adjacent cell helper methods
+    getPreviousCell : function()
+    {
+        if (!this.node) {
+            return false;
+        }
+        var prevNode = this.node.previousElementSibling;
+        if (!prevNode) {
+            return false;
+        }
+        return Roo.htmleditor.Block.factory(prevNode);
+    },
+    
+    getNextCell : function()
+    {
+        if (!this.node) {
+            return false;
+        }
+        var nextNode = this.node.nextElementSibling;
+        if (!nextNode) {
+            return false;
+        }
+        return Roo.htmleditor.Block.factory(nextNode);
+    },
     
 })
 
@@ -32701,6 +32914,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'data-image-width',
                             'data-image-height',
                             'data-caption',
+                            'data-border',
                             'start' ,
                             'dir',
                             'style',

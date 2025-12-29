@@ -244,6 +244,9 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 if (cell.rowspan > 1) {
                     td.rowspan = cell.rowspan ;
                 }
+                if (cell.border && (cell.border == 'L' || cell.border == 'R' || cell.border == 'N')) {
+                    td['data-border'] = cell.border;
+                }
                 
                 
                 // widths ?
@@ -284,7 +287,8 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     colspan : td.hasAttribute('colspan') ? td.getAttribute('colspan')*1 : 1,
                     rowspan : td.hasAttribute('rowspan') ? td.getAttribute('rowspan')*1 : 1,
                     style : td.hasAttribute('style') ? td.getAttribute('style') : '',
-                    html : td.innerHTML
+                    html : td.innerHTML,
+                    border : td.hasAttribute('data-border') ? td.getAttribute('data-border') : 'B'
                 };
                 no_column += add.colspan;
                      
