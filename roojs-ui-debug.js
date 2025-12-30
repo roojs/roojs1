@@ -27930,6 +27930,15 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         } else {
             node.removeAttribute('data-border');
         }
+        
+        // Update width if set
+        if (this.width != '') {
+            node.style.width = this.width;
+            node.setAttribute('width', this.width);
+        } else {
+            node.style.width = '';
+            node.removeAttribute('width');
+        }
     },
     
     getLeft : function()
