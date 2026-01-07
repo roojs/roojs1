@@ -481,6 +481,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                 Roo.log('SSE: Failed JSON string: ' + jsonStr);
                                 finished = true;  // Mark as finished
                                 stopFakeProgress();
+                                resumeAuthCheck();
                                 _this.failureType = Roo.form.Action.SERVER_INVALID;
                                 _this.result = {
                                     success: false,
