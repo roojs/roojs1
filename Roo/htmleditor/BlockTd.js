@@ -983,7 +983,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             return false;
         }
         return Roo.htmleditor.Block.factory(nextNode);
-    },
+    }
     
 })
 
