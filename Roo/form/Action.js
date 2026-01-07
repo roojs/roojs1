@@ -307,6 +307,14 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 }
             }
             
+            // Function to resume auth check after SSE completes
+            function resumeAuthCheck() {
+                if (typeof Pman !== 'undefined' && Pman.Login) {
+                    Pman.Login.authCheckPaused = false;
+                    Roo.log('SSE: Auth check resumed');
+                }
+            }
+            
             // Function to start fake progress animation
             // totalSteps: total number of steps (e.g., 4 means each step = 25%)
             function startFakeProgress(realProgress, message, totalSteps) {
