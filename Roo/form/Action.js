@@ -452,6 +452,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                     Roo.log('SSE: ERROR event received');
                                     finished = true;  // Mark as finished before showing error
                                     stopFakeProgress();
+                                    resumeAuthCheck();
                                     _this.failureType = Roo.form.Action.SERVER_INVALID;
                                     _this.result = data;
                                     form.afterAction(_this, false);
@@ -460,6 +461,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                     Roo.log('SSE: COMPLETE event received, success=' + data.success);
                                     finished = true;  // Mark as finished
                                     stopFakeProgress();
+                                    resumeAuthCheck();
                                     Roo.MessageBox.hide();
                                     _this.result = data;
                                     if (data.success) {
