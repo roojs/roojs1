@@ -77265,7 +77265,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             return false;
         }
         return Roo.htmleditor.Block.factory(nextNode);
-    },
+    }
     
 })
 
@@ -83165,7 +83165,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     
                     var displayedProgress = baseProgress + (currentOffset * oscillateStep);
                     
-                    Roo.log('SSE: Fake progress update: ' + displayedProgress.toFixed(2) + '% (offset=' + currentOffset + ', bounce=' + inBouncePhase + ')');
+                    // Roo.log('SSE: Fake progress update: ' + displayedProgress.toFixed(2) + '% (offset=' + currentOffset + ', bounce=' + inBouncePhase + ')');
                     Roo.MessageBox.updateProgress(
                         displayedProgress / 100,
                         progressMessage
