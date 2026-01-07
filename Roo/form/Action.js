@@ -267,6 +267,12 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         // Show progress
         Roo.MessageBox.progress("Processing", "Starting...");
         
+        // Pause auth check during long-running SSE operations
+        if (typeof Pman !== 'undefined' && Pman.Login) {
+            Pman.Login.authCheckPaused = true;
+            Roo.log('SSE: Auth check paused');
+        }
+        
         Roo.log('SSE: Calling fetch...');
         
         fetch(this.getUrl(false), {
