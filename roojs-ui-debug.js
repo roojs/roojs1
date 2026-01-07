@@ -33833,6 +33833,12 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         // Show progress
         Roo.MessageBox.progress("Processing", "Starting...");
         
+        // Pause auth check during long-running SSE operations
+        if (typeof Pman !== 'undefined' && Pman.Login) {
+            Pman.Login.authCheckPaused = true;
+            Roo.log('SSE: Auth check paused');
+        }
+        
         Roo.log('SSE: Calling fetch...');
         
         fetch(this.getUrl(false), {
@@ -33864,6 +33870,14 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     clearInterval(fakeProgressInterval);
                     fakeProgressInterval = null;
                     Roo.log('SSE: Stopped fake progress animation');
+                }
+            }
+            
+            // Function to resume auth check after SSE completes
+            function resumeAuthCheck() {
+                if (typeof Pman !== 'undefined' && Pman.Login) {
+                    Pman.Login.authCheckPaused = false;
+                    Roo.log('SSE: Auth check resumed');
                 }
             }
             
@@ -34004,6 +34018,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                     Roo.log('SSE: ERROR event received');
                                     finished = true;  // Mark as finished before showing error
                                     stopFakeProgress();
+                                    resumeAuthCheck();
                                     _this.failureType = Roo.form.Action.SERVER_INVALID;
                                     _this.result = data;
                                     form.afterAction(_this, false);
@@ -34012,6 +34027,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                     Roo.log('SSE: COMPLETE event received, success=' + data.success);
                                     finished = true;  // Mark as finished
                                     stopFakeProgress();
+                                    resumeAuthCheck();
                                     Roo.MessageBox.hide();
                                     _this.result = data;
                                     if (data.success) {
@@ -34031,6 +34047,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                 Roo.log('SSE: Failed JSON string: ' + jsonStr);
                                 finished = true;  // Mark as finished
                                 stopFakeProgress();
+                                resumeAuthCheck();
                                 _this.failureType = Roo.form.Action.SERVER_INVALID;
                                 _this.result = {
                                     success: false,
@@ -34059,6 +34076,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     }
                     finished = true;
                     stopFakeProgress();
+                    resumeAuthCheck();
                     _this.failureType = Roo.form.Action.CONNECT_FAILURE;
                     _this.result = {
                         success: false,
@@ -34073,6 +34091,11 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         }).catch(function(error) {
             Roo.log('SSE: Fetch error: ' + error);
             Roo.MessageBox.hide();
+            // Resume auth check on fetch error
+            if (typeof Pman !== 'undefined' && Pman.Login) {
+                Pman.Login.authCheckPaused = false;
+                Roo.log('SSE: Auth check resumed (fetch error)');
+            }
             _this.failureType = Roo.form.Action.CONNECT_FAILURE;
             _this.result = {
                 success: false,
