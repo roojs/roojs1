@@ -510,6 +510,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     }
                     finished = true;
                     stopFakeProgress();
+                    resumeAuthCheck();
                     _this.failureType = Roo.form.Action.CONNECT_FAILURE;
                     _this.result = {
                         success: false,
@@ -524,6 +525,11 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         }).catch(function(error) {
             Roo.log('SSE: Fetch error: ' + error);
             Roo.MessageBox.hide();
+            // Resume auth check on fetch error
+            if (typeof Pman !== 'undefined' && Pman.Login) {
+                Pman.Login.authCheckPaused = false;
+                Roo.log('SSE: Auth check resumed (fetch error)');
+            }
             _this.failureType = Roo.form.Action.CONNECT_FAILURE;
             _this.result = {
                 success: false,
