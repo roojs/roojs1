@@ -292,6 +292,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             var decoder = new TextDecoder();
             var buffer = '';
             var chunkCount = 0;
+            var currentEvent = null;  // Persist across chunks (event and data may be in different chunks)
             
             // Fake progress animation state
             var fakeProgressInterval = null;
