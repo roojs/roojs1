@@ -419,8 +419,6 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     
                     Roo.log('SSE: Processing ' + lines.length + ' lines, buffer remaining: ' + buffer.length + ' chars');
                     
-                    var currentEvent = null;
-                    
                     lines.forEach(function(line) {
                         if (line.trim() === '') {
                             return; // Skip empty lines
