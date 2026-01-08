@@ -33961,6 +33961,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     if (result.done) {
                         Roo.log('SSE: Stream complete, finished=' + finished);
                         stopFakeProgress();
+                        resumeAuthCheck();
                         // Only hide MessageBox if we haven't already handled error/complete
                         if (!finished) {
                             Roo.MessageBox.hide();
