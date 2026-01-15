@@ -77910,7 +77910,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'frameborder',
                             'width',
                             'height',
-                            'alt'
+                            'alt' 
                             ],
                     attrib_clean : ['href', 'src' ] 
                 });

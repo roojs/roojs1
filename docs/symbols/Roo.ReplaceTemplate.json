@@ -1,0 +1,196 @@
+{
+  "name" : "Roo.ReplaceTemplate",
+  "augments" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
+  "desc" : "A template engine that uses string replacement instead of eval().\n\nFollows a similar API to Roo.Template but avoids eval() for security and performance.\n\nSupported features:\n<pre><code>\n    {a_variable} - output encoded (htmlEncode)\n    {a_variable:raw} - unencoded output\n    {a_variable:this.methodName} - call a method on the template object\n    {a_variable:htmlEncode} - use Roo.util.Format method\n</code></pre>\n\nUsage:\n<pre><code>\nvar t = new Roo.ReplaceTemplate({\n    html: '<div>{name}</div>',\n    formatName: function(v, allv) {\n        return String.format('<B>{0}</B>', v);\n    }\n});\nt.apply({name: 'Test'}); // returns '<div>Test</div>'\n</code></pre>",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
+  "memberOf" : "ReplaceTemplate",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "cfg",
+      "type" : "Object/String",
+      "desc" : "Configuration object or HTML string",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [
+    {
+      "name" : "html",
+      "type" : "String",
+      "desc" : "The HTML fragment template",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "disableFormats",
+      "type" : "Boolean",
+      "desc" : "True to disable format functions (defaults to false)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "applyTemplate",
+      "type" : "function",
+      "desc" : "Returns an HTML fragment with the specified values applied.\nUses string replacement instead of eval().",
+      "sig" : "(values)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "values",
+          "type" : "Object",
+          "desc" : "The template values",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The HTML fragment"
+        }
+      ]
+    },
+    {
+      "name" : "apply",
+      "type" : "function",
+      "desc" : "Alias for {@link #applyTemplate}",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "compile",
+      "type" : "function",
+      "desc" : "Compile is a no-op for ReplaceTemplate (no compilation needed)\nKept for API compatibility",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ReplaceTemplate",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "set",
+      "type" : "function",
+      "desc" : "Sets the HTML used as the template.",
+      "sig" : "(html)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "html",
+          "type" : "String",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.ReplaceTemplate",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "getValue",
+      "type" : "function",
+      "desc" : "Get a value from the data object, supporting dot notation",
+      "sig" : "(data, path)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "The data object",
+          "isOptional" : false
+        },
+        {
+          "name" : "path",
+          "type" : "String",
+          "desc" : "The property path (e.g., \"user.name\")",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "*",
+          "desc" : "The value or undefined"
+        }
+      ]
+    }
+  ],
+  "events" : []
+}
