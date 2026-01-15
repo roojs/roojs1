@@ -183,6 +183,11 @@
         "is_class" : true
       },
       {
+        "name" : "Roo.ReplaceTemplate",
+        "cn" : [],
+        "is_class" : true
+      },
+      {
         "name" : "Roo.Resizable",
         "cn" : [],
         "is_class" : true

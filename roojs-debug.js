@@ -72977,11 +72977,13 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
             l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
             
             if ( this.style_black.length && (this.style_black.indexOf(l) > -1 || this.style_black.indexOf(l.toLowerCase()) > -1)) {
+                Roo.log("REMOVE " + p);
                 return true;
             }
             //Roo.log()
             // only allow 'c whitelisted system attributes'
             if ( this.style_white.length &&  style_white.indexOf(l) < 0 && style_white.indexOf(l.toLowerCase()) < 0 ) {
+                Roo.log("REMOVE " + p);
                 return true;
             }
             
@@ -76201,7 +76203,8 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             style : {
                 width:  this.width,
                 border : 'solid 1px #000', // ??? hard coded?
-                'border-collapse' : 'collapse' 
+                'border-collapse' : 'collapse',
+                'overflow' : 'revert'
             },
             cn : [
                 { tag : 'tbody' , cn : [] }
@@ -76927,16 +76930,21 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             valign : this.valign,
             style : {  
                 'text-align' :  this.textAlign,
-                'border-collapse' : 'collapse',
-                padding : '6px', // 8 for desktop / 4 for mobile
-                'vertical-align': this.valign,
-                'border-top': borderStyle,
-                'border-bottom': borderStyle,
-                'border-left': ['L','B'].indexOf(border) >= 0 ? borderStyle : 'none',
-                'border-right': ['R','B'].indexOf(border) >= 0 ? borderStyle : 'none'
+                //'border-collapse' : 'collapse',
+                'padding' : '6px', // 8 for desktop / 4 for mobile
+                'vertical-align': this.valign
             },
             html : this.html
         };
+        
+        if (border == 'B') {
+            ret.style.border = borderStyle;
+        } else {
+            ret.style['border-top'] = borderStyle;
+            ret.style['border-bottom'] = borderStyle;
+            ret.style['border-left'] = ['L','B'].indexOf(border) >= 0 ? borderStyle : 'none';
+            ret.style['border-right'] = ['R','B'].indexOf(border) >= 0 ? borderStyle : 'none';
+        }
         
         if (this.width != '') {
             ret.width = this.width;
@@ -76955,6 +76963,8 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         if (border == 'L' || border == 'R' || border == 'N') {
             ret['data-border'] = border;
         }
+
+        
         
         return ret;
          

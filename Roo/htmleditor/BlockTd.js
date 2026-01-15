@@ -436,16 +436,21 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             valign : this.valign,
             style : {  
                 'text-align' :  this.textAlign,
-                'border-collapse' : 'collapse',
-                padding : '6px', // 8 for desktop / 4 for mobile
-                'vertical-align': this.valign,
-                'border-top': borderStyle,
-                'border-bottom': borderStyle,
-                'border-left': ['L','B'].indexOf(border) >= 0 ? borderStyle : 'none',
-                'border-right': ['R','B'].indexOf(border) >= 0 ? borderStyle : 'none'
+                //'border-collapse' : 'collapse',
+                'padding' : '6px', // 8 for desktop / 4 for mobile
+                'vertical-align': this.valign
             },
             html : this.html
         };
+        
+        if (border == 'B') {
+            ret.style.border = borderStyle;
+        } else {
+            ret.style['border-top'] = borderStyle;
+            ret.style['border-bottom'] = borderStyle;
+            ret.style['border-left'] = ['L','B'].indexOf(border) >= 0 ? borderStyle : 'none';
+            ret.style['border-right'] = ['R','B'].indexOf(border) >= 0 ? borderStyle : 'none';
+        }
         
         if (this.width != '') {
             ret.width = this.width;
@@ -464,6 +469,8 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         if (border == 'L' || border == 'R' || border == 'N') {
             ret['data-border'] = border;
         }
+
+        
         
         return ret;
          
