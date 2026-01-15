@@ -436,16 +436,21 @@
             </span><span class="jsdoc-var">valign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.valign</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: {
                 </span><span class="jsdoc-string">'text-align' </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">this.textAlign</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-string">'border-collapse' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'collapse'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">padding </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'6px'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// 8 for desktop / 4 for mobile
-                </span><span class="jsdoc-string">'vertical-align'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.valign</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-string">'border-top'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">borderStyle</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-string">'border-bottom'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">borderStyle</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-string">'border-left'</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'L'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">) &gt;= 0 ? </span><span class="jsdoc-var">borderStyle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-string">'border-right'</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'R'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">) &gt;= 0 ? </span><span class="jsdoc-var">borderStyle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'
+                </span><span class="jsdoc-comment">//'border-collapse' : 'collapse',
+                </span><span class="jsdoc-string">'padding' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'6px'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// 8 for desktop / 4 for mobile
+                </span><span class="jsdoc-string">'vertical-align'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.valign
             </span><span class="jsdoc-syntax">},
             </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html
         </span><span class="jsdoc-syntax">};
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ret.style.border </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">borderStyle</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">ret.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'border-top'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">borderStyle</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ret.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'border-bottom'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">borderStyle</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ret.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'border-left'</span><span class="jsdoc-syntax">] = [</span><span class="jsdoc-string">'L'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">) &gt;= 0 ? </span><span class="jsdoc-var">borderStyle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ret.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'border-right'</span><span class="jsdoc-syntax">] = [</span><span class="jsdoc-string">'R'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">) &gt;= 0 ? </span><span class="jsdoc-var">borderStyle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">;
+        }
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">ret.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">;
@@ -464,6 +469,8 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'L' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'R' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'N'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'data-border'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">;
         }
+
+
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
 

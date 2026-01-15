@@ -144,11 +144,13 @@
             </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">l.replace</span><span class="jsdoc-syntax">(/^\s+/g,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/\s+$/g,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
 
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.style_black.length </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">this.style_black.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">) &gt; -1 || </span><span class="jsdoc-var">this.style_black.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l.toLowerCase</span><span class="jsdoc-syntax">()) &gt; -1)) {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;REMOVE &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-comment">//Roo.log()
             // only allow 'c whitelisted system attributes'
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.style_white.length </span><span class="jsdoc-syntax">&amp;&amp;  </span><span class="jsdoc-var">style_white.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">) &lt; 0 &amp;&amp; </span><span class="jsdoc-var">style_white.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l.toLowerCase</span><span class="jsdoc-syntax">()) &lt; 0 ) {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;REMOVE &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
             }
 
