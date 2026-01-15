@@ -883,9 +883,15 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.border </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">borderStyle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'solid 1px rgb(0, 0, 0)'</span><span class="jsdoc-syntax">;
 
-        </span><span class="jsdoc-comment">// Update left and right borders based on border value
-        </span><span class="jsdoc-var">node.style.borderLeft </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">'L'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">) &gt;= 0 ? </span><span class="jsdoc-var">borderStyle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">node.style.borderRight </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">'R'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">) &gt;= 0 ? </span><span class="jsdoc-var">borderStyle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">// Update borders based on border value - same logic as toObject
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">node.style.border </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">borderStyle</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">node.style.borderTop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">borderStyle</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">node.style.borderBottom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">borderStyle</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">node.style.borderLeft </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">'L'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">) &gt;= 0 ? </span><span class="jsdoc-var">borderStyle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">node.style.borderRight </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">'R'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">) &gt;= 0 ? </span><span class="jsdoc-var">borderStyle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">;
+        }
 
         </span><span class="jsdoc-comment">// Set or remove data-border attribute
         // Only set attribute if value is 'L', 'R', or 'N' (not for 'B' which is default)
@@ -903,6 +909,16 @@
             </span><span class="jsdoc-var">node.style.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">);
         }
+
+        </span><span class="jsdoc-comment">// Update text-align style
+        </span><span class="jsdoc-var">node.style.textAlign </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.textAlign</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">// Update padding style
+        </span><span class="jsdoc-var">node.style.padding </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'6px'</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">// Update vertical-align style and valign attribute
+        </span><span class="jsdoc-var">node.style.verticalAlign </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.valign</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">node.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'valign'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.valign</span><span class="jsdoc-syntax">);
     },
 
     </span><span class="jsdoc-var">getLeft </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()

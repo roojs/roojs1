@@ -32137,9 +32137,15 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         var border = this.border || 'B';
         var borderStyle = 'solid 1px rgb(0, 0, 0)';
         
-        // Update left and right borders based on border value
-        node.style.borderLeft = ['L','B'].indexOf(border) >= 0 ? borderStyle : 'none';
-        node.style.borderRight = ['R','B'].indexOf(border) >= 0 ? borderStyle : 'none';
+        // Update borders based on border value - same logic as toObject
+        if (border == 'B') {
+            node.style.border = borderStyle;
+        } else {
+            node.style.borderTop = borderStyle;
+            node.style.borderBottom = borderStyle;
+            node.style.borderLeft = ['L','B'].indexOf(border) >= 0 ? borderStyle : 'none';
+            node.style.borderRight = ['R','B'].indexOf(border) >= 0 ? borderStyle : 'none';
+        }
         
         // Set or remove data-border attribute
         // Only set attribute if value is 'L', 'R', or 'N' (not for 'B' which is default)
@@ -32157,6 +32163,16 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             node.style.width = '';
             node.removeAttribute('width');
         }
+        
+        // Update text-align style
+        node.style.textAlign = this.textAlign;
+        
+        // Update padding style
+        node.style.padding = '6px';
+        
+        // Update vertical-align style and valign attribute
+        node.style.verticalAlign = this.valign;
+        node.setAttribute('valign', this.valign);
     },
     
     getLeft : function()
