@@ -27837,7 +27837,7 @@ Roo.extend(Roo.htmleditor.FilterEmpty, Roo.htmleditor.FilterBlack,
             ||
             node.attributes && node.attributes.length > 0
             ||
-            node.hasChildNodes()
+            node.textContent.trim().length > 0
         ) {
             return false; // don't walk
         }
@@ -32260,7 +32260,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             return false;
         }
         return Roo.htmleditor.Block.factory(nextNode);
-    },
+    }
     
 })
 
