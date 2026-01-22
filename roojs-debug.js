@@ -78181,6 +78181,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         var html = cd.getData('text/html'); // clipboard event
 
+        Roo.log("RAW HTML");
+        Roo.log(html);
+
         
         html = this.cleanWordChars(html);
 
