@@ -30,10 +30,24 @@
             [</span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'I'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'U'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'S'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName</span><span class="jsdoc-syntax">) &lt; 0
             ||
             </span><span class="jsdoc-var">node.attributes </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">node.attributes.length </span><span class="jsdoc-syntax">&gt; 0
-            ||
-            </span><span class="jsdoc-var">node.hasChildNodes</span><span class="jsdoc-syntax">()
         ) {
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// don't walk
+        </span><span class="jsdoc-syntax">}
+
+        </span><span class="jsdoc-comment">// check if node has any non-text child nodes (e.g. img, br, etc.)
+        // if so, don't filter it
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.hasChildNodes</span><span class="jsdoc-syntax">()) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">node.childNodes.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.nodeType </span><span class="jsdoc-syntax">!== 3) { </span><span class="jsdoc-comment">// not a text node
+                    </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// don't filter - has element children
+                </span><span class="jsdoc-syntax">}
+            }
+        }
+
+        </span><span class="jsdoc-comment">// at this point, node only has text nodes (or no children)
+        // filter if text content is empty after trim
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.textContent.trim</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">&gt; 0) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// don't filter - has meaningful text
         </span><span class="jsdoc-syntax">}
 
         </span><span class="jsdoc-var">Roo.htmleditor.FilterBlack.prototype.replaceTag.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
