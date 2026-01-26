@@ -594,6 +594,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         });
         if(Roo.isGecko){
             Roo.EventManager.on(this.doc, 'keypress', this.mozKeyPress, this);
+            Roo.EventManager.on(this.doc, 'keydown', this.handleKeyDown, this);
         }
         //??? needed???
         if(Roo.isIE || Roo.isSafari || Roo.isOpera){
