@@ -1147,6 +1147,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     }
                     return;
                 }
+                // Handle Delete key for images
+                if(k == e.DELETE && this.handleDeleteKey(e)) {
+                    e.stopEvent();
+                    return;
+                }
                 /// this is handled by Roo.htmleditor.KeyEnter
                  /*
                 if(k == e.ENTER){
