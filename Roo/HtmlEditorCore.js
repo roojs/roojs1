@@ -1254,12 +1254,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         Roo.log('Image found, looking for toolbar with onDelete');
         // Find toolbar with onDelete method (Standard toolbar)
         var toolbars = this.owner.toolbars || [];
-        Roo.log('Toolbars found:', toolbars.length);
+        Roo.log('Toolbars found: ' + toolbars.length);
         var toolbar = null;
         for (var i = 0; i < toolbars.length; i++) {
             if (toolbars[i] && typeof toolbars[i].onDelete === 'function') {
                 toolbar = toolbars[i];
-                Roo.log('Found toolbar with onDelete at index:', i);
+                Roo.log('Found toolbar with onDelete at index: ' + i);
                 break;
             }
         }
@@ -1284,7 +1284,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     handleKeyDown : function(e)
     {
         var k = e.getKey();
-        Roo.log('Gecko keydown - key:', k, 'DELETE:', e.DELETE);
+        Roo.log('Gecko keydown - key: ' + k + ' DELETE: ' + e.DELETE);
         if(k == e.DELETE && this.handleDeleteKey(e)) {
             Roo.log('Delete key handled in Gecko, stopping event');
             e.stopEvent();
