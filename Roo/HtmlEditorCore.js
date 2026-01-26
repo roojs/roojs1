@@ -1200,6 +1200,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     this.deferFocus();
                     return;
                 }
+                // Handle Delete key for images
+                if(k == e.DELETE && this.handleDeleteKey(e)) {
+                    e.stopEvent();
+                    return;
+                }
                  this.mozKeyPress(e);
                 
                //if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
