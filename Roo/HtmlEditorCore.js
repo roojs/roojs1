@@ -1221,6 +1221,45 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
     }(),
     
+    // Handle Delete key for images - reuses toolbar's onDelete method
+    handleDeleteKey : function(e)
+    {
+        // Get selected node - check event target first, then getSelectedNode
+        var selectedNode = false;
+        if (e && e.target && e.target.tagName === 'IMG') {
+            selectedNode = e.target;
+        } else {
+            selectedNode = this.getSelectedNode();
+        }
+        
+        // Check if selected node is an image
+        if (!selectedNode || selectedNode.tagName !== 'IMG') {
+            return false; // Not an image, let default behavior happen
+        }
+        
+        // Find toolbar with onDelete method (Standard toolbar)
+        var toolbars = this.owner.toolbars || [];
+        var toolbar = null;
+        for (var i = 0; i < toolbars.length; i++) {
+            if (toolbars[i] && typeof toolbars[i].onDelete === 'function') {
+                toolbar = toolbars[i];
+                break;
+            }
+        }
+        
+        if (!toolbar) {
+            return false; // No toolbar with delete method found
+        }
+        
+        // Set the toolbar's selectedNode so onDelete can use it
+        toolbar.selectedNode = selectedNode;
+        
+        // Call the toolbar's onDelete method (reusing existing code!)
+        toolbar.onDelete();
+        
+        return true; // Handled
+    },
+    
     getAllAncestors: function()
     {
         var p = this.getSelectedNode();
