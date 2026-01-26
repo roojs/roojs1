@@ -77713,7 +77713,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         st +=  '<style type="text/css">' +
             'IMG { cursor: pointer; transition: box-shadow 0.2s ease; } ' +
-            'IMG:focus { box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5), 0 0 8px rgba(0, 123, 255, 0.3); outline: 2px solid rgba(0, 123, 255, 0.8); outline-offset: 2px; } ' +
+            'IMG.roo-image-selected { box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5), 0 0 8px rgba(0, 123, 255, 0.3); outline: 2px solid rgba(0, 123, 255, 0.8); outline-offset: 2px; } ' +
         '</style>';
         
         st += '<meta name="google" content="notranslate">';
@@ -78423,11 +78423,39 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
         }
         
+        // Handle image selection highlighting
+        var selectedNode = this.getSelectedNode();
+        Roo.log("SELECTED NODE!!!!!");
+        Roo.log(selectedNode);
+        Roo.log(e);
+        var allImages = this.doc.body.getElementsByTagName('img');
         
+        // Remove highlight from all images
+        Array.from(allImages).forEach(function(img) {
+            img.classList.remove('roo-image-selected');
+        });
+        
+        // Add highlight to selected image
+        if (selectedNode && selectedNode.tagName === 'IMG') {
+            selectedNode.classList.add('roo-image-selected');
+        }
         
         this.fireEditorEvent(e);
       //  this.updateToolbar();
+        
+        // Remove highlight class before syncing to prevent it from being saved
+        // Store which image was selected so we can restore it after sync
+        var selectedImg = (selectedNode && selectedNode.tagName === 'IMG') ? selectedNode : null;
+        Array.from(allImages).forEach(function(img) {
+            img.classList.remove('roo-image-selected');
+        });
+        
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
+        
+        // Restore highlight after sync if image is still selected
+        if (selectedImg && selectedImg.parentNode) {
+            selectedImg.classList.add('roo-image-selected');
+        }
     },
     
     fireEditorEvent: function(e)
