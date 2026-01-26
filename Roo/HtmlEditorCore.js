@@ -1183,6 +1183,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     this.execCmd('InsertHTML','&#160;&#160;&#160;&#160;');
                     this.deferFocus();
                 }
+                // Handle Delete key for images
+                if(k == e.DELETE && this.handleDeleteKey(e)) {
+                    e.stopEvent();
+                    return;
+                }
                
                 //if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
                 //    this.cleanUpPaste.defer(100, this);
