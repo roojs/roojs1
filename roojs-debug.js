@@ -78539,11 +78539,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         
         if(!this.activated){
+            Roo.log('insertAtCursor: Not activated, returning');
             return;
         }
          
+        Roo.log('insertAtCursor: Starting, text type=' + typeof(text) + ', length=' + (typeof(text) == 'string' ? text.length : 'N/A'));
+        Roo.log('insertAtCursor: Before focus, body.innerHTML length=' + (this.doc.body ? this.doc.body.innerHTML.length : 'N/A'));
+        
         if(Roo.isGecko || Roo.isOpera || Roo.isSafari){
             this.win.focus();
+            Roo.log('insertAtCursor: After win.focus()');
             
             
             // from jquery ui (MIT licenced)
@@ -78551,32 +78556,65 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var win = this.win;
             
             if (win.getSelection && win.getSelection().getRangeAt) {
+                Roo.log('insertAtCursor: Using getSelection path');
+                
+                var sel = this.getSelection();
+                Roo.log('insertAtCursor: getSelection() returned, rangeCount=' + (sel ? sel.rangeCount : 0));
                 
                 // delete the existing?
+                try {
+                    var deleteRange = this.createRange(sel);
+                    Roo.log('insertAtCursor: Created range for deleteContents, startContainer=' + (deleteRange.startContainer ? deleteRange.startContainer.nodeName : 'null') + ', startOffset=' + deleteRange.startOffset + ', endOffset=' + deleteRange.endOffset);
+                    deleteRange.deleteContents();
+                    Roo.log('insertAtCursor: After deleteContents');
+                } catch(e) {
+                    Roo.log('insertAtCursor: Error in deleteContents: ' + e.message);
+                }
                 
-                this.createRange(this.getSelection()).deleteContents();
-                range = win.getSelection().getRangeAt(0);
+                try {
+                    range = win.getSelection().getRangeAt(0);
+                    Roo.log('insertAtCursor: Got range from selection, startContainer=' + (range.startContainer ? range.startContainer.nodeName : 'null') + ', startOffset=' + range.startOffset);
+                } catch(e) {
+                    Roo.log('insertAtCursor: Error getting range: ' + e.message);
+                    return;
+                }
+                
                 node = typeof(text) == 'string' ? range.createContextualFragment(text) : text;
-                range.insertNode(node);
+                Roo.log('insertAtCursor: Created node, nodeType=' + (node.nodeType ? node.nodeType : 'N/A') + ', nodeName=' + (node.nodeName ? node.nodeName : 'N/A'));
+                
+                try {
+                    range.insertNode(node);
+                    Roo.log('insertAtCursor: After insertNode, body.innerHTML length=' + this.doc.body.innerHTML.length);
+                } catch(e) {
+                    Roo.log('insertAtCursor: Error in insertNode: ' + e.message);
+                    return;
+                }
+                
                 range = range.cloneRange();
                 range.collapse(false);
+                Roo.log('insertAtCursor: Cloned and collapsed range');
                  
                 win.getSelection().removeAllRanges();
                 win.getSelection().addRange(range);
+                Roo.log('insertAtCursor: Added range back to selection');
                 
                 
                 
             } else if (win.document.selection && win.document.selection.createRange) {
+                Roo.log('insertAtCursor: Using IE document.selection path');
                 // no firefox support
                 var txt = typeof(text) == 'string' ? text : text.outerHTML;
                 win.document.selection.createRange().pasteHTML(txt);
             
             } else {
+                Roo.log('insertAtCursor: Using execCmd InsertHTML path');
                 // no firefox support
                 var txt = typeof(text) == 'string' ? text : text.outerHTML;
                 this.execCmd('InsertHTML', txt);
             } 
+            Roo.log('insertAtCursor: Before syncValue, body.innerHTML length=' + this.doc.body.innerHTML.length);
             this.syncValue();
+            Roo.log('insertAtCursor: After syncValue');
             
             this.deferFocus();
         }
