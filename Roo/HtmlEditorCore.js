@@ -1265,30 +1265,37 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     handleDeleteKey : function(e)
     {
         Roo.log('handleDeleteKey called');
-        Roo.log('Event: ' + (e ? 'exists' : 'null'));
-        // Get selected node - check event target first, then getSelectedNode
-        var selectedNode = false;
-        if (e && e.target && e.target.tagName === 'IMG') {
-            selectedNode = e.target;
-            Roo.log('Selected node from e.target: ' + (selectedNode ? selectedNode.tagName : 'null'));
-        } else {
-            selectedNode = this.getSelectedNode();
-            Roo.log('Selected node from getSelectedNode(): ' + (selectedNode ? selectedNode.tagName : 'null'));
-        }
-
-        Roo.log('SelectedNode: ' + (selectedNode ? selectedNode.tagName : 'null'));
-        Roo.log(selectedNode);
         
-        // Check if selected node is an image
-        if (!selectedNode || selectedNode.tagName !== 'IMG') {
-            Roo.log('Not an image - selectedNode: ' + (selectedNode ? selectedNode.tagName : 'null') + ' tagName: ' + (selectedNode ? selectedNode.tagName : 'null'));
-            return false; // Not an image, let default behavior happen
+        // Use the stored selectedFigNode if available (set when figure is highlighted)
+        if (!this.selectedFigNode) {
+            Roo.log('No selectedFigNode stored, cannot delete figure');
+            return false;
         }
         
-        Roo.log('Image found, looking for toolbar with onDelete');
+        var selectedFig = this.selectedFigNode;
+        Roo.log('Using stored selectedFigNode: ' + (selectedFig ? selectedFig.tagName : 'null'));
+        
+        // Check if selected figure is still valid (hasn't been removed)
+        if (!selectedFig || !selectedFig.parentNode) {
+            Roo.log('selectedFigNode is no longer valid, resetting');
+            this.selectedFigNode = false;
+            return false;
+        }
+        
+        // Verify it's a figure with an image
+        if (selectedFig.tagName !== 'FIGURE') {
+            Roo.log('selectedFigNode is not a FIGURE, resetting');
+            this.selectedFigNode = false;
+            return false;
+        }
+        
+        if (!selectedFig.querySelector('img')) {
+            Roo.log('FIGURE does not contain image');
+            return false;
+        }
+        
         // Find toolbar with onDelete method (Standard toolbar)
         var toolbars = this.owner.toolbars || [];
-        Roo.log('Toolbars found: ' + toolbars.length);
         var toolbar = null;
         for (var i = 0; i < toolbars.length; i++) {
             if (toolbars[i] && typeof toolbars[i].onDelete === 'function') {
@@ -1300,18 +1307,22 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         if (!toolbar) {
             Roo.log('No toolbar with onDelete method found');
-            return false; // No toolbar with delete method found
+            return false;
         }
         
-        // Set the toolbar's selectedNode so onDelete can use it
-        toolbar.selectedNode = selectedNode;
-        Roo.log('Setting toolbar.selectedNode and calling onDelete');
+        // Set the toolbar's selectedNode to the figure
+        // The toolbar's onDelete expects the figure element with data-block attribute
+        toolbar.selectedNode = selectedFig;
+        Roo.log('Setting toolbar.selectedNode to figure and calling onDelete');
         
         // Call the toolbar's onDelete method (reusing existing code!)
         toolbar.onDelete();
         
-        Roo.log('onDelete completed, returning true');
-        return true; // Handled
+        // Reset selectedFigNode after deletion
+        this.selectedFigNode = false;
+        Roo.log('onDelete completed, selectedFigNode reset');
+        
+        return true;
     },
     
     // Handle keydown for Gecko (Firefox) browsers
