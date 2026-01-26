@@ -1207,7 +1207,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     return;
                 }
                 // Handle Delete key for images
+                Roo.log('Safari/Chrome keydown - key:', k, 'DELETE:', e.DELETE);
                 if(k == e.DELETE && this.handleDeleteKey(e)) {
+                    Roo.log('Delete key handled, stopping event');
                     e.stopEvent();
                     return;
                 }
