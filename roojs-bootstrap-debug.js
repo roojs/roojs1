@@ -33185,6 +33185,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         // Handle image selection highlighting
         var selectedNode = this.getSelectedNode();
+        Roo.log("SELECTED NODE!!!!!");
+        Roo.log(selectedNode);
         var allImages = this.doc.body.getElementsByTagName('img');
         
         // Remove highlight from all images
