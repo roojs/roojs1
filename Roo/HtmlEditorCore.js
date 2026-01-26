@@ -904,10 +904,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         
         // Handle image selection highlighting
-        var selectedNode = this.getSelectedNode();
-        Roo.log("SELECTED NODE!!!!!");
-        Roo.log(selectedNode);
-        Roo.log(e);
+        // Check event target first (like toolbar code does) - clicking images doesn't always create proper selection ranges
+        var selectedNode = false;
+        if (e && e.target && e.target.tagName === 'IMG') {
+            selectedNode = e.target;
+        } else {
+            selectedNode = this.getSelectedNode();
+        }
         var allImages = this.doc.body.getElementsByTagName('img');
         
         // Remove highlight from all images
