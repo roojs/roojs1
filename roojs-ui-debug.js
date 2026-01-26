@@ -28666,6 +28666,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         });
         if(Roo.isGecko){
             Roo.EventManager.on(this.doc, 'keypress', this.mozKeyPress, this);
+            Roo.EventManager.on(this.doc, 'keydown', this.handleKeyDown, this);
         }
         //??? needed???
         if(Roo.isIE || Roo.isSafari || Roo.isOpera){
@@ -29219,6 +29220,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     }
                     return;
                 }
+                // Handle Delete key for images
+                if(k == e.DELETE && this.handleDeleteKey(e)) {
+                    e.stopEvent();
+                    return;
+                }
                 /// this is handled by Roo.htmleditor.KeyEnter
                  /*
                 if(k == e.ENTER){
@@ -29250,6 +29256,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     this.execCmd('InsertHTML','&#160;&#160;&#160;&#160;');
                     this.deferFocus();
                 }
+                // Handle Delete key for images
+                if(k == e.DELETE && this.handleDeleteKey(e)) {
+                    e.stopEvent();
+                    return;
+                }
                
                 //if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
                 //    this.cleanUpPaste.defer(100, this);
@@ -29267,6 +29278,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     this.deferFocus();
                     return;
                 }
+                // Handle Delete key for images
+                if(k == e.DELETE && this.handleDeleteKey(e)) {
+                    e.stopEvent();
+                    return;
+                }
                  this.mozKeyPress(e);
                 
                //if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
@@ -29277,6 +29293,55 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
              };
         }
     }(),
+    
+    // Handle Delete key for images - reuses toolbar's onDelete method
+    handleDeleteKey : function(e)
+    {
+        // Get selected node - check event target first, then getSelectedNode
+        var selectedNode = false;
+        if (e && e.target && e.target.tagName === 'IMG') {
+            selectedNode = e.target;
+        } else {
+            selectedNode = this.getSelectedNode();
+        }
+        
+        // Check if selected node is an image
+        if (!selectedNode || selectedNode.tagName !== 'IMG') {
+            return false; // Not an image, let default behavior happen
+        }
+        
+        // Find toolbar with onDelete method (Standard toolbar)
+        var toolbars = this.owner.toolbars || [];
+        var toolbar = null;
+        for (var i = 0; i < toolbars.length; i++) {
+            if (toolbars[i] && typeof toolbars[i].onDelete === 'function') {
+                toolbar = toolbars[i];
+                break;
+            }
+        }
+        
+        if (!toolbar) {
+            return false; // No toolbar with delete method found
+        }
+        
+        // Set the toolbar's selectedNode so onDelete can use it
+        toolbar.selectedNode = selectedNode;
+        
+        // Call the toolbar's onDelete method (reusing existing code!)
+        toolbar.onDelete();
+        
+        return true; // Handled
+    },
+    
+    // Handle keydown for Gecko (Firefox) browsers
+    handleKeyDown : function(e)
+    {
+        var k = e.getKey();
+        if(k == e.DELETE && this.handleDeleteKey(e)) {
+            e.stopEvent();
+            return false;
+        }
+    },
     
     getAllAncestors: function()
     {
