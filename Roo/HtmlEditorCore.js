@@ -1233,7 +1233,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         Roo.log('handleDeleteKey called');
         Roo.log('Event: ' + (e ? 'exists' : 'null'));
-        Roo.log(e);
         // Get selected node - check event target first, then getSelectedNode
         var selectedNode = false;
         if (e && e.target && e.target.tagName === 'IMG') {
@@ -1245,6 +1244,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
 
         Roo.log('SelectedNode: ' + (selectedNode ? selectedNode.tagName : 'null'));
+        Roo.log(selectedNode);
         
         // Check if selected node is an image
         if (!selectedNode || selectedNode.tagName !== 'IMG') {
