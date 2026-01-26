@@ -1242,36 +1242,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             Roo.log('Selected node from getSelectedNode():', selectedNode);
         }
         
-        // Check if selected node is an image or a figure containing an image
-        if (!selectedNode) {
-            Roo.log('No selected node');
-            return false;
-        }
-        
-        var tagName = selectedNode.tagName ? selectedNode.tagName.toUpperCase() : '';
-        var isImage = tagName === 'IMG';
-        var isFigure = tagName === 'FIGURE';
-        var figureWithImage = false;
-        
-        // Check if it's a figure containing an image, or if image is inside a figure
-        if (isFigure) {
-            // Check if figure contains an image
-            figureWithImage = selectedNode.querySelector('img') !== null;
-            Roo.log('Selected node is FIGURE, contains image:', figureWithImage);
-        } else if (isImage) {
-            // Check if image is inside a figure
-            var fig = selectedNode.closest('figure');
-            if (fig) {
-                Roo.log('Image is inside a figure, using figure as selected node');
-                selectedNode = fig;
-                isFigure = true;
-                figureWithImage = true;
-            }
-        }
-        
-        if (!isImage && !figureWithImage) {
-            Roo.log('Not an image or figure with image - selectedNode:', selectedNode, 'tagName:', tagName);
-            return false; // Not an image or figure, let default behavior happen
+        // Check if selected node is an image
+        if (!selectedNode || selectedNode.tagName !== 'IMG') {
+            Roo.log('Not an image - selectedNode:', selectedNode, 'tagName:', selectedNode ? selectedNode.tagName : 'null');
+            return false; // Not an image, let default behavior happen
         }
         
         Roo.log('Image found, looking for toolbar with onDelete');
