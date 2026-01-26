@@ -1260,6 +1260,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         return true; // Handled
     },
     
+    // Handle keydown for Gecko (Firefox) browsers
+    handleKeyDown : function(e)
+    {
+        var k = e.getKey();
+        if(k == e.DELETE && this.handleDeleteKey(e)) {
+            e.stopEvent();
+            return false;
+        }
+    },
+    
     getAllAncestors: function()
     {
         var p = this.getSelectedNode();
