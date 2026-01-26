@@ -1227,39 +1227,49 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // Handle Delete key for images - reuses toolbar's onDelete method
     handleDeleteKey : function(e)
     {
+        Roo.log('handleDeleteKey called', e);
         // Get selected node - check event target first, then getSelectedNode
         var selectedNode = false;
         if (e && e.target && e.target.tagName === 'IMG') {
             selectedNode = e.target;
+            Roo.log('Selected node from e.target:', selectedNode);
         } else {
             selectedNode = this.getSelectedNode();
+            Roo.log('Selected node from getSelectedNode():', selectedNode);
         }
         
         // Check if selected node is an image
         if (!selectedNode || selectedNode.tagName !== 'IMG') {
+            Roo.log('Not an image - selectedNode:', selectedNode, 'tagName:', selectedNode ? selectedNode.tagName : 'null');
             return false; // Not an image, let default behavior happen
         }
         
+        Roo.log('Image found, looking for toolbar with onDelete');
         // Find toolbar with onDelete method (Standard toolbar)
         var toolbars = this.owner.toolbars || [];
+        Roo.log('Toolbars found:', toolbars.length);
         var toolbar = null;
         for (var i = 0; i < toolbars.length; i++) {
             if (toolbars[i] && typeof toolbars[i].onDelete === 'function') {
                 toolbar = toolbars[i];
+                Roo.log('Found toolbar with onDelete at index:', i);
                 break;
             }
         }
         
         if (!toolbar) {
+            Roo.log('No toolbar with onDelete method found');
             return false; // No toolbar with delete method found
         }
         
         // Set the toolbar's selectedNode so onDelete can use it
         toolbar.selectedNode = selectedNode;
+        Roo.log('Setting toolbar.selectedNode and calling onDelete');
         
         // Call the toolbar's onDelete method (reusing existing code!)
         toolbar.onDelete();
         
+        Roo.log('onDelete completed, returning true');
         return true; // Handled
     },
     
@@ -1267,7 +1277,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     handleKeyDown : function(e)
     {
         var k = e.getKey();
+        Roo.log('Gecko keydown - key:', k, 'DELETE:', e.DELETE);
         if(k == e.DELETE && this.handleDeleteKey(e)) {
+            Roo.log('Delete key handled in Gecko, stopping event');
             e.stopEvent();
             return false;
         }
