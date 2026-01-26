@@ -1231,23 +1231,23 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // Handle Delete key for images - reuses toolbar's onDelete method
     handleDeleteKey : function(e)
     {
-        Roo.log('handleDeleteKey called', e);
-        Roo.log(e);
+        Roo.log('handleDeleteKey called');
+        Roo.log('Event: ' + (e ? 'exists' : 'null'));
         // Get selected node - check event target first, then getSelectedNode
         var selectedNode = false;
         if (e && e.target && e.target.tagName === 'IMG') {
             selectedNode = e.target;
-            Roo.log('Selected node from e.target:', selectedNode);
+            Roo.log('Selected node from e.target: ' + (selectedNode ? selectedNode.tagName : 'null'));
         } else {
             selectedNode = this.getSelectedNode();
-            Roo.log('Selected node from getSelectedNode():', selectedNode);
+            Roo.log('Selected node from getSelectedNode(): ' + (selectedNode ? selectedNode.tagName : 'null'));
         }
 
-        Roo.log(selectedNode);
+        Roo.log('SelectedNode: ' + (selectedNode ? selectedNode.tagName : 'null'));
         
         // Check if selected node is an image
         if (!selectedNode || selectedNode.tagName !== 'IMG') {
-            Roo.log('Not an image - selectedNode:', selectedNode, 'tagName:', selectedNode ? selectedNode.tagName : 'null');
+            Roo.log('Not an image - selectedNode: ' + (selectedNode ? selectedNode.tagName : 'null') + ' tagName: ' + (selectedNode ? selectedNode.tagName : 'null'));
             return false; // Not an image, let default behavior happen
         }
         
