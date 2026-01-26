@@ -78427,6 +78427,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var selectedNode = this.getSelectedNode();
         Roo.log("SELECTED NODE!!!!!");
         Roo.log(selectedNode);
+        Roo.log(e);
         var allImages = this.doc.body.getElementsByTagName('img');
         
         // Remove highlight from all images
