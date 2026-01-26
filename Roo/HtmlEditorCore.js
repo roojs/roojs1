@@ -906,41 +906,72 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
         }
         
-        // Handle image selection highlighting
+        // Handle image/figure selection highlighting
         // Check event target first (like toolbar code does) - clicking images doesn't always create proper selection ranges
         var selectedNode = false;
-        if (e && e.target && e.target.tagName === 'IMG') {
-            selectedNode = e.target;
-        } else {
+        if (e && e.target) {
+            // Check if target is an image or figure
+            if (e.target.tagName === 'IMG') {
+                selectedNode = e.target;
+            } else if (e.target.tagName === 'FIGURE') {
+                selectedNode = e.target;
+            }
+        }
+        
+        if (!selectedNode) {
             selectedNode = this.getSelectedNode();
         }
-        var allImages = this.doc.body.getElementsByTagName('img');
         
-        // Remove highlight from all images
-        Array.from(allImages).forEach(function(img) {
-            img.classList.remove('roo-image-selected');
+        // Find the figure element (either selectedNode is a figure, or image is inside a figure)
+        var selectedFig = false;
+        if (selectedNode) {
+            if (selectedNode.tagName === 'FIGURE') {
+                // Already a figure, check if it contains an image
+                if (selectedNode.querySelector('img')) {
+                    selectedFig = selectedNode;
+                }
+            } else if (selectedNode.tagName === 'IMG') {
+                // Image selected, find parent figure
+                var fig = selectedNode.closest('figure');
+                if (fig) {
+                    selectedFig = fig;
+                }
+            }
+        }
+        
+        // Remove highlight from all figures
+        var allFigures = this.doc.body.getElementsByTagName('figure');
+        Array.from(allFigures).forEach(function(fig) {
+            fig.classList.remove('roo-figure-selected');
         });
         
-        // Add highlight to selected image
-        if (selectedNode && selectedNode.tagName === 'IMG') {
-            selectedNode.classList.add('roo-image-selected');
+        // Reset selectedFigNode - will be set if figure is found
+        this.selectedFigNode = false;
+        
+        // Add highlight to selected figure and store it
+        if (selectedFig) {
+            selectedFig.classList.add('roo-figure-selected');
+            this.selectedFigNode = selectedFig; // Store the highlighted figure
+            Roo.log('Figure selected and stored in selectedFigNode');
+        } else {
+            Roo.log('No figure selected, selectedFigNode reset to false');
         }
         
         this.fireEditorEvent(e);
       //  this.updateToolbar();
         
         // Remove highlight class before syncing to prevent it from being saved
-        // Store which image was selected so we can restore it after sync
-        var selectedImg = (selectedNode && selectedNode.tagName === 'IMG') ? selectedNode : null;
-        Array.from(allImages).forEach(function(img) {
-            img.classList.remove('roo-image-selected');
+        // Store which figure was selected so we can restore it after sync
+        var selectedFigToRestore = this.selectedFigNode;
+        Array.from(allFigures).forEach(function(fig) {
+            fig.classList.remove('roo-figure-selected');
         });
         
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
         
-        // Restore highlight after sync if image is still selected
-        if (selectedImg && selectedImg.parentNode) {
-            selectedImg.classList.add('roo-image-selected');
+        // Restore highlight after sync if figure is still selected
+        if (selectedFigToRestore && selectedFigToRestore.parentNode) {
+            selectedFigToRestore.classList.add('roo-figure-selected');
         }
     },
     
