@@ -29017,24 +29017,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             fig.classList.remove('roo-figure-selected');
         });
         
-        // Only set selectedFigNode on click events
-        if (e && e.type === 'click') {
-            // Reset selectedFigNode - will be set if figure is found
-            this.selectedFigNode = false;
-            
-            // Add highlight to selected figure and store it
-            if (selectedFig) {
-                selectedFig.classList.add('roo-figure-selected');
-                this.selectedFigNode = selectedFig; // Store the highlighted figure
-                Roo.log('Figure selected and stored in selectedFigNode on click');
-            } else {
-                Roo.log('No figure selected on click, selectedFigNode reset to false');
-            }
+        // Reset selectedFigNode - will be set if figure is found
+        this.selectedFigNode = false;
+        
+        // Add highlight to selected figure and store it
+        if (selectedFig) {
+            selectedFig.classList.add('roo-figure-selected');
+            this.selectedFigNode = selectedFig; // Store the highlighted figure
+            Roo.log('Figure selected and stored in selectedFigNode');
         } else {
-            // For non-click events, just update highlight without changing selectedFigNode
-            if (selectedFig) {
-                selectedFig.classList.add('roo-figure-selected');
-            }
+            Roo.log('No figure selected, selectedFigNode reset to false');
         }
         
         this.fireEditorEvent(e);
