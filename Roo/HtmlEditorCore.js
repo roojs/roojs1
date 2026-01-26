@@ -584,7 +584,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             'dblclick': this.onEditorEvent,
             'click': this.onEditorEvent,
             'keyup': this.onEditorEvent,
-            'keydown': this.onEditorKeyDown, // Universal keydown handler for all browsers
             
             buffer:100,
             scope: this
@@ -870,31 +869,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.execCmd('FontSize', v  );
     },
 
-    // Universal keydown handler for all browsers (including Chrome)
-    onEditorKeyDown : function(e)
-    {
-        Roo.log('onEditorKeyDown - type:', e.type, 'keyCode:', e.keyCode, 'getKey():', e.getKey ? e.getKey() : 'N/A');
-        
-        // Handle Delete key for images - works for all browsers
-        var k = e.getKey ? e.getKey() : (e.keyCode || e.which);
-        var DELETE_KEY = 46; // Delete key code
-        
-        Roo.log('Checking Delete key - k:', k, 'DELETE_KEY:', DELETE_KEY);
-        if(k == DELETE_KEY || k == e.DELETE) {
-            Roo.log('Delete key detected in universal handler');
-            if(this.handleDeleteKey(e)) {
-                Roo.log('Delete key handled, stopping event');
-                e.stopEvent();
-                e.preventDefault();
-                return false;
-            }
-        }
-        
-        // Let other keydown handlers process if needed
-        // For browsers that have specific handlers, they will also process
-        return true;
-    },
-    
     onEditorEvent : function(e)
     {
          
