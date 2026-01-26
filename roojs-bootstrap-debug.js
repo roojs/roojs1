@@ -33429,7 +33429,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     return;
                 }
                 // Handle Delete key for images
-                Roo.log('IE keydown - key:', k, 'DELETE:', e.DELETE);
+                Roo.log('IE keydown - key: ' + k + ' DELETE: ' + e.DELETE);
                 if(k == e.DELETE && this.handleDeleteKey(e)) {
                     Roo.log('Delete key handled in IE, stopping event');
                     e.stopEvent();
@@ -33467,7 +33467,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     this.deferFocus();
                 }
                 // Handle Delete key for images
-                Roo.log('Opera keydown - key:', k, 'DELETE:', e.DELETE);
+                Roo.log('Opera keydown - key: ' + k + ' DELETE: ' + e.DELETE);
                 if(k == e.DELETE && this.handleDeleteKey(e)) {
                     Roo.log('Delete key handled in Opera, stopping event');
                     e.stopEvent();
@@ -33491,7 +33491,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     return;
                 }
                 // Handle Delete key for images
-                Roo.log('Safari/Chrome keydown - key:', k, 'DELETE:', e.DELETE);
+                Roo.log('Safari/Chrome keydown - key: ' + k + ' DELETE: ' + e.DELETE);
                 if(k == e.DELETE && this.handleDeleteKey(e)) {
                     Roo.log('Delete key handled, stopping event');
                     e.stopEvent();
@@ -33511,32 +33511,35 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // Handle Delete key for images - reuses toolbar's onDelete method
     handleDeleteKey : function(e)
     {
-        Roo.log('handleDeleteKey called', e);
+        Roo.log('handleDeleteKey called');
+        Roo.log('Event: ' + (e ? 'exists' : 'null'));
         // Get selected node - check event target first, then getSelectedNode
         var selectedNode = false;
         if (e && e.target && e.target.tagName === 'IMG') {
             selectedNode = e.target;
-            Roo.log('Selected node from e.target:', selectedNode);
+            Roo.log('Selected node from e.target: ' + (selectedNode ? selectedNode.tagName : 'null'));
         } else {
             selectedNode = this.getSelectedNode();
-            Roo.log('Selected node from getSelectedNode():', selectedNode);
+            Roo.log('Selected node from getSelectedNode(): ' + (selectedNode ? selectedNode.tagName : 'null'));
         }
+
+        Roo.log('SelectedNode: ' + (selectedNode ? selectedNode.tagName : 'null'));
         
         // Check if selected node is an image
         if (!selectedNode || selectedNode.tagName !== 'IMG') {
-            Roo.log('Not an image - selectedNode:', selectedNode, 'tagName:', selectedNode ? selectedNode.tagName : 'null');
+            Roo.log('Not an image - selectedNode: ' + (selectedNode ? selectedNode.tagName : 'null') + ' tagName: ' + (selectedNode ? selectedNode.tagName : 'null'));
             return false; // Not an image, let default behavior happen
         }
         
         Roo.log('Image found, looking for toolbar with onDelete');
         // Find toolbar with onDelete method (Standard toolbar)
         var toolbars = this.owner.toolbars || [];
-        Roo.log('Toolbars found:', toolbars.length);
+        Roo.log('Toolbars found: ' + toolbars.length);
         var toolbar = null;
         for (var i = 0; i < toolbars.length; i++) {
             if (toolbars[i] && typeof toolbars[i].onDelete === 'function') {
                 toolbar = toolbars[i];
-                Roo.log('Found toolbar with onDelete at index:', i);
+                Roo.log('Found toolbar with onDelete at index: ' + i);
                 break;
             }
         }
@@ -33561,7 +33564,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     handleKeyDown : function(e)
     {
         var k = e.getKey();
-        Roo.log('Gecko keydown - key:', k, 'DELETE:', e.DELETE);
+        Roo.log('Gecko keydown - key: ' + k + ' DELETE: ' + e.DELETE);
         if(k == e.DELETE && this.handleDeleteKey(e)) {
             Roo.log('Delete key handled in Gecko, stopping event');
             e.stopEvent();
