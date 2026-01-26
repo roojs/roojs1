@@ -1242,6 +1242,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             selectedNode = this.getSelectedNode();
             Roo.log('Selected node from getSelectedNode():', selectedNode);
         }
+
+        Roo.log(selectedNode);
         
         // Check if selected node is an image
         if (!selectedNode || selectedNode.tagName !== 'IMG') {
