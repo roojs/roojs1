@@ -32428,6 +32428,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     clearUp: true,
     
+    selectedFigNode : false, // Store the currently highlighted figure node (or false)
+    
     // blacklist + whitelisted elements..
     black: false,
     white: false,
@@ -32473,7 +32475,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         st +=  '<style type="text/css">' +
             'IMG { cursor: pointer; transition: box-shadow 0.2s ease; } ' +
-            'IMG.roo-image-selected { box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5), 0 0 8px rgba(0, 123, 255, 0.3); outline: 2px solid rgba(0, 123, 255, 0.8); outline-offset: 2px; } ' +
+            'FIGURE.roo-figure-selected { box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5), 0 0 8px rgba(0, 123, 255, 0.3); outline: 2px solid rgba(0, 123, 255, 0.8); outline-offset: 2px; } ' +
         '</style>';
         
         st += '<meta name="google" content="notranslate">';
@@ -33184,41 +33186,71 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
         }
         
-        // Handle image selection highlighting
+        // Handle image/figure selection highlighting
         // Check event target first (like toolbar code does) - clicking images doesn't always create proper selection ranges
         var selectedNode = false;
-        if (e && e.target && e.target.tagName === 'IMG') {
-            selectedNode = e.target;
-        } else {
+        if (e && e.target) {
+            // Check if target is an image or figure
+            if (e.target.tagName === 'IMG') {
+                selectedNode = e.target;
+            } else if (e.target.tagName === 'FIGURE') {
+                selectedNode = e.target;
+            }
+        }
+        
+        if (!selectedNode) {
             selectedNode = this.getSelectedNode();
         }
-        var allImages = this.doc.body.getElementsByTagName('img');
         
-        // Remove highlight from all images
-        Array.from(allImages).forEach(function(img) {
-            img.classList.remove('roo-image-selected');
+        // Find the figure element (either selectedNode is a figure, or image is inside a figure)
+        var selectedFig = false;
+        if (selectedNode) {
+            if (selectedNode.tagName === 'FIGURE') {
+                // Already a figure, check if it contains an image
+                if (selectedNode.querySelector('img')) {
+                    selectedFig = selectedNode;
+                }
+            } else if (selectedNode.tagName === 'IMG') {
+                // Image selected, find parent figure
+                var fig = selectedNode.closest('figure');
+                if (fig) {
+                    selectedFig = fig;
+                }
+            }
+        }
+        
+        // Remove highlight from all figures
+        var allFigures = this.doc.body.getElementsByTagName('figure');
+        Array.from(allFigures).forEach(function(fig) {
+            fig.classList.remove('roo-figure-selected');
         });
         
-        // Add highlight to selected image
-        if (selectedNode && selectedNode.tagName === 'IMG') {
-            selectedNode.classList.add('roo-image-selected');
+        // Reset selectedFigNode - will be set if figure is found
+        this.selectedFigNode = false;
+        
+        // Add highlight to selected figure and store it
+        if (selectedFig) {
+            selectedFig.classList.add('roo-figure-selected');
+            this.selectedFigNode = selectedFig; // Store the highlighted figure
+            Roo.log('Figure selected and stored in selectedFigNode');
+        } else {
+            Roo.log('No figure selected, selectedFigNode reset to false');
         }
         
         this.fireEditorEvent(e);
       //  this.updateToolbar();
         
         // Remove highlight class before syncing to prevent it from being saved
-        // Store which image was selected so we can restore it after sync
-        var selectedImg = (selectedNode && selectedNode.tagName === 'IMG') ? selectedNode : null;
-        Array.from(allImages).forEach(function(img) {
-            img.classList.remove('roo-image-selected');
+        Array.from(allFigures).forEach(function(fig) {
+            fig.classList.remove('roo-figure-selected');
         });
         
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
         
-        // Restore highlight after sync if image is still selected
-        if (selectedImg && selectedImg.parentNode) {
-            selectedImg.classList.add('roo-image-selected');
+        // Restore highlight after sync if figure is still selected
+        // Use this.selectedFigNode directly (syncValue doesn't modify the DOM, only reads from it)
+        if (this.selectedFigNode && this.selectedFigNode.parentNode) {
+            this.selectedFigNode.classList.add('roo-figure-selected');
         }
     },
     
@@ -33512,30 +33544,37 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     handleDeleteKey : function(e)
     {
         Roo.log('handleDeleteKey called');
-        Roo.log('Event: ' + (e ? 'exists' : 'null'));
-        // Get selected node - check event target first, then getSelectedNode
-        var selectedNode = false;
-        if (e && e.target && e.target.tagName === 'IMG') {
-            selectedNode = e.target;
-            Roo.log('Selected node from e.target: ' + (selectedNode ? selectedNode.tagName : 'null'));
-        } else {
-            selectedNode = this.getSelectedNode();
-            Roo.log('Selected node from getSelectedNode(): ' + (selectedNode ? selectedNode.tagName : 'null'));
-        }
-
-        Roo.log('SelectedNode: ' + (selectedNode ? selectedNode.tagName : 'null'));
-        Roo.log(selectedNode);
         
-        // Check if selected node is an image
-        if (!selectedNode || selectedNode.tagName !== 'IMG') {
-            Roo.log('Not an image - selectedNode: ' + (selectedNode ? selectedNode.tagName : 'null') + ' tagName: ' + (selectedNode ? selectedNode.tagName : 'null'));
-            return false; // Not an image, let default behavior happen
+        // Use the stored selectedFigNode if available (set when figure is highlighted)
+        if (!this.selectedFigNode) {
+            Roo.log('No selectedFigNode stored, cannot delete figure');
+            return false;
         }
         
-        Roo.log('Image found, looking for toolbar with onDelete');
+        var selectedFig = this.selectedFigNode;
+        Roo.log('Using stored selectedFigNode: ' + (selectedFig ? selectedFig.tagName : 'null'));
+        
+        // Check if selected figure is still valid (hasn't been removed)
+        if (!selectedFig || !selectedFig.parentNode) {
+            Roo.log('selectedFigNode is no longer valid, resetting');
+            this.selectedFigNode = false;
+            return false;
+        }
+        
+        // Verify it's a figure with an image
+        if (selectedFig.tagName !== 'FIGURE') {
+            Roo.log('selectedFigNode is not a FIGURE, resetting');
+            this.selectedFigNode = false;
+            return false;
+        }
+        
+        if (!selectedFig.querySelector('img')) {
+            Roo.log('FIGURE does not contain image');
+            return false;
+        }
+        
         // Find toolbar with onDelete method (Standard toolbar)
         var toolbars = this.owner.toolbars || [];
-        Roo.log('Toolbars found: ' + toolbars.length);
         var toolbar = null;
         for (var i = 0; i < toolbars.length; i++) {
             if (toolbars[i] && typeof toolbars[i].onDelete === 'function') {
@@ -33547,18 +33586,22 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         if (!toolbar) {
             Roo.log('No toolbar with onDelete method found');
-            return false; // No toolbar with delete method found
+            return false;
         }
         
-        // Set the toolbar's selectedNode so onDelete can use it
-        toolbar.selectedNode = selectedNode;
-        Roo.log('Setting toolbar.selectedNode and calling onDelete');
+        // Set the toolbar's selectedNode to the figure
+        // The toolbar's onDelete expects the figure element with data-block attribute
+        toolbar.selectedNode = selectedFig;
+        Roo.log('Setting toolbar.selectedNode to figure and calling onDelete');
         
         // Call the toolbar's onDelete method (reusing existing code!)
         toolbar.onDelete();
         
-        Roo.log('onDelete completed, returning true');
-        return true; // Handled
+        // Reset selectedFigNode after deletion
+        this.selectedFigNode = false;
+        Roo.log('onDelete completed, selectedFigNode reset');
+        
+        return true;
     },
     
     // Handle keydown for Gecko (Firefox) browsers

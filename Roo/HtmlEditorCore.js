@@ -961,8 +961,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
       //  this.updateToolbar();
         
         // Remove highlight class before syncing to prevent it from being saved
-        // Store which figure was selected so we can restore it after sync
-        var selectedFigToRestore = this.selectedFigNode;
         Array.from(allFigures).forEach(function(fig) {
             fig.classList.remove('roo-figure-selected');
         });
@@ -970,8 +968,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
         
         // Restore highlight after sync if figure is still selected
-        if (selectedFigToRestore && selectedFigToRestore.parentNode) {
-            selectedFigToRestore.classList.add('roo-figure-selected');
+        // Use this.selectedFigNode directly (syncValue doesn't modify the DOM, only reads from it)
+        if (this.selectedFigNode && this.selectedFigNode.parentNode) {
+            this.selectedFigNode.classList.add('roo-figure-selected');
         }
     },
     
