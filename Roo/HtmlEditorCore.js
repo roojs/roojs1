@@ -1149,7 +1149,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     return;
                 }
                 // Handle Delete key for images
-                Roo.log('IE keydown - key:', k, 'DELETE:', e.DELETE);
+                Roo.log('IE keydown - key: ' + k + ' DELETE: ' + e.DELETE);
                 if(k == e.DELETE && this.handleDeleteKey(e)) {
                     Roo.log('Delete key handled in IE, stopping event');
                     e.stopEvent();
@@ -1187,7 +1187,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     this.deferFocus();
                 }
                 // Handle Delete key for images
-                Roo.log('Opera keydown - key:', k, 'DELETE:', e.DELETE);
+                Roo.log('Opera keydown - key: ' + k + ' DELETE: ' + e.DELETE);
                 if(k == e.DELETE && this.handleDeleteKey(e)) {
                     Roo.log('Delete key handled in Opera, stopping event');
                     e.stopEvent();
@@ -1211,7 +1211,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     return;
                 }
                 // Handle Delete key for images
-                Roo.log('Safari/Chrome keydown - key:', k, 'DELETE:', e.DELETE);
+                Roo.log('Safari/Chrome keydown - key: ' + k + ' DELETE: ' + e.DELETE);
                 if(k == e.DELETE && this.handleDeleteKey(e)) {
                     Roo.log('Delete key handled, stopping event');
                     e.stopEvent();
