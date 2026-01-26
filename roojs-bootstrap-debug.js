@@ -33227,6 +33227,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         // Reset selectedFigNode - will be set if figure is found
         this.selectedFigNode = false;
+
+        Roo.log('EVENT!!!!!');
+        Roo.log(e);
         
         // Add highlight to selected figure and store it
         if (selectedFig) {
