@@ -148,8 +148,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     clearUp: true,
     
-    selectedFigNode : false, // Store the currently highlighted figure node (or false)
-    
     // blacklist + whitelisted elements..
     black: false,
     white: false,
@@ -195,7 +193,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         st +=  '<style type="text/css">' +
             'IMG { cursor: pointer; transition: box-shadow 0.2s ease; } ' +
-            'FIGURE.roo-figure-selected { box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5), 0 0 8px rgba(0, 123, 255, 0.3); outline: 2px solid rgba(0, 123, 255, 0.8); outline-offset: 2px; } ' +
         '</style>';
         
         st += '<meta name="google" content="notranslate">';
