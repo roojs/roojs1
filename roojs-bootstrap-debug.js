@@ -32751,6 +32751,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 
                 
             });
+
+            Roo.log("HTML2: " + html);
             
              
             if(this.owner.fireEvent('beforesync', this, html) !== false){
