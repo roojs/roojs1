@@ -909,6 +909,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         Roo.log(e);
         Roo.log(e.getKey());
         Roo.log(e.DELETE);
+        if()
         
         // Handle image/figure selection highlighting
         // Check event target first (like toolbar code does) - clicking images doesn't always create proper selection ranges
@@ -1305,18 +1306,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         Roo.log('onDelete completed, selectedFigNode reset');
         
         return true;
-    },
-    
-    // Handle keydown for Gecko (Firefox) browsers
-    handleKeyDown : function(e)
-    {
-        var k = e.getKey();
-        Roo.log('Gecko keydown - key: ' + k + ' DELETE: ' + e.DELETE);
-        if(k == e.DELETE && this.handleDeleteKey(e)) {
-            Roo.log('Delete key handled in Gecko, stopping event');
-            e.stopEvent();
-            return false;
-        }
     },
     
     getAllAncestors: function()
