@@ -33186,6 +33186,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
         }
 
+        Roo.log("EDITOR!!!!!!!!!");
+        Roo.log(this);
+
         if(e && e.type == 'keyup' && e.getKey() == e.DELETE) {
             this.handleDeleteKey(e);
         }
