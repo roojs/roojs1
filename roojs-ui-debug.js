@@ -28464,7 +28464,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 new Roo.htmleditor.FilterBlock({ node : div });
             }
             
-            var html = div.innerHTML;
+            var html = bd.innerHTML;
             Roo.log('HTML: ' + html);
             
             //?? tidy?
@@ -28543,7 +28543,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 
                 
             });
-            
             
              
             if(this.owner.fireEvent('beforesync', this, html) !== false){
