@@ -78474,6 +78474,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.selectedFigNode = selectedFig; // Store the highlighted figure
             Roo.log('Figure selected and stored in selectedFigNode');
         } else {
+            Roo.log("EVENT");
+            Roo.log(e);
             Roo.log('No figure selected, selectedFigNode reset to false');
         }
         
