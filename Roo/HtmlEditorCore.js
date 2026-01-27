@@ -376,7 +376,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                         figuresWithSelection.push(fig);
                     }
                 });
-                
+
                 Array.from(bd.getElementsByTagName('img')).forEach(function(img) {
                     var fig = img.closest('figure');
                     if (fig) {
@@ -395,6 +395,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
             var div = document.createElement('div');
             div.innerHTML = bd.innerHTML;
+
+            // Restore roo-ed-selection to iframe (after copying to div, so it stays in iframe but not in div)
+            if(this.enableBlocks && figuresWithSelection) {
+                figuresWithSelection.forEach(function(fig) {
+                    if (fig.parentNode) { // Make sure it still exists
+                        fig.classList.add('roo-ed-selection');
+                    }
+                });
+            }
+            
             var gtx = div.getElementsByClassName('gtx-trans-icon'); // google translate - really annoying and difficult to get rid of.
             if (gtx.length > 0) {
                 var rm = gtx.item(0).parentNode;
