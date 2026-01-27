@@ -1257,6 +1257,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             Roo.log('No toolbars available');
             return false;
         }
+
+        var toolbar = toolbars[0];
         
         var selectedNode = toolbars[0].selectedNode;
         if (!selectedNode) {
