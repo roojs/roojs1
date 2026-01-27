@@ -1251,26 +1251,41 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         Roo.log('handleDeleteKey called');
         
-        // Use the stored selectedFigNode if available (set when figure is highlighted)
-        if (!this.selectedFigNode) {
-            Roo.log('No selectedFigNode stored, cannot delete figure');
+        // Get the selected node from the first toolbar
+        var toolbars = this.owner.toolbars || [];
+        if (!toolbars.length || !toolbars[0]) {
+            Roo.log('No toolbars available');
             return false;
         }
         
-        var selectedFig = this.selectedFigNode;
-        Roo.log('Using stored selectedFigNode: ' + (selectedFig ? selectedFig.tagName : 'null'));
+        var selectedNode = toolbars[0].selectedNode;
+        if (!selectedNode) {
+            Roo.log('No selectedNode in toolbar');
+            return false;
+        }
         
-        // Check if selected figure is still valid (hasn't been removed)
-        if (!selectedFig || !selectedFig.parentNode) {
-            Roo.log('selectedFigNode is no longer valid, resetting');
-            this.selectedFigNode = false;
+        Roo.log('Toolbar selectedNode: ' + (selectedNode ? selectedNode.tagName : 'null'));
+        
+        // Check if selected node is still valid (hasn't been removed)
+        if (!selectedNode.parentNode) {
+            Roo.log('selectedNode is no longer valid');
             return false;
         }
         
         // Verify it's a figure with an image
-        if (selectedFig.tagName !== 'FIGURE') {
-            Roo.log('selectedFigNode is not a FIGURE, resetting');
-            this.selectedFigNode = false;
+        var selectedFig = null;
+        if (selectedNode.tagName === 'FIGURE') {
+            selectedFig = selectedNode;
+        } else if (selectedNode.tagName === 'IMG') {
+            // If it's an image, find the parent figure
+            selectedFig = selectedNode.closest('figure');
+        } else {
+            Roo.log('selectedNode is not a FIGURE or IMG, it is: ' + selectedNode.tagName);
+            return false;
+        }
+        
+        if (!selectedFig) {
+            Roo.log('Could not find figure element');
             return false;
         }
         
@@ -1280,7 +1295,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         
         // Find toolbar with onDelete method (Standard toolbar)
-        var toolbars = this.owner.toolbars || [];
         var toolbar = null;
         for (var i = 0; i < toolbars.length; i++) {
             if (toolbars[i] && typeof toolbars[i].onDelete === 'function') {
@@ -1303,9 +1317,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         // Call the toolbar's onDelete method (reusing existing code!)
         toolbar.onDelete();
         
-        // Reset selectedFigNode after deletion
-        this.selectedFigNode = false;
-        Roo.log('onDelete completed, selectedFigNode reset');
+        Roo.log('onDelete completed');
         
         return true;
     },
