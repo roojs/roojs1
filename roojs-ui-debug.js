@@ -28976,15 +28976,15 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 sel.addRange(range);
             }
         }
-        
-        if(e.getKey() == e.DELETE) {
-            this.handleDeleteKey(e)
+
+        if(e && e.type == 'keyup' && e.getKey() == e.DELETE) {
+            this.handleDeleteKey(e);
         }
         
         // Handle image/figure selection highlighting
         // Check event target first (like toolbar code does) - clicking images doesn't always create proper selection ranges
         var selectedNode = false;
-        if (e && e.target) {
+        if (e && e.type == 'click' &&e.target) {
             // Check if target is an image or figure
             if (e.target.tagName === 'IMG') {
                 selectedNode = e.target;
