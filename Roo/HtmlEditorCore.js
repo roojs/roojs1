@@ -1255,8 +1255,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var toolbar = this.owner.toolbars.find(function(tb) {
             return tb.initialConfig.xtype === 'Standard';
         });
+
+        if (!toolbar) {
+            Roo.log('No Standard toolbar found');
+            return false;
+        }
         
-        var selectedNode = toolbars[0].selectedNode;
+        var selectedNode = toolbar.selectedNode;
         if (!selectedNode) {
             Roo.log('No selectedNode in toolbar');
             return false;
