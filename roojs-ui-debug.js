@@ -28465,6 +28465,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
             
             var html = div.innerHTML;
+            Roo.log('HTML: ' + html);
             
             //?? tidy?
             if (this.autoClean) {
