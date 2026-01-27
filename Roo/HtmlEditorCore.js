@@ -904,14 +904,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 sel.addRange(range);
             }
         }
-
-        Roo.log("EVENT");
-        Roo.log(e);
-        Roo.log(e.getKey());
-        Roo.log(e.DELETE);
-        Roo.log('Gecko keydown - key: ' + k + ' DELETE: ' + e.DELETE);
-        if(e.getKey() == e.DELETE && this.handleDeleteKey(e)) {
-            Roo.log('Delete key handled');
+        
+        if(e.getKey() == e.DELETE) {
+            this.handleDeleteKey(e)
         }
         
         // Handle image/figure selection highlighting
