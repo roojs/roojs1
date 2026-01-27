@@ -932,10 +932,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.handleDeleteKey(e);
         }
         
-        if(e && e.type == 'keyup' && e.getKey() == e.DELETE) {
-            this.handleDeleteKey(e);
-        }
-        
         this.fireEditorEvent(e);
       //  this.updateToolbar();
         
