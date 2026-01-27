@@ -363,8 +363,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
             var bd = (this.doc.body || this.doc.documentElement);
 
-            Roo.log('HTML0: ' + bd.innerHTML);
-
             if(this.enableBlocks) {
                 // Store which figures have roo-ed-selection before updateElement removes it
                 var figuresWithSelection = [];
@@ -384,8 +382,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     }
                 });
             }
-
-            Roo.log('HTML1: ' + bd.innerHTML);
            
             
             var sel = this.win.getSelection();
@@ -414,7 +410,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
             
             var html = div.innerHTML;
-            Roo.log('HTML2: ' + html);
             
             //?? tidy?
             if (this.autoClean) {
@@ -492,8 +487,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 
                 
             });
-
-            Roo.log("HTML3: " + html);
             
              
             if(this.owner.fireEvent('beforesync', this, html) !== false){
