@@ -392,7 +392,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 new Roo.htmleditor.FilterBlock({ node : div });
             }
             
-            var html = bd.innerHTML;
+            var html = div.innerHTML;
             Roo.log('HTML: ' + html);
             
             //?? tidy?
