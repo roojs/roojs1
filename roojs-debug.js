@@ -78817,11 +78817,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
         
-        // Set the toolbar's selectedNode to the figure
-        // The toolbar's onDelete expects the figure element with data-block attribute
-        toolbar.selectedNode = selectedFig;
-        Roo.log('Setting toolbar.selectedNode to figure and calling onDelete');
-        
         // Call the toolbar's onDelete method (reusing existing code!)
         toolbar.onDelete();
         
