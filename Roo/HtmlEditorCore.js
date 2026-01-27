@@ -904,9 +904,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 sel.addRange(range);
             }
         }
-        
-        if(e.getKey() == e.DELETE) {
-            this.handleDeleteKey(e)
+
+        if(e && e.type == 'keyup' && e.getKey() == e.DELETE) {
+            this.handleDeleteKey(e);
         }
         
         // Handle image/figure selection highlighting
