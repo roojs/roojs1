@@ -928,79 +928,14 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
         }
 
-        Roo.log("EDITOR!!!!!!!!!");
-        Roo.log(this);
-
         if(e && e.type == 'keyup' && e.getKey() == e.DELETE) {
             this.handleDeleteKey(e);
-        }
-        
-        // Handle image/figure selection highlighting
-        // Check event target first (like toolbar code does) - clicking images doesn't always create proper selection ranges
-        var selectedNode = false;
-        if (e && e.type == 'click' && e.target) {
-            // Check if target is an image or figure
-            if (e.target.tagName === 'IMG') {
-                selectedNode = e.target;
-            } else if (e.target.tagName === 'FIGURE') {
-                selectedNode = e.target;
-            }
-        }
-        
-        if (!selectedNode) {
-            selectedNode = this.getSelectedNode();
-        }
-        
-        // Find the figure element (either selectedNode is a figure, or image is inside a figure)
-        var selectedFig = false;
-        if (selectedNode) {
-            if (selectedNode.tagName === 'FIGURE') {
-                // Already a figure, check if it contains an image
-                if (selectedNode.querySelector('img')) {
-                    selectedFig = selectedNode;
-                }
-            } else if (selectedNode.tagName === 'IMG') {
-                // Image selected, find parent figure
-                var fig = selectedNode.closest('figure');
-                if (fig) {
-                    selectedFig = fig;
-                }
-            }
-        }
-        
-        // Remove highlight from all figures
-        var allFigures = this.doc.body.getElementsByTagName('figure');
-        Array.from(allFigures).forEach(function(fig) {
-            fig.classList.remove('roo-figure-selected');
-        });
-        
-        // Reset selectedFigNode - will be set if figure is found
-        this.selectedFigNode = false;
-        
-        // Add highlight to selected figure and store it
-        if (selectedFig) {
-            selectedFig.classList.add('roo-figure-selected');
-            this.selectedFigNode = selectedFig; // Store the highlighted figure
-            Roo.log('Figure selected and stored in selectedFigNode');
-        } else {
-            Roo.log('No figure selected, selectedFigNode reset to false');
         }
         
         this.fireEditorEvent(e);
       //  this.updateToolbar();
         
-        // Remove highlight class before syncing to prevent it from being saved
-        Array.from(allFigures).forEach(function(fig) {
-            fig.classList.remove('roo-figure-selected');
-        });
-        
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
-        
-        // Restore highlight after sync if figure is still selected
-        // Use this.selectedFigNode directly (syncValue doesn't modify the DOM, only reads from it)
-        if (this.selectedFigNode && this.selectedFigNode.parentNode) {
-            this.selectedFigNode.classList.add('roo-figure-selected');
-        }
     },
     
     fireEditorEvent: function(e)
