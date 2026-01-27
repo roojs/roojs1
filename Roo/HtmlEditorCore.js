@@ -472,12 +472,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 
             });
             
-            // Remove roo-ed-selection from HTML string before writing to textarea
-            html = html.replace(/\s*roo-ed-selection\s*/g, ' ').replace(/\s+/g, ' ').trim();
-            // Also handle class attribute that might be empty after removal
-            html = html.replace(/class="\s*"/g, '').replace(/class='\s*'/g, '');
-            html = html.replace(/\s+class=""/g, '').replace(/\s+class=''/g, '');
-            
              
             if(this.owner.fireEvent('beforesync', this, html) !== false){
                 this.el.dom.value = html;
