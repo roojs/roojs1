@@ -1199,7 +1199,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // Handle Delete key for images - reuses toolbar's onDelete method
     handleDeleteKey : function(e)
     {
-        Roo.log('handleDeleteKey called');
         
         // Get the selected node from Standard toolbar
         var toolbar = this.owner.toolbars.find(function(tb) {
@@ -1207,21 +1206,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         });
 
         if (!toolbar) {
-            Roo.log('No Standard toolbar found');
             return false;
         }
         
         var selectedNode = toolbar.selectedNode;
         if (!selectedNode) {
-            Roo.log('No selectedNode in toolbar');
             return false;
         }
         
-        Roo.log('Toolbar selectedNode: ' + (selectedNode ? selectedNode.tagName : 'null'));
-        
         // Check if selected node is still valid (hasn't been removed)
         if (!selectedNode.parentNode) {
-            Roo.log('selectedNode is no longer valid');
             return false;
         }
         
@@ -1233,24 +1227,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             // If it's an image, find the parent figure
             selectedFig = selectedNode.closest('figure');
         } else {
-            Roo.log('selectedNode is not a FIGURE or IMG, it is: ' + selectedNode.tagName);
             return false;
         }
         
         if (!selectedFig) {
-            Roo.log('Could not find figure element');
             return false;
         }
         
         if (!selectedFig.querySelector('img')) {
-            Roo.log('FIGURE does not contain image');
             return false;
         }
         
         // Call the toolbar's onDelete method (reusing existing code!)
         toolbar.onDelete();
-        
-        Roo.log('onDelete completed');
         
         return true;
     },
