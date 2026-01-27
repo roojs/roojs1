@@ -911,7 +911,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         Roo.log(e.DELETE);
         Roo.log('Gecko keydown - key: ' + k + ' DELETE: ' + e.DELETE);
         if(e.getKey() == e.DELETE && this.handleDeleteKey(e)) {
-            Roo.log('Delete key handled, stopping event');
+            Roo.log('Delete key handled');
         }
         
         // Handle image/figure selection highlighting
