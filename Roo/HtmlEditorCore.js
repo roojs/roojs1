@@ -1251,14 +1251,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         Roo.log('handleDeleteKey called');
         
-        // Get the selected node from the first toolbar
-        var toolbars = this.owner.toolbars || [];
-        if (!toolbars.length || !toolbars[0]) {
-            Roo.log('No toolbars available');
-            return false;
-        }
-
-        var toolbar = toolbars[0];
+        // Get the selected node from Standard toolbar
+        var toolbar = this.owner.toolbars.find(function(tb) {
+            return tb.initialConfig.xtype === 'Standard';
+        });
         
         var selectedNode = toolbars[0].selectedNode;
         if (!selectedNode) {
