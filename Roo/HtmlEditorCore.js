@@ -1296,21 +1296,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
         
-        // Find toolbar with onDelete method (Standard toolbar)
-        var toolbar = null;
-        for (var i = 0; i < toolbars.length; i++) {
-            if (toolbars[i] && typeof toolbars[i].onDelete === 'function') {
-                toolbar = toolbars[i];
-                Roo.log('Found toolbar with onDelete at index: ' + i);
-                break;
-            }
-        }
-        
-        if (!toolbar) {
-            Roo.log('No toolbar with onDelete method found');
-            return false;
-        }
-        
         // Set the toolbar's selectedNode to the figure
         // The toolbar's onDelete expects the figure element with data-block attribute
         toolbar.selectedNode = selectedFig;
