@@ -33192,7 +33192,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         // Handle image/figure selection highlighting
         // Check event target first (like toolbar code does) - clicking images doesn't always create proper selection ranges
         var selectedNode = false;
-        if (e && e.type == 'click' &&e.target) {
+        if (e && e.type == 'click' && e.target) {
             // Check if target is an image or figure
             if (e.target.tagName === 'IMG') {
                 selectedNode = e.target;
@@ -35006,6 +35006,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             db = sel.closest('[data-block]');
         }
         
+        Roo.log('Removing all roo-ed-selection classes');
         Array.from(this.editorcore.doc.body.querySelectorAll('.roo-ed-selection')).forEach(function(e) {
             e.classList.remove('roo-ed-selection');
         });
@@ -35015,6 +35016,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             block = Roo.htmleditor.Block.factory(db);
             
             if (block) {
+                Roo.log('Adding roo-ed-selection class to block');
                 db.className =  (db.classList.length > 0  ? db.className + ' ' : '') +
                     ' roo-ed-selection';
                 sel = this.selectedNode = db;
