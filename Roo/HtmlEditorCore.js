@@ -476,7 +476,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 
             });
 
-            Roo.log("HTML2: " + html);
+            Roo.log("HTML3: " + html);
             
              
             if(this.owner.fireEvent('beforesync', this, html) !== false){
