@@ -77886,7 +77886,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
             var bd = (this.doc.body || this.doc.documentElement);
 
-            if(enableBlocks) {
+            if(this.enableBlocks) {
                 Array.from(bd.getElementsByTagName('img')).forEach(function(img) {
                     var fig = img.closest('figure');
                     if (fig) {
