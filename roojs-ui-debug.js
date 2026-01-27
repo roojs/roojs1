@@ -28435,10 +28435,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 this.undoManager.addEvent();
             }
 
-            Roo.log('HTML0: ' + bd.innerHTML);
-
             
             var bd = (this.doc.body || this.doc.documentElement);
+
+            Roo.log('HTML0: ' + bd.innerHTML);
 
             if(this.enableBlocks) {
                 Array.from(bd.getElementsByTagName('img')).forEach(function(img) {
