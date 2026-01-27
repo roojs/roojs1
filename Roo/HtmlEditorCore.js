@@ -909,7 +909,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         Roo.log(e);
         Roo.log(e.getKey());
         Roo.log(e.DELETE);
-        if()
+        Roo.log('Gecko keydown - key: ' + k + ' DELETE: ' + e.DELETE);
+        if(e.getKey() == e.DELETE && this.handleDeleteKey(e)) {
+            Roo.log('Delete key handled, stopping event');
+        }
         
         // Handle image/figure selection highlighting
         // Check event target first (like toolbar code does) - clicking images doesn't always create proper selection ranges
