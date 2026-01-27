@@ -377,6 +377,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     }
                 });
             }
+
+            Roo.log('HTML1: ' + bd.innerHTML);
            
             
             var sel = this.win.getSelection();
@@ -395,7 +397,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
             
             var html = div.innerHTML;
-            Roo.log('HTML: ' + html);
+            Roo.log('HTML2: ' + html);
             
             //?? tidy?
             if (this.autoClean) {
