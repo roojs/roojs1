@@ -192,7 +192,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         
         st +=  '<style type="text/css">' +
-            'IMG { cursor: pointer; transition: box-shadow 0.2s ease; } ' +
+            'IMG { cursor: pointer } ' +
         '</style>';
         
         st += '<meta name="google" content="notranslate">';
