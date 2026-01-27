@@ -955,7 +955,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         } else {
             Roo.log("EVENT");
             Roo.log(e);
-            Roo.log(e.getKeys());
+            Roo.log(e.getKey());
+            Roo.log(e.DELETE);
             Roo.log('No figure selected, selectedFigNode reset to false');
         }
         
