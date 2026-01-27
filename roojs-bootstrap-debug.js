@@ -32645,6 +32645,20 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
             
             var bd = (this.doc.body || this.doc.documentElement);
+
+            if(enableBlocks) {
+                Array.from(bd.getElementsByTagName('img')).forEach(function(img) {
+                    var fig = img.closest('figure');
+                    if (fig) {
+                        var bf = new Roo.htmleditor.BlockFigure({
+                            node : fig
+                        });
+                        bf.updateElement();
+                    }
+                });
+            }
+
+            Roo.log('HTML1: ' + bd.innerHTML);
            
             
             var sel = this.win.getSelection();
@@ -32659,21 +32673,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
            
             if (this.enableBlocks) {
-                Array.from(bd.getElementsByTagName('img')).forEach(function(img) {
-                    var fig = img.closest('figure');
-                    if (fig) {
-                        var bf = new Roo.htmleditor.BlockFigure({
-                            node : fig
-                        });
-                        bf.updateElement();
-                    }
-                    
-                });
                 new Roo.htmleditor.FilterBlock({ node : div });
             }
             
-            var html = bd.innerHTML;
-            Roo.log('HTML: ' + html);
+            var html = div.innerHTML;
+            Roo.log('HTML2: ' + html);
             
             //?? tidy?
             if (this.autoClean) {
@@ -32752,7 +32756,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 
             });
 
-            Roo.log("HTML2: " + html);
+            Roo.log("HTML3: " + html);
             
              
             if(this.owner.fireEvent('beforesync', this, html) !== false){
