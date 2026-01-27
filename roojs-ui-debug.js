@@ -28668,7 +28668,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         });
         if(Roo.isGecko){
             Roo.EventManager.on(this.doc, 'keypress', this.mozKeyPress, this);
-            Roo.EventManager.on(this.doc, 'keydown', this.handleKeyDown, this);
         }
         //??? needed???
         if(Roo.isIE || Roo.isSafari || Roo.isOpera){
@@ -28977,6 +28976,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 sel.addRange(range);
             }
         }
+
+        Roo.log("EVENT");
+        Roo.log(e);
+        Roo.log(e.getKey());
+        Roo.log(e.DELETE);
         
         // Handle image/figure selection highlighting
         // Check event target first (like toolbar code does) - clicking images doesn't always create proper selection ranges
@@ -29026,8 +29030,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.selectedFigNode = selectedFig; // Store the highlighted figure
             Roo.log('Figure selected and stored in selectedFigNode');
         } else {
-            Roo.log("EVENT");
-            Roo.log(e);
             Roo.log('No figure selected, selectedFigNode reset to false');
         }
         
@@ -29254,13 +29256,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     }
                     return;
                 }
-                // Handle Delete key for images
-                Roo.log('IE keydown - key: ' + k + ' DELETE: ' + e.DELETE);
-                if(k == e.DELETE && this.handleDeleteKey(e)) {
-                    Roo.log('Delete key handled in IE, stopping event');
-                    e.stopEvent();
-                    return;
-                }
                 /// this is handled by Roo.htmleditor.KeyEnter
                  /*
                 if(k == e.ENTER){
@@ -29292,13 +29287,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     this.execCmd('InsertHTML','&#160;&#160;&#160;&#160;');
                     this.deferFocus();
                 }
-                // Handle Delete key for images
-                Roo.log('Opera keydown - key: ' + k + ' DELETE: ' + e.DELETE);
-                if(k == e.DELETE && this.handleDeleteKey(e)) {
-                    Roo.log('Delete key handled in Opera, stopping event');
-                    e.stopEvent();
-                    return;
-                }
                
                 //if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
                 //    this.cleanUpPaste.defer(100, this);
@@ -29314,13 +29302,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     e.stopEvent();
                     this.execCmd('InsertText','\t');
                     this.deferFocus();
-                    return;
-                }
-                // Handle Delete key for images
-                Roo.log('Safari/Chrome keydown - key: ' + k + ' DELETE: ' + e.DELETE);
-                if(k == e.DELETE && this.handleDeleteKey(e)) {
-                    Roo.log('Delete key handled, stopping event');
-                    e.stopEvent();
                     return;
                 }
                  this.mozKeyPress(e);
