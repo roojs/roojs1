@@ -78727,16 +78727,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         });
 
         if (!toolbar) {
+            Roo.log('toolbar not found!!!!!!!!!!');
             return false;
         }
         
         var selectedNode = toolbar.selectedNode;
         if (!selectedNode) {
+            Roo.log('selectedNode not found!!!!!!!!!!');
             return false;
         }
         
         // Check if selected node is still valid (hasn't been removed)
         if (!selectedNode.parentNode) {
+            Roo.log('selectedNode parentNode not found!!!!!!!!!!');
             return false;
         }
         
@@ -78748,14 +78751,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             // If it's an image, find the parent figure
             selectedFig = selectedNode.closest('figure');
         } else {
+            Roo.log('selectedNode is not a figure or image!!!!!!!!!!');
             return false;
         }
         
         if (!selectedFig) {
+            Roo.log('selectedFig not found!!!!!!!!!!');
             return false;
         }
         
         if (!selectedFig.querySelector('img')) {
+            Roo.log('selectedFig does not have an image!!!!!!!!!!');
             return false;
         }
         
