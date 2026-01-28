@@ -33497,6 +33497,14 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
         
+        Roo.log(toolbar);
+        Roo.log(selectedNode);
+        // Check if selected node is still valid (hasn't been removed)
+        if (!selectedNode.parentNode) {
+            Roo.log('selectedNode parentNode not found!!!!!!!!!!');
+            return false;
+        }
+        
         // Verify it's a figure with an image
         var selectedFig = null;
         if (selectedNode.tagName === 'FIGURE') {
