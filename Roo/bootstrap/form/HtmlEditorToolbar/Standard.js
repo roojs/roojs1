@@ -436,6 +436,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
     
     onDelete : function()
     {
+        Roo.log('onDelete');
         var range = this.editorcore.createRange();
         var selection = this.editorcore.getSelection();
         var sn = this.selectedNode;
