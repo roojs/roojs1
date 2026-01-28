@@ -1199,6 +1199,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // Handle Delete key for images - reuses toolbar's onDelete method
     handleDeleteKey : function(e)
     {
+        Roo.log('handleDeleteKey');
         
         // Get the selected node from Standard toolbar
         var toolbar = this.owner.toolbars.find(function(tb) {
