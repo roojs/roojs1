@@ -1204,7 +1204,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     }(),
     
     // Handle Delete key for images - reuses toolbar's onDelete method
-    handleDeleteKey : function(e)
+    handleDeleteKey : function()
     {
         Roo.log('handleDeleteKey!!!!!!!!!!');
         
