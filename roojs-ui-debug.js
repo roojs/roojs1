@@ -28674,6 +28674,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             'dblclick': this.onEditorEvent,
             'click': this.onEditorEvent,
             'keyup': this.onEditorEvent,
+            'keydown': this.onEditorKeyDown,
             
             buffer:100,
             scope: this
@@ -28995,7 +28996,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         if(e && e.type == 'keyup' && e.getKey() == e.DELETE) {
             Roo.log('delete key pressed!!!!!!!!!!');
-            // this.handleDeleteKey(e);
+            this.handleDeleteKey(e);
         }
         
         this.fireEditorEvent(e);
@@ -29007,6 +29008,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     fireEditorEvent: function(e)
     {
         this.owner.fireEvent('editorevent', this, e);
+    },
+
+    onEditorKeyDown : function(e)
+    {
+        if(e && e.getKey() == e.DELETE) {
+            Roo.log('on Delete Key Down!!!!!!!!!!');
+            this.handleDeleteKey(e);
+            return false;
+        }
+        
+        return true;
     },
 
     insertTag : function(tg)
