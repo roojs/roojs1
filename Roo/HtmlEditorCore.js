@@ -616,6 +616,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.doc.body.addEventListener('keydown', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
+                Roo.log("KEY DOWN 11111");
                 return false;
             });
         }
