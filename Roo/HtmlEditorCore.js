@@ -616,9 +616,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 if(e && e.getKey() == e.DELETE) {
                     e.preventDefault();
                     e.stopPropagation();
-                    Roo.log("KEY DOWN 11111");
                     this.handleDeleteKey(e);
-                    return false;
                 }
             });
         }
