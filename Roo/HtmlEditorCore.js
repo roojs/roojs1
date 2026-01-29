@@ -613,6 +613,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (this.doc.body) {
             var self = this;
             this.doc.body.addEventListener('keydown', function(e) {
+                Roo.log(e);
                 if(e && e.keyCode == e.DELETE) {
                     e.preventDefault();
                     e.stopPropagation();
