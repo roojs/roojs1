@@ -28689,7 +28689,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 if(e && e.keyCode == 46) {
                     e.preventDefault();
                     e.stopPropagation();
-                    _self.handleDeleteKey(e);
+                    self.handleDeleteKey();
                 }
             });
         }
@@ -29276,7 +29276,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     }(),
     
     // Handle Delete key for images - reuses toolbar's onDelete method
-    handleDeleteKey : function(e)
+    handleDeleteKey : function()
     {
         Roo.log('handleDeleteKey!!!!!!!!!!');
         

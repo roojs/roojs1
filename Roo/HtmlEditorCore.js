@@ -617,7 +617,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 if(e && e.keyCode == 46) {
                     e.preventDefault();
                     e.stopPropagation();
-                    self.handleDeleteKey(e);
+                    self.handleDeleteKey();
                 }
             });
         }
