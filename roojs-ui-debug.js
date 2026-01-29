@@ -28683,6 +28683,15 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             'paste': this.onPasteEvent,
             scope : this
         });
+        if (this.doc.body) {
+            var self = this;
+            this.doc.body.addEventListener('keydown', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                Roo.log("KEY DOWN 11111");
+                return false;
+            });
+        }
         if(Roo.isGecko){
             Roo.EventManager.on(this.doc, 'keypress', this.mozKeyPress, this);
         }
