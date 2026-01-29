@@ -1217,7 +1217,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
         
-        Roo.log(toolbar);
         Roo.log(selectedNode);
         // Check if selected node is still valid (hasn't been removed)
         if (!selectedNode.parentNode) {
