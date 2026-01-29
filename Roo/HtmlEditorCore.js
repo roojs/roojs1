@@ -941,6 +941,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     onEditorKeyDown : function(e)
     {
         if(e && e.getKey() == e.DELETE) {
+            e.preventDefault();
+            e.stopEvent();
             Roo.log('on Delete Key Down!!!!!!!!!!');
             this.handleDeleteKey(e);
             return false;
