@@ -28685,7 +28685,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (this.doc.body) {
             var self = this;
             this.doc.body.addEventListener('keydown', function(e) {
-                Roo.log(e);
                 if(e && e.keyCode == 46) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -29278,7 +29277,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // Handle Delete key for images - reuses toolbar's onDelete method
     handleDeleteKey : function()
     {
-        Roo.log('handleDeleteKey!!!!!!!!!!');
         
         // Get the selected node from Standard toolbar
         var toolbar = this.owner.toolbars.find(function(tb) {
@@ -29286,21 +29284,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         });
 
         if (!toolbar) {
-            Roo.log('toolbar not found!!!!!!!!!!');
             return false;
         }
         
         var selectedNode = toolbar.selectedNode;
         if (!selectedNode) {
-            Roo.log('selectedNode not found!!!!!!!!!!');
             return false;
         }
         
-        Roo.log(toolbar);
-        Roo.log(selectedNode);
         // Check if selected node is still valid (hasn't been removed)
         if (!selectedNode.parentNode) {
-            Roo.log('selectedNode parentNode not found!!!!!!!!!!');
             return false;
         }
         
@@ -29312,17 +29305,14 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             // If it's an image, find the parent figure
             selectedFig = selectedNode.closest('figure');
         } else {
-            Roo.log('selectedNode is not a figure or image!!!!!!!!!!');
             return false;
         }
         
         if (!selectedFig) {
-            Roo.log('selectedFig not found!!!!!!!!!!');
             return false;
         }
         
         if (!selectedFig.querySelector('img')) {
-            Roo.log('selectedFig does not have an image!!!!!!!!!!');
             return false;
         }
         
