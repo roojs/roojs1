@@ -602,6 +602,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             'dblclick': this.onEditorEvent,
             'click': this.onEditorEvent,
             'keyup': this.onEditorEvent,
+            'keydown': this.onEditorKeyDown,
             
             buffer:100,
             scope: this
