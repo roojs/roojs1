@@ -28674,7 +28674,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             'dblclick': this.onEditorEvent,
             'click': this.onEditorEvent,
             'keyup': this.onEditorEvent,
-            'keydown': this.onEditorKeyDown,
             
             buffer:100,
             scope: this
@@ -28686,10 +28685,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (this.doc.body) {
             var self = this;
             this.doc.body.addEventListener('keydown', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                Roo.log("KEY DOWN 11111");
-                return false;
+                if(e && e.getKey() == e.DELETE) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.handleDeleteKey(e);
+                }
             });
         }
         if(Roo.isGecko){
@@ -29002,11 +29002,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 sel.addRange(range);
             }
         }
-
-        if(e && e.type == 'keyup' && e.getKey() == e.DELETE) {
-            Roo.log('delete key pressed!!!!!!!!!!');
-            this.handleDeleteKey(e);
-        }
         
         this.fireEditorEvent(e);
       //  this.updateToolbar();
@@ -29017,19 +29012,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     fireEditorEvent: function(e)
     {
         this.owner.fireEvent('editorevent', this, e);
-    },
-
-    onEditorKeyDown : function(e)
-    {
-        if(e && e.getKey() == e.DELETE) {
-            e.preventDefault();
-            e.stopEvent();
-            Roo.log('on Delete Key Down!!!!!!!!!!');
-            this.handleDeleteKey(e);
-            return false;
-        }
-        
-        return true;
     },
 
     insertTag : function(tg)
