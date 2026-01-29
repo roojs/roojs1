@@ -32897,7 +32897,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 if(e && e.keyCode == 46) {
                     e.preventDefault();
                     e.stopPropagation();
-                    this.handleDeleteKey(e);
+                    _self.handleDeleteKey(e);
                 }
             });
         }
