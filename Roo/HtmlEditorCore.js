@@ -613,10 +613,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (this.doc.body) {
             var self = this;
             this.doc.body.addEventListener('keydown', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                Roo.log("KEY DOWN 11111");
-                return false;
+                if(e && e.getKey() == e.DELETE) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    Roo.log("KEY DOWN 11111");
+                    this.handleDeleteKey(e);
+                    return false;
+                }
             });
         }
         if(Roo.isGecko){
