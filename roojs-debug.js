@@ -78442,7 +78442,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
 
         if(e && e.type == 'keyup' && e.getKey() == e.DELETE) {
-            this.handleDeleteKey(e);
+            Roo.log('delete key pressed!!!!!!!!!!');
+            // this.handleDeleteKey(e);
         }
         
         this.fireEditorEvent(e);
