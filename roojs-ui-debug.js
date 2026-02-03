@@ -28434,20 +28434,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
             
             var bd = (this.doc.body || this.doc.documentElement);
-           
-            
-            var sel = this.win.getSelection();
-            
-            var div = document.createElement('div');
-            div.innerHTML = bd.innerHTML;
-            var gtx = div.getElementsByClassName('gtx-trans-icon'); // google translate - really annoying and difficult to get rid of.
-            if (gtx.length > 0) {
-                var rm = gtx.item(0).parentNode;
-                rm.parentNode.removeChild(rm);
-            }
-            
-           
-            if (this.enableBlocks) {
+
+            if(this.enableBlocks) {
+                // Store which figures have roo-ed-selection before updateElement removes it
+                var figuresWithSelection = [];
+                Array.from(bd.getElementsByTagName('figure')).forEach(function(fig) {
+                    if (fig.classList.contains('roo-ed-selection')) {
+                        figuresWithSelection.push(fig);
+                    }
+                });
+
                 Array.from(bd.getElementsByTagName('img')).forEach(function(img) {
                     var fig = img.closest('figure');
                     if (fig) {
@@ -28456,8 +28452,32 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                         });
                         bf.updateElement();
                     }
-                    
                 });
+            }
+           
+            
+            var sel = this.win.getSelection();
+            
+            var div = document.createElement('div');
+            div.innerHTML = bd.innerHTML;
+
+            // Restore roo-ed-selection to iframe (after copying to div, so it stays in iframe but not in div)
+            if(this.enableBlocks && figuresWithSelection) {
+                figuresWithSelection.forEach(function(fig) {
+                    if (fig.parentNode) { // Make sure it still exists
+                        fig.classList.add('roo-ed-selection');
+                    }
+                });
+            }
+            
+            var gtx = div.getElementsByClassName('gtx-trans-icon'); // google translate - really annoying and difficult to get rid of.
+            if (gtx.length > 0) {
+                var rm = gtx.item(0).parentNode;
+                rm.parentNode.removeChild(rm);
+            }
+            
+           
+            if (this.enableBlocks) {
                 new Roo.htmleditor.FilterBlock({ node : div });
             }
             
@@ -28539,7 +28559,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 
                 
             });
-            
             
              
             if(this.owner.fireEvent('beforesync', this, html) !== false){
@@ -28663,6 +28682,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             'paste': this.onPasteEvent,
             scope : this
         });
+        if (this.doc.body) {
+            var self = this;
+            this.doc.body.addEventListener('keydown', function(e) {
+                if(e && e.keyCode == 46) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    self.handleDeleteKey();
+                }
+            });
+        }
         if(Roo.isGecko){
             Roo.EventManager.on(this.doc, 'keypress', this.mozKeyPress, this);
         }
@@ -28974,10 +29003,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
         }
         
-        
-        
         this.fireEditorEvent(e);
       //  this.updateToolbar();
+        
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
     },
     
@@ -29245,6 +29273,54 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
              };
         }
     }(),
+    
+    // Handle Delete key for images - reuses toolbar's onDelete method
+    handleDeleteKey : function()
+    {
+        
+        // Get the selected node from Standard toolbar
+        var toolbar = this.owner.toolbars.find(function(tb) {
+            return tb.initialConfig.xtype === 'Standard';
+        });
+
+        if (!toolbar) {
+            return false;
+        }
+        
+        var selectedNode = toolbar.selectedNode;
+        if (!selectedNode) {
+            return false;
+        }
+        
+        // Check if selected node is still valid (hasn't been removed)
+        if (!selectedNode.parentNode) {
+            return false;
+        }
+        
+        // Verify it's a figure with an image
+        var selectedFig = null;
+        if (selectedNode.tagName === 'FIGURE') {
+            selectedFig = selectedNode;
+        } else if (selectedNode.tagName === 'IMG') {
+            // If it's an image, find the parent figure
+            selectedFig = selectedNode.closest('figure');
+        } else {
+            return false;
+        }
+        
+        if (!selectedFig) {
+            return false;
+        }
+        
+        if (!selectedFig.querySelector('img')) {
+            return false;
+        }
+        
+        // Call the toolbar's onDelete method (reusing existing code!)
+        toolbar.onDelete();
+        
+        return true;
+    },
     
     getAllAncestors: function()
     {
