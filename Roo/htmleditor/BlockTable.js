@@ -203,7 +203,8 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             style : {
                 width:  this.width,
                 border : 'solid 1px #000', // ??? hard coded?
-                'border-collapse' : 'collapse' 
+                'border-collapse' : 'collapse',
+                'overflow' : 'revert'
             },
             cn : [
                 { tag : 'tbody' , cn : [] }
