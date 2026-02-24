@@ -83381,8 +83381,8 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         var _this = this;
         var form = this.form;
         
-        Roo.log('=== SSE: Starting runSSE ===');
-        Roo.log('SSE: Form URL: ' + this.getUrl(false));
+        // Roo.log('=== SSE: Starting runSSE ===');
+        // Roo.log('SSE: Form URL: ' + this.getUrl(false));
         
         // Build FormData from form
         var formData = new FormData(form.el.dom);
@@ -83391,7 +83391,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         var params = this.options.params || {};
         for (var key in params) {
             formData.append(key, params[key]);
-            Roo.log('SSE: Added param: ' + key + ' = ' + params[key]);
+            // Roo.log('SSE: Added param: ' + key + ' = ' + params[key]);
         }
         
         // Show progress
@@ -83400,18 +83400,18 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         // Pause auth check during long-running SSE operations
         if (typeof Pman !== 'undefined' && Pman.Login) {
             Pman.Login.authCheckPaused = true;
-            Roo.log('SSE: Auth check paused');
+            // Roo.log('SSE: Auth check paused');
         }
         
-        Roo.log('SSE: Calling fetch...');
+        // Roo.log('SSE: Calling fetch...');
         
         fetch(this.getUrl(false), {
             method: 'POST',
             body: formData
         }).then(function(response) {
-            Roo.log('SSE: Fetch response received');
-            Roo.log('SSE: Response OK: ' + response.ok);
-            Roo.log('SSE: Response status: ' + response.status);
+            // Roo.log('SSE: Fetch response received');
+            // Roo.log('SSE: Response OK: ' + response.ok);
+            // Roo.log('SSE: Response status: ' + response.status);
 
             
             if (!response.ok) {
@@ -83434,7 +83434,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 if (fakeProgressInterval) {
                     clearInterval(fakeProgressInterval);
                     fakeProgressInterval = null;
-                    Roo.log('SSE: Stopped fake progress animation');
+                    // Roo.log('SSE: Stopped fake progress animation');
                 }
             }
             
@@ -83442,7 +83442,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             function resumeAuthCheck() {
                 if (typeof Pman !== 'undefined' && Pman.Login) {
                     Pman.Login.authCheckPaused = false;
-                    Roo.log('SSE: Auth check resumed');
+                    // Roo.log('SSE: Auth check resumed');
                 }
             }
             
@@ -83472,7 +83472,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 var goingUp = true;
                 var inBouncePhase = false;
                 
-                Roo.log('SSE: Starting fake progress animation from ' + baseProgress + '%, stepSpace=' + stepSpace + '%, oscillateStep=' + oscillateStep + '%');
+                // Roo.log('SSE: Starting fake progress animation from ' + baseProgress + '%, stepSpace=' + stepSpace + '%, oscillateStep=' + oscillateStep + '%');
                 
                 // Oscillate every 1 second
                 fakeProgressInterval = setInterval(function() {
@@ -83513,7 +83513,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                 }, 1000);
             }
             
-            Roo.log('SSE: Starting to read stream...');
+            // Roo.log('SSE: Starting to read stream...');
             
             // Track if we've already handled a terminal event (error/complete)
             var finished = false;
@@ -83521,10 +83521,10 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             function read() {
                 reader.read().then(function(result) {
                     chunkCount++;
-                    Roo.log('SSE: Chunk #' + chunkCount + ' received, done=' + result.done);
+                    // Roo.log('SSE: Chunk #' + chunkCount + ' received, done=' + result.done);
                     
                     if (result.done) {
-                        Roo.log('SSE: Stream complete, finished=' + finished);
+                        // Roo.log('SSE: Stream complete, finished=' + finished);
                         stopFakeProgress();
                         resumeAuthCheck();
                         // Only hide MessageBox if we haven't already handled error/complete
@@ -83536,40 +83536,40 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                     
                     // Don't process more chunks if we've already finished
                     if (finished) {
-                        Roo.log('SSE: Ignoring chunk - already finished');
+                        // Roo.log('SSE: Ignoring chunk - already finished');
                         return;
                     }
                     
                     var chunk = decoder.decode(result.value, {stream: true});
-                    Roo.log('SSE: Raw chunk (' + chunk.length + ' chars): ' + chunk.substring(0, 200));
+                    // Roo.log('SSE: Raw chunk (' + chunk.length + ' chars): ' + chunk.substring(0, 200));
                     
                     buffer += chunk;
                     var lines = buffer.split('\n');
                     buffer = lines.pop(); // Keep incomplete line
                     
-                    Roo.log('SSE: Processing ' + lines.length + ' lines, buffer remaining: ' + buffer.length + ' chars');
+                    // Roo.log('SSE: Processing ' + lines.length + ' lines, buffer remaining: ' + buffer.length + ' chars');
                     
                     lines.forEach(function(line) {
                         if (line.trim() === '') {
                             return; // Skip empty lines
                         }
                         
-                        Roo.log('SSE: Line: "' + line + '"');
+                        // Roo.log('SSE: Line: "' + line + '"');
                         
                         if (line.startsWith('event: ')) {
                             currentEvent = line.substring(7).trim();
-                            Roo.log('SSE: Event type: ' + currentEvent);
+                            // Roo.log('SSE: Event type: ' + currentEvent);
                         } else if (line.startsWith('data: ')) {
                             var jsonStr = line.substring(6);
-                            Roo.log('SSE: Data JSON (' + jsonStr.length + ' chars): ' + jsonStr.substring(0, 100) + '...');
+                            // Roo.log('SSE: Data JSON (' + jsonStr.length + ' chars): ' + jsonStr.substring(0, 100) + '...');
                             
                             try {
                                 var data = JSON.parse(jsonStr);
-                                Roo.log('SSE: Parsed data for event "' + currentEvent + '":');
-                                Roo.log(data);
+                                // Roo.log('SSE: Parsed data for event "' + currentEvent + '":');
+                                // Roo.log(data);
                                 
                                 if (currentEvent === 'progress' && data.progress !== undefined) {
-                                    Roo.log('SSE: Updating progress: ' + data.progress + '%');
+                                    // Roo.log('SSE: Updating progress: ' + data.progress + '%');
                                     // Show real progress immediately
                                     Roo.MessageBox.updateProgress(
                                         data.progress / 100, 
@@ -83579,7 +83579,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                     // data.total = total number of steps (e.g., 4)
                                     startFakeProgress(data.progress, data.message, data.total);
                                 } else if (currentEvent === 'error') {
-                                    Roo.log('SSE: ERROR event received');
+                                    // Roo.log('SSE: ERROR event received');
                                     finished = true;  // Mark as finished before showing error
                                     stopFakeProgress();
                                     resumeAuthCheck();
@@ -83588,27 +83588,27 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                                     form.afterAction(_this, false);
                                     return; // Stop processing this chunk
                                 } else if (currentEvent === 'complete') {
-                                    Roo.log('SSE: COMPLETE event received, success=' + data.success);
+                                    // Roo.log('SSE: COMPLETE event received, success=' + data.success);
                                     finished = true;  // Mark as finished
                                     stopFakeProgress();
                                     resumeAuthCheck();
                                     Roo.MessageBox.hide();
                                     _this.result = data;
                                     if (data.success) {
-                                        Roo.log('SSE: Calling form.afterAction with success=true');
+                                        // Roo.log('SSE: Calling form.afterAction with success=true');
                                         form.afterAction(_this, true);
                                     } else {
-                                        Roo.log('SSE: Calling form.afterAction with success=false');
+                                        // Roo.log('SSE: Calling form.afterAction with success=false');
                                         _this.failureType = Roo.form.Action.SERVER_INVALID;
                                         form.afterAction(_this, false);
                                     }
                                     return; // Stop processing this chunk
                                 } else {
-                                    Roo.log('SSE: Unknown event type or no progress: ' + currentEvent);
+                                    // Roo.log('SSE: Unknown event type or no progress: ' + currentEvent);
                                 }
                             } catch (e) {
-                                Roo.log('SSE: JSON parse error: ' + e);
-                                Roo.log('SSE: Failed JSON string: ' + jsonStr);
+                                // Roo.log('SSE: JSON parse error: ' + e);
+                                // Roo.log('SSE: Failed JSON string: ' + jsonStr);
                                 finished = true;  // Mark as finished
                                 stopFakeProgress();
                                 resumeAuthCheck();
@@ -83623,9 +83623,9 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                             }
                             currentEvent = null;
                         } else if (line.startsWith(':')) {
-                            Roo.log('SSE: Heartbeat/comment received');
+                            // Roo.log('SSE: Heartbeat/comment received');
                         } else {
-                            Roo.log('SSE: Unknown line format: ' + line);
+                            // Roo.log('SSE: Unknown line format: ' + line);
                         }
                     });
                     
@@ -83634,7 +83634,7 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
                         read();
                     }
                 }).catch(function(error) {
-                    Roo.log('SSE: Read error: ' + error);
+                    // Roo.log('SSE: Read error: ' + error);
                     if (finished) {
                         return; // Already handled
                     }
@@ -83653,12 +83653,12 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
             read();
             
         }).catch(function(error) {
-            Roo.log('SSE: Fetch error: ' + error);
+            // Roo.log('SSE: Fetch error: ' + error);
             Roo.MessageBox.hide();
             // Resume auth check on fetch error
             if (typeof Pman !== 'undefined' && Pman.Login) {
                 Pman.Login.authCheckPaused = false;
-                Roo.log('SSE: Auth check resumed (fetch error)');
+                // Roo.log('SSE: Auth check resumed (fetch error)');
             }
             _this.failureType = Roo.form.Action.CONNECT_FAILURE;
             _this.result = {
