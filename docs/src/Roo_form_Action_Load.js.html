@@ -1,0 +1,51 @@
+<html><head><title>Roo/form/Action/Load.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * @class Roo.form.Action.Load
+ * @extends Roo.form.Action
+ * Load action (read form values from server).
+ * Requires Roo.form.Action (base) from Action.js to be loaded first.
+ */
+</span><span class="jsdoc-var">Roo.form.Action.Load </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-var">Roo.form.Action.Load.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.reader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.form.reader</span><span class="jsdoc-syntax">;
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.Action.Load</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form.Action</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">run</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-var">Roo.Ajax.request</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(
+            </span><span class="jsdoc-var">this.createCallback</span><span class="jsdoc-syntax">(), {
+                </span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.getMethod</span><span class="jsdoc-syntax">(),
+                </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.getUrl</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.getParams</span><span class="jsdoc-syntax">()
+            }));
+    },
+
+    </span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.processResponse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">result.success </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">result.data</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.failureType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.Action.LOAD_FAILURE</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.form.afterAction</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.form.clearInvalid</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.form.setValues</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">result.data</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.form.afterAction</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">handleResponse</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.form.reader</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.form.reader.read</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rs.records </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">rs.records</span><span class="jsdoc-syntax">[0] ? </span><span class="jsdoc-var">rs.records</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.data </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rs.success</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">data
+            </span><span class="jsdoc-syntax">};
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response.responseText</span><span class="jsdoc-syntax">);
+    }
+});
+
+</span><span class="jsdoc-var">Roo.form.Action.ACTION_TYPES </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.Action.ACTION_TYPES </span><span class="jsdoc-syntax">|| {};
+</span><span class="jsdoc-var">Roo.form.Action.ACTION_TYPES.load </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.Action.Load</span><span class="jsdoc-syntax">;
+</span></code></body></html>
