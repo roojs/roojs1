@@ -85,22 +85,39 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
     ],
     
     specialChars : [
-           "&#169;",
-          "&#174;",     
-          "&#8482;",    
-          "&#163;" ,    
-         // "&#8212;",    
-          "&#8230;",    
-          "&#247;" ,    
-        //  "&#225;" ,     ?? a acute?
-           "&#8364;"    , //Euro
-       //   "&#8220;"    ,
-        //  "&#8221;"    ,
-        //  "&#8226;"    ,
-          "&#176;"  //   , // degrees
-
-         // "&#233;"     , // e ecute
-         // "&#250;"     , // u ecute?
+        {
+            html: "&#169;",
+            label: "© - Copyright symbol"
+        },
+        {
+            html: "&#174;",
+            label: "® - Registered trademark symbol"
+        },
+        {
+            html: "&#8482;",
+            label: "™ - Trademark symbol"
+        },
+        {
+            html: "&#163;",
+            label: "£ - Pound sterling symbol"
+        },
+        {
+            html: "&#8230;",
+            label: "… - Ellipsis (three dots)"
+        },
+        {
+            html: "&#247;",
+            label: "÷ - Division symbol"
+        },
+        {
+            html: "&#8364;",
+            label: "€ - Euro symbol"
+        },
+        {
+            html: "&#176;",
+            label: "° - Degree symbol"
+        }
+        
     ],
     
     specialElements : [
@@ -351,13 +368,18 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 }
             };
             for (var i =0; i < this.specialChars.length; i++) {
-                smenu.menu.items.push({
-                    
+                // Normalize charItem to always be an object
+                var charItem = typeof(this.specialChars[i]) === 'object' ? this.specialChars[i] : {
                     html: this.specialChars[i],
+                    label: this.specialChars[i]
+                };
+                
+                smenu.menu.items.push({
+                    html: charItem.label,
+                    charData: charItem,
                     handler: function(a,b) {
-                        editorcore.insertAtCursor(String.fromCharCode(a.html.replace('&#','').replace(';', '')));
-                        //editor.insertAtCursor(a.html);
-                        
+                        editorcore.insertAtCursor(a.charData.html);
+                        editor.deferFocus();
                     },
                     tabIndex:-1
                 });

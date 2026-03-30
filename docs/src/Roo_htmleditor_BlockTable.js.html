@@ -203,7 +203,8 @@
             </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: {
                 </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'solid 1px #000'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// ??? hard coded?
-                </span><span class="jsdoc-string">'border-collapse' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'collapse'
+                </span><span class="jsdoc-string">'border-collapse' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'collapse'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-string">'overflow' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'revert'
             </span><span class="jsdoc-syntax">},
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                 { </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tbody' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [] }
@@ -243,6 +244,9 @@
                 }
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cell.rowspan </span><span class="jsdoc-syntax">&gt; 1) {
                     </span><span class="jsdoc-var">td.rowspan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cell.rowspan </span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cell.border </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">cell.border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'L' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cell.border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'R' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cell.border </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'N'</span><span class="jsdoc-syntax">)) {
+                    </span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'data-border'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">cell.border</span><span class="jsdoc-syntax">;
                 }
 
 
@@ -284,7 +288,8 @@
                     </span><span class="jsdoc-var">colspan </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">td.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'colspan'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">td.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'colspan'</span><span class="jsdoc-syntax">)*1 : 1,
                     </span><span class="jsdoc-var">rowspan </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">td.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rowspan'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">td.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rowspan'</span><span class="jsdoc-syntax">)*1 : 1,
                     </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">td.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">td.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">td.innerHTML
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">td.innerHTML</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">td.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-border'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">td.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-border'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">'B'
                 </span><span class="jsdoc-syntax">};
                 </span><span class="jsdoc-var">no_column </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">add.colspan</span><span class="jsdoc-syntax">;
 

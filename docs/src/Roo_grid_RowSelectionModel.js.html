@@ -73,6 +73,12 @@
      */
     </span><span class="jsdoc-var">singleSelect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} toggleSelect
+     * True to allow clicking a selected row to deselect it without holding Ctrl (defaults to false)
+     */
+    </span><span class="jsdoc-var">toggleSelect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
 
@@ -306,8 +312,8 @@
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">isSelected </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.isSelected</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.button </span><span class="jsdoc-syntax">!== 0 &amp;&amp; </span><span class="jsdoc-var">isSelected</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">view.focusRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
-            }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.ctrlKey </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">isSelected</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">this.deselectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">e.ctrlKey </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.toggleSelect</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">isSelected</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.deselectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
             }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">isSelected</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.selectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e.button </span><span class="jsdoc-syntax">=== 0 &amp;&amp; (</span><span class="jsdoc-var">e.ctrlKey </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">e.shiftKey</span><span class="jsdoc-syntax">));
                 </span><span class="jsdoc-var">view.focusRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);

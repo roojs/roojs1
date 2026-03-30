@@ -36,6 +36,7 @@ Roo.lib.Selection
 
 Roo.DomHelper
 Roo.Template
+Roo.ReplaceTemplate
 Roo.DomQuery
 Roo.util.Observable
 Roo.Document

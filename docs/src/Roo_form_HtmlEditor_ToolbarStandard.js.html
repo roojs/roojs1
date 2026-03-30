@@ -85,23 +85,40 @@
     </span><span class="jsdoc-syntax">],
 
     </span><span class="jsdoc-var">specialChars </span><span class="jsdoc-syntax">: [
-           </span><span class="jsdoc-string">&quot;&amp;#169;&quot;</span><span class="jsdoc-syntax">,
-          </span><span class="jsdoc-string">&quot;&amp;#174;&quot;</span><span class="jsdoc-syntax">,
-          </span><span class="jsdoc-string">&quot;&amp;#8482;&quot;</span><span class="jsdoc-syntax">,
-          </span><span class="jsdoc-string">&quot;&amp;#163;&quot; </span><span class="jsdoc-syntax">,
-         </span><span class="jsdoc-comment">// &quot;&amp;#8212;&quot;,    
-          </span><span class="jsdoc-string">&quot;&amp;#8230;&quot;</span><span class="jsdoc-syntax">,
-          </span><span class="jsdoc-string">&quot;&amp;#247;&quot; </span><span class="jsdoc-syntax">,
-        </span><span class="jsdoc-comment">//  &quot;&amp;#225;&quot; ,     ?? a acute?
-           </span><span class="jsdoc-string">&quot;&amp;#8364;&quot;    </span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">//Euro
-       //   &quot;&amp;#8220;&quot;    ,
-        //  &quot;&amp;#8221;&quot;    ,
-        //  &quot;&amp;#8226;&quot;    ,
-          </span><span class="jsdoc-string">&quot;&amp;#176;&quot;  </span><span class="jsdoc-comment">//   , // degrees
+        {
+            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#169;&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;© - Copyright symbol&quot;
+        </span><span class="jsdoc-syntax">},
+        {
+            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#174;&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;® - Registered trademark symbol&quot;
+        </span><span class="jsdoc-syntax">},
+        {
+            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#8482;&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;™ - Trademark symbol&quot;
+        </span><span class="jsdoc-syntax">},
+        {
+            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#163;&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;£ - Pound sterling symbol&quot;
+        </span><span class="jsdoc-syntax">},
+        {
+            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#8230;&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;… - Ellipsis (three dots)&quot;
+        </span><span class="jsdoc-syntax">},
+        {
+            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#247;&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;÷ - Division symbol&quot;
+        </span><span class="jsdoc-syntax">},
+        {
+            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#8364;&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;€ - Euro symbol&quot;
+        </span><span class="jsdoc-syntax">},
+        {
+            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;#176;&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;° - Degree symbol&quot;
+        </span><span class="jsdoc-syntax">}
 
-         // &quot;&amp;#233;&quot;     , // e ecute
-         // &quot;&amp;#250;&quot;     , // u ecute?
-    </span><span class="jsdoc-syntax">],
+    ],
 
     </span><span class="jsdoc-var">specialElements </span><span class="jsdoc-syntax">: [
         {
@@ -351,14 +368,19 @@
                 }
             };
             </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.specialChars.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-                </span><span class="jsdoc-var">smenu.menu.items.push</span><span class="jsdoc-syntax">({
-
+                </span><span class="jsdoc-comment">// Normalize charItem to always be an object
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">charItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.specialChars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]) === </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.specialChars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] : {
                     </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.specialChars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">],
-                    </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">editorcore.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.html.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&amp;#'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)));
-                        </span><span class="jsdoc-comment">//editor.insertAtCursor(a.html);
+                    </span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.specialChars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]
+                };
 
-                    </span><span class="jsdoc-syntax">},
+                </span><span class="jsdoc-var">smenu.menu.items.push</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">charItem.label</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">charData</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">charItem</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">editorcore.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.charData.html</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">editor.deferFocus</span><span class="jsdoc-syntax">();
+                    },
                     </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">:-1
                 });
             }

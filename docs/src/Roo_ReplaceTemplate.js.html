@@ -1,0 +1,210 @@
+<html><head><title>Roo/ReplaceTemplate.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Roo JS
+ * (c) Alan Knowles
+ * Licence : LGPL
+ */
+
+/**
+ * @class Roo.ReplaceTemplate
+ * A template engine that uses string replacement instead of eval().
+ * 
+ * Follows a similar API to Roo.Template but avoids eval() for security and performance.
+ * 
+ * Supported features:
+ * &lt;pre&gt;&lt;code&gt;
+ *     {a_variable} - output encoded (htmlEncode)
+ *     {a_variable:raw} - unencoded output
+ *     {a_variable:this.methodName} - call a method on the template object
+ *     {a_variable:htmlEncode} - use Roo.util.Format method
+ * &lt;/code&gt;&lt;/pre&gt;
+ * 
+ * Usage:
+ * &lt;pre&gt;&lt;code&gt;
+ * var t = new Roo.ReplaceTemplate({
+ *     html: '&lt;div&gt;{name}&lt;/div&gt;',
+ *     formatName: function(v, allv) {
+ *         return String.format('&lt;B&gt;{0}&lt;/B&gt;', v);
+ *     }
+ * });
+ * t.apply({name: 'Test'}); // returns '&lt;div&gt;Test&lt;/div&gt;'
+ * &lt;/code&gt;&lt;/pre&gt;
+ * 
+ * @constructor
+ * @param {Object/String} cfg Configuration object or HTML string
+ */
+</span><span class="jsdoc-var">Roo.ReplaceTemplate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-comment">// BC - support string or config object
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+    }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments.length </span><span class="jsdoc-syntax">&gt; 1){
+        </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.prototype.join.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+    }
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-comment">// backward compatibility - string passed directly
+        </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    }
+
+    </span><span class="jsdoc-comment">// Store formatter methods for this.methodName calls
+    </span><span class="jsdoc-var">this.formatters </span><span class="jsdoc-syntax">= {};
+
+    </span><span class="jsdoc-comment">// Copy any methods that look like formatters to formatters object
+    </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">key </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">] === </span><span class="jsdoc-string">'function' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">'apply' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">'applyTemplate' </span><span class="jsdoc-syntax">&amp;&amp;
+            </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">'compile' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">'call' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">'set'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.formatters</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">];
+        }
+    }
+};
+
+</span><span class="jsdoc-var">Roo.ReplaceTemplate.prototype </span><span class="jsdoc-syntax">= {
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} html The HTML fragment template
+     */
+    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} disableFormats True to disable format functions (defaults to false)
+     */
+    </span><span class="jsdoc-var">disableFormats </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * Regular expression to match template variables
+     * Matches: {variable}, {variable:format}, {variable:this.method}
+     * @type RegExp
+     */
+    </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">: /\{([\w-\.]+)(?:\:([\w\.]*))?\}/g,
+
+    </span><span class="jsdoc-comment">/**
+     * Store formatter methods
+     */
+    </span><span class="jsdoc-var">formatters </span><span class="jsdoc-syntax">: {},
+
+    </span><span class="jsdoc-comment">/**
+     * Returns an HTML fragment with the specified values applied.
+     * Uses string replacement instead of eval().
+     * 
+     * @param {Object} values The template values
+     * @return {String} The HTML fragment
+     */
+    </span><span class="jsdoc-var">applyTemplate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">useF </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.disableFormats </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.util.Format</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.html.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.re</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">match</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// Get the value from the data object
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tpl.getValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-comment">// Handle undefined/null values
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-comment">// No format specified - default to htmlEncode
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">useF </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">fm.htmlEncode </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">fm.htmlEncode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-comment">// Raw output - no encoding
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'raw'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-comment">// Custom formatter: {variable:this.methodName}
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">format.substr</span><span class="jsdoc-syntax">(0, 5) === </span><span class="jsdoc-string">'this.'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">methodName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">format.substr</span><span class="jsdoc-syntax">(5);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tpl.formatters</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">methodName</span><span class="jsdoc-syntax">] &amp;&amp; </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">tpl.formatters</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">methodName</span><span class="jsdoc-syntax">] === </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tpl.formatters</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">methodName</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tpl.formatters</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">));
+                }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tpl</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">methodName</span><span class="jsdoc-syntax">] &amp;&amp; </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">tpl</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">methodName</span><span class="jsdoc-syntax">] === </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tpl</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">methodName</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tpl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">));
+                }
+                </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ReplaceTemplate: Formatter method &quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">methodName </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot; not found'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-comment">// Roo.util.Format method: {variable:htmlEncode}
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">useF </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">fm</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">] &amp;&amp; </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">fm</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">] === </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fm</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">format</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">));
+            }
+
+            </span><span class="jsdoc-comment">// Format not found
+            </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ReplaceTemplate: Format &quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot; not found'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+        });
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Get a value from the data object, supporting dot notation
+     * @param {Object} data The data object
+     * @param {String} path The property path (e.g., &quot;user.name&quot;)
+     * @return {*} The value or undefined
+     */
+    </span><span class="jsdoc-var">getValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">path</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parts </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">path.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">parts.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">parts</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]];
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the HTML used as the template.
+     * @param {String} html
+     * @return {Roo.ReplaceTemplate} this
+     */
+    </span><span class="jsdoc-var">set </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Compile is a no-op for ReplaceTemplate (no compilation needed)
+     * Kept for API compatibility
+     * @return {Roo.ReplaceTemplate} this
+     */
+    </span><span class="jsdoc-var">compile </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-comment">// No compilation needed - replacement happens at runtime
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Call method - used internally for formatter calls
+     * @private
+     * @param {String} fnName Method name
+     * @param {*} value The value to format
+     * @param {Object} allValues All template values
+     * @return {String} Formatted value
+     */
+    </span><span class="jsdoc-var">call </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fnName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">allValues</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatters</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fnName</span><span class="jsdoc-syntax">] &amp;&amp; </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.formatters</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fnName</span><span class="jsdoc-syntax">] === </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.formatters</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fnName</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatters</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">allValues</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fnName</span><span class="jsdoc-syntax">] &amp;&amp; </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fnName</span><span class="jsdoc-syntax">] === </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fnName</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">allValues</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+    }
+};
+
+</span><span class="jsdoc-comment">/**
+ * Alias for {@link #applyTemplate}
+ * @method
+ */
+</span><span class="jsdoc-var">Roo.ReplaceTemplate.prototype.apply </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.ReplaceTemplate.prototype.applyTemplate</span><span class="jsdoc-syntax">;
+
+ </span></code></body></html>

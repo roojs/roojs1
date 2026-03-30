@@ -144,11 +144,13 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
             l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
             
             if ( this.style_black.length && (this.style_black.indexOf(l) > -1 || this.style_black.indexOf(l.toLowerCase()) > -1)) {
+                Roo.log("REMOVE " + p);
                 return true;
             }
             //Roo.log()
             // only allow 'c whitelisted system attributes'
             if ( this.style_white.length &&  style_white.indexOf(l) < 0 && style_white.indexOf(l.toLowerCase()) < 0 ) {
+                Roo.log("REMOVE " + p);
                 return true;
             }
             

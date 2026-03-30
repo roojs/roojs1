@@ -39,6 +39,14 @@
       "optvals" : []
     },
     {
+      "name" : "toggleSelect",
+      "type" : "Boolean",
+      "desc" : "True to allow clicking a selected row to deselect it without holding Ctrl (defaults to false)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "singleSelect",
       "type" : "Boolean",
       "desc" : "True to allow selection of only one row at a time (defaults to false)",
