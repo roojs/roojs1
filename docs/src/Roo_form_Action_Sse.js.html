@@ -1,0 +1,251 @@
+<html><head><title>Roo/form/Action/Sse.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * @class Roo.form.Action.Sse
+ * @extends Roo.util.Observable
+ * Fetch + ReadableStream parser for custom SSE-style responses (event:/data: lines).
+ * Fires events; wire UI (MessageBox, form.afterAction) in listeners.
+ * Requires Roo.util.Observable and {@link Roo.form.Action} (base) loaded first.
+ *
+ * Global stream lifecycle: {@link Roo.form.Action.Sse.global} fires begin(sse) / end(sse). Use .on on that
+ * instance or {@link Roo.form.Action.Sse.onBegin} / {@link Roo.form.Action.Sse.onEnd}.
+ */
+</span><span class="jsdoc-var">Roo.form.Action.Sse </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">|| {};
+    </span><span class="jsdoc-var">config.events </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.applyIf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.events </span><span class="jsdoc-syntax">|| {}, {
+        </span><span class="jsdoc-var">begin</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">progress</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">error</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">complete</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">streamend</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">readerror</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">fetcherror</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">parseerror</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">Roo.form.Action.Sse.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.Action.Sse</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+
+    </span><span class="jsdoc-comment">/**
+     * POST formData to url, then read stream.
+     * @param {String} url
+     * @param {FormData} formData
+     */
+    </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">formData</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.form.Action.Sse.global.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'begin'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.MessageBox.progress</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Processing&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Starting...&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">fetch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">, {
+            </span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'POST'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">formData
+        </span><span class="jsdoc-syntax">})</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">response.ok</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">throw new </span><span class="jsdoc-var">Error</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Network response was not ok: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">response.status</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">reader</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">response.body.getReader</span><span class="jsdoc-syntax">(),
+                </span><span class="jsdoc-var">decoder</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">TextDecoder</span><span class="jsdoc-syntax">(),
+                </span><span class="jsdoc-var">buffer</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">chunkCount</span><span class="jsdoc-syntax">: 0,
+                </span><span class="jsdoc-var">currentEvent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">finished</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">fakeProgressInterval</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">baseProgress</span><span class="jsdoc-syntax">: 0,
+                </span><span class="jsdoc-var">progressMessage</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Processing...'
+            </span><span class="jsdoc-syntax">};
+            </span><span class="jsdoc-var">_this.readLoop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
+        })</span><span class="jsdoc-var">.catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">error</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.MessageBox.hide</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">Roo.form.Action.Sse.global.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'end'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fetcherror'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">error</span><span class="jsdoc-syntax">);
+        });
+    },
+
+    </span><span class="jsdoc-var">stopFakeProgress</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state.fakeProgressInterval</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">clearInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state.fakeProgressInterval</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">state.fakeProgressInterval </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        }
+    },
+
+    </span><span class="jsdoc-var">startFakeProgress</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">realProgress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">message</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">totalSteps</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.stopFakeProgress</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">state.baseProgress </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">realProgress</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">state.progressMessage </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">message </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'Processing...'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">totalSteps </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">totalSteps </span><span class="jsdoc-syntax">|| 1;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">stepSpace </span><span class="jsdoc-syntax">= 100 / </span><span class="jsdoc-var">totalSteps</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oscillateStep </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">stepSpace </span><span class="jsdoc-syntax">* 0.20;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tickCount </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">maxOffset </span><span class="jsdoc-syntax">= 4;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minBounce </span><span class="jsdoc-syntax">= 2;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">currentOffset </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">goingUp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">inBouncePhase </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">state.fakeProgressInterval </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">setInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-var">tickCount</span><span class="jsdoc-syntax">++;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">displayedProgress</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">inBouncePhase</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">currentOffset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tickCount</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentOffset </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">maxOffset</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">currentOffset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">maxOffset</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">inBouncePhase </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">goingUp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-var">displayedProgress </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state.baseProgress </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">currentOffset </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">oscillateStep</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">Roo.MessageBox.updateProgress</span><span class="jsdoc-syntax">(
+                    </span><span class="jsdoc-var">displayedProgress </span><span class="jsdoc-syntax">/ 100,
+                    </span><span class="jsdoc-var">state.progressMessage
+                </span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">goingUp</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">currentOffset</span><span class="jsdoc-syntax">++;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentOffset </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">maxOffset</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">currentOffset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">maxOffset</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">goingUp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-var">displayedProgress </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state.baseProgress </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">currentOffset </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">oscillateStep</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">Roo.MessageBox.updateProgress</span><span class="jsdoc-syntax">(
+                    </span><span class="jsdoc-var">displayedProgress </span><span class="jsdoc-syntax">/ 100,
+                    </span><span class="jsdoc-var">state.progressMessage
+                </span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">currentOffset</span><span class="jsdoc-syntax">--;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentOffset </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">minBounce</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">currentOffset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">minBounce</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">goingUp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">displayedProgress </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state.baseProgress </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">currentOffset </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">oscillateStep</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.MessageBox.updateProgress</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">displayedProgress </span><span class="jsdoc-syntax">/ 100,
+                </span><span class="jsdoc-var">state.progressMessage
+            </span><span class="jsdoc-syntax">);
+        }, 1000);
+    },
+
+    </span><span class="jsdoc-var">handleDataEvent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state.currentEvent</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'progress' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">data.progress </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.MessageBox.updateProgress</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">data.progress </span><span class="jsdoc-syntax">/ 100,
+                </span><span class="jsdoc-var">data.message </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'Processing...'
+            </span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.startFakeProgress</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data.progress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data.message</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data.total</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'progress'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'error'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">state.finished </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.stopFakeProgress</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.form.Action.Sse.global.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'end'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'error'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'complete'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">state.finished </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.stopFakeProgress</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.form.Action.Sse.global.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'end'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.MessageBox.hide</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'complete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">handleJsonParseError</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">jsonStr</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">state.finished </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.stopFakeProgress</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.form.Action.Sse.global.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'end'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'parseerror'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">jsonStr</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">processLine</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">line</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">line.trim</span><span class="jsdoc-syntax">() === </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">line.startsWith</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'event: '</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">state.currentEvent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">line.substring</span><span class="jsdoc-syntax">(7)</span><span class="jsdoc-var">.trim</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">line.startsWith</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data: '</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">jsonStr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">line.substring</span><span class="jsdoc-syntax">(6);
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">JSON.parse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">jsonStr</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.handleDataEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">state.currentEvent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.handleJsonParseError</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">jsonStr</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">onReadResult</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">state.chunkCount</span><span class="jsdoc-syntax">++;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">result.done</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.stopFakeProgress</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.form.Action.Sse.global.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'end'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">state.finished</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Roo.MessageBox.hide</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'streamend'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state.finished</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">chunk </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state.decoder.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">result.value</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">state.buffer </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lines </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state.buffer.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">state.buffer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">lines.pop</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">lines.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">line</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">_this.processLine</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">line</span><span class="jsdoc-syntax">);
+        });
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">state.finished</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.readLoop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">onReadError</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">error</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state.finished</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">state.finished </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.stopFakeProgress</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.form.Action.Sse.global.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'end'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'readerror'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">error</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">readLoop</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">state.reader.read</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">_this.onReadResult</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">);
+        })</span><span class="jsdoc-var">.catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">error</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">_this.onReadError</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">error</span><span class="jsdoc-syntax">);
+        });
+    }
+});
+
+</span><span class="jsdoc-comment">/** @type {Roo.form.Action.Sse} Shared bus: fires begin(sse) / end(sse) for any active stream (use .on). */
+</span><span class="jsdoc-var">Roo.form.Action.Sse.global </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.form.Action.Sse</span><span class="jsdoc-syntax">();
+
+</span><span class="jsdoc-comment">/**
+ * Shorthand for Roo.form.Action.Sse.global.on('begin', ...).
+ * @param {Function} fn (sse)
+ * @param {Object} scope (optional)
+ * @param {Object} o (optional) listener options (delay, single, etc.)
+ */
+</span><span class="jsdoc-var">Roo.form.Action.Sse.onBegin </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-var">Roo.form.Action.Sse.global.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'begin'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-comment">/**
+ * Shorthand for Roo.form.Action.Sse.global.on('end', ...).
+ * @param {Function} fn (sse)
+ * @param {Object} scope (optional)
+ * @param {Object} o (optional) listener options
+ */
+</span><span class="jsdoc-var">Roo.form.Action.Sse.onEnd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-var">Roo.form.Action.Sse.global.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'end'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+};
+</span></code></body></html>
