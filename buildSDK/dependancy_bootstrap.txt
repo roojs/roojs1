@@ -89,6 +89,9 @@ Roo.bootstrap.TableRow
 Roo.bootstrap.TableBody
 
 Roo.form.Action
+Roo.form.Action.Sse
+Roo.form.Action.Submit
+Roo.form.Action.Load
 Roo.bootstrap.form.Form
 Roo.form.VTypes
 Roo.bootstrap.form.Input
