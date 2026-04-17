@@ -141,6 +141,9 @@ Roo.form.HtmlEditor.ToolbarContext
 Roo.form.BasicForm
 Roo.form.Form
 Roo.form.Action
+Roo.form.Action.Sse
+Roo.form.Action.Submit
+Roo.form.Action.Load
 Roo.form.Layout
 Roo.form.Column
 Roo.form.Row
