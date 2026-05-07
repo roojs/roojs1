@@ -77,7 +77,11 @@ Roo.grid.Grid = function(container, config){
         this.dataSource= Roo.factory(this.dataSource, Roo.data);
         this.ds = this.dataSource;
         this.ds.xmodule = this.xmodule || false;
-         
+        
+        // Set up autoColumnsRequest if enabled
+        if (this.autoColumnsRequest) {
+            this.dataSource.on("beforeload", this.buildColumnsRequest, this);
+        }
     }
     
     
@@ -466,6 +470,19 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     */
     ddText : "{0} selected row{1}",
     
+    /**
+    * @cfg {Boolean} autoColumnsRequest If true, automatically builds a _columns parameter from column dataIndex values
+    * and adds it to the dataSource beforeload event. This helps optimize queries by only requesting needed columns.
+    * Default is false.
+    */
+    autoColumnsRequest : false,
+    
+    /**
+    * @cfg {String} autoColumnsRequestExtra Comma-separated list of extra columns to add to the _columns parameter
+    * when autoColumnsRequest is enabled. Default is empty string.
+    */
+    autoColumnsRequestExtra : "",
+    
     
     /**
      * Called once after all setup has been completed and the grid is ready to be rendered.
@@ -533,9 +550,17 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
             this.loadMask = new Roo.LoadMask(this.container,
                     Roo.apply({store:dataSource}, this.loadMask));
         }
+        // Remove old beforeload handler if it exists
+        if(this.dataSource && this.autoColumnsRequest){
+            this.dataSource.un("beforeload", this.buildColumnsRequest, this);
+        }
         this.view.bind(dataSource, colModel);
         this.dataSource = dataSource;
         this.colModel = colModel;
+        // Set up beforeload handler on new dataSource if autoColumnsRequest is enabled
+        if(this.autoColumnsRequest && this.dataSource){
+            this.dataSource.on("beforeload", this.buildColumnsRequest, this);
+        }
         this.view.refresh(true);
     },
     /**
@@ -793,5 +818,62 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     getDragDropText : function(){
         var count = this.selModel.getCount();
         return String.format(this.ddText, count, count == 1 ? '' : 's');
+    },
+    
+    /**
+     * Builds the _columns parameter from column dataIndex values for the beforeload event.
+     * This method is called automatically when autoColumnsRequest is enabled.
+     * @param {Object} store The data store
+     * @param {Object} options The load options
+     * @private
+     */
+    buildColumnsRequest : function(store, options){
+        var columns = [];
+        var columnSet = {}; // Use object to track unique columns
+        
+        // Always add 'id'
+        columnSet['id'] = true;
+        
+        // Get columns from column model
+        var cm = this.getColumnModel();
+        var colCount = cm.getColumnCount();
+        
+        for (var i = 0; i < colCount; i++) {
+            var dataIndex = cm.getDataIndex(i);
+            if (dataIndex && typeof dataIndex === 'string') {
+                // Add the dataIndex itself
+                columnSet[dataIndex] = true;
+                
+                // If dataIndex is like 'aaaa_id_bbbbb', also add 'aaaa_id'
+                var match = dataIndex.match(/^(.+)_id_(.+)$/);
+                if (match) {
+                    var baseId = match[1] + '_id';
+                    columnSet[baseId] = true;
+                }
+            }
+        }
+        
+        // Add extra columns from autoColumnsRequestExtra
+        if (this.autoColumnsRequestExtra) {
+            var extraCols = this.autoColumnsRequestExtra.split(',');
+            for (var j = 0; j < extraCols.length; j++) {
+                var col = extraCols[j].trim();
+                if (col) {
+                    columnSet[col] = true;
+                }
+            }
+        }
+        
+        // Convert object keys to array and sort for consistency
+        for (var col in columnSet) {
+            if (columnSet.hasOwnProperty(col)) {
+                columns.push(col);
+            }
+        }
+        columns.sort();
+        
+        // Set the _columns parameter
+        options.params = options.params || {};
+        options.params._columns = columns.join(',');
     }
 });
