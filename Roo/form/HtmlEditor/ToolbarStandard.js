@@ -434,6 +434,14 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 },
                 tabIndex:-1
             });
+            cmenu.menu.items.push({
+                actiontype : 'stripmidbr',
+                html: 'Strip standalone line breaks',
+                handler: function(a,b) {
+                    editorcore.stripStandaloneMidSentenceBrFromBodyHtml();
+                },
+                tabIndex:-1
+            });
             
             cmenu.menu.items.push({
                 actiontype : 'all',
