@@ -440,8 +440,12 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 handler: function(a,b) {
                     var selection = editorcore.getSelection();
                     var range = false;
-                    if (selection && selection.rangeCount > 0) {
-                        range = selection.getRangeAt(0);
+                    if (selection && selection.getRangeAt) {
+                        try {
+                            range = selection.rangeCount > 0 ? selection.getRangeAt(0) : selection.getRangeAt();
+                        } catch (e) {
+                            range = false;
+                        }
                     }
 
                     if (range && !range.collapsed) {
