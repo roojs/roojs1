@@ -34142,100 +34142,131 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
     /**
      * Remove standalone &lt;br&gt; that sit mid-sentence (not after sentence-ending punctuation,
-     * not adjacent to another &lt;br&gt;). Mirrors press-release import cleanup.
+     * not adjacent to another &lt;br&gt;). If cfg.range is provided and non-collapsed, only
+     * strip inside that selected range.
+     * @param {Object} cfg optional config (supports cfg.range: DOM Range)
      * @return {Number} count removed, or 0 if none / editor not ready
      */
-    stripStandaloneMidSentenceBrFromBodyHtml : function()
+    stripStandaloneMidSentenceBrFromBodyHtml : function(cfg)
     {
         var doc = this.doc;
         if (!doc || !doc.body) {
             return 0;
         }
 
-        var wrapper = doc.createElement('div');
-        wrapper.innerHTML = doc.body.innerHTML;
+        var stripStandaloneInRoot = function(rootNode) {
+            var sentenceEnd = { '.': 1, '!': 1, '?': 1, '\u2026': 1, '\u3002': 1, '\uFF01': 1, '\uFF1F': 1 };
+            var nearestNonWhitespaceSibling = function(node, direction) {
+                var sibling = direction < 0 ? node.previousSibling : node.nextSibling;
+                while (sibling !== null) {
+                    if (sibling.nodeType === 3 && /^[ \t\n\r\0\x0B]*$/.test(sibling.textContent || '')) {
+                        sibling = direction < 0 ? sibling.previousSibling : sibling.nextSibling;
+                        continue;
+                    }
+                    return sibling;
+                }
+                return null;
+            };
 
-        var sentenceEnd = { '.': 1, '!': 1, '?': 1, '\u2026': 1, '\u3002': 1, '\uFF01': 1, '\uFF1F': 1 };
-        var nearestNonWhitespaceSibling = function(node, direction) {
-            var n = direction < 0 ? node.previousSibling : node.nextSibling;
-            while (n !== null) {
-                if (n.nodeType === 3 && /^[ \t\n\r\0\x0B]*$/.test(n.textContent || '')) {
-                    n = direction < 0 ? n.previousSibling : n.nextSibling;
+            var brList = [];
+            var brNodes = rootNode.getElementsByTagName('br');
+            for (var idx = 0; idx < brNodes.length; idx++) {
+                brList.push(brNodes[idx]);
+            }
+
+            var removedCount = 0;
+            for (var idx = 0; idx < brList.length; idx++) {
+                var br = brList[idx];
+
+                var prevNode = nearestNonWhitespaceSibling(br, -1);
+                var nextNode = nearestNonWhitespaceSibling(br, 1);
+                if (prevNode && prevNode.nodeType === 1 && String(prevNode.tagName).toLowerCase() === 'br') {
                     continue;
                 }
-                return n;
+                if (nextNode && nextNode.nodeType === 1 && String(nextNode.tagName).toLowerCase() === 'br') {
+                    continue;
+                }
+
+                var before = null;
+                var node = br.previousSibling;
+                while (node !== null) {
+                    var text = '';
+                    if (node.nodeType === 3) {
+                        text = (node.textContent || '').replace(/[ \t\n\r\0\x0B]+$/g, '');
+                    } else if (node.nodeType === 1) {
+                        text = (node.textContent || '').replace(/^\s+|\s+$/g, '');
+                    }
+                    if (text !== '') {
+                        var beforeChars = Array.from(text);
+                        before = beforeChars[beforeChars.length - 1];
+                        break;
+                    }
+                    node = node.previousSibling;
+                }
+                if (before === null || sentenceEnd[before]) {
+                    continue;
+                }
+
+                var after = null;
+                node = br.nextSibling;
+                while (node !== null) {
+                    text = '';
+                    if (node.nodeType === 3) {
+                        text = (node.textContent || '').replace(/^[ \t\n\r\0\x0B]+/g, '');
+                    } else if (node.nodeType === 1) {
+                        text = (node.textContent || '').replace(/^\s+|\s+$/g, '');
+                    }
+                    if (text !== '') {
+                        after = Array.from(text)[0];
+                        break;
+                    }
+                    node = node.nextSibling;
+                }
+                if (after === null || !/^(\p{L}|\p{N})/u.test(after)) {
+                    continue;
+                }
+
+                if (br.parentNode) {
+                    br.parentNode.removeChild(br);
+                    removedCount++;
+                }
             }
-            return null;
+
+            return removedCount;
         };
-        var brList = [];
-        var brNodes = wrapper.getElementsByTagName('br');
-        for (var i = 0; i < brNodes.length; i++) {
-            brList.push(brNodes[i]);
+
+        var range = cfg && cfg.range ? cfg.range : null;
+        if (range && !range.collapsed) {
+            var workingRange = range.cloneRange();
+            var wrapper = doc.createElement('div');
+            wrapper.appendChild(workingRange.cloneContents());
+
+            var removed = stripStandaloneInRoot(wrapper);
+            if (removed < 1) {
+                return 0;
+            }
+
+            var fragment = doc.createDocumentFragment();
+            while (wrapper.firstChild) {
+                fragment.appendChild(wrapper.firstChild);
+            }
+
+            workingRange.deleteContents();
+            workingRange.insertNode(fragment);
+            this.syncValue();
+            this.owner.fireEvent('editorevent', this, false);
+
+            return removed;
         }
 
-        var removed = 0;
-        for (var i = 0; i < brList.length; i++) {
-            var br = brList[i];
-
-            var prevNode = nearestNonWhitespaceSibling(br, -1);
-            var nextNode = nearestNonWhitespaceSibling(br, 1);
-            if (prevNode && prevNode.nodeType === 1 && String(prevNode.tagName).toLowerCase() === 'br') {
-                continue;
-            }
-            if (nextNode && nextNode.nodeType === 1 && String(nextNode.tagName).toLowerCase() === 'br') {
-                continue;
-            }
-
-            var before = null;
-            var n = br.previousSibling;
-            while (n !== null) {
-                var t = '';
-                if (n.nodeType === 3) {
-                    t = (n.textContent || '').replace(/[ \t\n\r\0\x0B]+$/g, '');
-                } else if (n.nodeType === 1) {
-                    t = (n.textContent || '').replace(/^\s+|\s+$/g, '');
-                }
-                if (t !== '') {
-                    var beforeChars = Array.from(t);
-                    before = beforeChars[beforeChars.length - 1];
-                    break;
-                }
-                n = n.previousSibling;
-            }
-            if (before === null || sentenceEnd[before]) {
-                continue;
-            }
-
-            var after = null;
-            n = br.nextSibling;
-            while (n !== null) {
-                t = '';
-                if (n.nodeType === 3) {
-                    t = (n.textContent || '').replace(/^[ \t\n\r\0\x0B]+/g, '');
-                } else if (n.nodeType === 1) {
-                    t = (n.textContent || '').replace(/^\s+|\s+$/g, '');
-                }
-                if (t !== '') {
-                    after = Array.from(t)[0];
-                    break;
-                }
-                n = n.nextSibling;
-            }
-            if (after === null || !/^(\p{L}|\p{N})/u.test(after)) {
-                continue;
-            }
-
-            if (br.parentNode) {
-                br.parentNode.removeChild(br);
-                removed++;
-            }
-        }
-
+        var bodyWrapper = doc.createElement('div');
+        bodyWrapper.innerHTML = doc.body.innerHTML;
+        var removed = stripStandaloneInRoot(bodyWrapper);
         if (removed < 1) {
             return 0;
         }
 
-        doc.body.innerHTML = wrapper.innerHTML;
+        doc.body.innerHTML = bodyWrapper.innerHTML;
         this.syncValue();
         this.owner.fireEvent('editorevent', this, false);
 
