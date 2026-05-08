@@ -80611,7 +80611,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
 
                     Roo.MessageBox.show({
                         title: 'Strip standalone line breaks',
-                        msg: 'No text selected. Strip line breaks for the whole document?',
+                        msg: 'No text selected. Do you want to strip standalone line breaks for the whole document?',
                         buttons: Roo.MessageBox.YESNO,
                         fn: function(btn) {
                             if (btn != 'yes') {
