@@ -438,7 +438,29 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 actiontype : 'stripmidbr',
                 html: 'Strip standalone line breaks',
                 handler: function(a,b) {
-                    editorcore.stripStandaloneMidSentenceBrFromBodyHtml();
+                    var selection = editorcore.getSelection();
+                    var range = false;
+                    if (selection && selection.rangeCount > 0) {
+                        range = selection.getRangeAt(0);
+                    }
+
+                    if (range && !range.collapsed) {
+                        editorcore.stripStandaloneMidSentenceBrFromBodyHtml({ range: range });
+                        return;
+                    }
+
+                    Roo.MessageBox.show({
+                        title: 'Strip standalone line breaks',
+                        msg: 'No text selected. Strip line breaks for the whole document?',
+                        buttons: Roo.MessageBox.YESNO,
+                        fn: function(btn) {
+                            if (btn != 'yes') {
+                                return;
+                            }
+                            editorcore.stripStandaloneMidSentenceBrFromBodyHtml();
+                        },
+                        modal: true
+                    });
                 },
                 tabIndex:-1
             });
