@@ -79156,7 +79156,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     }
                     node = node.nextSibling;
                 }
-                if (after === null || !/^(\p{L}|\p{N})/u.test(after)) {
+                if (after === null || !/^(\p{L}|\p{N}|[-\u2010-\u2015\u2212])/u.test(after)) {
                     continue;
                 }
 
