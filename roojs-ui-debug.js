@@ -29625,6 +29625,108 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
  
     },
+
+    /**
+     * Remove standalone &lt;br&gt; that sit mid-sentence (not after sentence-ending punctuation,
+     * not adjacent to another &lt;br&gt;). Mirrors press-release import cleanup.
+     * @return {Number} count removed, or 0 if none / editor not ready
+     */
+    stripStandaloneMidSentenceBrFromBodyHtml : function()
+    {
+        var doc = this.doc;
+        if (!doc || !doc.body) {
+            return 0;
+        }
+
+        var wrapper = doc.createElement('div');
+        wrapper.innerHTML = doc.body.innerHTML;
+
+        var sentenceEnd = { '.': 1, '!': 1, '?': 1, '\u2026': 1, '\u3002': 1, '\uFF01': 1, '\uFF1F': 1 };
+        var nearestNonWhitespaceSibling = function(node, direction) {
+            var n = direction < 0 ? node.previousSibling : node.nextSibling;
+            while (n !== null) {
+                if (n.nodeType === 3 && /^[ \t\n\r\0\x0B]*$/.test(n.textContent || '')) {
+                    n = direction < 0 ? n.previousSibling : n.nextSibling;
+                    continue;
+                }
+                return n;
+            }
+            return null;
+        };
+        var brList = [];
+        var brNodes = wrapper.getElementsByTagName('br');
+        for (var i = 0; i < brNodes.length; i++) {
+            brList.push(brNodes[i]);
+        }
+
+        var removed = 0;
+        for (var i = 0; i < brList.length; i++) {
+            var br = brList[i];
+
+            var prevNode = nearestNonWhitespaceSibling(br, -1);
+            var nextNode = nearestNonWhitespaceSibling(br, 1);
+            if (prevNode && prevNode.nodeType === 1 && String(prevNode.tagName).toLowerCase() === 'br') {
+                continue;
+            }
+            if (nextNode && nextNode.nodeType === 1 && String(nextNode.tagName).toLowerCase() === 'br') {
+                continue;
+            }
+
+            var before = null;
+            var n = br.previousSibling;
+            while (n !== null) {
+                var t = '';
+                if (n.nodeType === 3) {
+                    t = (n.textContent || '').replace(/[ \t\n\r\0\x0B]+$/g, '');
+                } else if (n.nodeType === 1) {
+                    t = (n.textContent || '').replace(/^\s+|\s+$/g, '');
+                }
+                if (t !== '') {
+                    var beforeChars = Array.from(t);
+                    before = beforeChars[beforeChars.length - 1];
+                    break;
+                }
+                n = n.previousSibling;
+            }
+            if (before === null || sentenceEnd[before]) {
+                continue;
+            }
+
+            var after = null;
+            n = br.nextSibling;
+            while (n !== null) {
+                t = '';
+                if (n.nodeType === 3) {
+                    t = (n.textContent || '').replace(/^[ \t\n\r\0\x0B]+/g, '');
+                } else if (n.nodeType === 1) {
+                    t = (n.textContent || '').replace(/^\s+|\s+$/g, '');
+                }
+                if (t !== '') {
+                    after = Array.from(t)[0];
+                    break;
+                }
+                n = n.nextSibling;
+            }
+            if (after === null || !/^(\p{L}|\p{N})/u.test(after)) {
+                continue;
+            }
+
+            if (br.parentNode) {
+                br.parentNode.removeChild(br);
+                removed++;
+            }
+        }
+
+        if (removed < 1) {
+            return 0;
+        }
+
+        doc.body.innerHTML = wrapper.innerHTML;
+        this.syncValue();
+        this.owner.fireEvent('editorevent', this, false);
+
+        return removed;
+    },
     
      
         
@@ -31006,6 +31108,14 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 handler: function(a,b) {
                     editorcore.cleanWord();
                     editorcore.syncValue();
+                },
+                tabIndex:-1
+            });
+            cmenu.menu.items.push({
+                actiontype : 'stripmidbr',
+                html: 'Strip standalone line breaks',
+                handler: function(a,b) {
+                    editorcore.stripStandaloneMidSentenceBrFromBodyHtml();
                 },
                 tabIndex:-1
             });
