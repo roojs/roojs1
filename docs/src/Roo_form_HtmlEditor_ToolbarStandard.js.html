@@ -434,6 +434,40 @@
                 },
                 </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">:-1
             });
+            </span><span class="jsdoc-var">cmenu.menu.items.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">actiontype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'stripmidbr'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Strip standalone line breaks'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">selection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editorcore.getSelection</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selection </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">selection.getRangeAt</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+                            </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">selection.rangeCount </span><span class="jsdoc-syntax">&gt; 0 ? </span><span class="jsdoc-var">selection.getRangeAt</span><span class="jsdoc-syntax">(0) : </span><span class="jsdoc-var">selection.getRangeAt</span><span class="jsdoc-syntax">();
+                        } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                            </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                        }
+                    }
+
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">range.collapsed</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">editorcore.stripStandaloneMidSentenceBrFromBodyHtml</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">});
+                        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                    }
+
+                    </span><span class="jsdoc-var">Roo.MessageBox.show</span><span class="jsdoc-syntax">({
+                        </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Strip standalone line breaks'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'No text selected. Do you want to strip standalone line breaks for the whole document?'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">buttons</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.MessageBox.YESNO</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">) {
+                            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'yes'</span><span class="jsdoc-syntax">) {
+                                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                            }
+                            </span><span class="jsdoc-var">editorcore.stripStandaloneMidSentenceBrFromBodyHtml</span><span class="jsdoc-syntax">();
+                        },
+                        </span><span class="jsdoc-var">modal</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+                    </span><span class="jsdoc-syntax">});
+                },
+                </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">:-1
+            });
 
             </span><span class="jsdoc-var">cmenu.menu.items.push</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">actiontype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'all'</span><span class="jsdoc-syntax">,

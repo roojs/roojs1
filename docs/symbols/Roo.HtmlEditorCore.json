@@ -149,6 +149,38 @@
   ],
   "methods" : [
     {
+      "name" : "stripStandaloneMidSentenceBrFromBodyHtml",
+      "type" : "function",
+      "desc" : "Remove standalone &lt;br&gt; that sit mid-sentence (not after sentence-ending punctuation,\nnot adjacent to another &lt;br&gt;). If cfg.range is provided and non-collapsed, only\nstrip inside that selected range.",
+      "sig" : "(cfg)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "cfg",
+          "type" : "Object",
+          "desc" : "optional config (supports cfg.range: DOM Range)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "count removed, or 0 if none / editor not ready"
+        }
+      ]
+    },
+    {
       "name" : "relayCmd",
       "type" : "function",
       "desc" : "Executes a Midas editor command on the editor document and performs necessary focus and\ntoolbar updates. <b>This should only be called after the editor is initialized.</b>",

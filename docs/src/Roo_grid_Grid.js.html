@@ -78,6 +78,10 @@
         </span><span class="jsdoc-var">this.ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dataSource</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.ds.xmodule </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xmodule </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 
+        </span><span class="jsdoc-comment">// Set up autoColumnsRequest if enabled
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoColumnsRequest</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.dataSource.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeload&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.buildColumnsRequest</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
     }
 
 
@@ -466,6 +470,19 @@
     */
     </span><span class="jsdoc-var">ddText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;{0} selected row{1}&quot;</span><span class="jsdoc-syntax">,
 
+    </span><span class="jsdoc-comment">/**
+    * @cfg {Boolean} autoColumnsRequest If true, automatically builds a _columns parameter from column dataIndex values
+    * and adds it to the dataSource beforeload event. This helps optimize queries by only requesting needed columns.
+    * Default is false.
+    */
+    </span><span class="jsdoc-var">autoColumnsRequest </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+    * @cfg {String} autoColumnsRequestExtra Comma-separated list of extra columns to add to the _columns parameter
+    * when autoColumnsRequest is enabled. Default is empty string.
+    */
+    </span><span class="jsdoc-var">autoColumnsRequestExtra </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">,
+
 
     </span><span class="jsdoc-comment">/**
      * Called once after all setup has been completed and the grid is ready to be rendered.
@@ -533,9 +550,17 @@
             </span><span class="jsdoc-var">this.loadMask </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.LoadMask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.container</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">dataSource</span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">));
         }
+        </span><span class="jsdoc-comment">// Remove old beforeload handler if it exists
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dataSource </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.autoColumnsRequest</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.dataSource.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeload&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.buildColumnsRequest</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
         </span><span class="jsdoc-var">this.view.bind</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataSource</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colModel</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.dataSource </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dataSource</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.colModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">colModel</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">// Set up beforeload handler on new dataSource if autoColumnsRequest is enabled
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoColumnsRequest </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.dataSource</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.dataSource.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeload&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.buildColumnsRequest</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
         </span><span class="jsdoc-var">this.view.refresh</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
     },
     </span><span class="jsdoc-comment">/**
@@ -793,6 +818,63 @@
     </span><span class="jsdoc-var">getDragDropText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">count </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selModel.getCount</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.ddText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">count </span><span class="jsdoc-syntax">== 1 ? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'s'</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Builds the _columns parameter from column dataIndex values for the beforeload event.
+     * This method is called automatically when autoColumnsRequest is enabled.
+     * @param {Object} store The data store
+     * @param {Object} options The load options
+     * @private
+     */
+    </span><span class="jsdoc-var">buildColumnsRequest </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">columns </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">columnSet </span><span class="jsdoc-syntax">= {}; </span><span class="jsdoc-comment">// Use object to track unique columns
+
+        // Always add 'id'
+        </span><span class="jsdoc-var">columnSet</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'id'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">// Get columns from column model
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getColumnModel</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">colCount </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnCount</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">colCount</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dataIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getDataIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataIndex </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">dataIndex </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">// Add the dataIndex itself
+                </span><span class="jsdoc-var">columnSet</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">dataIndex</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+
+                </span><span class="jsdoc-comment">// If dataIndex is like 'aaaa_id_bbbbb', also add 'aaaa_id'
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">match </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dataIndex.match</span><span class="jsdoc-syntax">(/^(.+)_id_(.+)$/);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">match</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">baseId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">match</span><span class="jsdoc-syntax">[1] + </span><span class="jsdoc-string">'_id'</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">columnSet</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">baseId</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                }
+            }
+        }
+
+        </span><span class="jsdoc-comment">// Add extra columns from autoColumnsRequestExtra
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoColumnsRequestExtra</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">extraCols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.autoColumnsRequestExtra.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">extraCols.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">extraCols</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.trim</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">columnSet</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                }
+            }
+        }
+
+        </span><span class="jsdoc-comment">// Convert object keys to array and sort for consistency
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">col </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">columnSet</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">columnSet.hasOwnProperty</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-var">columns.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">);
+            }
+        }
+        </span><span class="jsdoc-var">columns.sort</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-comment">// Set the _columns parameter
+        </span><span class="jsdoc-var">options.params </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">options.params </span><span class="jsdoc-syntax">|| {};
+        </span><span class="jsdoc-var">options.params._columns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">columns.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">);
     }
 });
 </span></code></body></html>

@@ -142,6 +142,14 @@
       "optvals" : []
     },
     {
+      "name" : "autoColumnsRequest",
+      "type" : "Boolean",
+      "desc" : "If true, automatically builds a _columns parameter from column dataIndex values\nand adds it to the dataSource beforeload event. This helps optimize queries by only requesting needed columns.\nDefault is false.",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "sm",
       "type" : "Roo.grid.AbstractSelectionModel",
       "desc" : "The selection Model (default = Roo.grid.RowSelectionModel)",
@@ -158,17 +166,17 @@
       "optvals" : []
     },
     {
-      "name" : "enableColumnMove",
+      "name" : "enableColumnHide",
       "type" : "Boolean",
-      "desc" : "True to enable drag and drop reorder of columns. Default is true.",
+      "desc" : "True to enable hiding of columns with the header context menu. Default is true.",
       "memberOf" : "Roo.grid.Grid",
       "isOptional" : false,
       "optvals" : []
     },
     {
-      "name" : "enableColumnHide",
+      "name" : "enableColumnMove",
       "type" : "Boolean",
-      "desc" : "True to enable hiding of columns with the header context menu. Default is true.",
+      "desc" : "True to enable drag and drop reorder of columns. Default is true.",
       "memberOf" : "Roo.grid.Grid",
       "isOptional" : false,
       "optvals" : []
@@ -249,6 +257,14 @@
       "name" : "loadMask",
       "type" : "Object",
       "desc" : "An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "autoColumnsRequestExtra",
+      "type" : "String",
+      "desc" : "Comma-separated list of extra columns to add to the _columns parameter\nwhen autoColumnsRequest is enabled. Default is empty string.",
       "memberOf" : "Roo.grid.Grid",
       "isOptional" : false,
       "optvals" : []

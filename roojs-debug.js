@@ -10865,7 +10865,22 @@ if(opt.anim.isAnimated()){
         * @return {Array} The x, y values [x, y]
         */
         getCenterXY : function(){
-            return this.getAlignToXY(document, 'c-c');
+            if (!document.documentElement
+                || (document.documentElement.clientWidth >= document.documentElement.scrollWidth
+                    && document.documentElement.clientHeight >= document.documentElement.scrollHeight)) {
+
+                return this.getAlignToXY(document, 'c-c');
+            }
+
+            return [
+                Math.max(0,
+                    (document.documentElement.scrollLeft || 0)
+                    + Math.floor((Roo.lib.Dom.getViewportWidth() - this.getWidth()) / 2)),
+
+                Math.max(0,
+                    (document.documentElement.scrollTop || 0)
+                    + Math.floor((Roo.lib.Dom.getViewportHeight() - this.getHeight()) / 2))
+            ];
         },
 
         /**
@@ -61173,6 +61188,9 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
             this.mask.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
         }
         if(this.isVisible()){
+            if(this.fixedcenter){
+                this.center();
+            }
             this.constrainXY();
         }
     },
@@ -61893,7 +61911,7 @@ Roo.MessageBox = function(){
                 bodyEl.dom.style.overflowX = '';
             }
             
-            dlg.setContentSize(w, bodyEl.getHeight());
+            dlg.setContentSize(w, Math.max(bodyEl.getHeight(), bodyEl.dom.scrollHeight, msgEl.offsetHeight));
             if(dlg.isVisible()){
                 dlg.fixedcenter = true;
             }

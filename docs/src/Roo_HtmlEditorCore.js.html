@@ -1554,6 +1554,139 @@
 
     },
 
+    </span><span class="jsdoc-comment">/**
+     * Remove standalone &amp;lt;br&amp;gt; that sit mid-sentence (not after sentence-ending punctuation,
+     * not adjacent to another &amp;lt;br&amp;gt;). If cfg.range is provided and non-collapsed, only
+     * strip inside that selected range.
+     * @param {Object} cfg optional config (supports cfg.range: DOM Range)
+     * @return {Number} count removed, or 0 if none / editor not ready
+     */
+    </span><span class="jsdoc-var">stripStandaloneMidSentenceBrFromBodyHtml </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.doc</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">doc.body</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">0;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">stripStandaloneInRoot </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rootNode</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sentenceEnd </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">: 1, </span><span class="jsdoc-string">'!'</span><span class="jsdoc-syntax">: 1, </span><span class="jsdoc-string">'?'</span><span class="jsdoc-syntax">: 1, </span><span class="jsdoc-string">'\u2026'</span><span class="jsdoc-syntax">: 1, </span><span class="jsdoc-string">'\u3002'</span><span class="jsdoc-syntax">: 1, </span><span class="jsdoc-string">'\uFF01'</span><span class="jsdoc-syntax">: 1, </span><span class="jsdoc-string">'\uFF1F'</span><span class="jsdoc-syntax">: 1 };
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nearestNonWhitespaceSibling </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">direction</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sibling </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">direction </span><span class="jsdoc-syntax">&lt; 0 ? </span><span class="jsdoc-var">node.previousSibling </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">node.nextSibling</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sibling </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sibling.nodeType </span><span class="jsdoc-syntax">=== 3 &amp;&amp; /^[ \t\n\r\0\x0B]*$/</span><span class="jsdoc-var">.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sibling.textContent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)) {
+                        </span><span class="jsdoc-var">sibling </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">direction </span><span class="jsdoc-syntax">&lt; 0 ? </span><span class="jsdoc-var">sibling.previousSibling </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">sibling.nextSibling</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                    }
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">sibling</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+            };
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">brList </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">brNodes </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rootNode.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'br'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">idx </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">idx </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">brNodes.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">idx</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-var">brList.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">brNodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">idx</span><span class="jsdoc-syntax">]);
+            }
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">removedCount </span><span class="jsdoc-syntax">= 0;
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">idx </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">idx </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">brList.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">idx</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">br </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">brList</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">idx</span><span class="jsdoc-syntax">];
+
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">prevNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nearestNonWhitespaceSibling</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">br</span><span class="jsdoc-syntax">, -1);
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nextNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nearestNonWhitespaceSibling</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">br</span><span class="jsdoc-syntax">, 1);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prevNode </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">prevNode.nodeType </span><span class="jsdoc-syntax">=== 1 &amp;&amp; </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prevNode.tagName</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">() === </span><span class="jsdoc-string">'br'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nextNode </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">nextNode.nodeType </span><span class="jsdoc-syntax">=== 1 &amp;&amp; </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nextNode.tagName</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">() === </span><span class="jsdoc-string">'br'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                }
+
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">before </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">br.previousSibling</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeType </span><span class="jsdoc-syntax">=== 3) {
+                        </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">node.textContent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/[ \t\n\r\0\x0B]+$/g, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+                    } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeType </span><span class="jsdoc-syntax">=== 1) {
+                        </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">node.textContent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/^\s+|\s+$/g, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+                    }
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">beforeChars </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">before </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">beforeChars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">beforeChars.length </span><span class="jsdoc-syntax">- 1];
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    }
+                    </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.previousSibling</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">before </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">sentenceEnd</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">before</span><span class="jsdoc-syntax">]) {
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                }
+
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">after </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">br.nextSibling</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeType </span><span class="jsdoc-syntax">=== 3) {
+                        </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">node.textContent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/^[ \t\n\r\0\x0B]+/g, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+                    } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeType </span><span class="jsdoc-syntax">=== 1) {
+                        </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">node.textContent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/^\s+|\s+$/g, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+                    }
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">after </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">)[0];
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    }
+                    </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.nextSibling</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">after </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| !/^(\p{L}|\p{N}|[-\u2010-\u2015\u2212])/</span><span class="jsdoc-var">u.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">after</span><span class="jsdoc-syntax">)) {
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                }
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">br.parentNode</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">br.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">br</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">removedCount</span><span class="jsdoc-syntax">++;
+                }
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">removedCount</span><span class="jsdoc-syntax">;
+        };
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">cfg.range </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">cfg.range </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">range.collapsed</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">workingRange </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.cloneRange</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">wrapper </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">wrapper.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">workingRange.cloneContents</span><span class="jsdoc-syntax">());
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">removed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">stripStandaloneInRoot</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">wrapper</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">removed </span><span class="jsdoc-syntax">&lt; 1) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">0;
+            }
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fragment </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createDocumentFragment</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">wrapper.firstChild</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">fragment.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">wrapper.firstChild</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-var">workingRange.deleteContents</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">workingRange.insertNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fragment</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.syncValue</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">removed</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bodyWrapper </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">bodyWrapper.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.body.innerHTML</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">removed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">stripStandaloneInRoot</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bodyWrapper</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">removed </span><span class="jsdoc-syntax">&lt; 1) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">0;
+        }
+
+        </span><span class="jsdoc-var">doc.body.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">bodyWrapper.innerHTML</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.syncValue</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">removed</span><span class="jsdoc-syntax">;
+    },
+
 
 
     </span><span class="jsdoc-var">applyBlacklists </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()

@@ -11725,6 +11725,9 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
             this.mask.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
         }
         if(this.isVisible()){
+            if(this.fixedcenter){
+                this.center();
+            }
             this.constrainXY();
         }
     },
@@ -12445,7 +12448,7 @@ Roo.MessageBox = function(){
                 bodyEl.dom.style.overflowX = '';
             }
             
-            dlg.setContentSize(w, bodyEl.getHeight());
+            dlg.setContentSize(w, Math.max(bodyEl.getHeight(), bodyEl.dom.scrollHeight, msgEl.offsetHeight));
             if(dlg.isVisible()){
                 dlg.fixedcenter = true;
             }

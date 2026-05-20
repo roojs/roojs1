@@ -791,6 +791,9 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
             this.mask.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
         }
         if(this.isVisible()){
+            if(this.fixedcenter){
+                this.center();
+            }
             this.constrainXY();
         }
     },

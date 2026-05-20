@@ -201,7 +201,7 @@ Roo.MessageBox = function(){
                 bodyEl.dom.style.overflowX = '';
             }
             
-            dlg.setContentSize(w, bodyEl.getHeight());
+            dlg.setContentSize(w, Math.max(bodyEl.getHeight(), bodyEl.dom.scrollHeight, msgEl.offsetHeight));
             if(dlg.isVisible()){
                 dlg.fixedcenter = true;
             }
