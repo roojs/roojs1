@@ -2022,7 +2022,22 @@ if(opt.anim.isAnimated()){
         * @return {Array} The x, y values [x, y]
         */
         </span><span class="jsdoc-var">getCenterXY </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'c-c'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">document.documentElement
+                </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">document.documentElement.clientWidth </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">document.documentElement.scrollWidth
+                    </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">document.documentElement.clientHeight </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">document.documentElement.scrollHeight</span><span class="jsdoc-syntax">)) {
+
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'c-c'</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[
+                </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(0,
+                    (</span><span class="jsdoc-var">document.documentElement.scrollLeft </span><span class="jsdoc-syntax">|| 0)
+                    + </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">Roo.lib.Dom.getViewportWidth</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.getWidth</span><span class="jsdoc-syntax">()) / 2)),
+
+                </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(0,
+                    (</span><span class="jsdoc-var">document.documentElement.scrollTop </span><span class="jsdoc-syntax">|| 0)
+                    + </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">Roo.lib.Dom.getViewportHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.getHeight</span><span class="jsdoc-syntax">()) / 2))
+            ];
         },
 
         </span><span class="jsdoc-comment">/**

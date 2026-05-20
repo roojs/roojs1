@@ -201,7 +201,7 @@ Roo.Msg.show({
                 </span><span class="jsdoc-var">bodyEl.dom.style.overflowX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
             }
 
-            </span><span class="jsdoc-var">dlg.setContentSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bodyEl.getHeight</span><span class="jsdoc-syntax">());
+            </span><span class="jsdoc-var">dlg.setContentSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bodyEl.getHeight</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">bodyEl.dom.scrollHeight</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">msgEl.offsetHeight</span><span class="jsdoc-syntax">));
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dlg.isVisible</span><span class="jsdoc-syntax">()){
                 </span><span class="jsdoc-var">dlg.fixedcenter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
             }

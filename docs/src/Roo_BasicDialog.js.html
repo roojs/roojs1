@@ -791,6 +791,9 @@ dlg.show();
             </span><span class="jsdoc-var">this.mask.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isVisible</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fixedcenter</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.center</span><span class="jsdoc-syntax">();
+            }
             </span><span class="jsdoc-var">this.constrainXY</span><span class="jsdoc-syntax">();
         }
     },
