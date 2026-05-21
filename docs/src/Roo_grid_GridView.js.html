@@ -133,7 +133,7 @@
                   </span><span class="jsdoc-string">'&lt;div class=&quot;x-grid-resize-proxy&quot;&gt;&amp;#160;&lt;/div&gt;'</span><span class="jsdoc-syntax">,
                </span><span class="jsdoc-string">&quot;&lt;/div&gt;&quot;
             </span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">tpls.master.disableformats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">tpls.master.disableFormats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         }
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tpls.header</span><span class="jsdoc-syntax">){
@@ -142,7 +142,7 @@
                </span><span class="jsdoc-string">'&lt;tbody&gt;&lt;tr class=&quot;x-grid-hd-row&quot;&gt;{cells}&lt;/tr&gt;&lt;/tbody&gt;'</span><span class="jsdoc-syntax">,
                </span><span class="jsdoc-string">&quot;&lt;/table&gt;{splits}&quot;
             </span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">tpls.header.disableformats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">tpls.header.disableFormats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-var">tpls.header.compile</span><span class="jsdoc-syntax">();
 
@@ -667,7 +667,9 @@
                     </span><span class="jsdoc-var">locked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
                 }
                 </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.style.left </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">this.splitOffset</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]) {
+                    </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.style.left </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">this.splitOffset</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">;
+                }
             }
         }
     },

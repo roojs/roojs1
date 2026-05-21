@@ -115,7 +115,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         var tpls = this.templates || {};
 
         if(!tpls.master){
-            tpls.master = new Roo.ReplaceTemplate(
+            tpls.master = new Roo.Template(
                '<div class="x-grid" hidefocus="true">',
                 '<a href="#" class="x-grid-focus" tabIndex="-1"></a>',
                   '<div class="x-grid-topbar"></div>',
@@ -133,21 +133,21 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                   '<div class="x-grid-resize-proxy">&#160;</div>',
                "</div>"
             );
-            tpls.master.disableFormats = true;
+            tpls.master.disableformats = true;
         }
 
         if(!tpls.header){
-            tpls.header = new Roo.ReplaceTemplate(
+            tpls.header = new Roo.Template(
                '<table border="0" cellspacing="0" cellpadding="0">',
                '<tbody><tr class="x-grid-hd-row">{cells}</tr></tbody>',
                "</table>{splits}"
             );
-            tpls.header.disableFormats = true;
+            tpls.header.disableformats = true;
         }
         tpls.header.compile();
 
         if(!tpls.hcell){
-            tpls.hcell = new Roo.ReplaceTemplate(
+            tpls.hcell = new Roo.Template(
                 '<td class="x-grid-hd x-grid-td-{id} {cellId}"><div title="{title}" class="x-grid-hd-inner x-grid-hd-{id}">',
                 '<div class="x-grid-hd-text ' + this.unselectableCls +  '" ' + this.unselectable +'>{value}<img class="x-grid-sort-icon" src="', Roo.BLANK_IMAGE_URL, '" /></div>',
                 "</div></td>"
@@ -157,14 +157,14 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         tpls.hcell.compile();
 
         if(!tpls.hsplit){
-            tpls.hsplit = new Roo.ReplaceTemplate('<div class="x-grid-split {splitId} x-grid-split-{id}" style="{style} ' +
+            tpls.hsplit = new Roo.Template('<div class="x-grid-split {splitId} x-grid-split-{id}" style="{style} ' +
                                             this.unselectableCls +  '" ' + this.unselectable +'>&#160;</div>');
             tpls.hsplit.disableFormats = true;
         }
         tpls.hsplit.compile();
 
         if(!tpls.body){
-            tpls.body = new Roo.ReplaceTemplate(
+            tpls.body = new Roo.Template(
                '<table border="0" cellspacing="0" cellpadding="0">',
                "<tbody>{rows}</tbody>",
                "</table>"
@@ -174,13 +174,13 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         tpls.body.compile();
 
         if(!tpls.row){
-            tpls.row = new Roo.ReplaceTemplate('<tr class="x-grid-row {alt}">{cells}</tr>');
+            tpls.row = new Roo.Template('<tr class="x-grid-row {alt}">{cells}</tr>');
             tpls.row.disableFormats = true;
         }
         tpls.row.compile();
 
         if(!tpls.cell){
-            tpls.cell = new Roo.ReplaceTemplate(
+            tpls.cell = new Roo.Template(
                 '<td class="x-grid-col x-grid-td-{id} {cellId} {css}" tabIndex="0">',
                 '<div class="x-grid-col-{id} x-grid-cell-inner"><div class="x-grid-cell-text ' +
                     this.unselectableCls +  '" ' + this.unselectable +'" {attr}>{value}</div></div>',
@@ -667,9 +667,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                     locked = false;
                 }
                 pos += w;
-                if (s[i]) {
-                    s[i].style.left = (pos-this.splitOffset) + "px";
-                }
+                s[i].style.left = (pos-this.splitOffset) + "px";
             }
         }
     },

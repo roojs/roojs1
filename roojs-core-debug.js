@@ -6538,7 +6538,7 @@ Roo.ReplaceTemplate.prototype = {
                 return '';
             }
             
-            // No format specified - default to htmlEncode
+            // No format specified - default to htmlEncode when formats enabled
             if (!format) {
                 return useF && fm.htmlEncode ? fm.htmlEncode(value) : String(value);
             }
