@@ -198,6 +198,30 @@
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">fnName</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">allValues</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">insertBefore </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.doInsert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeBegin'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">insertAfter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.doInsert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'afterEnd'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">append </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.doInsert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeEnd'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">doInsert </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">where</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnEl</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.insertHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">where</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.applyTemplate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">returnEl </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">overwrite </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">el.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.applyTemplate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">returnElement </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">;
     }
 };
 
@@ -206,5 +230,4 @@
  * @method
  */
 </span><span class="jsdoc-var">Roo.ReplaceTemplate.prototype.apply </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.ReplaceTemplate.prototype.applyTemplate</span><span class="jsdoc-syntax">;
-
- </span></code></body></html>
+</span></code></body></html>
