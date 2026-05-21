@@ -6627,6 +6627,30 @@ Roo.ReplaceTemplate.prototype = {
             return this[fnName].call(this, value, allValues);
         }
         return String(value);
+    },
+
+    insertBefore : function(el, values, returnElement) {
+        return this.doInsert('beforeBegin', el, values, returnElement);
+    },
+
+    insertAfter : function(el, values, returnElement) {
+        return this.doInsert('afterEnd', el, values, returnElement);
+    },
+
+    append : function(el, values, returnElement) {
+        return this.doInsert('beforeEnd', el, values, returnElement);
+    },
+
+    doInsert : function(where, el, values, returnEl) {
+        el = Roo.getDom(el);
+        var newNode = Roo.DomHelper.insertHtml(where, el, this.applyTemplate(values));
+        return returnEl ? Roo.get(newNode, true) : newNode;
+    },
+
+    overwrite : function(el, values, returnElement) {
+        el = Roo.getDom(el);
+        el.innerHTML = this.applyTemplate(values);
+        return returnElement ? Roo.get(el.firstChild, true) : el.firstChild;
     }
 };
 
@@ -6635,8 +6659,7 @@ Roo.ReplaceTemplate.prototype = {
  * @method
  */
 Roo.ReplaceTemplate.prototype.apply = Roo.ReplaceTemplate.prototype.applyTemplate;
-
- /*
+/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
