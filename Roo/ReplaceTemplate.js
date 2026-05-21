@@ -96,7 +96,7 @@ Roo.ReplaceTemplate.prototype = {
             return '';
         }
         
-        var useF = this.disableFormats !== true;
+        var useF = this.disableFormats !== true && this.disableformats !== true;
         var fm = Roo.util.Format;
         var tpl = this;
         
