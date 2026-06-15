@@ -163,6 +163,11 @@
         "is_class" : true
       },
       {
+        "name" : "Roo.MarkdownParser",
+        "cn" : [],
+        "is_class" : true
+      },
+      {
         "name" : "Roo.MasterTemplate",
         "cn" : [],
         "is_class" : true
@@ -306,6 +311,17 @@
         "name" : "Roo.XTemplate",
         "cn" : [],
         "is_class" : true
+      },
+      {
+        "name" : "Roo.ai",
+        "cn" : [
+          {
+            "name" : "Roo.ai.Client",
+            "cn" : [],
+            "is_class" : true
+          }
+        ],
+        "is_class" : false
       },
       {
         "name" : "Roo.bootstrap",
@@ -863,6 +879,11 @@
               },
               {
                 "name" : "Roo.bootstrap.panel.Nest",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.panel.StreamBox",
                 "cn" : [],
                 "is_class" : true
               },

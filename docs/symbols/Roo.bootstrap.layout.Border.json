@@ -12,7 +12,8 @@
     "Roo.bootstrap.panel.Grid",
     "Roo.bootstrap.panel.Nest",
     "Roo.bootstrap.panel.Nest",
-    "Roo.bootstrap.panel.Grid"
+    "Roo.bootstrap.panel.Grid",
+    "Roo.bootstrap.panel.StreamBox"
   ],
   "tree_parent" : [
     "builder",

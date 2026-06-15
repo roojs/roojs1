@@ -66,11 +66,13 @@
       "Roo.Button",
       "Roo.Component",
       "Roo.Document",
+      "Roo.MarkdownParser",
       "Roo.Resizable",
       "Roo.SplitBar",
       "Roo.UpdateManager",
       "Roo.View",
       "Roo.XComponent",
+      "Roo.ai.Client",
       "Roo.bootstrap.SplitBar",
       "Roo.bootstrap.layout.Basic",
       "Roo.bootstrap.panel.Content",
@@ -281,7 +283,8 @@
       "Roo.bootstrap.nav.Group",
       "Roo.bootstrap.nav.Item",
       "Roo.bootstrap.nav.ProgressBar",
-      "Roo.bootstrap.nav.ProgressBarItem"
+      "Roo.bootstrap.nav.ProgressBarItem",
+      "Roo.bootstrap.panel.StreamBox"
     ],
     "Roo.data.Tree" : [
       "Roo.tree.TreePanel"
