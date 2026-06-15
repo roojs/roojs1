@@ -1619,6 +1619,11 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.panel.StreamBox",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.panel.Tab",
             "cn" : [],
             "is_class" : true

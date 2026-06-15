@@ -312,6 +312,7 @@
     "Roo.panel.Content" : [
       "Roo.panel.Grid",
       "Roo.panel.NestedLayout",
+      "Roo.panel.StreamBox",
       "Roo.panel.Tree"
     ],
     "Roo.data.Connection" : [

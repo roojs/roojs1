@@ -11,7 +11,7 @@
 /**
  * @class Roo.layout.Border
  * @extends Roo.layout.Manager
- * @children Roo.panel.Content
+ * @children Roo.panel.Content Roo.panel.StreamBox
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
  * please see: &lt;br&gt;&lt;br&gt;
  * &lt;a href=&quot;http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/&quot;&gt;Cross Browser Layouts - Part 1&lt;/a&gt;&lt;br&gt;
@@ -417,6 +417,7 @@ layout.addxtype({
         </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">)
         {
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'Content'</span><span class="jsdoc-syntax">:
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'StreamBox'</span><span class="jsdoc-syntax">:
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.autoCreate</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.panel</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// new panel!!!!!
                 </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
