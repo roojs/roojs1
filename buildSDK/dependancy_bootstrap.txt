@@ -240,6 +240,7 @@ Roo.bootstrap.layout.West
 
 
 Roo.bootstrap.panel.Content
+Roo.bootstrap.panel.StreamBox
 Roo.bootstrap.panel.Grid
 Roo.bootstrap.panel.Nest
 Roo.bootstrap.panel.Tabs

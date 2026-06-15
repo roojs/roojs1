@@ -1,0 +1,26 @@
+# Deny all web access to build tools.
+# buildSDK contains PHP/JS build scripts, dependency lists, and release tooling
+# that must not be browsable or executable via HTTP.
+
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+
+<IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+</IfModule>
+
+# Block directory listing if mod_autoindex is enabled
+Options -Indexes
+
+# Do not execute PHP even if the server would otherwise run it
+<FilesMatch "\.(php|phar|sh)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+</FilesMatch>

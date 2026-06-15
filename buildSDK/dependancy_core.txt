@@ -82,6 +82,9 @@ Roo.Layer
 
 Roo.XComponent
 Roo.Markdown
+Roo.MarkdownParser
+Roo.ai.namespace
+Roo.ai.Client
 
 Roo.dd.DragDrop
 Roo.dd.DragDropMgr
