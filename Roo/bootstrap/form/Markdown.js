@@ -27,7 +27,7 @@ Roo.extend(Roo.bootstrap.form.Markdown, Roo.bootstrap.form.TextArea,  {
         
         Roo.bootstrap.form.TextArea.prototype.initEvents.call(this);
         this.markdownEl = this.el.createChild({
-            cls : 'roo-markdown-area'
+            cls : 'roo-markdown-area roo-markdown'
         });
         this.inputEl().addClass('d-none');
         if (this.getValue() == '') {

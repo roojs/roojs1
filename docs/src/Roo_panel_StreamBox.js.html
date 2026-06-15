@@ -1,0 +1,146 @@
+<html><head><title>Roo/panel/StreamBox.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * StreamBox — read-only streaming markdown display panel
+ */
+
+/**
+ * @class Roo.panel.StreamBox
+ * @extends Roo.panel.Content
+ * @parent builder Roo.layout.Border
+ * Read-only panel that renders markdown incrementally while streaming,
+ * or via {@link Roo.Markdown.toHtml} when streaming is disabled.
+ *
+ * @cfg {String} content Initial markdown content
+ * @cfg {Boolean} streaming Use {@link Roo.MarkdownParser} when true (default true)
+ * @cfg {String} region Border layout region (center|north|south|east|west)
+ * @constructor
+ * @param {String/HTMLElement/Roo.Element} el The container element for this panel
+ * @param {String/Object} config A string to set only the title or a config object
+ * @param {String} content (optional) Initial markdown content
+ */
+</span><span class="jsdoc-var">Roo.panel.StreamBox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">)
+{
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">el.autoCreate</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">|| {};
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-var">cfg.autoScroll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.autoScroll </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    }
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">initialContent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.content </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.content</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">cfg.content</span><span class="jsdoc-syntax">;
+    }
+
+    </span><span class="jsdoc-var">Roo.panel.StreamBox.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event chunk
+         * Fires after each chunk is appended.
+         * @param {Roo.panel.StreamBox} this
+         * @param {String} chunk
+         */
+        </span><span class="jsdoc-string">'chunk' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event complete
+         * Fires when streaming ends via {@link #end}.
+         * @param {Roo.panel.StreamBox} this
+         */
+        </span><span class="jsdoc-string">'complete' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+
+    </span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-streambox-body'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'overflow:auto;height:100%' </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">this.resizeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.streaming</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.parser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.MarkdownParser</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">);
+    }
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">initialContent</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.setContent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">initialContent</span><span class="jsdoc-syntax">);
+    }
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.panel.StreamBox</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.panel.Content</span><span class="jsdoc-syntax">, {
+
+    </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">streaming </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">parser </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">bodyEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * Append a markdown chunk to the display.
+     *
+     * @param {String} chunk Markdown text
+     * @return {Roo.panel.StreamBox} this
+     */
+    </span><span class="jsdoc-var">append </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.streaming </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parser</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.parser.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'chunk'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Finalize the current stream (closes open markdown constructs).
+     *
+     * @return {Roo.panel.StreamBox} this
+     */
+    </span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.streaming </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parser</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.parser.end</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'complete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Clear content and reset the parser.
+     *
+     * @return {Roo.panel.StreamBox} this
+     */
+    </span><span class="jsdoc-var">reset </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.streaming </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parser</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.parser.reset</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.bodyEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Replace content with the given markdown text.
+     *
+     * @param {String} text Markdown source
+     * @param {Boolean} loadScripts (optional) ignored when streaming
+     * @return {Roo.panel.StreamBox} this
+     */
+    </span><span class="jsdoc-var">setContent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadScripts</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.streaming </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parser</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.parser.reset</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.parser.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.parser.end</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.bodyEl.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Markdown.toHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">loadScripts</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    }
+});
+</span></code></body></html>

@@ -1,0 +1,761 @@
+<html><head><title>Roo/ai/Client.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * OpenAI-compatible streaming LLM client.
+ * Logic from ko-ai - MIT License, Copyright developit
+ * https://github.com/developit/ko-ai
+ */
+
+/**
+ * @class Roo.ai.Client
+ * @extends Roo.util.Observable
+ * @cfg {String} apiKey API key for the provider
+ * @cfg {String} baseURL Base URL for the API (default https://api.openai.com/v1)
+ * @cfg {String} model Model name
+ * @cfg {String} instructions System instructions (responses mode)
+ * @cfg {String} mode API mode: responses or completions
+ * @cfg {Array|false} tools Tool definitions with call handlers
+ * @constructor
+ * @param {Object} config
+ */
+</span><span class="jsdoc-var">Roo.ai.Client </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-var">Roo.ai.Client.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event text
+         * Fires for each text chunk from the model.
+         * @param {Roo.ai.Client} this
+         * @param {String} chunk
+         */
+        </span><span class="jsdoc-string">'text' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event toolcall
+         * Fires when the model requests a tool call.
+         * @param {Roo.ai.Client} this
+         * @param {String} id
+         * @param {String} name
+         * @param {Object} args
+         */
+        </span><span class="jsdoc-string">'toolcall' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event toolresult
+         * Fires when a tool call completes.
+         * @param {Roo.ai.Client} this
+         * @param {String} id
+         * @param {String} name
+         * @param {*} result
+         */
+        </span><span class="jsdoc-string">'toolresult' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event complete
+         * Fires when the response stream finishes.
+         * @param {Roo.ai.Client} this
+         */
+        </span><span class="jsdoc-string">'complete' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event error
+         * Fires on request or stream errors.
+         * @param {Roo.ai.Client} this
+         * @param {Error} err
+         */
+        </span><span class="jsdoc-string">'error' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">this.messages </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.conversation </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.abortCtrl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.ai.Client</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+
+    </span><span class="jsdoc-var">apiKey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">baseURL </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'https://api.openai.com/v1'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">model </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">instructions </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'responses'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">tools </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">stream </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">headers </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">onToolCall </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">temperature </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">max_output_tokens </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">reasoning </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * Send a user message and stream the response.
+     *
+     * @param {String} input User message text
+     * @return {Roo.ai.Client} this
+     */
+    </span><span class="jsdoc-var">send </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">me </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.initHistory</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.abortCtrl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.abortCtrl.abort</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.abortCtrl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">AbortController </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">AbortController</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">iter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createSendStream</span><span class="jsdoc-syntax">(
+            </span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">,
+            {},
+            </span><span class="jsdoc-var">this.abortCtrl </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.abortCtrl.signal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
+        </span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pump </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">result.done </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">result.value </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">result.value.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'done'</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'complete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">chunk </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">result.value</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'text'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk.text</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'tool_call'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= {};
+                </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">JSON.parse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk.function.arguments </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'{}'</span><span class="jsdoc-syntax">);
+                } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= {};
+                }
+                </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'toolcall'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk.function.name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'tool_result'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'toolresult'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk.function.name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk.result</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">iter.next</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pump</span><span class="jsdoc-syntax">);
+        };
+
+        </span><span class="jsdoc-var">iter.next</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pump</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'error'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">);
+        });
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Abort the current request.
+     */
+    </span><span class="jsdoc-var">abort </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.abortCtrl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.abortCtrl.abort</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.abortCtrl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">initHistory </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.messages </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.messages </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mode </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'completions' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.instructions</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.messages.push</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">role </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'system'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.instructions </span><span class="jsdoc-syntax">});
+        }
+        </span><span class="jsdoc-var">this.conversation </span><span class="jsdoc-syntax">= [];
+    },
+
+    </span><span class="jsdoc-var">isCompletionsMode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.mode </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'completions'</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">callTool </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tool </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; (</span><span class="jsdoc-var">this.tools </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.tools.length </span><span class="jsdoc-syntax">: 0); </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 1) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tools</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">tool </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tools</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tool </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tool.call</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Promise.resolve</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tool.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">));
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.onToolCall</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Promise.resolve</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.onToolCall</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">));
+            }
+            </span><span class="jsdoc-keyword">throw new </span><span class="jsdoc-var">Error</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Promise.resolve</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">error </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">e.message </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">});
+        }
+    },
+
+    </span><span class="jsdoc-var">wrapToolsForCompletions </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tools</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">out </span><span class="jsdoc-syntax">= [];
+
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">tools.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 1) {
+            </span><span class="jsdoc-var">out.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">tools</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.type</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">tools</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">description </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">tools</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.description</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">parameters </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">tools</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.parameters
+                </span><span class="jsdoc-syntax">}
+            });
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">out</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">buildRequestBody </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">overrides</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">stream </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">overrides.stream </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">overrides.stream </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.stream</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">model </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">overrides.model </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.model
+        </span><span class="jsdoc-syntax">};
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">temperature </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">overrides.temperature </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">overrides.temperature </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.temperature</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">maxOutputTokens </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">overrides.max_output_tokens </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined
+            </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">overrides.max_output_tokens
+            </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.max_output_tokens</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">reasoning </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">overrides.reasoning </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">overrides.reasoning </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.reasoning</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tools </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">overrides.tools </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">overrides.tools </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.tools</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">temperature </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">body.temperature </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">temperature</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">maxOutputTokens </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">body.max_output_tokens </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">maxOutputTokens</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">reasoning </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">body.reasoning </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">reasoning</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tools </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">body.tools </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tools</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isCompletionsMode</span><span class="jsdoc-syntax">()) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.instructions</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">body.instructions </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.instructions</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.conversation.push</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'message'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">role </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'user'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">input </span><span class="jsdoc-syntax">});
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.messages.push</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">role </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'user'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">input </span><span class="jsdoc-syntax">});
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body.tools</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">body.tools </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.wrapToolsForCompletions</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body.tools</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">body.messages </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.messages</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body.max_output_tokens </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">body.max_tokens </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">body.max_output_tokens</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">body.max_output_tokens</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">saveAssistantMessage </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">assistantContent</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">reasoningContent</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">completions </span><span class="jsdoc-syntax">|| (!</span><span class="jsdoc-var">assistantContent </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">reasoningContent</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">role </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'assistant' </span><span class="jsdoc-syntax">};
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">assistantContent</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">msg.content </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">assistantContent</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">reasoningContent</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">msg.reasoning_content </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">reasoningContent</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.messages.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">appendToolResultsCompletions </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pendingCalls</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">assistantContent</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">reasoningContent</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">role </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'assistant'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">assistantContent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">tool_calls </span><span class="jsdoc-syntax">: []
+        };
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">reasoningContent</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">msg.reasoning_content </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">reasoningContent</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">pendingCalls.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 1) {
+            </span><span class="jsdoc-var">msg.tool_calls.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">pendingCalls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">pendingCalls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.function
+            </span><span class="jsdoc-syntax">});
+        }
+        </span><span class="jsdoc-var">this.messages.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">pendingCalls.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">+= 1) {
+            </span><span class="jsdoc-var">this.messages.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">role </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tool'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">tool_call_id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">pendingCalls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">JSON.stringify</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.result</span><span class="jsdoc-syntax">)
+            });
+        }
+    },
+
+    </span><span class="jsdoc-var">pushOutputItems </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">outputItems</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">outputItems.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 1) {
+            </span><span class="jsdoc-var">this.conversation.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">outputItems</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+        }
+    },
+
+    </span><span class="jsdoc-var">appendToolResultsResponses </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">outputItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pendingCalls</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.pushOutputItems</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">outputItems</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">pendingCalls.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 1) {
+            </span><span class="jsdoc-var">this.conversation.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'function_call_output'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">call_id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">pendingCalls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">output </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">JSON.stringify</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.result</span><span class="jsdoc-syntax">)
+            });
+        }
+    },
+
+    </span><span class="jsdoc-var">parseCompletionsChoice </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">delta </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.choices</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.delta </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">data.choices</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.message</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">call </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">delta.reasoning</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{ </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'reasoning'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">delta.reasoning</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">state.messageId </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'_R' </span><span class="jsdoc-syntax">};
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">delta.content</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{ </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'text'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">delta.content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">state.messageId </span><span class="jsdoc-syntax">};
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">delta.tool_calls</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">delta.tool_calls.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 1) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">delta.tool_calls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">idx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tc.index </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">tc.index </span><span class="jsdoc-syntax">: 0;
+            </span><span class="jsdoc-var">call </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state.toolCallMap</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">idx</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">call </span><span class="jsdoc-syntax">= {
+                    </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tool_call'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">streaming </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">: { </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">}
+                };
+                </span><span class="jsdoc-var">state.toolCallMap</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">idx</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">state.pendingCalls.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tc.id</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">call.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tc.id</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tc.function </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tc.function.name</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">call.function.name </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">tc.function.name</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tc.function </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tc.function.arguments</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">call.function.arguments </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">tc.function.arguments</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">state.toolYield </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">parseResponsesEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.delta</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">isReasoning </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.type.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'reasoning'</span><span class="jsdoc-syntax">) !== -1;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">isReasoning </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'reasoning' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'text'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">data.delta</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">isReasoning </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">state.messageId </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'_R' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">state.messageId
+            </span><span class="jsdoc-syntax">};
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.item </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">data.item.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'function_call'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.item.call_id </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">data.item.id </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state.toolCallMap</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pending</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">pending.function.arguments </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">data.item.arguments</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">state.toolYield </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pending</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">chunk </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tool_call'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">streaming </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">data.item.name </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">arguments </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">data.item.arguments </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
+                </span><span class="jsdoc-syntax">}
+            };
+            </span><span class="jsdoc-var">state.pendingCalls.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">state.toolCallMap</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">resp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.response </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">resp.status </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">'completed'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.usage </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">data.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'response.completed'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">resp.output</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">resp.output.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 1) {
+                </span><span class="jsdoc-var">state.outputItems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">resp.output</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">state.stream</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">resp.output.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">+= 1) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">resp.output</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">];
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'function_call'</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">state.pendingCalls.push</span><span class="jsdoc-syntax">({
+                            </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tool_call'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">item.call_id</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">item
+                        </span><span class="jsdoc-syntax">});
+                    }
+                    </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">&lt; (</span><span class="jsdoc-var">item.content </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">item.content.length </span><span class="jsdoc-syntax">: 0); </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">+= 1) {
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">item.content</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.text</span><span class="jsdoc-syntax">) {
+                            </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                        }
+                        </span><span class="jsdoc-var">state.textYield </span><span class="jsdoc-syntax">= {
+                            </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'text'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">item.content</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.text</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">state.messageId
+                        </span><span class="jsdoc-syntax">};
+                    }
+                }
+            }
+        }
+
+        </span><span class="jsdoc-var">state.completed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">state.pendingCalls.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">state.doneYield </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'done' </span><span class="jsdoc-syntax">};
+        }
+        </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">pushStreamChunk </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">state.pendingNext</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">state.queue.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">state.pendingNext.resolve</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">done </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">chunk </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">state.pendingNext </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">finishSendStream </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">state.done </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">state.pendingNext</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">state.pendingNext.resolve</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">done </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">state.pendingNext </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">failSendStream </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">state.done </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">state.error </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">state.pendingNext</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">state.pendingNext.reject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">state.pendingNext </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">createSendStream </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">overrides</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">me </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">queue </span><span class="jsdoc-syntax">: [],
+            </span><span class="jsdoc-var">done </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">error </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">pendingNext </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
+        </span><span class="jsdoc-syntax">};
+
+        </span><span class="jsdoc-var">me.runSendStream</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">overrides</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">me.failSendStream</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">);
+        });
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">next </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state.error</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Promise.reject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state.error</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state.queue.length</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Promise.resolve</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">done </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">state.queue.shift</span><span class="jsdoc-syntax">() });
+                }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state.done</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Promise.resolve</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">done </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">});
+                }
+                </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Promise</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">resolve</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">reject</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">state.pendingNext </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">resolve </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">resolve</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">reject </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">reject </span><span class="jsdoc-syntax">};
+                });
+            }
+        };
+    },
+
+    </span><span class="jsdoc-var">finishStreamDone </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">assistantContent</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">reasoningContent</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">outputItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.saveAssistantMessage</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">assistantContent</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">reasoningContent</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">completions </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">outputItems.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.pushOutputItems</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">outputItems</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.pushStreamChunk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, { </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'done' </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.finishSendStream</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">getRequestHeaders </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">headers </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-string">'content-type' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'application/json' </span><span class="jsdoc-syntax">};
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.headers</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">headers</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.headers</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.apiKey</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">headers.authorization </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'Bearer ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.apiKey</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">headers</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">prepareStreamLine </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataLine</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pendingCalls</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">dataLine</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataLine.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data: '</span><span class="jsdoc-syntax">) !== 0) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">dataLine </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dataLine.slice</span><span class="jsdoc-syntax">(6);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataLine </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'[DONE]'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pendingCalls.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'[DONE]'</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">dataLine</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">parseStreamDataLine </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataLine</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parseState </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">messageId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">roundCtx.messageId</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">pendingCalls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">roundCtx.pendingCalls</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">toolCallMap </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">roundCtx.toolCallMap</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">outputItems </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">roundCtx.outputItems</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">stream </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">toolYield </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">textYield </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">doneYield </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">completed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
+        </span><span class="jsdoc-syntax">};
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">chunk </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">JSON.parse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataLine</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">roundCtx.messageId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.id </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">data.response </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">data.response.id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">roundCtx.messageId</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">chunk </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.choices </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">data.choices</span><span class="jsdoc-syntax">[0]
+                ? </span><span class="jsdoc-var">this.parseCompletionsChoice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parseState</span><span class="jsdoc-syntax">)
+                : </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">chunk </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseResponsesEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parseState</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">roundCtx.pendingCalls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseState.pendingCalls</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parseState.toolYield</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.pushStreamChunk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parseState.toolYield</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parseState.textYield</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.pushStreamChunk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parseState.textYield</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parseState.doneYield</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">completions </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">roundCtx.outputItems.length</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.pushOutputItems</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">roundCtx.outputItems</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-var">this.pushStreamChunk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parseState.doneYield</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.finishSendStream</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'finish'</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parseState.completed </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">roundCtx.pendingCalls.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'continue'</span><span class="jsdoc-syntax">;
+            }
+        } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">chunk </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">chunk </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">chunk.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'tool_call'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'continue'</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'text'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">roundCtx.assistantContent </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">chunk.text</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'reasoning'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">roundCtx.reasoningContent </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">chunk.text</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.pushStreamChunk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'ok'</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">processStreamLines </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lines</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">lines.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 1) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dataLine </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.prepareStreamLine</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lines</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx.pendingCalls</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataLine </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataLine </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'[DONE]'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.finishStreamDone</span><span class="jsdoc-syntax">(
+                    </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">roundCtx.assistantContent</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">roundCtx.reasoningContent</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">roundCtx.outputItems</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">state
+                </span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'finish'</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parseStreamDataLine</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataLine</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-string">'finish'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'finish'</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'ok'</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">readFetchStream </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">me </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">reader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response.body.getReader</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">decoder </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">TextDecoder</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">buffer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">readChunks </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">signal </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">signal.aborted</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">throw new </span><span class="jsdoc-var">Error</span><span class="jsdoc-syntax">();
+            }
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lines </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">stream </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">buffer.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">) : [</span><span class="jsdoc-var">buffer</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">buffer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">lines.pop</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">me.processStreamLines</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lines</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-string">'finish'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">reader.read</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">readResult</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">readResult.done</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">buffer </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">decoder.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">readResult.value</span><span class="jsdoc-syntax">, { </span><span class="jsdoc-var">stream </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">});
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">readChunks</span><span class="jsdoc-syntax">();
+                }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stream </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">buffer.trim</span><span class="jsdoc-syntax">()) {
+                    </span><span class="jsdoc-var">buffer </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'\ndata: [DONE]'</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">readChunks</span><span class="jsdoc-syntax">();
+                }
+            });
+        };
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">readChunks</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-var">reader.releaseLock</span><span class="jsdoc-syntax">();
+        });
+    },
+
+    </span><span class="jsdoc-var">finalizeStreamRound </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">runRound</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state.done</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Promise.resolve</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">roundCtx.pendingCalls.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.finishStreamDone</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">roundCtx.assistantContent</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">roundCtx.reasoningContent</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">roundCtx.outputItems</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">state
+            </span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Promise.resolve</span><span class="jsdoc-syntax">();
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">me </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">roundCtx.pendingCalls.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">+= 1) {
+            </span><span class="jsdoc-var">roundCtx.pendingCalls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.streaming </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">me.pushStreamChunk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx.pendingCalls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">]);
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Promise.all</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">roundCtx.pendingCalls.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">me.callTool</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">call.function.name</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">JSON.parse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call.function.arguments </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'{}'</span><span class="jsdoc-syntax">)
+            )</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tool_result'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">);
+            });
+        }))</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">results.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">+= 1) {
+                </span><span class="jsdoc-var">me.pushStreamChunk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">]);
+            }
+
+            </span><span class="jsdoc-var">body.tool_choice </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">me.appendToolResultsCompletions</span><span class="jsdoc-syntax">(
+                    </span><span class="jsdoc-var">roundCtx.pendingCalls</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">roundCtx.assistantContent</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">roundCtx.reasoningContent
+                </span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">me.appendToolResultsResponses</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">roundCtx.outputItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx.pendingCalls</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">runRound</span><span class="jsdoc-syntax">();
+        });
+    },
+
+    </span><span class="jsdoc-var">fetchStreamRound </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">endpoint</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">runRound</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">me </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">fetch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">endpoint</span><span class="jsdoc-syntax">, {
+            </span><span class="jsdoc-var">method </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'POST'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">headers </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">me.getRequestHeaders</span><span class="jsdoc-syntax">(),
+            </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">JSON.stringify</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">),
+            </span><span class="jsdoc-var">signal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">signal
+        </span><span class="jsdoc-syntax">})</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">response.ok</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">response.text</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">throw new </span><span class="jsdoc-var">Error</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
+                });
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">me.readFetchStream</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">me.finalizeStreamRound</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">runRound</span><span class="jsdoc-syntax">);
+            });
+        });
+    },
+
+    </span><span class="jsdoc-var">runSendStream </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">overrides</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">me </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">completions </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.isCompletionsMode</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">endpoint </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.baseURL </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">completions </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'/chat/completions' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'/responses'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.buildRequestBody</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">overrides </span><span class="jsdoc-syntax">|| {});
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">stream </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">body.stream </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">runRound </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">roundCtx </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">pendingCalls </span><span class="jsdoc-syntax">: [],
+                </span><span class="jsdoc-var">toolCallMap </span><span class="jsdoc-syntax">: {},
+                </span><span class="jsdoc-var">outputItems </span><span class="jsdoc-syntax">: [],
+                </span><span class="jsdoc-var">assistantContent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">reasoningContent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">messageId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
+            </span><span class="jsdoc-syntax">};
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">completions </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">me.conversation.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">body.input </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">me.conversation</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">me.fetchStreamRound</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">endpoint</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">runRound
+            </span><span class="jsdoc-syntax">);
+        };
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">runRound</span><span class="jsdoc-syntax">();
+    }
+});
+</span></code></body></html>

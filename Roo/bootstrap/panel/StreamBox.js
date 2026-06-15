@@ -69,7 +69,7 @@ Roo.extend(Roo.bootstrap.panel.StreamBox, Roo.bootstrap.Component, {
             tag : 'div',
             cls : 'roo-layout-inactive-content roo-streambox',
             cn : [
-                { tag : 'div', cls : 'roo-streambox-body', style : 'overflow:auto;height:100%' }
+                { tag : 'div', cls : 'roo-streambox-body roo-markdown', style : 'overflow:auto;height:100%' }
             ]
         };
     },
@@ -89,6 +89,45 @@ Roo.extend(Roo.bootstrap.panel.StreamBox, Roo.bootstrap.Component, {
             this.setContent(this.content);
         }
         this.initEvents();
+    },
+
+    /**
+     * Start a new chat message bubble; subsequent {@link #append} / {@link #end}
+     * calls render into that bubble until the next beginMessage or {@link #reset}.
+     *
+     * @param {String} role user or assistant
+     * @return {Roo.bootstrap.panel.StreamBox} this
+     */
+    beginMessage : function(role)
+    {
+        if (!this.rendered) {
+            this.render();
+        }
+        var wrap = this.bodyEl.createChild({
+            cls : 'roo-chat-msg roo-chat-msg-' + role + ' roo-markdown'
+        });
+        if (this.streaming) {
+            this.parser = new Roo.MarkdownParser(wrap);
+        }
+        return this;
+    },
+
+    /**
+     * Append a complete chat message bubble.
+     *
+     * @param {String} text Markdown source
+     * @param {String} role user or assistant
+     * @return {Roo.bootstrap.panel.StreamBox} this
+     */
+    appendMessage : function(text, role)
+    {
+        this.beginMessage(role);
+        if (this.streaming && this.parser) {
+            this.parser.write(text);
+            this.parser.end();
+        }
+        this.fireEvent('chunk', this, text);
+        return this;
     },
 
     /**
@@ -135,6 +174,7 @@ Roo.extend(Roo.bootstrap.panel.StreamBox, Roo.bootstrap.Component, {
         }
         if (this.streaming && this.parser) {
             this.parser.reset();
+            this.parser = new Roo.MarkdownParser(this.bodyEl);
             return this;
         }
         this.bodyEl.dom.innerHTML = '';
