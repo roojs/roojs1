@@ -11,7 +11,7 @@
 /**
  * @class Roo.layout.Border
  * @extends Roo.layout.Manager
- * @children Roo.panel.Content
+ * @children Roo.panel.Content Roo.panel.StreamBox
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
  * please see: <br><br>
  * <a href="http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/">Cross Browser Layouts - Part 1</a><br>
@@ -417,6 +417,7 @@ layout.addxtype({
         switch(cfg.xtype) 
         {
             case 'Content':
+            case 'StreamBox':
                 if(cfg.autoCreate) {
                     ret = new Roo.panel[cfg.xtype](cfg); // new panel!!!!!
                 } else {

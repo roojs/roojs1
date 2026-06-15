@@ -181,6 +181,7 @@ Roo.panel.Content
 Roo.panel.Grid
 Roo.panel.NestedLayout
 Roo.panel.Scroll
+Roo.panel.StreamBox
 Roo.panel.Tree
 
 //		*** Can be Optional *** - only if you use it..

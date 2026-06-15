@@ -89125,7 +89125,7 @@ Roo.extend(Roo.layout.Manager, Roo.util.Observable, {
 /**
  * @class Roo.layout.Border
  * @extends Roo.layout.Manager
- * @children Roo.panel.Content
+ * @children Roo.panel.Content Roo.panel.StreamBox
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
  * please see: <br><br>
  * <a href="http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/">Cross Browser Layouts - Part 1</a><br>
@@ -89531,6 +89531,7 @@ layout.addxtype({
         switch(cfg.xtype) 
         {
             case 'Content':
+            case 'StreamBox':
                 if(cfg.autoCreate) {
                     ret = new Roo.panel[cfg.xtype](cfg); // new panel!!!!!
                 } else {
@@ -92160,6 +92161,151 @@ Roo.extend(Roo.panel.Scroll, Roo.panel.Content, {
         this.resizeEl.update(content, loadScripts);
     }
 
+});
+/*
+ * - LGPL
+ *
+ * StreamBox — read-only streaming markdown display panel
+ */
+
+/**
+ * @class Roo.panel.StreamBox
+ * @extends Roo.panel.Content
+ * @parent builder Roo.layout.Border
+ * Read-only panel that renders markdown incrementally while streaming,
+ * or via {@link Roo.Markdown.toHtml} when streaming is disabled.
+ *
+ * @cfg {String} content Initial markdown content
+ * @cfg {Boolean} streaming Use {@link Roo.MarkdownParser} when true (default true)
+ * @cfg {String} region Border layout region (center|north|south|east|west)
+ * @constructor
+ * @param {String/HTMLElement/Roo.Element} el The container element for this panel
+ * @param {String/Object} config A string to set only the title or a config object
+ * @param {String} content (optional) Initial markdown content
+ */
+Roo.panel.StreamBox = function(el, config, content)
+{
+    var cfg = config;
+    if (el && el.autoCreate) {
+        cfg = el;
+        el = Roo.id();
+        content = false;
+    }
+    cfg = cfg || {};
+    if (typeof cfg == 'string') {
+        content = content || false;
+    } else {
+        cfg.autoScroll = cfg.autoScroll !== false;
+    }
+
+    var initialContent = content || cfg.content || '';
+    if (cfg.content) {
+        delete cfg.content;
+    }
+
+    Roo.panel.StreamBox.superclass.constructor.call(this, el, cfg, false);
+
+    this.addEvents({
+        /**
+         * @event chunk
+         * Fires after each chunk is appended.
+         * @param {Roo.panel.StreamBox} this
+         * @param {String} chunk
+         */
+        'chunk' : true,
+        /**
+         * @event complete
+         * Fires when streaming ends via {@link #end}.
+         * @param {Roo.panel.StreamBox} this
+         */
+        'complete' : true
+    });
+
+    this.bodyEl = this.el.createChild({ cls : 'x-streambox-body', style : 'overflow:auto;height:100%' });
+    this.resizeEl = this.bodyEl;
+
+    if (this.streaming) {
+        this.parser = new Roo.MarkdownParser(this.bodyEl);
+    }
+
+    if (initialContent) {
+        this.setContent(initialContent);
+    }
+};
+
+Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
+
+    content : '',
+    streaming : true,
+    region : 'center',
+    parser : false,
+    bodyEl : false,
+
+    /**
+     * Append a markdown chunk to the display.
+     *
+     * @param {String} chunk Markdown text
+     * @return {Roo.panel.StreamBox} this
+     */
+    append : function(chunk)
+    {
+        if (this.streaming && this.parser) {
+            this.parser.write(chunk);
+        }
+        this.fireEvent('chunk', this, chunk);
+        return this;
+    },
+
+    /**
+     * Finalize the current stream (closes open markdown constructs).
+     *
+     * @return {Roo.panel.StreamBox} this
+     */
+    end : function()
+    {
+        if (this.streaming && this.parser) {
+            this.parser.end();
+        }
+        this.fireEvent('complete', this);
+        return this;
+    },
+
+    /**
+     * Clear content and reset the parser.
+     *
+     * @return {Roo.panel.StreamBox} this
+     */
+    reset : function()
+    {
+        if (!this.bodyEl) {
+            return this;
+        }
+        if (this.streaming && this.parser) {
+            this.parser.reset();
+            return this;
+        }
+        this.bodyEl.dom.innerHTML = '';
+        return this;
+    },
+
+    /**
+     * Replace content with the given markdown text.
+     *
+     * @param {String} text Markdown source
+     * @param {Boolean} loadScripts (optional) ignored when streaming
+     * @return {Roo.panel.StreamBox} this
+     */
+    setContent : function(text, loadScripts)
+    {
+        if (this.streaming && this.parser) {
+            this.parser.reset();
+            this.parser.write(text);
+            this.parser.end();
+            return this;
+        }
+        this.bodyEl.update(Roo.Markdown.toHtml(text), loadScripts);
+        return this;
+    }
 });
 
 
