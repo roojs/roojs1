@@ -56,6 +56,7 @@
     </span><span class="jsdoc-var">this.hintEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.listening </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.insertPos </span><span class="jsdoc-syntax">= 0;
+    </span><span class="jsdoc-var">this.insertEnd </span><span class="jsdoc-syntax">= 0;
 
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.initRecognition</span><span class="jsdoc-syntax">();
@@ -136,6 +137,7 @@
         }
 
         </span><span class="jsdoc-var">this.insertPos </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">dom.selectionStart </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'number' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">dom.selectionStart </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">dom.value.length</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.insertEnd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">dom.selectionEnd </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'number' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">dom.selectionEnd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.insertPos</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">this.recognition.start</span><span class="jsdoc-syntax">();
@@ -292,7 +294,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dom.value</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">before </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value.substring</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">this.insertPos</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">after </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value.substring</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.insertPos</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">after </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value.substring</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.insertEnd</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">prefix </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">before.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">before.charAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">before.length </span><span class="jsdoc-syntax">- 1) !== </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">text.charAt</span><span class="jsdoc-syntax">(0) !== </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">) {

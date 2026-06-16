@@ -30,8 +30,17 @@
          */
         </span><span class="jsdoc-string">'text' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
+         * @event toolcallstart
+         * Fires once when a tool call is first recognised (name and id known).
+         * Arguments may still be streaming; use {@link #event-toolcall} for the complete call.
+         * @param {Roo.ai.Client} this
+         * @param {String} id
+         * @param {String} name
+         */
+        </span><span class="jsdoc-string">'toolcallstart' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
          * @event toolcall
-         * Fires when the model requests a tool call.
+         * Fires when a tool call is complete and about to run.
          * @param {Roo.ai.Client} this
          * @param {String} id
          * @param {String} name
@@ -125,7 +134,10 @@
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'reasoning'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'reasoning'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk.text</span><span class="jsdoc-syntax">);
             }
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'tool_call'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'tool_call_start'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'toolcallstart'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me.toolCallName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">));
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'tool_call' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">chunk.streaming</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'toolcall'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me.toolCallName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">),
                     </span><span class="jsdoc-var">me.parseToolCallArguments</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">me.toolCallArgumentsString</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">)));
             }
@@ -422,6 +434,7 @@
                     </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tool_call'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">streaming </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">started </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">: { </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">}
                 };
                 </span><span class="jsdoc-var">state.toolCallMap</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">idx</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">;
@@ -435,7 +448,10 @@
             }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tc.function </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tc.function.arguments</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">call.function.arguments </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">tc.function.arguments</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">state.toolYield </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">call.started </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">call.id </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">call.function.name</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">call.started </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">state.toolStartYield </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">;
             }
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">;
@@ -457,17 +473,21 @@
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state.toolCallMap</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pending</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">this.appendToolCallArguments</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pending</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data.item.arguments</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">state.toolYield </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pending</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">chunk </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tool_call'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">streaming </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">started </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.toolCallFunctionForHistory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.item</span><span class="jsdoc-syntax">)
             };
             </span><span class="jsdoc-var">state.pendingCalls.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">state.toolCallMap</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">chunk.function.name</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">chunk.started </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">state.toolStartYield </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">;
+            }
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">;
         }
 
@@ -620,6 +640,7 @@
             </span><span class="jsdoc-var">outputItems </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">roundCtx.outputItems</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">stream </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">toolYield </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">toolStartYield </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">textYield </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">doneYield </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">completed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
@@ -637,8 +658,10 @@
             }
             </span><span class="jsdoc-var">roundCtx.pendingCalls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseState.pendingCalls</span><span class="jsdoc-syntax">;
 
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parseState.toolYield</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">this.pushStreamChunk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parseState.toolYield</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parseState.toolStartYield</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.pushStreamChunk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tool_call_start'
+                </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">parseState.toolStartYield</span><span class="jsdoc-syntax">));
             }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parseState.textYield</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">this.pushStreamChunk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parseState.textYield</span><span class="jsdoc-syntax">);

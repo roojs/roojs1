@@ -532,7 +532,7 @@
     {
       "name" : "toolcall",
       "type" : "function",
-      "desc" : "Fires when the model requests a tool call.",
+      "desc" : "Fires when a tool call is complete and about to run.",
       "sig" : "function (_self, id, name, args)\n{\n\n}",
       "memberOf" : "",
       "example" : "",
@@ -613,6 +613,38 @@
         {
           "name" : "err",
           "type" : "Error",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "toolcallstart",
+      "type" : "function",
+      "desc" : "Fires once when a tool call is first recognised (name and id known).\nArguments may still be streaming; use {@link #event-toolcall} for the complete call.",
+      "sig" : "function (_self, id, name)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.ai.Client",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "name",
+          "type" : "String",
           "desc" : "",
           "isOptional" : false
         }
