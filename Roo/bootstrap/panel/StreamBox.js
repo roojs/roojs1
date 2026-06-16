@@ -69,7 +69,7 @@ Roo.extend(Roo.bootstrap.panel.StreamBox, Roo.bootstrap.Component, {
             tag : 'div',
             cls : 'roo-layout-inactive-content roo-streambox',
             cn : [
-                { tag : 'div', cls : 'roo-streambox-body roo-markdown', style : 'overflow:auto;height:100%' }
+                { tag : 'div', cls : 'roo-streambox-body roo-markdown', style : 'overflow:auto;width:100%;height:100%' }
             ]
         };
     },

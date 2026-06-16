@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  * CAUTION!
  * This CSS file is auto generated. Please edit the  instead!
@@ -4833,14 +4834,194 @@ html.bootstrap-sticky body {
   transform-origin: top left;
   width: 500px; }
 
-.roo-markdown-area .roo-placeholder {
-  color: #6c757d; }
+/* Markdown typography — keep in sync with css/markdown.css */
+.roo-markdown {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  line-height: 1.6;
+  color: #24292f;
+  word-wrap: break-word; }
 
-.roo-markdown-area {
+.x-streambox-body.roo-markdown,
+.roo-streambox-body.roo-markdown {
+  padding: 12px 16px; }
+
+.x-streambox {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+
+.x-streambox-body,
+.roo-streambox-body {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  box-sizing: border-box; }
+
+.roo-streambox {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+
+.roo-markdown > :first-child {
+  margin-top: 0; }
+
+.roo-markdown > :last-child {
+  margin-bottom: 0; }
+
+.roo-markdown p,
+.roo-markdown blockquote,
+.roo-markdown ul,
+.roo-markdown ol,
+.roo-markdown dl,
+.roo-markdown table,
+.roo-markdown pre,
+.roo-markdown details {
+  margin-top: 0;
+  margin-bottom: 12px; }
+
+.roo-markdown h1,
+.roo-markdown h2,
+.roo-markdown h3,
+.roo-markdown h4,
+.roo-markdown h5,
+.roo-markdown h6 {
+  margin-top: 20px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  line-height: 1.25; }
+
+.roo-markdown h1 {
+  font-size: 2em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #d0d7de; }
+
+.roo-markdown h2 {
+  font-size: 1.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #d0d7de; }
+
+.roo-markdown h3 {
+  font-size: 1.25em; }
+
+.roo-markdown h4 {
+  font-size: 1em; }
+
+.roo-markdown h5 {
+  font-size: 0.875em; }
+
+.roo-markdown h6 {
+  font-size: 0.85em;
+  color: #57606a; }
+
+.roo-markdown a {
+  color: #0969da;
+  text-decoration: none; }
+
+.roo-markdown a:hover {
+  text-decoration: underline; }
+
+.roo-markdown strong {
+  font-weight: 600; }
+
+.roo-markdown ul,
+.roo-markdown ol {
+  padding-left: 2em; }
+
+.roo-markdown li + li {
+  margin-top: 0.25em; }
+
+.roo-markdown blockquote {
+  padding: 0 1em;
+  color: #57606a;
+  border-left: 0.25em solid #d0d7de; }
+
+.roo-markdown code {
+  padding: 0.2em 0.4em;
+  font-size: 85%;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  background-color: rgba(175, 184, 193, 0.2);
+  border-radius: 6px; }
+
+.roo-markdown pre {
+  padding: 12px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 6px; }
+
+.roo-markdown pre code {
+  padding: 0;
+  font-size: inherit;
+  background-color: transparent;
+  border-radius: 0; }
+
+.roo-markdown hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 20px 0;
+  background-color: #d0d7de;
+  border: 0; }
+
+.roo-markdown table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  display: block;
+  overflow: auto; }
+
+.roo-markdown table th,
+.roo-markdown table td {
+  padding: 6px 13px;
+  border: 1px solid #d0d7de; }
+
+.roo-markdown table th {
+  font-weight: 600;
+  background-color: #f6f8fa; }
+
+.roo-markdown table tr:nth-child(2n) {
+  background-color: #f6f8fa; }
+
+.roo-markdown img {
+  max-width: 100%;
+  box-sizing: border-box; }
+
+.roo-markdown .roo-chat-msg {
+  display: block;
+  margin: 10px 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 85%;
+  clear: both; }
+
+.roo-markdown .roo-chat-msg > :first-child {
+  margin-top: 0; }
+
+.roo-markdown .roo-chat-msg > :last-child {
+  margin-bottom: 0; }
+
+.roo-markdown .roo-chat-msg-user {
+  margin-left: auto;
+  background-color: #ddf4ff;
+  border: 1px solid #b6e3ff;
+  color: #24292f; }
+
+.roo-markdown .roo-chat-msg-assistant {
+  margin-right: auto;
+  background-color: #f6f8fa;
+  border: 1px solid #d0d7de;
+  color: #24292f; }
+
+.roo-markdown-area.roo-markdown {
   min-height: 100px;
   width: 100%;
   border: 1px dashed #ccc;
-  padding: 4px 7px; }
+  padding: 4px 7px;
+  box-sizing: border-box; }
+
+.roo-markdown-area .roo-placeholder {
+  color: #6c757d; }
 
 .popover {
   max-width: 90%; }

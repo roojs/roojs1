@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .bootstrap {
   /*
  * CAUTION!
@@ -362,6 +363,7 @@ disabled look for disabled choices in the results dropdown
 }*/
   /* paging toolbar */
   /* collapseable card headers */
+  /* Markdown typography — keep in sync with css/markdown.css */
   /*  Menu - show the icons with a bit of padding */
   /** override max-width of tooltip-inner
 not sure why it was so small..
@@ -4173,13 +4175,157 @@ not sure why it was so small..
     transform: rotate(90deg) translate(0px, -50px);
     transform-origin: top left;
     width: 500px; }
-  .bootstrap .roo-markdown-area .roo-placeholder {
-    color: #6c757d; }
-  .bootstrap .roo-markdown-area {
+  .bootstrap .roo-markdown {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    line-height: 1.6;
+    color: #24292f;
+    word-wrap: break-word; }
+  .bootstrap .x-streambox-body.roo-markdown,
+  .bootstrap .roo-streambox-body.roo-markdown {
+    padding: 12px 16px; }
+  .bootstrap .x-streambox {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; }
+  .bootstrap .x-streambox-body,
+  .bootstrap .roo-streambox-body {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    box-sizing: border-box; }
+  .bootstrap .roo-streambox {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; }
+  .bootstrap .roo-markdown > :first-child {
+    margin-top: 0; }
+  .bootstrap .roo-markdown > :last-child {
+    margin-bottom: 0; }
+  .bootstrap .roo-markdown p,
+  .bootstrap .roo-markdown blockquote,
+  .bootstrap .roo-markdown ul,
+  .bootstrap .roo-markdown ol,
+  .bootstrap .roo-markdown dl,
+  .bootstrap .roo-markdown table,
+  .bootstrap .roo-markdown pre,
+  .bootstrap .roo-markdown details {
+    margin-top: 0;
+    margin-bottom: 12px; }
+  .bootstrap .roo-markdown h1,
+  .bootstrap .roo-markdown h2,
+  .bootstrap .roo-markdown h3,
+  .bootstrap .roo-markdown h4,
+  .bootstrap .roo-markdown h5,
+  .bootstrap .roo-markdown h6 {
+    margin-top: 20px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    line-height: 1.25; }
+  .bootstrap .roo-markdown h1 {
+    font-size: 2em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #d0d7de; }
+  .bootstrap .roo-markdown h2 {
+    font-size: 1.5em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #d0d7de; }
+  .bootstrap .roo-markdown h3 {
+    font-size: 1.25em; }
+  .bootstrap .roo-markdown h4 {
+    font-size: 1em; }
+  .bootstrap .roo-markdown h5 {
+    font-size: 0.875em; }
+  .bootstrap .roo-markdown h6 {
+    font-size: 0.85em;
+    color: #57606a; }
+  .bootstrap .roo-markdown a {
+    color: #0969da;
+    text-decoration: none; }
+  .bootstrap .roo-markdown a:hover {
+    text-decoration: underline; }
+  .bootstrap .roo-markdown strong {
+    font-weight: 600; }
+  .bootstrap .roo-markdown ul,
+  .bootstrap .roo-markdown ol {
+    padding-left: 2em; }
+  .bootstrap .roo-markdown li + li {
+    margin-top: 0.25em; }
+  .bootstrap .roo-markdown blockquote {
+    padding: 0 1em;
+    color: #57606a;
+    border-left: 0.25em solid #d0d7de; }
+  .bootstrap .roo-markdown code {
+    padding: 0.2em 0.4em;
+    font-size: 85%;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    background-color: rgba(175, 184, 193, 0.2);
+    border-radius: 6px; }
+  .bootstrap .roo-markdown pre {
+    padding: 12px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f6f8fa;
+    border-radius: 6px; }
+  .bootstrap .roo-markdown pre code {
+    padding: 0;
+    font-size: inherit;
+    background-color: transparent;
+    border-radius: 0; }
+  .bootstrap .roo-markdown hr {
+    height: 0.25em;
+    padding: 0;
+    margin: 20px 0;
+    background-color: #d0d7de;
+    border: 0; }
+  .bootstrap .roo-markdown table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+    display: block;
+    overflow: auto; }
+  .bootstrap .roo-markdown table th,
+  .bootstrap .roo-markdown table td {
+    padding: 6px 13px;
+    border: 1px solid #d0d7de; }
+  .bootstrap .roo-markdown table th {
+    font-weight: 600;
+    background-color: #f6f8fa; }
+  .bootstrap .roo-markdown table tr:nth-child(2n) {
+    background-color: #f6f8fa; }
+  .bootstrap .roo-markdown img {
+    max-width: 100%;
+    box-sizing: border-box; }
+  .bootstrap .roo-markdown .roo-chat-msg {
+    display: block;
+    margin: 10px 0;
+    padding: 10px 14px;
+    border-radius: 12px;
+    max-width: 85%;
+    clear: both; }
+  .bootstrap .roo-markdown .roo-chat-msg > :first-child {
+    margin-top: 0; }
+  .bootstrap .roo-markdown .roo-chat-msg > :last-child {
+    margin-bottom: 0; }
+  .bootstrap .roo-markdown .roo-chat-msg-user {
+    margin-left: auto;
+    background-color: #ddf4ff;
+    border: 1px solid #b6e3ff;
+    color: #24292f; }
+  .bootstrap .roo-markdown .roo-chat-msg-assistant {
+    margin-right: auto;
+    background-color: #f6f8fa;
+    border: 1px solid #d0d7de;
+    color: #24292f; }
+  .bootstrap .roo-markdown-area.roo-markdown {
     min-height: 100px;
     width: 100%;
     border: 1px dashed #ccc;
-    padding: 4px 7px; }
+    padding: 4px 7px;
+    box-sizing: border-box; }
+  .bootstrap .roo-markdown-area .roo-placeholder {
+    color: #6c757d; }
   .bootstrap .popover {
     max-width: 90%; }
   .bootstrap .popover-header .form-group {

@@ -17,11 +17,18 @@
     overflow: hidden;
 }
 
-.x-streambox-body {
+.x-streambox-body,
+.roo-streambox-body {
     width: 100%;
     height: 100%;
     overflow: auto;
     box-sizing: border-box;
+}
+
+.roo-streambox {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .x-streambox-body.roo-markdown,

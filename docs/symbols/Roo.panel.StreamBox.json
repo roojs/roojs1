@@ -70,9 +70,9 @@
       "optvals" : []
     },
     {
-      "name" : "region",
-      "type" : "String",
-      "desc" : "Border layout region (center|north|south|east|west)",
+      "name" : "fitToFrame",
+      "type" : "Boolean",
+      "desc" : "Resize with the border layout region (default true)",
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []
@@ -86,10 +86,10 @@
       "optvals" : []
     },
     {
-      "name" : "fitToFrame",
-      "type" : "Boolean",
-      "desc" : "True for this panel to adjust its size to fit when the region resizes  (defaults to false)",
-      "memberOf" : "Roo.panel.Content",
+      "name" : "region",
+      "type" : "String",
+      "desc" : "Border layout region (center|north|south|east|west)",
+      "memberOf" : "",
       "isOptional" : false,
       "optvals" : []
     },
@@ -257,6 +257,38 @@
       ]
     },
     {
+      "name" : "beginMessage",
+      "type" : "function",
+      "desc" : "Start a new chat message bubble; subsequent {@link #append} / {@link #end}\ncalls render into that bubble until the next beginMessage or {@link #reset}.",
+      "sig" : "(role)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "role",
+          "type" : "String",
+          "desc" : "user or assistant",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.panel.StreamBox",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
       "name" : "setContent",
       "type" : "function",
       "desc" : "Replace content with the given markdown text.",
@@ -293,6 +325,82 @@
           "desc" : "this"
         }
       ]
+    },
+    {
+      "name" : "scrollToEnd",
+      "type" : "function",
+      "desc" : "Scroll the body to show the latest streamed content.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "appendMessage",
+      "type" : "function",
+      "desc" : "Append a complete chat message bubble.",
+      "sig" : "(text, role)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "Markdown source",
+          "isOptional" : false
+        },
+        {
+          "name" : "role",
+          "type" : "String",
+          "desc" : "user or assistant",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.panel.StreamBox",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "syncBodySize",
+      "type" : "function",
+      "desc" : "Size the scroll body to match the panel after a layout resize.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "end",

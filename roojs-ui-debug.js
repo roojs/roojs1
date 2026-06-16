@@ -40521,6 +40521,7 @@ Roo.extend(Roo.panel.Scroll, Roo.panel.Content, {
  * @cfg {String} content Initial markdown content
  * @cfg {Boolean} streaming Use {@link Roo.MarkdownParser} when true (default true)
  * @cfg {Boolean} fitToFrame Resize with the border layout region (default true)
+ * @cfg {Boolean} fitContainer Size the outer panel when using a separate resizeEl (default true)
  * @cfg {String} region Border layout region (center|north|south|east|west)
  * @constructor
  * @param {String/HTMLElement/Roo.Element} el The container element for this panel
@@ -40540,6 +40541,7 @@ Roo.panel.StreamBox = function(el, config, content)
         content = content || false;
     } else {
         cfg.fitToFrame = cfg.fitToFrame !== false;
+        cfg.fitContainer = cfg.fitContainer !== false;
         cfg.autoScroll = false;
     }
 
@@ -40568,8 +40570,7 @@ Roo.panel.StreamBox = function(el, config, content)
 
     this.el.addClass('x-streambox');
     this.bodyEl = this.el.createChild({ cls : 'x-streambox-body roo-markdown' });
-    this.on('resize', this.syncBodySize, this);
-    this.on('activate', this.syncBodySize, this);
+    this.bodyEl.setStyle('overflow', 'auto');
 
     if (this.streaming) {
         this.parser = new Roo.MarkdownParser(this.bodyEl);
@@ -40578,7 +40579,10 @@ Roo.panel.StreamBox = function(el, config, content)
     if (initialContent) {
         this.setContent(initialContent);
     }
-    this.syncBodySize();
+
+    if (this.region && this.region.panelSize) {
+        this.setSize(this.region.panelSize.width, this.region.panelSize.height);
+    }
 };
 
 Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
@@ -40587,24 +40591,18 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
     streaming : true,
     region : 'center',
     fitToFrame : true,
+    fitContainer : true,
     parser : false,
     bodyEl : false,
 
     /**
-     * Size the scroll body to match the panel after a layout resize.
+     * @param {Roo.layout.Region} region
      */
-    syncBodySize : function()
+    setRegion : function(region)
     {
-        if (!this.bodyEl || !this.fitToFrame) {
-            return;
-        }
-        var w = this.el.getWidth();
-        var h = this.el.getHeight();
-        if (w > 0) {
-            this.bodyEl.setWidth(w);
-        }
-        if (h > 0) {
-            this.bodyEl.setHeight(h);
+        Roo.panel.StreamBox.superclass.setRegion.call(this, region);
+        if (region && region.panelSize) {
+            this.setSize(region.panelSize.width, region.panelSize.height);
         }
     },
 

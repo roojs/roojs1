@@ -69,7 +69,7 @@
             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-layout-inactive-content roo-streambox'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
-                { </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-streambox-body'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'overflow:auto;height:100%' </span><span class="jsdoc-syntax">}
+                { </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-streambox-body roo-markdown'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'overflow:auto;height:100%' </span><span class="jsdoc-syntax">}
             ]
         };
     },
@@ -89,6 +89,45 @@
             </span><span class="jsdoc-var">this.setContent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.content</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-var">this.initEvents</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Start a new chat message bubble; subsequent {@link #append} / {@link #end}
+     * calls render into that bubble until the next beginMessage or {@link #reset}.
+     *
+     * @param {String} role user or assistant
+     * @return {Roo.bootstrap.panel.StreamBox} this
+     */
+    </span><span class="jsdoc-var">beginMessage </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">role</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">wrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl.createChild</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-chat-msg roo-chat-msg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">role </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' roo-markdown'
+        </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.streaming</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.parser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.MarkdownParser</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">wrap</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Append a complete chat message bubble.
+     *
+     * @param {String} text Markdown source
+     * @param {String} role user or assistant
+     * @return {Roo.bootstrap.panel.StreamBox} this
+     */
+    </span><span class="jsdoc-var">appendMessage </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">role</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.beginMessage</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">role</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.streaming </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parser</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.parser.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.parser.end</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'chunk'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
     },
 
     </span><span class="jsdoc-comment">/**
@@ -135,6 +174,7 @@
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.streaming </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parser</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.parser.reset</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.parser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.MarkdownParser</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-var">this.bodyEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;

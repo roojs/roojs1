@@ -337,6 +337,44 @@
       ]
     },
     {
+      "name" : "appendMessage",
+      "type" : "function",
+      "desc" : "Append a complete chat message bubble.",
+      "sig" : "(text, role)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "Markdown source",
+          "isOptional" : false
+        },
+        {
+          "name" : "role",
+          "type" : "String",
+          "desc" : "user or assistant",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.bootstrap.panel.StreamBox",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
       "name" : "setRegion",
       "type" : "function",
       "desc" : "Called by a border region when this panel is added.",
@@ -391,6 +429,38 @@
           "name" : "",
           "type" : "Boolean",
           "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "beginMessage",
+      "type" : "function",
+      "desc" : "Start a new chat message bubble; subsequent {@link #append} / {@link #end}\ncalls render into that bubble until the next beginMessage or {@link #reset}.",
+      "sig" : "(role)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "role",
+          "type" : "String",
+          "desc" : "user or assistant",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.bootstrap.panel.StreamBox",
+          "desc" : "this"
         }
       ]
     },
