@@ -18558,6 +18558,8 @@ Roo.form.Field.msgFx = {
  * @extends Roo.form.Field
  * Basic text field.  Can be used as a direct replacement for traditional text inputs, or as the base
  * class for more sophisticated input controls (like {@link Roo.form.TextArea} and {@link Roo.form.ComboBox}).
+ * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Shift+Space (defaults to false)
+ * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Shift+Space message)
  * @constructor
  * Creates a new TextField
  * @param {Object} config Configuration options
@@ -18573,7 +18575,26 @@ Roo.form.TextField = function(config){
 	     * @param {Roo.form.Field} this This text field
 	     * @param {Number} width The new field width
 	     */
-        autosize : true
+        autosize : true,
+        /**
+         * @event voicestart
+         * Fires when speech dictation starts on this field.
+         * @param {Roo.form.TextField} this
+         */
+        voicestart : true,
+        /**
+         * @event voiceend
+         * Fires when speech dictation stops on this field.
+         * @param {Roo.form.TextField} this
+         */
+        voiceend : true,
+        /**
+         * @event voiceresult
+         * Fires when dictated text is inserted into this field.
+         * @param {Roo.form.TextField} this
+         * @param {String} text The transcribed text
+         */
+        voiceresult : true
     });
 };
 
@@ -18654,7 +18675,16 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
      * @cfg {String} emptyText The default text to display in an empty field - placeholder... (defaults to null).
      */
     emptyText : null,
-   
+
+    /**
+     * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Shift+Space (defaults to false)
+     */
+    enableVoice : false,
+
+    /**
+     * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Shift+Space message)
+     */
+    voiceHint : false,
 
     // private
     initEvents : function()
@@ -18689,6 +18719,73 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         if(this.el.is('input[type=password]') && Roo.isSafari){
             this.el.on('keydown', this.SafariOnKeyDown, this);
         }
+
+        this.initVoice();
+    },
+
+    /**
+     * Attach speech-to-text when {@link #enableVoice} is set.
+     */
+    initVoice : function()
+    {
+        if (!this.enableVoice || !Roo.Voice.isSupported()) {
+            return;
+        }
+
+        var tag = this.el.dom.tagName.toLowerCase();
+
+        if (tag !== 'textarea') {
+            var type = this.inputType || this.el.dom.type || 'text';
+            var types = { text: 1, search: 1, email: 1, tel: 1, url: 1 };
+
+            if (!types[type]) {
+                return;
+            }
+        }
+
+        var me = this;
+        var container = this.el.findParent('.x-form-element', 5, true);
+
+        this.voice = new Roo.Voice({
+            el : this.el,
+            hint : this.voiceHint || false
+        });
+
+        if (container) {
+            this.voice.renderHint(container);
+        }
+
+        this.voice.on('start', function()
+        {
+            me.fireEvent('voicestart', me);
+        });
+
+        this.voice.on('end', function()
+        {
+            me.fireEvent('voiceend', me);
+        });
+
+        this.voice.on('result', function(voice, text)
+        {
+            me.validate();
+            var v = me.getValue();
+
+            if (String(v) !== String(me.startValue)) {
+                me.fireEvent('change', me, v, me.startValue);
+            }
+
+            me.fireEvent('voiceresult', me, text);
+        });
+    },
+
+    onDestroy : function()
+    {
+        if (this.voice) {
+            this.voice.destroy();
+            this.voice = false;
+        }
+
+        Roo.form.TextField.superclass.onDestroy.call(this);
     },
 
     processValue : function(value){
@@ -19283,6 +19380,8 @@ Roo.form.TwinTriggerField = Roo.extend(Roo.form.TriggerField, {
  * @extends Roo.form.TextField
  * Multiline text field.  Can be used as a direct replacement for traditional textarea fields, plus adds
  * support for auto-sizing.
+ * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Shift+Space (defaults to false)
+ * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Shift+Space message)
  * @constructor
  * Creates a new TextArea
  * @param {Object} config Configuration options

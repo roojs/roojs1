@@ -16450,11 +16450,11 @@ Roo.util.Clipboard = {
  * @class Roo.Voice
  * @extends Roo.util.Observable
  * Speech-to-text helper for text inputs and textareas.
- * Press Ctrl+Space while the field is focused to start and stop dictation.
+ * Press Ctrl+Shift+Space while the field is focused to start and stop dictation.
  *
  * @cfg {String/HTMLElement/Roo.Element} el The input or textarea element
  * @cfg {String} lang BCP 47 language tag (defaults to the browser language)
- * @cfg {String} hint Hint text shown below the field (defaults to Ctrl+Space message)
+ * @cfg {String} hint Hint text shown below the field (defaults to Ctrl+Shift+Space message)
  * @cfg {Boolean} showHint True to render a hint element (defaults to true)
  *
  * @event start
@@ -16526,7 +16526,7 @@ Roo.extend(Roo.Voice, Roo.util.Observable, {
   /**
    * @cfg {String} listeningHint
    */
-    listeningHint : 'Listening... Press Ctrl+Space to stop',
+    listeningHint : 'Listening... Press Ctrl+Shift+Space to stop',
 
     /**
      * Default hint text for the dictation hotkey.
@@ -16535,7 +16535,7 @@ Roo.extend(Roo.Voice, Roo.util.Observable, {
      */
     getDefaultHint : function()
     {
-        return 'Press Ctrl+Space to dictate';
+        return 'Press Ctrl+Shift+Space to dictate';
     },
 
     /**
@@ -16554,7 +16554,7 @@ Roo.extend(Roo.Voice, Roo.util.Observable, {
 
         this.hintEl = Roo.DomHelper.append(Roo.get(container), {
             tag : 'small',
-            cls : 'form-text text-muted roo-voice-hint',
+            cls : 'roo-voice-hint',
             html : text
         }, true);
 
@@ -16585,7 +16585,7 @@ Roo.extend(Roo.Voice, Roo.util.Observable, {
             this.recognition.start();
         }
         catch (e) {
-            Roo.debug && Roo.log('Voice start failed: ' + e.message);
+            Roo.log('Voice start failed: ' + e.message);
         }
 
         return this;
@@ -16606,7 +16606,7 @@ Roo.extend(Roo.Voice, Roo.util.Observable, {
             this.recognition.stop();
         }
         catch (e) {
-            Roo.debug && Roo.log('Voice stop failed: ' + e.message);
+            Roo.log('Voice stop failed: ' + e.message);
         }
 
         return this;
@@ -16698,7 +16698,7 @@ Roo.extend(Roo.Voice, Roo.util.Observable, {
         {
             var message = event.error || 'Speech recognition failed';
 
-            Roo.debug && Roo.log('Voice error: ' + message);
+            Roo.log('Voice error: ' + message);
             me.fireEvent('error', me, message);
         };
 
@@ -16723,6 +16723,7 @@ Roo.extend(Roo.Voice, Roo.util.Observable, {
         this.keyMap = new Roo.KeyMap(this.el, {
             key : Roo.EventObject.SPACE,
             ctrl : true,
+            shift : true,
             stopEvent : true,
             fn : function()
             {
@@ -16749,6 +16750,42 @@ Roo.extend(Roo.Voice, Roo.util.Observable, {
 
         if (dom.setSelectionRange) {
             dom.setSelectionRange(this.insertPos, this.insertPos);
+        }
+
+        this.notifyInputChange();
+    },
+
+    /**
+     * Fire DOM input events after programmatic value changes so listeners
+     * (e.g. keyup handlers that enable submit buttons) behave like typing.
+     */
+    notifyInputChange : function()
+    {
+        var dom = this.el.dom;
+        var evt;
+
+        if (!dom || !dom.dispatchEvent) {
+            return;
+        }
+
+        if (typeof KeyboardEvent === 'function') {
+            evt = new KeyboardEvent('keyup', {
+                bubbles : true,
+                cancelable : true
+            });
+            dom.dispatchEvent(evt);
+        }
+        else if (document.createEvent) {
+            evt = document.createEvent('Event');
+            evt.initEvent('keyup', true, true);
+            dom.dispatchEvent(evt);
+        }
+
+        if (typeof Event === 'function') {
+            dom.dispatchEvent(new Event('input', {
+                bubbles : true,
+                cancelable : true
+            }));
         }
     }
 });
@@ -70642,6 +70679,8 @@ Roo.form.Field.msgFx = {
  * @extends Roo.form.Field
  * Basic text field.  Can be used as a direct replacement for traditional text inputs, or as the base
  * class for more sophisticated input controls (like {@link Roo.form.TextArea} and {@link Roo.form.ComboBox}).
+ * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Shift+Space (defaults to false)
+ * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Shift+Space message)
  * @constructor
  * Creates a new TextField
  * @param {Object} config Configuration options
@@ -70657,7 +70696,26 @@ Roo.form.TextField = function(config){
 	     * @param {Roo.form.Field} this This text field
 	     * @param {Number} width The new field width
 	     */
-        autosize : true
+        autosize : true,
+        /**
+         * @event voicestart
+         * Fires when speech dictation starts on this field.
+         * @param {Roo.form.TextField} this
+         */
+        voicestart : true,
+        /**
+         * @event voiceend
+         * Fires when speech dictation stops on this field.
+         * @param {Roo.form.TextField} this
+         */
+        voiceend : true,
+        /**
+         * @event voiceresult
+         * Fires when dictated text is inserted into this field.
+         * @param {Roo.form.TextField} this
+         * @param {String} text The transcribed text
+         */
+        voiceresult : true
     });
 };
 
@@ -70738,7 +70796,16 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
      * @cfg {String} emptyText The default text to display in an empty field - placeholder... (defaults to null).
      */
     emptyText : null,
-   
+
+    /**
+     * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Shift+Space (defaults to false)
+     */
+    enableVoice : false,
+
+    /**
+     * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Shift+Space message)
+     */
+    voiceHint : false,
 
     // private
     initEvents : function()
@@ -70773,6 +70840,73 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         if(this.el.is('input[type=password]') && Roo.isSafari){
             this.el.on('keydown', this.SafariOnKeyDown, this);
         }
+
+        this.initVoice();
+    },
+
+    /**
+     * Attach speech-to-text when {@link #enableVoice} is set.
+     */
+    initVoice : function()
+    {
+        if (!this.enableVoice || !Roo.Voice.isSupported()) {
+            return;
+        }
+
+        var tag = this.el.dom.tagName.toLowerCase();
+
+        if (tag !== 'textarea') {
+            var type = this.inputType || this.el.dom.type || 'text';
+            var types = { text: 1, search: 1, email: 1, tel: 1, url: 1 };
+
+            if (!types[type]) {
+                return;
+            }
+        }
+
+        var me = this;
+        var container = this.el.findParent('.x-form-element', 5, true);
+
+        this.voice = new Roo.Voice({
+            el : this.el,
+            hint : this.voiceHint || false
+        });
+
+        if (container) {
+            this.voice.renderHint(container);
+        }
+
+        this.voice.on('start', function()
+        {
+            me.fireEvent('voicestart', me);
+        });
+
+        this.voice.on('end', function()
+        {
+            me.fireEvent('voiceend', me);
+        });
+
+        this.voice.on('result', function(voice, text)
+        {
+            me.validate();
+            var v = me.getValue();
+
+            if (String(v) !== String(me.startValue)) {
+                me.fireEvent('change', me, v, me.startValue);
+            }
+
+            me.fireEvent('voiceresult', me, text);
+        });
+    },
+
+    onDestroy : function()
+    {
+        if (this.voice) {
+            this.voice.destroy();
+            this.voice = false;
+        }
+
+        Roo.form.TextField.superclass.onDestroy.call(this);
     },
 
     processValue : function(value){
@@ -71367,6 +71501,8 @@ Roo.form.TwinTriggerField = Roo.extend(Roo.form.TriggerField, {
  * @extends Roo.form.TextField
  * Multiline text field.  Can be used as a direct replacement for traditional textarea fields, plus adds
  * support for auto-sizing.
+ * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Shift+Space (defaults to false)
+ * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Shift+Space message)
  * @constructor
  * Creates a new TextArea
  * @param {Object} config Configuration options

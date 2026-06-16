@@ -110,6 +110,14 @@
       "optvals" : []
     },
     {
+      "name" : "voiceHint",
+      "type" : "String",
+      "desc" : "Custom hint text for voice dictation (defaults to Ctrl+Space message)",
+      "memberOf" : "Roo.form.TextField",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "regexText",
       "type" : "String",
       "desc" : "The error text to display if {@link #regex} is used and the test fails during validation (defaults to \"\")",
@@ -326,14 +334,6 @@
       "optvals" : []
     },
     {
-      "name" : "allowLeadingSpace",
-      "type" : "Boolean",
-      "desc" : "True to prevent the stripping of leading white space",
-      "memberOf" : "Roo.form.TextField",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"text\", size: \"10\", autocomplete: \"off\"})",
@@ -353,6 +353,14 @@
       "name" : "vtype",
       "type" : "String",
       "desc" : "A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)",
+      "memberOf" : "Roo.form.TextField",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "allowLeadingSpace",
+      "type" : "Boolean",
+      "desc" : "True to prevent the stripping of leading white space",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
       "optvals" : []
@@ -382,17 +390,25 @@
       "optvals" : []
     },
     {
-      "name" : "blankText",
-      "type" : "String",
-      "desc" : "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
+      "name" : "selectOnFocus",
+      "type" : "Boolean",
+      "desc" : "True to automatically select any existing field text when the field receives input focus (defaults to false)",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
       "optvals" : []
     },
     {
-      "name" : "selectOnFocus",
+      "name" : "enableVoice",
       "type" : "Boolean",
-      "desc" : "True to automatically select any existing field text when the field receives input focus (defaults to false)",
+      "desc" : "True to enable speech-to-text via Ctrl+Space (defaults to false)",
+      "memberOf" : "Roo.form.TextField",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "blankText",
+      "type" : "String",
+      "desc" : "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
       "optvals" : []
@@ -571,6 +587,25 @@
       "sig" : "()\n{\n\n}",
       "static" : false,
       "memberOf" : "Roo.form.TriggerField",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "initVoice",
+      "type" : "function",
+      "desc" : "Attach speech-to-text when {@link #enableVoice} is set.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.form.TextField",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
@@ -1915,6 +1950,52 @@
       "returns" : []
     },
     {
+      "name" : "voiceresult",
+      "type" : "function",
+      "desc" : "Fires when dictated text is inserted into this field.",
+      "sig" : "function (_self, text)\n{\n\n}",
+      "memberOf" : "Roo.form.TextField",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.TextField",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "The transcribed text",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "voicestart",
+      "type" : "function",
+      "desc" : "Fires when speech dictation starts on this field.",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "Roo.form.TextField",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.TextField",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "autosize",
       "type" : "function",
       "desc" : "Fires when the autosize function is triggered.  The field may or may not have actually changed size\naccording to the default logic, but this event provides a hook for the developer to apply additional\nlogic at runtime to resize the field if needed.",
@@ -1935,6 +2016,26 @@
           "name" : "width",
           "type" : "Number",
           "desc" : "The new field width",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "voiceend",
+      "type" : "function",
+      "desc" : "Fires when speech dictation stops on this field.",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "Roo.form.TextField",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.TextField",
+          "desc" : "",
           "isOptional" : false
         }
       ],

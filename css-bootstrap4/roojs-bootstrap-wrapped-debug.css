@@ -4360,14 +4360,16 @@ not sure why it was so small..
   .bootstrap .form-control.is-warned:focus {
     border-color: #fb6836;
     box-shadow: 0 0 0 0.2rem rgba(251, 104, 54, 0.25); }
+  .bootstrap .roo-voice-hint {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #6c757d; }
+  .bootstrap .roo-voice-hint-active {
+    color: #0d6efd; }
   .bootstrap .form-control.roo-voice-active {
     border-color: #0d6efd;
     box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25); }
-  .bootstrap .roo-voice-hint {
-    display: block;
-    margin-top: 0.25rem; }
-  .bootstrap .roo-voice-hint-active {
-    color: #0d6efd; }
   .bootstrap .toaster {
     position: fixed;
     top: 10px;

@@ -38,8 +38,8 @@
  * @cfg {Roo.bootstrap.Button} afterButton to show before
  * @cfg {String} align (left|center|right) Default left
  * @cfg {Boolean} forceFeedback (true|false) Default false
- * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Space (defaults to false)
- * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Space message)
+ * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Shift+Space (defaults to false)
+ * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Shift+Space message)
  * 
  * @constructor
  * Create a new Input
@@ -290,12 +290,12 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     forceFeedback : false,
 
     /**
-     * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Space (defaults to false)
+     * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Shift+Space (defaults to false)
      */
     enableVoice : false,
 
     /**
-     * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Space message)
+     * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Shift+Space message)
      */
     voiceHint : false,
     

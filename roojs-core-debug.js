@@ -16450,11 +16450,11 @@ Roo.util.Clipboard = {
  * @class Roo.Voice
  * @extends Roo.util.Observable
  * Speech-to-text helper for text inputs and textareas.
- * Press Ctrl+Space while the field is focused to start and stop dictation.
+ * Press Ctrl+Shift+Space while the field is focused to start and stop dictation.
  *
  * @cfg {String/HTMLElement/Roo.Element} el The input or textarea element
  * @cfg {String} lang BCP 47 language tag (defaults to the browser language)
- * @cfg {String} hint Hint text shown below the field (defaults to Ctrl+Space message)
+ * @cfg {String} hint Hint text shown below the field (defaults to Ctrl+Shift+Space message)
  * @cfg {Boolean} showHint True to render a hint element (defaults to true)
  *
  * @event start
@@ -16526,7 +16526,7 @@ Roo.extend(Roo.Voice, Roo.util.Observable, {
   /**
    * @cfg {String} listeningHint
    */
-    listeningHint : 'Listening... Press Ctrl+Space to stop',
+    listeningHint : 'Listening... Press Ctrl+Shift+Space to stop',
 
     /**
      * Default hint text for the dictation hotkey.
@@ -16535,7 +16535,7 @@ Roo.extend(Roo.Voice, Roo.util.Observable, {
      */
     getDefaultHint : function()
     {
-        return 'Press Ctrl+Space to dictate';
+        return 'Press Ctrl+Shift+Space to dictate';
     },
 
     /**
@@ -16554,7 +16554,7 @@ Roo.extend(Roo.Voice, Roo.util.Observable, {
 
         this.hintEl = Roo.DomHelper.append(Roo.get(container), {
             tag : 'small',
-            cls : 'form-text text-muted roo-voice-hint',
+            cls : 'roo-voice-hint',
             html : text
         }, true);
 
@@ -16585,7 +16585,7 @@ Roo.extend(Roo.Voice, Roo.util.Observable, {
             this.recognition.start();
         }
         catch (e) {
-            Roo.debug && Roo.log('Voice start failed: ' + e.message);
+            Roo.log('Voice start failed: ' + e.message);
         }
 
         return this;
@@ -16606,7 +16606,7 @@ Roo.extend(Roo.Voice, Roo.util.Observable, {
             this.recognition.stop();
         }
         catch (e) {
-            Roo.debug && Roo.log('Voice stop failed: ' + e.message);
+            Roo.log('Voice stop failed: ' + e.message);
         }
 
         return this;
@@ -16698,7 +16698,7 @@ Roo.extend(Roo.Voice, Roo.util.Observable, {
         {
             var message = event.error || 'Speech recognition failed';
 
-            Roo.debug && Roo.log('Voice error: ' + message);
+            Roo.log('Voice error: ' + message);
             me.fireEvent('error', me, message);
         };
 
@@ -16723,6 +16723,7 @@ Roo.extend(Roo.Voice, Roo.util.Observable, {
         this.keyMap = new Roo.KeyMap(this.el, {
             key : Roo.EventObject.SPACE,
             ctrl : true,
+            shift : true,
             stopEvent : true,
             fn : function()
             {
@@ -16749,6 +16750,42 @@ Roo.extend(Roo.Voice, Roo.util.Observable, {
 
         if (dom.setSelectionRange) {
             dom.setSelectionRange(this.insertPos, this.insertPos);
+        }
+
+        this.notifyInputChange();
+    },
+
+    /**
+     * Fire DOM input events after programmatic value changes so listeners
+     * (e.g. keyup handlers that enable submit buttons) behave like typing.
+     */
+    notifyInputChange : function()
+    {
+        var dom = this.el.dom;
+        var evt;
+
+        if (!dom || !dom.dispatchEvent) {
+            return;
+        }
+
+        if (typeof KeyboardEvent === 'function') {
+            evt = new KeyboardEvent('keyup', {
+                bubbles : true,
+                cancelable : true
+            });
+            dom.dispatchEvent(evt);
+        }
+        else if (document.createEvent) {
+            evt = document.createEvent('Event');
+            evt.initEvent('keyup', true, true);
+            dom.dispatchEvent(evt);
+        }
+
+        if (typeof Event === 'function') {
+            dom.dispatchEvent(new Event('input', {
+                bubbles : true,
+                cancelable : true
+            }));
         }
     }
 });

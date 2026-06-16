@@ -253,6 +253,24 @@ textarea.x-form-invalid
     margin-left: 4px;
 }
 
+/* ---------------------- VOICE DICTATION --------------------- */
+
+.roo-voice-hint {
+    display: block;
+    margin-top: 2px;
+    font-size: 11px;
+    color: #666;
+}
+
+.roo-voice-hint-active {
+    color: #3366cc;
+}
+
+.x-form-field.roo-voice-active,
+textarea.x-form-field.roo-voice-active {
+    border-color: #3366cc;
+}
+
 /* ---------------------- FORM COMBOS --------------------- */
 
 /** -- see also the combo.css */
