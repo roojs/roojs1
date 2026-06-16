@@ -40522,6 +40522,7 @@ Roo.extend(Roo.panel.Scroll, Roo.panel.Content, {
  * @cfg {Boolean} streaming Use {@link Roo.MarkdownParser} when true (default true)
  * @cfg {Boolean} fitToFrame Resize with the border layout region (default true)
  * @cfg {Boolean} fitContainer Size the outer panel when using a separate resizeEl (default true)
+ * @cfg {String} waitingText Label for {@link #showWaiting} (default Sending)
  * @cfg {String} region Border layout region (center|north|south|east|west)
  * @constructor
  * @param {String/HTMLElement/Roo.Element} el The container element for this panel
@@ -40594,6 +40595,59 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
     fitContainer : true,
     parser : false,
     bodyEl : false,
+    messageEl : false,
+    waitingEl : false,
+    waitingTimer : false,
+    waitingText : 'Sending',
+
+    /**
+     * Show an animated waiting label while a reply is pending.
+     *
+     * @param {String} text (optional) Label before the animated dots
+     * @return {Roo.panel.StreamBox} this
+     */
+    showWaiting : function(text)
+    {
+        if (!this.bodyEl) {
+            return this;
+        }
+        this.hideWaiting();
+        var label = text || this.waitingText;
+        this.waitingEl = this.bodyEl.createChild({
+            cls : 'roo-chat-msg roo-chat-msg-assistant roo-streambox-waiting roo-markdown',
+            cn : [
+                { tag : 'span', cls : 'roo-streambox-waiting-text', html : label },
+                { tag : 'span', cls : 'roo-streambox-waiting-dots', html : '' }
+            ]
+        });
+        var dotsEl = this.waitingEl.select('.roo-streambox-waiting-dots', true).first();
+        var dots = ['', '.', '..', '...'];
+        var step = 0;
+        this.waitingTimer = setInterval(function() {
+            step = (step + 1) % dots.length;
+            dotsEl.dom.innerHTML = dots[step];
+        }, 400);
+        this.scrollToEnd();
+        return this;
+    },
+
+    /**
+     * Remove the waiting label.
+     *
+     * @return {Roo.panel.StreamBox} this
+     */
+    hideWaiting : function()
+    {
+        if (this.waitingTimer) {
+            clearInterval(this.waitingTimer);
+            this.waitingTimer = false;
+        }
+        if (this.waitingEl) {
+            this.waitingEl.remove();
+            this.waitingEl = false;
+        }
+        return this;
+    },
 
     /**
      * @param {Roo.layout.Region} region
@@ -40607,6 +40661,32 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
     },
 
     /**
+     * Keep the scroll body filling the outer frame after border layout resizes.
+     *
+     * @param {Number} width
+     * @param {Number} height
+     */
+    setSize : function(width, height)
+    {
+        Roo.panel.StreamBox.superclass.setSize.call(this, width, height);
+        this.syncBodySize();
+    },
+
+    /**
+     * Size the scroll body to the outer frame's client box.
+     */
+    syncBodySize : function()
+    {
+        if (!this.bodyEl || !this.el) {
+            return;
+        }
+        var outer = this.el.dom;
+        var body = this.bodyEl.dom;
+        body.style.width = outer.clientWidth + 'px';
+        body.style.height = outer.clientHeight + 'px';
+    },
+
+    /**
      * Scroll the body to show the latest streamed content.
      */
     scrollToEnd : function()
@@ -40615,7 +40695,13 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
             return;
         }
         var dom = this.bodyEl.dom;
-        dom.scrollTop = dom.scrollHeight;
+        var scroll = function() {
+            dom.scrollTop = dom.scrollHeight;
+        };
+        scroll();
+        if (typeof requestAnimationFrame !== 'undefined') {
+            requestAnimationFrame(scroll);
+        }
     },
 
     /**
@@ -40627,9 +40713,11 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
      */
     beginMessage : function(role)
     {
+        this.hideWaiting();
         var wrap = this.bodyEl.createChild({
             cls : 'roo-chat-msg roo-chat-msg-' + role + ' roo-markdown'
         });
+        this.messageEl = wrap;
         if (this.streaming) {
             this.parser = new Roo.MarkdownParser(wrap);
         }
@@ -40650,6 +40738,10 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
             this.parser.write(text);
             this.parser.end();
         }
+        this.messageEl = false;
+        if (this.streaming && this.bodyEl) {
+            this.parser = new Roo.MarkdownParser(this.bodyEl);
+        }
         this.scrollToEnd();
         this.fireEvent('chunk', this, text);
         return this;
@@ -40663,6 +40755,10 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
      */
     append : function(chunk)
     {
+        this.hideWaiting();
+        if (!this.messageEl) {
+            this.beginMessage('assistant');
+        }
         if (this.streaming && this.parser) {
             this.parser.write(chunk);
         }
@@ -40678,8 +40774,13 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
      */
     end : function()
     {
+        this.hideWaiting();
         if (this.streaming && this.parser) {
             this.parser.end();
+        }
+        this.messageEl = false;
+        if (this.streaming && this.bodyEl) {
+            this.parser = new Roo.MarkdownParser(this.bodyEl);
         }
         this.scrollToEnd();
         this.fireEvent('complete', this);
@@ -40696,6 +40797,8 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
         if (!this.bodyEl) {
             return this;
         }
+        this.hideWaiting();
+        this.messageEl = false;
         if (this.streaming && this.parser) {
             this.parser.reset();
             this.parser = new Roo.MarkdownParser(this.bodyEl);
@@ -40714,6 +40817,8 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
      */
     setContent : function(text, loadScripts)
     {
+        this.hideWaiting();
+        this.messageEl = false;
         if (this.streaming && this.parser) {
             this.parser.reset();
             this.parser.write(text);

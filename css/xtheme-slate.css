@@ -16,6 +16,22 @@
     background-image:url("../images/slate/panel/tool-sprites.gif");
 }
 
+.x-dlg .x-dlg-close {
+    background-position: 0 0;
+}
+.x-dlg .x-dlg-close-over {
+    background-position: -15px 0;
+}
+.x-dlg .x-dlg-collapse {
+    background-position: 0 -15px;
+}
+.x-dlg .x-dlg-collapse-over {
+    background-position: -15px -15px;
+}
+.x-dlg-collapsed .x-dlg-collapse {
+    background-position: 0 -30px;
+}
+
 
 .x-layout-collapse-west, .x-layout-expand-east {
     background-position: 0 -180px;

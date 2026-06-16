@@ -136,31 +136,53 @@ body.masked .x-dlg select {
 	cursor:move;
 }
 .x-dlg-closable .x-dlg-hd{
-	padding-right:22px;
+	padding-right:55px;
 }
-.x-dlg .x-dlg-close {
+.x-dlg-toolbox {
 	position:absolute;
 	top:4px;
 	right:4px;
 	z-index:6;
+	cursor:default;
+	height:15px;
+	background:transparent;
+}
+.x-dlg .x-dlg-close,
+.x-dlg .x-dlg-collapse {
+	float:right;
 	height:15px;
 	width:15px;
 	margin:0;
+	margin-left:2px;
 	padding:0;
 	line-height:1px;
 	font-size:1px;
 	background-repeat:no-repeat;
 	cursor:pointer;
 	visibility:inherit;
+}
+.x-dlg .x-dlg-close {
 	background-image:url(../images/default/basic-dialog/close.gif);
 }
+.x-dlg .x-dlg-collapse {
+	background-image:url(../images/default/layout/tool-sprites.gif);
+	background-position:0 -15px;
+}
+.x-dlg .x-dlg-collapse-over {
+	background-position:-15px -15px;
+}
+.x-dlg-collapsed .x-dlg-collapse {
+	background-position:0 -30px;
+}
+.x-dlg-collapsed .x-resizable-handle {
+	display:none;
+}
 .x-dlg .x-dlg-resize {
-	position: absolute;
-	top: 4px;
-	right: 25px;
-	cursor: pointer;
-	font-size: 15px;
-	color: #ddd;
+	float:right;
+	margin-left:2px;
+	cursor:pointer;
+	font-size:15px;
+	color:#ddd;
 }
 .x-dlg div.x-resizable-handle-east{
 	background-image:url(../images/default/sizer/e-handle-dark.gif);

@@ -22062,6 +22062,13 @@ Roo.ai.Client = function(config) {
          */
         'toolresult' : true,
         /**
+         * @event reasoning
+         * Fires for each reasoning / thinking chunk from the model.
+         * @param {Roo.ai.Client} this
+         * @param {String} chunk
+         */
+        'reasoning' : true,
+        /**
          * @event complete
          * Fires when the response stream finishes.
          * @param {Roo.ai.Client} this
@@ -22129,14 +22136,12 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
             if (chunk.type === 'text') {
                 me.fireEvent('text', me, chunk.text);
             }
+            if (chunk.type === 'reasoning') {
+                me.fireEvent('reasoning', me, chunk.text);
+            }
             if (chunk.type === 'tool_call') {
-                var args = {};
-                try {
-                    args = JSON.parse(chunk.function.arguments || '{}');
-                } catch (e) {
-                    args = {};
-                }
-                me.fireEvent('toolcall', me, chunk.id, chunk.function.name, args);
+                me.fireEvent('toolcall', me, chunk.id, me.toolCallName(chunk),
+                    me.parseToolCallArguments(me.toolCallArgumentsString(chunk)));
             }
             if (chunk.type === 'tool_result') {
                 me.fireEvent('toolresult', me, chunk.id, chunk.function.name, chunk.result);
@@ -22220,6 +22225,67 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
             });
         }
         return out;
+    },
+
+    toolCallId : function(call)
+    {
+        return call.id || call.call_id || '';
+    },
+
+    toolCallName : function(call)
+    {
+        if (call.function && call.function.name) {
+            return call.function.name;
+        }
+        return call.name || '';
+    },
+
+    toolCallArgumentsString : function(call)
+    {
+        var args = call.function ? call.function.arguments : call.arguments;
+        if (args == null || args === '') {
+            return '{}';
+        }
+        if (typeof args === 'string') {
+            return args;
+        }
+        return JSON.stringify(args);
+    },
+
+    toolCallFunctionForHistory : function(call)
+    {
+        return {
+            name : this.toolCallName(call),
+            arguments : this.toolCallArgumentsString(call)
+        };
+    },
+
+    appendToolCallArguments : function(pending, argsChunk)
+    {
+        if (argsChunk == null || argsChunk === '') {
+            return;
+        }
+        if (typeof argsChunk === 'string') {
+            pending.function.arguments += argsChunk;
+            return;
+        }
+        pending.function.arguments = JSON.stringify(argsChunk);
+    },
+
+    parseToolCallArguments : function(args)
+    {
+        var argsStr = args;
+        if (argsStr == null || argsStr === '') {
+            return {};
+        }
+        if (typeof argsStr !== 'string') {
+            return argsStr;
+        }
+        try {
+            return JSON.parse(argsStr);
+        } catch (e) {
+            return {};
+        }
     },
 
     buildRequestBody : function(input, overrides)
@@ -22306,16 +22372,16 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
         }
         for (var i = 0; i < pendingCalls.length; i += 1) {
             msg.tool_calls.push({
-                id : pendingCalls[i].id,
+                id : this.toolCallId(pendingCalls[i]),
                 type : 'function',
-                function : pendingCalls[i].function
+                function : this.toolCallFunctionForHistory(pendingCalls[i])
             });
         }
         this.messages.push(msg);
         for (var j = 0; j < pendingCalls.length; j += 1) {
             this.messages.push({
                 role : 'tool',
-                tool_call_id : pendingCalls[j].id,
+                tool_call_id : this.toolCallId(pendingCalls[j]),
                 content : JSON.stringify(results[j].result)
             });
         }
@@ -22334,7 +22400,7 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
         for (var i = 0; i < pendingCalls.length; i += 1) {
             this.conversation.push({
                 type : 'function_call_output',
-                call_id : pendingCalls[i].id,
+                call_id : this.toolCallId(pendingCalls[i]),
                 output : JSON.stringify(results[i].result)
             });
         }
@@ -22347,6 +22413,12 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
 
         if (delta.reasoning) {
             return { type : 'reasoning', text : delta.reasoning, id : state.messageId + '_R' };
+        }
+        if (delta.reasoning_content) {
+            return { type : 'reasoning', text : delta.reasoning_content, id : state.messageId + '_R' };
+        }
+        if (delta.thinking) {
+            return { type : 'reasoning', text : delta.thinking, id : state.messageId + '_R' };
         }
         if (delta.content) {
             return { type : 'text', text : delta.content, id : state.messageId };
@@ -22398,7 +22470,7 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
             var id = data.item.call_id || data.item.id || '';
             var pending = state.toolCallMap[id];
             if (pending) {
-                pending.function.arguments += data.item.arguments;
+                this.appendToolCallArguments(pending, data.item.arguments);
                 state.toolYield = pending;
                 return pending;
             }
@@ -22406,10 +22478,7 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
                 type : 'tool_call',
                 id : id,
                 streaming : true,
-                function : {
-                    name : data.item.name || '',
-                    arguments : data.item.arguments || ''
-                }
+                function : this.toolCallFunctionForHistory(data.item)
             };
             state.pendingCalls.push(chunk);
             state.toolCallMap[id] = chunk;
@@ -22431,8 +22500,8 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
                     if (item.type === 'function_call') {
                         state.pendingCalls.push({
                             type : 'tool_call',
-                            id : item.call_id,
-                            function : item
+                            id : item.call_id || item.id,
+                            function : this.toolCallFunctionForHistory(item)
                         });
                     }
                     for (var c = 0; c < (item.content ? item.content.length : 0); c += 1) {
@@ -22702,8 +22771,8 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
 
         return Promise.all(roundCtx.pendingCalls.map(function(call) {
             return me.callTool(
-                call.function.name,
-                JSON.parse(call.function.arguments || '{}')
+                me.toolCallName(call),
+                me.parseToolCallArguments(me.toolCallArgumentsString(call))
             ).then(function(result) {
                 return Roo.apply({ type : 'tool_result', result : result }, call);
             });
@@ -22771,7 +22840,9 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
                 messageId : ''
             };
 
-            if (!completions && me.conversation.length) {
+            if (completions) {
+                body.messages = me.messages;
+            } else if (me.conversation.length) {
                 body.input = me.conversation;
             }
 
@@ -92190,6 +92261,7 @@ Roo.extend(Roo.panel.Scroll, Roo.panel.Content, {
  * @cfg {Boolean} streaming Use {@link Roo.MarkdownParser} when true (default true)
  * @cfg {Boolean} fitToFrame Resize with the border layout region (default true)
  * @cfg {Boolean} fitContainer Size the outer panel when using a separate resizeEl (default true)
+ * @cfg {String} waitingText Label for {@link #showWaiting} (default Sending)
  * @cfg {String} region Border layout region (center|north|south|east|west)
  * @constructor
  * @param {String/HTMLElement/Roo.Element} el The container element for this panel
@@ -92262,6 +92334,59 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
     fitContainer : true,
     parser : false,
     bodyEl : false,
+    messageEl : false,
+    waitingEl : false,
+    waitingTimer : false,
+    waitingText : 'Sending',
+
+    /**
+     * Show an animated waiting label while a reply is pending.
+     *
+     * @param {String} text (optional) Label before the animated dots
+     * @return {Roo.panel.StreamBox} this
+     */
+    showWaiting : function(text)
+    {
+        if (!this.bodyEl) {
+            return this;
+        }
+        this.hideWaiting();
+        var label = text || this.waitingText;
+        this.waitingEl = this.bodyEl.createChild({
+            cls : 'roo-chat-msg roo-chat-msg-assistant roo-streambox-waiting roo-markdown',
+            cn : [
+                { tag : 'span', cls : 'roo-streambox-waiting-text', html : label },
+                { tag : 'span', cls : 'roo-streambox-waiting-dots', html : '' }
+            ]
+        });
+        var dotsEl = this.waitingEl.select('.roo-streambox-waiting-dots', true).first();
+        var dots = ['', '.', '..', '...'];
+        var step = 0;
+        this.waitingTimer = setInterval(function() {
+            step = (step + 1) % dots.length;
+            dotsEl.dom.innerHTML = dots[step];
+        }, 400);
+        this.scrollToEnd();
+        return this;
+    },
+
+    /**
+     * Remove the waiting label.
+     *
+     * @return {Roo.panel.StreamBox} this
+     */
+    hideWaiting : function()
+    {
+        if (this.waitingTimer) {
+            clearInterval(this.waitingTimer);
+            this.waitingTimer = false;
+        }
+        if (this.waitingEl) {
+            this.waitingEl.remove();
+            this.waitingEl = false;
+        }
+        return this;
+    },
 
     /**
      * @param {Roo.layout.Region} region
@@ -92275,6 +92400,32 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
     },
 
     /**
+     * Keep the scroll body filling the outer frame after border layout resizes.
+     *
+     * @param {Number} width
+     * @param {Number} height
+     */
+    setSize : function(width, height)
+    {
+        Roo.panel.StreamBox.superclass.setSize.call(this, width, height);
+        this.syncBodySize();
+    },
+
+    /**
+     * Size the scroll body to the outer frame's client box.
+     */
+    syncBodySize : function()
+    {
+        if (!this.bodyEl || !this.el) {
+            return;
+        }
+        var outer = this.el.dom;
+        var body = this.bodyEl.dom;
+        body.style.width = outer.clientWidth + 'px';
+        body.style.height = outer.clientHeight + 'px';
+    },
+
+    /**
      * Scroll the body to show the latest streamed content.
      */
     scrollToEnd : function()
@@ -92283,7 +92434,13 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
             return;
         }
         var dom = this.bodyEl.dom;
-        dom.scrollTop = dom.scrollHeight;
+        var scroll = function() {
+            dom.scrollTop = dom.scrollHeight;
+        };
+        scroll();
+        if (typeof requestAnimationFrame !== 'undefined') {
+            requestAnimationFrame(scroll);
+        }
     },
 
     /**
@@ -92295,9 +92452,11 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
      */
     beginMessage : function(role)
     {
+        this.hideWaiting();
         var wrap = this.bodyEl.createChild({
             cls : 'roo-chat-msg roo-chat-msg-' + role + ' roo-markdown'
         });
+        this.messageEl = wrap;
         if (this.streaming) {
             this.parser = new Roo.MarkdownParser(wrap);
         }
@@ -92318,6 +92477,10 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
             this.parser.write(text);
             this.parser.end();
         }
+        this.messageEl = false;
+        if (this.streaming && this.bodyEl) {
+            this.parser = new Roo.MarkdownParser(this.bodyEl);
+        }
         this.scrollToEnd();
         this.fireEvent('chunk', this, text);
         return this;
@@ -92331,6 +92494,10 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
      */
     append : function(chunk)
     {
+        this.hideWaiting();
+        if (!this.messageEl) {
+            this.beginMessage('assistant');
+        }
         if (this.streaming && this.parser) {
             this.parser.write(chunk);
         }
@@ -92346,8 +92513,13 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
      */
     end : function()
     {
+        this.hideWaiting();
         if (this.streaming && this.parser) {
             this.parser.end();
+        }
+        this.messageEl = false;
+        if (this.streaming && this.bodyEl) {
+            this.parser = new Roo.MarkdownParser(this.bodyEl);
         }
         this.scrollToEnd();
         this.fireEvent('complete', this);
@@ -92364,6 +92536,8 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
         if (!this.bodyEl) {
             return this;
         }
+        this.hideWaiting();
+        this.messageEl = false;
         if (this.streaming && this.parser) {
             this.parser.reset();
             this.parser = new Roo.MarkdownParser(this.bodyEl);
@@ -92382,6 +92556,8 @@ Roo.extend(Roo.panel.StreamBox, Roo.panel.Content, {
      */
     setContent : function(text, loadScripts)
     {
+        this.hideWaiting();
+        this.messageEl = false;
         if (this.streaming && this.parser) {
             this.parser.reset();
             this.parser.write(text);

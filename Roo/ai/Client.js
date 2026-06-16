@@ -48,6 +48,13 @@ Roo.ai.Client = function(config) {
          */
         'toolresult' : true,
         /**
+         * @event reasoning
+         * Fires for each reasoning / thinking chunk from the model.
+         * @param {Roo.ai.Client} this
+         * @param {String} chunk
+         */
+        'reasoning' : true,
+        /**
          * @event complete
          * Fires when the response stream finishes.
          * @param {Roo.ai.Client} this
@@ -115,14 +122,12 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
             if (chunk.type === 'text') {
                 me.fireEvent('text', me, chunk.text);
             }
+            if (chunk.type === 'reasoning') {
+                me.fireEvent('reasoning', me, chunk.text);
+            }
             if (chunk.type === 'tool_call') {
-                var args = {};
-                try {
-                    args = JSON.parse(chunk.function.arguments || '{}');
-                } catch (e) {
-                    args = {};
-                }
-                me.fireEvent('toolcall', me, chunk.id, chunk.function.name, args);
+                me.fireEvent('toolcall', me, chunk.id, me.toolCallName(chunk),
+                    me.parseToolCallArguments(me.toolCallArgumentsString(chunk)));
             }
             if (chunk.type === 'tool_result') {
                 me.fireEvent('toolresult', me, chunk.id, chunk.function.name, chunk.result);
@@ -206,6 +211,67 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
             });
         }
         return out;
+    },
+
+    toolCallId : function(call)
+    {
+        return call.id || call.call_id || '';
+    },
+
+    toolCallName : function(call)
+    {
+        if (call.function && call.function.name) {
+            return call.function.name;
+        }
+        return call.name || '';
+    },
+
+    toolCallArgumentsString : function(call)
+    {
+        var args = call.function ? call.function.arguments : call.arguments;
+        if (args == null || args === '') {
+            return '{}';
+        }
+        if (typeof args === 'string') {
+            return args;
+        }
+        return JSON.stringify(args);
+    },
+
+    toolCallFunctionForHistory : function(call)
+    {
+        return {
+            name : this.toolCallName(call),
+            arguments : this.toolCallArgumentsString(call)
+        };
+    },
+
+    appendToolCallArguments : function(pending, argsChunk)
+    {
+        if (argsChunk == null || argsChunk === '') {
+            return;
+        }
+        if (typeof argsChunk === 'string') {
+            pending.function.arguments += argsChunk;
+            return;
+        }
+        pending.function.arguments = JSON.stringify(argsChunk);
+    },
+
+    parseToolCallArguments : function(args)
+    {
+        var argsStr = args;
+        if (argsStr == null || argsStr === '') {
+            return {};
+        }
+        if (typeof argsStr !== 'string') {
+            return argsStr;
+        }
+        try {
+            return JSON.parse(argsStr);
+        } catch (e) {
+            return {};
+        }
     },
 
     buildRequestBody : function(input, overrides)
@@ -292,16 +358,16 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
         }
         for (var i = 0; i < pendingCalls.length; i += 1) {
             msg.tool_calls.push({
-                id : pendingCalls[i].id,
+                id : this.toolCallId(pendingCalls[i]),
                 type : 'function',
-                function : pendingCalls[i].function
+                function : this.toolCallFunctionForHistory(pendingCalls[i])
             });
         }
         this.messages.push(msg);
         for (var j = 0; j < pendingCalls.length; j += 1) {
             this.messages.push({
                 role : 'tool',
-                tool_call_id : pendingCalls[j].id,
+                tool_call_id : this.toolCallId(pendingCalls[j]),
                 content : JSON.stringify(results[j].result)
             });
         }
@@ -320,7 +386,7 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
         for (var i = 0; i < pendingCalls.length; i += 1) {
             this.conversation.push({
                 type : 'function_call_output',
-                call_id : pendingCalls[i].id,
+                call_id : this.toolCallId(pendingCalls[i]),
                 output : JSON.stringify(results[i].result)
             });
         }
@@ -333,6 +399,12 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
 
         if (delta.reasoning) {
             return { type : 'reasoning', text : delta.reasoning, id : state.messageId + '_R' };
+        }
+        if (delta.reasoning_content) {
+            return { type : 'reasoning', text : delta.reasoning_content, id : state.messageId + '_R' };
+        }
+        if (delta.thinking) {
+            return { type : 'reasoning', text : delta.thinking, id : state.messageId + '_R' };
         }
         if (delta.content) {
             return { type : 'text', text : delta.content, id : state.messageId };
@@ -384,7 +456,7 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
             var id = data.item.call_id || data.item.id || '';
             var pending = state.toolCallMap[id];
             if (pending) {
-                pending.function.arguments += data.item.arguments;
+                this.appendToolCallArguments(pending, data.item.arguments);
                 state.toolYield = pending;
                 return pending;
             }
@@ -392,10 +464,7 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
                 type : 'tool_call',
                 id : id,
                 streaming : true,
-                function : {
-                    name : data.item.name || '',
-                    arguments : data.item.arguments || ''
-                }
+                function : this.toolCallFunctionForHistory(data.item)
             };
             state.pendingCalls.push(chunk);
             state.toolCallMap[id] = chunk;
@@ -417,8 +486,8 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
                     if (item.type === 'function_call') {
                         state.pendingCalls.push({
                             type : 'tool_call',
-                            id : item.call_id,
-                            function : item
+                            id : item.call_id || item.id,
+                            function : this.toolCallFunctionForHistory(item)
                         });
                     }
                     for (var c = 0; c < (item.content ? item.content.length : 0); c += 1) {
@@ -688,8 +757,8 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
 
         return Promise.all(roundCtx.pendingCalls.map(function(call) {
             return me.callTool(
-                call.function.name,
-                JSON.parse(call.function.arguments || '{}')
+                me.toolCallName(call),
+                me.parseToolCallArguments(me.toolCallArgumentsString(call))
             ).then(function(result) {
                 return Roo.apply({ type : 'tool_result', result : result }, call);
             });
@@ -757,7 +826,9 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
                 messageId : ''
             };
 
-            if (!completions && me.conversation.length) {
+            if (completions) {
+                body.messages = me.messages;
+            } else if (me.conversation.length) {
                 body.input = me.conversation;
             }
 
