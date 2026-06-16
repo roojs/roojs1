@@ -149,6 +149,14 @@
       "optvals" : []
     },
     {
+      "name" : "voiceHint",
+      "type" : "String",
+      "desc" : "Custom hint text for voice dictation (defaults to Ctrl+Space message)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "labelAlign",
       "type" : "String",
       "desc" : "",
@@ -333,14 +341,6 @@
       ]
     },
     {
-      "name" : "focusClass",
-      "type" : "String",
-      "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
-      "memberOf" : "Roo.bootstrap.form.Input",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
       "name" : "size",
       "type" : "string",
       "desc" : "- (lg|sm) or leave empty..",
@@ -352,6 +352,14 @@
       "name" : "labellg",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "focusClass",
+      "type" : "String",
+      "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
       "optvals" : []
@@ -463,6 +471,14 @@
       "name" : "cols",
       "type" : "Number",
       "desc" : "Specifies the visible width of a text area",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "enableVoice",
+      "type" : "Boolean",
+      "desc" : "True to enable speech-to-text via Ctrl+Space (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []
@@ -949,6 +965,25 @@
           "desc" : "name The name field"
         }
       ]
+    },
+    {
+      "name" : "initVoice",
+      "type" : "function",
+      "desc" : "Attach speech-to-text when {@link #enableVoice} is set.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "validateValue",
@@ -1727,6 +1762,52 @@
   ],
   "events" : [
     {
+      "name" : "voiceresult",
+      "type" : "function",
+      "desc" : "Fires when dictated text is inserted into this field.",
+      "sig" : "function (_self, text)\n{\n\n}",
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.form.Input",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "The transcribed text",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "voiceend",
+      "type" : "function",
+      "desc" : "Fires when speech dictation stops on this field.",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.form.Input",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "paste",
       "type" : "function",
       "desc" : "Fires after the user pastes into input",
@@ -1871,6 +1952,26 @@
           "name" : "e",
           "type" : "Roo.EventObject",
           "desc" : "The event Object",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "voicestart",
+      "type" : "function",
+      "desc" : "Fires when speech dictation starts on this field.",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.form.Input",
+          "desc" : "",
           "isOptional" : false
         }
       ],

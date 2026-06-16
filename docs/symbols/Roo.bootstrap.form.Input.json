@@ -167,6 +167,14 @@
       "optvals" : []
     },
     {
+      "name" : "voiceHint",
+      "type" : "String",
+      "desc" : "Custom hint text for voice dictation (defaults to Ctrl+Space message)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "labelAlign",
       "type" : "String",
       "desc" : "",
@@ -462,6 +470,14 @@
       "name" : "before",
       "type" : "string",
       "desc" : "- input group add on before",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "enableVoice",
+      "type" : "Boolean",
+      "desc" : "True to enable speech-to-text via Ctrl+Space (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []
@@ -860,6 +876,25 @@
           "desc" : "name The name field"
         }
       ]
+    },
+    {
+      "name" : "initVoice",
+      "type" : "function",
+      "desc" : "Attach speech-to-text when {@link #enableVoice} is set.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "clearInvalid",
@@ -1695,6 +1730,52 @@
   ],
   "events" : [
     {
+      "name" : "voiceresult",
+      "type" : "function",
+      "desc" : "Fires when dictated text is inserted into this field.",
+      "sig" : "function (_self, text)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.form.Input",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "The transcribed text",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "voiceend",
+      "type" : "function",
+      "desc" : "Fires when speech dictation stops on this field.",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.form.Input",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "paste",
       "type" : "function",
       "desc" : "Fires after the user pastes into input",
@@ -1839,6 +1920,26 @@
           "name" : "e",
           "type" : "Roo.EventObject",
           "desc" : "The event Object",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "voicestart",
+      "type" : "function",
+      "desc" : "Fires when speech dictation starts on this field.",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.form.Input",
+          "desc" : "",
           "isOptional" : false
         }
       ],

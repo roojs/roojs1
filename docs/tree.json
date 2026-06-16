@@ -291,6 +291,11 @@
         "is_class" : true
       },
       {
+        "name" : "Roo.Voice",
+        "cn" : [],
+        "is_class" : false
+      },
+      {
         "name" : "Roo.XComponent",
         "cn" : [
           {

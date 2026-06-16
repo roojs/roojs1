@@ -1,0 +1,321 @@
+<html><head><title>Roo/Voice.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * Speech-to-text for text fields using the Web Speech API.
+ */
+
+/**
+ * @class Roo.Voice
+ * @extends Roo.util.Observable
+ * Speech-to-text helper for text inputs and textareas.
+ * Press Ctrl+Space while the field is focused to start and stop dictation.
+ *
+ * @cfg {String/HTMLElement/Roo.Element} el The input or textarea element
+ * @cfg {String} lang BCP 47 language tag (defaults to the browser language)
+ * @cfg {String} hint Hint text shown below the field (defaults to Ctrl+Space message)
+ * @cfg {Boolean} showHint True to render a hint element (defaults to true)
+ *
+ * @event start
+ * Fires when speech recognition starts.
+ * @param {Roo.Voice} this
+ *
+ * @event result
+ * Fires when a final transcript is inserted.
+ * @param {Roo.Voice} this
+ * @param {String} text The transcribed text
+ *
+ * @event end
+ * Fires when speech recognition stops.
+ * @param {Roo.Voice} this
+ *
+ * @event error
+ * Fires on speech recognition errors.
+ * @param {Roo.Voice} this
+ * @param {String} message Error description
+ *
+ * @constructor
+ * @param {Object} config
+ */
+</span><span class="jsdoc-var">Roo.Voice </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
+{
+    </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">|| {};
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">error </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+
+    </span><span class="jsdoc-var">Roo.Voice.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.recognition </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.keyMap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.hintEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.listening </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.insertPos </span><span class="jsdoc-syntax">= 0;
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.initRecognition</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.initHotkey</span><span class="jsdoc-syntax">();
+    }
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Voice</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+
+  </span><span class="jsdoc-comment">/**
+   * @cfg {String} lang
+   */
+    </span><span class="jsdoc-var">lang </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+  </span><span class="jsdoc-comment">/**
+   * @cfg {String} hint
+   */
+    </span><span class="jsdoc-var">hint </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+  </span><span class="jsdoc-comment">/**
+   * @cfg {Boolean} showHint
+   */
+    </span><span class="jsdoc-var">showHint </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+  </span><span class="jsdoc-comment">/**
+   * @cfg {String} listeningHint
+   */
+    </span><span class="jsdoc-var">listeningHint </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Listening... Press Ctrl+Space to stop'</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * Default hint text for the dictation hotkey.
+     *
+     * @return {String}
+     */
+    </span><span class="jsdoc-var">getDefaultHint </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'Press Ctrl+Space to dictate'</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Append a hint element below a form field container.
+     *
+     * @param {String/HTMLElement/Roo.Element} container Parent element (e.g. form-group)
+     * @return {Roo.Voice} this
+     */
+    </span><span class="jsdoc-var">renderHint </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.showHint </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.hintEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.hint </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.getDefaultHint</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-var">this.hintEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">), {
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'small'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-text text-muted roo-voice-hint'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">text
+        </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Start speech recognition.
+     *
+     * @return {Roo.Voice} this
+     */
+    </span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.recognition </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.listening</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom.disabled </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">dom.readOnly</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">this.insertPos </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">dom.selectionStart </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'number' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">dom.selectionStart </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">dom.value.length</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.recognition.start</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Voice start failed: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">e.message</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Stop speech recognition.
+     *
+     * @return {Roo.Voice} this
+     */
+    </span><span class="jsdoc-var">stop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.recognition </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.listening</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.recognition.stop</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Voice stop failed: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">e.message</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Toggle speech recognition on or off.
+     *
+     * @return {Roo.Voice} this
+     */
+    </span><span class="jsdoc-var">toggle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.listening</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.stop</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.start</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Remove listeners and hint element.
+     */
+    </span><span class="jsdoc-var">destroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.stop</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.keyMap</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.keyMap.disable</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.keyMap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hintEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.hintEl.remove</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.hintEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">this.recognition </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">initRecognition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">SpeechRecognition </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">window.SpeechRecognition </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">window.webkitSpeechRecognition</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">SpeechRecognition</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">me </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.recognition </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">SpeechRecognition</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.recognition.continuous </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.recognition.interimResults </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.recognition.lang </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.lang </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">navigator.language </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'en-US'</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.recognition.onstart </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+        {
+            </span><span class="jsdoc-var">me.listening </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">me.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-voice-active'</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">me.hintEl</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">me.hintEl.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">me.listeningHint</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">me.hintEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-voice-hint-active'</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'start'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">);
+        };
+
+        </span><span class="jsdoc-var">this.recognition.onresult </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">transcript </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">event.resultIndex</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">event.results.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event.results</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.isFinal</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">transcript </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">event.results</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][0]</span><span class="jsdoc-var">.transcript</span><span class="jsdoc-syntax">;
+                }
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">transcript</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">me.insertTranscript</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">transcript</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'result'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">transcript</span><span class="jsdoc-syntax">);
+            }
+        };
+
+        </span><span class="jsdoc-var">this.recognition.onerror </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">message </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">event.error </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'Speech recognition failed'</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Voice error: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">message</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'error'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">message</span><span class="jsdoc-syntax">);
+        };
+
+        </span><span class="jsdoc-var">this.recognition.onend </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+        {
+            </span><span class="jsdoc-var">me.listening </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">me.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-voice-active'</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">me.hintEl</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">me.hintEl.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">me.hint </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">me.getDefaultHint</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-var">me.hintEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-voice-hint-active'</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'end'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">);
+        };
+    },
+
+    </span><span class="jsdoc-var">initHotkey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">me </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.keyMap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.KeyMap</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, {
+            </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.EventObject.SPACE</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">ctrl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">stopEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+            {
+                </span><span class="jsdoc-var">me.toggle</span><span class="jsdoc-syntax">();
+            }
+        });
+    },
+
+    </span><span class="jsdoc-var">insertTranscript </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dom.value</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">before </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value.substring</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">this.insertPos</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">after </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value.substring</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.insertPos</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">prefix </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">before.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">before.charAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">before.length </span><span class="jsdoc-syntax">- 1) !== </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">text.charAt</span><span class="jsdoc-syntax">(0) !== </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">prefix </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">chunk </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">prefix </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">before </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">chunk </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">after</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.insertPos </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">chunk.length</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom.setSelectionRange</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">dom.setSelectionRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.insertPos</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.insertPos</span><span class="jsdoc-syntax">);
+        }
+    }
+});
+
+</span><span class="jsdoc-comment">/**
+ * Returns true when the Web Speech API is available.
+ *
+ * @return {Boolean}
+ */
+</span><span class="jsdoc-var">Roo.Voice.isSupported </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+{
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!!(</span><span class="jsdoc-var">window.SpeechRecognition </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">window.webkitSpeechRecognition</span><span class="jsdoc-syntax">);
+};
+</span></code></body></html>

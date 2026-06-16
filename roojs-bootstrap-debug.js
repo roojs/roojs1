@@ -12989,6 +12989,8 @@ Roo.form.VTypes = function(){
  * @cfg {Roo.bootstrap.Button} afterButton to show before
  * @cfg {String} align (left|center|right) Default left
  * @cfg {Boolean} forceFeedback (true|false) Default false
+ * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Space (defaults to false)
+ * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Space message)
  * 
  * @constructor
  * Create a new Input
@@ -13054,7 +13056,26 @@ Roo.bootstrap.form.Input = function(config){
          * @param {Roo.form.Field} this
          * @param {Roo.EventObject}  e The event Object
          */
-        paste : true
+        paste : true,
+        /**
+         * @event voicestart
+         * Fires when speech dictation starts on this field.
+         * @param {Roo.bootstrap.form.Input} this
+         */
+        voicestart : true,
+        /**
+         * @event voiceend
+         * Fires when speech dictation stops on this field.
+         * @param {Roo.bootstrap.form.Input} this
+         */
+        voiceend : true,
+        /**
+         * @event voiceresult
+         * Fires when dictated text is inserted into this field.
+         * @param {Roo.bootstrap.form.Input} this
+         * @param {String} text The transcribed text
+         */
+        voiceresult : true
     });
 };
 
@@ -13218,6 +13239,16 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     align : false,
     formatedValue : false,
     forceFeedback : false,
+
+    /**
+     * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Space (defaults to false)
+     */
+    enableVoice : false,
+
+    /**
+     * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Space message)
+     */
+    voiceHint : false,
     
     indicatorpos : 'left',
     
@@ -13648,6 +13679,8 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 feedback.hide();
             }
         }
+
+        this.initVoice();
         
     },
     filterValidation : function(e){
@@ -14190,6 +14223,67 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         this.fieldLabel = v;
         
         
+    },
+
+    /**
+     * Attach speech-to-text when {@link #enableVoice} is set.
+     */
+    initVoice : function()
+    {
+        if (!this.enableVoice || !Roo.Voice.isSupported()) {
+            return;
+        }
+
+        var tag = this.inputEl().dom.tagName.toLowerCase();
+
+        if (tag !== 'textarea') {
+            var types = { text: 1, search: 1, email: 1, tel: 1, url: 1 };
+
+            if (!types[this.inputType]) {
+                return;
+            }
+        }
+
+        var me = this;
+
+        this.voice = new Roo.Voice({
+            el : this.inputEl(),
+            hint : this.voiceHint || false
+        });
+
+        this.voice.renderHint(this.el);
+
+        this.voice.on('start', function()
+        {
+            me.fireEvent('voicestart', me);
+        });
+
+        this.voice.on('end', function()
+        {
+            me.fireEvent('voiceend', me);
+        });
+
+        this.voice.on('result', function(voice, text)
+        {
+            me.validate();
+            var v = me.getValue();
+
+            if (String(v) !== String(me.startValue)) {
+                me.fireEvent('change', me, v, me.startValue);
+            }
+
+            me.fireEvent('voiceresult', me, text);
+        });
+    },
+
+    onDestroy : function()
+    {
+        if (this.voice) {
+            this.voice.destroy();
+            this.voice = false;
+        }
+
+        Roo.bootstrap.form.Input.superclass.onDestroy.call(this);
     }
 });
 
@@ -14210,6 +14304,8 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
  * @cfg {string} wrap (soft|hard)Specifies how the text in a text area is to be wrapped when submitted in a form
  * @cfg {string} resize (none|both|horizontal|vertical|inherit|initial)
  * @cfg {string} html text
+ * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Space (defaults to false)
+ * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Space message)
  * 
  * @constructor
  * Create a new TextArea

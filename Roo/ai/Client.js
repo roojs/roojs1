@@ -30,8 +30,17 @@ Roo.ai.Client = function(config) {
          */
         'text' : true,
         /**
+         * @event toolcallstart
+         * Fires once when a tool call is first recognised (name and id known).
+         * Arguments may still be streaming; use {@link #event-toolcall} for the complete call.
+         * @param {Roo.ai.Client} this
+         * @param {String} id
+         * @param {String} name
+         */
+        'toolcallstart' : true,
+        /**
          * @event toolcall
-         * Fires when the model requests a tool call.
+         * Fires when a tool call is complete and about to run.
          * @param {Roo.ai.Client} this
          * @param {String} id
          * @param {String} name
@@ -125,7 +134,10 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
             if (chunk.type === 'reasoning') {
                 me.fireEvent('reasoning', me, chunk.text);
             }
-            if (chunk.type === 'tool_call') {
+            if (chunk.type === 'tool_call_start') {
+                me.fireEvent('toolcallstart', me, chunk.id, me.toolCallName(chunk));
+            }
+            if (chunk.type === 'tool_call' && !chunk.streaming) {
                 me.fireEvent('toolcall', me, chunk.id, me.toolCallName(chunk),
                     me.parseToolCallArguments(me.toolCallArgumentsString(chunk)));
             }
@@ -422,6 +434,7 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
                     type : 'tool_call',
                     id : '',
                     streaming : true,
+                    started : false,
                     function : { name : '', arguments : '' }
                 };
                 state.toolCallMap[idx] = call;
@@ -435,7 +448,10 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
             }
             if (tc.function && tc.function.arguments) {
                 call.function.arguments += tc.function.arguments;
-                state.toolYield = call;
+            }
+            if (!call.started && call.id && call.function.name) {
+                call.started = true;
+                state.toolStartYield = call;
             }
         }
         return call;
@@ -457,17 +473,21 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
             var pending = state.toolCallMap[id];
             if (pending) {
                 this.appendToolCallArguments(pending, data.item.arguments);
-                state.toolYield = pending;
                 return pending;
             }
             var chunk = {
                 type : 'tool_call',
                 id : id,
                 streaming : true,
+                started : false,
                 function : this.toolCallFunctionForHistory(data.item)
             };
             state.pendingCalls.push(chunk);
             state.toolCallMap[id] = chunk;
+            if (id && chunk.function.name) {
+                chunk.started = true;
+                state.toolStartYield = chunk;
+            }
             return chunk;
         }
 
@@ -620,6 +640,7 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
             outputItems : roundCtx.outputItems,
             stream : stream,
             toolYield : false,
+            toolStartYield : false,
             textYield : false,
             doneYield : false,
             completed : false
@@ -637,8 +658,10 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
             }
             roundCtx.pendingCalls = parseState.pendingCalls;
 
-            if (parseState.toolYield) {
-                this.pushStreamChunk(state, parseState.toolYield);
+            if (parseState.toolStartYield) {
+                this.pushStreamChunk(state, Roo.apply({
+                    type : 'tool_call_start'
+                }, parseState.toolStartYield));
             }
             if (parseState.textYield) {
                 this.pushStreamChunk(state, parseState.textYield);
