@@ -144,8 +144,8 @@
     {
       "name" : "fitContainer",
       "type" : "Boolean",
-      "desc" : "When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)",
-      "memberOf" : "Roo.panel.Content",
+      "desc" : "Size the outer panel when using a separate resizeEl (default true)",
+      "memberOf" : "",
       "isOptional" : false,
       "optvals" : []
     },
@@ -190,6 +190,14 @@
       "optvals" : []
     },
     {
+      "name" : "waitingText",
+      "type" : "String",
+      "desc" : "Label for {@link #showWaiting} (default Sending)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "resizeEl",
       "type" : "String|HTMLElement|Element",
       "desc" : "An element to resize if {@link #fitToFrame} is true (instead of this panel's element)",
@@ -203,6 +211,31 @@
       "name" : "reset",
       "type" : "function",
       "desc" : "Clear content and reset the parser.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.panel.StreamBox",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "hideWaiting",
+      "type" : "function",
+      "desc" : "Remove the waiting label.",
       "sig" : "()\n{\n\n}",
       "static" : false,
       "memberOf" : "",
@@ -277,6 +310,70 @@
           "name" : "role",
           "type" : "String",
           "desc" : "user or assistant",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.panel.StreamBox",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "setSize",
+      "type" : "function",
+      "desc" : "Keep the scroll body filling the outer frame after border layout resizes.",
+      "sig" : "(width, height)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "width",
+          "type" : "Number",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "height",
+          "type" : "Number",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "showWaiting",
+      "type" : "function",
+      "desc" : "Show an animated waiting label while a reply is pending.",
+      "sig" : "(text)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "(optional) Label before the animated dots",
           "isOptional" : false
         }
       ],
@@ -386,7 +483,7 @@
     {
       "name" : "syncBodySize",
       "type" : "function",
-      "desc" : "Size the scroll body to match the panel after a layout resize.",
+      "desc" : "Size the scroll body to the outer frame's client box.",
       "sig" : "()\n{\n\n}",
       "static" : false,
       "memberOf" : "",
@@ -426,6 +523,32 @@
           "desc" : "this"
         }
       ]
+    },
+    {
+      "name" : "setRegion",
+      "type" : "function",
+      "desc" : "",
+      "sig" : "(region)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "region",
+          "type" : "Roo.layout.Region",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
     },
     {
       "name" : "load",

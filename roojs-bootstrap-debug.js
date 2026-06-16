@@ -47948,6 +47948,7 @@ layout.addxtype({
  *
  * @cfg {String} content Initial markdown content
  * @cfg {Boolean} streaming Use {@link Roo.MarkdownParser} when true (default true)
+ * @cfg {String} waitingText Label for {@link #showWaiting} (default Sending)
  * @cfg {String} region Border layout region (center|north|south|east|west)
  * @constructor
  * @param {Object} config
@@ -47991,6 +47992,10 @@ Roo.extend(Roo.bootstrap.panel.StreamBox, Roo.bootstrap.Component, {
     region : 'center',
     parser : false,
     bodyEl : false,
+    messageEl : false,
+    waitingEl : false,
+    waitingTimer : false,
+    waitingText : 'Sending',
     active : false,
 
     /**
@@ -48004,7 +48009,7 @@ Roo.extend(Roo.bootstrap.panel.StreamBox, Roo.bootstrap.Component, {
             tag : 'div',
             cls : 'roo-layout-inactive-content roo-streambox',
             cn : [
-                { tag : 'div', cls : 'roo-streambox-body roo-markdown', style : 'overflow:auto;height:100%' }
+                { tag : 'div', cls : 'roo-streambox-body roo-markdown', style : 'overflow:auto' }
             ]
         };
     },
@@ -48027,6 +48032,76 @@ Roo.extend(Roo.bootstrap.panel.StreamBox, Roo.bootstrap.Component, {
     },
 
     /**
+     * Show an animated waiting label while a reply is pending.
+     *
+     * @param {String} text (optional) Label before the animated dots
+     * @return {Roo.bootstrap.panel.StreamBox} this
+     */
+    showWaiting : function(text)
+    {
+        if (!this.rendered) {
+            this.render();
+        }
+        if (!this.bodyEl) {
+            return this;
+        }
+        this.hideWaiting();
+        var label = text || this.waitingText;
+        this.waitingEl = this.bodyEl.createChild({
+            cls : 'roo-chat-msg roo-chat-msg-assistant roo-streambox-waiting roo-markdown',
+            cn : [
+                { tag : 'span', cls : 'roo-streambox-waiting-text', html : label },
+                { tag : 'span', cls : 'roo-streambox-waiting-dots', html : '' }
+            ]
+        });
+        var dotsEl = this.waitingEl.select('.roo-streambox-waiting-dots', true).first();
+        var dots = ['', '.', '..', '...'];
+        var step = 0;
+        this.waitingTimer = setInterval(function() {
+            step = (step + 1) % dots.length;
+            dotsEl.dom.innerHTML = dots[step];
+        }, 400);
+        this.scrollToEnd();
+        return this;
+    },
+
+    /**
+     * Remove the waiting label.
+     *
+     * @return {Roo.bootstrap.panel.StreamBox} this
+     */
+    hideWaiting : function()
+    {
+        if (this.waitingTimer) {
+            clearInterval(this.waitingTimer);
+            this.waitingTimer = false;
+        }
+        if (this.waitingEl) {
+            this.waitingEl.remove();
+            this.waitingEl = false;
+        }
+        return this;
+    },
+
+    /**
+     * Scroll the body to show the latest streamed content.
+     */
+    scrollToEnd : function()
+    {
+        if (!this.bodyEl) {
+            return;
+        }
+        var dom = this.bodyEl.dom;
+        var scroll = function() {
+            dom.scrollTop = dom.scrollHeight;
+        };
+        scroll();
+        if (typeof requestAnimationFrame !== 'undefined') {
+            requestAnimationFrame(scroll);
+        }
+    },
+
+    /**
      * Start a new chat message bubble; subsequent {@link #append} / {@link #end}
      * calls render into that bubble until the next beginMessage or {@link #reset}.
      *
@@ -48038,9 +48113,11 @@ Roo.extend(Roo.bootstrap.panel.StreamBox, Roo.bootstrap.Component, {
         if (!this.rendered) {
             this.render();
         }
+        this.hideWaiting();
         var wrap = this.bodyEl.createChild({
             cls : 'roo-chat-msg roo-chat-msg-' + role + ' roo-markdown'
         });
+        this.messageEl = wrap;
         if (this.streaming) {
             this.parser = new Roo.MarkdownParser(wrap);
         }
@@ -48061,6 +48138,11 @@ Roo.extend(Roo.bootstrap.panel.StreamBox, Roo.bootstrap.Component, {
             this.parser.write(text);
             this.parser.end();
         }
+        this.messageEl = false;
+        if (this.streaming && this.bodyEl) {
+            this.parser = new Roo.MarkdownParser(this.bodyEl);
+        }
+        this.scrollToEnd();
         this.fireEvent('chunk', this, text);
         return this;
     },
@@ -48076,9 +48158,14 @@ Roo.extend(Roo.bootstrap.panel.StreamBox, Roo.bootstrap.Component, {
         if (!this.rendered) {
             this.render();
         }
+        this.hideWaiting();
+        if (!this.messageEl) {
+            this.beginMessage('assistant');
+        }
         if (this.streaming) {
             this.parser.write(chunk);
         }
+        this.scrollToEnd();
         this.fireEvent('chunk', this, chunk);
         return this;
     },
@@ -48090,9 +48177,15 @@ Roo.extend(Roo.bootstrap.panel.StreamBox, Roo.bootstrap.Component, {
      */
     end : function()
     {
+        this.hideWaiting();
         if (this.streaming && this.parser) {
             this.parser.end();
         }
+        this.messageEl = false;
+        if (this.streaming && this.bodyEl) {
+            this.parser = new Roo.MarkdownParser(this.bodyEl);
+        }
+        this.scrollToEnd();
         this.fireEvent('complete', this);
         return this;
     },
@@ -48107,6 +48200,8 @@ Roo.extend(Roo.bootstrap.panel.StreamBox, Roo.bootstrap.Component, {
         if (!this.rendered) {
             return this;
         }
+        this.hideWaiting();
+        this.messageEl = false;
         if (this.streaming && this.parser) {
             this.parser.reset();
             this.parser = new Roo.MarkdownParser(this.bodyEl);
@@ -48127,13 +48222,17 @@ Roo.extend(Roo.bootstrap.panel.StreamBox, Roo.bootstrap.Component, {
         if (!this.rendered) {
             this.render();
         }
+        this.hideWaiting();
+        this.messageEl = false;
         if (this.streaming) {
             this.parser.reset();
             this.parser.write(text);
             this.parser.end();
+            this.scrollToEnd();
             return this;
         }
         this.bodyEl.update(Roo.Markdown.toHtml(text));
+        this.scrollToEnd();
         return this;
     },
 

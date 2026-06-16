@@ -15,12 +15,12 @@
  * @cfg {String} instructions System instructions (responses mode)
  * @cfg {String} mode API mode: responses or completions
  * @cfg {Array|false} tools Tool definitions with call handlers
+ * @cfg {String|false} chat_id Pman relay session id (sent in request body)
  * @constructor
  * @param {Object} config
  */
 </span><span class="jsdoc-var">Roo.ai.Client </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">) {
-    </span><span class="jsdoc-var">Roo.ai.Client.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">Roo.ai.Client.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">|| {});
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-comment">/**
          * @event text
@@ -47,6 +47,13 @@
          * @param {*} result
          */
         </span><span class="jsdoc-string">'toolresult' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event reasoning
+         * Fires for each reasoning / thinking chunk from the model.
+         * @param {Roo.ai.Client} this
+         * @param {String} chunk
+         */
+        </span><span class="jsdoc-string">'reasoning' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event complete
          * Fires when the response stream finishes.
@@ -76,6 +83,7 @@
     </span><span class="jsdoc-var">tools </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">stream </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">headers </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">chat_id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">onToolCall </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">temperature </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">max_output_tokens </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -114,14 +122,12 @@
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'text'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk.text</span><span class="jsdoc-syntax">);
             }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'reasoning'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'reasoning'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk.text</span><span class="jsdoc-syntax">);
+            }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'tool_call'</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= {};
-                </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
-                    </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">JSON.parse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk.function.arguments </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'{}'</span><span class="jsdoc-syntax">);
-                } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= {};
-                }
-                </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'toolcall'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk.function.name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'toolcall'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me.toolCallName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">),
+                    </span><span class="jsdoc-var">me.parseToolCallArguments</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">me.toolCallArgumentsString</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">)));
             }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'tool_result'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'toolresult'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk.function.name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chunk.result</span><span class="jsdoc-syntax">);
@@ -207,6 +213,67 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">out</span><span class="jsdoc-syntax">;
     },
 
+    </span><span class="jsdoc-var">toolCallId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">call.id </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">call.call_id </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">toolCallName </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call.function </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">call.function.name</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">call.function.name</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">call.name </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">toolCallArgumentsString </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">call.function </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">call.function.arguments </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">call.arguments</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'{}'</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">JSON.stringify</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">toolCallFunctionForHistory </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.toolCallName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">),
+            </span><span class="jsdoc-var">arguments </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.toolCallArgumentsString</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">)
+        };
+    },
+
+    </span><span class="jsdoc-var">appendToolCallArguments </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pending</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">argsChunk</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">argsChunk </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">argsChunk </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">argsChunk </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">pending.function.arguments </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">argsChunk</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">pending.function.arguments </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">JSON.stringify</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">argsChunk</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">parseToolCallArguments </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">argsStr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">argsStr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">argsStr </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{};
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">argsStr </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">argsStr</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">JSON.parse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">argsStr</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{};
+        }
+    },
+
     </span><span class="jsdoc-var">buildRequestBody </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">overrides</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= {
@@ -240,6 +307,9 @@
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">this.conversation.push</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'message'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">role </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'user'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">input </span><span class="jsdoc-syntax">});
             }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.chat_id</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">body.chat_id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.chat_id</span><span class="jsdoc-syntax">;
+            }
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">;
         }
 
@@ -253,6 +323,9 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body.max_output_tokens </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">body.max_tokens </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">body.max_output_tokens</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">body.max_output_tokens</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.chat_id</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">body.chat_id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.chat_id</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">;
     },
@@ -285,16 +358,16 @@
         }
         </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">pendingCalls.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 1) {
             </span><span class="jsdoc-var">msg.tool_calls.push</span><span class="jsdoc-syntax">({
-                </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">pendingCalls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.toolCallId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pendingCalls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]),
                 </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">pendingCalls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.function
-            </span><span class="jsdoc-syntax">});
+                </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.toolCallFunctionForHistory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pendingCalls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])
+            });
         }
         </span><span class="jsdoc-var">this.messages.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">pendingCalls.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">+= 1) {
             </span><span class="jsdoc-var">this.messages.push</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">role </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tool'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">tool_call_id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">pendingCalls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">tool_call_id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.toolCallId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pendingCalls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]),
                 </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">JSON.stringify</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.result</span><span class="jsdoc-syntax">)
             });
         }
@@ -313,7 +386,7 @@
         </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">pendingCalls.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 1) {
             </span><span class="jsdoc-var">this.conversation.push</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'function_call_output'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">call_id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">pendingCalls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">call_id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.toolCallId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pendingCalls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]),
                 </span><span class="jsdoc-var">output </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">JSON.stringify</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.result</span><span class="jsdoc-syntax">)
             });
         }
@@ -326,6 +399,12 @@
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">delta.reasoning</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{ </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'reasoning'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">delta.reasoning</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">state.messageId </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'_R' </span><span class="jsdoc-syntax">};
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">delta.reasoning_content</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{ </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'reasoning'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">delta.reasoning_content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">state.messageId </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'_R' </span><span class="jsdoc-syntax">};
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">delta.thinking</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{ </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'reasoning'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">delta.thinking</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">state.messageId </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'_R' </span><span class="jsdoc-syntax">};
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">delta.content</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{ </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'text'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">delta.content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">state.messageId </span><span class="jsdoc-syntax">};
@@ -377,7 +456,7 @@
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.item.call_id </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">data.item.id </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state.toolCallMap</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pending</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">pending.function.arguments </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">data.item.arguments</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.appendToolCallArguments</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pending</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data.item.arguments</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">state.toolYield </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pending</span><span class="jsdoc-syntax">;
             }
@@ -385,10 +464,7 @@
                 </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tool_call'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">streaming </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">: {
-                    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">data.item.name </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">arguments </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">data.item.arguments </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
-                </span><span class="jsdoc-syntax">}
+                </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.toolCallFunctionForHistory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.item</span><span class="jsdoc-syntax">)
             };
             </span><span class="jsdoc-var">state.pendingCalls.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">state.toolCallMap</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">;
@@ -410,9 +486,9 @@
                     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'function_call'</span><span class="jsdoc-syntax">) {
                         </span><span class="jsdoc-var">state.pendingCalls.push</span><span class="jsdoc-syntax">({
                             </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tool_call'</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">item.call_id</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">item
-                        </span><span class="jsdoc-syntax">});
+                            </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">item.call_id </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">item.id</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.toolCallFunctionForHistory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">)
+                        });
                     }
                     </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">&lt; (</span><span class="jsdoc-var">item.content </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">item.content.length </span><span class="jsdoc-syntax">: 0); </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">+= 1) {
                         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">item.content</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.text</span><span class="jsdoc-syntax">) {
@@ -681,8 +757,8 @@
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Promise.all</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">roundCtx.pendingCalls.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">me.callTool</span><span class="jsdoc-syntax">(
-                </span><span class="jsdoc-var">call.function.name</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">JSON.parse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call.function.arguments </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'{}'</span><span class="jsdoc-syntax">)
+                </span><span class="jsdoc-var">me.toolCallName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">me.parseToolCallArguments</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">me.toolCallArgumentsString</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">))
             )</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tool_result'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">);
             });
@@ -717,6 +793,10 @@
             </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">JSON.stringify</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">),
             </span><span class="jsdoc-var">signal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">signal
         </span><span class="jsdoc-syntax">})</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response.headers.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'x-roo-ai-chat-id'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cid</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">me.chat_id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cid</span><span class="jsdoc-syntax">;
+            }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">response.ok</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">response.text</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-keyword">throw new </span><span class="jsdoc-var">Error</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
@@ -746,7 +826,9 @@
                 </span><span class="jsdoc-var">messageId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
             </span><span class="jsdoc-syntax">};
 
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">completions </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">me.conversation.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">body.messages </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">me.messages</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">me.conversation.length</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">body.input </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">me.conversation</span><span class="jsdoc-syntax">;
             }
 

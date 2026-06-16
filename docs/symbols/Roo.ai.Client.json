@@ -84,6 +84,14 @@
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []
+    },
+    {
+      "name" : "chat_id",
+      "type" : "String|false",
+      "desc" : "Pman relay session id (sent in request body)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -605,6 +613,32 @@
         {
           "name" : "err",
           "type" : "Error",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "reasoning",
+      "type" : "function",
+      "desc" : "Fires for each reasoning / thinking chunk from the model.",
+      "sig" : "function (_self, chunk)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.ai.Client",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "chunk",
+          "type" : "String",
           "desc" : "",
           "isOptional" : false
         }

@@ -70,17 +70,17 @@
       ]
     },
     {
-      "name" : "region",
+      "name" : "content",
       "type" : "String",
-      "desc" : "Border layout region (center|north|south|east|west)",
+      "desc" : "Initial markdown content",
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []
     },
     {
-      "name" : "content",
+      "name" : "region",
       "type" : "String",
-      "desc" : "Initial markdown content",
+      "desc" : "Border layout region (center|north|south|east|west)",
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []
@@ -175,6 +175,14 @@
       "memberOf" : "Roo.Component",
       "isOptional" : false,
       "optvals" : []
+    },
+    {
+      "name" : "waitingText",
+      "type" : "String",
+      "desc" : "Label for {@link #showWaiting} (default Sending)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -230,6 +238,38 @@
       "returns" : []
     },
     {
+      "name" : "showWaiting",
+      "type" : "function",
+      "desc" : "Show an animated waiting label while a reply is pending.",
+      "sig" : "(text)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "(optional) Label before the animated dots",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.bootstrap.panel.StreamBox",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
       "name" : "end",
       "type" : "function",
       "desc" : "Finalize the current stream (closes open markdown constructs).",
@@ -278,6 +318,25 @@
           "desc" : "this"
         }
       ]
+    },
+    {
+      "name" : "scrollToEnd",
+      "type" : "function",
+      "desc" : "Scroll the body to show the latest streamed content.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "setContent",
@@ -456,6 +515,31 @@
           "isOptional" : false
         }
       ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.bootstrap.panel.StreamBox",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "hideWaiting",
+      "type" : "function",
+      "desc" : "Remove the waiting label.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
       "returns" : [
         {
           "name" : "",

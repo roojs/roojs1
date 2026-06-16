@@ -14,6 +14,8 @@
  * @cfg {String} content Initial markdown content
  * @cfg {Boolean} streaming Use {@link Roo.MarkdownParser} when true (default true)
  * @cfg {Boolean} fitToFrame Resize with the border layout region (default true)
+ * @cfg {Boolean} fitContainer Size the outer panel when using a separate resizeEl (default true)
+ * @cfg {String} waitingText Label for {@link #showWaiting} (default Sending)
  * @cfg {String} region Border layout region (center|north|south|east|west)
  * @constructor
  * @param {String/HTMLElement/Roo.Element} el The container element for this panel
@@ -33,6 +35,7 @@
         </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
         </span><span class="jsdoc-var">cfg.fitToFrame </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.fitToFrame </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">cfg.fitContainer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.fitContainer </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">cfg.autoScroll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     }
 
@@ -61,8 +64,7 @@
 
     </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'x-streambox'</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-streambox-body roo-markdown' </span><span class="jsdoc-syntax">});
-    </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'resize'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.syncBodySize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'activate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.syncBodySize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.bodyEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'overflow'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'auto'</span><span class="jsdoc-syntax">);
 
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.streaming</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.parser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.MarkdownParser</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">);
@@ -71,7 +73,10 @@
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">initialContent</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.setContent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">initialContent</span><span class="jsdoc-syntax">);
     }
-    </span><span class="jsdoc-var">this.syncBodySize</span><span class="jsdoc-syntax">();
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.region </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.region.panelSize</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.region.panelSize.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.region.panelSize.height</span><span class="jsdoc-syntax">);
+    }
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.panel.StreamBox</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.panel.Content</span><span class="jsdoc-syntax">, {
@@ -80,25 +85,98 @@
     </span><span class="jsdoc-var">streaming </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">fitToFrame </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">fitContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">parser </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">bodyEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">messageEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">waitingEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">waitingTimer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">waitingText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Sending'</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">/**
-     * Size the scroll body to match the panel after a layout resize.
+     * Show an animated waiting label while a reply is pending.
+     *
+     * @param {String} text (optional) Label before the animated dots
+     * @return {Roo.panel.StreamBox} this
+     */
+    </span><span class="jsdoc-var">showWaiting </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.hideWaiting</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.waitingText</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.waitingEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl.createChild</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-chat-msg roo-chat-msg-assistant roo-streambox-waiting roo-markdown'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                { </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-streambox-waiting-text'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">label </span><span class="jsdoc-syntax">},
+                { </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-streambox-waiting-dots'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">}
+            ]
+        });
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dotsEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.waitingEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-streambox-waiting-dots'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dots </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'..'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'...'</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">step </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">this.waitingTimer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">setInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-var">step </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">step </span><span class="jsdoc-syntax">+ 1) % </span><span class="jsdoc-var">dots.length</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">dotsEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dots</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">step</span><span class="jsdoc-syntax">];
+        }, 400);
+        </span><span class="jsdoc-var">this.scrollToEnd</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Remove the waiting label.
+     *
+     * @return {Roo.panel.StreamBox} this
+     */
+    </span><span class="jsdoc-var">hideWaiting </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.waitingTimer</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">clearInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.waitingTimer</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.waitingTimer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.waitingEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.waitingEl.remove</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.waitingEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * @param {Roo.layout.Region} region
+     */
+    </span><span class="jsdoc-var">setRegion </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.panel.StreamBox.superclass.setRegion.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">region.panelSize</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region.panelSize.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">region.panelSize.height</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Keep the scroll body filling the outer frame after border layout resizes.
+     *
+     * @param {Number} width
+     * @param {Number} height
+     */
+    </span><span class="jsdoc-var">setSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.panel.StreamBox.superclass.setSize.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.syncBodySize</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Size the scroll body to the outer frame's client box.
      */
     </span><span class="jsdoc-var">syncBodySize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.fitToFrame</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getHeight</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">&gt; 0) {
-            </span><span class="jsdoc-var">this.bodyEl.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">);
-        }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">&gt; 0) {
-            </span><span class="jsdoc-var">this.bodyEl.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
-        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">outer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">body.style.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">outer.clientWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">body.style.height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">outer.clientHeight </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
     },
 
     </span><span class="jsdoc-comment">/**
@@ -110,7 +188,13 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl.dom</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">dom.scrollTop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dom.scrollHeight</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scroll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-var">dom.scrollTop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dom.scrollHeight</span><span class="jsdoc-syntax">;
+        };
+        </span><span class="jsdoc-var">scroll</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">requestAnimationFrame </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">requestAnimationFrame</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scroll</span><span class="jsdoc-syntax">);
+        }
     },
 
     </span><span class="jsdoc-comment">/**
@@ -122,9 +206,11 @@
      */
     </span><span class="jsdoc-var">beginMessage </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">role</span><span class="jsdoc-syntax">)
     {
+        </span><span class="jsdoc-var">this.hideWaiting</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">wrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl.createChild</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-chat-msg roo-chat-msg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">role </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' roo-markdown'
         </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.messageEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">wrap</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.streaming</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.parser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.MarkdownParser</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">wrap</span><span class="jsdoc-syntax">);
         }
@@ -145,6 +231,10 @@
             </span><span class="jsdoc-var">this.parser.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.parser.end</span><span class="jsdoc-syntax">();
         }
+        </span><span class="jsdoc-var">this.messageEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.streaming </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.parser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.MarkdownParser</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">);
+        }
         </span><span class="jsdoc-var">this.scrollToEnd</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'chunk'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
@@ -158,6 +248,10 @@
      */
     </span><span class="jsdoc-var">append </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">)
     {
+        </span><span class="jsdoc-var">this.hideWaiting</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.messageEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.beginMessage</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'assistant'</span><span class="jsdoc-syntax">);
+        }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.streaming </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parser</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.parser.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chunk</span><span class="jsdoc-syntax">);
         }
@@ -173,8 +267,13 @@
      */
     </span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-var">this.hideWaiting</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.streaming </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parser</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.parser.end</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.messageEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.streaming </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.parser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.MarkdownParser</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-var">this.scrollToEnd</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'complete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -191,6 +290,8 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         }
+        </span><span class="jsdoc-var">this.hideWaiting</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.messageEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.streaming </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parser</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.parser.reset</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.parser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.MarkdownParser</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">);
@@ -209,6 +310,8 @@
      */
     </span><span class="jsdoc-var">setContent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadScripts</span><span class="jsdoc-syntax">)
     {
+        </span><span class="jsdoc-var">this.hideWaiting</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.messageEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.streaming </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parser</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.parser.reset</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.parser.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);

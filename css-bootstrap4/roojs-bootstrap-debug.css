@@ -4846,22 +4846,21 @@ html.bootstrap-sticky body {
 .roo-streambox-body.roo-markdown {
   padding: 12px 16px; }
 
-.x-streambox {
+.x-streambox,
+.roo-streambox {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   overflow: hidden; }
 
 .x-streambox-body,
 .roo-streambox-body {
-  width: 100%;
-  height: 100%;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
   overflow: auto;
   box-sizing: border-box; }
-
-.roo-streambox {
-  width: 100%;
-  height: 100%;
-  overflow: hidden; }
 
 .roo-markdown > :first-child {
   margin-top: 0; }
@@ -5012,6 +5011,15 @@ html.bootstrap-sticky body {
   background-color: #f6f8fa;
   border: 1px solid #d0d7de;
   color: #24292f; }
+
+.roo-markdown .roo-streambox-waiting {
+  opacity: 0.85;
+  font-style: italic; }
+
+.roo-markdown .roo-streambox-waiting-dots {
+  display: inline-block;
+  min-width: 1.25em;
+  text-align: left; }
 
 .roo-markdown-area.roo-markdown {
   min-height: 100px;
