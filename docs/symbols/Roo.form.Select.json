@@ -136,7 +136,7 @@
     {
       "name" : "voiceHint",
       "type" : "String",
-      "desc" : "Custom hint text for voice dictation (defaults to Ctrl+Space message)",
+      "desc" : "Custom hint text for voice dictation (defaults to Ctrl+Shift+Space message)",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
       "optvals" : []
@@ -552,7 +552,7 @@
     {
       "name" : "enableVoice",
       "type" : "Boolean",
-      "desc" : "True to enable speech-to-text via Ctrl+Space (defaults to false)",
+      "desc" : "True to enable speech-to-text via Ctrl+Shift+Space (defaults to false)",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
       "optvals" : []

@@ -178,7 +178,7 @@
     {
       "name" : "start\nFires when speech recognition starts.",
       "type" : "function",
-      "desc" : "Speech-to-text helper for text inputs and textareas.\nPress Ctrl+Space while the field is focused to start and stop dictation.",
+      "desc" : "Speech-to-text helper for text inputs and textareas.\nPress Ctrl+Shift+Space while the field is focused to start and stop dictation.",
       "sig" : "function (_self, _self, text, _self, _self, message, config)\n{\n\n}",
       "memberOf" : "",
       "example" : "",

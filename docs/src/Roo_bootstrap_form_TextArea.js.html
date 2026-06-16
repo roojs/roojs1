@@ -14,8 +14,8 @@
  * @cfg {string} wrap (soft|hard)Specifies how the text in a text area is to be wrapped when submitted in a form
  * @cfg {string} resize (none|both|horizontal|vertical|inherit|initial)
  * @cfg {string} html text
- * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Space (defaults to false)
- * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Space message)
+ * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Shift+Space (defaults to false)
+ * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Shift+Space message)
  * 
  * @constructor
  * Create a new TextArea

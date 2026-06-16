@@ -8,11 +8,11 @@
  * @class Roo.Voice
  * @extends Roo.util.Observable
  * Speech-to-text helper for text inputs and textareas.
- * Press Ctrl+Space while the field is focused to start and stop dictation.
+ * Press Ctrl+Shift+Space while the field is focused to start and stop dictation.
  *
  * @cfg {String/HTMLElement/Roo.Element} el The input or textarea element
  * @cfg {String} lang BCP 47 language tag (defaults to the browser language)
- * @cfg {String} hint Hint text shown below the field (defaults to Ctrl+Space message)
+ * @cfg {String} hint Hint text shown below the field (defaults to Ctrl+Shift+Space message)
  * @cfg {Boolean} showHint True to render a hint element (defaults to true)
  *
  * @event start
@@ -84,7 +84,7 @@
   </span><span class="jsdoc-comment">/**
    * @cfg {String} listeningHint
    */
-    </span><span class="jsdoc-var">listeningHint </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Listening... Press Ctrl+Space to stop'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">listeningHint </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Listening... Press Ctrl+Shift+Space to stop'</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">/**
      * Default hint text for the dictation hotkey.
@@ -93,7 +93,7 @@
      */
     </span><span class="jsdoc-var">getDefaultHint </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'Press Ctrl+Space to dictate'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'Press Ctrl+Shift+Space to dictate'</span><span class="jsdoc-syntax">;
     },
 
     </span><span class="jsdoc-comment">/**
@@ -143,7 +143,7 @@
             </span><span class="jsdoc-var">this.recognition.start</span><span class="jsdoc-syntax">();
         }
         </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Voice start failed: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">e.message</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Voice start failed: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">e.message</span><span class="jsdoc-syntax">);
         }
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
@@ -164,7 +164,7 @@
             </span><span class="jsdoc-var">this.recognition.stop</span><span class="jsdoc-syntax">();
         }
         </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Voice stop failed: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">e.message</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Voice stop failed: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">e.message</span><span class="jsdoc-syntax">);
         }
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
@@ -256,7 +256,7 @@
         {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">message </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">event.error </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'Speech recognition failed'</span><span class="jsdoc-syntax">;
 
-            </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Voice error: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">message</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Voice error: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">message</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">me.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'error'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">me</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">message</span><span class="jsdoc-syntax">);
         };
 
@@ -281,6 +281,7 @@
         </span><span class="jsdoc-var">this.keyMap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.KeyMap</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, {
             </span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.EventObject.SPACE</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">ctrl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">shift </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">stopEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
             {
@@ -307,6 +308,42 @@
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom.setSelectionRange</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">dom.setSelectionRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.insertPos</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.insertPos</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-var">this.notifyInputChange</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Fire DOM input events after programmatic value changes so listeners
+     * (e.g. keyup handlers that enable submit buttons) behave like typing.
+     */
+    </span><span class="jsdoc-var">notifyInputChange </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">evt</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">dom.dispatchEvent</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">KeyboardEvent </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">evt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">KeyboardEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">, {
+                </span><span class="jsdoc-var">bubbles </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cancelable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+            </span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-var">dom.dispatchEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">evt</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.createEvent</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">evt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Event'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">evt.initEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">dom.dispatchEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">evt</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">Event </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">dom.dispatchEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Event</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">, {
+                </span><span class="jsdoc-var">bubbles </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cancelable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+            </span><span class="jsdoc-syntax">}));
         }
     }
 });

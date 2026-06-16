@@ -15,8 +15,8 @@
  * @extends Roo.form.Field
  * Basic text field.  Can be used as a direct replacement for traditional text inputs, or as the base
  * class for more sophisticated input controls (like {@link Roo.form.TextArea} and {@link Roo.form.ComboBox}).
- * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Space (defaults to false)
- * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Space message)
+ * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Shift+Space (defaults to false)
+ * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Shift+Space message)
  * @constructor
  * Creates a new TextField
  * @param {Object} config Configuration options
@@ -134,12 +134,12 @@
     </span><span class="jsdoc-var">emptyText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">/**
-     * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Space (defaults to false)
+     * @cfg {Boolean} enableVoice True to enable speech-to-text via Ctrl+Shift+Space (defaults to false)
      */
     </span><span class="jsdoc-var">enableVoice </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">/**
-     * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Space message)
+     * @cfg {String} voiceHint Custom hint text for voice dictation (defaults to Ctrl+Shift+Space message)
      */
     </span><span class="jsdoc-var">voiceHint </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
@@ -201,7 +201,7 @@
         }
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">me </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.parent</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.x-form-element'</span><span class="jsdoc-syntax">, 5, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-var">this.voice </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Voice</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">,
