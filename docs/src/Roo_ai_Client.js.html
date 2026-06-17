@@ -850,7 +850,7 @@
             </span><span class="jsdoc-syntax">};
 
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">body.messages </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">me.messages</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">body.messages </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">me.buildRequestBody</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">overrides </span><span class="jsdoc-syntax">|| {})</span><span class="jsdoc-var">.messages</span><span class="jsdoc-syntax">;
             } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">me.conversation.length</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">body.input </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">me.conversation</span><span class="jsdoc-syntax">;
             }
