@@ -196,20 +196,20 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
     {
         switch (char) {
             case ' ':
-                this.parser.indent_len += 1
-                return true
+                this.parser.indent_len += 1;
+                return true;
             case '\t':
-                this.parser.indent_len += 4
-                return true
+                this.parser.indent_len += 4;
+                return true;
         }
         
-        var indent = this.endTokensToIndent(this.parser.indent_len)
+        var indent = this.endTokensToIndent(this.parser.indent_len);
         
-        this.parser.indent_len = 0
-        this.parser.token = this.parser.tokens[this.parser.len]
+        this.parser.indent_len = 0;
+        this.parser.token = this.parser.tokens[this.parser.len];
         
         if (indent > 0) {
-            this.write(" ".repeat(indent))
+            this.write(" ".repeat(indent));
         }
         return false;
     },
@@ -218,18 +218,18 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
     {
         switch (this.parser.pending[0]) {
             case undefined:
-                this.parser.pending = char
-                return true
+                this.parser.pending = char;
+                return true;
             case ' ':
-                this.parser.pending = char
-                this.parser.indent += ' '
-                this.parser.indent_len += 1
-                return true
+                this.parser.pending = char;
+                this.parser.indent += ' ';
+                this.parser.indent_len += 1;
+                return true;
             case '\t':
-                this.parser.pending = char
-                this.parser.indent += '\t'
-                this.parser.indent_len += 4
-                return true
+                this.parser.pending = char;
+                this.parser.indent += '\t';
+                this.parser.indent_len += 4;
+                return true;
             case '\n':
             /*
                 Lists can have an empty line in between items:
@@ -238,40 +238,40 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
                 2. bar
             */
                 if (this.parser.tokens[this.parser.len] === Roo.MarkdownParser.LIST_ITEM && this.parser.token === Roo.MarkdownParser.LINE_BREAK) {
-                this.endToken()
-                this.clearRootPending()
-                this.parser.pending = char
-                return true
+                this.endToken();
+                this.clearRootPending();
+                this.parser.pending = char;
+                return true;
             }
             /*
                 Exit out of tokens
                 And ignore newlines in root
             */
-                this.endTokensToLen(this.parser.blockquote_idx)
-                this.clearRootPending()
-                this.parser.blockquote_idx = 0
-                this.parser.fence_start = 0
-                this.parser.pending = char
-                return true
+                this.endTokensToLen(this.parser.blockquote_idx);
+                this.clearRootPending();
+                this.parser.blockquote_idx = 0;
+                this.parser.fence_start = 0;
+                this.parser.pending = char;
+                return true;
             /* Heading */
             case '#':
             switch (char) {
                 case '#':
                     if (this.parser.pending.length < 6) {
-                    this.parser.pending = pending_with_char
-                    return true
+                    this.parser.pending = pending_with_char;
+                    return true;
                 }
-                    break // fail
+                    break; // fail
                 case ' ':
-                    this.endTokensToIndent(this.parser.indent_len)
-                    this.addToken(this.headingFromLevel(this.parser.pending.length))
-                    this.clearRootPending()
-                    return true
+                    this.endTokensToIndent(this.parser.indent_len);
+                    this.addToken(this.headingFromLevel(this.parser.pending.length));
+                    this.clearRootPending();
+                    return true;
             }
-                break // fail
+                break; // fail
             /* Blockquote */
             case '>': {
-                var next_blockquote_idx = this.idxOfToken(Roo.MarkdownParser.BLOCKQUOTE, this.parser.blockquote_idx+1)
+                var next_blockquote_idx = this.idxOfToken(Roo.MarkdownParser.BLOCKQUOTE, this.parser.blockquote_idx+1);
         
             /*
                 Only when there is no blockquote to the right of blockquote_idx
@@ -298,30 +298,30 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
         case '*':
         case '_':
             if (this.parser.hr_chars === 0) {
-                this.parser.hr_chars = 1
-                this.parser.hr_char = this.parser.pending
+                this.parser.hr_chars = 1;
+                this.parser.hr_char = this.parser.pending;
             }
         
             if (this.parser.hr_chars > 0) {
                 switch (char) {
                     case this.parser.hr_char:
-                        this.parser.hr_chars += 1
-                        this.parser.pending = pending_with_char
-                        return true
+                        this.parser.hr_chars += 1;
+                        this.parser.pending = pending_with_char;
+                        return true;
                     case ' ':
-                        this.parser.pending = pending_with_char
-                        return true
+                        this.parser.pending = pending_with_char;
+                        return true;
                     case '\n':
-                        if (this.parser.hr_chars < 3) break
-                        this.endTokensToIndent(this.parser.indent_len)
-                        this.renderOpenToken(Roo.MarkdownParser.RULE)
-                        this.renderCloseToken()
-                        this.clearRootPending()
-                        this.parser.hr_chars = 0
-                        return true
+                        if (this.parser.hr_chars < 3) break;
+                        this.endTokensToIndent(this.parser.indent_len);
+                        this.renderOpenToken(Roo.MarkdownParser.RULE);
+                        this.renderCloseToken();
+                        this.clearRootPending();
+                        this.parser.hr_chars = 0;
+                        return true;
                 }
         
-                this.parser.hr_chars = 0
+                this.parser.hr_chars = 0;
             }
         
             /* Unordered list
@@ -332,13 +332,13 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
             if ('_' !== this.parser.pending[0] &&
                 ' ' === this.parser.pending[1]
             ) {
-                this.continueOrAddList(Roo.MarkdownParser.LIST_UNORDERED)
-                this.addListItem(2)
-                this.write(pending_with_char.slice(2))
-                return true
+                this.continueOrAddList(Roo.MarkdownParser.LIST_UNORDERED);
+                this.addListItem(2);
+                this.write(pending_with_char.slice(2));
+                return true;
             }
         
-            break // fail
+            break; // fail
         /* Code Fence */
         case '`':
             /*  ``?
@@ -346,12 +346,12 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
             */
             if (this.parser.pending.length < 3) {
                 if ('`' === char) {
-                    this.parser.pending = pending_with_char
-                    this.parser.fence_start = pending_with_char.length
-                    return true
+                    this.parser.pending = pending_with_char;
+                    this.parser.fence_start = pending_with_char.length;
+                    return true;
                 }
-                this.parser.fence_start = 0
-                break // fail
+                this.parser.fence_start = 0;
+                break; // fail
             }
         
             switch (char) {
@@ -384,11 +384,11 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
         The other list types are handled with HORIZONTAL_RULE
         */
         case '+':
-            if (' ' !== char) break // fail
+            if (' ' !== char) break; // fail
         
-            this.continueOrAddList(Roo.MarkdownParser.LIST_UNORDERED)
-            this.addListItem(2)
-            return true
+            this.continueOrAddList(Roo.MarkdownParser.LIST_UNORDERED);
+            this.addListItem(2);
+            return true;
         /* List Ordered */
         case '0': case '1': case '2': case '3': case '4':
         case '5': case '6': case '7': case '8': case '9':
@@ -416,18 +416,18 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
             break;
         /* Table */
         case '|':
-            this.endTokensToLen(this.parser.blockquote_idx)
+            this.endTokensToLen(this.parser.blockquote_idx);
         
-            this.addToken(Roo.MarkdownParser.TABLE)
-            this.addToken(Roo.MarkdownParser.TABLE_ROW)
+            this.addToken(Roo.MarkdownParser.TABLE);
+            this.addToken(Roo.MarkdownParser.TABLE_ROW);
         
-            this.parser.pending = ""
-            this.write(char)
+            this.parser.pending = "";
+            this.write(char);
         
-            return true
+            return true;
         }
         
-        var to_write = pending_with_char
+        var to_write = pending_with_char;
         
         /* Add a line break and continue in previous token */
         if (this.parser.token === Roo.MarkdownParser.LINE_BREAK) {
@@ -499,23 +499,23 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
     {
         switch (this.parser.pending) {
             case "":
-                break
+                break;
             case "|":
-                this.addToken(Roo.MarkdownParser.TABLE_CELL)
-                this.endToken()
-                this.parser.pending = ""
-                this.write(char)
-                return true
+                this.addToken(Roo.MarkdownParser.TABLE_CELL);
+                this.endToken();
+                this.parser.pending = "";
+                this.write(char);
+                return true;
             case "\n":
-                this.endToken()
-                this.parser.table_state = Math.min(this.parser.table_state+1, 2)
-                this.parser.pending = ""
-                this.write(char)
-                return true
+                this.endToken();
+                this.parser.table_state = Math.min(this.parser.table_state+1, 2);
+                this.parser.pending = "";
+                this.write(char);
+                return true;
             default:
-                this.addToken(Roo.MarkdownParser.TABLE_CELL)
-                this.write(char)
-                return true
+                this.addToken(Roo.MarkdownParser.TABLE_CELL);
+                this.write(char);
+                return true;
         }
         return false;
     },
@@ -523,13 +523,13 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
     writeTableCellToken : function(char)
     {
         if (this.parser.pending === "|") {
-            this.addText()
-            this.endToken()
-            this.parser.pending = ""
-            this.write(char)
-            return true
+            this.addText();
+            this.endToken();
+            this.parser.pending = "";
+            this.write(char);
+            return true;
         }
-        return false
+        return false;
     },
 
     writeCodeBlockToken : function(pending_with_char)
@@ -540,15 +540,15 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
             case "\n  \t":
             case "\n \t":
             case "\n\t":
-                this.parser.text += "\n"
-                this.parser.pending = ""
-                return true
+                this.parser.text += "\n";
+                this.parser.pending = "";
+                return true;
             case "\n":
             case "\n ":
             case "\n  ":
             case "\n   ":
-                this.parser.pending = pending_with_char
-                return true
+                this.parser.pending = pending_with_char;
+                return true;
             default:
                 var char = pending_with_char.charAt(this.parser.pending.length);
                 if (this.parser.pending.length !== 0) {
@@ -570,39 +570,39 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
             /*  ```\n<code>\n``??
                 |                 ^
             */
-                this.parser.pending = pending_with_char
-                return true
+                this.parser.pending = pending_with_char;
+                return true;
             case '\n':
             /*  ```\n<code>\n```\n
                 |                    ^
             */
                 if (pending_with_char.length === this.parser.fence_start + this.parser.fence_end + 1) {
-                this.addText()
-                this.endToken()
-                this.parser.pending = ""
-                this.parser.fence_start = 0
-                this.parser.fence_end = 0
-                this.parser.token = Roo.MarkdownParser.NEWLINE
-                return true
+                this.addText();
+                this.endToken();
+                this.parser.pending = "";
+                this.parser.fence_start = 0;
+                this.parser.fence_end = 0;
+                this.parser.token = Roo.MarkdownParser.NEWLINE;
+                return true;
             }
-                this.parser.token = Roo.MarkdownParser.NEWLINE
-                break
+                this.parser.token = Roo.MarkdownParser.NEWLINE;
+                break;
             case ' ':
             /*  ```\n<code>\n ??
                 |                ^  (space after newline is allowed)
             */
                 if (this.parser.pending[0] === '\n') {
-                this.parser.pending = pending_with_char
-                this.parser.fence_end += 1
-                return true
+                this.parser.pending = pending_with_char;
+                this.parser.fence_end += 1;
+                return true;
             }
-                break
+                break;
         }
         // any other char
-        this.parser.text   += this.parser.pending
-        this.parser.pending = char
-        this.parser.fence_end = 1
-        return true
+        this.parser.text   += this.parser.pending;
+        this.parser.pending = char;
+        this.parser.fence_end = 1;
+        return true;
     },
 
     writeCodeInlineToken : function(char, pending_with_char)
@@ -620,21 +620,21 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
                 this.parser.pending = pending_with_char;
                 return true;
             case '\n':
-                this.parser.text += this.parser.pending
-                this.parser.pending = ""
-                this.parser.token = Roo.MarkdownParser.LINE_BREAK
-                this.parser.blockquote_idx = 0
-                this.addText()
-                return true
+                this.parser.text += this.parser.pending;
+                this.parser.pending = "";
+                this.parser.token = Roo.MarkdownParser.LINE_BREAK;
+                this.parser.blockquote_idx = 0;
+                this.addText();
+                return true;
             /* Trim space before ` */
             case ' ':
-                this.parser.text += this.parser.pending
-                this.parser.pending = char
-                return true
+                this.parser.text += this.parser.pending;
+                this.parser.pending = char;
+                return true;
             default:
-                this.parser.text += pending_with_char
-                this.parser.pending = ""
-                return true
+                this.parser.text += pending_with_char;
+                this.parser.pending = "";
+                return true;
         }
         return false;
     },
@@ -643,71 +643,71 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
     {
         switch (this.parser.pending.length) {
             case 0:
-                if ('[' !== char) break // fail
-                this.parser.pending = pending_with_char
-                return true
+                if ('[' !== char) break; // fail
+                this.parser.pending = pending_with_char;
+                return true;
             case 1:
-                if (' ' !== char && 'x' !== char) break // fail
-                this.parser.pending = pending_with_char
-                return true
+                if (' ' !== char && 'x' !== char) break; // fail
+                this.parser.pending = pending_with_char;
+                return true;
             case 2:
-                if (']' !== char) break // fail
-                this.parser.pending = pending_with_char
-                return true
+                if (']' !== char) break; // fail
+                this.parser.pending = pending_with_char;
+                return true;
             case 3:
-                if (' ' !== char) break // fail
-                this.renderOpenToken(Roo.MarkdownParser.CHECKBOX)
+                if (' ' !== char) break; // fail
+                this.renderOpenToken(Roo.MarkdownParser.CHECKBOX);
                 if ('x' === this.parser.pending[1]) {
-                this.renderSetAttr(Roo.MarkdownParser.CHECKED, "")
+                this.renderSetAttr(Roo.MarkdownParser.CHECKED, "");
             }
-                this.renderCloseToken()
-                this.parser.pending = " "
-                return true
+                this.renderCloseToken();
+                this.parser.pending = " ";
+                return true;
         }
         
-        this.parser.token = this.parser.tokens[this.parser.len]
-        this.parser.pending = ""
-        this.write(pending_with_char)
-        return true
+        this.parser.token = this.parser.tokens[this.parser.len];
+        this.parser.pending = "";
+        this.write(pending_with_char);
+        return true;
     },
 
     writeStrongToken : function(char, pending_with_char)
     {
-        var symbol = '*'
-        var italic = Roo.MarkdownParser.ITALIC_AST
+        var symbol = '*';
+        var italic = Roo.MarkdownParser.ITALIC_AST;
         if (this.parser.token === Roo.MarkdownParser.STRONG_UND) {
-            symbol = '_'
-            italic = Roo.MarkdownParser.ITALIC_UND
+            symbol = '_';
+            italic = Roo.MarkdownParser.ITALIC_UND;
         }
         
         if (symbol === this.parser.pending) {
-            this.addText()
+            this.addText();
             /* **Bold**
                       ^
             */
             if (symbol === char) {
-                this.endToken()
-                this.parser.pending = ""
-                return true
+                this.endToken();
+                this.parser.pending = "";
+                return true;
             }
             /* **Bold*Bold->Em*
                       ^
             */
-            this.addToken(italic)
-            this.parser.pending = char
-            return true
+            this.addToken(italic);
+            this.parser.pending = char;
+            return true;
         }
         
-        return false
+        return false;
     },
 
     writeItalicToken : function(char, pending_with_char)
     {
-        var symbol = '*'
-        var strong = Roo.MarkdownParser.STRONG_AST
+        var symbol = '*';
+        var strong = Roo.MarkdownParser.STRONG_AST;
         if (this.parser.token === Roo.MarkdownParser.ITALIC_UND) {
-            symbol = '_'
-            strong = Roo.MarkdownParser.STRONG_UND
+            symbol = '_';
+            strong = Roo.MarkdownParser.STRONG_UND;
         }
         
         switch (this.parser.pending) {
@@ -739,18 +739,18 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
                 this.parser.pending = "";
                 return true;
         }
-        return false
+        return false;
     },
 
     writeStrikeToken : function(pending_with_char)
     {
         if ("~~" === pending_with_char) {
-            this.addText()
-            this.endToken()
-            this.parser.pending = ""
-            return true
+            this.addText();
+            this.endToken();
+            this.parser.pending = "";
+            return true;
         }
-        return false
+        return false;
     },
 
     writeMaybeEqBlockToken : function(char, pending_with_char)
@@ -781,12 +781,12 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
     writeEquationBlockToken : function(pending_with_char)
     {
         if ("\\]" === pending_with_char || "$$" === pending_with_char) {
-            this.addText()
-            this.endToken()
-            this.parser.pending = ""
-            return true
+            this.addText();
+            this.endToken();
+            this.parser.pending = "";
+            return true;
         }
-        return false
+        return false;
     },
 
     writeEquationInlineToken : function(char, pending_with_char)
@@ -802,7 +802,7 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
             this.parser.pending = char;
             return true;
         }
-        return false
+        return false;
     },
 
     writeMaybeUrlToken : function(char, pending_with_char)
@@ -851,7 +851,7 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
             this.parser.pending += char;
             return true;
         }
-        return false
+        return false;
     },
 
     writeRawUrlToken : function(char, pending_with_char)
@@ -883,26 +883,26 @@ Roo.extend(Roo.MarkdownParser, Roo.util.Observable, {
                 char === '/' && (pending_with_char.length === 4 ||
                                  this.parser.pending[this.parser.pending.length-1] === ' ')
             ) {
-                this.parser.pending = pending_with_char
-                return true
+                this.parser.pending = pending_with_char;
+                return true;
             }
         
             /* "<br>" | "<br/>" */
             if (char === '>') {
-                this.addText()
-                this.parser.token = this.parser.tokens[this.parser.len]
-                this.renderOpenToken(Roo.MarkdownParser.LINE_BREAK)
-                this.renderCloseToken()
-                this.parser.pending = ""
-                return true
+                this.addText();
+                this.parser.token = this.parser.tokens[this.parser.len];
+                this.renderOpenToken(Roo.MarkdownParser.LINE_BREAK);
+                this.renderCloseToken();
+                this.parser.pending = "";
+                return true;
             }
         }
         // Fail
-        this.parser.token = this.parser.tokens[this.parser.len]
-        this.parser.text += '<'
-        this.parser.pending = this.parser.pending.slice(1)
-        this.write(char)
-        return true
+        this.parser.token = this.parser.tokens[this.parser.len];
+        this.parser.text += '<';
+        this.parser.pending = this.parser.pending.slice(1);
+        this.write(char);
+        return true;
     },
 
     writeCommonPending : function(char, pending_with_char)
