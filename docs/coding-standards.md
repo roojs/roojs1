@@ -200,6 +200,48 @@ for (var i = 0; i < items.length; i++) {
 }
 ```
 
+## Variable declarations
+
+**STRICT:** Do **not** declare variables in a block at the top of a function. Declare each variable at the point of first use, in the narrowest scope where it is valid (inside the `if`, loop, or `{script:}` block that needs it).
+
+Loop counters may be declared in the `for` initializer (`for (var i = 0; …)`).
+
+**Bad:**
+```javascript
+formatRows : function(data)
+{
+    var lines = [];
+    var mod;
+    var i;
+    var rows = data.rows || [];
+
+    if (!rows.length) {
+        lines.push('_(none)_');
+    }
+    for (i = 0; i < rows.length; i += 1) {
+        ...
+    }
+}
+```
+
+**Good:**
+```javascript
+formatRows : function(data)
+{
+    var lines = [];
+
+    if (!(data.rows || []).length) {
+        lines.push('_(none)_');
+        return lines.join('\n');
+    }
+    for (var i = 0; i < data.rows.length; i += 1) {
+        ...
+    }
+}
+```
+
+**jtemplates** (`jtemplates/*.html`) are for **static prompt fragments** (instructions, examples). Dynamic installation data (catalogs, fetched records) is formatted on the **server endpoint** that owns the data, not in a jtemplate or client-side formatter.
+
 ## Switch/case vs if/else if
 
 **IMPORTANT:** Use `switch/case` rather than long chains of `if/else if` when matching a single value.

@@ -850,7 +850,7 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
             };
 
             if (completions) {
-                body.messages = me.messages;
+                body.messages = me.buildRequestBody('', overrides || {}).messages;
             } else if (me.conversation.length) {
                 body.input = me.conversation;
             }
