@@ -196,20 +196,20 @@
     {
         </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.parser.indent_len </span><span class="jsdoc-syntax">+= 1
-                </span><span class="jsdoc-keyword">return true
-            case </span><span class="jsdoc-string">'\t'</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.parser.indent_len </span><span class="jsdoc-syntax">+= 4
-                </span><span class="jsdoc-keyword">return true
-        </span><span class="jsdoc-syntax">}
+                </span><span class="jsdoc-var">this.parser.indent_len </span><span class="jsdoc-syntax">+= 1;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'\t'</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.parser.indent_len </span><span class="jsdoc-syntax">+= 4;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">indent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.endTokensToIndent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.indent_len</span><span class="jsdoc-syntax">)
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">indent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.endTokensToIndent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.indent_len</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-var">this.parser.indent_len </span><span class="jsdoc-syntax">= 0
-        </span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parser.tokens</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.parser.len</span><span class="jsdoc-syntax">]
+        </span><span class="jsdoc-var">this.parser.indent_len </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parser.tokens</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.parser.len</span><span class="jsdoc-syntax">];
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">indent </span><span class="jsdoc-syntax">&gt; 0) {
-            </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-var">.repeat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">indent</span><span class="jsdoc-syntax">))
+            </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-var">.repeat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">indent</span><span class="jsdoc-syntax">));
         }
         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
     },
@@ -218,19 +218,19 @@
     {
         </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.pending</span><span class="jsdoc-syntax">[0]) {
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">char
-                </span><span class="jsdoc-keyword">return true
-            case </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">char
-                this.parser.indent </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' '
-                </span><span class="jsdoc-var">this.parser.indent_len </span><span class="jsdoc-syntax">+= 1
-                </span><span class="jsdoc-keyword">return true
-            case </span><span class="jsdoc-string">'\t'</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">char
-                this.parser.indent </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'\t'
-                </span><span class="jsdoc-var">this.parser.indent_len </span><span class="jsdoc-syntax">+= 4
-                </span><span class="jsdoc-keyword">return true
-            case </span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.parser.indent </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.parser.indent_len </span><span class="jsdoc-syntax">+= 1;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'\t'</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.parser.indent </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'\t'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.parser.indent_len </span><span class="jsdoc-syntax">+= 4;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">:
             </span><span class="jsdoc-comment">/*
                 Lists can have an empty line in between items:
                 1. foo
@@ -238,40 +238,40 @@
                 2. bar
             */
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.tokens</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.parser.len</span><span class="jsdoc-syntax">] === </span><span class="jsdoc-var">Roo.MarkdownParser.LIST_ITEM </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">Roo.MarkdownParser.LINE_BREAK</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">this.endToken</span><span class="jsdoc-syntax">()
-                </span><span class="jsdoc-var">this.clearRootPending</span><span class="jsdoc-syntax">()
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">char
-                </span><span class="jsdoc-keyword">return true
-            </span><span class="jsdoc-syntax">}
+                </span><span class="jsdoc-var">this.endToken</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.clearRootPending</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            }
             </span><span class="jsdoc-comment">/*
                 Exit out of tokens
                 And ignore newlines in root
             */
-                </span><span class="jsdoc-var">this.endTokensToLen</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.blockquote_idx</span><span class="jsdoc-syntax">)
-                </span><span class="jsdoc-var">this.clearRootPending</span><span class="jsdoc-syntax">()
-                </span><span class="jsdoc-var">this.parser.blockquote_idx </span><span class="jsdoc-syntax">= 0
-                </span><span class="jsdoc-var">this.parser.fence_start </span><span class="jsdoc-syntax">= 0
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">char
-                </span><span class="jsdoc-keyword">return true
+                </span><span class="jsdoc-var">this.endTokensToLen</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.blockquote_idx</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.clearRootPending</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.parser.blockquote_idx </span><span class="jsdoc-syntax">= 0;
+                </span><span class="jsdoc-var">this.parser.fence_start </span><span class="jsdoc-syntax">= 0;
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-comment">/* Heading */
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">:
             </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">:
                     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.pending.length </span><span class="jsdoc-syntax">&lt; 6) {
-                    </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char
-                    </span><span class="jsdoc-keyword">return true
-                </span><span class="jsdoc-syntax">}
-                    </span><span class="jsdoc-keyword">break </span><span class="jsdoc-comment">// fail
+                    </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+                }
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// fail
                 </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">:
-                    </span><span class="jsdoc-var">this.endTokensToIndent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.indent_len</span><span class="jsdoc-syntax">)
-                    </span><span class="jsdoc-var">this.addToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.headingFromLevel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.pending.length</span><span class="jsdoc-syntax">))
-                    </span><span class="jsdoc-var">this.clearRootPending</span><span class="jsdoc-syntax">()
-                    </span><span class="jsdoc-keyword">return true
-            </span><span class="jsdoc-syntax">}
-                </span><span class="jsdoc-keyword">break </span><span class="jsdoc-comment">// fail
+                    </span><span class="jsdoc-var">this.endTokensToIndent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.indent_len</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">this.addToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.headingFromLevel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.pending.length</span><span class="jsdoc-syntax">));
+                    </span><span class="jsdoc-var">this.clearRootPending</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            }
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// fail
             /* Blockquote */
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'&gt;'</span><span class="jsdoc-syntax">: {
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">next_blockquote_idx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.idxOfToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.BLOCKQUOTE</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.parser.blockquote_idx</span><span class="jsdoc-syntax">+1)
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">next_blockquote_idx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.idxOfToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.BLOCKQUOTE</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.parser.blockquote_idx</span><span class="jsdoc-syntax">+1);
 
             </span><span class="jsdoc-comment">/*
                 Only when there is no blockquote to the right of blockquote_idx
@@ -298,30 +298,30 @@
         </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">:
         </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'_'</span><span class="jsdoc-syntax">:
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.hr_chars </span><span class="jsdoc-syntax">=== 0) {
-                </span><span class="jsdoc-var">this.parser.hr_chars </span><span class="jsdoc-syntax">= 1
-                </span><span class="jsdoc-var">this.parser.hr_char </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parser.pending
-            </span><span class="jsdoc-syntax">}
+                </span><span class="jsdoc-var">this.parser.hr_chars </span><span class="jsdoc-syntax">= 1;
+                </span><span class="jsdoc-var">this.parser.hr_char </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parser.pending</span><span class="jsdoc-syntax">;
+            }
 
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.hr_chars </span><span class="jsdoc-syntax">&gt; 0) {
                 </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">this.parser.hr_char</span><span class="jsdoc-syntax">:
-                        </span><span class="jsdoc-var">this.parser.hr_chars </span><span class="jsdoc-syntax">+= 1
-                        </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char
-                        </span><span class="jsdoc-keyword">return true
-                    case </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">:
-                        </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char
-                        </span><span class="jsdoc-keyword">return true
-                    case </span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">:
-                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.hr_chars </span><span class="jsdoc-syntax">&lt; 3) </span><span class="jsdoc-keyword">break
-                        </span><span class="jsdoc-var">this.endTokensToIndent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.indent_len</span><span class="jsdoc-syntax">)
-                        </span><span class="jsdoc-var">this.renderOpenToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.RULE</span><span class="jsdoc-syntax">)
-                        </span><span class="jsdoc-var">this.renderCloseToken</span><span class="jsdoc-syntax">()
-                        </span><span class="jsdoc-var">this.clearRootPending</span><span class="jsdoc-syntax">()
-                        </span><span class="jsdoc-var">this.parser.hr_chars </span><span class="jsdoc-syntax">= 0
-                        </span><span class="jsdoc-keyword">return true
-                </span><span class="jsdoc-syntax">}
+                        </span><span class="jsdoc-var">this.parser.hr_chars </span><span class="jsdoc-syntax">+= 1;
+                        </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.hr_chars </span><span class="jsdoc-syntax">&lt; 3) </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-var">this.endTokensToIndent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.indent_len</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">this.renderOpenToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.RULE</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">this.renderCloseToken</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">this.clearRootPending</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">this.parser.hr_chars </span><span class="jsdoc-syntax">= 0;
+                        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+                }
 
-                </span><span class="jsdoc-var">this.parser.hr_chars </span><span class="jsdoc-syntax">= 0
+                </span><span class="jsdoc-var">this.parser.hr_chars </span><span class="jsdoc-syntax">= 0;
             }
 
             </span><span class="jsdoc-comment">/* Unordered list
@@ -332,13 +332,13 @@
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'_' </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">this.parser.pending</span><span class="jsdoc-syntax">[0] &amp;&amp;
                 </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">this.parser.pending</span><span class="jsdoc-syntax">[1]
             ) {
-                </span><span class="jsdoc-var">this.continueOrAddList</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.LIST_UNORDERED</span><span class="jsdoc-syntax">)
-                </span><span class="jsdoc-var">this.addListItem</span><span class="jsdoc-syntax">(2)
-                </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pending_with_char.slice</span><span class="jsdoc-syntax">(2))
-                </span><span class="jsdoc-keyword">return true
-            </span><span class="jsdoc-syntax">}
+                </span><span class="jsdoc-var">this.continueOrAddList</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.LIST_UNORDERED</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.addListItem</span><span class="jsdoc-syntax">(2);
+                </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pending_with_char.slice</span><span class="jsdoc-syntax">(2));
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            }
 
-            </span><span class="jsdoc-keyword">break </span><span class="jsdoc-comment">// fail
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// fail
         /* Code Fence */
         </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'`'</span><span class="jsdoc-syntax">:
             </span><span class="jsdoc-comment">/*  ``?
@@ -346,12 +346,12 @@
             */
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.pending.length </span><span class="jsdoc-syntax">&lt; 3) {
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'`' </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char
-                    this.parser.fence_start </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char.length
-                    </span><span class="jsdoc-keyword">return true
-                </span><span class="jsdoc-syntax">}
-                </span><span class="jsdoc-var">this.parser.fence_start </span><span class="jsdoc-syntax">= 0
-                </span><span class="jsdoc-keyword">break </span><span class="jsdoc-comment">// fail
+                    </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">this.parser.fence_start </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char.length</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-var">this.parser.fence_start </span><span class="jsdoc-syntax">= 0;
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// fail
             </span><span class="jsdoc-syntax">}
 
             </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">) {
@@ -384,11 +384,11 @@
         The other list types are handled with HORIZONTAL_RULE
         */
         </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'+'</span><span class="jsdoc-syntax">:
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">break </span><span class="jsdoc-comment">// fail
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// fail
 
-            </span><span class="jsdoc-var">this.continueOrAddList</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.LIST_UNORDERED</span><span class="jsdoc-syntax">)
-            </span><span class="jsdoc-var">this.addListItem</span><span class="jsdoc-syntax">(2)
-            </span><span class="jsdoc-keyword">return true
+            </span><span class="jsdoc-var">this.continueOrAddList</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.LIST_UNORDERED</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.addListItem</span><span class="jsdoc-syntax">(2);
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-comment">/* List Ordered */
         </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'0'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'1'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'2'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'3'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'4'</span><span class="jsdoc-syntax">:
         </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'5'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'6'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'7'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'8'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'9'</span><span class="jsdoc-syntax">:
@@ -416,18 +416,18 @@
             </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-comment">/* Table */
         </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'|'</span><span class="jsdoc-syntax">:
-            </span><span class="jsdoc-var">this.endTokensToLen</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.blockquote_idx</span><span class="jsdoc-syntax">)
+            </span><span class="jsdoc-var">this.endTokensToLen</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.blockquote_idx</span><span class="jsdoc-syntax">);
 
-            </span><span class="jsdoc-var">this.addToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.TABLE</span><span class="jsdoc-syntax">)
-            </span><span class="jsdoc-var">this.addToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.TABLE_ROW</span><span class="jsdoc-syntax">)
+            </span><span class="jsdoc-var">this.addToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.TABLE</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.addToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.TABLE_ROW</span><span class="jsdoc-syntax">);
 
-            </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;
-            </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">)
+            </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">);
 
-            </span><span class="jsdoc-keyword">return true
-        </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">to_write </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">to_write </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-comment">/* Add a line break and continue in previous token */
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">Roo.MarkdownParser.LINE_BREAK</span><span class="jsdoc-syntax">) {
@@ -499,38 +499,38 @@
     {
         </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.pending</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-keyword">break
-            case </span><span class="jsdoc-string">&quot;|&quot;</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.addToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.TABLE_CELL</span><span class="jsdoc-syntax">)
-                </span><span class="jsdoc-var">this.endToken</span><span class="jsdoc-syntax">()
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;
-                </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">)
-                </span><span class="jsdoc-keyword">return true
-            case </span><span class="jsdoc-string">&quot;\n&quot;</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.endToken</span><span class="jsdoc-syntax">()
-                </span><span class="jsdoc-var">this.parser.table_state </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.table_state</span><span class="jsdoc-syntax">+1, 2)
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;
-                </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">)
-                </span><span class="jsdoc-keyword">return true
-            default</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.addToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.TABLE_CELL</span><span class="jsdoc-syntax">)
-                </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">)
-                </span><span class="jsdoc-keyword">return true
-        </span><span class="jsdoc-syntax">}
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;|&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.addToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.TABLE_CELL</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.endToken</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;\n&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.endToken</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.parser.table_state </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.table_state</span><span class="jsdoc-syntax">+1, 2);
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.addToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.TABLE_CELL</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
     },
 
     </span><span class="jsdoc-var">writeTableCellToken </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">&quot;|&quot;</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">()
-            </span><span class="jsdoc-var">this.endToken</span><span class="jsdoc-syntax">()
-            </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;
-            </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">)
-            </span><span class="jsdoc-keyword">return true
-        </span><span class="jsdoc-syntax">}
-        </span><span class="jsdoc-keyword">return false
-    </span><span class="jsdoc-syntax">},
+            </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.endToken</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+    },
 
     </span><span class="jsdoc-var">writeCodeBlockToken </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">)
     {
@@ -540,16 +540,16 @@
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;\n  \t&quot;</span><span class="jsdoc-syntax">:
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;\n \t&quot;</span><span class="jsdoc-syntax">:
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;\n\t&quot;</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.parser.text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot;\n&quot;
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;
-                </span><span class="jsdoc-keyword">return true
-            case </span><span class="jsdoc-string">&quot;\n&quot;</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.parser.text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot;\n&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;\n&quot;</span><span class="jsdoc-syntax">:
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;\n &quot;</span><span class="jsdoc-syntax">:
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;\n  &quot;</span><span class="jsdoc-syntax">:
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;\n   &quot;</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char
-                </span><span class="jsdoc-keyword">return true
-            default</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">char </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char.charAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.pending.length</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.pending.length </span><span class="jsdoc-syntax">!== 0) {
                     </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">();
@@ -570,40 +570,40 @@
             </span><span class="jsdoc-comment">/*  ```\n&lt;code&gt;\n``??
                 |                 ^
             */
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char
-                </span><span class="jsdoc-keyword">return true
-            case </span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">:
             </span><span class="jsdoc-comment">/*  ```\n&lt;code&gt;\n```\n
                 |                    ^
             */
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pending_with_char.length </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">this.parser.fence_start </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.parser.fence_end </span><span class="jsdoc-syntax">+ 1) {
-                </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">()
-                </span><span class="jsdoc-var">this.endToken</span><span class="jsdoc-syntax">()
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;
-                </span><span class="jsdoc-var">this.parser.fence_start </span><span class="jsdoc-syntax">= 0
-                </span><span class="jsdoc-var">this.parser.fence_end </span><span class="jsdoc-syntax">= 0
-                </span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.MarkdownParser.NEWLINE
-                </span><span class="jsdoc-keyword">return true
-            </span><span class="jsdoc-syntax">}
-                </span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.MarkdownParser.NEWLINE
-                </span><span class="jsdoc-keyword">break
-            case </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.endToken</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.parser.fence_start </span><span class="jsdoc-syntax">= 0;
+                </span><span class="jsdoc-var">this.parser.fence_end </span><span class="jsdoc-syntax">= 0;
+                </span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.MarkdownParser.NEWLINE</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            }
+                </span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.MarkdownParser.NEWLINE</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">:
             </span><span class="jsdoc-comment">/*  ```\n&lt;code&gt;\n ??
                 |                ^  (space after newline is allowed)
             */
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.pending</span><span class="jsdoc-syntax">[0] === </span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char
-                this.parser.fence_end </span><span class="jsdoc-syntax">+= 1
-                </span><span class="jsdoc-keyword">return true
-            </span><span class="jsdoc-syntax">}
-                </span><span class="jsdoc-keyword">break
-        </span><span class="jsdoc-syntax">}
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.parser.fence_end </span><span class="jsdoc-syntax">+= 1;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            }
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-comment">// any other char
-        </span><span class="jsdoc-var">this.parser.text   </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.parser.pending
-        this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">char
-        this.parser.fence_end </span><span class="jsdoc-syntax">= 1
-        </span><span class="jsdoc-keyword">return true
-    </span><span class="jsdoc-syntax">},
+        </span><span class="jsdoc-var">this.parser.text   </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.parser.pending</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.parser.fence_end </span><span class="jsdoc-syntax">= 1;
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
 
     </span><span class="jsdoc-var">writeCodeInlineToken </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">)
     {
@@ -620,22 +620,22 @@
                 </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.parser.text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.parser.pending
-                this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;
-                </span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.MarkdownParser.LINE_BREAK
-                this.parser.blockquote_idx </span><span class="jsdoc-syntax">= 0
-                </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">()
-                </span><span class="jsdoc-keyword">return true
+                </span><span class="jsdoc-var">this.parser.text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.parser.pending</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.MarkdownParser.LINE_BREAK</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.parser.blockquote_idx </span><span class="jsdoc-syntax">= 0;
+                </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-comment">/* Trim space before ` */
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.parser.text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.parser.pending
-                this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">char
-                </span><span class="jsdoc-keyword">return true
-            default</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.parser.text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">pending_with_char
-                this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;
-                </span><span class="jsdoc-keyword">return true
-        </span><span class="jsdoc-syntax">}
+                </span><span class="jsdoc-var">this.parser.text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.parser.pending</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.parser.text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
     },
 
@@ -643,72 +643,72 @@
     {
         </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.pending.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">0:
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[' </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">break </span><span class="jsdoc-comment">// fail
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char
-                </span><span class="jsdoc-keyword">return true
-            case </span><span class="jsdoc-syntax">1:
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">char </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-string">'x' </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">break </span><span class="jsdoc-comment">// fail
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char
-                </span><span class="jsdoc-keyword">return true
-            case </span><span class="jsdoc-syntax">2:
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">']' </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">break </span><span class="jsdoc-comment">// fail
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char
-                </span><span class="jsdoc-keyword">return true
-            case </span><span class="jsdoc-syntax">3:
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">break </span><span class="jsdoc-comment">// fail
-                </span><span class="jsdoc-var">this.renderOpenToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.CHECKBOX</span><span class="jsdoc-syntax">)
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[' </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// fail
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">1:
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">char </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-string">'x' </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// fail
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">2:
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">']' </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// fail
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">3:
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// fail
+                </span><span class="jsdoc-var">this.renderOpenToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.CHECKBOX</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'x' </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">this.parser.pending</span><span class="jsdoc-syntax">[1]) {
-                </span><span class="jsdoc-var">this.renderSetAttr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.CHECKED</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">)
+                </span><span class="jsdoc-var">this.renderSetAttr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.CHECKED</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
             }
-                </span><span class="jsdoc-var">this.renderCloseToken</span><span class="jsdoc-syntax">()
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot; &quot;
-                </span><span class="jsdoc-keyword">return true
-        </span><span class="jsdoc-syntax">}
+                </span><span class="jsdoc-var">this.renderCloseToken</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
 
-        </span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parser.tokens</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.parser.len</span><span class="jsdoc-syntax">]
-        </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;
-        </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">)
-        </span><span class="jsdoc-keyword">return true
-    </span><span class="jsdoc-syntax">},
+        </span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parser.tokens</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.parser.len</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
 
     </span><span class="jsdoc-var">writeStrongToken </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">symbol </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'*'
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">italic </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.MarkdownParser.ITALIC_AST
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">symbol </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">italic </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.MarkdownParser.ITALIC_AST</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">Roo.MarkdownParser.STRONG_UND</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">symbol </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'_'
-            </span><span class="jsdoc-var">italic </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.MarkdownParser.ITALIC_UND
-        </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-var">symbol </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'_'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">italic </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.MarkdownParser.ITALIC_UND</span><span class="jsdoc-syntax">;
+        }
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">symbol </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">this.parser.pending</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">()
+            </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-comment">/* **Bold**
                       ^
             */
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">symbol </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">this.endToken</span><span class="jsdoc-syntax">()
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;
-                </span><span class="jsdoc-keyword">return true
-            </span><span class="jsdoc-syntax">}
+                </span><span class="jsdoc-var">this.endToken</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            }
             </span><span class="jsdoc-comment">/* **Bold*Bold-&gt;Em*
                       ^
             */
-            </span><span class="jsdoc-var">this.addToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">italic</span><span class="jsdoc-syntax">)
-            </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">char
-            </span><span class="jsdoc-keyword">return true
-        </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-var">this.addToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">italic</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
 
-        </span><span class="jsdoc-keyword">return false
-    </span><span class="jsdoc-syntax">},
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+    },
 
     </span><span class="jsdoc-var">writeItalicToken </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">symbol </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'*'
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">strong </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.MarkdownParser.STRONG_AST
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">symbol </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">strong </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.MarkdownParser.STRONG_AST</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">Roo.MarkdownParser.ITALIC_UND</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">symbol </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'_'
-            </span><span class="jsdoc-var">strong </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.MarkdownParser.STRONG_UND
-        </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-var">symbol </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'_'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">strong </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.MarkdownParser.STRONG_UND</span><span class="jsdoc-syntax">;
+        }
 
         </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parser.pending</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">symbol</span><span class="jsdoc-syntax">:
@@ -739,19 +739,19 @@
                 </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">return false
-    </span><span class="jsdoc-syntax">},
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+    },
 
     </span><span class="jsdoc-var">writeStrikeToken </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;~~&quot; </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">()
-            </span><span class="jsdoc-var">this.endToken</span><span class="jsdoc-syntax">()
-            </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;
-            </span><span class="jsdoc-keyword">return true
-        </span><span class="jsdoc-syntax">}
-        </span><span class="jsdoc-keyword">return false
-    </span><span class="jsdoc-syntax">},
+            </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.endToken</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+    },
 
     </span><span class="jsdoc-var">writeMaybeEqBlockToken </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">)
     {
@@ -781,13 +781,13 @@
     </span><span class="jsdoc-var">writeEquationBlockToken </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;\\]&quot; </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">pending_with_char </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;$$&quot; </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">()
-            </span><span class="jsdoc-var">this.endToken</span><span class="jsdoc-syntax">()
-            </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;
-            </span><span class="jsdoc-keyword">return true
-        </span><span class="jsdoc-syntax">}
-        </span><span class="jsdoc-keyword">return false
-    </span><span class="jsdoc-syntax">},
+            </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.endToken</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+    },
 
     </span><span class="jsdoc-var">writeEquationInlineToken </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">)
     {
@@ -802,8 +802,8 @@
             </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">return false
-    </span><span class="jsdoc-syntax">},
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+    },
 
     </span><span class="jsdoc-var">writeMaybeUrlToken </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">)
     {
@@ -851,8 +851,8 @@
             </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">return false
-    </span><span class="jsdoc-syntax">},
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+    },
 
     </span><span class="jsdoc-var">writeRawUrlToken </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">)
     {
@@ -883,27 +883,27 @@
                 </span><span class="jsdoc-var">char </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'/' </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">pending_with_char.length </span><span class="jsdoc-syntax">=== 4 ||
                                  </span><span class="jsdoc-var">this.parser.pending</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.parser.pending.length</span><span class="jsdoc-syntax">-1] === </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">)
             ) {
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char
-                </span><span class="jsdoc-keyword">return true
-            </span><span class="jsdoc-syntax">}
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            }
 
             </span><span class="jsdoc-comment">/* &quot;&lt;br&gt;&quot; | &quot;&lt;br/&gt;&quot; */
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'&gt;'</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">()
-                </span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parser.tokens</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.parser.len</span><span class="jsdoc-syntax">]
-                </span><span class="jsdoc-var">this.renderOpenToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.LINE_BREAK</span><span class="jsdoc-syntax">)
-                </span><span class="jsdoc-var">this.renderCloseToken</span><span class="jsdoc-syntax">()
-                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;
-                </span><span class="jsdoc-keyword">return true
-            </span><span class="jsdoc-syntax">}
+                </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parser.tokens</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.parser.len</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-var">this.renderOpenToken</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.MarkdownParser.LINE_BREAK</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.renderCloseToken</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            }
         }
         </span><span class="jsdoc-comment">// Fail
-        </span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parser.tokens</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.parser.len</span><span class="jsdoc-syntax">]
-        </span><span class="jsdoc-var">this.parser.text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'&lt;'
-        </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parser.pending.slice</span><span class="jsdoc-syntax">(1)
-        </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">)
-        </span><span class="jsdoc-keyword">return true
-    </span><span class="jsdoc-syntax">},
+        </span><span class="jsdoc-var">this.parser.token </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parser.tokens</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.parser.len</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-var">this.parser.text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'&lt;'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.parser.pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parser.pending.slice</span><span class="jsdoc-syntax">(1);
+        </span><span class="jsdoc-var">this.write</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
 
     </span><span class="jsdoc-var">writeCommonPending </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pending_with_char</span><span class="jsdoc-syntax">)
     {
