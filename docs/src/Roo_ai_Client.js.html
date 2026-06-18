@@ -810,6 +810,10 @@
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">me </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
 
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">me.chat_id</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">body.chat_id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">me.chat_id</span><span class="jsdoc-syntax">;
+        }
+
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">fetch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">endpoint</span><span class="jsdoc-syntax">, {
             </span><span class="jsdoc-var">method </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'POST'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">headers </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">me.getRequestHeaders</span><span class="jsdoc-syntax">(),
