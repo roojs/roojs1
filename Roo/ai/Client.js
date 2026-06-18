@@ -810,6 +810,10 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
     {
         var me = this;
 
+        if (me.chat_id) {
+            body.chat_id = me.chat_id;
+        }
+
         return fetch(endpoint, {
             method : 'POST',
             headers : me.getRequestHeaders(),
