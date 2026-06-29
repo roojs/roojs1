@@ -22556,7 +22556,7 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
         return this.mode === 'completions';
     },
 
-    callTool : function(name, args)
+    callTool : function(name, args, success, failure)
     {
         var tool = false;
 
@@ -22568,17 +22568,47 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
             break;
         }
 
+        if (!failure) {
+            failure = function(err) {
+                success({ error : err });
+            };
+        }
+
         try {
             if (tool && tool.call) {
-                return Promise.resolve(tool.call(args));
+                tool.call(args, success, failure);
+                return;
             }
             if (this.onToolCall) {
-                return Promise.resolve(this.onToolCall(name, args));
+                success(this.onToolCall(name, args));
+                return;
             }
-            throw new Error(name);
+            failure(name);
         } catch (e) {
-            return Promise.resolve({ error : e.message || e });
+            success({ error : e.message || e });
         }
+    },
+
+    /**
+     * Run one tool from a pending LLM round and store the result chunk.
+     *
+     * @param {Object} call pending tool call
+     * @param {Number} idx index in results array
+     * @param {Array} results result chunks for this round
+     * @param {Function} callback fires when this tool finishes
+     */
+    runPendingTool : function(call, idx, results, callback)
+    {
+        var me = this;
+
+        me.callTool(
+            me.toolCallName(call),
+            me.parseToolCallArguments(me.toolCallArgumentsString(call)),
+            function(result) {
+                results[idx] = Roo.apply({ type : 'tool_result', result : result }, call);
+                callback();
+            }
+        );
     },
 
     wrapToolsForCompletions : function(tools)
@@ -22945,8 +22975,10 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
             pendingNext : false
         };
 
-        me.runSendStream(input, overrides, signal, state).catch(function(err) {
-            me.failSendStream(state, err);
+        me.runSendStream(input, overrides, signal, state, function(err) {
+            if (err) {
+                me.failSendStream(state, err);
+            }
         });
 
         return {
@@ -23091,7 +23123,7 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
         return 'ok';
     },
 
-    readFetchStream : function(response, roundCtx, stream, signal, state, completions)
+    readFetchStream : function(response, roundCtx, stream, signal, state, completions, done)
     {
         var me = this;
         var reader = response.body.getReader();
@@ -23100,7 +23132,8 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
 
         var readChunks = function() {
             if (signal && signal.aborted) {
-                throw new Error();
+                done(new Error());
+                return;
             }
 
             var lines = stream ? buffer.split('\n') : [buffer];
@@ -23109,30 +23142,35 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
             }
 
             if (me.processStreamLines(lines, roundCtx, stream, state, completions) === 'finish') {
+                reader.releaseLock();
+                done();
                 return;
             }
 
-            return reader.read().then(function(readResult) {
+            reader.read().then(function(readResult) {
                 if (!readResult.done) {
                     buffer += decoder.decode(readResult.value, { stream : true });
-                    return readChunks();
+                    readChunks();
+                    return;
                 }
                 if (stream && buffer.trim()) {
                     buffer += '\ndata: [DONE]';
-                    return readChunks();
+                    readChunks();
+                    return;
                 }
-            });
+                reader.releaseLock();
+                done();
+            }, done);
         };
 
-        return readChunks().then(function() {
-            reader.releaseLock();
-        });
+        readChunks();
     },
 
-    finalizeStreamRound : function(roundCtx, state, completions, body, runRound)
+    finalizeStreamRound : function(roundCtx, state, completions, body, runRound, done)
     {
         if (state.done) {
-            return Promise.resolve();
+            done();
+            return;
         }
         if (!roundCtx.pendingCalls.length) {
             this.finishStreamDone(
@@ -23142,23 +23180,21 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
                 roundCtx.outputItems,
                 state
             );
-            return Promise.resolve();
+            done();
+            return;
         }
 
         var me = this;
-        for (var k = 0; k < roundCtx.pendingCalls.length; k += 1) {
+        var pending = roundCtx.pendingCalls.length;
+        var results = new Array(pending);
+        var left = pending;
+
+        for (var k = 0; k < pending; k += 1) {
             roundCtx.pendingCalls[k].streaming = false;
             me.pushStreamChunk(state, roundCtx.pendingCalls[k]);
         }
 
-        return Promise.all(roundCtx.pendingCalls.map(function(call) {
-            return me.callTool(
-                me.toolCallName(call),
-                me.parseToolCallArguments(me.toolCallArgumentsString(call))
-            ).then(function(result) {
-                return Roo.apply({ type : 'tool_result', result : result }, call);
-            });
-        })).then(function(results) {
+        var onToolsDone = function() {
             for (var r = 0; r < results.length; r += 1) {
                 me.pushStreamChunk(state, results[r]);
             }
@@ -23175,11 +23211,23 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
             if (!completions) {
                 me.appendToolResultsResponses(roundCtx.outputItems, roundCtx.pendingCalls, results);
             }
-            return runRound();
-        });
+            runRound(done);
+        };
+
+        var onToolDone = function() {
+            left -= 1;
+            if (left) {
+                return;
+            }
+            onToolsDone();
+        };
+
+        for (var i = 0; i < pending; i += 1) {
+            me.runPendingTool(roundCtx.pendingCalls[i], i, results, onToolDone);
+        }
     },
 
-    fetchStreamRound : function(endpoint, body, roundCtx, stream, signal, state, completions, runRound)
+    fetchStreamRound : function(endpoint, body, roundCtx, stream, signal, state, completions, runRound, done)
     {
         var me = this;
 
@@ -23187,7 +23235,7 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
             body.chat_id = me.chat_id;
         }
 
-        return fetch(endpoint, {
+        fetch(endpoint, {
             method : 'POST',
             headers : me.getRequestHeaders(),
             body : JSON.stringify(body),
@@ -23198,17 +23246,22 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
                 me.chat_id = cid;
             }
             if (!response.ok) {
-                return response.text().then(function(text) {
-                    throw new Error(text);
-                });
+                response.text().then(function(text) {
+                    done(new Error(text));
+                }, done);
+                return;
             }
-            return me.readFetchStream(response, roundCtx, stream, signal, state, completions).then(function() {
-                return me.finalizeStreamRound(roundCtx, state, completions, body, runRound);
+            me.readFetchStream(response, roundCtx, stream, signal, state, completions, function(err) {
+                if (err) {
+                    done(err);
+                    return;
+                }
+                me.finalizeStreamRound(roundCtx, state, completions, body, runRound, done);
             });
-        });
+        }, done);
     },
 
-    runSendStream : function(input, overrides, signal, state)
+    runSendStream : function(input, overrides, signal, state, done)
     {
         var me = this;
         var completions = this.isCompletionsMode();
@@ -23216,7 +23269,7 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
         var body = this.buildRequestBody(input, overrides || {});
         var stream = body.stream !== false;
 
-        var runRound = function() {
+        var runRound = function(roundDone) {
             var roundCtx = {
                 pendingCalls : [],
                 toolCallMap : {},
@@ -23232,12 +23285,12 @@ Roo.extend(Roo.ai.Client, Roo.util.Observable, {
                 body.input = me.conversation;
             }
 
-            return me.fetchStreamRound(
-                endpoint, body, roundCtx, stream, signal, state, completions, runRound
+            me.fetchStreamRound(
+                endpoint, body, roundCtx, stream, signal, state, completions, runRound, roundDone
             );
         };
 
-        return runRound();
+        runRound(done);
     }
 });
 /*
