@@ -96,6 +96,50 @@
   ],
   "methods" : [
     {
+      "name" : "runPendingTool",
+      "type" : "function",
+      "desc" : "Run one tool from a pending LLM round and store the result chunk.",
+      "sig" : "(call, idx, results, callback)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "call",
+          "type" : "Object",
+          "desc" : "pending tool call",
+          "isOptional" : false
+        },
+        {
+          "name" : "idx",
+          "type" : "Number",
+          "desc" : "index in results array",
+          "isOptional" : false
+        },
+        {
+          "name" : "results",
+          "type" : "Array",
+          "desc" : "result chunks for this round",
+          "isOptional" : false
+        },
+        {
+          "name" : "callback",
+          "type" : "Function",
+          "desc" : "fires when this tool finishes",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "send",
       "type" : "function",
       "desc" : "Send a user message and stream the response.",

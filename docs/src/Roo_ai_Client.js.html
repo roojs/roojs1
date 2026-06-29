@@ -183,7 +183,7 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.mode </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'completions'</span><span class="jsdoc-syntax">;
     },
 
-    </span><span class="jsdoc-var">callTool </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">callTool </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">failure</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tool </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 
@@ -195,17 +195,47 @@
             </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
         }
 
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">failure</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">failure </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">error </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">err </span><span class="jsdoc-syntax">});
+            };
+        }
+
         </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tool </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tool.call</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Promise.resolve</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tool.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-var">tool.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">failure</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.onToolCall</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Promise.resolve</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.onToolCall</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.onToolCall</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
-            </span><span class="jsdoc-keyword">throw new </span><span class="jsdoc-var">Error</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">failure</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">);
         } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Promise.resolve</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">error </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">e.message </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">error </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">e.message </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">});
         }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Run one tool from a pending LLM round and store the result chunk.
+     *
+     * @param {Object} call pending tool call
+     * @param {Number} idx index in results array
+     * @param {Array} results result chunks for this round
+     * @param {Function} callback fires when this tool finishes
+     */
+    </span><span class="jsdoc-var">runPendingTool </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">idx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">me </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">me.callTool</span><span class="jsdoc-syntax">(
+            </span><span class="jsdoc-var">me.toolCallName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">),
+            </span><span class="jsdoc-var">me.parseToolCallArguments</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">me.toolCallArgumentsString</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">)),
+            </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">idx</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tool_result'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">();
+            }
+        );
     },
 
     </span><span class="jsdoc-var">wrapToolsForCompletions </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tools</span><span class="jsdoc-syntax">)
@@ -572,8 +602,10 @@
             </span><span class="jsdoc-var">pendingNext </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
         </span><span class="jsdoc-syntax">};
 
-        </span><span class="jsdoc-var">me.runSendStream</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">overrides</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">me.failSendStream</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">me.runSendStream</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">overrides</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">me.failSendStream</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">);
+            }
         });
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
@@ -718,7 +750,7 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'ok'</span><span class="jsdoc-syntax">;
     },
 
-    </span><span class="jsdoc-var">readFetchStream </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">readFetchStream </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">done</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">me </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">reader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response.body.getReader</span><span class="jsdoc-syntax">();
@@ -727,7 +759,8 @@
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">readChunks </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">signal </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">signal.aborted</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">throw new </span><span class="jsdoc-var">Error</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">done</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Error</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lines </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">stream </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">buffer.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">) : [</span><span class="jsdoc-var">buffer</span><span class="jsdoc-syntax">];
@@ -736,30 +769,35 @@
             }
 
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">me.processStreamLines</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lines</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-string">'finish'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">reader.releaseLock</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">done</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
 
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">reader.read</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">readResult</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">reader.read</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">readResult</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">readResult.done</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">buffer </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">decoder.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">readResult.value</span><span class="jsdoc-syntax">, { </span><span class="jsdoc-var">stream </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">});
-                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">readChunks</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">readChunks</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
                 }
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stream </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">buffer.trim</span><span class="jsdoc-syntax">()) {
                     </span><span class="jsdoc-var">buffer </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'\ndata: [DONE]'</span><span class="jsdoc-syntax">;
-                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">readChunks</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">readChunks</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
                 }
-            });
+                </span><span class="jsdoc-var">reader.releaseLock</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">done</span><span class="jsdoc-syntax">();
+            }, </span><span class="jsdoc-var">done</span><span class="jsdoc-syntax">);
         };
 
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">readChunks</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
-            </span><span class="jsdoc-var">reader.releaseLock</span><span class="jsdoc-syntax">();
-        });
+        </span><span class="jsdoc-var">readChunks</span><span class="jsdoc-syntax">();
     },
 
-    </span><span class="jsdoc-var">finalizeStreamRound </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">runRound</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">finalizeStreamRound </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">runRound</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">done</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state.done</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Promise.resolve</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">done</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">roundCtx.pendingCalls.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.finishStreamDone</span><span class="jsdoc-syntax">(
@@ -769,23 +807,21 @@
                 </span><span class="jsdoc-var">roundCtx.outputItems</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">state
             </span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Promise.resolve</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">done</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">me </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">roundCtx.pendingCalls.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">+= 1) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">roundCtx.pendingCalls.length</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">results </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pending</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">left </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pending</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">pending</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">+= 1) {
             </span><span class="jsdoc-var">roundCtx.pendingCalls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.streaming </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">me.pushStreamChunk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx.pendingCalls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">]);
         }
 
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Promise.all</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">roundCtx.pendingCalls.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">me.callTool</span><span class="jsdoc-syntax">(
-                </span><span class="jsdoc-var">me.toolCallName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">),
-                </span><span class="jsdoc-var">me.parseToolCallArguments</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">me.toolCallArgumentsString</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">))
-            )</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tool_result'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">call</span><span class="jsdoc-syntax">);
-            });
-        }))</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">onToolsDone </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
             </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">results.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">+= 1) {
                 </span><span class="jsdoc-var">me.pushStreamChunk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">]);
             }
@@ -802,11 +838,23 @@
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">me.appendToolResultsResponses</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">roundCtx.outputItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx.pendingCalls</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">);
             }
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">runRound</span><span class="jsdoc-syntax">();
-        });
+            </span><span class="jsdoc-var">runRound</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">done</span><span class="jsdoc-syntax">);
+        };
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">onToolDone </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-var">left </span><span class="jsdoc-syntax">-= 1;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">onToolsDone</span><span class="jsdoc-syntax">();
+        };
+
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">pending</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 1) {
+            </span><span class="jsdoc-var">me.runPendingTool</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">roundCtx.pendingCalls</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onToolDone</span><span class="jsdoc-syntax">);
+        }
     },
 
-    </span><span class="jsdoc-var">fetchStreamRound </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">endpoint</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">runRound</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">fetchStreamRound </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">endpoint</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">runRound</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">done</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">me </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
 
@@ -814,7 +862,7 @@
             </span><span class="jsdoc-var">body.chat_id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">me.chat_id</span><span class="jsdoc-syntax">;
         }
 
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">fetch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">endpoint</span><span class="jsdoc-syntax">, {
+        </span><span class="jsdoc-var">fetch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">endpoint</span><span class="jsdoc-syntax">, {
             </span><span class="jsdoc-var">method </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'POST'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">headers </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">me.getRequestHeaders</span><span class="jsdoc-syntax">(),
             </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">JSON.stringify</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">),
@@ -825,17 +873,22 @@
                 </span><span class="jsdoc-var">me.chat_id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cid</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">response.ok</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">response.text</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-keyword">throw new </span><span class="jsdoc-var">Error</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
-                });
+                </span><span class="jsdoc-var">response.text</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">done</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Error</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">));
+                }, </span><span class="jsdoc-var">done</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">me.readFetchStream</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.then</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
-                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">me.finalizeStreamRound</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">runRound</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">me.readFetchStream</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">done</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-var">me.finalizeStreamRound</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">runRound</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">done</span><span class="jsdoc-syntax">);
             });
-        });
+        }, </span><span class="jsdoc-var">done</span><span class="jsdoc-syntax">);
     },
 
-    </span><span class="jsdoc-var">runSendStream </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">overrides</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">runSendStream </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">overrides</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">done</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">me </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">completions </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.isCompletionsMode</span><span class="jsdoc-syntax">();
@@ -843,7 +896,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.buildRequestBody</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">overrides </span><span class="jsdoc-syntax">|| {});
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">stream </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">body.stream </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">runRound </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">runRound </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">roundDone</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">roundCtx </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">pendingCalls </span><span class="jsdoc-syntax">: [],
                 </span><span class="jsdoc-var">toolCallMap </span><span class="jsdoc-syntax">: {},
@@ -859,12 +912,12 @@
                 </span><span class="jsdoc-var">body.input </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">me.conversation</span><span class="jsdoc-syntax">;
             }
 
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">me.fetchStreamRound</span><span class="jsdoc-syntax">(
-                </span><span class="jsdoc-var">endpoint</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">runRound
+            </span><span class="jsdoc-var">me.fetchStreamRound</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">endpoint</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundCtx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stream</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">signal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">completions</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">runRound</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">roundDone
             </span><span class="jsdoc-syntax">);
         };
 
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">runRound</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">runRound</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">done</span><span class="jsdoc-syntax">);
     }
 });
 </span></code></body></html>
