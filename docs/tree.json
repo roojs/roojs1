@@ -1151,7 +1151,22 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.form.GridButton",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.form.GridField",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.form.GridImage",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.form.GridSpacer",
             "cn" : [],
             "is_class" : true
           },

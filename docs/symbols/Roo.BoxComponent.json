@@ -9,7 +9,10 @@
       "Roo.form.Checkbox",
       "Roo.form.DayPicker",
       "Roo.form.DisplayField",
+      "Roo.form.GridButton",
       "Roo.form.GridField",
+      "Roo.form.GridImage",
+      "Roo.form.GridSpacer",
       "Roo.form.HtmlEditor",
       "Roo.form.Signature",
       "Roo.form.TextField"
