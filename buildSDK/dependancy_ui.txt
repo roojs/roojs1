@@ -152,6 +152,9 @@ Roo.form.VTypes
 Roo.form.FCKeditor
 Roo.form.GridField
 Roo.form.DisplayField
+Roo.form.GridButton
+Roo.form.GridSpacer
+Roo.form.GridImage
 Roo.form.DayPicker
 Roo.form.ComboCheck
 Roo.form.Signature

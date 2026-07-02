@@ -1603,6 +1603,21 @@ Roo.form.DisplayField=function(A){Roo.form.DisplayField.superclass.constructor.c
 this.wrap=this.el.wrap();this.viewEl=this.wrap.createChild({tag:'div',cls:'x-form-displayfield'});if(this.closable){this.closeEl=this.wrap.createChild({tag:'div',cls:'x-dlg-close'});}if(this.bodyStyle){this.viewEl.applyStyles(this.bodyStyle);}this.setValue(this.value);
 },onClick:function(){},setValue:function(v){this.value=v;var A=this.valueRenderer?this.valueRenderer(v):String.format('{0}',v);if(!this.viewEl){return;}this.viewEl.dom.innerHTML=A;Roo.form.DisplayField.superclass.setValue.call(this,v);},onClose:function(e){e.preventDefault();
 this.fireEvent('close',this);}});
+// Roo/form/GridButton.js
+Roo.form.GridButton=function(A){Roo.form.GridButton.superclass.constructor.call(this,A);this.addEvents({click:true});};Roo.extend(Roo.form.GridButton,Roo.form.Field,{fieldLabel:'',labelSeparator:'',inputType:'hidden',allowBlank:true,value:'',text:'',itemCls:'x-form-item-grid-btn',focusClass:undefined,fieldClass:'x-form-field',getResizeEl:function(){return this.wrap;
+},getPositionEl:function(){return this.wrap;},isClickable:function(){var ce=this.events['click'];return ce&&ce.listeners&&ce.listeners.length>0;},initEvents:function(){Roo.form.GridButton.superclass.initEvents.call(this);if(this.viewEl&&this.isClickable()){this.viewEl.on('click',this.onBtnClick,this);
+}},onBtnClick:function(e){this.fireEvent('click',this,e);},onRender:function(ct,A){var B=this.cls;delete this.cls;Roo.form.GridButton.superclass.onRender.call(this,ct,A);var C='x-form-grid-btn';if(B){C+=' x-form-grid-btn-'+B;}if(this.isClickable()){C+=' x-form-grid-btn-clickable';
+}this.wrap=this.el.wrap({cls:'x-form-grid-btn-wrap'});this.viewEl=this.wrap.createChild({tag:'div',cls:C});if(this.text){this.setText(this.text);}else if(this.value){this.setText(this.value);}},setText:function(t){this.text=t||'';if(this.viewEl){this.viewEl.dom.innerHTML=Roo.util.Format.htmlEncode(this.text);
+}this.setValue(this.text);},setValue:function(v){v=typeof(v)=='undefined'||v===null?'':String(v);this.value=v;if(this.viewEl){this.text=v;this.viewEl.dom.innerHTML=Roo.util.Format.htmlEncode(v);}if(this.el){Roo.form.GridButton.superclass.setValue.call(this,v);
+}}});
+// Roo/form/GridSpacer.js
+Roo.form.GridSpacer=function(A){Roo.form.GridSpacer.superclass.constructor.call(this,A);};Roo.extend(Roo.form.GridSpacer,Roo.form.Field,{fieldLabel:'',labelSeparator:'',inputType:'hidden',allowBlank:true,value:'',height:6,itemCls:'x-form-item-grid-spacer',focusClass:undefined,fieldClass:'x-form-field',getResizeEl:function(){return this.wrap;
+},getPositionEl:function(){return this.wrap;},initEvents:Roo.emptyFn,onRender:function(ct,A){Roo.form.GridSpacer.superclass.onRender.call(this,ct,A);this.wrap=this.el.wrap({cls:'x-form-grid-spacer-wrap'});this.viewEl=this.wrap.createChild({tag:'div',cls:'x-form-grid-spacer',style:'height:'+(this.height||6)+'px'}
+);}});
+// Roo/form/GridImage.js
+Roo.form.GridImage=function(A){Roo.form.GridImage.superclass.constructor.call(this,A);};Roo.extend(Roo.form.GridImage,Roo.form.Field,{fieldLabel:'',labelSeparator:'',inputType:'hidden',allowBlank:true,value:'',src:'',alt:'',itemCls:'x-form-item-grid-image',focusClass:undefined,fieldClass:'x-form-field',getResizeEl:function(){return this.wrap;
+},getPositionEl:function(){return this.wrap;},initEvents:Roo.emptyFn,onRender:function(ct,A){Roo.form.GridImage.superclass.onRender.call(this,ct,A);this.wrap=this.el.wrap({cls:'x-form-grid-image-wrap'});this.viewEl=this.wrap.createChild({tag:'img',cls:'x-form-grid-image',src:this.src||'',alt:this.alt||''}
+);}});
 // Roo/form/DayPicker.js
 Roo.form.DayPicker=function(A){Roo.form.DayPicker.superclass.constructor.call(this,A);};Roo.extend(Roo.form.DayPicker,Roo.form.Field,{focusClass:undefined,fieldClass:"x-form-field",defaultAutoCreate:{tag:"input",type:'hidden',autocomplete:"new-password"},actionMode:'viewEl',inputType:'hidden',inputElement:false,basedOn:false,isFormField:true,onResize:function(){Roo.form.Checkbox.superclass.onResize.apply(this,arguments);
 if(!this.boxLabel){this.el.alignTo(this.wrap,'c-c');}},initEvents:function(){Roo.form.Checkbox.superclass.initEvents.call(this);this.el.on("click",this.onClick,this);this.el.on("change",this.onClick,this);},getResizeEl:function(){return this.wrap;},getPositionEl:function(){return this.wrap;

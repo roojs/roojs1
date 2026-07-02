@@ -322,6 +322,89 @@ textarea.x-form-field.roo-voice-active {
     visibility: hidden;
 }
 
+/* ---------------------- GRID BUTTON / SPACER (home nav) --------------------- */
+
+.x-form-item-grid-btn .x-form-element,
+.x-form-item-grid-spacer .x-form-element,
+.x-form-item-grid-image .x-form-element {
+    padding-left: 0;
+}
+
+.x-form-grid-image-wrap {
+    width: 100%;
+    padding: 0 0 8px 0;
+}
+
+.x-form-grid-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 220px;
+}
+
+.x-form-grid-btn {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px 10px;
+    border: 0;
+    border-bottom: 1px solid #ffffff;
+    text-align: left;
+    text-decoration: none;
+    line-height: 15px;
+    font: normal 11px tahoma, verdana, helvetica;
+}
+
+.x-form-grid-btn-primary {
+    background: #5D738A;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.x-form-grid-btn-secondary {
+    background: #B8C2CC;
+    color: #333333;
+}
+
+.x-form-grid-btn-light {
+    background: #E9E9E9;
+    color: #333333;
+}
+
+.x-form-grid-btn-warning {
+    background: #FFF3C4;
+    color: #333333;
+}
+
+.x-form-grid-btn-clickable {
+    cursor: pointer;
+}
+
+.x-form-grid-btn-clickable.x-form-grid-btn-light:hover {
+    background: #DCDCDC;
+}
+
+.x-form-grid-btn-clickable.x-form-grid-btn-secondary:hover {
+    background: #A8B4BF;
+}
+
+.x-form-grid-btn-clickable.x-form-grid-btn-warning:hover {
+    background: #FFE9A8;
+}
+
+.x-form-grid-spacer-wrap,
+.x-form-grid-btn-wrap {
+    width: 100%;
+}
+
+.x-form-grid-spacer {
+    display: block;
+    width: 100%;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
 
 
 
