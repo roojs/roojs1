@@ -1,0 +1,57 @@
+<html><head><title>Roo/form/GridImage.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+/**
+ * @class Roo.form.GridImage
+ * @extends Roo.form.Field
+ * Static image for grid-style form layouts (e.g. home dashboard logo).
+ * @cfg {String} src Image URL (absolute or site-relative)
+ * @cfg {String} alt Alt text for the img element
+ * @constructor
+ * @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.form.GridImage </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.form.GridImage.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.GridImage</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form.Field</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">fieldLabel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">labelSeparator </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">inputType </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">allowBlank </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">alt </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">itemCls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-form-item-grid-image'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">focusClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">fieldClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-form-field'</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">getResizeEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.wrap</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getPositionEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.wrap</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.form.GridImage.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.wrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-form-grid-image-wrap'</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.viewEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.wrap.createChild</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-form-grid-image'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.src </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">alt </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.alt </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
+        </span><span class="jsdoc-syntax">});
+    }
+});
+</span></code></body></html>
