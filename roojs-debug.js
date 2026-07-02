@@ -87862,6 +87862,7 @@ Roo.extend(Roo.form.GridButton, Roo.form.Field, {
     itemCls : 'x-form-item-grid-btn',
     focusClass : undefined,
     fieldClass : 'x-form-field',
+    actionMode : 'fieldEl',
 
     getResizeEl : function(){
         return this.wrap;
@@ -87965,6 +87966,7 @@ Roo.extend(Roo.form.GridSpacer, Roo.form.Field, {
     itemCls : 'x-form-item-grid-spacer',
     focusClass : undefined,
     fieldClass : 'x-form-field',
+    actionMode : 'fieldEl',
 
     getResizeEl : function(){
         return this.wrap;
