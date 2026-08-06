@@ -78699,6 +78699,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 cls : this.cls,
                 frameborder : 0,
                 allowfullscreen : true,
+                referrerpolicy : 'strict-origin-when-cross-origin',
                 width : 768,  // these are for video tricks - that we replace the outer
                 height: (image_width && image_height) ? (Math.round(768 / image_width * image_height)) : 576,
                 src : this.video_url,
