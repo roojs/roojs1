@@ -38181,6 +38181,16 @@ layout.addxtype({
         // }
         var ret = false;
 
+        if (!cfg) {
+            Roo.log("Roo.layout.Border.addxtype: item is undefined (empty slot in items[])");
+            return false;
+        }
+        if (!cfg.xtype) {
+            Roo.log("Roo.layout.Border.addxtype: missing xtype");
+            Roo.log(cfg);
+            return false;
+        }
+
         if (typeof(cfg.region) == 'undefined') {
             Roo.log("Failed to add Panel, region was not set");
             Roo.log(cfg);
@@ -38216,6 +38226,11 @@ layout.addxtype({
                 //var el = this.getRegion(region).el.createChild();
                 var el = this.el.createChild();
                 // create the grid first...
+                if (!cfg.grid || !cfg.grid.xtype) {
+                    Roo.log("Roo.layout.Border.addxtype: Grid needs grid: { xtype: 'Grid', ... } (builder *prop grid), not items[]");
+                    Roo.log(cfg);
+                    return false;
+                }
                 
                 var grid = new Roo.grid[cfg.grid.xtype](el, cfg.grid);
                 delete cfg.grid;
@@ -38238,6 +38253,11 @@ layout.addxtype({
             case 'NestedLayout': 
                 // create a new Layout (which is  a Border Layout...
                 var el = this.el.createChild();
+                if (!cfg.layout) {
+                    Roo.log("Roo.layout.Border.addxtype: NestedLayout needs layout: { center: {}, items: [...] } (builder *prop layout)");
+                    Roo.log(cfg);
+                    return false;
+                }
                 var clayout = cfg.layout;
                 delete cfg.layout;
                 clayout.items   = clayout.items  || [];
@@ -38288,6 +38308,11 @@ layout.addxtype({
             case 'NestedLayoutPanel': 
                 // create a new Layout (which is  a Border Layout...
                 var el = this.el.createChild();
+                if (!cfg.layout) {
+                    Roo.log("Roo.layout.Border.addxtype: NestedLayoutPanel needs layout: { center: {}, items: [...] } (builder *prop layout)");
+                    Roo.log(cfg);
+                    return false;
+                }
                 var clayout = cfg.layout;
                 delete cfg.layout;
                 clayout.items   = clayout.items  || [];
@@ -38313,6 +38338,11 @@ layout.addxtype({
                 //var el = this.getRegion(region).el.createChild();
                 var el = this.el.createChild();
                 // create the grid first...
+                if (!cfg.grid || !cfg.grid.xtype) {
+                    Roo.log("Roo.layout.Border.addxtype: GridPanel needs grid: { xtype: 'Grid', ... } (builder *prop grid), not items[]");
+                    Roo.log(cfg);
+                    return false;
+                }
                 
                 var grid = new Roo.grid[cfg.grid.xtype](el, cfg.grid);
                 delete cfg.grid;
@@ -38357,6 +38387,18 @@ layout.addxtype({
         var region = '';
         var abn = {};
         Roo.each(xitems, function(i)  {
+            if (!i) {
+                Roo.log("Roo.layout.Border.addxtype: child item is undefined under " + cfg.xtype);
+                return;
+            }
+            if (!i.xtype) {
+                Roo.log("Roo.layout.Border.addxtype: child missing xtype under " + cfg.xtype);
+                Roo.log(i);
+                return;
+            }
+            if (!ret || !ret.addxtype) {
+                return;
+            }
             region = nb && i.region ? i.region : false;
             
             var add = ret.addxtype(i);

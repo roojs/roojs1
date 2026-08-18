@@ -398,6 +398,16 @@ layout.addxtype({
         // }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Roo.layout.Border.addxtype: item is undefined (empty slot in items[])&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Roo.layout.Border.addxtype: missing xtype&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.region</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Failed to add Panel, region was not set&quot;</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
@@ -433,6 +443,11 @@ layout.addxtype({
                 //var el = this.getRegion(region).el.createChild();
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-comment">// create the grid first...
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cfg.grid </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">cfg.grid.xtype</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Roo.layout.Border.addxtype: Grid needs grid: { xtype: 'Grid', ... } (builder *prop grid), not items[]&quot;</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+                }
 
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.grid</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.grid.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg.grid</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">cfg.grid</span><span class="jsdoc-syntax">;
@@ -455,6 +470,11 @@ layout.addxtype({
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'NestedLayout'</span><span class="jsdoc-syntax">:
                 </span><span class="jsdoc-comment">// create a new Layout (which is  a Border Layout...
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cfg.layout</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Roo.layout.Border.addxtype: NestedLayout needs layout: { center: {}, items: [...] } (builder *prop layout)&quot;</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+                }
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">clayout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.layout</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">cfg.layout</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">clayout.items   </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">clayout.items  </span><span class="jsdoc-syntax">|| [];
@@ -505,6 +525,11 @@ layout.addxtype({
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'NestedLayoutPanel'</span><span class="jsdoc-syntax">:
                 </span><span class="jsdoc-comment">// create a new Layout (which is  a Border Layout...
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cfg.layout</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Roo.layout.Border.addxtype: NestedLayoutPanel needs layout: { center: {}, items: [...] } (builder *prop layout)&quot;</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+                }
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">clayout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.layout</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">cfg.layout</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">clayout.items   </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">clayout.items  </span><span class="jsdoc-syntax">|| [];
@@ -530,6 +555,11 @@ layout.addxtype({
                 //var el = this.getRegion(region).el.createChild();
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-comment">// create the grid first...
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cfg.grid </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">cfg.grid.xtype</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Roo.layout.Border.addxtype: GridPanel needs grid: { xtype: 'Grid', ... } (builder *prop grid), not items[]&quot;</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+                }
 
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.grid</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.grid.xtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg.grid</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">cfg.grid</span><span class="jsdoc-syntax">;
@@ -574,6 +604,18 @@ layout.addxtype({
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">abn </span><span class="jsdoc-syntax">= {};
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xitems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)  {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Roo.layout.Border.addxtype: child item is undefined under &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">i.xtype</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Roo.layout.Border.addxtype: child missing xtype under &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cfg.xtype</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">ret.addxtype</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
             </span><span class="jsdoc-var">region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nb </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">i.region </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">i.region </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ret.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
