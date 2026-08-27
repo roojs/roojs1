@@ -682,6 +682,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">uid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'FORM_UID'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">uid</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">uid.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">crypto.randomUUID</span><span class="jsdoc-syntax">());
+            </span><span class="jsdoc-comment">// setValue after resetHasChanged would leave FORM_UID dirty forever
+            </span><span class="jsdoc-var">uid.originalValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">uid.getValue</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">uid.resetHasChanged</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">uid.resetHasChanged</span><span class="jsdoc-syntax">();
+            }
         }
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;

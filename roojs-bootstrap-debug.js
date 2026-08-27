@@ -30619,6 +30619,13 @@ Roo.htmleditor.Block.prototype = {
     // text for button to delete this element
     deleteTitle : false,
     
+    /**
+     * If false, callers that insert blocks may place this after the top-level
+     * body child containing the selection rather than nesting it. Default true.
+     * Insertion code can honour this if it chooses to.
+     */
+    nestable : true,
+    
     context : false,
     /**
      * Update a node with values from this object
