@@ -682,6 +682,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         var uid = this.findField('FORM_UID');
         if (uid) {  
             uid.setValue(crypto.randomUUID());
+            // setValue after resetHasChanged would leave FORM_UID dirty forever
+            uid.originalValue = uid.getValue();
+            if (uid.resetHasChanged) {
+                uid.resetHasChanged();
+            }
         }
         
         return this;
