@@ -133,6 +133,14 @@
       "optvals" : []
     },
     {
+      "name" : "keep_data_block",
+      "type" : "boolean",
+      "desc" : "- default false - see HtmlEditorCore.keep_data_block",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",

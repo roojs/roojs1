@@ -2,26 +2,30 @@
 
 <span class="jsdoc-comment">/**
  * @class Roo.htmleditor.FilterBlock
- * removes id / contenteditable that are associated with blocks.
- * Keeps data-block so custom blocks (Hero etc.) round-trip after save.
+ * removes id / contenteditable (and data-block unless keep_data_block) from a cloned block DOM
  * usage should be done on a cloned copy of the dom
  * @constructor
-* Run a new Attribute Filter { node : xxxx }}
-* @param {Object} config Configuration options
+ * Run a new Attribute Filter { node : xxxx }}
+ * @param {Object} config Configuration options
+ * @cfg {DomElement} node clone root
+ * @cfg {boolean} keep_data_block default false - when true, leave data-block on the clone
  */
+
 </span><span class="jsdoc-var">Roo.htmleditor.FilterBlock </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
 {
     </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">qa </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.node.querySelectorAll</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.keep_data_block</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.removeAttributes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">);
+    }
     </span><span class="jsdoc-var">this.removeAttributes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'contenteditable'</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.removeAttributes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'id'</span><span class="jsdoc-syntax">);
-
 }
 
 </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.htmleditor.FilterBlock.prototype</span><span class="jsdoc-syntax">,
 {
     </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// all tags
 
+    </span><span class="jsdoc-var">keep_data_block </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">removeAttributes </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">)
     {
@@ -34,4 +38,5 @@
 
 
 
-});</span></code></body></html>
+});
+</span></code></body></html>

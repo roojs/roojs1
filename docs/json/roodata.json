@@ -19938,6 +19938,14 @@
         ]
       },
       {
+        "name" : "keep_data_block",
+        "type" : "boolean",
+        "desc" : "- default false - keep data-block on sync and factory [data-block] on push/paste",
+        "memberOf" : "",
+        "isOptional" : false,
+        "optvals" : []
+      },
+      {
         "name" : "language",
         "type" : "String",
         "desc" : "default en - language of text (usefull for rtl languages)",
@@ -252137,6 +252145,14 @@
         ]
       },
       {
+        "name" : "keep_data_block",
+        "type" : "boolean",
+        "desc" : "- default false - see HtmlEditorCore.keep_data_block",
+        "memberOf" : "",
+        "isOptional" : false,
+        "optvals" : []
+      },
+      {
         "name" : "labelSeparator",
         "type" : "String",
         "desc" : "the ':' after a field label (default :)  = set it to empty string to hide the field label.",
@@ -295340,7 +295356,24 @@
     "tree_parent" : []
   },
   "Roo.htmleditor.FilterBlock" : {
-    "props" : [],
+    "props" : [
+      {
+        "name" : "keep_data_block",
+        "type" : "boolean",
+        "desc" : "default false - when true, leave data-block on the clone",
+        "memberOf" : "",
+        "isOptional" : false,
+        "optvals" : []
+      },
+      {
+        "name" : "node",
+        "type" : "DomElement",
+        "desc" : "clone root",
+        "memberOf" : "",
+        "isOptional" : false,
+        "optvals" : []
+      }
+    ],
     "events" : [],
     "methods" : [],
     "isAbstract" : false,

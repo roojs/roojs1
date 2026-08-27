@@ -4,7 +4,7 @@
   "childClasses" : {  },
   "tree_children" : [],
   "tree_parent" : [],
-  "desc" : "removes id / contenteditable that are associated with blocks.\nKeeps data-block so custom blocks (Hero etc.) round-trip after save.\nusage should be done on a cloned copy of the dom",
+  "desc" : "removes id / contenteditable (and data-block unless keep_data_block) from a cloned block DOM\nusage should be done on a cloned copy of the dom",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
@@ -26,7 +26,24 @@
   "returns" : [],
   "throws" : "",
   "requires" : "",
-  "config" : [],
+  "config" : [
+    {
+      "name" : "keep_data_block",
+      "type" : "boolean",
+      "desc" : "default false - when true, leave data-block on the clone",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "node",
+      "type" : "DomElement",
+      "desc" : "clone root",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    }
+  ],
   "methods" : [],
   "events" : []
 }

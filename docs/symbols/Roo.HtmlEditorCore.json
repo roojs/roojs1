@@ -115,6 +115,14 @@
       "optvals" : []
     },
     {
+      "name" : "keep_data_block",
+      "type" : "boolean",
+      "desc" : "- default false - keep data-block on sync and factory [data-block] on push/paste",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "width",
       "type" : "Number",
       "desc" : "(in pixels)",
