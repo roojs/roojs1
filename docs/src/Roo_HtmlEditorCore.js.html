@@ -381,6 +381,11 @@
                         </span><span class="jsdoc-var">bf.updateElement</span><span class="jsdoc-syntax">();
                     }
                 });
+
+                </span><span class="jsdoc-comment">// Custom data-block regions (Hero etc.) — rewrite from Block.toObject before clone/filters
+                </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bd.querySelectorAll</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[data-block]'</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+                });
             }
 
 
@@ -431,6 +436,7 @@
                             </span><span class="jsdoc-string">'data-image-height'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-string">'data-caption'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-string">'data-border'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-string">'start' </span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-string">'dir'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">,

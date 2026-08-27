@@ -4,7 +4,7 @@
   "childClasses" : {  },
   "tree_children" : [],
   "tree_parent" : [],
-  "desc" : "removes id / data-block and contenteditable that are associated with blocks\nusage should be done on a cloned copy of the dom",
+  "desc" : "removes id / contenteditable that are associated with blocks.\nKeeps data-block so custom blocks (Hero etc.) round-trip after save.\nusage should be done on a cloned copy of the dom",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,

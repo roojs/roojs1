@@ -94,6 +94,10 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      * @cfg {boolean} enableBlocks - default true - if the block editor (table and figure should be enabled)
      */
     enableBlocks : true,
+    /**
+     * @cfg {boolean} keep_data_block - default false - see HtmlEditorCore.keep_data_block
+     */
+    keep_data_block : false,
     
     /**
      * @cfg {boolean} autoClean - default true - loading and saving will remove quite a bit of formating,

@@ -54,6 +54,10 @@
         </span><span class="jsdoc-var">ia</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">ia</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">ia</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'figure'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">// Custom blocks (Hero etc.) identified by data-block
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.query</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[data-block]'</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
     }
     </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.query</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {

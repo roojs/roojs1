@@ -2,7 +2,8 @@
 
 <span class="jsdoc-comment">/**
  * @class Roo.htmleditor.FilterBlock
- * removes id / data-block and contenteditable that are associated with blocks
+ * removes id / contenteditable that are associated with blocks.
+ * Keeps data-block so custom blocks (Hero etc.) round-trip after save.
  * usage should be done on a cloned copy of the dom
  * @constructor
 * Run a new Attribute Filter { node : xxxx }}
@@ -12,7 +13,6 @@
 {
     </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">qa </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.node.querySelectorAll</span><span class="jsdoc-syntax">;
-    </span><span class="jsdoc-var">this.removeAttributes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.removeAttributes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'contenteditable'</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.removeAttributes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'id'</span><span class="jsdoc-syntax">);
 

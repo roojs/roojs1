@@ -29134,26 +29134,30 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
 
 /**
  * @class Roo.htmleditor.FilterBlock
- * removes id / data-block and contenteditable that are associated with blocks
+ * removes id / contenteditable (and data-block unless keep_data_block) from a cloned block DOM
  * usage should be done on a cloned copy of the dom
  * @constructor
-* Run a new Attribute Filter { node : xxxx }}
-* @param {Object} config Configuration options
+ * Run a new Attribute Filter { node : xxxx }}
+ * @param {Object} config Configuration options
+ * @cfg {DomElement} node clone root
+ * @cfg {boolean} keep_data_block default false - when true, leave data-block on the clone
  */
+
 Roo.htmleditor.FilterBlock = function(cfg)
 {
     Roo.apply(this, cfg);
-    var qa = cfg.node.querySelectorAll;
-    this.removeAttributes('data-block');
+    if (!this.keep_data_block) {
+        this.removeAttributes('data-block');
+    }
     this.removeAttributes('contenteditable');
     this.removeAttributes('id');
-    
 }
 
 Roo.apply(Roo.htmleditor.FilterBlock.prototype,
 {
     node: true, // all tags
-     
+
+    keep_data_block : false,
      
     removeAttributes : function(attr)
     {
@@ -29167,6 +29171,7 @@ Roo.apply(Roo.htmleditor.FilterBlock.prototype,
         
     
 });
+
 /***
  * This is based loosely on tinymce 
  * @class Roo.htmleditor.TidySerializer
@@ -32801,6 +32806,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     enableBlocks : true,
     /**
+     * @cfg {boolean} keep_data_block - default false - keep data-block on sync and factory [data-block] on push/paste
+     */
+    keep_data_block : false,
+    /**
      * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
      * 
      */
@@ -33064,6 +33073,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                         bf.updateElement();
                     }
                 });
+                if (this.keep_data_block) {
+                    Array.from(bd.querySelectorAll('[data-block]')).forEach(function(el) {
+                        Roo.htmleditor.Block.factory(el);
+                    });
+                }
             }
            
             
@@ -33089,7 +33103,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
            
             if (this.enableBlocks) {
-                new Roo.htmleditor.FilterBlock({ node : div });
+                new Roo.htmleditor.FilterBlock({
+                    node : div,
+                    keep_data_block : this.keep_data_block
+                });
             }
             
             var html = div.innerHTML;
@@ -33097,10 +33114,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             //?? tidy?
             if (this.autoClean) {
                 new Roo.htmleditor.FilterBlack({ node : div, tag : this.black});
-                new Roo.htmleditor.FilterAttributes({
-                    node : div,
-                    lang : this.language,
-                    attrib_white : [
+                var aw = [
                             'href',
                             'src',
                             'name',
@@ -33123,8 +33137,15 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'frameborder',
                             'width',
                             'height',
-                            'alt' 
-                            ],
+                            'alt'
+                            ];
+                if (this.keep_data_block) {
+                    aw.push('data-block');
+                }
+                new Roo.htmleditor.FilterAttributes({
+                    node : div,
+                    lang : this.language,
+                    attrib_white : aw,
                     attrib_clean : ['href', 'src' ] 
                 });
                 new Roo.htmleditor.FilterEmpty({ node : div});
@@ -33204,6 +33225,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
             if (this.enableBlocks) {
                 Roo.htmleditor.Block.initAll(this.doc.body);
+                if (this.keep_data_block) {
+                    Roo.each(Roo.get(this.doc.body).query('[data-block]'), function(e) {
+                        Roo.htmleditor.Block.factory(e);
+                    });
+                }
             }
             
             this.updateLanguage();
@@ -33505,6 +33531,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.insertAtCursor(d.innerHTML.replace(/&nbsp;/g,' '));
         if (this.enableBlocks) {
             Roo.htmleditor.Block.initAll(this.doc.body);
+            if (this.keep_data_block) {
+                Roo.each(Roo.get(this.doc.body).query('[data-block]'), function(e) {
+                    Roo.htmleditor.Block.factory(e);
+                });
+            }
         }
          
         

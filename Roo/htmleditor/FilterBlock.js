@@ -2,26 +2,30 @@
 
 /**
  * @class Roo.htmleditor.FilterBlock
- * removes id / data-block and contenteditable that are associated with blocks
+ * removes id / contenteditable (and data-block unless keep_data_block) from a cloned block DOM
  * usage should be done on a cloned copy of the dom
  * @constructor
-* Run a new Attribute Filter { node : xxxx }}
-* @param {Object} config Configuration options
+ * Run a new Attribute Filter { node : xxxx }}
+ * @param {Object} config Configuration options
+ * @cfg {DomElement} node clone root
+ * @cfg {boolean} keep_data_block default false - when true, leave data-block on the clone
  */
+
 Roo.htmleditor.FilterBlock = function(cfg)
 {
     Roo.apply(this, cfg);
-    var qa = cfg.node.querySelectorAll;
-    this.removeAttributes('data-block');
+    if (!this.keep_data_block) {
+        this.removeAttributes('data-block');
+    }
     this.removeAttributes('contenteditable');
     this.removeAttributes('id');
-    
 }
 
 Roo.apply(Roo.htmleditor.FilterBlock.prototype,
 {
     node: true, // all tags
-     
+
+    keep_data_block : false,
      
     removeAttributes : function(attr)
     {
