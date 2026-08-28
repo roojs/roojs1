@@ -134,7 +134,7 @@
     },
     {
       "name" : "keep_data_block",
-      "type" : "boolean",
+      "type" : "Array|false",
       "desc" : "- default false - see HtmlEditorCore.keep_data_block",
       "memberOf" : "",
       "isOptional" : false,

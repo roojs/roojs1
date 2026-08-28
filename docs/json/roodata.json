@@ -19939,8 +19939,8 @@
       },
       {
         "name" : "keep_data_block",
-        "type" : "boolean",
-        "desc" : "- default false - keep data-block on sync and factory [data-block] on push/paste",
+        "type" : "Array|false",
+        "desc" : "- default false, or array of data-block-related attr names\n  (e.g. ['data-block'] or ['data-block','data-multicell-id',...]); truthy ⇒ blocks path",
         "memberOf" : "",
         "isOptional" : false,
         "optvals" : []
@@ -252146,7 +252146,7 @@
       },
       {
         "name" : "keep_data_block",
-        "type" : "boolean",
+        "type" : "Array|false",
         "desc" : "- default false - see HtmlEditorCore.keep_data_block",
         "memberOf" : "",
         "isOptional" : false,
@@ -294971,6 +294971,25 @@
     "events" : [],
     "methods" : [
       {
+        "name" : "beforeSave",
+        "type" : "function",
+        "desc" : "Called on sync clone for each [data-block] before FilterAttributes. Override to strip derived DOM.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "",
+        "isStatic" : false,
+        "isConstructor" : false,
+        "isPrivate" : false,
+        "example" : "",
+        "deprecated" : "",
+        "since" : "",
+        "see" : "",
+        "exceptions" : "",
+        "requires" : "",
+        "params" : [],
+        "returns" : []
+      },
+      {
         "name" : "factory",
         "type" : "function",
         "desc" : "factory method to get the block from an element (using cache if necessary)",
@@ -295359,8 +295378,8 @@
     "props" : [
       {
         "name" : "keep_data_block",
-        "type" : "boolean",
-        "desc" : "default false - when true, leave data-block on the clone",
+        "type" : "Array|false",
+        "desc" : "default false - array ⇒ leave data-block on the clone",
         "memberOf" : "",
         "isOptional" : false,
         "optvals" : []

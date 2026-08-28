@@ -162,6 +162,25 @@
       "returns" : []
     },
     {
+      "name" : "beforeSave",
+      "type" : "function",
+      "desc" : "Called on sync clone for each [data-block] before FilterAttributes. Override to strip derived DOM.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
       "name" : "readElement",
       "type" : "function",
       "desc" : "Read a node that has a 'data-block' property - and extract the values from it.",

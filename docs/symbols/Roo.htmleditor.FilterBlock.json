@@ -29,8 +29,8 @@
   "config" : [
     {
       "name" : "keep_data_block",
-      "type" : "boolean",
-      "desc" : "default false - when true, leave data-block on the clone",
+      "type" : "Array|false",
+      "desc" : "default false - array ⇒ leave data-block on the clone",
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []

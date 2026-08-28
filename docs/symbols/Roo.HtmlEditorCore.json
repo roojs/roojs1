@@ -116,8 +116,8 @@
     },
     {
       "name" : "keep_data_block",
-      "type" : "boolean",
-      "desc" : "- default false - keep data-block on sync and factory [data-block] on push/paste",
+      "type" : "Array|false",
+      "desc" : "- default false, or array of data-block-related attr names\n  (e.g. ['data-block'] or ['data-block','data-multicell-id',...]); truthy ⇒ blocks path",
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []

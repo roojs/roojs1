@@ -118,7 +118,8 @@
      */
     </span><span class="jsdoc-var">enableBlocks </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
-     * @cfg {boolean} keep_data_block - default false - keep data-block on sync and factory [data-block] on push/paste
+     * @cfg {Array|false} keep_data_block - default false, or array of data-block-related attr names
+     *   (e.g. ['data-block'] or ['data-block','data-multicell-id',...]); truthy ⇒ blocks path
      */
     </span><span class="jsdoc-var">keep_data_block </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
@@ -419,6 +420,14 @@
                     </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">div</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">keep_data_block </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.keep_data_block
                 </span><span class="jsdoc-syntax">});
+                </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">div.querySelectorAll</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[data-block]'</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">Cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.htmleditor</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'Block' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">];
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Cls</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                    }
+                    </span><span class="jsdoc-var">Cls.prototype.beforeSave</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+                });
             }
 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">div.innerHTML</span><span class="jsdoc-syntax">;
@@ -452,7 +461,7 @@
                             </span><span class="jsdoc-string">'alt'
                             </span><span class="jsdoc-syntax">];
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.keep_data_block</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">aw.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">aw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">aw.concat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.keep_data_block</span><span class="jsdoc-syntax">);
                 }
                 </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterAttributes</span><span class="jsdoc-syntax">({
                     </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">div</span><span class="jsdoc-syntax">,
