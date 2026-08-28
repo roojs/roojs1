@@ -26120,6 +26120,9 @@ Roo.htmleditor.Block.prototype = {
 
     /** Called on sync clone for each [data-block] before FilterAttributes. Override to strip derived DOM. */
     beforeSave : function(node) {},
+
+    /** Called after Insert block places HTML. Override when the block needs follow-up (e.g. POST). */
+    afterInsert : function(field, pageId) {},
     
     context : false,
     /**
