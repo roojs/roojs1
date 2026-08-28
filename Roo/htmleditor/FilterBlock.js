@@ -8,7 +8,7 @@
  * Run a new Attribute Filter { node : xxxx }}
  * @param {Object} config Configuration options
  * @cfg {DomElement} node clone root
- * @cfg {boolean} keep_data_block default false - when true, leave data-block on the clone
+ * @cfg {Array|false} keep_data_block default false - array ⇒ leave data-block on the clone
  */
 
 Roo.htmleditor.FilterBlock = function(cfg)

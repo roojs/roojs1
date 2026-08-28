@@ -95,7 +95,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      */
     enableBlocks : true,
     /**
-     * @cfg {boolean} keep_data_block - default false - see HtmlEditorCore.keep_data_block
+     * @cfg {Array|false} keep_data_block - default false - see HtmlEditorCore.keep_data_block
      */
     keep_data_block : false,
     

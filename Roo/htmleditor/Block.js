@@ -80,6 +80,9 @@ Roo.htmleditor.Block.prototype = {
      * Insertion code can honour this if it chooses to.
      */
     nestable : true,
+
+    /** Called on sync clone for each [data-block] before FilterAttributes. Override to strip derived DOM. */
+    beforeSave : function(node) {},
     
     context : false,
     /**

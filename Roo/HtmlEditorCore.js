@@ -118,7 +118,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     enableBlocks : true,
     /**
-     * @cfg {boolean} keep_data_block - default false - keep data-block on sync and factory [data-block] on push/paste
+     * @cfg {Array|false} keep_data_block - default false, or array of data-block-related attr names
+     *   (e.g. ['data-block'] or ['data-block','data-multicell-id',...]); truthy ⇒ blocks path
      */
     keep_data_block : false,
     /**
@@ -419,6 +420,14 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     node : div,
                     keep_data_block : this.keep_data_block
                 });
+                Array.from(div.querySelectorAll('[data-block]')).forEach(function(el) {
+                    var name = el.getAttribute('data-block');
+                    var Cls = Roo.htmleditor['Block' + name];
+                    if (!Cls) {
+                        return;
+                    }
+                    Cls.prototype.beforeSave(el);
+                });
             }
             
             var html = div.innerHTML;
@@ -452,7 +461,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'alt'
                             ];
                 if (this.keep_data_block) {
-                    aw.push('data-block');
+                    aw = aw.concat(this.keep_data_block);
                 }
                 new Roo.htmleditor.FilterAttributes({
                     node : div,

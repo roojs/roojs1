@@ -24632,7 +24632,7 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
  * Run a new Attribute Filter { node : xxxx }}
  * @param {Object} config Configuration options
  * @cfg {DomElement} node clone root
- * @cfg {boolean} keep_data_block default false - when true, leave data-block on the clone
+ * @cfg {Array|false} keep_data_block default false - array ⇒ leave data-block on the clone
  */
 
 Roo.htmleditor.FilterBlock = function(cfg)
@@ -26117,6 +26117,9 @@ Roo.htmleditor.Block.prototype = {
      * Insertion code can honour this if it chooses to.
      */
     nestable : true,
+
+    /** Called on sync clone for each [data-block] before FilterAttributes. Override to strip derived DOM. */
+    beforeSave : function(node) {},
     
     context : false,
     /**
@@ -28305,7 +28308,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     enableBlocks : true,
     /**
-     * @cfg {boolean} keep_data_block - default false - keep data-block on sync and factory [data-block] on push/paste
+     * @cfg {Array|false} keep_data_block - default false, or array of data-block-related attr names
+     *   (e.g. ['data-block'] or ['data-block','data-multicell-id',...]); truthy ⇒ blocks path
      */
     keep_data_block : false,
     /**
@@ -28606,6 +28610,14 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     node : div,
                     keep_data_block : this.keep_data_block
                 });
+                Array.from(div.querySelectorAll('[data-block]')).forEach(function(el) {
+                    var name = el.getAttribute('data-block');
+                    var Cls = Roo.htmleditor['Block' + name];
+                    if (!Cls) {
+                        return;
+                    }
+                    Cls.prototype.beforeSave(el);
+                });
             }
             
             var html = div.innerHTML;
@@ -28639,7 +28651,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'alt'
                             ];
                 if (this.keep_data_block) {
-                    aw.push('data-block');
+                    aw = aw.concat(this.keep_data_block);
                 }
                 new Roo.htmleditor.FilterAttributes({
                     node : div,
@@ -30266,7 +30278,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      */
     enableBlocks : true,
     /**
-     * @cfg {boolean} keep_data_block - default false - see HtmlEditorCore.keep_data_block
+     * @cfg {Array|false} keep_data_block - default false - see HtmlEditorCore.keep_data_block
      */
     keep_data_block : false,
     
