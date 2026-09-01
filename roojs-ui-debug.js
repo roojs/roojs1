@@ -48260,7 +48260,7 @@ Roo.extend(Roo.XTemplate, Roo.Template, {
                 return "'"+ sep +   udef_st   +    format + name + args + "))"+sep+"'";
             }
              
-            if (args.length) {
+            if (args && args.length) {
                 // called with xxyx.yuu:(test,test)
                 // change to ()
                 return "'"+ sep + udef_st  + name + '(' +  args + "))"+sep+"'";
