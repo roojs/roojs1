@@ -233,6 +233,25 @@
       "returns" : []
     },
     {
+      "name" : "afterInsert",
+      "type" : "function",
+      "desc" : "Called after Insert block places HTML. Override when the block needs follow-up (e.g. POST).",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
       "name" : "updateElement",
       "type" : "function",
       "desc" : "Update a node with values from this object",

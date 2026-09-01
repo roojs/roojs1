@@ -84,6 +84,9 @@
     </span><span class="jsdoc-comment">/** Called on sync clone for each [data-block] before FilterAttributes. Override to strip derived DOM. */
     </span><span class="jsdoc-var">beforeSave </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {},
 
+    </span><span class="jsdoc-comment">/** Called after Insert block places HTML. Override when the block needs follow-up (e.g. POST). */
+    </span><span class="jsdoc-var">afterInsert </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pageId</span><span class="jsdoc-syntax">) {},
+
     </span><span class="jsdoc-var">context </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
      * Update a node with values from this object
